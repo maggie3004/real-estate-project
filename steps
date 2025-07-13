@@ -1,0 +1,50 @@
+# Real Estate Project - Setup Instructions
+
+## Prerequisites
+- Node.js (LTS version): https://nodejs.org/
+
+---
+Backend aur frontend ko alag-alag terminal me run karo ek sath
+
+## 1. Backend Setup
+
+```bash
+cd backend
+npm install
+npm start
+```
+- Server will run on [http://localhost:5000](http://localhost:5000)
+
+---
+
+## 2. Frontend Setup
+
+```bash
+cd frontend
+npm install
+npm start
+```
+- App will run on [http://localhost:3000](http://localhost:3000)
+
+---
+
+## 3. Data & Assets
+- All client data is in the `/Data` and `/frontend/src/assets/` folders.
+
+---
+
+## 4. Dependencies (for reference)
+- All dependencies are in `package.json` (backend & frontend).
+- If needed, see `requirements.txt` for a list.
+
+---
+
+## 5. Common Issues
+- Make sure both backend and frontend are running parallel. 
+- If port conflict, change port in `backend/server.js` or `frontend/package.json` (proxy).
+- For any missing package, run `npm install <package-name>` in the respective folder.
+
+---
+
+## 6. Contact
+- For any help, contact maitri

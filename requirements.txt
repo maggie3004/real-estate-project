@@ -1,0 +1,19 @@
+# Backend dependencies (run: npm install in backend/)
+express
+mongoose
+bcryptjs
+jsonwebtoken
+dotenv
+cors
+google-auth-library
+
+# Frontend dependencies (run: npm install in frontend/)
+react
+react-dom
+react-router-dom
+react-scripts
+react-toastify
+framer-motion
+lucide-react
+react-leaflet
+leaflet
