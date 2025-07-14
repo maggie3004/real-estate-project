@@ -30,6 +30,9 @@ const MortgageCalculator = lazy(() => import('./components/MortgageCalculator'))
 const Testimonials = lazy(() => import('./components/Testimonials'));
 const NewsletterSignup = lazy(() => import('./components/NewsletterSignup'));
 const ComparisonModal = lazy(() => import('./components/ComparisonModal'));
+const Awards = lazy(() => import('./pages/Awards'));
+const Sustainability = lazy(() => import('./pages/Sustainability'));
+const Milestones = lazy(() => import('./pages/Milestones'));
 
 
 // Loading component
@@ -117,6 +120,9 @@ function App() {
                         <Route path="/map" element={<MapView />} />
             <Route path="/mortgage-calculator" element={<MortgageCalculator />} />
             <Route path="/about" element={<AboutPage />} />
+            <Route path="/awards" element={<Awards />} />
+            <Route path="/sustainability" element={<Sustainability />} />
+            <Route path="/milestones" element={<Milestones />} />
           </Routes>
                     </Suspense>
         </main>

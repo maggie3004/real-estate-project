@@ -3,16 +3,32 @@ import React from 'react';
 const AboutPage = () => (
   <section style={{ padding: '3rem 0', background: 'var(--background-color)', marginTop: '90px' }}>
     <div style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', gap: 40, alignItems: 'flex-start', flexWrap: 'wrap' }}>
-      {/* Main Company Story */}
       <div style={{ flex: 2, minWidth: 320 }}>
-        <h2 style={{ fontSize: '2.8rem', fontWeight: 800, color: '#E53935', marginBottom: 28, textAlign: 'left', textShadow: '1px 2px 8px rgba(0,0,0,0.08)' }}>
-          About Us
-        </h2>
-        <div style={{ fontSize: '1.1rem', color: '#b8860b', marginBottom: 18, fontStyle: 'italic', fontWeight: 600, textAlign: 'left' }}>
-          घर म्हणजे फक्त ४ भिंती नाही तर समृद्धी, समाधान आणि आनंदाचे मंदिर असते.<br/>
-          पंचतत्वांचे अभ्यास करून, भोगद्याम, सुखदर्शनम व रम्या ह्या वास्तुशास्त्रांच्या मूलभूत तत्वांवर आधारित आम्ही गृह सौख्य साकारत आहोत.<br/>
-          प्रत्येक सभासदाला लाभेल असे परिपूर्ण घर साकारत आहोत.
+        {/* Spiritual Lines */}
+        <div style={{ color: '#b8860b', fontWeight: 700, fontSize: '1.1rem', marginBottom: 12, textAlign: 'center', letterSpacing: 1 }}>
+          || ॐ हनुमते नमः || &nbsp; || ॐ भूमी नंदनाय नमः || &nbsp; || श्री गायत्री माता प्रसन्न ||
         </div>
+        {/* Marathi & English Intro */}
+        <div style={{ fontSize: '1.1rem', color: '#b8860b', marginBottom: 18, fontStyle: 'italic', fontWeight: 600, textAlign: 'left' }}>
+          घर म्हणजे फक्त ४ भिंती नाही तर समृद्धी, समाधान आणि आनंदाचे मंदिर असते. पंचतत्वांचे अभ्यास करून, भोगद्याम, सुखदर्शनम व रम्या ह्या वास्तुशास्त्रांच्या मूलभूत तत्वांवर आधारित आम्ही गृह सौख्य साकारत आहोत. प्रत्येक सभासदाला लाभेल असे परिपूर्ण घर साकारत आहोत.
+        </div>
+        {/* Highlights */}
+        <div style={{ display: 'flex', gap: 24, marginBottom: 24, justifyContent: 'center' }}>
+          <div style={{ textAlign: 'center' }}>
+            <div style={{ fontSize: '2rem', fontWeight: 800, color: '#b8860b' }}>450+</div>
+            <div style={{ fontSize: '1rem', color: '#444' }}>Happy Families</div>
+          </div>
+          <div style={{ textAlign: 'center' }}>
+            <div style={{ fontSize: '2rem', fontWeight: 800, color: '#b8860b' }}>25+</div>
+            <div style={{ fontSize: '1rem', color: '#444' }}>Delivered Projects</div>
+          </div>
+          <div style={{ textAlign: 'center' }}>
+            <div style={{ fontSize: '2rem', fontWeight: 800, color: '#b8860b' }}>16+</div>
+            <div style={{ fontSize: '1rem', color: '#444' }}>Years Legacy of Trust</div>
+          </div>
+        </div>
+        {/* Company Story */}
+        <h2 style={{ fontSize: '2.2rem', fontWeight: 800, color: '#E53935', marginBottom: 18, textAlign: 'left', textShadow: '1px 2px 8px rgba(0,0,0,0.08)' }}>About Us</h2>
         <p style={{ fontSize: '1.2rem', color: '#444', marginBottom: 18, textAlign: 'justify' }}>
           <b>Building Dreams, Creating Landmarks</b><br/>
           Sai Prasad Builders & Developers was established in 2008-09 in Nashik by Mr. Ganesh Yeole, a visionary leader known for his strong moral values and dynamic approach. With a humble beginning, he built the company from the ground up, fostering trust, transparency, and long-lasting relationships with clients, partners, and stakeholders. His vision has always been to reshape Nashik’s real estate landscape, offering affordable yet high-quality homes that cater to the evolving needs of modern homebuyers.
@@ -26,20 +42,16 @@ const AboutPage = () => (
         <p style={{ fontSize: '1.1rem', color: '#444', marginBottom: 18, textAlign: 'justify' }}>
           With a progressive vision and a strong foundation laid by the first generation, Sai Prasad Builders & Developers is now moving towards higher growth, greater efficiency, and enhanced quality standards. By integrating cutting-edge construction techniques, smart home solutions, and eco-friendly initiatives, we continue to shape a better future for homeowners while upholding our legacy of trust, excellence, and customer satisfaction.
         </p>
+        {/* Mission & Vision */}
         <div style={{ fontSize: '1.1rem', color: '#444', marginBottom: 18, textAlign: 'justify' }}>
           <b>Our Mission:</b> To build more than just houses—we create homes that offer comfort, convenience, and a superior lifestyle. By maintaining a balance between affordability and premium quality, we ensure that every homeowner receives a complete, well-equipped living space that meets their aspirations.
         </div>
         <div style={{ fontSize: '1.1rem', color: '#444', marginBottom: 18, textAlign: 'justify' }}>
           <b>Our Vision:</b> To create homes that go beyond four walls, delivering true satisfaction to every homeowner. We strive to build high-quality, well-designed, and affordable spaces that offer comfort, security, and a fulfilling lifestyle. By prioritizing innovation, sustainability, and customer needs, we continue to move forward with integrity, excellence, and an unwavering commitment to customer satisfaction.
         </div>
-        <div style={{ fontSize: '1.1rem', color: '#b8860b', marginBottom: 18, fontWeight: 600, textAlign: 'left' }}>
-          <span>450+ Happy Families &nbsp;|&nbsp; 25+ Delivered Projects &nbsp;|&nbsp; 16+ Years Legacy of Trust</span>
-        </div>
+        {/* Sustainability */}
         <div style={{ fontSize: '1.1rem', color: '#444', marginBottom: 18, textAlign: 'justify' }}>
           <b>Sustainability:</b> We believe in building a better future, not just through quality homes but also through sustainable initiatives. We have integrated renewable energy solutions in our projects, ensuring efficient power usage in common areas. Additionally, we encourage homebuyers to contribute to a greener environment by participating in tree plantation drives, fostering a more eco-friendly and sustainable community.
-        </div>
-        <div style={{ fontStyle: 'italic', color: 'var(--primary-color)', fontSize: '1.1rem', marginBottom: 24, textAlign: 'left' }}>
-          "For us, home is not just about four walls, but a world where love resides and memories are created."
         </div>
       </div>
       {/* Owner/Founder Column */}
