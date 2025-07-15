@@ -3,15 +3,15 @@ import { Link, useLocation } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
 const ongoingProjects = [
-  { name: 'Shree Ganesh Park Phase II', path: '/ongoing-projects#sgp2' },
-  { name: 'Shree Ganesh Park Phase I', path: '/ongoing-projects#sgp1' },
-  { name: 'Shree Ganesh Heights', path: '/ongoing-projects#sgh' },
+  { name: 'Shree Ganesh Park Phase II', path: '/ShreeGaneshParkPhaseII' },
+  { name: 'Shree Ganesh Park Phase I', path: '/ShreeGaneshParkPhaseI' },
+  { name: 'Shree Ganesh Heights', path: '/ShreeGaneshHeights' },
 ];
 const completedProjects = [
-  { name: 'Sai Shraddha Apartment', path: '/completed-projects#ssa' },
-  { name: 'Vinayak Apartment', path: '/completed-projects#va' },
-  { name: 'Shree Ganesh Avenue', path: '/completed-projects#sga' },
-  { name: 'Modakeshwar Apartment', path: '/completed-projects#ma' },
+  { name: 'Sai Shraddha Apartment', path: '/SaiShraddhaApartment' },
+  { name: 'Vinayak Apartment', path: '/VinayakApartment' },
+  { name: 'Shree Ganesh Avenue', path: '/ShreeGaneshAvenue' },
+  { name: 'Modakeshwar Apartment', path: '/ModakeshwarApartment' },
 ];
 
 const Navbar = () => {
@@ -143,7 +143,7 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
-      </div>
+              </div>
     </nav>
   );
 };

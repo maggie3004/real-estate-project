@@ -33,6 +33,13 @@ const ComparisonModal = lazy(() => import('./components/ComparisonModal'));
 const Awards = lazy(() => import('./pages/Awards'));
 const Sustainability = lazy(() => import('./pages/Sustainability'));
 const Milestones = lazy(() => import('./pages/Milestones'));
+const ShreeGaneshParkPhaseII = lazy(() => import('./pages/ShreeGaneshParkPhaseII'));
+const ShreeGaneshParkPhaseI = lazy(() => import('./pages/ShreeGaneshParkPhaseI'));
+const ShreeGaneshHeights = lazy(() => import('./pages/ShreeGaneshHeights'));
+const SaiShraddhaApartment = lazy(() => import('./pages/SaiShraddhaApartment'));
+const VinayakApartment = lazy(() => import('./pages/VinayakApartment'));
+const ShreeGaneshAvenue = lazy(() => import('./pages/ShreeGaneshAvenue'));
+const ModakeshwarApartment = lazy(() => import('./pages/ModakeshwarApartment'));
 
 
 // Loading component
@@ -123,6 +130,13 @@ function App() {
             <Route path="/awards" element={<Awards />} />
             <Route path="/sustainability" element={<Sustainability />} />
             <Route path="/milestones" element={<Milestones />} />
+            <Route path="/ShreeGaneshParkPhaseII" element={<ShreeGaneshParkPhaseII />} />
+            <Route path="/ShreeGaneshParkPhaseI" element={<ShreeGaneshParkPhaseI />} />
+            <Route path="/ShreeGaneshHeights" element={<ShreeGaneshHeights />} />
+            <Route path="/SaiShraddhaApartment" element={<SaiShraddhaApartment />} />
+            <Route path="/VinayakApartment" element={<VinayakApartment />} />
+            <Route path="/ShreeGaneshAvenue" element={<ShreeGaneshAvenue />} />
+            <Route path="/ModakeshwarApartment" element={<ModakeshwarApartment />} />
           </Routes>
                     </Suspense>
         </main>
