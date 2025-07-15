@@ -144,14 +144,14 @@ const MapView = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-white dark:bg-[#181818] text-[#181818] dark:text-white transition-colors duration-300">
       {/* Header */}
-      <div className="bg-white shadow-sm border-b">
+      <div className="bg-white dark:bg-[#232323] shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-2xl font-bold text-gray-900">Property Map</h1>
-              <p className="text-gray-600">Find your perfect property location</p>
+              <h1 className="text-2xl font-bold text-[#181818] dark:text-white">Property Map</h1>
+              <p className="text-gray-600 dark:text-gray-300">Find your perfect property location</p>
             </div>
             <div className="flex items-center space-x-3">
               <motion.button

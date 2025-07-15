@@ -346,24 +346,24 @@ const MortgageCalculator = () => {
           >
             <h3 className="text-xl font-bold text-gray-900 mb-6">Amortization Schedule (First 5 Years)</h3>
             <div className="overflow-x-auto">
-              <table className="w-full text-sm">
+              <table className="w-full text-sm bg-white dark:bg-[#232323]">
                 <thead>
-                  <tr className="bg-gray-50">
-                    <th className="px-4 py-3 text-left font-semibold text-gray-700">Month</th>
-                    <th className="px-4 py-3 text-right font-semibold text-gray-700">Payment</th>
-                    <th className="px-4 py-3 text-right font-semibold text-gray-700">Principal</th>
-                    <th className="px-4 py-3 text-right font-semibold text-gray-700">Interest</th>
-                    <th className="px-4 py-3 text-right font-semibold text-gray-700">Balance</th>
+                  <tr className="bg-gray-50 dark:bg-gray-800">
+                    <th className="px-4 py-3 text-left font-semibold text-gray-700 dark:text-white">Month</th>
+                    <th className="px-4 py-3 text-right font-semibold text-gray-700 dark:text-white">Payment</th>
+                    <th className="px-4 py-3 text-right font-semibold text-gray-700 dark:text-white">Principal</th>
+                    <th className="px-4 py-3 text-right font-semibold text-gray-700 dark:text-white">Interest</th>
+                    <th className="px-4 py-3 text-right font-semibold text-gray-700 dark:text-white">Balance</th>
                   </tr>
                 </thead>
                 <tbody>
                   {amortizationSchedule.map((row, index) => (
-                    <tr key={index} className="border-b border-gray-100 hover:bg-gray-50">
-                      <td className="px-4 py-3 text-gray-900">{row.month}</td>
-                      <td className="px-4 py-3 text-right font-medium">{formatCurrency(row.payment)}</td>
-                      <td className="px-4 py-3 text-right text-green-600">{formatCurrency(row.principal)}</td>
-                      <td className="px-4 py-3 text-right text-red-600">{formatCurrency(row.interest)}</td>
-                      <td className="px-4 py-3 text-right text-gray-600">{formatCurrency(row.balance)}</td>
+                    <tr key={index} className="border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800">
+                      <td className="px-4 py-3 text-[#181818] dark:text-white">{row.month}</td>
+                      <td className="px-4 py-3 text-right font-medium text-[#181818] dark:text-white">{formatCurrency(row.payment)}</td>
+                      <td className="px-4 py-3 text-right text-green-600 dark:text-green-300">{formatCurrency(row.principal)}</td>
+                      <td className="px-4 py-3 text-right text-red-600 dark:text-red-300">{formatCurrency(row.interest)}</td>
+                      <td className="px-4 py-3 text-right text-gray-600 dark:text-gray-300">{formatCurrency(row.balance)}</td>
                     </tr>
                   ))}
                 </tbody>

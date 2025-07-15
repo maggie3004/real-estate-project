@@ -104,14 +104,14 @@ const AdminDashboard = () => {
           }
         `}</script>
       </Helmet>
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-white dark:bg-[#181818] text-[#181818] dark:text-white transition-colors duration-300">
         {/* Header */}
-        <div className="bg-white shadow-sm border-b">
+        <div className="bg-white dark:bg-[#232323] shadow-sm border-b border-gray-200 dark:border-gray-700">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex items-center justify-between">
               <div>
-                <h1 className="text-2xl font-bold text-gray-900">Admin Dashboard</h1>
-                <p className="text-gray-600">Manage your real estate business</p>
+                <h1 className="text-2xl font-bold text-[#181818] dark:text-white">Admin Dashboard</h1>
+                <p className="text-gray-600 dark:text-gray-300">Manage your real estate business</p>
               </div>
               <div className="flex items-center space-x-3">
                 <motion.button
@@ -178,7 +178,7 @@ const AdminDashboard = () => {
                   >
                     {/* Period Selector */}
                     <div className="flex items-center justify-between">
-                      <h2 className="text-xl font-bold text-gray-900">Dashboard Overview</h2>
+                      <h2 className="text-xl font-bold text-[#181818] dark:text-white">Dashboard Overview</h2>
                       <select
                         value={selectedPeriod}
                         onChange={(e) => setSelectedPeriod(e.target.value)}
@@ -200,7 +200,7 @@ const AdminDashboard = () => {
                         <div className="flex items-center justify-between">
                           <div>
                             <p className="text-sm font-medium text-gray-600">Total Properties</p>
-                            <p className="text-2xl font-bold text-gray-900">{analyticsData.totalProperties}</p>
+                            <p className="text-2xl font-bold text-[#181818] dark:text-white">{analyticsData.totalProperties}</p>
                           </div>
                           <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
                             <FaHome className="w-6 h-6 text-blue-600" />
@@ -220,7 +220,7 @@ const AdminDashboard = () => {
                         <div className="flex items-center justify-between">
                           <div>
                             <p className="text-sm font-medium text-gray-600">Total Views</p>
-                            <p className="text-2xl font-bold text-gray-900">{analyticsData.totalViews.toLocaleString()}</p>
+                            <p className="text-2xl font-bold text-[#181818] dark:text-white">{analyticsData.totalViews.toLocaleString()}</p>
                           </div>
                           <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
                             <FaEye className="w-6 h-6 text-green-600" />
@@ -240,7 +240,7 @@ const AdminDashboard = () => {
                         <div className="flex items-center justify-between">
                           <div>
                             <p className="text-sm font-medium text-gray-600">Enquiries</p>
-                            <p className="text-2xl font-bold text-gray-900">{analyticsData.totalEnquiries}</p>
+                            <p className="text-2xl font-bold text-[#181818] dark:text-white">{analyticsData.totalEnquiries}</p>
                           </div>
                           <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center">
                             <FaEnvelope className="w-6 h-6 text-amber-600" />
@@ -260,7 +260,7 @@ const AdminDashboard = () => {
                         <div className="flex items-center justify-between">
                           <div>
                             <p className="text-sm font-medium text-gray-600">Avg. Price</p>
-                            <p className="text-2xl font-bold text-gray-900">{formatCurrency(analyticsData.avgPrice)}</p>
+                            <p className="text-2xl font-bold text-[#181818] dark:text-white">{formatCurrency(analyticsData.avgPrice)}</p>
                           </div>
                           <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
                             <FaDollarSign className="w-6 h-6 text-purple-600" />
@@ -278,7 +278,7 @@ const AdminDashboard = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                       {/* Property Distribution */}
                       <div className="bg-white rounded-2xl shadow-lg p-6">
-                        <h3 className="text-lg font-semibold text-gray-900 mb-4">Property Distribution</h3>
+                        <h3 className="text-lg font-semibold text-[#181818] dark:text-white mb-4">Property Distribution</h3>
                         <div className="space-y-4">
                           {propertyStats.map((stat, index) => (
                             <div key={index} className="flex items-center justify-between">
@@ -307,7 +307,7 @@ const AdminDashboard = () => {
 
                       {/* Recent Enquiries */}
                       <div className="bg-white rounded-2xl shadow-lg p-6">
-                        <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Enquiries</h3>
+                        <h3 className="text-lg font-semibold text-[#181818] dark:text-white mb-4">Recent Enquiries</h3>
                         <div className="space-y-3">
                           {recentEnquiries.slice(0, 4).map((enquiry) => (
                             <div key={enquiry.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
@@ -328,12 +328,12 @@ const AdminDashboard = () => {
 
                     {/* Performance Metrics */}
                     <div className="bg-white rounded-2xl shadow-lg p-6">
-                      <h3 className="text-lg font-semibold text-gray-900 mb-4">Performance Metrics</h3>
+                      <h3 className="text-lg font-semibold text-[#181818] dark:text-white mb-4">Performance Metrics</h3>
                       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         {performanceMetrics.map((metric, index) => (
                           <div key={index} className="text-center p-4 bg-gray-50 rounded-lg">
                             <p className="text-sm text-gray-600">{metric.metric}</p>
-                            <p className="text-xl font-bold text-gray-900 mt-1">{metric.value}</p>
+                            <p className="text-xl font-bold text-[#181818] dark:text-white mt-1">{metric.value}</p>
                             <div className="flex items-center justify-center mt-2">
                               {metric.trend === 'up' ? (
                                 <FaChartLine className="w-4 h-4 text-green-500 mr-1" />
@@ -361,7 +361,7 @@ const AdminDashboard = () => {
                     className="space-y-6"
                   >
                     <div className="flex items-center justify-between">
-                      <h2 className="text-xl font-bold text-gray-900">Property Management</h2>
+                      <h2 className="text-xl font-bold text-[#181818] dark:text-white">Property Management</h2>
                       <div className="flex items-center space-x-3">
                         <div className="relative">
                           <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
@@ -385,20 +385,20 @@ const AdminDashboard = () => {
 
                     <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
                       <div className="overflow-x-auto">
-                        <table className="w-full">
-                          <thead className="bg-gray-50">
+                        <table className="w-full bg-white dark:bg-[#232323] text-[#181818] dark:text-white">
+                          <thead className="bg-gray-50 dark:bg-gray-800 text-gray-500 dark:text-gray-300">
                             <tr>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Property</th>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Views</th>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Property</th>
+                              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Type</th>
+                              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Price</th>
+                              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Status</th>
+                              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Views</th>
+                              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Actions</th>
                             </tr>
                           </thead>
-                          <tbody className="bg-white divide-y divide-gray-200">
+                          <tbody className="bg-white dark:bg-[#232323] text-[#181818] dark:text-white divide-y divide-gray-200">
                             {properties.slice(0, 10).map((property) => (
-                              <tr key={property.id} className="hover:bg-gray-50">
+                              <tr key={property.id} className="hover:bg-gray-50 dark:hover:bg-gray-800">
                                 <td className="px-6 py-4 whitespace-nowrap">
                                   <div className="flex items-center">
                                     <img
@@ -460,24 +460,24 @@ const AdminDashboard = () => {
                     exit={{ opacity: 0, y: -20 }}
                     className="space-y-6"
                   >
-                    <h2 className="text-xl font-bold text-gray-900">Enquiry Management</h2>
+                    <h2 className="text-xl font-bold text-[#181818] dark:text-white">Enquiry Management</h2>
                     
                     <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
                       <div className="overflow-x-auto">
-                        <table className="w-full">
-                          <thead className="bg-gray-50">
+                        <table className="w-full bg-white dark:bg-[#232323] text-[#181818] dark:text-white">
+                          <thead className="bg-gray-50 dark:bg-gray-800 text-gray-500 dark:text-gray-300">
                             <tr>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Customer</th>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Property</th>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Contact</th>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
-                              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Customer</th>
+                              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Property</th>
+                              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Contact</th>
+                              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Status</th>
+                              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Date</th>
+                              <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider">Actions</th>
                             </tr>
                           </thead>
-                          <tbody className="bg-white divide-y divide-gray-200">
+                          <tbody className="bg-white dark:bg-[#232323] text-[#181818] dark:text-white divide-y divide-gray-200">
                             {recentEnquiries.map((enquiry) => (
-                              <tr key={enquiry.id} className="hover:bg-gray-50">
+                              <tr key={enquiry.id} className="hover:bg-gray-50 dark:hover:bg-gray-800">
                                 <td className="px-6 py-4 whitespace-nowrap">
                                   <div>
                                     <div className="text-sm font-medium text-gray-900">{enquiry.name}</div>
@@ -529,8 +529,8 @@ const AdminDashboard = () => {
                     className="text-center py-12"
                   >
                     <FaUsers className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">User Management</h3>
-                    <p className="text-gray-600">Manage user accounts and permissions</p>
+                    <h3 className="text-lg font-semibold text-[#181818] dark:text-white mb-2">User Management</h3>
+                    <p className="text-gray-600 dark:text-gray-300">Manage user accounts and permissions</p>
                   </motion.div>
                 )}
 
@@ -543,8 +543,8 @@ const AdminDashboard = () => {
                     className="text-center py-12"
                   >
                     <FaChartBar className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Advanced Analytics</h3>
-                    <p className="text-gray-600">Detailed analytics and reporting features</p>
+                    <h3 className="text-lg font-semibold text-[#181818] dark:text-white mb-2">Advanced Analytics</h3>
+                    <p className="text-gray-600 dark:text-gray-300">Detailed analytics and reporting features</p>
                   </motion.div>
                 )}
 
@@ -557,8 +557,8 @@ const AdminDashboard = () => {
                     className="text-center py-12"
                   >
                     <FaCog className="w-16 h-16 text-gray-400 mx-auto mb-4" />
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2">Settings</h3>
-                    <p className="text-gray-600">Configure your dashboard and preferences</p>
+                    <h3 className="text-lg font-semibold text-[#181818] dark:text-white mb-2">Settings</h3>
+                    <p className="text-gray-600 dark:text-gray-300">Configure your dashboard and preferences</p>
                   </motion.div>
                 )}
               </AnimatePresence>

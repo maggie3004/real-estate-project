@@ -22,7 +22,7 @@ const VinayakApartment = () => {
   const tagline = 'A Prime Project in a Prime Location';
 
   return (
-    <div className="max-w-7xl mx-auto flex flex-col gap-8 py-12 px-4 mt-20 text-white" style={{background: '#181A20', minHeight: '100vh'}}>
+    <div className="max-w-7xl mx-auto flex flex-col gap-8 py-12 px-4 mt-20 min-h-screen bg-white dark:bg-[#181818] text-[#181818] dark:text-white transition-colors duration-300">
       {/* Main Photo, Name, Tagline */}
       <div className="rounded-xl overflow-hidden shadow-lg mb-6">
         <img src="/images/va-main.jpg" alt="Project Main" className="w-full h-64 object-cover" />

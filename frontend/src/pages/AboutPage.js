@@ -1,9 +1,9 @@
 import React from 'react';
 
 const AboutPage = () => (
-  <section style={{ padding: '3rem 0', background: 'var(--background-color)', marginTop: '90px' }}>
-    <div style={{ maxWidth: 1100, margin: '0 auto', display: 'flex', gap: 40, alignItems: 'flex-start', flexWrap: 'wrap' }}>
-      <div style={{ flex: 2, minWidth: 320 }}>
+  <section className="min-h-screen pt-24 pb-12 bg-white dark:bg-[#181818] text-[#181818] dark:text-white transition-colors duration-300">
+    <div className="max-w-5xl mx-auto flex gap-10 flex-wrap items-start">
+      <div className="flex-2 min-w-[320px]">
         {/* Spiritual Lines */}
         <div style={{ color: '#b8860b', fontWeight: 700, fontSize: '1.1rem', marginBottom: 12, textAlign: 'center', letterSpacing: 1 }}>
           || ॐ हनुमते नमः || &nbsp; || ॐ भूमी नंदनाय नमः || &nbsp; || श्री गायत्री माता प्रसन्न ||
@@ -55,12 +55,12 @@ const AboutPage = () => (
         </div>
       </div>
       {/* Owner/Founder Column */}
-      <aside style={{ flex: 1, minWidth: 260, background: '#fffbe6', borderRadius: 16, boxShadow: '0 2px 12px rgba(255,215,0,0.10)', padding: 24, textAlign: 'center', border: '1.5px solid #ffe082', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: 480 }}>
-        <img src={process.env.PUBLIC_URL + '/owner-placeholder.png'} alt="Owner" style={{ width: 120, height: 120, borderRadius: '50%', objectFit: 'cover', marginBottom: 16, border: '3px solid #E53935' }} />
-        <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#E53935', marginBottom: 8 }}>Mr. Prasad Yeole</h3>
-        <div style={{ color: '#444', fontWeight: 500, marginBottom: 16 }}>Second Generation | Civil Engineer</div>
-        <h4 style={{ fontSize: '1.1rem', color: '#E53935', marginBottom: 8 }}>Message from the Next Generation</h4>
-        <div style={{ fontSize: '1rem', color: '#444', fontStyle: 'italic', textAlign: 'justify' }}>
+      <aside className="flex-1 min-w-[260px] bg-[#fffbe6] dark:bg-[#232323] rounded-2xl shadow-lg p-6 text-center border-2 border-[#ffe082] dark:border-[#ffd700] flex flex-col items-center justify-center min-h-[480px]">
+        <img src={process.env.PUBLIC_URL + '/owner-placeholder.png'} alt="Owner" className="w-28 h-28 rounded-full object-cover mb-4 border-4 border-[#E53935]" />
+        <h3 className="text-lg font-bold text-[#E53935] mb-2">Mr. Prasad Yeole</h3>
+        <div className="text-[#444] dark:text-[#ffd700] font-medium mb-4">Second Generation | Civil Engineer</div>
+        <h4 className="text-base text-[#E53935] mb-2">Message from the Next Generation</h4>
+        <div className="text-sm italic text-[#444] dark:text-[#ffd700] text-justify">
           "We are committed to building homes that blend innovation, quality, and tradition—creating spaces where families thrive and memories are made. Thank you for trusting us with your dreams."
         </div>
       </aside>

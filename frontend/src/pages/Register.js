@@ -80,7 +80,7 @@ export default function Register() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-accent-50 flex items-center justify-center px-4 py-8">
+    <div className="min-h-screen bg-white dark:bg-[#181818] text-[#181818] dark:text-white flex items-center justify-center px-4 py-8 transition-colors duration-300">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -97,8 +97,8 @@ export default function Register() {
           >
             <FiUserCheck className="w-8 h-8 text-white" />
           </motion.div>
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Create Account</h1>
-          <p className="text-gray-600">Join Sai Prasad Builders and Developers</p>
+          <h1 className="text-3xl font-bold text-[#181818] dark:text-white mb-2">Create Account</h1>
+          <p className="text-gray-600 dark:text-gray-300">Join Sai Prasad Builders and Developers</p>
         </div>
 
         {/* Register Form */}

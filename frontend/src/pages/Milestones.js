@@ -32,16 +32,14 @@ const projects = [
 ];
 
 const Milestones = () => (
-  <section style={{ padding: '3rem 0', marginTop: '90px', background: 'var(--background-color)' }}>
-    <div style={{ maxWidth: 1000, margin: '0 auto' }}>
-      <h2 style={{ fontSize: '2.5rem', fontWeight: 800, color: '#1976d2', marginBottom: 32, textAlign: 'center' }}>
-        Our Landmark Projects & Milestones
-      </h2>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+  <section className="min-h-screen pt-24 pb-12 bg-white dark:bg-[#181818] text-[#181818] dark:text-white transition-colors duration-300">
+    <div className="max-w-4xl mx-auto">
+      <h2 className="text-3xl font-bold text-[#1976d2] dark:text-[#90caf9] mb-8 text-center">Our Landmark Projects & Milestones</h2>
+      <div className="flex flex-col gap-8">
         {projects.map((proj, idx) => (
-          <div key={proj.name} style={{ background: '#fff', borderRadius: 16, boxShadow: '0 2px 12px rgba(25,118,210,0.08)', padding: 28 }}>
-            <h3 style={{ fontSize: '1.5rem', fontWeight: 700, color: '#1976d2', marginBottom: 10 }}>{proj.name}</h3>
-            <div style={{ fontSize: '1.1rem', color: '#444', textAlign: 'justify' }}>{proj.desc}</div>
+          <div key={proj.name} className="bg-white dark:bg-[#232323] rounded-2xl shadow-lg p-7">
+            <h3 className="text-xl font-bold text-[#1976d2] dark:text-[#90caf9] mb-2">{proj.name}</h3>
+            <div className="text-base text-[#444] dark:text-[#ffd700] text-justify">{proj.desc}</div>
           </div>
         ))}
       </div>

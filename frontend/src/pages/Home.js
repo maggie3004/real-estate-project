@@ -14,7 +14,7 @@ import { Helmet } from 'react-helmet';
 
 const Home = () => {
   return (
-    <>
+    <div className="min-h-screen bg-white dark:bg-[#181818] text-[#181818] dark:text-white transition-colors duration-300">
       <Helmet>
         <title>Shree Ganesh Real Estate | Premium Properties in Mumbai, Pune & Nashik</title>
         <meta name="description" content="Discover premium properties in Mumbai, Pune, and Nashik. Luxury apartments, villas, and commercial spaces with world-class amenities. Find your dream home with Shree Ganesh Real Estate." />
@@ -71,9 +71,9 @@ const Home = () => {
       <StatsSection />
       <div id="about" data-aos="fade-up"><AboutSection /></div>
       <div id="projects" data-aos="fade-up"><ProjectsSection /></div>
-      <div id="awards" data-aos="fade-up"><AwardsSection /></div>
+      <AwardsSection />
       {/* Add AboutSection, AmenitiesSection, AwardsSection, ContactForm, etc. here as you create them */}
-    </>
+    </div>
   );
 };
 

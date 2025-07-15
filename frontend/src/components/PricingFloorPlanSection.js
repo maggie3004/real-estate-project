@@ -29,22 +29,22 @@ const PricingFloorPlanSection = () => {
           transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
           className="overflow-x-auto"
         >
-          <table className="min-w-full bg-white dark:bg-gray-900 rounded-2xl shadow-lg border border-gold/30">
+          <table className="min-w-full bg-white dark:bg-[#232323] rounded-2xl shadow-lg border border-gold/30">
             <thead>
-              <tr className="bg-gradient-to-r from-gold to-primary-500 text-white">
-                <th className="px-6 py-4 text-left font-montserrat text-lg text-white">Type</th>
-                <th className="px-6 py-4 text-left font-montserrat text-lg text-white">Area</th>
-                <th className="px-6 py-4 text-left font-montserrat text-lg text-white">Price</th>
-                <th className="px-6 py-4 text-left font-montserrat text-lg text-white">Location</th>
+              <tr className="bg-gradient-to-r from-gold to-primary-500 text-white dark:text-[#181818]">
+                <th className="px-6 py-4 text-left font-montserrat text-lg text-white dark:text-[#181818]">Type</th>
+                <th className="px-6 py-4 text-left font-montserrat text-lg text-white dark:text-[#181818]">Area</th>
+                <th className="px-6 py-4 text-left font-montserrat text-lg text-white dark:text-[#181818]">Price</th>
+                <th className="px-6 py-4 text-left font-montserrat text-lg text-white dark:text-[#181818]">Location</th>
               </tr>
             </thead>
             <tbody>
               {properties.map((p, idx) => (
-                <tr key={p.id} className={idx % 2 === 0 ? 'bg-white dark:bg-gray-900' : 'bg-gray-50 dark:bg-gray-800'}>
-                  <td className="px-6 py-4 font-semibold text-white">{p.title}</td>
-                  <td className="px-6 py-4 text-white">{p.area || (p.bedrooms + ' BHK')}</td>
+                <tr key={p.id} className={idx % 2 === 0 ? 'bg-white dark:bg-[#232323]' : 'bg-gray-50 dark:bg-gray-800'}>
+                  <td className="px-6 py-4 font-semibold text-[#181818] dark:text-white">{p.title}</td>
+                  <td className="px-6 py-4 text-[#181818] dark:text-white">{p.area || (p.bedrooms + ' BHK')}</td>
                   <td className="px-6 py-4 text-gold font-bold">{p.price}</td>
-                  <td className="px-6 py-4 text-white">{p.location}</td>
+                  <td className="px-6 py-4 text-[#181818] dark:text-white">{p.location}</td>
                 </tr>
               ))}
             </tbody>
