@@ -1,77 +1,115 @@
 import React, { useState } from 'react';
-import { FaWhatsapp, FaPhoneAlt, FaDownload, FaSwimmingPool, FaCar, FaDumbbell, FaTree, FaWifi, FaShieldAlt } from 'react-icons/fa';
+import { FaWhatsapp, FaPhoneAlt, FaDownload } from 'react-icons/fa';
 import ContactForm from '../components/ContactForm';
-
-const amenities = [
-  { name: 'Swimming Pool', icon: <FaSwimmingPool /> },
-  { name: 'Parking', icon: <FaCar /> },
-  { name: 'Gym', icon: <FaDumbbell /> },
-  { name: 'Garden', icon: <FaTree /> },
-  { name: 'Wi-Fi', icon: <FaWifi /> },
-  { name: 'Security', icon: <FaShieldAlt /> },
-];
-
-const gallery = [
-  '/images/project1.jpg',
-  '/images/project2.jpg',
-  '/images/project3.jpg',
-  '/images/project4.jpg',
-];
+import properties from '../data/properties';
+import GallerySection from '../components/GallerySection';
+import AmenitiesSection from '../components/AmenitiesSection';
+import LocationSection from '../components/LocationSection';
+import { useParams, Link } from 'react-router-dom';
 
 const PropertyDetails = () => {
+  const { id } = useParams();
+  const property = properties.find(p => String(p.id) === String(id)) || properties[0];
+  const projectName = property?.title || 'Project Name';
+  const tagline = property?.type ? `${property.type} | ${property.facing} Facing` : 'Project Tagline Goes Here';
+  const stats = [
+    { label: 'Units', value: '210+' },
+    { label: 'Area', value: property?.area || 'N/A' },
+    { label: 'Floors', value: property?.totalFloors || 'N/A' },
+    { label: 'Amenities', value: property?.amenities?.length ? `${property.amenities.length}+` : 'N/A' },
+  ];
+
   const [showModal, setShowModal] = useState(false);
-  const projectName = 'Project Name'; // Replace with dynamic name if available
 
   return (
     <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-8 py-12 px-4 mt-20">
+      {/* Back to Listings Button */}
+      <div className="absolute left-4 top-4">
+        <Link to="/listings" className="inline-block px-4 py-2 bg-gray-200 text-gray-800 rounded-lg font-semibold hover:bg-gold hover:text-white transition">
+          ← Back to Listings
+        </Link>
+      </div>
       {/* Left/Main Content */}
       <div className="flex-1 min-w-0">
         {/* Main Photo, Name, Tagline */}
         <div className="rounded-xl overflow-hidden shadow-lg mb-6">
-          <img src="/images/project-main.jpg" alt="Project Main" className="w-full h-64 object-cover" />
+          <img src={property?.image || '/images/project-main.jpg'} alt="Project Main" className="w-full h-64 object-cover" />
         </div>
         <h1 className="text-3xl font-bold mb-2">{projectName}</h1>
-        <div className="text-lg text-gold font-semibold mb-4">Project Tagline Goes Here</div>
+        <div className="text-lg text-gold font-semibold mb-4">{tagline}</div>
         {/* Stats */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-          <div className="bg-gray-100 rounded-lg p-4 text-center">
-            <div className="text-xl font-bold text-gold">210+</div>
-            <div className="text-sm text-gray-700">Units</div>
-              </div>
-          <div className="bg-gray-100 rounded-lg p-4 text-center">
-            <div className="text-xl font-bold text-gold">1250-1400 Sq.Ft</div>
-            <div className="text-sm text-gray-700">Heaven</div>
-              </div>
-          <div className="bg-gray-100 rounded-lg p-4 text-center">
-            <div className="text-xl font-bold text-gold">7</div>
-            <div className="text-sm text-gray-700">Floors</div>
+          {stats.map((stat) => (
+            <div key={stat.label} className="bg-gray-100 rounded-lg p-4 text-center">
+              <div className="text-xl font-bold text-gold">{stat.value}</div>
+              <div className="text-sm text-gray-700">{stat.label}</div>
             </div>
-          <div className="bg-gray-100 rounded-lg p-4 text-center">
-            <div className="text-xl font-bold text-gold">11+</div>
-            <div className="text-sm text-gray-700">Amenities</div>
-          </div>
+          ))}
         </div>
         {/* Gallery */}
         <div className="mb-8">
-          <div className="text-xl font-semibold mb-2">Gallery</div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {gallery.map((img, idx) => (
-              <img key={idx} src={img} alt={`Gallery ${idx+1}`} className="rounded-lg h-32 w-full object-cover" />
-              ))}
-            </div>
-                </div>
+          <GallerySection />
+        </div>
         {/* Amenities */}
-        <div>
-          <div className="text-xl font-semibold mb-2">Amenities</div>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {amenities.map((a, idx) => (
-              <div key={a.name} className="flex items-center gap-3 bg-gray-50 rounded-lg p-3 shadow">
-                <span className="text-gold text-2xl">{a.icon}</span>
-                <span className="font-medium text-gray-800">{a.name}</span>
+        <div className="mb-8">
+          <AmenitiesSection />
+        </div>
+        {/* Isometric Views */}
+        <div className="mb-8">
+          <div className="text-xl font-semibold mb-2">Isometric 2BHK/1BHK Views</div>
+          <div className="flex gap-6 flex-wrap">
+            {(property?.isometricViews && property.isometricViews.length > 0
+              ? property.isometricViews
+              : [
+                  { label: '2BHK - Spacious layout with balcony', src: '/images/project1.jpg' },
+                  { label: '1BHK - Compact and efficient design', src: '/images/project2.jpg' }
+                ]
+            ).map((view, idx) => (
+              <div key={view.label + idx} className="flex flex-col items-center">
+                <img src={view.src} alt={view.label} className="w-48 h-32 object-cover rounded-lg mb-2" />
+                <span className="font-medium">{view.label}</span>
               </div>
             ))}
-                                </div>
-                                </div>
+          </div>
+        </div>
+        {/* Embedded Project Video Placeholder */}
+        <div className="mb-8">
+          <div className="text-xl font-semibold mb-2">Project Video</div>
+          <div className="aspect-w-16 aspect-h-9 w-full rounded-xl overflow-hidden shadow-lg">
+            <iframe
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+              title="Project Video"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-64"
+            ></iframe>
+          </div>
+        </div>
+        {/* Map & Landmarks */}
+        <div className="mb-8">
+          <LocationSection />
+          {/* Landmark icons and distances (dynamic) */}
+          <div className="mt-6">
+            <div className="text-xl font-semibold mb-2">Nearby Landmarks</div>
+            <div className="flex flex-wrap gap-6">
+              {(property?.landmarks && property.landmarks.length > 0
+                ? property.landmarks
+                : [
+                    { icon: '🏫', label: 'School', distance: '5 mins' },
+                    { icon: '🏥', label: 'Hospital', distance: '8 mins' },
+                    { icon: '🛒', label: 'Mall', distance: '10 mins' },
+                    { icon: '🚇', label: 'Metro Station', distance: '3 mins' },
+                  ]
+              ).map((lm, idx) => (
+                <div key={lm.label + idx} className="flex items-center gap-3 bg-gray-50 rounded-lg p-3 shadow">
+                  <span role="img" aria-label={lm.label} className="text-2xl">{lm.icon}</span>
+                  <span className="font-medium">{lm.label} - {lm.distance}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
       {/* Right/Action Panel */}
       <div className="w-full md:w-80 flex-shrink-0">
@@ -86,7 +124,7 @@ const PropertyDetails = () => {
           <a href="tel:+919999999999" className="w-full flex items-center justify-center gap-2 bg-gold text-white font-bold py-3 rounded-lg shadow hover:bg-rose hover:text-gold transition">
             <FaPhoneAlt /> Call Now
           </a>
-                          </div>
+        </div>
       </div>
       {/* Enquire Now Modal */}
       {showModal && (

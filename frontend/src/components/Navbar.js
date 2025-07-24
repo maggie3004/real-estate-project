@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import logoLight from '../assets/logo.png';
+import logo from '../assets/logo.png'; // Ensure this path is correct relative to Navbar.js
 import logoDark from '../assets/logo.png'; // Placeholder, use different file if available
 import { useTheme } from '../context/ThemeContext';
 import ThemeSwitcher from './ThemeSwitcher';
@@ -65,7 +65,7 @@ const Navbar = () => {
       <div className="w-full flex items-center h-16 px-4">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3 min-w-fit" aria-label="Go to homepage">
-          <img src={theme === 'dark' ? logoLight : logoDark} alt="Logo" className="h-8 w-auto transition-all duration-300" />
+          <img src={theme === 'dark' ? logo : logoDark} alt="Logo" className="h-8 w-auto transition-all duration-300" />
           <span className={`text-xl font-bold tracking-tight transition-colors duration-300 ${theme === 'dark' ? 'text-white' : 'text-[#181818]'}`}>Sai Prasad Group</span>
         </Link>
         {/* Desktop Menu */}

@@ -21,7 +21,13 @@ const properties = [
     furnishing: "Furnished",
     floor: 5,
     totalFloors: 12,
-    facing: "East"
+    facing: "East",
+    landmarks: [
+      { type: "School", icon: "🏫", label: "School", distance: "5 mins" },
+      { type: "Hospital", icon: "🏥", label: "Hospital", distance: "8 mins" },
+      { type: "Mall", icon: "🛒", label: "Mall", distance: "10 mins" },
+      { type: "Metro", icon: "🚇", label: "Metro Station", distance: "3 mins" }
+    ]
   },
   {
     id: 2,
@@ -46,6 +52,50 @@ const properties = [
     floor: 1,
     totalFloors: 2,
     facing: "West"
+  },
+  {
+    id: 5,
+    title: "Sai Shraddha Apartment",
+    price: "Contact for Price",
+    location: "Sai Shraddha Apartment, [Add Address]",
+    image: "/sai-shraddha-apartment/IMG-20250722-WA0066.jpg",
+    images: [
+      "/sai-shraddha-apartment/IMG-20250722-WA0066.jpg",
+      "/sai-shraddha-apartment/IMG-20250722-WA0067.jpg",
+      "/sai-shraddha-apartment/IMG-20250722-WA0068.jpg",
+      "/sai-shraddha-apartment/IMG-20250722-WA0069.jpg",
+      "/sai-shraddha-apartment/IMG-20250722-WA0070.jpg",
+      "/sai-shraddha-apartment/IMG-20250722-WA0071.jpg",
+      "/sai-shraddha-apartment/IMG-20250722-WA0072.jpg"
+    ],
+    isometricViews: [
+      {
+        label: "2BHK - Spacious layout with balcony",
+        src: "/sai-shraddha-apartment/IMG-20250722-WA0066.jpg"
+      },
+      {
+        label: "1BHK - Compact and efficient design",
+        src: "/sai-shraddha-apartment/IMG-20250722-WA0067.jpg"
+      }
+    ],
+    bedrooms: 2,
+    bathrooms: 2,
+    area: "[Add Area]",
+    lat: null,
+    lng: null,
+    amenities: ["Parking", "Garden", "Security"],
+    type: "Apartment",
+    yearBuilt: null,
+    furnishing: "[Add Furnishing]",
+    floor: null,
+    totalFloors: null,
+    facing: "[Add Facing]",
+    landmarks: [
+      { type: "School", icon: "🏫", label: "School", distance: "5 mins" },
+      { type: "Hospital", icon: "🏥", label: "Hospital", distance: "8 mins" },
+      { type: "Mall", icon: "🛒", label: "Mall", distance: "10 mins" },
+      { type: "Metro", icon: "🚇", label: "Metro Station", distance: "3 mins" }
+    ]
   }
 ];
 
