@@ -47,23 +47,17 @@ const PropertyCard = ({ property, onFavoriteToggle, isFavorite = false }) => {
     >
       {/* Image Carousel */}
       <div className="relative h-64 overflow-hidden group">
-        <picture>
-          <source
-            srcSet={property.images[currentImageIndex].replace(/\.(jpg|jpeg|png)$/i, '.webp')}
-            type="image/webp"
-          />
-          <img
-            src={property.images[currentImageIndex]}
-            srcSet={`
-              ${property.images[currentImageIndex]} 1x,
-              ${property.images[currentImageIndex]} 2x
-            `}
-            sizes="(max-width: 640px) 100vw, 33vw"
-            alt={property.title ? `Photo of ${property.title}` : 'Property image'}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-            loading="lazy"
-          />
-        </picture>
+        <img
+          src={property.images[currentImageIndex]}
+          srcSet={`
+            ${property.images[currentImageIndex]} 1x,
+            ${property.images[currentImageIndex]} 2x
+          `}
+          sizes="(max-width: 640px) 100vw, 33vw"
+          alt={property.title ? `Photo of ${property.title}` : 'Property image'}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          loading="lazy"
+        />
         
         {/* Image Navigation */}
         <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300">

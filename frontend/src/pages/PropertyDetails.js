@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { FaWhatsapp, FaPhoneAlt, FaDownload } from 'react-icons/fa';
+import { FaWhatsapp, FaPhoneAlt, FaDownload, FaEnvelope } from 'react-icons/fa';
 import ContactForm from '../components/ContactForm';
 import properties from '../data/properties';
-import GallerySection from '../components/GallerySection';
 import AmenitiesSection from '../components/AmenitiesSection';
 import LocationSection from '../components/LocationSection';
 import { useParams, Link } from 'react-router-dom';
@@ -33,7 +32,7 @@ const PropertyDetails = () => {
       <div className="flex-1 min-w-0">
         {/* Main Photo, Name, Tagline */}
         <div className="rounded-xl overflow-hidden shadow-lg mb-6">
-          <img src={property?.image || '/images/project-main.jpg'} alt="Project Main" className="w-full h-64 object-cover" />
+          <img src={property.image} alt="Project Main" className="w-full h-64 object-cover" />
         </div>
         <h1 className="text-3xl font-bold mb-2">{projectName}</h1>
         <div className="text-lg text-gold font-semibold mb-4">{tagline}</div>
@@ -48,7 +47,12 @@ const PropertyDetails = () => {
         </div>
         {/* Gallery */}
         <div className="mb-8">
-          <GallerySection />
+          <div className="text-xl font-semibold mb-2">Gallery</div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {property.images && property.images.map((img, idx) => (
+              <img key={idx} src={img} alt={`Gallery ${idx + 1}`} className="rounded-lg h-32 w-full object-cover" />
+            ))}
+          </div>
         </div>
         {/* Amenities */}
         <div className="mb-8">
@@ -112,19 +116,24 @@ const PropertyDetails = () => {
         </div>
       </div>
       {/* Right/Action Panel */}
-      <div className="w-full md:w-80 flex-shrink-0">
-        <div className="sticky top-28 flex flex-col gap-6 bg-[#232323] rounded-xl shadow-lg p-6">
-          <button className="w-full bg-gold text-white font-bold py-3 rounded-lg shadow hover:bg-rose hover:text-gold transition" onClick={() => setShowModal(true)}>Enquire Now</button>
-          <a href="/brochure.pdf" download className="w-full flex items-center justify-center gap-2 bg-white text-gold font-bold py-3 rounded-lg shadow hover:bg-gold hover:text-white transition">
-            <FaDownload /> Download Brochure
-          </a>
-          <a href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer" className="w-full flex items-center justify-center gap-2 bg-green-500 text-white font-bold py-3 rounded-lg shadow hover:bg-green-600 transition">
-            <FaWhatsapp /> WhatsApp
-          </a>
-          <a href="tel:+919999999999" className="w-full flex items-center justify-center gap-2 bg-gold text-white font-bold py-3 rounded-lg shadow hover:bg-rose hover:text-gold transition">
-            <FaPhoneAlt /> Call Now
-          </a>
-        </div>
+      <div className="w-full md:w-80 flex-shrink-0 flex flex-col items-center gap-6">
+        {/* Round Enquire Now Button */}
+        <button
+          className="w-16 h-16 bg-gold text-white rounded-full flex items-center justify-center shadow-lg hover:bg-rose hover:text-gold transition mb-2"
+          onClick={() => setShowModal(true)}
+          aria-label="Enquire Now"
+        >
+          <FaEnvelope className="text-2xl" />
+        </button>
+        <a href="/brochure.pdf" download className="w-full flex items-center justify-center gap-2 bg-white text-gold font-bold py-3 rounded-lg shadow hover:bg-gold hover:text-white transition">
+          <FaDownload /> Download Brochure
+        </a>
+        <a href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer" className="w-full flex items-center justify-center gap-2 bg-green-500 text-white font-bold py-3 rounded-lg shadow hover:bg-green-600 transition">
+          <FaWhatsapp /> WhatsApp
+        </a>
+        <a href="tel:+919999999999" className="w-full flex items-center justify-center gap-2 bg-gold text-white font-bold py-3 rounded-lg shadow hover:bg-rose hover:text-gold transition">
+          <FaPhoneAlt /> Call Now
+        </a>
       </div>
       {/* Enquire Now Modal */}
       {showModal && (

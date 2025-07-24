@@ -54,7 +54,7 @@ const FloatingActions = () => {
         {/* Enquiry */}
         <button
           onClick={() => setEnquiryOpen(true)}
-          className="bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-full shadow-lg flex items-center justify-center transition-colors duration-200"
+          className="bg-primary-700 hover:bg-gold text-gold hover:text-primary-700 p-4 rounded-full shadow-lg flex items-center justify-center transition-colors duration-200 border-2 border-gold focus:outline-none"
           aria-label="Enquiry"
           title="Enquiry"
         >

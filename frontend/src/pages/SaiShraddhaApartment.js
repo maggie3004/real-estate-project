@@ -10,11 +10,14 @@ const amenities = [
   { name: 'Security', icon: <FaShieldAlt /> },
 ];
 
-const gallery = [
-  '/images/ssa-1.jpg',
-  '/images/ssa-2.jpg',
-  '/images/ssa-3.jpg',
-  '/images/ssa-4.jpg',
+const images = [
+  '/sai-shraddha-apartment/IMG-20250722-WA0066.jpg',
+  '/sai-shraddha-apartment/IMG-20250722-WA0067.jpg',
+  '/sai-shraddha-apartment/IMG-20250722-WA0068.jpg',
+  '/sai-shraddha-apartment/IMG-20250722-WA0069.jpg',
+  '/sai-shraddha-apartment/IMG-20250722-WA0070.jpg',
+  '/sai-shraddha-apartment/IMG-20250722-WA0071.jpg',
+  '/sai-shraddha-apartment/IMG-20250722-WA0072.jpg'
 ];
 
 const SaiShraddhaApartment = () => {
@@ -25,7 +28,7 @@ const SaiShraddhaApartment = () => {
     <div className="max-w-7xl mx-auto flex flex-col gap-8 py-12 px-4 mt-20 min-h-screen bg-white dark:bg-[#181818] text-[#181818] dark:text-white transition-colors duration-300">
       {/* Main Photo, Name, Tagline */}
       <div className="rounded-xl overflow-hidden shadow-lg mb-6">
-        <img src="/images/ssa-main.jpg" alt="Project Main" className="w-full h-64 object-cover" />
+        <img src="/sai-shraddha-apartment/IMG-20250722-WA0066.jpg" alt="Project Main" className="w-full h-64 object-cover" />
       </div>
       <h1 className="text-3xl font-bold mb-2 text-gold">{projectName}</h1>
       <div className="text-lg text-gold font-semibold mb-4">{tagline}</div>
@@ -52,7 +55,7 @@ const SaiShraddhaApartment = () => {
       <div className="mb-8">
         <div className="text-xl font-semibold mb-2 text-gold">Gallery</div>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          {gallery.map((img, idx) => (
+          {images.map((img, idx) => (
             <img key={idx} src={img} alt={`Gallery ${idx+1}`} className="rounded-lg h-32 w-full object-cover" />
           ))}
         </div>
