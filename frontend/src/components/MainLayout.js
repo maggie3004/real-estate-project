@@ -1,15 +1,18 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import FloatingActions from './FloatingActions';
+import FloatingActions from './FloatingActions.js';
 
-const MainLayout = ({ children }) => (
+const MainLayout = () => (
   <>
     <Navbar />
-    <main style={{ minHeight: '80vh' }}>{children}</main>
+    <main style={{ minHeight: '80vh' }}>
+      <Outlet />
+    </main>
     <Footer />
     <FloatingActions />
   </>
 );
 
-export default MainLayout; 
+export default MainLayout;

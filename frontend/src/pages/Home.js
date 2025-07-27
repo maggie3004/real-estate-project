@@ -10,6 +10,7 @@ import ProjectsSection from '../components/ProjectsSection';
 import AboutSection from '../components/AboutSection';
 import AwardsSection from '../components/AwardsSection';
 import { Helmet } from 'react-helmet';
+
 // ... import other new sections as you create them
 
 const Home = () => {
