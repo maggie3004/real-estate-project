@@ -35,6 +35,8 @@ const SaiShraddhaApartment = lazy(() => import('./pages/SaiShraddhaApartment'));
 const VinayakApartment = lazy(() => import('./pages/VinayakApartment'));
 const ShreeGaneshAvenue = lazy(() => import('./pages/ShreeGaneshAvenue'));
 const ModakeshwarApartment = lazy(() => import('./pages/ModakeshwarApartment'));
+const Projects = lazy(() => import('./pages/Projects'));
+const ProjectDetail = lazy(() => import('./pages/ProjectDetail'));
 
 
 // Loading component
@@ -118,6 +120,8 @@ function App() {
                         <Route path="/map" element={<MapView />} />
                         <Route path="/mortgage-calculator" element={<MortgageCalculator />} />
                         <Route path="/about" element={<AboutPage />} />
+                        <Route path="/projects" element={<Projects />} />
+                        <Route path="/projects/:id" element={<ProjectDetail />} />
                         <Route path="/awards" element={<Awards />} />
                         <Route path="/sustainability" element={<Sustainability />} />
                         <Route path="/milestones" element={<Milestones />} />
