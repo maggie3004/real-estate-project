@@ -6,8 +6,6 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ThemeProvider } from './context/ThemeContext';
-import { FiMessageSquare } from 'react-icons/fi';
-import Chatbot from './components/Chatbot';
 import AboutPage from './pages/AboutPage';
 import MainLayout from './components/MainLayout';
 import PropertyDetails from './pages/PropertyDetails';
@@ -87,7 +85,6 @@ class ErrorBoundary extends React.Component {
 }
 
 function App() {
-  const [showChatbot, setShowChatbot] = React.useState(false);
   return (
     <ErrorBoundary>
       <ThemeProvider>
