@@ -32,7 +32,7 @@ Open a new terminal or tab:
 ```bash
 cd backend
 npm install
-npm run dev       # or: npm start
+npm start       
 ```
 
 ---
