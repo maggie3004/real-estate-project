@@ -1,37 +1,33 @@
 import React, { useState, useEffect } from 'react';
-import { FaCar, FaSun, FaBuilding, FaShieldAlt, FaExpand, FaChevronLeft, FaChevronRight, FaPause, FaPlay, FaArrowCircleUp, FaWater, FaTint } from 'react-icons/fa';
-import { MdMeetingRoom } from 'react-icons/md';
-import { BiCctv, BiSolidHomeHeart } from 'react-icons/bi';
+import { FaSwimmingPool, FaCar, FaDumbbell, FaTree, FaWifi, FaShieldAlt, FaExpand, FaChevronLeft, FaChevronRight, FaPause, FaPlay } from 'react-icons/fa';
 import ImageGallery from '../components/ImageGallery';
-import FloatingActions from '../components/FloatingActions';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const amenities = [
-  { name: 'CCTV', icon: <BiCctv /> },
-  { name: 'Solar Power', icon: <FaSun /> },
-  { name: 'Safety Gate', icon: <BiSolidHomeHeart /> },
-  { name: 'Multipurpose Hall', icon: <MdMeetingRoom /> },
-  { name: 'Auto Door Lift', icon: <FaArrowCircleUp /> },
-  { name: 'Battery Backup', icon: <FaBuilding /> },
-  { name: 'Smart Automation', icon: <FaShieldAlt /> },
-  { name: 'Water Supply', icon: <FaWater /> },
-  { name: 'Parking Space', icon: <FaCar /> },
-  { name: 'Rain Harvesting', icon: <FaTint /> },
+  { name: 'Swimming Pool', icon: <FaSwimmingPool /> },
+  { name: 'Parking', icon: <FaCar /> },
+  { name: 'Gym', icon: <FaDumbbell /> },
+  { name: 'Garden', icon: <FaTree /> },
+  { name: 'Wi-Fi', icon: <FaWifi /> },
+  { name: 'Security', icon: <FaShieldAlt /> },
 ];
 
 const images = [
-  '/shree-ganesh-heights/Screenshot_29-7-2025_224644_.jpeg',
-  '/shree-ganesh-heights/Screenshot_29-7-2025_224654_.jpeg',
-  '/shree-ganesh-heights/Screenshot_29-7-2025_224727_.jpeg',
-  '/shree-ganesh-heights/Screenshot_29-7-2025_22474_.jpeg'
+  '/shree-ganesh-apartment/image1.jpg',
+  '/shree-ganesh-apartment/image2.jpg',
+  '/shree-ganesh-apartment/image3.jpg',
+  '/shree-ganesh-apartment/image4.jpg',
+  '/shree-ganesh-apartment/image5.jpg',
+  '/shree-ganesh-apartment/image6.jpg',
+  '/shree-ganesh-apartment/image7.jpg'
 ];
 
-const ShreeGaneshHeights = () => {
+const ShreeGaneshApartment = () => {
   const [isGalleryOpen, setGalleryOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
-  const projectName = 'Shree Ganesh Heights';
-  const tagline = 'Experience Essence of Elevated Living...';
+  const projectName = 'Shree Ganesh Apartment';
+  const tagline = 'Elevating Modern Living Standards';
 
   // Auto-advance slideshow
   useEffect(() => {
@@ -60,57 +56,19 @@ const ShreeGaneshHeights = () => {
     setIsPlaying(prev => !prev);
   };
 
-  // Function to safely send analytics
-  const sendAnalytics = async (data) => {
-    try {
-      const response = await fetch('/analytics', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
-      });
-      if (!response.ok) {
-        console.warn('Analytics request failed silently');
-      }
-    } catch (error) {
-      console.warn('Analytics request failed silently');
-    }
-  };
-
-  const handleDownloadBrochure = () => {
-    try {
-      window.open('/assets/shree ganesh heights/Shri Ganesh Heights.pdf', '_blank');
-      // Send analytics event
-      sendAnalytics({
-        event: 'brochure_download',
-        propertyName: projectName
-      });
-    } catch (error) {
-      console.error('Error opening brochure:', error);
-      alert('Unable to open the brochure. Please try again later.');
-    }
-  };
-
   return (
     <div className="min-h-screen bg-white dark:bg-[#181818] text-[#181818] dark:text-white transition-colors duration-300">
-      <FloatingActions 
-        brochurePath="/Shri Ganesh Heights.pdf"
-        projectName={projectName}
-      />
       {/* Header Section */}
       <section className="w-full py-8 mt-16">
         <div className="max-w-4xl mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold mb-2 text-gold text-center">{projectName}</h1>
           <div className="text-base md:text-lg text-gold/90 mb-8 text-center">{tagline}</div>
           
-
-          
           {/* Description */}
           <div className="grid">
             <div className="max-w-4xl mx-auto px-4">
               <div className="text-gray-200 text-base md:text-lg leading-relaxed text-justify">
-                Experience an elevated lifestyle of sophistication at Shree Ganesh Heights, where every aspect is meticulously designed. 1 BHK 'Happy Homes' crafted to enhance your everyday living. These residences offer the perfect integration of luxury and functionality, delivering a modern living experience that seamlessly blends convenience, comfort, and innovation. Strategically located in the highly desirable Pathardi Shivar, Nashik, Shree Ganesh Heights provides unmatched connectivity to essential services and amenities. With schools, shopping centers, healthcare facilities, and recreational options all within close proximity, residents enjoy a seamless, well-rounded living experience.
+                Shree Ganesh Apartment brings a new dimension to modern living in Nashik. This prestigious residential project combines contemporary architecture with thoughtful amenities to create homes that inspire. Each apartment is crafted with precision, offering spacious living areas and premium finishes. With its strategic location and modern facilities, Shree Ganesh Apartment sets new standards for comfortable urban living.
               </div>
             </div>
           </div>
@@ -122,20 +80,20 @@ const ShreeGaneshHeights = () => {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="bg-gray-900 rounded-lg p-4 text-center transform hover:scale-105 transition-transform duration-300">
-              <div className="text-xl md:text-2xl font-bold text-gold mb-1">1 BHK</div>
-              <div className="text-lg md:text-xl text-gray-200">Happy Homes</div>
+              <div className="text-xl md:text-2xl font-bold text-gold mb-1">Contemporary</div>
+              <div className="text-lg md:text-xl text-gray-200">Design</div>
             </div>
-            <div className="bg-gray-900 rounded-lg p-6 text-center transform hover:scale-105 transition-transform duration-300">
-              <div className="text-xl md:text-2xl font-bold text-gold mb-2">G+7</div>
-              <div className="text-lg md:text-xl text-gray-200">Structure</div>
+            <div className="bg-gray-900 rounded-lg p-4 text-center transform hover:scale-105 transition-transform duration-300">
+              <div className="text-xl md:text-2xl font-bold text-gold mb-1">Premium</div>
+              <div className="text-lg md:text-xl text-gray-200">Location</div>
             </div>
-            <div className="bg-gray-900 rounded-lg p-6 text-center transform hover:scale-105 transition-transform duration-300">
-              <div className="text-2xl font-bold text-gold mb-2">8+</div>
-              <div className="text-xl text-gray-200">Facilities</div>
+            <div className="bg-gray-900 rounded-lg p-4 text-center transform hover:scale-105 transition-transform duration-300">
+              <div className="text-xl md:text-2xl font-bold text-gold mb-1">Modern</div>
+              <div className="text-lg md:text-xl text-gray-200">Amenities</div>
             </div>
-            <div className="bg-gray-900 rounded-lg p-6 text-center transform hover:scale-105 transition-transform duration-300">
-              <div className="text-2xl font-bold text-gold mb-2">Premium</div>
-              <div className="text-xl text-gray-200">Location</div>
+            <div className="bg-gray-900 rounded-lg p-4 text-center transform hover:scale-105 transition-transform duration-300">
+              <div className="text-xl md:text-2xl font-bold text-gold mb-1">Quality</div>
+              <div className="text-lg md:text-xl text-gray-200">Living</div>
             </div>
           </div>
         </div>
@@ -157,9 +115,9 @@ const ShreeGaneshHeights = () => {
       </section>
 
       {/* Gallery Section */}
-      <section className="w-full py-12 bg-gray-900/10">
+      <section className="w-full py-8 bg-gray-900/10">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-2xl md:text-3xl font-semibold mb-12 text-gold text-center">Gallery</div>
+          <div className="text-2xl md:text-3xl font-semibold mb-8 text-gold text-center">Gallery</div>
         
           {/* Slideshow */}
           <div className="rounded-xl overflow-hidden shadow-lg mb-6 relative aspect-[16/9] max-h-[600px] w-full group">
@@ -263,20 +221,20 @@ const ShreeGaneshHeights = () => {
           <div className="max-w-4xl mx-auto">
             <div className="aspect-video w-full rounded-xl overflow-hidden shadow-lg">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d235.83755183644724!2d73.76418700000002!3d19.9583632!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddebb3dcd6bb77%3A0xdbd96eb95feb12f7!2sShree%20ganesh%20heights%20B!5e0!3m2!1sen!2sin!4v1690727433396!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.123456789012!2d73.12345678901234!3d20.12345678901234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDAwJzAwLjAiTiA3M8KwMDAnMDAuMCJF!5e0!3m2!1sen!2sin!4v1627893456789!5m2!1sen!2sin"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Shree Ganesh Heights Location"
+                title="Shree Ganesh Apartment Location"
                 className="w-full h-full"
               ></iframe>
             </div>
             <div className="mt-4 text-center">
               <a
-                href="https://www.google.com/maps/dir//Shree+ganesh+heights+B/@19.9583632,73.7635915,103m"
+                href="https://www.google.com/maps/dir//Shree+Ganesh+Apartment+Nashik"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-lg transition-colors duration-300"
@@ -290,9 +248,8 @@ const ShreeGaneshHeights = () => {
           </div>
         </div>
       </section>
-
     </div>
   );
 };
 
-export default ShreeGaneshHeights; 
+export default ShreeGaneshApartment;

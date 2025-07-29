@@ -1,10 +1,20 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaChevronLeft, FaChevronRight, FaTimes } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight, FaTimes, FaDownload } from 'react-icons/fa';
 
 const ImageGallery = ({ images, isOpen, onClose }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleDownloadBrochure = (e) => {
+    e.stopPropagation();
+    try {
+      window.open('/Shri Ganesh Heights.pdf', '_blank');
+    } catch (error) {
+      console.error('Error opening brochure:', error);
+      alert('Unable to open the brochure. Please try again later.');
+    }
+  };
 
   const handlePrevious = (e) => {
     e.stopPropagation();
@@ -35,16 +45,26 @@ const ImageGallery = ({ images, isOpen, onClose }) => {
     >
       {/* Backdrop for closing */}
       <div className="absolute inset-0" onClick={onClose}></div>
-      <button
-        className="absolute top-4 right-4 text-white p-2 hover:bg-white/10 rounded-full transition-colors z-20 bg-black/30"
-        onClick={(e) => {
-          e.stopPropagation();
-          onClose();
-        }}
-        aria-label="Close gallery"
-      >
-        <FaTimes size={24} />
-      </button>
+      <div className="absolute top-4 right-4 flex gap-2 z-20">
+        <button
+          className="text-white px-4 py-2 rounded-lg bg-gold hover:bg-gold/90 transition-colors flex items-center gap-2"
+          onClick={handleDownloadBrochure}
+          aria-label="Download brochure"
+        >
+          <FaDownload size={20} />
+          <span className="text-sm hidden md:inline">Download Brochure</span>
+        </button>
+        <button
+          className="text-white p-2 hover:bg-white/10 rounded-full transition-colors bg-black/30"
+          onClick={(e) => {
+            e.stopPropagation();
+            onClose();
+          }}
+          aria-label="Close gallery"
+        >
+          <FaTimes size={24} />
+        </button>
+      </div>
 
       <button
         className="absolute left-4 top-1/2 -translate-y-1/2 text-white p-4 hover:bg-white/10 rounded-full transition-colors z-10 bg-black/30"

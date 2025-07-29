@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaWhatsapp } from 'react-icons/fa';
 import { FiPhone, FiDownload, FiMessageSquare, FiHelpCircle, FiMoreVertical, FiX, FiMail } from 'react-icons/fi';
 
-const FloatingActions = () => {
+const FloatingActions = ({ brochurePath, projectName = 'Brochure' }) => {
   const [open, setOpen] = useState(false);
   const [showEnquiryModal, setShowEnquiryModal] = useState(false);
 
@@ -50,10 +50,13 @@ const FloatingActions = () => {
       bg: 'bg-purple-600',
       label: 'Brochure',
       onClick: () => {
-        const brochurePath = '/Shree Ganesh Park E- Brochure.pdf';
+        if (!brochurePath) {
+          alert('Brochure not available');
+          return;
+        }
         const link = document.createElement('a');
         link.href = brochurePath;
-        link.setAttribute('download', 'Shree-Ganesh-Brochure.pdf');
+        link.setAttribute('download', `${projectName.replace(/\s+/g, '-')}-Brochure.pdf`);
         link.setAttribute('target', '_blank');
         document.body.appendChild(link);
         link.click();
