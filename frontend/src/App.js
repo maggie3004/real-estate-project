@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ThemeProvider } from './context/ThemeContext';
+import { FiMessageSquare } from 'react-icons/fi';
+import Chatbot from './components/Chatbot';
 import AboutPage from './pages/AboutPage';
 import MainLayout from './components/MainLayout';
 import PropertyDetails from './pages/PropertyDetails';
@@ -33,8 +35,6 @@ const SaiShraddhaApartment = lazy(() => import('./pages/SaiShraddhaApartment'));
 const VinayakApartment = lazy(() => import('./pages/VinayakApartment'));
 const ShreeGaneshAvenue = lazy(() => import('./pages/ShreeGaneshAvenue'));
 const ModakeshwarApartment = lazy(() => import('./pages/ModakeshwarApartment'));
-const Projects = lazy(() => import('./pages/Projects'));
-const ProjectDetail = lazy(() => import('./pages/ProjectDetail'));
 
 
 // Loading component
@@ -85,6 +85,7 @@ class ErrorBoundary extends React.Component {
 }
 
 function App() {
+  const [showChatbot, setShowChatbot] = React.useState(false);
   return (
     <ErrorBoundary>
       <ThemeProvider>
@@ -117,8 +118,6 @@ function App() {
                         <Route path="/map" element={<MapView />} />
                         <Route path="/mortgage-calculator" element={<MortgageCalculator />} />
                         <Route path="/about" element={<AboutPage />} />
-                        <Route path="/projects" element={<Projects />} />
-                        <Route path="/projects/:id" element={<ProjectDetail />} />
                         <Route path="/awards" element={<Awards />} />
                         <Route path="/sustainability" element={<Sustainability />} />
                         <Route path="/milestones" element={<Milestones />} />

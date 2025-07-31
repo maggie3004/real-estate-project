@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { FaCar, FaSun, FaBuilding, FaShieldAlt, FaExpand, FaChevronLeft, FaChevronRight, FaPause, FaPlay, FaArrowCircleUp, FaWater, FaTint } from 'react-icons/fa';
 import { MdMeetingRoom } from 'react-icons/md';
 import { BiCctv, BiSolidHomeHeart } from 'react-icons/bi';
-import ImageGallery from '../components/ImageGallery';
-import FloatingActions from '../components/FloatingActions';
 import { motion, AnimatePresence } from 'framer-motion';
+// Update these imports
+import FloatingActions from '../components/FloatingActions';
+import ImageGallery from '../components/ImageGallery';
 
 const amenities = [
   { name: 'CCTV', icon: <BiCctv /> },
@@ -80,7 +81,7 @@ const ShreeGaneshHeights = () => {
 
   const handleDownloadBrochure = () => {
     try {
-      window.open('/assets/shree ganesh heights/Shri Ganesh Heights.pdf', '_blank');
+      window.open('/Shri Ganesh Heights.pdf', '_blank');
       // Send analytics event
       sendAnalytics({
         event: 'brochure_download',
@@ -295,4 +296,4 @@ const ShreeGaneshHeights = () => {
   );
 };
 
-export default ShreeGaneshHeights; 
+export default ShreeGaneshHeights;

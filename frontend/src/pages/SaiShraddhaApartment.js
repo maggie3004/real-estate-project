@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { FaSwimmingPool, FaCar, FaDumbbell, FaTree, FaWifi, FaShieldAlt, FaExpand, FaChevronLeft, FaChevronRight, FaPause, FaPlay } from 'react-icons/fa';
-import ImageGallery from '../components/ImageGallery';
-import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
+import { FaSwimmingPool, FaCar, FaDumbbell, FaTree, FaWifi, FaShieldAlt } from 'react-icons/fa';
 
 const amenities = [
   { name: 'Swimming Pool', icon: <FaSwimmingPool /> },
@@ -23,233 +21,63 @@ const images = [
 ];
 
 const SaiShraddhaApartment = () => {
-  const [isGalleryOpen, setGalleryOpen] = useState(false);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
   const projectName = 'Sai Shraddha Apartment';
   const tagline = 'Redefining Living at DGP Nagar, Kamatwade';
 
-  // Auto-advance slideshow
-  useEffect(() => {
-    if (!isPlaying) return;
-    
-    const timer = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 4000);
-
-    return () => clearInterval(timer);
-  }, [isPlaying]);
-
-  const handlePrevious = () => {
-    setCurrentImageIndex((prevIndex) => 
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
-  };
-
-  const handleNext = () => {
-    setCurrentImageIndex((prevIndex) => 
-      (prevIndex + 1) % images.length
-    );
-  };
-
-  const togglePlayPause = () => {
-    setIsPlaying(prev => !prev);
-  };
-
   return (
-    <div className="min-h-screen bg-white dark:bg-[#181818] text-[#181818] dark:text-white transition-colors duration-300">
-      {/* Header Section */}
-      <section className="w-full py-8 mt-16">
-        <div className="max-w-4xl mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-bold mb-2 text-gold text-center">{projectName}</h1>
-          <div className="text-base md:text-lg text-gold/90 mb-8 text-center">{tagline}</div>
-          
-          {/* Description */}
-          <div className="grid">
-            <div className="max-w-4xl mx-auto px-4">
-              <div className="text-gray-200 text-base md:text-lg leading-relaxed text-justify">
-                Sai Shraddha Apartment sets a new benchmark in modern living at DGP Nagar, Kamatwade, featuring king-size 2 BHK luxury homes designed for spacious comfort and convenience. Built with advanced technologies and renewable energy solutions, the project promotes sustainability and smart living. With life-easing conveniences, Sai Shraddha Apartment was completed and sold in record time, reflecting its exceptional quality and demand. A true symbol of innovation and excellence.
-              </div>
-            </div>
-          </div>
+    <div className="max-w-7xl mx-auto flex flex-col gap-8 py-12 px-4 mt-20 min-h-screen bg-white dark:bg-[#181818] text-[#181818] dark:text-white transition-colors duration-300">
+      {/* Main Photo, Name, Tagline */}
+      <div className="rounded-xl overflow-hidden shadow-lg mb-6">
+        <img src="/sai-shraddha-apartment/IMG-20250722-WA0066.jpg" alt="Project Main" className="w-full h-64 object-cover" />
+      </div>
+      <h1 className="text-3xl font-bold mb-2 text-gold">{projectName}</h1>
+      <div className="text-lg text-gold font-semibold mb-4">{tagline}</div>
+      {/* Stats */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+        <div className="bg-gray-900 rounded-lg p-4 text-center">
+          <div className="text-xl font-bold text-gold">King-size 2 BHK</div>
+          <div className="text-sm text-gray-200">Luxury Homes</div>
         </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="w-full py-8 bg-gray-900/5">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="bg-gray-900 rounded-lg p-4 text-center transform hover:scale-105 transition-transform duration-300">
-              <div className="text-xl md:text-2xl font-bold text-gold mb-1">King-size 2 BHK</div>
-              <div className="text-lg md:text-xl text-gray-200">Luxury Homes</div>
-            </div>
-            <div className="bg-gray-900 rounded-lg p-6 text-center transform hover:scale-105 transition-transform duration-300">
-              <div className="text-xl md:text-2xl font-bold text-gold mb-2">Smart</div>
-              <div className="text-lg md:text-xl text-gray-200">Living</div>
-            </div>
-            <div className="bg-gray-900 rounded-lg p-6 text-center transform hover:scale-105 transition-transform duration-300">
-              <div className="text-2xl font-bold text-gold mb-2">Record Time</div>
-              <div className="text-xl text-gray-200">Completion</div>
-            </div>
-            <div className="bg-gray-900 rounded-lg p-6 text-center transform hover:scale-105 transition-transform duration-300">
-              <div className="text-2xl font-bold text-gold mb-2">Sustainable</div>
-              <div className="text-xl text-gray-200">Tech</div>
-            </div>
-          </div>
+        <div className="bg-gray-900 rounded-lg p-4 text-center">
+          <div className="text-xl font-bold text-gold">Smart</div>
+          <div className="text-sm text-gray-200">Living</div>
         </div>
-      </section>
-
-      {/* Amenities Section */}
-      <section className="w-full py-8 bg-gray-900/5">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-2xl md:text-3xl font-semibold mb-8 text-gold text-center">Amenities</div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
-            {amenities.map((a, idx) => (
-              <div key={a.name} className="bg-gray-800 rounded-xl p-4 md:p-6 shadow-lg text-white text-center transform hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-center">
-                <span className="text-gold text-3xl md:text-4xl block mb-3 md:mb-4">{a.icon}</span>
-                <span className="text-lg md:text-xl font-medium block">{a.name}</span>
-              </div>
-            ))}
-          </div>
+        <div className="bg-gray-900 rounded-lg p-4 text-center">
+          <div className="text-xl font-bold text-gold">Record Time</div>
+          <div className="text-sm text-gray-200">Completion</div>
         </div>
-      </section>
-
-      {/* Gallery Section */}
-      <section className="w-full py-12 bg-gray-900/10">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-2xl md:text-3xl font-semibold mb-12 text-gold text-center">Gallery</div>
-        
-          {/* Slideshow */}
-          <div className="rounded-xl overflow-hidden shadow-lg mb-6 relative aspect-[16/9] max-h-[600px] w-full group">
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={currentImageIndex}
-                src={images[currentImageIndex]}
-                alt={`${projectName} Slide ${currentImageIndex + 1}`}
-                className="w-full h-full object-contain bg-gray-900"
-                initial={{ opacity: 0, scale: 1.05 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.5 }}
-              />
-            </AnimatePresence>
-
-            {/* Slideshow Controls */}
-            <div className="absolute inset-0 flex items-center justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-              <button
-                onClick={handlePrevious}
-                className="p-4 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors z-10"
-                aria-label="Previous slide"
-              >
-                <FaChevronLeft size={32} />
-              </button>
-              <button
-                onClick={handleNext}
-                className="p-4 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors z-10"
-                aria-label="Next slide"
-              >
-                <FaChevronRight size={32} />
-              </button>
-            </div>
-
-            {/* Play/Pause and Progress Indicators */}
-            <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
-              <div className="flex items-center justify-between">
-                <button
-                  onClick={togglePlayPause}
-                  className="p-2 rounded-full bg-white/20 text-white hover:bg-white/30 transition-colors"
-                  aria-label={isPlaying ? "Pause slideshow" : "Play slideshow"}
-                >
-                  {isPlaying ? <FaPause size={16} /> : <FaPlay size={16} />}
-                </button>
-                <div className="flex gap-2">
-                  {images.map((_, idx) => (
-                    <button
-                      key={idx}
-                      onClick={() => setCurrentImageIndex(idx)}
-                      className={`w-2 h-2 rounded-full transition-all ${
-                        idx === currentImageIndex 
-                          ? 'bg-white w-4' 
-                          : 'bg-white/50 hover:bg-white/80'
-                      }`}
-                      aria-label={`Go to slide ${idx + 1}`}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Thumbnails Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 w-full">
-            {images.map((img, idx) => (
-              <div 
-                key={idx} 
-                className="relative group cursor-pointer rounded-lg overflow-hidden"
-                onClick={() => {
-                  setCurrentImageIndex(idx);
-                  setGalleryOpen(true);
-                }}
-              >
-                <img 
-                  src={img} 
-                  alt={`Gallery ${idx+1}`} 
-                  className={`rounded-lg aspect-[4/3] w-full object-cover transition-all duration-300 group-hover:scale-110 ${
-                    idx === currentImageIndex ? 'ring-2 ring-gold' : ''
-                  }`}
-                />
-                <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
-                  <FaExpand className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Full Screen Gallery Modal */}
-          <ImageGallery
-            images={images}
-            isOpen={isGalleryOpen}
-            onClose={() => setGalleryOpen(false)}
-          />
+        <div className="bg-gray-900 rounded-lg p-4 text-center">
+          <div className="text-xl font-bold text-gold">Sustainable</div>
+          <div className="text-sm text-gray-200">Tech</div>
         </div>
-      </section>
-
-      {/* Location Map Section */}
-      <section className="w-full py-8 bg-gray-900/5">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-2xl md:text-3xl font-semibold mb-8 text-gold text-center">Location</div>
-          <div className="max-w-4xl mx-auto">
-            <div className="aspect-video w-full rounded-xl overflow-hidden shadow-lg">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3748.8526536877747!2d73.77570841491443!3d20.01657798655013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddec98c9c37ed9%3A0xa36ba2c2abc82b29!2sSai%20shraddha%20Apartment!5e0!3m2!1sen!2sin!4v1627893456789!5m2!1sen!2sin"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                title="Sai Shraddha Apartment Location"
-                className="w-full h-full"
-              ></iframe>
-            </div>
-            <div className="mt-4 text-center">
-              <a
-                href="https://www.google.com/maps/dir//Sai+shraddha+Apartment,+plot+No.8%2B9,+Vrindavan+Nagar,+Kamatwade,+Nashik,+Maharashtra+422007"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-lg transition-colors duration-300"
-              >
-                <span>Get Directions</span>
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
-              </a>
-            </div>
-          </div>
+      </div>
+      {/* Gallery */}
+      <div className="mb-8">
+        <div className="text-xl font-semibold mb-2 text-gold">Gallery</div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          {images.map((img, idx) => (
+            <img key={idx} src={img} alt={`Gallery ${idx+1}`} className="rounded-lg h-32 w-full object-cover" />
+          ))}
         </div>
-      </section>
+      </div>
+      {/* Amenities */}
+      <div>
+        <div className="text-xl font-semibold mb-2 text-gold">Amenities</div>
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          {amenities.map((a, idx) => (
+            <div key={a.name} className="flex items-center gap-3 bg-gray-800 rounded-lg p-3 shadow text-white">
+              <span className="text-gold text-2xl">{a.icon}</span>
+              <span className="font-medium">{a.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      {/* Description */}
+      <div className="mt-8 text-gray-200 text-lg">
+        Sai Shraddha Apartment sets a new benchmark in modern living at DGP Nagar, Kamatwade, featuring king-size 2 BHK luxury homes designed for spacious comfort and convenience. Built with advanced technologies and renewable energy solutions, the project promotes sustainability and smart living. With life-easing conveniences, Sai Shraddha Apartment was completed and sold in record time, reflecting its exceptional quality and demand. A true symbol of innovation and excellence.
+      </div>
     </div>
   );
 };
 
-export default SaiShraddhaApartment;
+export default SaiShraddhaApartment; 

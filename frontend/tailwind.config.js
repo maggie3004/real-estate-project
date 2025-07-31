@@ -6,7 +6,6 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        gold: '#F59E0B',
         primary: {
           50: '#fff1f7', // pastel pink
           100: '#ffe4ec',
