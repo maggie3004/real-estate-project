@@ -11,7 +11,7 @@
     "@testing-library/user-event": "^13.5.0",
     "ajv": "^8.17.1",
     "aos": "^2.3.4",
-    "framer-motion": "^11.0.0",
+    "framer-motion": "^11.18.2",
     "google-auth-library": "^10.1.0",
     "leaflet": "^1.9.4",
     "lucide-react": "^0.344.0",
@@ -35,7 +35,6 @@
     "react-toastify": "^11.0.5",
     "recharts": "^2.12.0",
     "slick-carousel": "^1.8.1",
-    "tailwindcss": "^3.4.17",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -80,6 +79,7 @@
     "eslint-plugin-prettier": "^5.0.0",
     "jest-axe": "^9.0.0",
     "prettier": "^3.0.0",
+    "tailwindcss": "^4.1.11",
     "webpack-bundle-analyzer": "^4.9.0"
   },
   "proxy": "http://localhost:5000"
