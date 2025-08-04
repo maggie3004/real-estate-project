@@ -1,80 +1,48 @@
-import React from 'react';
-import { FaSwimmingPool, FaCar, FaDumbbell, FaTree, FaWifi, FaShieldAlt } from 'react-icons/fa';
-
-const amenities = [
-  { name: 'Swimming Pool', icon: <FaSwimmingPool /> },
-  { name: 'Parking', icon: <FaCar /> },
-  { name: 'Gym', icon: <FaDumbbell /> },
-  { name: 'Garden', icon: <FaTree /> },
-  { name: 'Wi-Fi', icon: <FaWifi /> },
-  { name: 'Security', icon: <FaShieldAlt /> },
-];
-
-const gallery = [
-  '/images/sgp2-1.jpg',
-  '/images/sgp2-2.jpg',
-  '/images/sgp2-3.jpg',
-  '/images/sgp2-4.jpg',
-];
+import React, { useEffect } from 'react';
+import ProjectTemplate from '../components/ProjectTemplate';
+import { FaCar, FaSun, FaBuilding, FaShieldAlt, FaWater, FaTint } from 'react-icons/fa';
+import { MdMeetingRoom } from 'react-icons/md';
+import { BiCctv, BiSolidHomeHeart } from 'react-icons/bi';
 
 const ShreeGaneshParkPhaseII = () => {
-  const projectName = 'Shree Ganesh Park Phase II';
-  const tagline = 'A Complete Home Beyond Your Dreams';
+  const projectData = {
+    projectName: "Shree Ganesh Park Phase II",
+    tagline: "Experience Essence of Elevated Living...",
+    description: `Experience an elevated lifestyle of sophistication at Shree Ganesh Park Phase II, where every aspect is meticulously designed. 1 BHK 'Happy Homes' crafted to enhance your everyday living. These residences offer the perfect integration of luxury and functionality, delivering a modern living experience that seamlessly blends convenience, comfort, and innovation. Located at Sr no 94/1 plot 16/17 gavlane road, Pathardi Shivar, Nashik - 422010, our project provides unmatched connectivity to essential services and amenities. With schools, shopping centers, healthcare facilities, and recreational options all within close proximity, residents enjoy a seamless, well-rounded living experience.`,
+    stats: [
+      { title: "1 BHK", subtitle: "Happy Homes" },
+      { title: "G+7", subtitle: "Structure" },
+      { title: "8+", subtitle: "Facilities" },
+      { title: "Premium", subtitle: "Location" }
+    ],
+    amenities: [
+      { icon: <BiCctv />, name: "CCTV" },
+      { icon: <FaSun />, name: "Solar Power" },
+      { icon: <FaShieldAlt />, name: "Safety Gate" },
+      { icon: <MdMeetingRoom />, name: "Multipurpose Hall" },
+      { icon: <BiSolidHomeHeart />, name: "Auto Door Lift" },
+      { icon: <FaBuilding />, name: "Battery Backup" },
+      { icon: <FaTint />, name: "Smart Automation" },
+      { icon: <FaWater />, name: "Water Supply" },
+      { icon: <FaCar />, name: "Parking Space" }
+    ],
+    images: [
+      "/assets/shree-ganesh-park-phase-ii/gallery/1.jpg",
+      "/assets/shree-ganesh-park-phase-ii/gallery/2.jpg",
+      "/assets/shree-ganesh-park-phase-ii/gallery/3.jpg",
+      "/assets/shree-ganesh-park-phase-ii/gallery/4.jpg",
+      "/assets/shree-ganesh-park-phase-ii/gallery/5.jpg"
+    ],
+    brochurePath: "/assets/shree-ganesh-park-phase-ii/brochures/Shree-Ganesh-Park-Phase-II.pdf",
+    mapUrl: "https://maps.app.goo.gl/6X9DkrFsd58nzQFT9",
+    directionsUrl: "https://maps.app.goo.gl/6X9DkrFsd58nzQFT9"
+  };
 
-  return (
-    <div className="max-w-7xl mx-auto flex flex-col gap-8 py-12 px-4 mt-20 min-h-screen bg-white dark:bg-[#181818] text-[#181818] dark:text-white transition-colors duration-300">
-      {/* Main Photo, Name, Tagline */}
-      <div className="rounded-xl overflow-hidden shadow-lg mb-6">
-        <img src="/images/sgp2-main.jpg" alt="Project Main" className="w-full h-64 object-cover" />
-      </div>
-      <h1 className="text-3xl font-bold mb-2 text-gold">{projectName}</h1>
-      <div className="text-lg text-gold font-semibold mb-4">{tagline}</div>
-      {/* Stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-        <div className="bg-gray-900 rounded-lg p-4 text-center">
-          <div className="text-xl font-bold text-gold">210+</div>
-          <div className="text-sm text-gray-200">Units</div>
-        </div>
-        <div className="bg-gray-900 rounded-lg p-4 text-center">
-          <div className="text-xl font-bold text-gold">1250-1400 Sq.Ft</div>
-          <div className="text-sm text-gray-200">Heaven</div>
-        </div>
-        <div className="bg-gray-900 rounded-lg p-4 text-center">
-          <div className="text-xl font-bold text-gold">7</div>
-          <div className="text-sm text-gray-200">Floors</div>
-        </div>
-        <div className="bg-gray-900 rounded-lg p-4 text-center">
-          <div className="text-xl font-bold text-gold">11+</div>
-          <div className="text-sm text-gray-200">Amenities</div>
-        </div>
-      </div>
-      {/* Gallery */}
-      <div className="mb-8">
-        <div className="text-xl font-semibold mb-2 text-gold">Gallery</div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-          {gallery.map((img, idx) => (
-            <img key={idx} src={img} alt={`Gallery ${idx+1}`} className="rounded-lg h-32 w-full object-cover" />
-          ))}
-        </div>
-      </div>
-      {/* Amenities */}
-      <div>
-        <div className="text-xl font-semibold mb-2 text-gold">Amenities</div>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {amenities.map((a, idx) => (
-            <div key={a.name} className="flex items-center gap-3 bg-gray-800 rounded-lg p-3 shadow text-white">
-              <span className="text-gold text-2xl">{a.icon}</span>
-              <span className="font-medium">{a.name}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-      {/* Description */}
-      <div className="mt-8 text-gray-200 text-lg">
-        Welcome to Shree Ganesh Park Phase II, a prestigious commercial and residential development that is redefining luxury living in Chunchale. Thoughtfully designed to offer a perfect blend of comfort, convenience, and elegance, this project features exquisitely crafted 1 & 2 BHK homes that cater to modern living needs. Situated along a 30-meter-wide road, the project is strategically positioned in a rapidly growing neighbourhood, ensuring seamless connectivity.
-      </div>
-    </div>
-  );
+  useEffect(() => {
+    document.title = `${projectData.projectName} - Sai Prasad Group`;
+  }, [projectData.projectName]);
+
+  return <ProjectTemplate {...projectData} />;
 };
 
-export default ShreeGaneshParkPhaseII; 
+export default ShreeGaneshParkPhaseII;
