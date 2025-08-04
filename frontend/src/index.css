@@ -1,8 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Nunito:wght@400;700&family=Poppins:wght@400;600&family=Playfair+Display:wght@400;700&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Tailwind CSS */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Third-party CSS */
+@import 'slick-carousel/slick/slick.css';
+@import 'slick-carousel/slick/slick-theme.css';
+@import 'aos/dist/aos.css';
+@import 'react-toastify/dist/ReactToastify.css';
+@import 'leaflet/dist/leaflet.css';
+@import 'react-datepicker/dist/react-datepicker.css';
+
+/* Remove duplicate imports */
+/* ...existing styles starting from * { margin: 0; ... */
+
 
 /* Leaflet CSS for maps */
 @import 'leaflet/dist/leaflet.css';

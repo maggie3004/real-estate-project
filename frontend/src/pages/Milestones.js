@@ -10,7 +10,7 @@ const projects = [
         status: 'Completed',
         statusColor: 'bg-emerald-500',
         image: '/assets/projects/modakeshwar-apartment.jpg',
-        link: '/projects/modakeshwar-apartment'
+        link: '/ModakeshwarApartment'
     },
     {
         year: '2022',
@@ -18,8 +18,8 @@ const projects = [
         location: 'Nashik',
         status: 'Ongoing',
         statusColor: 'bg-gold-300',
-        image: '/assets/projects/sai-shraddha-apartment.jpg',
-        link: '/projects/sai-shraddha-apartment'
+        image: '/assets/sai-shraddha-apartment/gallery/1.jpg',
+        link: '/SaiShraddhaApartment'
     },
     {
         year: '2023',
@@ -27,7 +27,8 @@ const projects = [
         location: 'Nashik',
         status: 'Completed',
         statusColor: 'bg-green-100 text-green-700',
-        imageUrl: 'https://placehold.co/400x250/E5E7EB/4B5563?text=Shree-Gajanan'
+        imageUrl: 'https://placehold.co/400x250/E5E7EB/4B5563?text=Shree-Gajanan',
+        link: '/ShreeGajananNiwas'
     },
     {
         year: '2023',
@@ -35,7 +36,8 @@ const projects = [
         location: 'Nashik',
         status: 'Ongoing',
         statusColor: 'bg-yellow-100 text-yellow-700',
-        imageUrl: 'https://placehold.co/400x250/E5E7EB/4B5563?text=Shree-Ganesh-Apartment'
+        imageUrl: 'https://placehold.co/400x250/E5E7EB/4B5563?text=Shree-Ganesh-Apartment',
+        link: '/ShreeGaneshApartment'
     },
     {
         year: '2024',
@@ -43,7 +45,8 @@ const projects = [
         location: 'Nashik',
         status: 'Completed',
         statusColor: 'bg-green-100 text-green-700',
-        imageUrl: 'https://placehold.co/400x250/E5E7EB/4B5563?text=Shree-Ganesh-Avenue'
+        imageUrl: 'https://placehold.co/400x250/E5E7EB/4B5563?text=Shree-Ganesh-Avenue',
+        link: '/ShreeGaneshAvenue'
     },
     {
         year: '2024',
@@ -51,7 +54,8 @@ const projects = [
         location: 'Nashik',
         status: 'Ongoing',
         statusColor: 'bg-yellow-100 text-yellow-700',
-        imageUrl: 'https://placehold.co/400x250/E5E7EB/4B5563?text=Shree-Ganesh-Heights'
+        imageUrl: '/assets/shree-ganesh-heights/gallery/1.jpeg',
+        link: '/ShreeGaneshHeights'
     },
     {
         year: '2025',
@@ -59,7 +63,8 @@ const projects = [
         location: 'Pune',
         status: 'Ongoing',
         statusColor: 'bg-yellow-100 text-yellow-700',
-        imageUrl: 'https://placehold.co/400x250/E5E7EB/4B5563?text=Shree-Ganesh-Park-Phase-I'
+        imageUrl: 'https://placehold.co/400x250/E5E7EB/4B5563?text=Shree-Ganesh-Park-Phase-I',
+        link: '/ShreeGaneshParkPhaseI'
     },
     {
         year: '2025',
@@ -67,7 +72,8 @@ const projects = [
         location: 'Pune',
         status: 'Ongoing',
         statusColor: 'bg-yellow-100 text-yellow-700',
-        imageUrl: 'https://placehold.co/400x250/E5E7EB/4B5563?text=Shree-Ganesh-Park-Phase-II'
+        imageUrl: 'https://placehold.co/400x250/E5E7EB/4B5563?text=Shree-Ganesh-Park-Phase-II',
+        link: '/ShreeGaneshParkPhaseII'
     },
     {
         year: '2025',
@@ -75,7 +81,8 @@ const projects = [
         location: 'Mumbai',
         status: 'Ongoing',
         statusColor: 'bg-yellow-100 text-yellow-700',
-        imageUrl: 'https://placehold.co/400x250/E5E7EB/4B5563?text=Shree-Ganesh-Shrusti'
+        imageUrl: 'https://placehold.co/400x250/E5E7EB/4B5563?text=Shree-Ganesh-Shrusti',
+        link: '/ShreeGaneshShrusti'
     },
     {
         year: '2025',
@@ -83,7 +90,8 @@ const projects = [
         location: 'Mumbai',
         status: 'Ongoing',
         statusColor: 'bg-yellow-100 text-yellow-700',
-        imageUrl: 'https://placehold.co/400x250/E5E7EB/4B5563?text=Vinayak-Apartment'
+        imageUrl: 'https://placehold.co/400x250/E5E7EB/4B5563?text=Vinayak-Apartment',
+        link: '/VinayakApartment'
     }
 ];
 
@@ -119,31 +127,51 @@ const Timeline = () => {
                             transition={{ duration: 0.5, delay: index * 0.1 }}
                             className="relative mb-24 flex justify-center items-center"
                         >
-                            {/* Year marker */}
-                            <div className={`absolute ${isLeft ? '-left-4' : '-right-4'} top-1/2 transform -translate-y-1/2`}>
-                                <span className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-accent-500 font-playfair">
-                                    {project.year}
-                                </span>
+                            {/* Timeline dot with year */}
+                            <div className="absolute left-1/2 flex items-center">
+                                {/* Year on left side if project is on right */}
+                                {!isLeft && (
+                                    <div className="absolute right-full mr-6">
+                                        <span className="text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-accent-500 font-playfair whitespace-nowrap">
+                                            {project.year}
+                                        </span>
+                                    </div>
+                                )}
+                                
+                                {/* Timeline dot */}
+                                <div className="w-4 h-4 rounded-full bg-white border-4 border-accent-500 shadow-lg transform -translate-x-1/2 z-10" />
+                                
+                                {/* Year on right side if project is on left */}
+                                {isLeft && (
+                                    <div className="absolute left-full ml-6">
+                                        <span className="text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-accent-500 font-playfair whitespace-nowrap">
+                                            {project.year}
+                                        </span>
+                                    </div>
+                                )}
                             </div>
-
-                            {/* Timeline dot */}
-                            <div className="absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full bg-white border-4 border-accent-500 shadow-lg" />
 
                             {/* Project card */}
                             <motion.div
                                 whileHover={{ y: -5 }}
-                                className={`w-[calc(50%-2rem)] ${isLeft ? 'mr-auto' : 'ml-auto'} 
+                                className={`relative w-[calc(50%-2rem)] ${isLeft ? 'mr-auto' : 'ml-auto'} 
                                     bg-white dark:bg-gray-800 rounded-2xl shadow-cute overflow-hidden`}
                             >
-                                <div className="relative group">
+                                {/* Image container */}
+                                <div className="relative group aspect-w-16 aspect-h-9">
                                     <img 
-                                        src={project.image} 
+                                        src={project.image || project.imageUrl} 
                                         alt={project.name}
-                                        className="w-full h-64 object-cover transition-transform duration-300 group-hover:scale-110"
+                                        className="w-full h-full object-contain bg-gray-100 dark:bg-gray-900 transition-transform duration-300 group-hover:scale-105"
+                                        onError={(e) => {
+                                            e.target.onerror = null;
+                                            e.target.src = `https://placehold.co/800x450/E5E7EB/4B5563?text=${encodeURIComponent(project.name)}`;
+                                        }}
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                                 </div>
                                 
+                                {/* Card content */}
                                 <div className="p-6">
                                     <div className="flex justify-between items-start mb-4">
                                         <h3 className="text-xl font-bold text-gray-900 dark:text-white">
