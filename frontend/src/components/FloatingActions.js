@@ -1,186 +1,63 @@
 import React, { useState } from 'react';
 import { FaWhatsapp } from 'react-icons/fa';
-import { FiPhone, FiDownload, FiMessageSquare, FiHelpCircle, FiMoreVertical, FiX, FiMail } from 'react-icons/fi';
+import { FiPhone, FiDownload, FiMessageSquare, FiHelpCircle, FiMoreVertical, FiX } from 'react-icons/fi';
 
-const FloatingActions = ({ brochurePath, projectName = 'Brochure' }) => {
+const FloatingActions = ({ brochurePath, projectName }) => {
   const [open, setOpen] = useState(false);
-  const [showEnquiryModal, setShowEnquiryModal] = useState(false);
 
-  // Handle form submission
-  const handleEnquirySubmit = (e) => {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const data = {
-      name: formData.get('name'),
-      email: formData.get('email'),
-      message: formData.get('message')
-    };
-    // You can add your API call here
-    console.log('Enquiry data:', data);
-    setShowEnquiryModal(false);
-    // Show success message
-    alert('Thank you for your enquiry. We will get back to you soon!');
+  const handleDownload = async () => {
+    try {
+      const response = await fetch(brochurePath);
+      if (!response.ok) throw new Error('Brochure not found');
+      
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${projectName} Brochure.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Error downloading brochure:', error);
+      alert('Sorry, the brochure is currently unavailable.');
+    }
   };
 
-  const actions = [
-    {
-      icon: <FaWhatsapp className="w-5 h-5" />,
-      bg: 'bg-green-600',
-      label: 'WhatsApp',
-      onClick: () => {
-        const message = encodeURIComponent('Hi, I am interested in your properties.');
-        window.open(`https://wa.me/919876543210?text=${message}`, '_blank');
-      },
-    },
-    {
-      icon: <FiPhone className="w-5 h-5" />,
-      bg: 'bg-blue-600',
-      label: 'Call Now',
-      onClick: () => {
-        const phone = '+919876543210'; // Replace with your actual phone number
-        if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-          window.location.href = `tel:${phone}`;
-        } else {
-          alert(`Please call us at ${phone}`);
-        }
-      },
-    },
-    {
-      icon: <FiDownload className="w-5 h-5" />,
-      bg: 'bg-purple-600',
-      label: 'Brochure',
-      onClick: () => {
-        if (!brochurePath) {
-          alert('Brochure not available');
-          return;
-        }
-        const link = document.createElement('a');
-        link.href = brochurePath;
-        link.setAttribute('download', `${projectName.replace(/\s+/g, '-')}-Brochure.pdf`);
-        link.setAttribute('target', '_blank');
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      },
-    },
-    {
-      icon: <FiMail className="w-5 h-5" />,
-      bg: 'bg-red-600',
-      label: 'Enquire',
-      onClick: () => setShowEnquiryModal(true),
-    },
-    {
-      icon: <FiMessageSquare className="w-5 h-5" />,
-      bg: 'bg-amber-600',
-      label: 'Chat',
-      onClick: () => {
-        // You can integrate with your chat service here
-        window.dispatchEvent(new CustomEvent('toggle-chat'));
-      },
-    },
-  ];
-
   return (
-    <>
-      <div className="fixed bottom-6 right-6 z-[1000] flex flex-col items-end space-y-3">
-        {/* Action Buttons */}
-        <div className={`flex flex-col-reverse gap-3 mb-3 transition-all duration-300 ease-in-out transform 
-          ${open ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}>
-          {actions.map((action, index) => (
-            <div
-              key={index}
-              className={`transform transition-all duration-300`}
-              style={{ transitionDelay: `${index * 50}ms` }}
-            >
-              <button
-                onClick={action.onClick}
-                className={`${action.bg} w-12 h-12 text-white rounded-full shadow-xl 
-                  flex items-center justify-center transition-all duration-300 
-                  hover:scale-110 hover:shadow-2xl relative group`}
-                title={action.label}
-              >
-                {action.icon}
-                <span className="absolute right-full mr-3 px-2 py-1 bg-gray-900 text-white text-sm 
-                  rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 
-                  whitespace-nowrap pointer-events-none">
-                  {action.label}
-                </span>
-              </button>
-            </div>
-          ))}
-        </div>
+    <div className="fixed bottom-4 right-4 z-50">
+      <div className="relative">
+        {/* Main buttons */}
+        <div className="flex flex-col gap-2">
+          <a 
+            href="https://wa.me/1234567890" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="bg-green-500 p-3 rounded-full shadow-lg hover:bg-green-600 transition-colors"
+          >
+            <FaWhatsapp className="text-white" size={24} />
+          </a>
+          
+          <a 
+            href="tel:+911234567890" 
+            className="bg-blue-500 p-3 rounded-full shadow-lg hover:bg-blue-600 transition-colors"
+          >
+            <FiPhone className="text-white" size={24} />
+          </a>
 
-        {/* Main Toggle Button */}
-        <button
-          onClick={() => setOpen(!open)}
-          className={`bg-red-600 hover:bg-red-700 text-white w-14 h-14 rounded-full shadow-2xl
-            flex items-center justify-center transition-all duration-300 hover:scale-110
-            ${open ? 'rotate-180' : 'rotate-0'}`}
-          title="Toggle Menu"
-        >
-          {open ? <FiX className="w-6 h-6" /> : <FiMoreVertical className="w-6 h-6" />}
-        </button>
+          <button 
+            onClick={handleDownload}
+            className="bg-purple-500 p-3 rounded-full shadow-lg hover:bg-purple-600 transition-colors"
+            disabled={!brochurePath}
+          >
+            <FiDownload className="text-white" size={24} />
+          </button>
+
+          {/* Add other buttons as needed */}
+        </div>
       </div>
-
-      {/* Modal for Enquire Now */}
-      {showEnquiryModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-xl w-[90%] max-w-md relative">
-            <h2 className="text-xl font-bold mb-4">Enquire Now</h2>
-            <form onSubmit={handleEnquirySubmit} className="space-y-4">
-              <div>
-                <input 
-                  type="text" 
-                  name="name"
-                  required
-                  placeholder="Your Name" 
-                  className="w-full p-2 border rounded focus:border-blue-500 focus:ring-1 focus:ring-blue-500" 
-                />
-              </div>
-              <div>
-                <input 
-                  type="email" 
-                  name="email"
-                  required
-                  placeholder="Your Email" 
-                  className="w-full p-2 border rounded focus:border-blue-500 focus:ring-1 focus:ring-blue-500" 
-                />
-              </div>
-              <div>
-                <textarea 
-                  name="message"
-                  required
-                  placeholder="Your Query" 
-                  className="w-full p-2 border rounded h-24 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-                ></textarea>
-              </div>
-              <div className="flex justify-end space-x-2">
-                <button
-                  type="button"
-                  onClick={() => setShowEnquiryModal(false)}
-                  className="px-4 py-2 text-gray-600 border rounded hover:bg-gray-100 transition-colors"
-                >
-                  Cancel
-                </button>
-                <button
-                  type="submit"
-                  className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
-                >
-                  Submit
-                </button>
-              </div>
-            </form>
-            <button 
-              onClick={() => setShowEnquiryModal(false)} 
-              className="absolute top-2 right-4 text-gray-600 hover:text-gray-800 text-xl"
-              aria-label="Close"
-            >
-              &times;
-            </button>
-          </div>
-        </div>
-      )}
-    </>
+    </div>
   );
 };
 
