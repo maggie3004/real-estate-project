@@ -1,11 +1,11 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaHeart, FaRegHeart, FaMapMarkerAlt, FaBed, FaBath, FaRulerCombined, FaStar, FaShare, FaPhone } from 'react-icons/fa';
 import { useComparison } from '../context/ComparisonContext';
 
 const PropertyCard = ({ property, onFavoriteToggle, isFavorite = false }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isHovered, setIsHovered] = useState(false);
+
   const { addToComparison, removeFromComparison, comparisonProperties } = useComparison();
   
   const isInComparison = comparisonProperties.some(p => p.id === property.id);
@@ -42,8 +42,6 @@ const PropertyCard = ({ property, onFavoriteToggle, isFavorite = false }) => {
     <motion.div
       className="bg-white rounded-2xl shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border border-gray-100"
       whileHover={{ y: -8 }}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
     >
       {/* Image Carousel */}
       <div className="relative h-64 overflow-hidden group">

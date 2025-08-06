@@ -95,27 +95,27 @@ export default function AddProperty() {
   return (
     <>
       <Helmet>
-        <title>Add Property | Shree Ganesh Real Estate</title>
-        <meta name="description" content="Admin panel to add new premium properties to the Shree Ganesh Real Estate platform." />
+        <title>Add Property | Ganesh Yeole Builders and Developers</title>
+        <meta name="description" content="Admin panel to add new premium properties to the Ganesh Yeole Builders and Developers platform." />
         <link rel="canonical" href={window.location.origin + '/add-property'} />
         {/* Open Graph */}
-        <meta property="og:title" content="Add Property | Shree Ganesh Real Estate" />
-        <meta property="og:description" content="Admin panel to add new premium properties to the Shree Ganesh Real Estate platform." />
+        <meta property="og:title" content="Add Property | Ganesh Yeole Builders and Developers" />
+        <meta property="og:description" content="Admin panel to add new premium properties to the Ganesh Yeole Builders and Developers platform." />
         <meta property="og:image" content={window.location.origin + '/og-image.jpg'} />
         <meta property="og:url" content={window.location.origin + '/add-property'} />
         <meta property="og:type" content="website" />
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Add Property | Shree Ganesh Real Estate" />
-        <meta name="twitter:description" content="Admin panel to add new premium properties to the Shree Ganesh Real Estate platform." />
+        <meta name="twitter:title" content="Add Property | Ganesh Yeole Builders and Developers" />
+        <meta name="twitter:description" content="Admin panel to add new premium properties to the Ganesh Yeole Builders and Developers platform." />
         <meta name="twitter:image" content={window.location.origin + '/twitter-image.jpg'} />
         {/* JSON-LD WebPage Schema */}
         <script type="application/ld+json">{`
           {
             "@context": "https://schema.org",
             "@type": "WebPage",
-            "name": "Add Property",
-            "description": "Admin panel to add new premium properties to the Shree Ganesh Real Estate platform.",
+            "name": "Add Property | Ganesh Yeole Builders and Developers",
+            "description": "Admin panel to add new premium properties to the Ganesh Yeole Builders and Developers platform.",
             "url": "${window.location.origin}/add-property"
           }
         `}</script>

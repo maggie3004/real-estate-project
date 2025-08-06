@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { FaMapMarkerAlt, FaCalendar, FaBuilding } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaCalendar } from 'react-icons/fa';
 import { Helmet } from 'react-helmet';
 
 // This should be replaced with data from your backend
@@ -34,7 +34,7 @@ const ProjectDetail = () => {
   return (
     <>
       <Helmet>
-        <title>{`${project.name} | Shree Ganesh Real Estate`}</title>
+        <title>{`${project.name} | Ganesh Yeole Builders and Developers`}</title>
         <meta name="description" content={project.description} />
       </Helmet>
 

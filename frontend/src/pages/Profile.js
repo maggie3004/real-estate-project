@@ -15,20 +15,18 @@ export default function Profile() {
   return (
     <>
       <Helmet>
-        <title>User Profile | Shree Ganesh Real Estate</title>
-        <meta name="description" content="View and manage your user profile, role, and access admin features if available." />
+        <title>User Profile | Ganesh Yeole Builders and Developers</title>
+        <meta name="description" content="Manage your profile and preferences on Ganesh Yeole Builders and Developers." />
         <link rel="canonical" href={window.location.origin + '/profile'} />
         {/* Open Graph */}
-        <meta property="og:title" content="User Profile | Shree Ganesh Real Estate" />
-        <meta property="og:description" content="View and manage your user profile, role, and access admin features if available." />
-        <meta property="og:image" content={window.location.origin + '/og-image.jpg'} />
+        <meta property="og:title" content="User Profile | Ganesh Yeole Builders and Developers" />
+        <meta property="og:description" content="Manage your profile and preferences on Ganesh Yeole Builders and Developers." />
         <meta property="og:url" content={window.location.origin + '/profile'} />
-        <meta property="og:type" content="profile" />
+        <meta property="og:type" content="website" />
         {/* Twitter Card */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="User Profile | Shree Ganesh Real Estate" />
-        <meta name="twitter:description" content="View and manage your user profile, role, and access admin features if available." />
-        <meta name="twitter:image" content={window.location.origin + '/twitter-image.jpg'} />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="User Profile | Ganesh Yeole Builders and Developers" />
+        <meta name="twitter:description" content="Manage your profile and preferences on Ganesh Yeole Builders and Developers." />
         {/* JSON-LD WebPage Schema */}
         <script type="application/ld+json">{`
           {

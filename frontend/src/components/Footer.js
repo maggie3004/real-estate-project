@@ -1,64 +1,161 @@
 import React from 'react';
 import logo from '../assets/logo.png';
-import { FaLinkedin, FaFacebook, FaInstagram, FaYoutube, FaPhoneAlt, FaEnvelope, FaDownload, FaUserTie } from 'react-icons/fa';
+import { FaLinkedin, FaFacebook, FaInstagram, FaYoutube, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaBuilding, FaLeaf, FaAward } from 'react-icons/fa';
 
 function Footer() {
   return (
-    <footer className="w-full bg-[#181818] text-gray-100 pt-12 pb-6 px-4 mt-12 border-t border-gray-800">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row md:items-start md:justify-between gap-10 md:gap-4">
-        {/* Contact Column */}
-        <div className="flex-1 min-w-[220px] mb-8 md:mb-0">
-          <div className="flex items-center gap-3 mb-4">
-            <img src={logo} alt="Logo" className="h-10 w-auto" />
-            <span className="font-bold text-xl tracking-wide text-white">Sai Prasad Group</span>
+    <footer className="w-full bg-[#181818] text-gray-100 pt-8 pb-4 px-4 mt-8 border-t border-gray-800">
+      <div className="max-w-7xl mx-auto">
+        {/* Main Footer Content */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+          {/* Company Info */}
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <img src={logo} alt="Logo" className="h-10 w-auto" />
+              <span className="font-bold text-lg tracking-wide text-white">Ganesh Yeole Builders</span>
+            </div>
+            <p className="text-gray-300 leading-relaxed text-sm">
+              Building dreams and creating landmarks for over 16 years. Your trusted partner in real estate development across Nashik, Mumbai, and Pune.
+            </p>
+            <div className="flex gap-3">
+              <button className="hover:text-gold transition-colors duration-200" aria-label="LinkedIn">
+                <FaLinkedin size={18} />
+              </button>
+              <button className="hover:text-gold transition-colors duration-200" aria-label="Facebook">
+                <FaFacebook size={18} />
+              </button>
+              <button className="hover:text-gold transition-colors duration-200" aria-label="Instagram">
+                <FaInstagram size={18} />
+              </button>
+              <button className="hover:text-gold transition-colors duration-200" aria-label="YouTube">
+                <FaYoutube size={18} />
+              </button>
+            </div>
           </div>
-          <div className="mb-2 text-lg font-semibold text-white">Contact</div>
-          <div className="mb-2 text-gray-300">Sai Prasad House, 123 Main Road, Nashik, Maharashtra 422001</div>
-          <div className="flex items-center gap-2 mb-2 text-gray-300">
-            <FaPhoneAlt className="inline-block text-gold" />
-            <span>+91 98765 43210</span>
+
+          {/* Quick Links */}
+          <div className="space-y-4">
+            <h3 className="text-base font-semibold text-white border-b border-gold pb-1">Quick Links</h3>
+            <ul className="space-y-2 text-gray-300 text-sm">
+              <li><a href="/about" className="hover:text-gold transition-colors duration-200">About Us</a></li>
+              <li><a href="/projects" className="hover:text-gold transition-colors duration-200">Our Projects</a></li>
+              <li><a href="/milestones" className="hover:text-gold transition-colors duration-200">Milestones</a></li>
+              <li><a href="/awards" className="hover:text-gold transition-colors duration-200">Awards & Events</a></li>
+              <li><a href="/sustainability" className="hover:text-gold transition-colors duration-200">Sustainability</a></li>
+              <li><a href="/contact" className="hover:text-gold transition-colors duration-200">Contact Us</a></li>
+            </ul>
           </div>
-          <div className="flex items-center gap-2 mb-4 text-gray-300">
-            <FaEnvelope className="inline-block text-gold" />
-            <span>info@saiprasadgroup.com</span>
+
+          {/* Contact Info */}
+          <div className="space-y-4">
+            <h3 className="text-base font-semibold text-white border-b border-gold pb-1">Contact Info</h3>
+            <div className="space-y-3 text-gray-300 text-sm">
+              <div className="flex items-start gap-2">
+                <FaMapMarkerAlt className="text-gold mt-0.5 flex-shrink-0" />
+                <div>
+                  <p>Sai Prasad House, 123 Main Road</p>
+                  <p>Nashik, Maharashtra 422001</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <FaPhoneAlt className="text-gold flex-shrink-0" />
+                <span>+91 98765 43210</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <FaEnvelope className="text-gold flex-shrink-0" />
+                <span>info@ganeshyoelebuilders.com</span>
+              </div>
+            </div>
           </div>
-          <div className="flex gap-4 mt-2">
-            <a href="#" className="hover:text-gold" aria-label="LinkedIn"><FaLinkedin size={20} /></a>
-            <a href="#" className="hover:text-gold" aria-label="Facebook"><FaFacebook size={20} /></a>
-            <a href="#" className="hover:text-gold" aria-label="Instagram"><FaInstagram size={20} /></a>
-            <a href="#" className="hover:text-gold" aria-label="YouTube"><FaYoutube size={20} /></a>
+
+          {/* About Nashik */}
+          <div className="space-y-4">
+            <h3 className="text-base font-semibold text-white border-b border-gold pb-1">About Nashik</h3>
+            <div className="space-y-3 text-gray-300">
+              <p className="leading-relaxed text-sm">
+                Nashik, the "Wine Capital of India," is a rapidly growing city in Maharashtra known for its spiritual significance, educational institutions, and emerging IT sector.
+              </p>
+              <div className="space-y-1.5 text-xs">
+                <div className="flex items-center gap-2">
+                  <FaBuilding className="text-gold" />
+                  <span>Fastest Growing Real Estate Market</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <FaLeaf className="text-gold" />
+                  <span>Pleasant Climate & Green Environment</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <FaAward className="text-gold" />
+                  <span>Excellent Connectivity & Infrastructure</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        {/* Value Added Services Column */}
-        <div className="flex-1 min-w-[200px] mb-8 md:mb-0">
-          <div className="mb-4 text-lg font-semibold text-white">Value Added Services</div>
-          <ul className="space-y-2 text-gray-300">
-            <li><a href="#" className="hover:text-gold">Development Management</a></li>
-            <li><a href="#" className="hover:text-gold">Leasing & Resale</a></li>
-            <li><a href="#" className="hover:text-gold">Interior Fitout Management</a></li>
-            <li><a href="#" className="hover:text-gold">Facility Management</a></li>
-            <li><a href="#" className="hover:text-gold">Portfolio Management</a></li>
-          </ul>
+
+        {/* Brand Logos Section */}
+        <div className="border-t border-gray-700 pt-4 mb-4">
+          <h3 className="text-base font-semibold text-white text-center mb-4">Our Trusted Partners & Certifications</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 items-center">
+            {/* Sample Brand Logos - Replace with actual logos */}
+            <div className="bg-white rounded-lg p-3 flex items-center justify-center h-12 hover:shadow-lg transition-shadow duration-200">
+              <div className="text-gray-600 font-bold text-xs">ISO 9001</div>
+            </div>
+            <div className="bg-white rounded-lg p-3 flex items-center justify-center h-12 hover:shadow-lg transition-shadow duration-200">
+              <div className="text-gray-600 font-bold text-xs">IGBC</div>
+            </div>
+            <div className="bg-white rounded-lg p-3 flex items-center justify-center h-12 hover:shadow-lg transition-shadow duration-200">
+              <div className="text-gray-600 font-bold text-xs">CREDAI</div>
+            </div>
+            <div className="bg-white rounded-lg p-3 flex items-center justify-center h-12 hover:shadow-lg transition-shadow duration-200">
+              <div className="text-gray-600 font-bold text-xs">MCHI</div>
+            </div>
+            <div className="bg-white rounded-lg p-3 flex items-center justify-center h-12 hover:shadow-lg transition-shadow duration-200">
+              <div className="text-gray-600 font-bold text-xs">RERA</div>
+            </div>
+            <div className="bg-white rounded-lg p-3 flex items-center justify-center h-12 hover:shadow-lg transition-shadow duration-200">
+              <div className="text-gray-600 font-bold text-xs">GRIHA</div>
+            </div>
+          </div>
         </div>
-        {/* Portfolio Column */}
-        <div className="flex-1 min-w-[200px]">
-          <div className="mb-4 text-lg font-semibold text-white">Portfolio</div>
-          <ul className="space-y-2 text-gray-300">
-            <li><a href="#" className="hover:text-gold">Offices</a></li>
-            <li><a href="#" className="hover:text-gold">Homes</a></li>
-            <li><a href="#" className="hover:text-gold">Plotting</a></li>
-            <li><a href="#" className="flex items-center gap-2 hover:text-gold"><FaUserTie className="inline-block text-gold" /> Employee Portal</a></li>
-            <li><a href="#" className="flex items-center gap-2 hover:text-gold"><FaDownload className="inline-block text-gold" /> Downloads</a></li>
-          </ul>
+
+        {/* Services Section */}
+        <div className="border-t border-gray-700 pt-4 mb-4">
+          <h3 className="text-base font-semibold text-white text-center mb-4">Our Services</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="text-center p-3 bg-gray-800 rounded-lg">
+              <h4 className="font-semibold text-white mb-1 text-sm">Residential Projects</h4>
+              <p className="text-gray-300 text-xs">Luxury apartments, villas, and affordable housing solutions</p>
+            </div>
+            <div className="text-center p-3 bg-gray-800 rounded-lg">
+              <h4 className="font-semibold text-white mb-1 text-sm">Commercial Projects</h4>
+              <p className="text-gray-300 text-xs">Office spaces, retail complexes, and mixed-use developments</p>
+            </div>
+            <div className="text-center p-3 bg-gray-800 rounded-lg">
+              <h4 className="font-semibold text-white mb-1 text-sm">Property Management</h4>
+              <p className="text-gray-300 text-xs">Complete property management and maintenance services</p>
+            </div>
+          </div>
         </div>
-      </div>
-      <div className="max-w-7xl mx-auto mt-10 border-t border-gray-800 pt-6 flex flex-col md:flex-row items-center justify-between text-sm text-gray-400">
-        <div className="mb-2 md:mb-0">&copy; {new Date().getFullYear()} Sai Prasad Group. All rights reserved.</div>
-        <div>
-          <a href="#" className="hover:text-gold mx-2">Disclaimer</a>|
-          <a href="#" className="hover:text-gold mx-2">Privacy Policy</a>
+
+        {/* Bottom Footer */}
+        <div className="border-t border-gray-700 pt-4">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-3">
+            <div className="text-xs text-gray-400">
+              &copy; {new Date().getFullYear()} Ganesh Yeole Builders and Developers. All rights reserved.
+            </div>
+            <div className="flex items-center gap-4 text-xs text-gray-400">
+              <button className="hover:text-gold transition-colors duration-200">Privacy Policy</button>
+              <span>|</span>
+              <button className="hover:text-gold transition-colors duration-200">Terms of Service</button>
+              <span>|</span>
+              <button className="hover:text-gold transition-colors duration-200">Disclaimer</button>
+            </div>
+            <div className="text-xs text-gray-500">
+              Powered by <span className="font-semibold text-white">Ganesh Yeole Builders</span>
+            </div>
+          </div>
         </div>
-        <div className="text-xs">Powered by <span className="font-semibold text-white">Your Company</span></div>
       </div>
     </footer>
   );

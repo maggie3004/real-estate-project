@@ -53,7 +53,6 @@ const Navbar = () => {
     { name: 'Awards', path: '/awards' },
     { name: 'Testimonials', path: '/testimonials' },
     { name: 'Events', path: '/events' },
-    { name: 'Careers', path: '/careers' },
     { name: 'Contact Us', path: '/contact' },
   ];
 
@@ -66,7 +65,7 @@ const Navbar = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3 min-w-fit" aria-label="Go to homepage">
           <img src={theme === 'dark' ? logo : logoDark} alt="Logo" className="h-8 w-auto transition-all duration-300" />
-          <span className={`text-xl font-bold tracking-tight transition-colors duration-300 ${theme === 'dark' ? 'text-white' : 'text-[#181818]'}`}>Sai Prasad Group</span>
+          <span className={`text-xl font-bold tracking-tight transition-colors duration-300 ${theme === 'dark' ? 'text-white' : 'text-[#181818]'}`}>Ganesh Yeole Builders and Developers</span>
         </Link>
         {/* Desktop Menu */}
         <ul className="hidden lg:flex items-center gap-2 lg:gap-6 h-full flex-1 justify-center">

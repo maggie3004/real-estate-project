@@ -51,7 +51,7 @@ const Projects = () => {
   return (
     <>
       <Helmet>
-        <title>Our Projects | Shree Ganesh Real Estate</title>
+        <title>Our Projects | Ganesh Yeole Builders and Developers</title>
         <meta name="description" content="Explore our upcoming, ongoing, and completed real estate projects in Nashik." />
       </Helmet>
 

@@ -57,7 +57,7 @@ describe('Home Page', () => {
     test('renders about section', () => {
       renderWithRouter(<Home />);
       
-      expect(screen.getByText(/About Shree Ganesh Real Estate/i)).toBeInTheDocument();
+      expect(screen.getByText(/About Ganesh Yeole Builders and Developers/i)).toBeInTheDocument();
     });
 
     test('renders services section', () => {

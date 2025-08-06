@@ -6,8 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ThemeProvider } from './context/ThemeContext';
-import { FiMessageSquare } from 'react-icons/fi';
-import Chatbot from './components/Chatbot';
+
 import AboutPage from './pages/AboutPage';
 import MainLayout from './components/MainLayout';
 import PropertyDetails from './pages/PropertyDetails';
@@ -28,6 +27,8 @@ const ComparisonModal = lazy(() => import('./components/ComparisonModal'));
 const Awards = lazy(() => import('./pages/Awards'));
 const Sustainability = lazy(() => import('./pages/Sustainability'));
 const Milestones = lazy(() => import('./pages/Milestones'));
+const Contact = lazy(() => import('./pages/Contact'));
+const Events = lazy(() => import('./pages/Events'));
 const ShreeGaneshParkPhaseII = lazy(() => import('./pages/ShreeGaneshParkPhaseII'));
 const ShreeGaneshParkPhaseI = lazy(() => import('./pages/ShreeGaneshParkPhaseI'));
 const ShreeGaneshHeights = lazy(() => import('./pages/ShreeGaneshHeights'));
@@ -87,7 +88,6 @@ class ErrorBoundary extends React.Component {
 }
 
 function App() {
-  const [showChatbot, setShowChatbot] = React.useState(false);
   return (
     <ErrorBoundary>
       <ThemeProvider>
@@ -125,6 +125,9 @@ function App() {
                         <Route path="/awards" element={<Awards />} />
                         <Route path="/sustainability" element={<Sustainability />} />
                         <Route path="/milestones" element={<Milestones />} />
+                        <Route path="/testimonials" element={<Testimonials />} />
+                        <Route path="/contact" element={<Contact />} />
+                        <Route path="/events" element={<Events />} />
                         <Route path="/ShreeGaneshParkPhaseII" element={<ShreeGaneshParkPhaseII />} />
                         <Route path="/ShreeGaneshParkPhaseI" element={<ShreeGaneshParkPhaseI />} />
                         <Route path="/ShreeGaneshHeights" element={<ShreeGaneshHeights />} />
