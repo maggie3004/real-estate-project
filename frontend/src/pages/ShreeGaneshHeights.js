@@ -40,7 +40,7 @@ const ShreeGaneshHeights = () => {
   useEffect(() => {
     // Update document title
     document.title = `${projectData.projectName} - Sai Prasad Group`;
-  }, []);
+  }, [projectData.projectName]);
 
   return <ProjectTemplate {...projectData} />;
 };

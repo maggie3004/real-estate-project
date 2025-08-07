@@ -238,3 +238,5 @@ const Milestones = () => (
     </div>
   </section>
 );
+
+export default Milestones;

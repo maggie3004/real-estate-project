@@ -20,7 +20,13 @@ export const ComparisonProvider = ({ children }) => {
   const clearComparison = () => setComparisonList([]);
 
   return (
-    <ComparisonContext.Provider value={{ comparisonList, addToComparison, removeFromComparison, clearComparison }}>
+    <ComparisonContext.Provider value={{ 
+      comparisonList, 
+      comparisonProperties: comparisonList, // Add alias for compatibility
+      addToComparison, 
+      removeFromComparison, 
+      clearComparison 
+    }}>
       {children}
     </ComparisonContext.Provider>
   );

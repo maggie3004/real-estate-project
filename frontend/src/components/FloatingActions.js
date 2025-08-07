@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FaWhatsapp } from 'react-icons/fa';
-import { FiPhone, FiDownload, FiMessageSquare, FiMoreVertical, FiX } from 'react-icons/fi';
+import { FiPhone, FiDownload } from 'react-icons/fi';
 
 const FloatingActions = ({ brochurePath, projectName }) => {
-  const [open, setOpen] = useState(false);
 
   const handleDownload = async () => {
     try {

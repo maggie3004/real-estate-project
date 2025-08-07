@@ -32,7 +32,7 @@ const ProjectTemplate = ({
       interval = setInterval(handleNext, 3000);
     }
     return () => clearInterval(interval);
-  }, [isPlaying]);
+  }, [isPlaying, handleNext]);
 
   return (
     <div className="min-h-screen bg-white dark:bg-[#181818] text-[#181818] dark:text-white transition-colors duration-300">
