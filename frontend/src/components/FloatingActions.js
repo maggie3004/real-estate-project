@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FaWhatsapp } from 'react-icons/fa';
-import { FiPhone, FiDownload, FiMessageSquare, FiHelpCircle, FiMoreVertical, FiX } from 'react-icons/fi';
+import { FiPhone, FiDownload, FiMessageSquare, FiMoreVertical, FiX } from 'react-icons/fi';
 
 const FloatingActions = ({ brochurePath, projectName }) => {
   const [open, setOpen] = useState(false);

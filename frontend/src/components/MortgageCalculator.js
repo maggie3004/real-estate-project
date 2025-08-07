@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaCalculator, FaChartLine, FaDownload, FaPrint, FaInfoCircle } from 'react-icons/fa';
 
 const MortgageCalculator = () => {
-  const [loanAmount, setLoanAmount] = useState(5000000);
+  const [loanAmount] = useState(5000000);
   const [downPayment, setDownPayment] = useState(1000000);
   const [interestRate, setInterestRate] = useState(8.5);
   const [loanTerm, setLoanTerm] = useState(20);
@@ -11,7 +11,7 @@ const MortgageCalculator = () => {
   const [monthlyIncome, setMonthlyIncome] = useState(150000);
   const [monthlyExpenses, setMonthlyExpenses] = useState(50000);
   const [showAmortization, setShowAmortization] = useState(false);
-  const [showAffordability, setShowAffordability] = useState(false);
+
 
   const calculateMonthlyPayment = () => {
     const principal = loanAmount - downPayment;

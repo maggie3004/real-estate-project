@@ -57,7 +57,7 @@ const GallerySection = () => {
                 src={img}
                 srcSet={`${img} 1x, ${img} 2x`}
                 sizes="(max-width: 640px) 100vw, 25vw"
-                alt={`Gallery photo ${idx + 1}`}
+                alt={`Gallery ${idx + 1}`}
                 className="w-full h-48 object-cover rounded-2xl shadow-lg border-2 border-gold/20 group-hover:scale-105 transition-transform duration-200"
                 loading="lazy"
               />

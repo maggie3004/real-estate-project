@@ -41,9 +41,9 @@ const FAQS = [
   },
   {
     q: [
-      "about", "company", "builder", "who are you", "about shree ganesh builders", "who is the builder", "company info", "company information", "tell me about your company"
+      "about", "company", "builder", "who are you", "about ganesh yeole builders and developers", "who is the builder", "company info", "company information", "tell me about your company"
     ],
-    a: "Shree Ganesh Builders is a luxury real estate developer with 35+ years of experience and 800+ families served."
+    a: "Ganesh Yeole Builders and Developers is a luxury real estate developer with 35+ years of experience and 800+ families served."
   }
 ];
 

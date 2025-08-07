@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt, FaCommentDots, 
-  FaUpload, FaCalendar, FaClock, FaCheck, FaTimes, FaArrowRight,
+  FaUpload, FaCheck, FaTimes, FaArrowRight,
   FaArrowLeft, FaBuilding, FaHome, FaSearch
 } from 'react-icons/fa';
 

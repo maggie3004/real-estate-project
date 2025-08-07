@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { 
   FiSearch, 
@@ -20,105 +20,99 @@ const Blog = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [postsPerPage] = useState(6);
 
-  // Sample blog posts data
-  const samplePosts = [
+  // Wrap samplePosts in useMemo to prevent recreation on every render
+  const samplePosts = useMemo(() => [
     {
       id: 1,
-      title: "World Environment Day 2025: Our Commitment to Sustainable Development",
-      summary: "Discover how we celebrated World Environment Day 2025 and our ongoing commitment to sustainable real estate development. Learn about our green initiatives and eco-friendly projects.",
-      content: "On World Environment Day 2025, we reaffirmed our commitment to sustainable development...",
-      slug: "world-environment-day-2025",
-      category: "Sustainability",
-      author: "Environmental Team",
-      publishDate: "2025-06-05",
+      title: "The Future of Luxury Real Estate in Mumbai",
+      excerpt: "Discover how Mumbai's luxury real estate market is evolving with new trends, technologies, and lifestyle preferences shaping the future of premium living.",
+      content: "Mumbai's luxury real estate market is experiencing a remarkable transformation, driven by evolving lifestyle preferences, technological advancements, and changing demographics. The city's premium property segment is witnessing unprecedented growth, with developers focusing on creating holistic living experiences that go beyond traditional luxury...",
+      author: "Ganesh Yeole",
+      date: "2024-01-15",
+      category: "Market Trends",
+      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      tags: ["Luxury", "Mumbai", "Market Trends", "Premium Properties"],
       readTime: "5 min read",
-      image: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80",
-      tags: ["Environment", "Sustainability", "Green Building"],
       views: 1247,
       likes: 89,
       featured: true
     },
     {
       id: 2,
-      title: "Project Launch: Shri Ganesh Heights - Luxury Living Redefined",
-      summary: "Experience luxury living at its finest with our latest project, Shri Ganesh Heights. Discover world-class amenities, premium finishes, and exceptional location.",
-      content: "We are excited to announce the launch of our flagship project, Shri Ganesh Heights...",
-      slug: "shri-ganesh-heights-launch",
-      category: "Projects",
-      author: "Marketing Team",
-      publishDate: "2025-05-28",
-      readTime: "8 min read",
-      image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
-      tags: ["Luxury", "New Launch", "Premium"],
-      views: 2156,
-      likes: 156,
-      featured: true
-    },
-    {
-      id: 3,
-      title: "Real Estate Market Trends 2025: What Buyers Need to Know",
-      summary: "Stay ahead of the curve with our comprehensive analysis of real estate market trends for 2025. Learn about emerging opportunities and investment strategies.",
-      content: "The real estate market in 2025 is experiencing significant changes...",
-      slug: "real-estate-trends-2025",
-      category: "Market Analysis",
-      author: "Research Team",
-      publishDate: "2025-05-20",
-      readTime: "12 min read",
-      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80",
-      tags: ["Market Trends", "Investment", "Analysis"],
-      views: 3421,
-      likes: 234,
+      title: "Investment Opportunities in Pune's Growing Real Estate Market",
+      excerpt: "Explore the promising investment opportunities in Pune's rapidly expanding real estate market, from residential to commercial properties.",
+      content: "Pune has emerged as one of India's most promising real estate investment destinations, offering a perfect blend of economic growth, infrastructure development, and quality of life. The city's real estate market is witnessing robust growth across all segments...",
+      author: "Real Estate Team",
+      date: "2024-01-12",
+      category: "Investment",
+      image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      tags: ["Investment", "Pune", "Commercial", "Residential"],
+      readTime: "4 min read",
+      views: 892,
+      likes: 67,
       featured: false
     },
     {
+      id: 3,
+      title: "Sustainable Living: Green Buildings in Nashik",
+      excerpt: "Learn about the growing trend of sustainable and green buildings in Nashik, and how they're reshaping the city's real estate landscape.",
+      content: "Sustainability has become a cornerstone of modern real estate development, and Nashik is leading the way with innovative green building practices. The city's developers are increasingly adopting eco-friendly construction methods...",
+      author: "Sustainability Expert",
+      date: "2024-01-10",
+      category: "Sustainability",
+      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      tags: ["Sustainability", "Green Buildings", "Nashik", "Eco-friendly"],
+      readTime: "6 min read",
+      views: 756,
+      likes: 54,
+      featured: true
+    },
+    {
       id: 4,
-      title: "Home Buying Guide: 10 Essential Tips for First-Time Buyers",
-      summary: "Navigate the home buying process with confidence using our comprehensive guide. From pre-approval to closing, we cover everything you need to know.",
-      content: "Buying your first home is one of the most significant financial decisions...",
-      slug: "first-time-buyer-guide",
-      category: "Guides",
-      author: "Customer Success Team",
-      publishDate: "2025-05-15",
-      readTime: "15 min read",
-      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80",
-      tags: ["First Time Buyer", "Guide", "Tips"],
-      views: 1897,
-      likes: 123,
+      title: "Smart Home Technology: The New Standard in Luxury Living",
+      excerpt: "Discover how smart home technology is becoming the new standard in luxury real estate, offering convenience, security, and energy efficiency.",
+      content: "Smart home technology has revolutionized the luxury real estate market, transforming how we live and interact with our living spaces. From automated lighting and climate control to advanced security systems...",
+      author: "Tech Expert",
+      date: "2024-01-08",
+      category: "Technology",
+      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      tags: ["Smart Home", "Technology", "Luxury", "Automation"],
+      readTime: "7 min read",
+      views: 1103,
+      likes: 78,
       featured: false
     },
     {
       id: 5,
-      title: "Investment Properties: Maximizing Your ROI in 2025",
-      summary: "Learn proven strategies for maximizing returns on investment properties. Discover the best locations, property types, and management approaches.",
-      content: "Investment properties continue to be a popular choice for wealth building...",
-      slug: "investment-properties-roi-2025",
-      category: "Investment",
-      author: "Investment Team",
-      publishDate: "2025-05-10",
-      readTime: "10 min read",
-      image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
-      tags: ["Investment", "ROI", "Strategy"],
-      views: 2765,
-      likes: 198,
-      featured: false
+      title: "RERA Compliance: What Homebuyers Need to Know",
+      excerpt: "A comprehensive guide to RERA compliance and how it protects homebuyers' interests in the real estate market.",
+      content: "The Real Estate (Regulation and Development) Act, 2016 (RERA) has brought significant transparency and accountability to India's real estate sector. For homebuyers, understanding RERA compliance is crucial...",
+      author: "Legal Expert",
+      date: "2024-01-05",
+      category: "Legal",
+      image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      tags: ["RERA", "Legal", "Homebuyers", "Compliance"],
+      readTime: "8 min read",
+      views: 1345,
+      likes: 92,
+      featured: true
     },
     {
       id: 6,
-      title: "Smart Home Technology: The Future of Modern Living",
-      summary: "Explore the latest smart home technologies that are transforming modern living. From security to energy efficiency, discover what's possible.",
-      content: "Smart home technology is revolutionizing how we live and interact with our homes...",
-      slug: "smart-home-technology-2025",
-      category: "Technology",
-      author: "Tech Team",
-      publishDate: "2025-05-05",
-      readTime: "7 min read",
-      image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80",
-      tags: ["Smart Home", "Technology", "Innovation"],
-      views: 1543,
-      likes: 87,
+      title: "Co-living Spaces: The Future of Urban Living",
+      excerpt: "Explore the growing trend of co-living spaces and how they're redefining urban living for millennials and young professionals.",
+      content: "Co-living has emerged as a revolutionary concept in urban real estate, offering a perfect solution for the modern lifestyle needs of millennials and young professionals. These shared living spaces...",
+      author: "Urban Planning Expert",
+      date: "2024-01-03",
+      category: "Lifestyle",
+      image: "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+      tags: ["Co-living", "Urban Living", "Millennials", "Shared Spaces"],
+      readTime: "5 min read",
+      views: 678,
+      likes: 45,
       featured: false
     }
-  ];
+  ], []);
 
   const categories = [
     { id: 'all', name: 'All Posts', count: samplePosts.length },
@@ -131,13 +125,14 @@ const Blog = () => {
   ];
 
   useEffect(() => {
-    // Simulate loading
-    setTimeout(() => {
+    // Simulate loading posts
+    const timer = setTimeout(() => {
       setPosts(samplePosts);
-      setFilteredPosts(samplePosts);
       setLoading(false);
     }, 1000);
-  }, []);
+
+    return () => clearTimeout(timer);
+  }, [samplePosts]);
 
   useEffect(() => {
     let filtered = [...posts];
@@ -189,27 +184,25 @@ const Blog = () => {
   return (
     <>
       <Helmet>
-        <title>Real Estate Blog | Shree Ganesh Real Estate</title>
-        <meta name="description" content="Stay updated with the latest real estate trends, project launches, market insights, and expert advice from Shree Ganesh Real Estate." />
+        <title>Real Estate Blog | Ganesh Yeole Builders and Developers</title>
+        <meta name="description" content="Stay updated with the latest real estate trends, project launches, market insights, and expert advice from Ganesh Yeole Builders and Developers." />
         <link rel="canonical" href={window.location.origin + '/blog'} />
         {/* Open Graph */}
-        <meta property="og:title" content="Real Estate Blog | Shree Ganesh Real Estate" />
-        <meta property="og:description" content="Stay updated with the latest real estate trends, project launches, market insights, and expert advice from Shree Ganesh Real Estate." />
-        <meta property="og:image" content={window.location.origin + '/og-image.jpg'} />
+        <meta property="og:title" content="Real Estate Blog | Ganesh Yeole Builders and Developers" />
+        <meta property="og:description" content="Stay updated with the latest real estate trends, project launches, market insights, and expert advice from Ganesh Yeole Builders and Developers." />
         <meta property="og:url" content={window.location.origin + '/blog'} />
-        <meta property="og:type" content="blog" />
+        <meta property="og:type" content="website" />
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Real Estate Blog | Shree Ganesh Real Estate" />
-        <meta name="twitter:description" content="Stay updated with the latest real estate trends, project launches, market insights, and expert advice from Shree Ganesh Real Estate." />
-        <meta name="twitter:image" content={window.location.origin + '/twitter-image.jpg'} />
-        {/* JSON-LD Blog Schema */}
+        <meta name="twitter:title" content="Real Estate Blog | Ganesh Yeole Builders and Developers" />
+        <meta name="twitter:description" content="Stay updated with the latest real estate trends, project launches, market insights, and expert advice from Ganesh Yeole Builders and Developers." />
+        {/* JSON-LD WebPage Schema */}
         <script type="application/ld+json">{`
           {
             "@context": "https://schema.org",
-            "@type": "Blog",
-            "name": "Real Estate Blog | Shree Ganesh Real Estate",
-            "description": "Stay updated with the latest real estate trends, project launches, market insights, and expert advice from Shree Ganesh Real Estate.",
+            "@type": "WebPage",
+            "name": "Real Estate Blog | Ganesh Yeole Builders and Developers",
+            "description": "Stay updated with the latest real estate trends, project launches, market insights, and expert advice from Ganesh Yeole Builders and Developers.",
             "url": "${window.location.origin}/blog"
           }
         `}</script>

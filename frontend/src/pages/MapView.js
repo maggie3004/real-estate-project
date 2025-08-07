@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FaMapMarkerAlt, FaSearch, FaFilter, FaList, FaMap, 
   FaHome, FaBuilding, FaCar, FaGraduationCap, FaHospital,
-  FaShoppingBag, FaUtensils, FaTree, FaWifi, FaParking,
-  FaTimes, FaExpand, FaCompress, FaLocationArrow
+  FaShoppingBag, FaUtensils, FaTree, FaWifi,
+  FaTimes, FaLocationArrow
 } from 'react-icons/fa';
 import properties from '../data/properties';
 
@@ -20,9 +20,6 @@ const MapView = () => {
     amenities: []
   });
   const [searchQuery, setSearchQuery] = useState('');
-  const [mapCenter, setMapCenter] = useState({ lat: 19.0760, lng: 72.8777 }); // Mumbai
-  const [zoom, setZoom] = useState(12);
-  const mapRef = useRef(null);
 
   const amenityOptions = [
     { value: 'parking', label: 'Parking', icon: FaCar },
@@ -99,9 +96,7 @@ const MapView = () => {
 
   const handlePropertyClick = (property) => {
     setSelectedProperty(property);
-    // Center map on property
-    setMapCenter({ lat: property.coordinates?.lat || 19.0760, lng: property.coordinates?.lng || 72.8777 });
-    setZoom(15);
+    // TODO: Center map on property when map integration is implemented
   };
 
   const handleFilterChange = (filterType, value) => {
@@ -125,8 +120,8 @@ const MapView = () => {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          setMapCenter({ lat: latitude, lng: longitude });
-          setZoom(14);
+          // TODO: Center map on current location when map integration is implemented
+          console.log('Current location:', { latitude, longitude });
         },
         (error) => {
           console.error('Error getting location:', error);
