@@ -119,24 +119,7 @@ function Footer() {
           </div>
         </div>
 
-        {/* Services Section */}
-        <div className="border-t border-gray-700 pt-4 mb-4">
-          <h3 className="text-base font-semibold text-white text-center mb-4">Our Services</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="text-center p-3 bg-gray-800 rounded-lg">
-              <h4 className="font-semibold text-white mb-1 text-sm">Residential Projects</h4>
-              <p className="text-gray-300 text-xs">Luxury apartments, villas, and affordable housing solutions</p>
-            </div>
-            <div className="text-center p-3 bg-gray-800 rounded-lg">
-              <h4 className="font-semibold text-white mb-1 text-sm">Commercial Projects</h4>
-              <p className="text-gray-300 text-xs">Office spaces, retail complexes, and mixed-use developments</p>
-            </div>
-            <div className="text-center p-3 bg-gray-800 rounded-lg">
-              <h4 className="font-semibold text-white mb-1 text-sm">Property Management</h4>
-              <p className="text-gray-300 text-xs">Complete property management and maintenance services</p>
-            </div>
-          </div>
-        </div>
+
 
         {/* Bottom Footer */}
         <div className="border-t border-gray-700 pt-4">

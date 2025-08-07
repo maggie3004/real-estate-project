@@ -27,6 +27,7 @@ const Navbar = () => {
   const { theme } = useTheme();
 
   const menu = [
+    { name: 'Home', path: '/' },
     {
       name: 'About Us',
       dropdown: [
@@ -50,9 +51,14 @@ const Navbar = () => {
         { name: 'Milestones', path: '/milestones' },
       ],
     },
-    { name: 'Awards', path: '/awards' },
-    { name: 'Testimonials', path: '/testimonials' },
-    { name: 'Events', path: '/events' },
+    {
+      name: 'Awards',
+      dropdown: [
+        { name: 'Awards', path: '/awards' },
+        { name: 'Testimonials', path: '/testimonials' },
+        { name: 'Events', path: '/events' },
+      ],
+    },
     { name: 'Contact Us', path: '/contact' },
   ];
 
@@ -60,12 +66,24 @@ const Navbar = () => {
   const isActive = (path) => location.pathname === path || location.hash === path;
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 border-b border-gray-800 shadow-lg transition-colors duration-300 ${theme === 'dark' ? 'bg-[#181818] text-white' : 'bg-white text-[#181818]'}`}>
-      <div className="w-full flex items-center h-16 px-4">
-        {/* Logo */}
-        <Link to="/" className="flex items-center gap-3 min-w-fit" aria-label="Go to homepage">
-          <img src={theme === 'dark' ? logo : logoDark} alt="Logo" className="h-8 w-auto transition-all duration-300" />
-          <span className={`text-xl font-bold tracking-tight transition-colors duration-300 ${theme === 'dark' ? 'text-white' : 'text-[#181818]'}`}>Ganesh Yeole Builders and Developers</span>
+    <nav className={`fixed top-0 left-0 right-0 z-50 border-b border-gray-200 shadow-lg transition-colors duration-300 ${theme === 'dark' ? 'bg-gradient-to-r from-gray-900 to-gray-800 text-white' : 'bg-gradient-to-r from-white to-gray-50 text-[#181818]'}`}>
+      <div className="w-full flex items-center h-20 px-4">
+        {/* Logo and Company Name */}
+        <Link to="/" className="flex items-center gap-4 min-w-fit" aria-label="Go to homepage">
+          <div className="flex items-center gap-3">
+            <img src={theme === 'dark' ? logo : logoDark} alt="Logo" className="h-10 w-auto transition-all duration-300" />
+            <div className="flex flex-col">
+              <span className={`text-lg font-bold tracking-tight transition-colors duration-300 ${theme === 'dark' ? 'text-white' : 'text-[#181818]'}`}>
+                Ganesh Yeole
+              </span>
+              <span className={`text-sm font-medium tracking-wide transition-colors duration-300 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
+                Builders & Developers
+              </span>
+                             <span className={`text-xs font-medium tracking-wider transition-colors duration-300 ${theme === 'dark' ? 'text-yellow-400' : 'text-yellow-600'}`}>
+                 Building Dreams Since 2007
+               </span>
+            </div>
+          </div>
         </Link>
         {/* Desktop Menu */}
         <ul className="hidden lg:flex items-center gap-2 lg:gap-6 h-full flex-1 justify-center">
@@ -149,6 +167,7 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
+        
         {/* Hamburger Icon for Mobile */}
         <button
           className="lg:hidden flex flex-col justify-center items-center w-10 h-10 focus:outline-none ml-auto"

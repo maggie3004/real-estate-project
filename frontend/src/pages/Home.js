@@ -1,14 +1,14 @@
 import React from 'react';
 import HeroSection from '../components/HeroSection';
-import PricingFloorPlanSection from '../components/PricingFloorPlanSection';
 import AmenitiesSection from '../components/AmenitiesSection';
-import GallerySection from '../components/GallerySection';
 import LocationSection from '../components/LocationSection';
 import ContactForm from '../components/ContactForm';
 import StatsSection from '../components/StatsSection';
 import ProjectsSection from '../components/ProjectsSection';
 import AboutSection from '../components/AboutSection';
 import AwardsSection from '../components/AwardsSection';
+import Testimonials from '../components/Testimonials';
+import Milestones from '../pages/Milestones';
 import { Helmet } from 'react-helmet';
 
 // ... import other new sections as you create them
@@ -63,16 +63,43 @@ const Home = () => {
           }
         `}</script>
       </Helmet>
+      {/* 1. Hero Section (Carousel) */}
       <HeroSection />
-      <PricingFloorPlanSection />
-      <AmenitiesSection />
-      <GallerySection />
-      <LocationSection />
-      <ContactForm />
+      
+      {/* 2. About Us Section */}
+      <div id="about" data-aos="fade-up">
+        <AboutSection />
+      </div>
+      
+      {/* 3. Statistics Section */}
       <StatsSection />
-      <div id="about" data-aos="fade-up"><AboutSection /></div>
-      <div id="projects" data-aos="fade-up"><ProjectsSection /></div>
+      
+      {/* 4. Ongoing Projects Section */}
+      <div id="projects" data-aos="fade-up">
+        <ProjectsSection />
+      </div>
+      
+      {/* 5. Amenities Section */}
+      <AmenitiesSection />
+      
+      {/* 6. Awards and Recognition Section */}
       <AwardsSection />
+      
+      {/* 7. Milestones Section */}
+      <div id="milestones" data-aos="fade-up">
+        <Milestones />
+      </div>
+      
+      {/* 8. Testimonials Section */}
+      <div id="testimonials" data-aos="fade-up">
+        <Testimonials />
+      </div>
+      
+      {/* 9. Location Section */}
+      <LocationSection />
+      
+      {/* 10. Get in Touch Form */}
+      <ContactForm />
       {/* Add AboutSection, AmenitiesSection, AwardsSection, ContactForm, etc. here as you create them */}
     </div>
   );

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Nunito:wght@400;700&family=Poppins:wght@400;600&family=Playfair+Display:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Nunito:wght@400;700&family=Poppins:wght@400;600&family=Playfair+Display:wght@400;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap');
 
 /* Tailwind CSS */
 @import 'tailwindcss/base';
@@ -893,3 +893,37 @@ select:focus {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Vastu Loading Screen Styles */
+.vastu-mandala {
+  background: conic-gradient(from 0deg, #fbbf24, #f59e0b, #d97706, #fbbf24);
+  animation: rotate 8s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Marathi text styling */
+.marathi-text {
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Floating animation for decorative elements */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Vastu directional colors */
+.vastu-north { background-color: #3b82f6; } /* Blue */
+.vastu-south { background-color: #ef4444; } /* Red */
+.vastu-east { background-color: #10b981; } /* Green */
+.vastu-west { background-color: #f59e0b; } /* Yellow */
