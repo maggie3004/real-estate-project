@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import logo from '../assets/logo.png';
 
 const LoadingScreen = ({ onLoadingComplete }) => {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
@@ -50,48 +51,32 @@ const LoadingScreen = ({ onLoadingComplete }) => {
               }}
               className="mb-8"
             >
-              <div className="relative">
-                                 {/* Vastu Mandala */}
-                 <div className="w-32 h-32 mx-auto relative">
-                   {/* Outer Circle */}
-                   <motion.div
-                     animate={{ rotate: 360 }}
-                     transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                     className="absolute inset-0 border-4 border-yellow-400 rounded-full"
-                   />
-                   
-                   {/* Inner Circle */}
-                   <motion.div
-                     animate={{ rotate: -360 }}
-                     transition={{ duration: 6, repeat: Infinity, ease: "linear" }}
-                     className="absolute inset-4 border-3 border-orange-500 rounded-full"
-                   />
-                   
-                   {/* Center Vastu Symbol */}
-                   <div className="absolute inset-8 flex items-center justify-center">
-                     <div className="text-4xl font-bold text-yellow-600">वास्तु</div>
+                             <div className="relative">
+                                     {/* Logo Container */}
+                   <div className="w-48 h-48 mx-auto relative flex items-center justify-center">
+                     <motion.div
+                       animate={{ 
+                         scale: [1, 1.05, 1],
+                         rotate: [0, 2, -2, 0]
+                       }}
+                       transition={{ 
+                         duration: 3, 
+                         repeat: Infinity,
+                         ease: "easeInOut"
+                       }}
+                       className="w-40 h-40 rounded-full overflow-hidden bg-white shadow-2xl flex items-center justify-center"
+                     >
+                       <img 
+                         src={logo} 
+                         alt="Ganesh Yeole Builders and Developers" 
+                         className="w-32 h-32 object-contain"
+                         style={{
+                           objectPosition: 'center center',
+                           clipPath: 'circle(50% at 50% 50%)'
+                         }}
+                       />
+                     </motion.div>
                    </div>
-                   
-                   {/* Directional Elements */}
-                   <div className="absolute inset-0">
-                     {/* North */}
-                     <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-blue-500 rounded-full" />
-                     {/* South */}
-                     <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-red-500 rounded-full" />
-                     {/* East */}
-                     <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-green-500 rounded-full" />
-                     {/* West */}
-                     <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-yellow-500 rounded-full" />
-                   </div>
-                   
-                   {/* Vastu Grid Lines */}
-                   <div className="absolute inset-0">
-                     {/* Vertical Line */}
-                     <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gray-300 transform -translate-x-1/2" />
-                     {/* Horizontal Line */}
-                     <div className="absolute top-1/2 left-0 right-0 h-px bg-gray-300 transform -translate-y-1/2" />
-                   </div>
-                 </div>
                 
                 {/* Floating Elements */}
                 <motion.div

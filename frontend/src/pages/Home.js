@@ -66,39 +66,39 @@ const Home = () => {
       {/* 1. Hero Section (Carousel) */}
       <HeroSection />
       
-      {/* 2. About Us Section */}
-      <div id="about" data-aos="fade-up">
-        <AboutSection />
-      </div>
-      
-      {/* 3. Statistics Section */}
+      {/* 2. Statistics Section */}
       <StatsSection />
       
-      {/* 4. Ongoing Projects Section */}
+      {/* 3. Ongoing Projects Section */}
       <div id="projects" data-aos="fade-up">
         <ProjectsSection />
       </div>
       
-      {/* 5. Amenities Section */}
+      {/* 4. Amenities Section */}
       <AmenitiesSection />
       
-      {/* 6. Awards and Recognition Section */}
+      {/* 5. Awards and Recognition Section */}
       <AwardsSection />
       
-      {/* 7. Milestones Section */}
+      {/* 5. Milestones Section */}
       <div id="milestones" data-aos="fade-up">
         <Milestones />
       </div>
       
-      {/* 8. Testimonials Section */}
+      {/* 6. About Us Section */}
+      <div id="about" data-aos="fade-up">
+        <AboutSection />
+      </div>
+      
+      {/* 7. Testimonials Section */}
       <div id="testimonials" data-aos="fade-up">
         <Testimonials />
       </div>
       
-      {/* 9. Location Section */}
+      {/* 8. Location Section */}
       <LocationSection />
       
-      {/* 10. Get in Touch Form */}
+      {/* 9. Get in Touch Form */}
       <ContactForm />
       {/* Add AboutSection, AmenitiesSection, AwardsSection, ContactForm, etc. here as you create them */}
     </div>

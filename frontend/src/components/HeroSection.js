@@ -57,7 +57,7 @@ const HeroSection = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.6 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
-      className="relative h-screen flex flex-col items-center justify-center overflow-hidden w-full"
+      className="relative h-screen overflow-hidden w-full"
     >
              {/* Carousel Background */}
        <div className="absolute inset-0 overflow-hidden">
@@ -70,59 +70,40 @@ const HeroSection = () => {
                <img 
                  src={slide.image}
                  alt={slide.title}
-                 className="w-full h-full object-cover object-center"
+                 className={`w-full h-full object-center ${
+                   slide.id === 1 ? 'object-cover' : 'sm:object-contain md:object-cover lg:object-cover'
+                 }`}
                  style={{
                    minHeight: '100vh',
-                   minWidth: '100vw'
+                   minWidth: '100vw',
+                   objectPosition: slide.id === 1 ? 'center 30%' : 'center center'
                  }}
                />
                
                                {/* Overlay for better text readability */}
-                <div className="absolute inset-0 bg-black bg-opacity-50 dark:bg-opacity-60"></div>
+                <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/50 dark:from-black/30 dark:via-black/40 dark:to-black/60"></div>
                
                                                                {/* Slide-specific content */}
-                 <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 z-10">
-                                       <motion.h2
-                      initial={{ opacity: 0, y: 30 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.8, delay: 0.2 }}
-                      className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white dark:text-gray-100 mb-3 leading-tight"
-                    >
-                      {slide.title}
-                    </motion.h2>
-                    <motion.p
-                      initial={{ opacity: 0, y: 30 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.8, delay: 0.4 }}
-                      className="text-base sm:text-lg md:text-xl text-gray-200 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8"
-                    >
-                      {slide.subtitle}
-                    </motion.p>
+                 <div className="absolute top-28 sm:top-32 left-8 sm:left-12 z-10 max-w-2xl">
+                   <motion.h2
+                     initial={{ opacity: 0, x: -30 }}
+                     animate={{ opacity: 1, x: 0 }}
+                     transition={{ duration: 0.8, delay: 0.2 }}
+                     className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white dark:text-gray-100 mb-4 leading-tight drop-shadow-lg text-left"
+                   >
+                     {slide.title}
+                   </motion.h2>
+                   <motion.p
+                     initial={{ opacity: 0, x: -30 }}
+                     animate={{ opacity: 1, x: 0 }}
+                     transition={{ duration: 0.8, delay: 0.4 }}
+                     className="text-base sm:text-lg md:text-xl text-gray-100 dark:text-gray-200 leading-relaxed drop-shadow-md text-left"
+                   >
+                     {slide.subtitle}
+                   </motion.p>
                  </div>
 
-                 {/* CTA Buttons - Bottom of each slide */}
-                 <div className="absolute bottom-8 sm:bottom-12 left-1/2 transform -translate-x-1/2 z-10">
-                   <motion.div
-                     initial={{ opacity: 0, y: 30 }}
-                     animate={{ opacity: 1, y: 0 }}
-                     transition={{ duration: 0.8, delay: 0.6 }}
-                     className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
-                   >
-                                           <a
-                        href="/Shri Ganesh Heights.pdf"
-                        download
-                        className="bg-yellow-500 hover:bg-white dark:hover:bg-gray-800 text-white hover:text-yellow-500 dark:hover:text-yellow-400 font-bold px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-yellow-500 scale-100 hover:scale-105 focus:scale-105 text-xs sm:text-sm"
-                      >
-                        Download Brochure
-                      </a>
-                      <a
-                        href="#contact"
-                        className="bg-yellow-500 hover:bg-white dark:hover:bg-gray-800 text-white hover:text-yellow-500 dark:hover:text-yellow-400 font-bold px-4 sm:px-6 py-2 sm:py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-yellow-500 scale-100 hover:scale-105 focus:scale-105 text-xs sm:text-sm"
-                      >
-                        Enquire Now
-                      </a>
-                   </motion.div>
-                 </div>
+
              </div>
            ))}
          </div>

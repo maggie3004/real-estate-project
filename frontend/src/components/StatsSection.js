@@ -5,9 +5,9 @@ const stats = [
   { label: 'Projects Completed', value: 25, suffix: '+' },
   { label: 'Happy Families', value: 500, suffix: '+' },
   { label: 'Years of Excellence', value: 16, suffix: '+' },
-  { label: 'Customer Satisfaction', value: 98, suffix: '%' },
+  { label: 'Customer Satisfaction', value: 100, suffix: '%' },
   { label: 'Families Served', value: 800, suffix: '+' },
-  { label: 'Sq. Ft. Developed', value: 1.2, suffix: 'M+' },
+  { label: 'Sq. Ft. Developed', value: 1, suffix: 'M+' },
   { label: 'Awards Won', value: 5, suffix: '+' },
 ];
 

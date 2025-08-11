@@ -198,30 +198,7 @@ const Milestones = () => (
         ))}
       </div>
 
-      {/* Summary Stats */}
-      <div className="mt-20 bg-gradient-to-r from-gold-50 to-orange-50 dark:from-gold-900/20 dark:to-orange-900/20 rounded-3xl p-12">
-        <h2 className="text-3xl font-bold text-center text-[#E53935] mb-8">
-          Our Growth Story in Numbers
-        </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-gold mb-2">25+</div>
-            <div className="text-gray-600 dark:text-gray-300 font-medium">Projects Completed</div>
-          </div>
-          <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">500+</div>
-            <div className="text-gray-600 dark:text-gray-300 font-medium">Happy Families</div>
-          </div>
-          <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-green-600 mb-2">16+</div>
-            <div className="text-gray-600 dark:text-gray-300 font-medium">Years of Excellence</div>
-          </div>
-          <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-purple-600 mb-2">98%</div>
-            <div className="text-gray-600 dark:text-gray-300 font-medium">Customer Satisfaction</div>
-          </div>
-        </div>
-      </div>
+
 
       {/* Call to Action */}
       <div className="mt-16 text-center">
