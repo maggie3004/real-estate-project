@@ -38,7 +38,7 @@ export default function Profile() {
           }
         `}</script>
       </Helmet>
-      <div className="max-w-md mx-auto p-6">
+      <div className="max-w-md mx-auto p-6 pt-24">
         <h1 className="text-3xl font-bold mb-6">Profile</h1>
         <div className="mb-4">
           <div><span className="font-semibold">Email:</span> {user.email}</div>

@@ -10,12 +10,6 @@ const ongoingProjects = [
   { name: 'Shree Ganesh Park Phase I', path: '/ShreeGaneshParkPhaseI' },
   { name: 'Shree Ganesh Heights', path: '/ShreeGaneshHeights' },
 ];
-const completedProjects = [
-  { name: 'Sai Shraddha Apartment', path: '/SaiShraddhaApartment' },
-  { name: 'Vinayak Apartment', path: '/VinayakApartment' },
-  { name: 'Shree Ganesh Avenue', path: '/ShreeGaneshAvenue' },
-  { name: 'Modakeshwar Apartment', path: '/ModakeshwarApartment' },
-];
 
 const Navbar = () => {
   const location = useLocation();
@@ -29,36 +23,33 @@ const Navbar = () => {
   const menu = [
     { name: 'Home', path: '/' },
     {
-      name: 'About Us',
-      dropdown: [
-        { name: 'Overview', path: '/about' },
-        { name: 'Mission & Vision', path: '/about#mission' },
-        { name: 'Sustainability', path: '/sustainability' },
-        { name: 'Corporate Profile', path: '/about#profile' },
-      ],
-    },
-    {
-      name: 'Projects',
+      name: 'Ongoing Projects',
       dropdown: [
         {
           name: 'Ongoing Projects',
           submenu: ongoingProjects,
         },
-        {
-          name: 'Completed Projects',
-          submenu: completedProjects,
-        },
-        { name: 'Milestones', path: '/milestones' },
+      ],
+    },
+    { name: 'Milestones', path: '/milestones' },
+    {
+      name: 'About Us',
+      dropdown: [
+        { name: 'Overview', path: '/about' },
+        { name: 'Vision and Mission', path: '/about#mission' },
+        { name: 'Sustainability', path: '/sustainability' },
+        { name: 'Corporate Profile', path: '/about#profile' },
       ],
     },
     {
-      name: 'Awards',
+      name: 'Events',
       dropdown: [
-        { name: 'Awards', path: '/awards' },
-        { name: 'Testimonials', path: '/testimonials' },
         { name: 'Events', path: '/events' },
+        { name: 'Testimonials', path: '/testimonials' },
+        { name: 'Awards', path: '/awards' },
       ],
     },
+    { name: 'About Nashik', path: '/about-nashik' },
     { name: 'Contact Us', path: '/contact' },
   ];
 

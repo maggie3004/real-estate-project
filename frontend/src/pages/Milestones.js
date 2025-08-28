@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import { FaTrophy, FaBuilding, FaUsers, FaAward, FaStar, FaHandshake } from 'react-icons/fa';
+import { FaTrophy, FaBuilding, FaUsers, FaAward, FaStar, FaHandshake, FaArrowRight } from 'react-icons/fa';
+import { motion, useAnimation } from 'framer-motion';
 
 const milestones = [
   {
@@ -108,112 +109,228 @@ const milestones = [
   }
 ];
 
-const Milestones = () => (
-  <section className="min-h-screen pt-24 pb-12 bg-white dark:bg-[#181818] text-[#181818] dark:text-white transition-colors duration-300">
-    <Helmet>
-      <title>Milestones & Achievements - Ganesh Yeole Builders | Our Journey of Excellence</title>
-      <meta name="description" content="Explore our journey of excellence through key milestones and achievements from 2023-2025. Discover how we've grown and succeeded in real estate development." />
-    </Helmet>
+const Milestones = () => {
+  const [activeYear, setActiveYear] = useState(2025);
+  const controls = useAnimation();
 
-    <div className="max-w-7xl mx-auto px-4">
-      {/* Hero Section */}
-      <div className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold text-[#E53935] mb-6">
-          Our Journey of Excellence
-        </h1>
-        <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-          Celebrating milestones, achievements, and the trust of 500+ families across 16+ years of dedicated service
-        </p>
-      </div>
+  useEffect(() => {
+    controls.start({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, staggerChildren: 0.2 }
+    });
+  }, [controls]);
 
-      {/* Timeline */}
-      <div className="relative">
-        {/* Timeline Line */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-gold via-blue-500 to-green-500 h-full hidden lg:block"></div>
-
-        {milestones.map((yearData, yearIndex) => (
-          <div key={yearData.year} className="mb-16">
-            {/* Year Header */}
-            <div className="text-center mb-12">
-              <div className="inline-block bg-gradient-to-r from-gold to-orange-500 text-white px-8 py-4 rounded-full text-2xl font-bold shadow-lg">
-                {yearData.year}
+  const AchievementCard = ({ achievement, index, isEven }) => (
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      viewport={{ once: true }}
+      className={`relative group ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}
+    >
+      {/* Connecting Lines */}
+      <div className="hidden lg:block absolute top-1/2 left-1/2 transform -translate-x-1/2 w-32 h-0.5 bg-gradient-to-r from-gold via-blue-500 to-green-500 z-0"></div>
+      
+      {/* Achievement Card */}
+      <div className={`flex flex-col lg:flex-row items-center gap-8 relative z-10 ${
+        isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'
+      }`}>
+        
+        {/* Content Section */}
+        <div className={`flex-1 ${isEven ? 'lg:text-right' : 'lg:text-left'}`}>
+          <motion.div 
+            whileHover={{ scale: 1.02, y: -5 }}
+            className="bg-gradient-to-br from-white via-gray-50 to-gray-100 dark:from-gray-800 dark:via-gray-700 dark:to-gray-600 p-8 rounded-3xl shadow-xl border border-gray-200 dark:border-gray-600 relative overflow-hidden group"
+          >
+            {/* Animated Background Pattern */}
+            <div className="absolute inset-0 bg-gradient-to-br from-gold/5 via-blue-500/5 to-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            
+            {/* Header with Icon and Category */}
+            <div className={`flex items-center gap-4 mb-6 ${isEven ? 'lg:justify-end' : 'lg:justify-start'}`}>
+              <motion.div 
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.6 }}
+                className="w-16 h-16 bg-gradient-to-br from-gold to-orange-500 rounded-2xl flex items-center justify-center shadow-lg"
+              >
+                <achievement.icon className="text-white text-2xl" />
+              </motion.div>
+              <div className="flex flex-col">
+                <span className="inline-block bg-gradient-to-r from-gold to-orange-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-md">
+                  {achievement.category}
+                </span>
               </div>
             </div>
+            
+            {/* Title */}
+            <h3 className="text-2xl font-bold text-[#E53935] mb-4 leading-tight">
+              {achievement.title}
+            </h3>
+            
+            {/* Description */}
+            <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-6">
+              {achievement.description}
+            </p>
+            
+            {/* Stats Badge */}
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              className={`inline-block bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 text-white px-6 py-3 rounded-xl font-bold shadow-lg ${isEven ? 'lg:ml-auto' : ''}`}
+            >
+              {achievement.stats}
+            </motion.div>
+          </motion.div>
+        </div>
 
-            {/* Achievements */}
-            <div className="space-y-12">
-              {yearData.achievements.map((achievement, achievementIndex) => (
-                <div key={achievement.title} className={`flex flex-col lg:flex-row items-center gap-8 ${
-                  achievementIndex % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
-                }`}>
-                  
-                  {/* Content */}
-                  <div className={`flex-1 ${achievementIndex % 2 === 0 ? 'lg:text-right' : 'lg:text-left'}`}>
-                    <div className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 p-8 rounded-2xl shadow-lg">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-12 h-12 bg-gold rounded-full flex items-center justify-center">
-                          <achievement.icon className="text-white text-xl" />
-                        </div>
-                        <div>
-                          <span className="inline-block bg-gold text-white px-3 py-1 rounded-full text-sm font-semibold">
-                            {achievement.category}
-                          </span>
-                        </div>
-                      </div>
-                      
-                      <h3 className="text-2xl font-bold text-[#E53935] mb-3">
-                        {achievement.title}
-                      </h3>
-                      
-                      <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-4">
-                        {achievement.description}
-                      </p>
-                      
-                      <div className="inline-block bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-lg font-semibold">
-                        {achievement.stats}
-                      </div>
-                    </div>
-                  </div>
+        {/* Timeline Node */}
+        <div className="relative z-20">
+          <motion.div 
+            whileHover={{ scale: 1.2 }}
+            className="w-8 h-8 bg-gradient-to-br from-gold to-orange-500 rounded-full border-4 border-white dark:border-gray-800 shadow-xl relative"
+          >
+            {/* Pulsing Animation */}
+            <div className="absolute inset-0 bg-gold rounded-full animate-ping opacity-20"></div>
+          </motion.div>
+          
+          {/* Connection Lines */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 w-16 h-0.5 bg-gradient-to-r from-gold to-blue-500 hidden lg:block"></div>
+        </div>
 
-                  {/* Timeline Dot */}
-                  <div className="relative z-10">
-                    <div className="w-6 h-6 bg-gold rounded-full border-4 border-white dark:border-gray-800 shadow-lg hidden lg:block"></div>
-                  </div>
-
-                  {/* Image */}
-                  <div className="flex-1">
-                    <div className="relative group overflow-hidden rounded-2xl shadow-lg">
-                      <img 
-                        src={achievement.image} 
-                        alt={achievement.title}
-                        className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    </div>
-                  </div>
+        {/* Image Section */}
+        <div className="flex-1">
+          <motion.div 
+            whileHover={{ scale: 1.05 }}
+            className="relative group overflow-hidden rounded-3xl shadow-2xl"
+          >
+            <img 
+              src={achievement.image} 
+              alt={achievement.title}
+              className="w-full h-72 object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            
+            {/* Hover Overlay Content */}
+            <div className="absolute inset-0 flex items-end opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <div className="p-6 text-white">
+                <div className="flex items-center gap-2">
+                  <FaArrowRight className="text-gold" />
+                  <span className="font-semibold">Learn More</span>
                 </div>
-              ))}
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
-
-
-
-      {/* Call to Action */}
-      <div className="mt-16 text-center">
-        <div className="bg-gradient-to-r from-[#E53935] to-red-600 text-white p-8 rounded-2xl">
-          <h3 className="text-2xl font-bold mb-4">Ready to Be Part of Our Success Story?</h3>
-          <p className="text-lg mb-6 opacity-90">
-            Join hundreds of satisfied families who have found their dream homes with us
-          </p>
-          <button className="bg-white text-[#E53935] px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200">
-            Explore Our Projects
-          </button>
+          </motion.div>
         </div>
       </div>
-    </div>
-  </section>
-);
+    </motion.div>
+  );
+
+  return (
+    <section className="min-h-screen pt-24 pb-12 bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 text-[#181818] dark:text-white transition-colors duration-300">
+      <Helmet>
+        <title>Milestones & Achievements - Ganesh Yeole Builders | Our Journey of Excellence</title>
+        <meta name="description" content="Explore our journey of excellence through key milestones and achievements from 2023-2025. Discover how we've grown and succeeded in real estate development." />
+      </Helmet>
+
+      <div className="max-w-7xl mx-auto px-4">
+        {/* Enhanced Hero Section */}
+        <motion.div 
+          initial={{ opacity: 0, y: -50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-20"
+        >
+          <div className="relative">
+            {/* Background Decorative Elements */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-96 h-96 bg-gradient-to-br from-gold/10 via-blue-500/10 to-green-500/10 rounded-full blur-3xl"></div>
+            </div>
+            
+            <h1 className="relative text-5xl md:text-6xl font-bold bg-gradient-to-r from-[#E53935] via-gold to-orange-500 bg-clip-text text-transparent mb-8">
+              Our Journey of Excellence
+            </h1>
+            
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: "200px" }}
+              transition={{ duration: 1, delay: 0.5 }}
+              className="h-1 bg-gradient-to-r from-[#E53935] via-gold to-orange-500 mx-auto mb-8 rounded-full"
+            ></motion.div>
+            
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
+              Celebrating milestones, achievements, and the trust of <span className="font-bold text-[#E53935]">500+ families</span> across <span className="font-bold text-gold">16+ years</span> of dedicated service
+            </p>
+          </div>
+        </motion.div>
+
+        {/* Year Navigation */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="flex justify-center mb-16"
+        >
+          <div className="flex space-x-4 bg-white dark:bg-gray-800 p-2 rounded-2xl shadow-lg">
+            {milestones.map((yearData) => (
+              <button
+                key={yearData.year}
+                onClick={() => setActiveYear(yearData.year)}
+                className={`px-6 py-3 rounded-xl font-bold transition-all duration-300 ${
+                  activeYear === yearData.year
+                    ? 'bg-gradient-to-r from-gold to-orange-500 text-white shadow-lg scale-105'
+                    : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                }`}
+              >
+                {yearData.year}
+              </button>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Enhanced Timeline */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          className="relative"
+        >
+          {/* Main Timeline Line */}
+          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-gold via-blue-500 to-green-500 h-full hidden lg:block rounded-full shadow-lg"></div>
+
+          {milestones.map((yearData, yearIndex) => (
+            <div key={yearData.year} className={`mb-20 ${activeYear === yearData.year ? 'block' : 'hidden'}`}>
+              {/* Enhanced Year Header */}
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+                className="text-center mb-16"
+              >
+                <div className="relative inline-block">
+                  <div className="absolute inset-0 bg-gradient-to-r from-gold to-orange-500 rounded-full blur-lg opacity-50"></div>
+                  <div className="relative bg-gradient-to-r from-gold to-orange-500 text-white px-12 py-6 rounded-full text-3xl font-bold shadow-2xl">
+                    {yearData.year}
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Achievements Grid */}
+              <div className="space-y-16">
+                {yearData.achievements.map((achievement, achievementIndex) => (
+                  <AchievementCard 
+                    key={achievement.title}
+                    achievement={achievement}
+                    index={achievementIndex}
+                    isEven={achievementIndex % 2 === 0}
+                  />
+                ))}
+              </div>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
 
 export default Milestones;

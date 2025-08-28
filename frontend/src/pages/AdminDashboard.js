@@ -7,7 +7,7 @@ const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-20">
       <Helmet>
         <title>Admin Dashboard | Ganesh Yeole Builders and Developers</title>
         <meta name="description" content="Admin dashboard for managing properties, users, and content for Ganesh Yeole Builders and Developers." />

@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { useSwipe } from '../hooks/useSwipe';
 
 const HeroSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -28,41 +29,102 @@ const HeroSection = () => {
     }
   ];
 
+  const nextSlide = useCallback(() => {
+    setIsAutoPlaying(false); // Pause auto-play when user interacts
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselData.length);
+    // Resume auto-play after 3 seconds
+    setTimeout(() => setIsAutoPlaying(true), 3000);
+  }, [carouselData.length]);
+
+  const prevSlide = useCallback(() => {
+    setIsAutoPlaying(false); // Pause auto-play when user interacts
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + carouselData.length) % carouselData.length);
+    // Resume auto-play after 3 seconds
+    setTimeout(() => setIsAutoPlaying(true), 3000);
+  }, [carouselData.length]);
+
+  const goToSlide = useCallback((index) => {
+    setIsAutoPlaying(false); // Pause auto-play when user interacts
+    setCurrentIndex(index);
+    // Resume auto-play after 3 seconds
+    setTimeout(() => setIsAutoPlaying(true), 3000);
+  }, []);
+
+  // Swipe support
+  const { elementRef } = useSwipe({
+    onSwipeLeft: () => nextSlide(),
+    onSwipeRight: () => prevSlide(),
+    minSwipeDistance: 50
+  });
+
   useEffect(() => {
     if (!isAutoPlaying) return;
 
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselData.length);
-    }, 5000); // Change slide every 5 seconds
+    }, 6000); // Change slide every 6 seconds for smoother experience
 
     return () => clearInterval(interval);
   }, [isAutoPlaying, carouselData.length]);
 
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselData.length);
-  };
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      switch (e.key) {
+        case 'ArrowLeft':
+          e.preventDefault();
+          prevSlide();
+          break;
+        case 'ArrowRight':
+          e.preventDefault();
+          nextSlide();
+          break;
+        case ' ':
+          e.preventDefault();
+          setIsAutoPlaying(prev => !prev);
+          break;
+        case 'Home':
+          e.preventDefault();
+          goToSlide(0);
+          break;
+        case 'End':
+          e.preventDefault();
+          goToSlide(carouselData.length - 1);
+          break;
+        default:
+          break;
+      }
+    };
 
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + carouselData.length) % carouselData.length);
-  };
+    const element = elementRef.current;
+    if (element) {
+      element.addEventListener('keydown', handleKeyDown);
+      element.setAttribute('tabindex', '0');
+      element.setAttribute('role', 'region');
+      element.setAttribute('aria-label', 'Image carousel');
+    }
 
-  const goToSlide = (index) => {
-    setCurrentIndex(index);
-  };
+    return () => {
+      if (element) {
+        element.removeEventListener('keydown', handleKeyDown);
+      }
+    };
+  }, [carouselData.length, elementRef, nextSlide, prevSlide, goToSlide]);
 
   return (
     <motion.section
+      ref={elementRef}
       id="home"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.6 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
-      className="relative h-screen overflow-hidden w-full"
+      className="relative h-screen overflow-hidden w-full touch-pan-y"
     >
              {/* Carousel Background */}
        <div className="absolute inset-0 overflow-hidden">
          <div 
-           className="flex transition-transform duration-1000 ease-in-out h-full w-full"
+           className="flex carousel-smooth h-full w-full carousel-container"
            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
          >
            {carouselData.map((slide, index) => (
@@ -70,7 +132,7 @@ const HeroSection = () => {
                <img 
                  src={slide.image}
                  alt={slide.title}
-                 className={`w-full h-full object-center ${
+                 className={`carousel-image w-full h-full object-center ${
                    slide.id === 1 ? 'object-cover' : 'sm:object-contain md:object-cover lg:object-cover'
                  }`}
                  style={{
@@ -114,13 +176,13 @@ const HeroSection = () => {
              {/* Navigation Arrows */}
                <button
           onClick={prevSlide}
-          className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-2 sm:p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110 z-30"
+          className="carousel-button absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-2 sm:p-3 rounded-full shadow-lg z-30"
         >
           <FaChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
         <button
           onClick={nextSlide}
-          className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-2 sm:p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110 z-30"
+          className="carousel-button absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-2 sm:p-3 rounded-full shadow-lg z-30"
         >
           <FaChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
@@ -139,9 +201,9 @@ const HeroSection = () => {
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-200 ${
+              className={`carousel-dot w-2 h-2 sm:w-3 sm:h-3 rounded-full ${
                 index === currentIndex 
-                  ? 'bg-yellow-500 scale-125' 
+                  ? 'bg-yellow-500 active' 
                   : 'bg-white/50 hover:bg-white/70 dark:bg-gray-300/50 dark:hover:bg-gray-200/70'
               }`}
             />

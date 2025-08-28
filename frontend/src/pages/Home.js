@@ -1,13 +1,11 @@
 import React from 'react';
 import HeroSection from '../components/HeroSection';
-import AmenitiesSection from '../components/AmenitiesSection';
 import LocationSection from '../components/LocationSection';
 import ContactForm from '../components/ContactForm';
 import StatsSection from '../components/StatsSection';
 import ProjectsSection from '../components/ProjectsSection';
 import AboutSection from '../components/AboutSection';
 import AwardsSection from '../components/AwardsSection';
-import Testimonials from '../components/Testimonials';
 import Milestones from '../pages/Milestones';
 import { Helmet } from 'react-helmet';
 
@@ -15,7 +13,7 @@ import { Helmet } from 'react-helmet';
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-white dark:bg-[#181818] text-[#181818] dark:text-white transition-colors duration-300">
+    <div className="min-h-screen bg-white dark:bg-[#181818] text-[#181818] dark:text-white transition-colors duration-300 pt-20">
       <Helmet>
         <title>Ganesh Yeole Builders and Developers | Premium Properties in Mumbai, Pune & Nashik</title>
         <meta name="description" content="Discover premium properties in Mumbai, Pune, and Nashik. Luxury apartments, villas, and commercial spaces with world-class amenities. Find your dream home with Ganesh Yeole Builders and Developers." />
@@ -63,44 +61,38 @@ const Home = () => {
           }
         `}</script>
       </Helmet>
+      
       {/* 1. Hero Section (Carousel) */}
       <HeroSection />
       
-      {/* 2. Statistics Section */}
+      {/* 2. Statistics Section (Counting Numbers) */}
       <StatsSection />
       
-      {/* 3. Ongoing Projects Section */}
+      {/* 3. Our Projects Section */}
       <div id="projects" data-aos="fade-up">
         <ProjectsSection />
       </div>
       
-      {/* 4. Amenities Section */}
-      <AmenitiesSection />
-      
-      {/* 5. Awards and Recognition Section */}
-      <AwardsSection />
-      
-      {/* 5. Milestones Section */}
-      <div id="milestones" data-aos="fade-up">
-        <Milestones />
-      </div>
-      
-      {/* 6. About Us Section */}
+      {/* 4. About Us Section */}
       <div id="about" data-aos="fade-up">
         <AboutSection />
       </div>
       
-      {/* 7. Testimonials Section */}
-      <div id="testimonials" data-aos="fade-up">
-        <Testimonials />
+      {/* 5. Journey/Milestones Section */}
+      <div id="milestones" data-aos="fade-up">
+        <Milestones />
       </div>
       
-      {/* 8. Location Section */}
+      {/* 6. Awards and Recognition Section */}
+      <AwardsSection />
+      
+      {/* 7. Location Section */}
       <LocationSection />
       
-      {/* 9. Get in Touch Form */}
+      {/* 8. Contact Form */}
       <ContactForm />
-      {/* Add AboutSection, AmenitiesSection, AwardsSection, ContactForm, etc. here as you create them */}
+      
+      {/* Footer is handled by MainLayout component */}
     </div>
   );
 };

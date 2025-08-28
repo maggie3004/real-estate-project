@@ -1,12 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 const stats = [
-  { label: 'Years Experience', value: 35, suffix: '+' },
+  { label: 'Years of Legacy', value: 20, suffix: '+' },
   { label: 'Projects Completed', value: 25, suffix: '+' },
-  { label: 'Happy Families', value: 500, suffix: '+' },
-  { label: 'Years of Excellence', value: 16, suffix: '+' },
+  { label: 'Homes Delivered', value: 500, suffix: '+' },
   { label: 'Customer Satisfaction', value: 100, suffix: '%' },
-  { label: 'Families Served', value: 800, suffix: '+' },
   { label: 'Sq. Ft. Developed', value: 1, suffix: 'M+' },
   { label: 'Awards Won', value: 5, suffix: '+' },
 ];
@@ -77,7 +75,7 @@ const StatsSection = () => {
 
   const formatValue = (value, stat) => {
     if (stat.label === 'Sq. Ft. Developed') {
-      return `${value.toFixed(1)}${stat.suffix}`;
+      return `${value}${stat.suffix}`;
     }
     return `${value}${stat.suffix}`;
   };
@@ -94,7 +92,7 @@ const StatsSection = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {stats.map((stat, idx) => (
             <div 
               key={idx} 

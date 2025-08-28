@@ -30,6 +30,7 @@ const Sustainability = lazy(() => import('./pages/Sustainability'));
 const Milestones = lazy(() => import('./pages/Milestones'));
 const Contact = lazy(() => import('./pages/Contact'));
 const Events = lazy(() => import('./pages/Events'));
+const AboutNashik = lazy(() => import('./pages/AboutNashik'));
 const ShreeGaneshParkPhaseII = lazy(() => import('./pages/ShreeGaneshParkPhaseII'));
 const ShreeGaneshParkPhaseI = lazy(() => import('./pages/ShreeGaneshParkPhaseI'));
 const ShreeGaneshHeights = lazy(() => import('./pages/ShreeGaneshHeights'));
@@ -126,6 +127,7 @@ function App() {
                           <Route path="/testimonials" element={<Testimonials />} />
                           <Route path="/contact" element={<Contact />} />
                           <Route path="/events" element={<Events />} />
+                          <Route path="/about-nashik" element={<AboutNashik />} />
                           <Route path="/ShreeGaneshParkPhaseII" element={<ShreeGaneshParkPhaseII />} />
                           <Route path="/ShreeGaneshParkPhaseI" element={<ShreeGaneshParkPhaseI />} />
                           <Route path="/ShreeGaneshHeights" element={<ShreeGaneshHeights />} />

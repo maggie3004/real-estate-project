@@ -120,7 +120,7 @@ export default function AddProperty() {
           }
         `}</script>
       </Helmet>
-      <div className="max-w-2xl mx-auto p-6">
+      <div className="max-w-2xl mx-auto p-6 pt-24">
         <h1 className="text-3xl font-bold mb-6">Add New Property</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <input name="title" value={form.title} onChange={handleChange} placeholder="Title" className="w-full p-2 border rounded" required />

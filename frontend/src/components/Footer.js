@@ -1,13 +1,13 @@
 import React from 'react';
 import logo from '../assets/logo.png';
-import { FaLinkedin, FaFacebook, FaInstagram, FaYoutube, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaBuilding, FaLeaf, FaAward } from 'react-icons/fa';
+import { FaLinkedin, FaFacebook, FaInstagram, FaYoutube, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 
 function Footer() {
   return (
-    <footer className="w-full bg-[#181818] text-gray-100 pt-8 pb-4 px-4 mt-8 border-t border-gray-800">
+    <footer className="w-full bg-[#181818] text-gray-100 pt-6 pb-3 px-4 mt-8 border-t border-gray-800">
       <div className="max-w-7xl mx-auto">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-4">
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
@@ -38,7 +38,7 @@ function Footer() {
             <h3 className="text-base font-semibold text-white border-b border-gold pb-1">Quick Links</h3>
             <ul className="space-y-2 text-gray-300 text-sm">
               <li><a href="/about" className="hover:text-gold transition-colors duration-200">About Us</a></li>
-              <li><a href="/projects" className="hover:text-gold transition-colors duration-200">Our Projects</a></li>
+              <li><a href="/about-nashik" className="hover:text-gold transition-colors duration-200">About Nashik</a></li>
               <li><a href="/milestones" className="hover:text-gold transition-colors duration-200">Milestones</a></li>
               <li><a href="/awards" className="hover:text-gold transition-colors duration-200">Awards & Events</a></li>
               <li><a href="/sustainability" className="hover:text-gold transition-colors duration-200">Sustainability</a></li>
@@ -68,33 +68,11 @@ function Footer() {
             </div>
           </div>
 
-          {/* About Nashik */}
-          <div className="space-y-4">
-            <h3 className="text-base font-semibold text-white border-b border-gold pb-1">About Nashik</h3>
-            <div className="space-y-3 text-gray-300">
-              <p className="leading-relaxed text-sm">
-                Nashik, the "Wine Capital of India," is a rapidly growing city in Maharashtra known for its spiritual significance, educational institutions, and emerging IT sector.
-              </p>
-              <div className="space-y-1.5 text-xs">
-                <div className="flex items-center gap-2">
-                  <FaBuilding className="text-gold" />
-                  <span>Fastest Growing Real Estate Market</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <FaLeaf className="text-gold" />
-                  <span>Pleasant Climate & Green Environment</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <FaAward className="text-gold" />
-                  <span>Excellent Connectivity & Infrastructure</span>
-                </div>
-              </div>
-            </div>
-          </div>
+
         </div>
 
         {/* Brand Logos Section */}
-        <div className="border-t border-gray-700 pt-4 mb-4">
+        <div className="border-t border-gray-700 pt-3 mb-3">
           <h3 className="text-base font-semibold text-white text-center mb-4">Our Trusted Partners & Certifications</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 items-center">
             {/* Sample Brand Logos - Replace with actual logos */}
@@ -122,7 +100,7 @@ function Footer() {
 
 
         {/* Bottom Footer */}
-        <div className="border-t border-gray-700 pt-4">
+        <div className="border-t border-gray-700 pt-3">
           <div className="flex flex-col md:flex-row items-center justify-between gap-3">
             <div className="text-xs text-gray-400">
               &copy; {new Date().getFullYear()} Ganesh Yeole Builders and Developers. All rights reserved.
