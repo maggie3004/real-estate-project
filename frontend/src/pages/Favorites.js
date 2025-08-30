@@ -121,7 +121,7 @@ const Favorites = () => {
       <div className="min-h-screen bg-gray-50 pt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="text-center py-12">
-            <div className="w-12 h-12 border-4 border-primary-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                            <div className="w-12 h-12 border-4 border-red-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
             <p className="text-gray-600">Loading your favorites...</p>
           </div>
         </div>
@@ -205,7 +205,7 @@ const Favorites = () => {
                 placeholder="Search your favorites..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all duration-200"
               />
             </div>
 
@@ -216,7 +216,7 @@ const Favorites = () => {
               onClick={() => setShowFilters(!showFilters)}
               className={`px-6 py-3 rounded-xl font-semibold transition-all duration-200 flex items-center gap-2 ${
                 showFilters 
-                  ? 'bg-primary-600 text-white' 
+                  ? 'bg-red-600 text-white' 
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
@@ -230,13 +230,13 @@ const Favorites = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={exportFavorites}
-                className="px-4 py-3 bg-green-600 text-white rounded-xl font-semibold hover:bg-green-700 transition-colors duration-200 flex items-center gap-2"
+                className="px-4 py-3 bg-red-600 text-white rounded-xl font-semibold hover:bg-red-700 transition-colors duration-200 flex items-center gap-2"
               >
                 <FiDownload className="w-4 h-4" />
                 Export
               </motion.button>
               
-              <label className="px-4 py-3 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-colors duration-200 flex items-center gap-2 cursor-pointer">
+                              <label className="px-4 py-3 bg-gold-600 text-white rounded-xl font-semibold hover:bg-gold-700 transition-colors duration-200 flex items-center gap-2 cursor-pointer">
                 <FiUpload className="w-4 h-4" />
                 Import
                 <input
@@ -265,7 +265,7 @@ const Favorites = () => {
                     <select
                       value={filters.type}
                       onChange={(e) => handleFilterChange('type', e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all duration-200"
                     >
                       <option value="all">All Types</option>
                       <option value="apartment">Apartment</option>
@@ -283,7 +283,7 @@ const Favorites = () => {
                       placeholder="Search location"
                       value={filters.location}
                       onChange={(e) => handleFilterChange('location', e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all duration-200"
                     />
                   </div>
 
@@ -295,7 +295,7 @@ const Favorites = () => {
                       placeholder="Min Price"
                       value={filters.minPrice}
                       onChange={(e) => handleFilterChange('minPrice', e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all duration-200"
                     />
                   </div>
 
@@ -307,7 +307,7 @@ const Favorites = () => {
                       placeholder="Max Price"
                       value={filters.maxPrice}
                       onChange={(e) => handleFilterChange('maxPrice', e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all duration-200"
                     />
                   </div>
                 </div>
@@ -334,7 +334,7 @@ const Favorites = () => {
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
-              className="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+              className="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all duration-200"
             >
               <option value="newest">Newest First</option>
               <option value="oldest">Oldest First</option>
@@ -350,7 +350,7 @@ const Favorites = () => {
                 onClick={() => setViewMode('grid')}
                 className={`p-2 transition-colors duration-200 ${
                   viewMode === 'grid' 
-                    ? 'bg-primary-600 text-white' 
+                    ? 'bg-red-600 text-white' 
                     : 'bg-white text-gray-600 hover:bg-gray-50'
                 }`}
               >
@@ -360,7 +360,7 @@ const Favorites = () => {
                 onClick={() => setViewMode('list')}
                 className={`p-2 transition-colors duration-200 ${
                   viewMode === 'list' 
-                    ? 'bg-primary-600 text-white' 
+                    ? 'bg-red-600 text-white' 
                     : 'bg-white text-gray-600 hover:bg-gray-50'
                 }`}
               >
@@ -418,7 +418,7 @@ const Favorites = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => window.history.back()}
-                className="bg-primary-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary-700 transition-colors duration-200"
+                className="bg-red-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-red-700 transition-colors duration-200"
               >
                 Browse Properties
               </motion.button>
@@ -427,7 +427,7 @@ const Favorites = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={clearFilters}
-                className="bg-primary-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary-700 transition-colors duration-200"
+                className="bg-red-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-red-700 transition-colors duration-200"
               >
                 Clear All Filters
               </motion.button>

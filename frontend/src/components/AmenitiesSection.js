@@ -34,7 +34,7 @@ const AmenitiesSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.8 }}
           transition={{ duration: 0.8, delay: 0.1, ease: 'easeOut' }}
-          className="text-4xl font-playfair font-bold text-primary-700 dark:text-gold mb-8 text-center"
+          className="text-4xl font-playfair font-bold text-black mb-8 text-center"
         >
           Amenities
         </motion.h2>
@@ -46,9 +46,9 @@ const AmenitiesSection = () => {
           className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8 justify-items-center"
         >
           {amenities.map((amenity) => (
-            <div key={amenity} className="flex flex-col items-center bg-white dark:bg-gray-900 rounded-2xl shadow-lg border border-gold/30 p-6 w-full max-w-xs text-center hover:shadow-xl transition-all duration-200 scale-100 hover:scale-105 focus:scale-105">
+            <div key={amenity} className="flex flex-col items-center bg-white rounded-2xl shadow-lg border border-gold/30 p-6 w-full max-w-xs text-center hover:shadow-xl transition-all duration-200 scale-100 hover:scale-105 focus:scale-105">
               {amenityIcons[amenity] || <FaCheckCircle className="text-gold w-8 h-8 mb-2" />}
-              <span className="font-montserrat text-lg font-semibold text-white">{amenity}</span>
+              <span className="font-montserrat text-lg font-semibold text-black">{amenity}</span>
             </div>
           ))}
         </motion.div>

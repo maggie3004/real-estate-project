@@ -25,7 +25,7 @@ const StatsSection = () => (
         textAlign: 'center',
         transition: 'transform 0.2s',
       }}>
-        <div style={{ fontSize: '2.5rem', fontWeight: 700, color: 'var(--primary-color)' }}>{stat.value}</div>
+                        <div style={{ fontSize: '2.5rem', fontWeight: 700, color: 'var(--red-color)' }}>{stat.value}</div>
         <div style={{ fontSize: '1.1rem', color: '#555', marginTop: 8 }}>{stat.label}</div>
       </div>
     ))}

@@ -173,7 +173,7 @@ const Blog = () => {
       <div className="min-h-screen bg-gray-50 pt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <div className="text-center py-12">
-            <div className="w-12 h-12 border-4 border-primary-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                            <div className="w-12 h-12 border-4 border-red-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
             <p className="text-gray-600">Loading blog posts...</p>
           </div>
         </div>
@@ -237,7 +237,7 @@ const Blog = () => {
                   placeholder="Search blog posts..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all duration-200"
                 />
               </div>
 
@@ -247,7 +247,7 @@ const Blog = () => {
                   onClick={() => setViewMode('grid')}
                   className={`p-3 transition-colors duration-200 ${
                     viewMode === 'grid' 
-                      ? 'bg-primary-600 text-white' 
+                      ? 'bg-red-600 text-white' 
                       : 'bg-white text-gray-600 hover:bg-gray-50'
                   }`}
                 >
@@ -257,7 +257,7 @@ const Blog = () => {
                   onClick={() => setViewMode('list')}
                   className={`p-3 transition-colors duration-200 ${
                     viewMode === 'list' 
-                      ? 'bg-primary-600 text-white' 
+                      ? 'bg-red-600 text-white' 
                       : 'bg-white text-gray-600 hover:bg-gray-50'
                   }`}
                 >
@@ -276,7 +276,7 @@ const Blog = () => {
                   onClick={() => setSelectedCategory(category.id)}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                     selectedCategory === category.id
-                      ? 'bg-primary-600 text-white'
+                      ? 'bg-red-600 text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
@@ -331,7 +331,7 @@ const Blog = () => {
                   setSearchQuery('');
                   setSelectedCategory('all');
                 }}
-                className="bg-primary-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary-700 transition-colors duration-200"
+                className="bg-red-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-red-700 transition-colors duration-200"
               >
                 View All Posts
               </button>
@@ -360,7 +360,7 @@ const Blog = () => {
                   onClick={() => handlePageChange(page)}
                   className={`px-4 py-2 rounded-lg font-medium transition-colors duration-200 ${
                     currentPage === page
-                      ? 'bg-primary-600 text-white'
+                      ? 'bg-red-600 text-white'
                       : 'border border-gray-300 text-gray-700 hover:bg-gray-50'
                   }`}
                 >

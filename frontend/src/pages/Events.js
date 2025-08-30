@@ -159,7 +159,7 @@ const Events = () => {
       <div className="max-w-7xl mx-auto px-4">
         {/* Hero Section */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#E53935] mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold text-black mb-6">
             Our Events & Celebrations
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -169,9 +169,9 @@ const Events = () => {
 
         {/* Upcoming Events */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center text-[#E53935] mb-12">
-            Upcoming Events
-          </h2>
+                  <h2 className="text-3xl font-bold text-center text-black mb-12">
+          Upcoming Events
+        </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {upcomingEvents.map((event) => (
               <div key={event.id} className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
@@ -182,7 +182,7 @@ const Events = () => {
                     className="w-full h-48 object-cover"
                   />
                   <div className="absolute top-4 left-4">
-                    <span className="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                                         <span className="bg-gold-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
                       {event.status}
                     </span>
                   </div>
@@ -193,7 +193,7 @@ const Events = () => {
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-[#E53935] mb-3">
+                  <h3 className="text-xl font-bold text-black mb-3">
                     {event.title}
                   </h3>
                   <div className="space-y-2 mb-4">
@@ -219,7 +219,7 @@ const Events = () => {
                   </p>
                   <button
                     onClick={() => handleEventClick(event)}
-                    className="w-full bg-gradient-to-r from-[#E53935] to-red-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-red-600 hover:to-red-700 transition-all duration-200"
+                    className="w-full bg-gradient-to-r from-red-600 to-red-700 text-white py-3 px-6 rounded-lg font-semibold hover:from-red-700 hover:to-red-800 transition-all duration-200"
                   >
                     {event.registrationRequired ? 'Register Now' : 'Learn More'}
                   </button>
@@ -231,7 +231,7 @@ const Events = () => {
 
         {/* Past Events */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center text-[#E53935] mb-12">
+          <h2 className="text-3xl font-bold text-center text-black mb-12">
             Past Events
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -255,7 +255,7 @@ const Events = () => {
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-[#E53935] mb-3">
+                  <h3 className="text-xl font-bold text-black mb-3">
                     {event.title}
                   </h3>
                   <div className="space-y-2 mb-4">
@@ -280,7 +280,7 @@ const Events = () => {
                     {event.description}
                   </p>
                   <div className="text-center">
-                    <span className="text-green-600 font-semibold">✓ Event Completed</span>
+                                         <span className="text-gold-600 font-semibold">✓ Event Completed</span>
                   </div>
                 </div>
               </div>
@@ -290,24 +290,24 @@ const Events = () => {
 
         {/* Event Statistics */}
         <div className="bg-gradient-to-r from-gold-50 to-orange-50 dark:from-gold-900/20 dark:to-orange-900/20 rounded-3xl p-12 mb-16">
-          <h2 className="text-3xl font-bold text-center text-[#E53935] mb-8">
-            Event Statistics
-          </h2>
+                  <h2 className="text-3xl font-bold text-center text-black mb-8">
+          Event Statistics
+        </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="text-4xl md:text-5xl font-bold text-gold mb-2">15+</div>
               <div className="text-gray-600 dark:text-gray-300 font-medium">Events Organized</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">2000+</div>
+              <div className="text-4xl md:text-5xl font-bold text-red-600 mb-2">2000+</div>
               <div className="text-gray-600 dark:text-gray-300 font-medium">Total Attendees</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-green-600 mb-2">6</div>
+              <div className="text-4xl md:text-5xl font-bold text-gold-600 mb-2">6</div>
               <div className="text-gray-600 dark:text-gray-300 font-medium">Event Categories</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-purple-600 mb-2">98%</div>
+              <div className="text-4xl md:text-5xl font-bold text-gold-600 mb-2">98%</div>
               <div className="text-gray-600 dark:text-gray-300 font-medium">Satisfaction Rate</div>
             </div>
           </div>
@@ -315,12 +315,12 @@ const Events = () => {
 
         {/* Call to Action */}
         <div className="text-center">
-          <div className="bg-gradient-to-r from-[#E53935] to-red-600 text-white p-8 rounded-2xl">
+          <div className="bg-gradient-to-r from-red-600 to-red-700 text-white p-8 rounded-2xl">
             <h3 className="text-2xl font-bold mb-4">Stay Updated with Our Events</h3>
             <p className="text-lg mb-6 opacity-90">
               Subscribe to our newsletter to get notified about upcoming events and special offers
             </p>
-            <button className="bg-white text-[#E53935] px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200">
+            <button className="bg-red-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-200">
               Subscribe to Newsletter
             </button>
           </div>
@@ -332,7 +332,7 @@ const Events = () => {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 max-w-md w-full max-h-[90vh] overflow-y-auto">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="text-2xl font-bold text-[#E53935]">Event Registration</h3>
+              <h3 className="text-2xl font-bold text-black">Event Registration</h3>
               <button
                 onClick={() => setShowRegistration(false)}
                 className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 text-2xl"
@@ -372,7 +372,7 @@ const Events = () => {
               <div className="flex gap-4 pt-4">
                 <button
                   onClick={() => handleRegister(selectedEvent.id)}
-                  className="flex-1 bg-gradient-to-r from-[#E53935] to-red-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-red-600 hover:to-red-700 transition-all duration-200"
+                  className="flex-1 bg-gradient-to-r from-red-600 to-red-700 text-white py-3 px-6 rounded-lg font-semibold hover:from-red-700 hover:to-red-800 transition-all duration-200"
                 >
                   Confirm Registration
                 </button>

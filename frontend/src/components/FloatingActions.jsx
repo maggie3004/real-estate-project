@@ -14,19 +14,19 @@ const FloatingActions = () => {
     { 
       icon: <FaPhone size={20} />, 
       label: 'Call', 
-      color: 'bg-blue-500 hover:bg-blue-600', 
+      color: 'bg-[#FFD700] hover:bg-[#B22222] text-black hover:text-white', 
       href: 'tel:+919876543210'
     },
     { 
       icon: <FaDownload size={20} />, 
       label: 'Download', 
-      color: 'bg-purple-500 hover:bg-purple-600', 
+      color: 'bg-[#B22222] hover:bg-[#FFD700] text-white hover:text-[#B22222]', 
       onClick: () => window.open('/Shree Ganesh Park E- Brochure.pdf', '_blank')
     },
     { 
       icon: <FaEnvelope size={20} />, 
       label: 'Enquiry', 
-      color: 'bg-red-500 hover:bg-red-600', 
+      color: 'bg-[#B22222] hover:bg-[#FFD700] text-white hover:text-[#B22222]', 
       onClick: () => {
         // You can implement your enquiry form logic here
         console.log('Enquiry clicked');
@@ -35,7 +35,7 @@ const FloatingActions = () => {
     { 
       icon: <FaComments size={20} />, 
       label: 'Chatbot', 
-      color: 'bg-yellow-500 hover:bg-yellow-600', 
+      color: 'bg-[#FFD700] hover:bg-[#B22222] text-black hover:text-white', 
       onClick: () => {
         // You can implement your chatbot toggle logic here
         console.log('Chatbot clicked');

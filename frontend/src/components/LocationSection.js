@@ -27,7 +27,7 @@ const LocationSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.8 }}
           transition={{ duration: 0.8, delay: 0.1, ease: 'easeOut' }}
-          className="text-4xl font-playfair font-bold text-primary-700 dark:text-gold mb-8 text-center"
+          className="text-4xl font-playfair font-bold text-black mb-8 text-center"
         >
           Location
         </motion.h2>
@@ -61,7 +61,7 @@ const LocationSection = () => {
             transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
             className="w-full md:w-1/3 text-center md:text-left"
           >
-            <h3 className="text-2xl font-montserrat font-bold text-primary-700 dark:text-gold mb-4">Project Address</h3>
+                            <h3 className="text-2xl font-montserrat font-bold text-black mb-4">Project Address</h3>
             <p className="text-lg text-gray-700 dark:text-gray-200 font-semibold mb-2">{address}</p>
             <p className="text-base text-gray-500 dark:text-gray-400">(For directions, click on the map)</p>
           </motion.div>

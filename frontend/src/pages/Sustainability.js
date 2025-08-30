@@ -113,7 +113,7 @@ const Sustainability = () => (
     <div className="max-w-7xl mx-auto px-4">
       {/* Hero Section */}
       <div className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold text-[#E53935] mb-6">
+        <h1 className="text-4xl md:text-5xl font-bold text-black mb-6">
           Building a Sustainable Future
         </h1>
         <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -123,24 +123,24 @@ const Sustainability = () => (
 
       {/* Sustainability Initiatives */}
       <div className="mb-20">
-        <h2 className="text-3xl font-bold text-center text-[#E53935] mb-12">
+        <h2 className="text-3xl font-bold text-center text-black mb-12">
           Our Green Building Initiatives
         </h2>
         <div className="grid md:grid-cols-2 gap-8">
           {sustainabilityInitiatives.map((initiative) => (
-            <div key={initiative.id} className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-2xl p-8 shadow-lg">
+                         <div key={initiative.id} className="bg-gradient-to-br from-gold-50 to-gold-100 dark:from-gold-900/20 dark:to-gold-800/20 rounded-2xl p-8 shadow-lg">
               <div className="flex items-start gap-6">
                 <div className="flex-shrink-0">
-                  <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center">
+                                     <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center">
                     <initiative.icon className="text-white text-2xl" />
                   </div>
                 </div>
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-3">
-                    <h3 className="text-xl font-bold text-[#E53935]">
+                    <h3 className="text-xl font-bold text-black">
                       {initiative.title}
                     </h3>
-                    <span className="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                                         <span className="bg-red-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
                       {initiative.status}
                     </span>
                   </div>
@@ -161,7 +161,7 @@ const Sustainability = () => (
 
       {/* CSR Initiatives */}
       <div className="mb-20">
-        <h2 className="text-3xl font-bold text-center text-[#E53935] mb-12">
+        <h2 className="text-3xl font-bold text-center text-black mb-12">
           Corporate Social Responsibility
         </h2>
         <div className="grid lg:grid-cols-2 gap-8">
@@ -180,7 +180,7 @@ const Sustainability = () => (
                 </div>
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-bold text-[#E53935] mb-3">
+                <h3 className="text-xl font-bold text-black mb-3">
                   {initiative.title}
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
@@ -214,10 +214,10 @@ const Sustainability = () => (
 
       {/* Impact Metrics */}
       <div className="mb-20">
-        <h2 className="text-3xl font-bold text-center text-[#E53935] mb-12">
+        <h2 className="text-3xl font-bold text-center text-black mb-12">
           Our Environmental Impact
         </h2>
-        <div className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 rounded-3xl p-12">
+                 <div className="bg-gradient-to-r from-gold-50 to-red-50 dark:from-gold-900/20 dark:to-red-900/20 rounded-3xl p-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {impactMetrics.map((metric, index) => (
               <div key={index} className="text-center">
@@ -238,33 +238,33 @@ const Sustainability = () => (
 
       {/* Green Building Features */}
       <div className="mb-20">
-        <h2 className="text-3xl font-bold text-center text-[#E53935] mb-12">
+        <h2 className="text-3xl font-bold text-center text-black mb-12">
           Green Building Features
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
           <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg text-center">
-            <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                         <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
               <FaLightbulb className="text-white text-2xl" />
             </div>
-            <h3 className="text-xl font-bold text-[#E53935] mb-3">Energy Efficient</h3>
+            <h3 className="text-xl font-bold text-black mb-3">Energy Efficient</h3>
             <p className="text-gray-700 dark:text-gray-300">
               LED lighting, energy-efficient appliances, and smart home automation systems
             </p>
           </div>
           <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg text-center">
-            <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                         <div className="w-16 h-16 bg-gold-600 rounded-full flex items-center justify-center mx-auto mb-4">
               <FaWater className="text-white text-2xl" />
             </div>
-            <h3 className="text-xl font-bold text-[#E53935] mb-3">Water Conservation</h3>
+            <h3 className="text-xl font-bold text-black mb-3">Water Conservation</h3>
             <p className="text-gray-700 dark:text-gray-300">
               Low-flow fixtures, rainwater harvesting, and water recycling systems
             </p>
           </div>
           <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg text-center">
-            <div className="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                         <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
               <FaLeaf className="text-white text-2xl" />
             </div>
-            <h3 className="text-xl font-bold text-[#E53935] mb-3">Eco-Friendly Materials</h3>
+            <h3 className="text-xl font-bold text-black mb-3">Eco-Friendly Materials</h3>
             <p className="text-gray-700 dark:text-gray-300">
               Sustainable building materials, recycled content, and non-toxic finishes
             </p>
@@ -274,12 +274,12 @@ const Sustainability = () => (
 
       {/* Call to Action */}
       <div className="text-center">
-        <div className="bg-gradient-to-r from-green-600 to-blue-600 text-white p-8 rounded-2xl">
+                 <div className="bg-gradient-to-r from-red-600 to-gold-600 text-white p-8 rounded-2xl">
           <h3 className="text-2xl font-bold mb-4">Join Our Green Revolution</h3>
           <p className="text-lg mb-6 opacity-90">
             Be part of our sustainable development journey and contribute to a greener future
           </p>
-          <button className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200">
+                     <button className="bg-white text-red-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200">
             Learn More About Our Green Projects
           </button>
         </div>

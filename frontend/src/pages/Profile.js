@@ -45,9 +45,9 @@ export default function Profile() {
           <div><span className="font-semibold">Role:</span> {user.role}</div>
         </div>
         {user.role === 'admin' && (
-          <div className="mb-4 p-4 bg-blue-50 rounded">
-            <p className="font-semibold text-blue-700 mb-2">You are an admin.</p>
-            <Link to="/admin" className="text-blue-600 underline">Go to Admin Dashboard</Link>
+                          <div className="mb-4 p-4 bg-red-50 rounded">
+                  <p className="font-semibold text-red-700 mb-2">You are an admin.</p>
+                  <Link to="/admin" className="text-red-600 underline">Go to Admin Dashboard</Link>
           </div>
         )}
       </div>

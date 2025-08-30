@@ -34,24 +34,22 @@ const FloatingActions = ({ brochurePath, projectName }) => {
             href="https://wa.me/1234567890" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="bg-green-500 p-3 rounded-full shadow-lg hover:bg-green-600 transition-colors"
+                            className="bg-red-500 p-3 rounded-full shadow-lg hover:bg-red-600 transition-colors"
           >
             <FaWhatsapp className="text-white" size={24} />
           </a>
-          
           <a 
             href="tel:+911234567890" 
-            className="bg-blue-500 p-3 rounded-full shadow-lg hover:bg-blue-600 transition-colors"
+            className="bg-[#FFD700] p-3 rounded-full shadow-lg hover:bg-[#B22222] hover:text-white text-black transition-colors"
           >
-            <FiPhone className="text-white" size={24} />
+            <FiPhone className="text-black group-hover:text-white" size={24} />
           </a>
-
           <button 
             onClick={handleDownload}
-            className="bg-purple-500 p-3 rounded-full shadow-lg hover:bg-purple-600 transition-colors"
+            className="bg-[#B22222] p-3 rounded-full shadow-lg hover:bg-[#FFD700] hover:text-[#B22222] text-white transition-colors"
             disabled={!brochurePath}
           >
-            <FiDownload className="text-white" size={24} />
+            <FiDownload className="text-white group-hover:text-[#B22222]" size={24} />
           </button>
 
           {/* Add other buttons as needed */}

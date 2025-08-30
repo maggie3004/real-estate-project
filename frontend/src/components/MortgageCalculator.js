@@ -270,7 +270,7 @@ const MortgageCalculator = () => {
             
             <motion.div
               whileHover={{ scale: 1.02 }}
-              className="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-6 rounded-xl"
+                              className="bg-gradient-to-br from-red-500 to-red-600 text-white p-6 rounded-xl"
             >
               <h3 className="text-sm font-medium opacity-90">Total Interest</h3>
               <p className="text-2xl font-bold mt-1">{formatCurrency(totalInterest)}</p>

@@ -525,22 +525,22 @@ const ContactForm = ({ propertyId = null, propertyTitle = null }) => {
             <motion.button
               type="submit"
               disabled={isSubmitting}
-              className={`flex items-center px-8 py-3 rounded-lg font-semibold transition-colors ${
-                isSubmitting
-                  ? 'bg-gray-400 cursor-not-allowed'
-                  : 'bg-amber-500 hover:bg-amber-600 text-white'
-              }`}
+              className={`flex items-center px-8 py-3 rounded-lg font-semibold transition-colors border-2 focus:outline-none focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2
+                ${isSubmitting
+                  ? 'bg-gray-300 text-gray-500 cursor-not-allowed border-gray-300'
+                  : 'bg-[#B22222] text-white border-[#B22222] hover:bg-[#FFD700] hover:text-[#B22222] hover:border-[#FFD700]'}
+              `}
               whileHover={!isSubmitting ? { scale: 1.02 } : {}}
               whileTap={!isSubmitting ? { scale: 0.98 } : {}}
             >
               {isSubmitting ? (
                 <>
-                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-[#FFD700] mr-2"></div>
                   Sending...
                 </>
               ) : (
                 <>
-              Send Message
+                  Send Message
                   <FaArrowRight className="w-4 h-4 ml-2" />
                 </>
               )}

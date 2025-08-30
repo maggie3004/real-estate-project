@@ -30,7 +30,7 @@ const AdminDashboard = () => {
               onClick={() => setActiveTab('overview')}
               className={`px-4 py-2 rounded-lg font-medium transition-colors duration-200 ${
                 activeTab === 'overview'
-                  ? 'bg-primary-600 text-white'
+                  ? 'bg-red-600 text-white'
                   : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
               }`}
             >
@@ -40,7 +40,7 @@ const AdminDashboard = () => {
               onClick={() => setActiveTab('properties')}
               className={`px-4 py-2 rounded-lg font-medium transition-colors duration-200 ${
                 activeTab === 'properties'
-                  ? 'bg-primary-600 text-white'
+                  ? 'bg-red-600 text-white'
                   : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
               }`}
             >
@@ -50,7 +50,7 @@ const AdminDashboard = () => {
               onClick={() => setActiveTab('users')}
               className={`px-4 py-2 rounded-lg font-medium transition-colors duration-200 ${
                 activeTab === 'users'
-                  ? 'bg-primary-600 text-white'
+                  ? 'bg-red-600 text-white'
                   : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
               }`}
             >
@@ -60,7 +60,7 @@ const AdminDashboard = () => {
               onClick={() => setActiveTab('settings')}
               className={`px-4 py-2 rounded-lg font-medium transition-colors duration-200 ${
                 activeTab === 'settings'
-                  ? 'bg-primary-600 text-white'
+                  ? 'bg-red-600 text-white'
                   : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
               }`}
             >
@@ -77,30 +77,30 @@ const AdminDashboard = () => {
                 transition={{ duration: 0.5 }}
                 className="grid grid-cols-1 md:grid-cols-3 gap-6"
               >
-                <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg p-6 text-white">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-blue-100">Total Properties</p>
+                                 <div className="bg-gradient-to-r from-red-500 to-red-600 rounded-lg p-6 text-white">
+                   <div className="flex items-center justify-between">
+                     <div>
+                       <p className="text-red-100">Total Properties</p>
                       <p className="text-3xl font-bold">24</p>
                     </div>
                     <FaUsers className="text-4xl opacity-80" />
                   </div>
                 </div>
                 
-                <div className="bg-gradient-to-r from-green-500 to-green-600 rounded-lg p-6 text-white">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-green-100">Active Users</p>
+                                 <div className="bg-gradient-to-r from-gold-500 to-gold-600 rounded-lg p-6 text-white">
+                   <div className="flex items-center justify-between">
+                     <div>
+                       <p className="text-gold-100">Active Users</p>
                       <p className="text-3xl font-bold">156</p>
                     </div>
                     <FaChartLine className="text-4xl opacity-80" />
                   </div>
                 </div>
                 
-                <div className="bg-gradient-to-r from-purple-500 to-purple-600 rounded-lg p-6 text-white">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <p className="text-purple-100">Revenue</p>
+                                 <div className="bg-gradient-to-r from-gold-500 to-red-600 rounded-lg p-6 text-white">
+                   <div className="flex items-center justify-between">
+                     <div>
+                       <p className="text-gold-100">Revenue</p>
                       <p className="text-3xl font-bold">₹2.4M</p>
                     </div>
                     <FaCog className="text-4xl opacity-80" />

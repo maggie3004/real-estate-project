@@ -84,10 +84,10 @@ const Testimonials = () => {
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#E53935] mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-black mb-6">
             What Our Customers Say
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Don't just take our word for it. Hear from the families who have made their dreams come true with us.
           </p>
         </div>
@@ -131,7 +131,7 @@ const Testimonials = () => {
 
                 {/* Customer Info */}
                 <div className="space-y-2">
-                  <h4 className="text-xl font-bold text-[#E53935]">
+                  <h4 className="text-xl font-bold text-black">
                     {testimonials[activeIndex].name}
                   </h4>
                   <p className="text-gray-600 dark:text-gray-400 font-medium">
@@ -187,27 +187,27 @@ const Testimonials = () => {
             <div className="text-gray-600 dark:text-gray-300">Happy Families</div>
           </div>
           <div className="text-center p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg">
-            <div className="text-3xl font-bold text-blue-600 mb-2">4.9/5</div>
+                           <div className="text-3xl font-bold text-red-600 mb-2">4.9/5</div>
             <div className="text-gray-600 dark:text-gray-300">Average Rating</div>
           </div>
           <div className="text-center p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg">
-            <div className="text-3xl font-bold text-green-600 mb-2">98%</div>
+                           <div className="text-3xl font-bold text-gold-600 mb-2">98%</div>
             <div className="text-gray-600 dark:text-gray-300">Satisfaction Rate</div>
           </div>
           <div className="text-center p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg">
-            <div className="text-3xl font-bold text-purple-600 mb-2">25+</div>
+                           <div className="text-3xl font-bold text-red-600 mb-2">25+</div>
             <div className="text-gray-600 dark:text-gray-300">Projects Delivered</div>
           </div>
         </div>
 
         {/* Call to Action */}
         <div className="mt-16 text-center">
-          <div className="bg-gradient-to-r from-[#E53935] to-red-600 text-white p-8 rounded-2xl">
+          <div className="bg-gradient-to-r from-red-600 to-red-700 text-white p-8 rounded-2xl">
             <h3 className="text-2xl font-bold mb-4">Ready to Join Our Happy Family?</h3>
             <p className="text-lg mb-6 opacity-90">
               Be part of our success story and find your dream home today
             </p>
-            <button className="bg-white text-[#E53935] px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200">
+            <button className="bg-red-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-200">
               Schedule a Site Visit
             </button>
           </div>

@@ -69,14 +69,14 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 0.1, ease: 'easeOut' }}
           className="text-5xl md:text-6xl font-playfair font-bold mb-6 text-center"
         >
-          <span style={{ color: '#E53935' }}>Welcome to</span> <span className="block text-white font-playfair">Ganesh Yeole Builders and Developers</span>
+          <span className="text-red-600">Welcome to</span> <span className="block text-black font-playfair">Ganesh Yeole Builders and Developers</span>
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.8 }}
           transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-          className="text-xl md:text-2xl font-quicksand mb-8 max-w-2xl mx-auto text-gray-100 text-center"
+          className="text-xl md:text-2xl font-quicksand mb-8 max-w-2xl mx-auto text-gray-700 text-center"
         >
           Redefining luxury living with trust, quality, and prime locations.<br />Your dream home awaits in our landmark projects.
         </motion.p>
@@ -91,13 +91,13 @@ const HeroSection = () => {
           <a
             href="/Shri Ganesh Heights.pdf"
             download
-            className="btn-primary bg-gold text-white font-bold px-8 py-4 rounded-full shadow-gold hover:bg-white hover:text-gold transition-all duration-200 border-2 border-gold scale-100 hover:scale-105 focus:scale-105"
+            className="btn-primary bg-[#B22222] text-white font-bold px-8 py-4 rounded-full border-2 border-[#B22222] shadow transition-all duration-200 scale-100 hover:bg-[#FFD700] hover:text-[#B22222] hover:border-[#FFD700] focus:scale-105"
           >
             Download Brochure
           </a>
           <a
             href="#contact"
-            className="btn-primary bg-gold text-white font-bold px-8 py-4 rounded-full shadow-gold hover:bg-white hover:text-gold transition-all duration-200 border-2 border-gold scale-100 hover:scale-105 focus:scale-105"
+            className="btn-primary bg-[#FFD700] text-black font-bold px-8 py-4 rounded-full border-2 border-[#FFD700] shadow transition-all duration-200 scale-100 hover:bg-[#B22222] hover:text-white hover:border-[#B22222] focus:scale-105"
           >
             Enquire Now
           </a>
@@ -107,13 +107,13 @@ const HeroSection = () => {
       {/* Navigation Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110 z-20"
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-[#FFD700] hover:bg-[#B22222] text-black hover:text-white p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110 z-20"
       >
         <FaChevronLeft className="w-5 h-5" />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110 z-20"
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-[#FFD700] hover:bg-[#B22222] text-black hover:text-white p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110 z-20"
       >
         <FaChevronRight className="w-5 h-5" />
       </button>

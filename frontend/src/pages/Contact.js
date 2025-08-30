@@ -72,7 +72,7 @@ const Contact = () => {
       <div className="max-w-7xl mx-auto px-4">
         {/* Hero Section */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#E53935] mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold text-black mb-6">
             Get in Touch
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -83,7 +83,7 @@ const Contact = () => {
         <div className="grid lg:grid-cols-2 gap-12 mb-16">
           {/* Contact Form */}
           <div className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-3xl p-8">
-            <h2 className="text-3xl font-bold text-[#E53935] mb-6">Send us a Message</h2>
+            <h2 className="text-3xl font-bold text-black mb-6">Send us a Message</h2>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
@@ -171,7 +171,7 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-[#E53935] to-red-600 text-white py-4 px-8 rounded-lg font-semibold hover:from-red-600 hover:to-red-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-gradient-to-r from-red-600 to-red-700 text-white py-4 px-8 rounded-lg font-semibold hover:from-red-700 hover:to-red-800 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? 'Sending Message...' : 'Send Message'}
               </button>
@@ -181,7 +181,7 @@ const Contact = () => {
           {/* Contact Information */}
           <div className="space-y-8">
             <div>
-              <h2 className="text-3xl font-bold text-[#E53935] mb-6">Contact Information</h2>
+              <h2 className="text-3xl font-bold text-black mb-6">Contact Information</h2>
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 bg-gold rounded-full flex items-center justify-center flex-shrink-0">
@@ -220,16 +220,16 @@ const Contact = () => {
             <div>
               <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">Follow Us</h3>
                              <div className="flex gap-4">
-                 <button className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors duration-200" aria-label="Facebook">
+                 <button className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center hover:bg-red-700 transition-colors duration-200" aria-label="Facebook">
                    <FaFacebook className="text-white text-xl" />
                  </button>
-                 <button className="w-12 h-12 bg-pink-600 rounded-full flex items-center justify-center hover:bg-pink-700 transition-colors duration-200" aria-label="Instagram">
+                 <button className="w-12 h-12 bg-gold-600 rounded-full flex items-center justify-center hover:bg-gold-700 transition-colors duration-200" aria-label="Instagram">
                    <FaInstagram className="text-white text-xl" />
                  </button>
-                 <button className="w-12 h-12 bg-blue-700 rounded-full flex items-center justify-center hover:bg-blue-800 transition-colors duration-200" aria-label="LinkedIn">
+                 <button className="w-12 h-12 bg-red-700 rounded-full flex items-center justify-center hover:bg-red-800 transition-colors duration-200" aria-label="LinkedIn">
                    <FaLinkedin className="text-white text-xl" />
                  </button>
-                 <button className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center hover:bg-green-700 transition-colors duration-200" aria-label="WhatsApp">
+                 <button className="w-12 h-12 bg-gold-600 rounded-full flex items-center justify-center hover:bg-gold-700 transition-colors duration-200" aria-label="WhatsApp">
                    <FaWhatsapp className="text-white text-xl" />
                  </button>
                </div>
@@ -239,7 +239,7 @@ const Contact = () => {
 
         {/* Office Locations */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center text-[#E53935] mb-12">Our Office Locations</h2>
+          <h2 className="text-3xl font-bold text-center text-black mb-12">Our Office Locations</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {officeLocations.map((office, index) => (
               <div key={index} className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
@@ -247,7 +247,7 @@ const Contact = () => {
                   <div className="w-16 h-16 bg-gold rounded-full flex items-center justify-center mx-auto mb-4">
                     <FaMapMarkerAlt className="text-white text-2xl" />
                   </div>
-                  <h3 className="text-2xl font-bold text-[#E53935]">{office.city}</h3>
+                  <h3 className="text-2xl font-bold text-black">{office.city}</h3>
                 </div>
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
@@ -274,16 +274,16 @@ const Contact = () => {
 
         {/* Call to Action */}
         <div className="text-center">
-          <div className="bg-gradient-to-r from-[#E53935] to-red-600 text-white p-8 rounded-2xl">
+          <div className="bg-gradient-to-r from-red-600 to-red-700 text-white p-8 rounded-2xl">
             <h3 className="text-2xl font-bold mb-4">Ready to Start Your Journey?</h3>
             <p className="text-lg mb-6 opacity-90">
               Schedule a site visit or consultation with our experts today
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-[#E53935] px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200">
+              <button className="bg-red-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-200">
                 Schedule Site Visit
               </button>
-              <button className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-[#E53935] transition-colors duration-200">
+              <button className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-black transition-colors duration-200">
                 Download Brochure
               </button>
             </div>

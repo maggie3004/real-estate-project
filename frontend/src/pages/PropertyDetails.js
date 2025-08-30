@@ -128,7 +128,7 @@ const PropertyDetails = () => {
         <a href="/brochure.pdf" download className="w-full flex items-center justify-center gap-2 bg-white text-gold font-bold py-3 rounded-lg shadow hover:bg-gold hover:text-white transition">
           <FaDownload /> Download Brochure
         </a>
-        <a href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer" className="w-full flex items-center justify-center gap-2 bg-green-500 text-white font-bold py-3 rounded-lg shadow hover:bg-green-600 transition">
+        <a href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer" className="w-full flex items-center justify-center gap-2 bg-red-500 text-white font-bold py-3 rounded-lg shadow hover:bg-red-600 transition">
           <FaWhatsapp /> WhatsApp
         </a>
         <a href="tel:+919999999999" className="w-full flex items-center justify-center gap-2 bg-gold text-white font-bold py-3 rounded-lg shadow hover:bg-rose hover:text-gold transition">

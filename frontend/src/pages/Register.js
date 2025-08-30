@@ -93,7 +93,7 @@ export default function Register() {
             initial={{ scale: 0.8 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.2 }}
-            className="w-16 h-16 bg-gradient-to-r from-primary-600 to-accent-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg"
+                            className="w-16 h-16 bg-gradient-to-r from-red-600 to-gold-500 rounded-2xl flex items-center justify-center mx-auto mb-4 shadow-lg"
           >
             <FiUserCheck className="w-8 h-8 text-white" />
           </motion.div>
@@ -123,7 +123,7 @@ export default function Register() {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Enter your full name"
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
                   required
                 />
               </div>
@@ -143,7 +143,7 @@ export default function Register() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="Enter your email"
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
                   required
                 />
               </div>
@@ -163,7 +163,7 @@ export default function Register() {
                   value={formData.password}
                   onChange={handleChange}
                   placeholder="Create a password"
-                  className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                  className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
                   required
                 />
                 <button
@@ -193,7 +193,7 @@ export default function Register() {
                   value={formData.confirmPassword}
                   onChange={handleChange}
                   placeholder="Confirm your password"
-                  className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
+                  className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all duration-200 bg-gray-50 focus:bg-white"
                   required
                 />
                 <button
@@ -225,7 +225,7 @@ export default function Register() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               disabled={loading}
-              className="w-full bg-gradient-to-r from-primary-600 to-primary-700 text-white py-3 px-6 rounded-xl font-semibold hover:from-primary-700 hover:to-primary-800 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
+                              className="w-full bg-gradient-to-r from-red-600 to-red-700 text-white py-3 px-6 rounded-xl font-semibold hover:from-red-700 hover:to-red-800 focus:ring-2 focus:ring-gold-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-xl"
             >
               {loading ? (
                 <div className="flex items-center justify-center">
@@ -244,7 +244,7 @@ export default function Register() {
               Already have an account?{' '}
               <Link 
                 to="/login" 
-                className="text-primary-600 hover:text-primary-700 font-semibold transition-colors duration-200"
+                className="text-red-600 hover:text-red-700 font-semibold transition-colors duration-200"
               >
                 Sign in here
               </Link>

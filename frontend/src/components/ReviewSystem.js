@@ -156,7 +156,7 @@ const ReviewSystem = ({ propertyId, propertyTitle }) => {
   if (loading) {
     return (
       <div className="text-center py-8">
-        <div className="w-8 h-8 border-4 border-primary-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                        <div className="w-8 h-8 border-4 border-red-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
         <p className="text-gray-600">Loading reviews...</p>
       </div>
     );
@@ -177,7 +177,7 @@ const ReviewSystem = ({ propertyId, propertyTitle }) => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => setShowReviewForm(true)}
-          className="bg-primary-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary-700 transition-colors duration-200 flex items-center gap-2"
+                          className="bg-red-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-red-700 transition-colors duration-200 flex items-center gap-2"
         >
           <FiMessageSquare className="w-5 h-5" />
           Write a Review
@@ -238,7 +238,7 @@ const ReviewSystem = ({ propertyId, propertyTitle }) => {
           <select
             value={filterRating}
             onChange={(e) => setFilterRating(e.target.value)}
-            className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+            className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all duration-200"
           >
             <option value="all">All Ratings</option>
             <option value="5">5 Stars</option>
@@ -251,7 +251,7 @@ const ReviewSystem = ({ propertyId, propertyTitle }) => {
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
-            className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+            className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all duration-200"
           >
             <option value="newest">Newest First</option>
             <option value="oldest">Oldest First</option>
@@ -328,7 +328,7 @@ const ReviewSystem = ({ propertyId, propertyTitle }) => {
                   value={newReview.title}
                   onChange={(e) => handleInputChange('title', e.target.value)}
                   placeholder="Summarize your experience"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all duration-200"
                   required
                 />
               </div>
@@ -343,7 +343,7 @@ const ReviewSystem = ({ propertyId, propertyTitle }) => {
                   onChange={(e) => handleInputChange('comment', e.target.value)}
                   placeholder="Share your detailed experience with this property..."
                   rows={4}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200 resize-none"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all duration-200 resize-none"
                   required
                 />
               </div>
@@ -359,7 +359,7 @@ const ReviewSystem = ({ propertyId, propertyTitle }) => {
                     value={newReview.name}
                     onChange={(e) => handleInputChange('name', e.target.value)}
                     placeholder="Your name (optional)"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all duration-200"
                   />
                 </div>
                 <div>
@@ -371,7 +371,7 @@ const ReviewSystem = ({ propertyId, propertyTitle }) => {
                     value={newReview.email}
                     onChange={(e) => handleInputChange('email', e.target.value)}
                     placeholder="your@email.com (optional)"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-gold-500 focus:border-transparent transition-all duration-200"
                   />
                 </div>
               </div>
@@ -389,7 +389,7 @@ const ReviewSystem = ({ propertyId, propertyTitle }) => {
                   type="submit"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="px-6 py-3 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors duration-200 flex items-center gap-2"
+                  className="px-6 py-3 bg-red-600 text-white rounded-lg font-medium hover:bg-red-700 transition-colors duration-200 flex items-center gap-2"
                 >
                   <FiSend className="w-4 h-4" />
                   Submit Review
@@ -422,7 +422,7 @@ const ReviewSystem = ({ propertyId, propertyTitle }) => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setShowReviewForm(true)}
-              className="bg-primary-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary-700 transition-colors duration-200"
+                              className="bg-red-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-red-700 transition-colors duration-200"
             >
               Write the First Review
             </motion.button>

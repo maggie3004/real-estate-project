@@ -35,7 +35,7 @@ const ProjectTemplate = ({
   }, [isPlaying]);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#181818] text-[#181818] dark:text-white transition-colors duration-300">
+    <div className="min-h-screen bg-white text-black transition-colors duration-300">
       <FloatingActions 
         brochurePath={brochurePath}
         projectName={projectName}
@@ -46,20 +46,20 @@ const ProjectTemplate = ({
         <div className="max-w-4xl mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-bold mb-2 text-gold text-center">{projectName}</h1>
           <div className="text-base md:text-lg text-gold/90 mb-8 text-center">{tagline}</div>
-          <div className="text-gray-200 text-base md:text-lg leading-relaxed text-justify">
+          <div className="text-gray-700 text-base md:text-lg leading-relaxed text-justify">
             {description}
           </div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="w-full py-8 bg-gray-900/5">
+      <section className="w-full py-8 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {stats.map((stat, index) => (
-              <div key={index} className="bg-gray-900 rounded-lg p-4 text-center transform hover:scale-105 transition-transform duration-300">
+              <div key={index} className="bg-white rounded-lg p-4 text-center transform hover:scale-105 transition-transform duration-300 border border-gold/30 shadow-lg">
                 <div className="text-xl md:text-2xl font-bold text-gold mb-1">{stat.title}</div>
-                <div className="text-lg md:text-xl text-gray-200">{stat.subtitle}</div>
+                <div className="text-lg md:text-xl text-black">{stat.subtitle}</div>
               </div>
             ))}
           </div>
@@ -67,12 +67,12 @@ const ProjectTemplate = ({
       </section>
 
       {/* Amenities Section */}
-      <section className="w-full py-8 bg-gray-900/5">
+      <section className="w-full py-8 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-2xl md:text-3xl font-semibold mb-8 text-gold text-center">Amenities</div>
+          <div className="text-2xl md:text-3xl font-semibold mb-8 text-black text-center">Amenities</div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
             {amenities.map((amenity, idx) => (
-              <div key={idx} className="bg-gray-800 rounded-xl p-4 md:p-6 shadow-lg text-white text-center transform hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-center">
+              <div key={idx} className="bg-white rounded-xl p-4 md:p-6 shadow-lg text-black text-center transform hover:scale-105 transition-transform duration-300 flex flex-col items-center justify-center border border-gold/30">
                 <span className="text-gold text-3xl md:text-4xl block mb-3 md:mb-4">{amenity.icon}</span>
                 <span className="text-lg md:text-xl font-medium block">{amenity.name}</span>
               </div>
@@ -82,9 +82,9 @@ const ProjectTemplate = ({
       </section>
 
       {/* Gallery Section */}
-      <section className="w-full py-12 bg-gray-900/10">
+      <section className="w-full py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-2xl md:text-3xl font-semibold mb-12 text-gold text-center">Gallery</div>
+          <div className="text-2xl md:text-3xl font-semibold mb-12 text-black text-center">Gallery</div>
           
           {/* Main Image Slider */}
           <div className="rounded-xl overflow-hidden shadow-lg mb-6 relative aspect-[16/9] max-h-[600px] w-full group">
@@ -182,9 +182,9 @@ const ProjectTemplate = ({
       </section>
 
       {/* Location Section */}
-      <section className="w-full py-8 bg-gray-900/5">
+      <section className="w-full py-8 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="text-2xl md:text-3xl font-semibold mb-8 text-gold text-center">Location</div>
+          <div className="text-2xl md:text-3xl font-semibold mb-8 text-black text-center">Location</div>
           <div className="max-w-4xl mx-auto">
             <div className="aspect-video w-full rounded-xl overflow-hidden shadow-lg">
               <iframe
@@ -204,7 +204,7 @@ const ProjectTemplate = ({
                 href={directionsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white px-6 py-3 rounded-lg transition-colors duration-300"
+                className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg transition-colors duration-300"
               >
                 <span>Get Directions</span>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">

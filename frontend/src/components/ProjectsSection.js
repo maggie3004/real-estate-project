@@ -26,8 +26,9 @@ const projects = [
 
 const ProjectsSection = () => (
   <section style={{ padding: '3rem 0', background: '#fff' }}>
-    <h2 style={{ textAlign: 'center', fontSize: '2.5rem', fontWeight: 700, marginBottom: '2rem', color: 'var(--primary-color)' }}>
+    <h2 style={{ textAlign: 'center', fontSize: '2.5rem', fontWeight: 700, marginBottom: '2rem', color: '#111111', position: 'relative' }}>
       Our Projects
+      <span style={{ display: 'block', width: 40, height: 3, background: '#FFD700', margin: '0.5rem auto 0', borderRadius: 2 }}></span>
     </h2>
     <div style={{
       display: 'flex',
@@ -37,8 +38,9 @@ const ProjectsSection = () => (
     }}>
       {projects.map((project, idx) => (
         <div key={idx} className="project-card" style={{
-          background: 'var(--card-bg)',
-          boxShadow: 'var(--card-shadow)',
+          background: '#fff',
+          boxShadow: '0 2px 12px 0 rgba(0,0,0,0.08)',
+          border: '2px solid #FFD700',
           borderRadius: '1rem',
           overflow: 'hidden',
           width: 320,
@@ -48,20 +50,30 @@ const ProjectsSection = () => (
         }}>
           <img src={project.image} alt={project.name} style={{ width: '100%', height: 180, objectFit: 'cover' }} />
           <div style={{ padding: '1.5rem' }}>
-            <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: 'var(--primary-color)' }}>{project.name}</h3>
-            <div style={{ color: '#888', fontSize: '1rem', margin: '0.5rem 0' }}>{project.location}</div>
-            <div style={{ color: project.status === 'Ongoing' ? 'var(--accent-color)' : '#4CAF50', fontWeight: 600, marginBottom: 8 }}>{project.status}</div>
-            <p style={{ fontSize: '1rem', color: '#555', marginBottom: 12 }}>{project.description}</p>
-            <button type="button" style={{
-              background: 'var(--primary-color)',
+            <h3 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#111111', marginBottom: '0.5rem' }}>{project.name}</h3>
+            <p style={{ color: '#666', fontSize: '0.9rem', marginBottom: '1rem' }}>{project.location}</p>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+              <span style={{ color: '#111111', fontWeight: 600 }}>{project.price}</span>
+              <span style={{ 
+                background: project.status === 'Ready to Move' ? '#FFD700' : project.status === 'Under Construction' ? '#B22222' : '#666',
+                color: '#fff',
+                padding: '0.25rem 0.75rem',
+                borderRadius: '1rem',
+                fontSize: '0.8rem',
+                fontWeight: 600
+              }}>{project.status}</span>
+            </div>
+            <button style={{
+              background: '#B22222',
               color: '#fff',
-              padding: '0.6rem 1.5rem',
-              borderRadius: '1.5rem',
+              border: 'none',
+              padding: '0.75rem 1.5rem',
+              borderRadius: '2rem',
               fontWeight: 600,
-              textDecoration: 'none',
-              fontSize: '1rem',
-              transition: 'background 0.2s',
-            }} aria-label={`View details for ${project.name}`}>
+              cursor: 'pointer',
+              transition: 'all 0.2s',
+              width: '100%'
+            }} onMouseEnter={(e) => e.target.style.background = '#A01F1F'} onMouseLeave={(e) => e.target.style.background = '#B22222'}>
               View Details
             </button>
           </div>

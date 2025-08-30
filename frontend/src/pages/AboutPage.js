@@ -15,7 +15,7 @@ const AboutPage = () => (
         <div className="text-gold font-bold text-lg mb-4 tracking-wider">
           || ॐ हनुमते नमः || &nbsp; || ॐ भूमी नंदनाय नमः || &nbsp; || श्री गायत्री माता प्रसन्न ||
         </div>
-        <h1 className="text-4xl md:text-5xl font-bold text-[#E53935] mb-6">
+        <h1 className="text-4xl md:text-5xl font-bold text-black mb-6">
           About Ganesh Yeole Builders
         </h1>
         <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -29,16 +29,16 @@ const AboutPage = () => (
           <div className="text-3xl md:text-4xl font-bold text-gold mb-2">450+</div>
           <div className="text-gray-600 dark:text-gray-300 font-medium">Happy Families</div>
         </div>
-        <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-2xl">
-          <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-2">25+</div>
+                        <div className="text-center p-6 bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20 rounded-2xl">
+                  <div className="text-3xl md:text-4xl font-bold text-red-600 mb-2">25+</div>
           <div className="text-gray-600 dark:text-gray-300 font-medium">Delivered Projects</div>
         </div>
-        <div className="text-center p-6 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-2xl">
-          <div className="text-3xl md:text-4xl font-bold text-green-600 mb-2">16+</div>
+                 <div className="text-center p-6 bg-gradient-to-br from-gold-50 to-gold-100 dark:from-gold-900/20 dark:to-gold-800/20 rounded-2xl">
+           <div className="text-3xl md:text-4xl font-bold text-gold-600 mb-2">16+</div>
           <div className="text-gray-600 dark:text-gray-300 font-medium">Years Legacy</div>
         </div>
-        <div className="text-center p-6 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-2xl">
-          <div className="text-3xl md:text-4xl font-bold text-purple-600 mb-2">100%</div>
+                        <div className="text-center p-6 bg-gradient-to-br from-gold-50 to-gold-100 dark:from-gold-900/20 dark:to-gold-800/20 rounded-2xl">
+                  <div className="text-3xl md:text-4xl font-bold text-gold-600 mb-2">100%</div>
           <div className="text-gray-600 dark:text-gray-300 font-medium">Customer Satisfaction</div>
         </div>
       </div>
@@ -48,13 +48,13 @@ const AboutPage = () => (
         <div className="lg:col-span-2">
           {/* Company Story */}
           <div className="mb-12">
-            <h2 className="text-3xl font-bold text-[#E53935] mb-6 flex items-center gap-3">
+            <h2 className="text-3xl font-bold text-black mb-6 flex items-center gap-3">
               <FaBuilding className="text-gold" />
               Our Story
             </h2>
             <div className="space-y-6 text-lg leading-relaxed">
               <p className="text-gray-700 dark:text-gray-300">
-                <strong className="text-[#E53935]">Sai Prasad Builders & Developers</strong> was established in 2008-09 in Nashik by Mr. Ganesh Yeole, a visionary leader known for his strong moral values and dynamic approach. With a humble beginning, he built the company from the ground up, fostering trust, transparency, and long-lasting relationships with clients, partners, and stakeholders.
+                <strong className="text-black">Sai Prasad Builders & Developers</strong> was established in 2008-09 in Nashik by Mr. Ganesh Yeole, a visionary leader known for his strong moral values and dynamic approach. With a humble beginning, he built the company from the ground up, fostering trust, transparency, and long-lasting relationships with clients, partners, and stakeholders.
               </p>
               <p className="text-gray-700 dark:text-gray-300">
                 Over the past 16 years, we have successfully completed <strong>25+ projects</strong> across multiple prime locations in Nashik. From luxury developments to budget-friendly homes, we have consistently set new benchmarks in design, quality, and sustainability. Our projects are a reflection of our commitment to delivering well-planned, Vastu-compliant homes with top-notch construction quality and modern amenities.
@@ -67,21 +67,21 @@ const AboutPage = () => (
 
           {/* Mission & Vision */}
           <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 p-8 rounded-2xl">
+                            <div className="bg-gradient-to-br from-gold-50 to-gold-100 p-8 rounded-2xl">
               <div className="flex items-center gap-3 mb-4">
-                <FaHeart className="text-blue-600 text-2xl" />
-                <h3 className="text-2xl font-bold text-blue-600">Our Mission</h3>
+                <FaHeart className="text-red-600 text-2xl" />
+                <h3 className="text-2xl font-bold text-black">Our Mission</h3>
               </div>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed">
                 To build more than just houses—we create homes that offer comfort, convenience, and a superior lifestyle. By maintaining a balance between affordability and premium quality, we ensure that every homeowner receives a complete, well-equipped living space that meets their aspirations.
               </p>
             </div>
-            <div className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 p-8 rounded-2xl">
+                         <div className="bg-gradient-to-br from-gold-50 to-gold-100 p-8 rounded-2xl">
               <div className="flex items-center gap-3 mb-4">
-                <FaAward className="text-green-600 text-2xl" />
-                <h3 className="text-2xl font-bold text-green-600">Our Vision</h3>
+                <FaAward className="text-gold-600 text-2xl" />
+                <h3 className="text-2xl font-bold text-black">Our Vision</h3>
               </div>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              <p className="text-gray-700 leading-relaxed">
                 To create homes that go beyond four walls, delivering true satisfaction to every homeowner. We strive to build high-quality, well-designed, and affordable spaces that offer comfort, security, and a fulfilling lifestyle while prioritizing innovation and sustainability.
               </p>
             </div>
@@ -89,7 +89,7 @@ const AboutPage = () => (
 
           {/* Values */}
           <div className="mb-12">
-            <h2 className="text-3xl font-bold text-[#E53935] mb-6 flex items-center gap-3">
+            <h2 className="text-3xl font-bold text-black mb-6 flex items-center gap-3">
               <FaHandshake className="text-gold" />
               Our Core Values
             </h2>
@@ -145,7 +145,7 @@ const AboutPage = () => (
                   className="w-32 h-32 rounded-full object-cover mx-auto border-4 border-gold shadow-lg" 
                 />
               </div>
-              <h3 className="text-2xl font-bold text-[#E53935] mb-2">Mr. Prasad G. Yeole</h3>
+              <h3 className="text-2xl font-bold text-black mb-2">Mr. Prasad G. Yeole</h3>
               <p className="text-gold font-semibold mb-4">Chairperson & Managing Director</p>
               <div className="text-sm text-gray-600 dark:text-gray-300 mb-6 space-y-2">
                 <p>• Civil Engineer (B.E.)</p>
@@ -154,7 +154,7 @@ const AboutPage = () => (
                 <p>• Second Generation Leader</p>
               </div>
               <div className="bg-white dark:bg-gray-800 rounded-xl p-6 text-left">
-                <h4 className="text-lg font-bold text-[#E53935] mb-3">Message from the Chairperson</h4>
+                <h4 className="text-lg font-bold text-black mb-3">Message from the Chairperson</h4>
                 <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed italic">
                   "We are committed to building homes that blend innovation, quality, and tradition—creating spaces where families thrive and memories are made. Our journey is driven by the trust of our customers and our unwavering commitment to excellence. Thank you for trusting us with your dreams."
                 </p>

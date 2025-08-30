@@ -108,17 +108,13 @@ const milestones = [
   }
 ];
 
-const Milestones = () => (
+const MilestonesContent = () => (
   <section className="min-h-screen pt-24 pb-12 bg-white dark:bg-[#181818] text-[#181818] dark:text-white transition-colors duration-300">
-    <Helmet>
-      <title>Milestones & Achievements - Ganesh Yeole Builders | Our Journey of Excellence</title>
-      <meta name="description" content="Explore our journey of excellence through key milestones and achievements from 2023-2025. Discover how we've grown and succeeded in real estate development." />
-    </Helmet>
 
     <div className="max-w-7xl mx-auto px-4">
       {/* Hero Section */}
       <div className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold text-[#E53935] mb-6">
+        <h1 className="text-4xl md:text-5xl font-bold text-black mb-6">
           Our Journey of Excellence
         </h1>
         <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -129,7 +125,7 @@ const Milestones = () => (
       {/* Timeline */}
       <div className="relative">
         {/* Timeline Line */}
-        <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-gold via-blue-500 to-green-500 h-full hidden lg:block"></div>
+                         <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-gold via-red-500 to-gold-500 h-full hidden lg:block"></div>
 
         {milestones.map((yearData, yearIndex) => (
           <div key={yearData.year} className="mb-16">
@@ -161,7 +157,7 @@ const Milestones = () => (
                         </div>
                       </div>
                       
-                      <h3 className="text-2xl font-bold text-[#E53935] mb-3">
+                      <h3 className="text-2xl font-bold text-black mb-3">
                         {achievement.title}
                       </h3>
                       
@@ -169,7 +165,7 @@ const Milestones = () => (
                         {achievement.description}
                       </p>
                       
-                      <div className="inline-block bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-lg font-semibold">
+                      <div className="inline-block bg-gradient-to-r from-red-500 to-gold-600 text-white px-4 py-2 rounded-lg font-semibold">
                         {achievement.stats}
                       </div>
                     </div>
@@ -200,7 +196,7 @@ const Milestones = () => (
 
       {/* Summary Stats */}
       <div className="mt-20 bg-gradient-to-r from-gold-50 to-orange-50 dark:from-gold-900/20 dark:to-orange-900/20 rounded-3xl p-12">
-        <h2 className="text-3xl font-bold text-center text-[#E53935] mb-8">
+        <h2 className="text-3xl font-bold text-center text-black mb-8">
           Our Growth Story in Numbers
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -209,15 +205,15 @@ const Milestones = () => (
             <div className="text-gray-600 dark:text-gray-300 font-medium">Projects Completed</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">500+</div>
+                           <div className="text-4xl md:text-5xl font-bold text-red-600 mb-2">500+</div>
             <div className="text-gray-600 dark:text-gray-300 font-medium">Happy Families</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-green-600 mb-2">16+</div>
+                           <div className="text-4xl md:text-5xl font-bold text-gold-600 mb-2">16+</div>
             <div className="text-gray-600 dark:text-gray-300 font-medium">Years of Excellence</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-purple-600 mb-2">98%</div>
+                           <div className="text-4xl md:text-5xl font-bold text-red-600 mb-2">98%</div>
             <div className="text-gray-600 dark:text-gray-300 font-medium">Customer Satisfaction</div>
           </div>
         </div>
@@ -225,12 +221,12 @@ const Milestones = () => (
 
       {/* Call to Action */}
       <div className="mt-16 text-center">
-        <div className="bg-gradient-to-r from-[#E53935] to-red-600 text-white p-8 rounded-2xl">
+                  <div className="bg-gradient-to-r from-red-600 to-red-700 text-white p-8 rounded-2xl">
           <h3 className="text-2xl font-bold mb-4">Ready to Be Part of Our Success Story?</h3>
           <p className="text-lg mb-6 opacity-90">
             Join hundreds of satisfied families who have found their dream homes with us
           </p>
-          <button className="bg-white text-[#E53935] px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200">
+          <button className="bg-red-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-200">
             Explore Our Projects
           </button>
         </div>
@@ -238,3 +234,17 @@ const Milestones = () => (
     </div>
   </section>
 );
+
+const Milestones = () => {
+  return (
+    <>
+      <Helmet>
+        <title>Our Milestones | Ganesh Yeole Builders and Developers</title>
+        <meta name="description" content="Discover our journey of excellence with key milestones, achievements, and growth story in real estate development." />
+      </Helmet>
+      <MilestonesContent />
+    </>
+  );
+};
+
+export default Milestones;

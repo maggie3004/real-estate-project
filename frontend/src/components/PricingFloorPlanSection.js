@@ -18,7 +18,7 @@ const PricingFloorPlanSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.8 }}
           transition={{ duration: 0.8, delay: 0.1, ease: 'easeOut' }}
-          className="text-4xl font-playfair font-bold text-primary-700 dark:text-gold mb-8 text-center"
+          className="text-4xl font-playfair font-bold text-black mb-8 text-center"
         >
           Pricing & Floor Plans
         </motion.h2>
@@ -31,7 +31,7 @@ const PricingFloorPlanSection = () => {
         >
           <table className="min-w-full bg-white dark:bg-[#232323] rounded-2xl shadow-lg border border-gold/30">
             <thead>
-              <tr className="bg-gradient-to-r from-gold to-primary-500 text-white dark:text-[#181818]">
+                              <tr className="bg-gradient-to-r from-gold to-red-500 text-white dark:text-[#181818]">
                 <th className="px-6 py-4 text-left font-montserrat text-lg text-white dark:text-[#181818]">Type</th>
                 <th className="px-6 py-4 text-left font-montserrat text-lg text-white dark:text-[#181818]">Area</th>
                 <th className="px-6 py-4 text-left font-montserrat text-lg text-white dark:text-[#181818]">Price</th>
@@ -60,7 +60,7 @@ const PricingFloorPlanSection = () => {
           <a
             href="/Shri Ganesh Heights.pdf"
             download
-            className="inline-block px-8 py-4 bg-gradient-to-r from-gold to-primary-500 text-white font-bold rounded-full shadow-lg hover:from-primary-500 hover:to-gold hover:text-gold transition-all duration-200 border-2 border-gold scale-100 hover:scale-105 focus:scale-105"
+                            className="inline-block px-8 py-4 bg-gradient-to-r from-gold to-red-500 text-white font-bold rounded-full shadow-lg hover:from-red-500 hover:to-gold hover:text-gold transition-all duration-200 border-2 border-gold scale-100 hover:scale-105 focus:scale-105"
           >
             Download Floor Plan (PDF)
           </a>

@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ThemeProvider } from './context/ThemeContext';
+import LoadingSpinner from './components/LoadingSpinner';
+import AppLoader from './components/AppLoader';
 
 import AboutPage from './pages/AboutPage';
 import MainLayout from './components/MainLayout';
@@ -38,15 +40,7 @@ const ShreeGaneshAvenue = lazy(() => import('./pages/ShreeGaneshAvenue'));
 const ModakeshwarApartment = lazy(() => import('./pages/ModakeshwarApartment'));
 
 
-// Loading component
-const LoadingSpinner = () => (
-  <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-    <div className="text-center">
-      <div className="w-16 h-16 border-4 border-primary-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-      <p className="text-gray-600">Loading...</p>
-    </div>
-  </div>
-);
+
 
 // Error boundary component
 class ErrorBoundary extends React.Component {
@@ -66,13 +60,13 @@ class ErrorBoundary extends React.Component {
   render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center">
           <div className="text-center">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Something went wrong</h2>
-            <p className="text-gray-600 mb-4">We're working on fixing the problem.</p>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Something went wrong</h2>
+            <p className="text-gray-600 dark:text-gray-300 mb-4">We're working on fixing the problem.</p>
             <button
               onClick={() => window.location.reload()}
-              className="bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors duration-200"
+                              className="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors duration-200"
             >
               Reload Page
             </button>
@@ -89,71 +83,73 @@ function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider>
-        <Suspense fallback={<LoadingSpinner />}>
-          <NotificationProvider>
-            <FavoritesProvider>
-              <ComparisonProvider>
-                <Router>
-                  <Suspense fallback={<LoadingSpinner />}>
-                    <Routes>
-                      <Route element={<MainLayout />}>
-                        <Route path="/" element={
-                          <>
-                            <Home />
-                            <Testimonials />
-                            <div className="container mx-auto my-8">
-                              <NewsletterSignup />
-                            </div>
-                          </>
-                        } />
-                        <Route path="/listings" element={<Listings />} />
-                        <Route path="/property/:id" element={<PropertyDetails />} />
-                        <Route path="/add-property" element={<AddProperty />} />
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/register" element={<Register />} />
-                        <Route path="/profile" element={<Profile />} />
-                        <Route path="/admin" element={<AdminDashboard />} />
-                        <Route path="/blog" element={<Blog />} />
-                        <Route path="/favorites" element={<Favorites />} />
-                        <Route path="/map" element={<MapView />} />
-                        <Route path="/mortgage-calculator" element={<MortgageCalculator />} />
-                        <Route path="/about" element={<AboutPage />} />
-                        <Route path="/awards" element={<Awards />} />
-                        <Route path="/sustainability" element={<Sustainability />} />
-                        <Route path="/milestones" element={<Milestones />} />
-                        <Route path="/testimonials" element={<Testimonials />} />
-                        <Route path="/contact" element={<Contact />} />
-                        <Route path="/events" element={<Events />} />
-                        <Route path="/ShreeGaneshParkPhaseII" element={<ShreeGaneshParkPhaseII />} />
-                        <Route path="/ShreeGaneshParkPhaseI" element={<ShreeGaneshParkPhaseI />} />
-                        <Route path="/ShreeGaneshHeights" element={<ShreeGaneshHeights />} />
-                        <Route path="/SaiShraddhaApartment" element={<SaiShraddhaApartment />} />
-                        <Route path="/VinayakApartment" element={<VinayakApartment />} />
-                        <Route path="/ShreeGaneshAvenue" element={<ShreeGaneshAvenue />} />
-                        <Route path="/ModakeshwarApartment" element={<ModakeshwarApartment />} />
-                      </Route>
-                    </Routes>
-                  </Suspense>
-                  <ToastContainer 
-                    position="top-right" 
-                    autoClose={3000} 
-                    hideProgressBar={false} 
-                    newestOnTop 
-                    closeOnClick 
-                    pauseOnFocusLoss 
-                    draggable 
-                    pauseOnHover 
-                    theme="light"
-                  />
-                  {/* Floating Action Buttons are handled by MainLayout */}
-                  <Suspense fallback={<LoadingSpinner />}>
-                    <ComparisonModal />
-                  </Suspense>
-                </Router>
-              </ComparisonProvider>
-            </FavoritesProvider>
-          </NotificationProvider>
-        </Suspense>
+        <AppLoader>
+          <Suspense fallback={<LoadingSpinner />}>
+            <NotificationProvider>
+              <FavoritesProvider>
+                <ComparisonProvider>
+                  <Router>
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <Routes>
+                        <Route element={<MainLayout />}>
+                          <Route path="/" element={
+                            <>
+                              <Home />
+                              <Testimonials />
+                              <div className="container mx-auto my-8">
+                                <NewsletterSignup />
+                              </div>
+                            </>
+                          } />
+                          <Route path="/listings" element={<Listings />} />
+                          <Route path="/property/:id" element={<PropertyDetails />} />
+                          <Route path="/add-property" element={<AddProperty />} />
+                          <Route path="/login" element={<Login />} />
+                          <Route path="/register" element={<Register />} />
+                          <Route path="/profile" element={<Profile />} />
+                          <Route path="/admin" element={<AdminDashboard />} />
+                          <Route path="/blog" element={<Blog />} />
+                          <Route path="/favorites" element={<Favorites />} />
+                          <Route path="/map" element={<MapView />} />
+                          <Route path="/mortgage-calculator" element={<MortgageCalculator />} />
+                          <Route path="/about" element={<AboutPage />} />
+                          <Route path="/awards" element={<Awards />} />
+                          <Route path="/sustainability" element={<Sustainability />} />
+                          <Route path="/milestones" element={<Milestones />} />
+                          <Route path="/testimonials" element={<Testimonials />} />
+                          <Route path="/contact" element={<Contact />} />
+                          <Route path="/events" element={<Events />} />
+                          <Route path="/ShreeGaneshParkPhaseII" element={<ShreeGaneshParkPhaseII />} />
+                          <Route path="/ShreeGaneshParkPhaseI" element={<ShreeGaneshParkPhaseI />} />
+                          <Route path="/ShreeGaneshHeights" element={<ShreeGaneshHeights />} />
+                          <Route path="/SaiShraddhaApartment" element={<SaiShraddhaApartment />} />
+                          <Route path="/VinayakApartment" element={<VinayakApartment />} />
+                          <Route path="/ShreeGaneshAvenue" element={<ShreeGaneshAvenue />} />
+                          <Route path="/ModakeshwarApartment" element={<ModakeshwarApartment />} />
+                        </Route>
+                      </Routes>
+                    </Suspense>
+                    <ToastContainer 
+                      position="top-right" 
+                      autoClose={3000} 
+                      hideProgressBar={false} 
+                      newestOnTop 
+                      closeOnClick 
+                      pauseOnFocusLoss 
+                      draggable 
+                      pauseOnHover 
+                      theme="light"
+                    />
+                    {/* Floating Action Buttons are handled by MainLayout */}
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <ComparisonModal />
+                    </Suspense>
+                  </Router>
+                </ComparisonProvider>
+              </FavoritesProvider>
+            </NotificationProvider>
+          </Suspense>
+        </AppLoader>
       </ThemeProvider>
     </ErrorBoundary>
   );

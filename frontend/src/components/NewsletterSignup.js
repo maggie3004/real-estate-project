@@ -21,7 +21,7 @@ const NewsletterSignup = () => {
         required
       />
       <button className="btn btn-primary" type="submit">Subscribe</button>
-      {submitted && <span className="text-green-600 ml-2">Thank you for subscribing!</span>}
+                      {submitted && <span className="text-gold-600 ml-2">Thank you for subscribing!</span>}
     </form>
   );
 };

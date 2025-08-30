@@ -49,7 +49,7 @@ const ReviewCard = ({ review, onHelpful, onDelete, onEdit }) => {
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-start gap-4">
           {/* User Avatar */}
-          <div className="w-12 h-12 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full flex items-center justify-center text-white font-semibold text-lg">
+                          <div className="w-12 h-12 bg-gradient-to-r from-red-500 to-red-600 rounded-full flex items-center justify-center text-white font-semibold text-lg">
             {review.name ? review.name.charAt(0).toUpperCase() : 'A'}
           </div>
 
@@ -107,7 +107,7 @@ const ReviewCard = ({ review, onHelpful, onDelete, onEdit }) => {
         {shouldTruncate && (
           <button
             onClick={() => setShowFullComment(!showFullComment)}
-            className="text-primary-600 hover:text-primary-700 font-medium text-sm mt-2 transition-colors duration-200"
+                            className="text-red-600 hover:text-red-700 font-medium text-sm mt-2 transition-colors duration-200"
           >
             {showFullComment ? 'Show less' : 'Read more'}
           </button>

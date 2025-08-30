@@ -34,7 +34,7 @@ const GallerySection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.8 }}
           transition={{ duration: 0.8, delay: 0.1, ease: 'easeOut' }}
-          className="text-4xl font-playfair font-bold text-primary-700 dark:text-gold mb-8 text-center"
+          className="text-4xl font-playfair font-bold text-black mb-8 text-center"
         >
           Gallery
         </motion.h2>
