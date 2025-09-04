@@ -32,22 +32,22 @@ const HeroSection = () => {
   const nextSlide = useCallback(() => {
     setIsAutoPlaying(false); // Pause auto-play when user interacts
     setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselData.length);
-    // Resume auto-play after 3 seconds
-    setTimeout(() => setIsAutoPlaying(true), 3000);
+    // Resume auto-play after 4 seconds for Ganesh Housing style
+    setTimeout(() => setIsAutoPlaying(true), 4000);
   }, [carouselData.length]);
 
   const prevSlide = useCallback(() => {
     setIsAutoPlaying(false); // Pause auto-play when user interacts
     setCurrentIndex((prevIndex) => (prevIndex - 1 + carouselData.length) % carouselData.length);
-    // Resume auto-play after 3 seconds
-    setTimeout(() => setIsAutoPlaying(true), 3000);
+    // Resume auto-play after 4 seconds for Ganesh Housing style
+    setTimeout(() => setIsAutoPlaying(true), 4000);
   }, [carouselData.length]);
 
   const goToSlide = useCallback((index) => {
     setIsAutoPlaying(false); // Pause auto-play when user interacts
     setCurrentIndex(index);
-    // Resume auto-play after 3 seconds
-    setTimeout(() => setIsAutoPlaying(true), 3000);
+    // Resume auto-play after 4 seconds for Ganesh Housing style
+    setTimeout(() => setIsAutoPlaying(true), 4000);
   }, []);
 
   // Swipe support
@@ -62,7 +62,7 @@ const HeroSection = () => {
 
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselData.length);
-    }, 6000); // Change slide every 6 seconds for smoother experience
+    }, 5000); // Change slide every 5 seconds for Ganesh Housing style smoothness
 
     return () => clearInterval(interval);
   }, [isAutoPlaying, carouselData.length]);
@@ -124,11 +124,11 @@ const HeroSection = () => {
              {/* Carousel Background */}
        <div className="absolute inset-0 overflow-hidden">
          <div 
-           className="flex carousel-smooth h-full w-full carousel-container"
+           className="flex h-full w-full carousel-sliding-container"
            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
          >
            {carouselData.map((slide, index) => (
-             <div key={slide.id} className="w-full flex-shrink-0 h-full relative">
+             <div key={slide.id} className="w-full flex-shrink-0 h-full relative carousel-slide">
                <img 
                  src={slide.image}
                  alt={slide.title}
@@ -176,24 +176,17 @@ const HeroSection = () => {
              {/* Navigation Arrows */}
                <button
           onClick={prevSlide}
-          className="carousel-button absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-2 sm:p-3 rounded-full shadow-lg z-30"
+          className="carousel-button absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-2 sm:p-3 rounded-full shadow-lg z-30 backdrop-blur-sm"
         >
           <FaChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
         <button
           onClick={nextSlide}
-          className="carousel-button absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-2 sm:p-3 rounded-full shadow-lg z-30"
+          className="carousel-button absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-2 sm:p-3 rounded-full shadow-lg z-30 backdrop-blur-sm"
         >
           <FaChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
 
-        {/* Auto-play Toggle */}
-        <button
-          onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-          className="absolute top-4 right-4 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 px-3 py-2 rounded-lg shadow-lg transition-all duration-200 text-xs sm:text-sm z-30"
-        >
-          {isAutoPlaying ? 'Pause' : 'Play'}
-        </button>
 
                {/* Dots Indicator */}
         <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-30">

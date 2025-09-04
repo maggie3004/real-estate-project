@@ -23,22 +23,21 @@ const Navbar = () => {
   const menu = [
     { name: 'Home', path: '/' },
     {
-      name: 'Ongoing Projects',
+      name: 'Ongoing projects',
       dropdown: [
         {
-          name: 'Ongoing Projects',
+          name: 'Ongoing projects',
           submenu: ongoingProjects,
         },
       ],
     },
     { name: 'Milestones', path: '/milestones' },
     {
-      name: 'About Us',
+      name: 'About us',
       dropdown: [
         { name: 'Overview', path: '/about' },
-        { name: 'Vision and Mission', path: '/about#mission' },
+        { name: 'Vision and mission', path: '/about#mission' },
         { name: 'Sustainability', path: '/sustainability' },
-        { name: 'Corporate Profile', path: '/about#profile' },
       ],
     },
     {
@@ -50,7 +49,7 @@ const Navbar = () => {
       ],
     },
     { name: 'About Nashik', path: '/about-nashik' },
-    { name: 'Contact Us', path: '/contact' },
+    { name: 'Contact us', path: '/contact' },
   ];
 
   // Helper to check if a path is active

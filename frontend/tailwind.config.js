@@ -45,7 +45,7 @@ module.exports = {
         card: '0 2px 12px 0 rgba(33,150,243,0.10)',
       },
       fontFamily: {
-        sans: ['Quicksand', 'Nunito', 'Poppins', 'ui-sans-serif', 'system-ui'],
+        sans: ['Inter', 'Poppins', 'ui-sans-serif', 'system-ui'],
         playfair: ['Playfair Display', 'serif'],
       },
     },

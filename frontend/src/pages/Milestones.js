@@ -1,116 +1,89 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Helmet } from 'react-helmet';
-import { FaTrophy, FaBuilding, FaUsers, FaAward, FaStar, FaHandshake, FaArrowRight } from 'react-icons/fa';
-import { motion, useAnimation } from 'framer-motion';
+import { FaBuilding, FaUsers, FaArrowRight, FaTimes, FaChevronLeft, FaChevronRight, FaMapMarkerAlt, FaCalendarAlt } from 'react-icons/fa';
+import { motion, useAnimation, AnimatePresence } from 'framer-motion';
 
-const milestones = [
+const completedProjects = [
   {
-    year: 2025,
-    achievements: [
-      {
-        title: "Shree Ganesh Park Phase II Launch",
-        description: "Successfully launched our flagship project with 200+ units sold in pre-launch phase",
-        image: "/hero-building.jpg",
-        icon: FaBuilding,
-        category: "Project Launch",
-        stats: "200+ Units Sold"
-      },
-      {
-        title: "Best Developer Award 2025",
-        description: "Recognized as 'Best Real Estate Developer' by Maharashtra Real Estate Awards",
-        image: "/hero-building.jpg",
-        icon: FaTrophy,
-        category: "Award",
-        stats: "Industry Recognition"
-      },
-      {
-        title: "500+ Happy Families Milestone",
-        description: "Reached the milestone of serving 500+ families across all our projects",
-        image: "/hero-building.jpg",
-        icon: FaUsers,
-        category: "Customer Milestone",
-        stats: "500+ Families"
-      }
-    ]
+    id: 1,
+    title: "Shree Ganesh Heights",
+    description: "A premium residential project featuring modern amenities and luxury living spaces. Completed ahead of schedule with 100% occupancy.",
+    location: "Gangapur Road, Nashik",
+    completionDate: "December 2024",
+    units: "150 Units",
+    area: "2.5 Acres",
+    images: [
+      "/assets/shree-ganesh-heights/IMG-20250722-WA0066.jpeg",
+      "/assets/shree-ganesh-heights/IMG-20250722-WA0067.jpeg",
+      "/assets/shree-ganesh-heights/IMG-20250722-WA0068.jpeg",
+      "/assets/shree-ganesh-heights/IMG-20250722-WA0069.jpeg",
+      "/assets/shree-ganesh-heights/IMG-20250722-WA0070.jpeg"
+    ],
+    amenities: ["Swimming Pool", "Gym", "Club House", "24/7 Security", "Power Backup", "Landscaped Garden"],
+    features: ["2BHK & 3BHK Apartments", "Premium Finishes", "Modern Kitchen", "Spacious Balconies", "Parking Space"],
+    status: "Completed"
   },
   {
-    year: 2024,
-    achievements: [
-      {
-        title: "Shree Ganesh Heights Completion",
-        description: "Successfully completed and delivered Shree Ganesh Heights project ahead of schedule",
-        image: "/hero-building.jpg",
-        icon: FaBuilding,
-        category: "Project Completion",
-        stats: "150 Units Delivered"
-      },
-      {
-        title: "ISO 9001:2015 Certification",
-        description: "Achieved ISO 9001:2015 quality management certification for our processes",
-        image: "/hero-building.jpg",
-        icon: FaAward,
-        category: "Certification",
-        stats: "Quality Standard"
-      },
-      {
-        title: "Customer Satisfaction Award",
-        description: "Received 'Highest Customer Satisfaction' award from Real Estate Association",
-        image: "/hero-building.jpg",
-        icon: FaStar,
-        category: "Customer Award",
-        stats: "98% Satisfaction"
-      },
-      {
-        title: "Green Building Initiative",
-        description: "Launched eco-friendly building practices across all new projects",
-        image: "/hero-building.jpg",
-        icon: FaHandshake,
-        category: "Sustainability",
-        stats: "Green Certified"
-      }
-    ]
+    id: 2,
+    title: "Sai Shraddha Apartment",
+    description: "A beautifully designed residential complex offering comfortable living with all modern amenities and excellent connectivity.",
+    location: "College Road, Nashik",
+    completionDate: "March 2023",
+    units: "80 Units",
+    area: "1.8 Acres",
+    images: [
+      "/assets/sai-shraddha-apartment/IMG-20250722-WA0066.jpg",
+      "/assets/sai-shraddha-apartment/IMG-20250722-WA0067.jpg",
+      "/assets/sai-shraddha-apartment/IMG-20250722-WA0068.jpg",
+      "/assets/sai-shraddha-apartment/IMG-20250722-WA0069.jpg",
+      "/assets/sai-shraddha-apartment/IMG-20250722-WA0070.jpg"
+    ],
+    amenities: ["Garden", "Security", "Parking", "Power Backup", "Water Supply", "Maintenance"],
+    features: ["1BHK & 2BHK Apartments", "Quality Construction", "Good Ventilation", "Nearby Schools", "Market Access"],
+    status: "Completed"
   },
   {
-    year: 2023,
-    achievements: [
-      {
-        title: "Sai Shraddha Apartment Success",
-        description: "Completed Sai Shraddha Apartment with 100% occupancy within 6 months",
-        image: "/hero-building.jpg",
-        icon: FaBuilding,
-        category: "Project Success",
-        stats: "100% Occupancy"
-      },
-      {
-        title: "25+ Projects Milestone",
-        description: "Reached the milestone of completing 25+ successful projects across Nashik",
-        image: "/hero-building.jpg",
-        icon: FaTrophy,
-        category: "Company Milestone",
-        stats: "25+ Projects"
-      },
-      {
-        title: "Best Emerging Developer",
-        description: "Awarded 'Best Emerging Real Estate Developer' by Nashik Business Awards",
-        image: "/hero-building.jpg",
-        icon: FaAward,
-        category: "Industry Award",
-        stats: "Emerging Leader"
-      },
-      {
-        title: "Digital Transformation",
-        description: "Launched comprehensive digital platform for property management and customer service",
-        image: "/hero-building.jpg",
-        icon: FaStar,
-        category: "Technology",
-        stats: "Digital First"
-      }
-    ]
+    id: 3,
+    title: "Shree Ganesh Park Phase I",
+    description: "The first phase of our flagship project featuring luxury apartments with world-class amenities and green building practices.",
+    location: "Trimbak Road, Nashik",
+    completionDate: "June 2022",
+    units: "120 Units",
+    area: "3.2 Acres",
+    images: [
+      "/hero-building.jpg",
+      "/assets/shree-ganesh-heights/IMG-20250722-WA0066.jpeg",
+      "/assets/sai-shraddha-apartment/IMG-20250722-WA0066.jpg"
+    ],
+    amenities: ["Swimming Pool", "Gym", "Club House", "24/7 Security", "Power Backup", "Landscaped Garden", "Children's Play Area"],
+    features: ["2BHK & 3BHK Apartments", "Premium Finishes", "Modern Kitchen", "Spacious Balconies", "Parking Space", "Green Building"],
+    status: "Completed"
+  },
+  {
+    id: 4,
+    title: "Vinayak Apartment",
+    description: "A well-planned residential project offering comfortable living spaces with essential amenities and excellent location advantages.",
+    location: "Panchavati, Nashik",
+    completionDate: "September 2021",
+    units: "60 Units",
+    area: "1.5 Acres",
+    images: [
+      "/hero-building.jpg",
+      "/assets/shree-ganesh-heights/IMG-20250722-WA0067.jpeg",
+      "/assets/sai-shraddha-apartment/IMG-20250722-WA0067.jpg"
+    ],
+    amenities: ["Security", "Parking", "Power Backup", "Water Supply", "Maintenance", "Garden"],
+    features: ["1BHK & 2BHK Apartments", "Quality Construction", "Good Ventilation", "Nearby Temples", "Market Access"],
+    status: "Completed"
   }
 ];
 
+// Milestones data removed since timeline is no longer used
+
 const Milestones = () => {
-  const [activeYear, setActiveYear] = useState(2025);
+  // const [activeYear, setActiveYear] = useState(2025); // Commented out since we're not using year navigation
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const controls = useAnimation();
 
   useEffect(() => {
@@ -121,108 +94,332 @@ const Milestones = () => {
     });
   }, [controls]);
 
-  const AchievementCard = ({ achievement, index, isEven }) => (
+  const openProjectModal = (project) => {
+    setSelectedProject(project);
+    setCurrentImageIndex(0);
+  };
+
+  const closeProjectModal = useCallback(() => {
+    setSelectedProject(null);
+    setCurrentImageIndex(0);
+  }, []);
+
+  const nextImage = useCallback(() => {
+    if (selectedProject) {
+      setCurrentImageIndex((prev) => 
+        prev === selectedProject.images.length - 1 ? 0 : prev + 1
+      );
+    }
+  }, [selectedProject]);
+
+  const prevImage = useCallback(() => {
+    if (selectedProject) {
+      setCurrentImageIndex((prev) => 
+        prev === 0 ? selectedProject.images.length - 1 : prev - 1
+      );
+    }
+  }, [selectedProject]);
+
+  // Keyboard navigation for carousel
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (!selectedProject) return;
+      
+      if (event.key === 'ArrowLeft') {
+        prevImage();
+      } else if (event.key === 'ArrowRight') {
+        nextImage();
+      } else if (event.key === 'Escape') {
+        closeProjectModal();
+      }
+    };
+
+    if (selectedProject) {
+      document.addEventListener('keydown', handleKeyDown);
+      return () => document.removeEventListener('keydown', handleKeyDown);
+    }
+  }, [selectedProject, prevImage, nextImage, closeProjectModal]);
+
+  // Project Modal Component
+  const ProjectModal = ({ project, isOpen, onClose }) => {
+    if (!isOpen || !project) return null;
+
+    return (
+      <AnimatePresence>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 p-4"
+          onClick={onClose}
+        >
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Modal Header */}
+            <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+                {project.title}
+              </h2>
+              <button
+                onClick={onClose}
+                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors"
+              >
+                <FaTimes className="w-6 h-6 text-gray-500" />
+              </button>
+            </div>
+
+            {/* Modal Content - Scrollable */}
+            <div className="overflow-y-auto max-h-[calc(90vh-80px)]">
+              <div className="p-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                  {/* Image Carousel */}
+                  <div className="space-y-4">
+                    <div className="relative overflow-hidden rounded-xl">
+                      {/* Image Container with Sliding Animation - Same as Home Screen */}
+                      <div 
+                        className="flex h-80 w-full carousel-sliding-container"
+                        style={{ transform: `translateX(-${currentImageIndex * 100}%)` }}
+                      >
+                        {project.images.map((image, index) => (
+                          <div key={index} className="w-full flex-shrink-0 h-full carousel-slide">
+                            <img
+                              src={image}
+                              alt={`${project.title} - ${index + 1}`}
+                              className="w-full h-full object-cover carousel-image"
+                              onError={(e) => {
+                                // Fallback for broken images
+                                e.target.src = '/hero-building.jpg';
+                              }}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                      
+                      {/* Navigation Arrows - Same style as Home Screen */}
+                      {project.images.length > 1 && (
+                        <>
+                          <button
+                            onClick={prevImage}
+                            className="carousel-button absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-2 rounded-full shadow-lg z-30 backdrop-blur-sm"
+                          >
+                            <FaChevronLeft className="w-4 h-4" />
+                          </button>
+                          <button
+                            onClick={nextImage}
+                            className="carousel-button absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-2 rounded-full shadow-lg z-30 backdrop-blur-sm"
+                          >
+                            <FaChevronRight className="w-4 h-4" />
+                          </button>
+                        </>
+                      )}
+
+                      {/* Image Counter */}
+                      {project.images.length > 1 && (
+                        <div className="absolute top-4 right-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded-full text-sm font-medium">
+                          {currentImageIndex + 1} / {project.images.length}
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Image Indicators - Same style as Home Screen */}
+                    {project.images.length > 1 && (
+                      <div className="flex space-x-2 justify-center">
+                        {project.images.map((_, index) => (
+                          <button
+                            key={index}
+                            onClick={() => setCurrentImageIndex(index)}
+                            className={`carousel-dot w-2 h-2 rounded-full ${
+                              index === currentImageIndex
+                                ? 'bg-yellow-500 active'
+                                : 'bg-white/50 hover:bg-white/70 dark:bg-gray-300/50 dark:hover:bg-gray-200/70'
+                            }`}
+                          />
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Project Details */}
+                  <div className="space-y-6">
+                    {/* Description */}
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                        Project Description
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                        {project.description}
+                      </p>
+                    </div>
+
+                    {/* Project Info */}
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="flex items-center space-x-3">
+                        <FaMapMarkerAlt className="w-5 h-5 text-gold" />
+                        <div>
+                          <p className="text-sm text-gray-500">Location</p>
+                          <p className="font-medium text-gray-900 dark:text-white">{project.location}</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <FaCalendarAlt className="w-5 h-5 text-gold" />
+                        <div>
+                          <p className="text-sm text-gray-500">Completed</p>
+                          <p className="font-medium text-gray-900 dark:text-white">{project.completionDate}</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <FaBuilding className="w-5 h-5 text-gold" />
+                        <div>
+                          <p className="text-sm text-gray-500">Units</p>
+                          <p className="font-medium text-gray-900 dark:text-white">{project.units}</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <FaUsers className="w-5 h-5 text-gold" />
+                        <div>
+                          <p className="text-sm text-gray-500">Area</p>
+                          <p className="font-medium text-gray-900 dark:text-white">{project.area}</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Amenities */}
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                        Amenities
+                      </h3>
+                      <div className="flex flex-wrap gap-2">
+                        {project.amenities.map((amenity, index) => (
+                          <span
+                            key={index}
+                            className="bg-gold bg-opacity-10 text-gold px-3 py-1 rounded-full text-sm font-medium"
+                          >
+                            {amenity}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Features */}
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                        Key Features
+                      </h3>
+                      <div className="flex flex-wrap gap-2">
+                        {project.features.map((feature, index) => (
+                          <span
+                            key={index}
+                            className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm font-medium"
+                          >
+                            {feature}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </motion.div>
+      </AnimatePresence>
+    );
+  };
+
+  // Project Card Component
+  const ProjectCard = ({ project, index }) => (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       viewport={{ once: true }}
-      className={`relative group ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}
+      whileHover={{ y: -8 }}
+      className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700 cursor-pointer group transition-all duration-200 hover:shadow-xl"
+      onClick={() => openProjectModal(project)}
     >
-      {/* Connecting Lines */}
-      <div className="hidden lg:block absolute top-1/2 left-1/2 transform -translate-x-1/2 w-32 h-0.5 bg-gradient-to-r from-gold via-blue-500 to-green-500 z-0"></div>
-      
-      {/* Achievement Card */}
-      <div className={`flex flex-col lg:flex-row items-center gap-8 relative z-10 ${
-        isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'
-      }`}>
+      {/* Project Image */}
+      <div className="relative h-64 overflow-hidden">
+        <img
+          src={project.images[0]}
+          alt={project.title}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
         
-        {/* Content Section */}
-        <div className={`flex-1 ${isEven ? 'lg:text-right' : 'lg:text-left'}`}>
-          <motion.div 
-            whileHover={{ scale: 1.02, y: -5 }}
-            className="bg-gradient-to-br from-white via-gray-50 to-gray-100 dark:from-gray-800 dark:via-gray-700 dark:to-gray-600 p-8 rounded-3xl shadow-xl border border-gray-200 dark:border-gray-600 relative overflow-hidden group"
-          >
-            {/* Animated Background Pattern */}
-            <div className="absolute inset-0 bg-gradient-to-br from-gold/5 via-blue-500/5 to-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            
-            {/* Header with Icon and Category */}
-            <div className={`flex items-center gap-4 mb-6 ${isEven ? 'lg:justify-end' : 'lg:justify-start'}`}>
-              <motion.div 
-                whileHover={{ rotate: 360 }}
-                transition={{ duration: 0.6 }}
-                className="w-16 h-16 bg-gradient-to-br from-gold to-orange-500 rounded-2xl flex items-center justify-center shadow-lg"
-              >
-                <achievement.icon className="text-white text-2xl" />
-              </motion.div>
-              <div className="flex flex-col">
-                <span className="inline-block bg-gradient-to-r from-gold to-orange-500 text-white px-4 py-2 rounded-full text-sm font-bold shadow-md">
-                  {achievement.category}
+        {/* Status Badge */}
+        <div className="absolute top-4 left-4">
+          <span className="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+            {project.status}
                 </span>
               </div>
-            </div>
-            
-            {/* Title */}
-            <h3 className="text-2xl font-bold text-[#E53935] mb-4 leading-tight">
-              {achievement.title}
-            </h3>
-            
-            {/* Description */}
-            <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed mb-6">
-              {achievement.description}
-            </p>
-            
-            {/* Stats Badge */}
-            <motion.div 
-              whileHover={{ scale: 1.05 }}
-              className={`inline-block bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 text-white px-6 py-3 rounded-xl font-bold shadow-lg ${isEven ? 'lg:ml-auto' : ''}`}
-            >
-              {achievement.stats}
-            </motion.div>
-          </motion.div>
-        </div>
 
-        {/* Timeline Node */}
-        <div className="relative z-20">
-          <motion.div 
-            whileHover={{ scale: 1.2 }}
-            className="w-8 h-8 bg-gradient-to-br from-gold to-orange-500 rounded-full border-4 border-white dark:border-gray-800 shadow-xl relative"
-          >
-            {/* Pulsing Animation */}
-            <div className="absolute inset-0 bg-gold rounded-full animate-ping opacity-20"></div>
-          </motion.div>
-          
-          {/* Connection Lines */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 w-16 h-0.5 bg-gradient-to-r from-gold to-blue-500 hidden lg:block"></div>
-        </div>
-
-        {/* Image Section */}
-        <div className="flex-1">
-          <motion.div 
-            whileHover={{ scale: 1.05 }}
-            className="relative group overflow-hidden rounded-3xl shadow-2xl"
-          >
-            <img 
-              src={achievement.image} 
-              alt={achievement.title}
-              className="w-full h-72 object-cover transition-transform duration-700 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            
-            {/* Hover Overlay Content */}
-            <div className="absolute inset-0 flex items-end opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              <div className="p-6 text-white">
-                <div className="flex items-center gap-2">
-                  <FaArrowRight className="text-gold" />
-                  <span className="font-semibold">Learn More</span>
-                </div>
+        {/* Hover Overlay */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <div className="bg-white bg-opacity-90 rounded-full p-4">
+            <FaArrowRight className="w-6 h-6 text-gold" />
+          </div>
               </div>
             </div>
-          </motion.div>
+            
+      {/* Project Content */}
+      <div className="p-6">
+        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-gold transition-colors">
+          {project.title}
+            </h3>
+            
+        <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-2">
+          {project.description}
+        </p>
+
+        {/* Project Details */}
+        <div className="space-y-2 mb-4">
+          <div className="flex items-center text-sm text-gray-500">
+            <FaMapMarkerAlt className="w-4 h-4 mr-2 text-gold" />
+            <span>{project.location}</span>
+          </div>
+          <div className="flex items-center text-sm text-gray-500">
+            <FaCalendarAlt className="w-4 h-4 mr-2 text-gold" />
+            <span>Completed: {project.completionDate}</span>
+          </div>
+          <div className="flex items-center text-sm text-gray-500">
+            <FaBuilding className="w-4 h-4 mr-2 text-gold" />
+            <span>{project.units} • {project.area}</span>
+          </div>
+        </div>
+
+        {/* Amenities Preview */}
+        <div className="flex flex-wrap gap-1 mb-4">
+          {project.amenities.slice(0, 3).map((amenity, idx) => (
+            <span
+              key={idx}
+              className="bg-gold bg-opacity-10 text-gold px-2 py-1 rounded-full text-xs font-medium"
+            >
+              {amenity}
+            </span>
+          ))}
+          {project.amenities.length > 3 && (
+            <span className="text-xs text-gray-500">
+              +{project.amenities.length - 3} more
+            </span>
+          )}
+        </div>
+
+        {/* Click to View More */}
+        <div className="text-center">
+          <span className="text-gold text-sm font-medium group-hover:underline">
+            Click to view details
+          </span>
         </div>
       </div>
     </motion.div>
   );
+
+  // AchievementCard component removed since timeline is no longer used
 
   return (
     <section className="min-h-screen pt-24 pb-12 bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 text-[#181818] dark:text-white transition-colors duration-300">
@@ -262,8 +459,8 @@ const Milestones = () => {
           </div>
         </motion.div>
 
-        {/* Year Navigation */}
-        <motion.div 
+        {/* Year Navigation - Commented Out */}
+        {/* <motion.div 
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
@@ -284,51 +481,46 @@ const Milestones = () => {
               </button>
             ))}
           </div>
-        </motion.div>
+        </motion.div> */}
 
-        {/* Enhanced Timeline */}
+        {/* Completed Projects Section */}
         <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="relative"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="mb-20"
         >
-          {/* Main Timeline Line */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-gold via-blue-500 to-green-500 h-full hidden lg:block rounded-full shadow-lg"></div>
-
-          {milestones.map((yearData, yearIndex) => (
-            <div key={yearData.year} className={`mb-20 ${activeYear === yearData.year ? 'block' : 'hidden'}`}>
-              {/* Enhanced Year Header */}
-              <motion.div 
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                className="text-center mb-16"
-              >
-                <div className="relative inline-block">
-                  <div className="absolute inset-0 bg-gradient-to-r from-gold to-orange-500 rounded-full blur-lg opacity-50"></div>
-                  <div className="relative bg-gradient-to-r from-gold to-orange-500 text-white px-12 py-6 rounded-full text-3xl font-bold shadow-2xl">
-                    {yearData.year}
-                  </div>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              Our Completed Projects
+            </h2>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              Explore our successfully delivered projects that have created homes for hundreds of families
+            </p>
                 </div>
-              </motion.div>
 
-              {/* Achievements Grid */}
-              <div className="space-y-16">
-                {yearData.achievements.map((achievement, achievementIndex) => (
-                  <AchievementCard 
-                    key={achievement.title}
-                    achievement={achievement}
-                    index={achievementIndex}
-                    isEven={achievementIndex % 2 === 0}
+          {/* Projects Grid - 2 columns */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {completedProjects.map((project, index) => (
+              <ProjectCard 
+                key={project.id}
+                project={project}
+                index={index}
                   />
                 ))}
               </div>
-            </div>
-          ))}
         </motion.div>
+
+        {/* Timeline Section Removed */}
       </div>
+
+      {/* Project Modal */}
+      <ProjectModal 
+        project={selectedProject}
+        isOpen={!!selectedProject}
+        onClose={closeProjectModal}
+      />
     </section>
   );
 };

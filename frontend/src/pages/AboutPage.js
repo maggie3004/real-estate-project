@@ -12,9 +12,6 @@ const AboutPage = () => (
     <div className="max-w-7xl mx-auto px-4">
       {/* Hero Section */}
       <div className="text-center mb-16">
-        <div className="text-gold font-bold text-lg mb-4 tracking-wider">
-          || ॐ हनुमते नमः || &nbsp; || ॐ भूमी नंदनाय नमः || &nbsp; || श्री गायत्री माता प्रसन्न ||
-        </div>
         <h1 className="text-4xl md:text-5xl font-bold text-[#E53935] mb-6">
           About Ganesh Yeole Builders
         </h1>
@@ -23,25 +20,6 @@ const AboutPage = () => (
         </p>
       </div>
 
-      {/* Stats Section */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-        <div className="text-center p-6 bg-gradient-to-br from-gold-50 to-gold-100 dark:from-gold-900/20 dark:to-gold-800/20 rounded-2xl">
-          <div className="text-3xl md:text-4xl font-bold text-gold mb-2">450+</div>
-          <div className="text-gray-600 dark:text-gray-300 font-medium">Happy Families</div>
-        </div>
-        <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-2xl">
-          <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-2">25+</div>
-          <div className="text-gray-600 dark:text-gray-300 font-medium">Delivered Projects</div>
-        </div>
-        <div className="text-center p-6 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-2xl">
-          <div className="text-3xl md:text-4xl font-bold text-green-600 mb-2">16+</div>
-          <div className="text-gray-600 dark:text-gray-300 font-medium">Years Legacy</div>
-        </div>
-        <div className="text-center p-6 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-2xl">
-          <div className="text-3xl md:text-4xl font-bold text-purple-600 mb-2">100%</div>
-          <div className="text-gray-600 dark:text-gray-300 font-medium">Customer Satisfaction</div>
-        </div>
-      </div>
 
       <div className="grid lg:grid-cols-3 gap-12">
         {/* Main Content */}

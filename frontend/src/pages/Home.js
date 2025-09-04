@@ -6,7 +6,7 @@ import StatsSection from '../components/StatsSection';
 import ProjectsSection from '../components/ProjectsSection';
 import AboutSection from '../components/AboutSection';
 import AwardsSection from '../components/AwardsSection';
-import Milestones from '../pages/Milestones';
+import JourneySection from '../components/JourneySection';
 import { Helmet } from 'react-helmet';
 
 // ... import other new sections as you create them
@@ -80,7 +80,7 @@ const Home = () => {
       
       {/* 5. Journey/Milestones Section */}
       <div id="milestones" data-aos="fade-up">
-        <Milestones />
+        <JourneySection />
       </div>
       
       {/* 6. Awards and Recognition Section */}
