@@ -2,25 +2,25 @@ import React from 'react';
 
 const projects = [
   {
-    name: 'Goda Spandan',
-    location: 'Near Someshwar Temple, Nashik',
+    name: 'Shree Ganesh Srushti',
+    location: 'Nashik',
     status: 'Ongoing',
-    image: 'https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80',
-    description: 'A premium residential project with modern amenities and lush surroundings.'
+    image: '/hero-building.jpg',
+    description: 'Modern homes with thoughtful amenities and excellent connectivity.'
   },
   {
-    name: 'Prangan Ekaant',
-    location: 'Serene Meadows, Nashik',
-    status: 'Completed',
-    image: 'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&w=600&q=80',
-    description: 'Completed luxury apartments with eco-friendly construction and innovative design.'
+    name: 'Shree Ganesh Park',
+    location: 'Nashik',
+    status: 'Ongoing',
+    image: '/hero-building.jpg',
+    description: 'A flagship development with spacious apartments and lifestyle features.'
   },
   {
-    name: 'ANP Ultimus',
-    location: 'Wakad, Pune',
+    name: 'Shree Ganesh Heights',
+    location: 'Nashik',
     status: 'Ongoing',
-    image: 'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=600&q=80',
-    description: 'Spacious 2, 2.5, 3 & 3.5 BHK apartments with world-class amenities.'
+    image: '/hero-building.jpg',
+    description: 'Premium 2 & 3 BHK apartments with contemporary design.'
   },
 ];
 

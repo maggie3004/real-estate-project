@@ -6,8 +6,8 @@ import { useTheme } from '../context/ThemeContext';
 import ThemeSwitcher from './ThemeSwitcher';
 
 const ongoingProjects = [
-  { name: 'Shree Ganesh Park Phase II', path: '/ShreeGaneshParkPhaseII' },
-  { name: 'Shree Ganesh Park Phase I', path: '/ShreeGaneshParkPhaseI' },
+  { name: 'Shree Ganesh Srushti', path: '/ShreeGaneshSrushti' },
+  { name: 'Shree Ganesh Park', path: '/ShreeGaneshParkPhaseI' },
   { name: 'Shree Ganesh Heights', path: '/ShreeGaneshHeights' },
 ];
 

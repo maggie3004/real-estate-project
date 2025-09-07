@@ -288,30 +288,7 @@ const Events = () => {
           </div>
         </div>
 
-        {/* Event Statistics */}
-        <div className="bg-gradient-to-r from-gold-50 to-orange-50 dark:from-gold-900/20 dark:to-orange-900/20 rounded-3xl p-12 mb-16">
-          <h2 className="text-3xl font-bold text-center text-[#E53935] mb-8">
-            Event Statistics
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-gold mb-2">15+</div>
-              <div className="text-gray-600 dark:text-gray-300 font-medium">Events Organized</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">2000+</div>
-              <div className="text-gray-600 dark:text-gray-300 font-medium">Total Attendees</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-green-600 mb-2">6</div>
-              <div className="text-gray-600 dark:text-gray-300 font-medium">Event Categories</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-purple-600 mb-2">98%</div>
-              <div className="text-gray-600 dark:text-gray-300 font-medium">Satisfaction Rate</div>
-            </div>
-          </div>
-        </div>
+        {/* Event Statistics section removed as requested */}
 
         {/* Call to Action */}
         <div className="text-center">

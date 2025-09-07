@@ -37,12 +37,20 @@ const milestones = [
     year: 2024,
     achievements: [
       {
-        title: "Shree Ganesh Heights Completion",
-        description: "Successfully completed and delivered Shree Ganesh Heights project ahead of schedule",
+        title: "Sai Shraddha Apartment Completion",
+        description: "Successfully completed and delivered Sai Shraddha Apartment",
         image: "/hero-building.jpg",
         icon: FaBuilding,
         category: "Project Completion",
-        stats: "150 Units Delivered"
+        stats: "Delivered"
+      },
+      {
+        title: "Vinayak Apartment Completion",
+        description: "Successfully completed and delivered Vinayak Apartment",
+        image: "/hero-building.jpg",
+        icon: FaBuilding,
+        category: "Project Completion",
+        stats: "Delivered"
       },
       {
         title: "ISO 9001:2015 Certification",
@@ -74,12 +82,12 @@ const milestones = [
     year: 2023,
     achievements: [
       {
-        title: "Sai Shraddha Apartment Launch",
-        description: "Successfully launched Sai Shraddha Apartment with modern amenities and Vastu compliance",
+        title: "Shree Ganesh Avenue Completion",
+        description: "Completed and handed over Shree Ganesh Avenue",
         image: "/hero-building.jpg",
         icon: FaBuilding,
-        category: "Project Launch",
-        stats: "120 Units"
+        category: "Project Completion",
+        stats: "Delivered"
       },
       {
         title: "RERA Registration",
@@ -103,12 +111,12 @@ const milestones = [
     year: 2022,
     achievements: [
       {
-        title: "Shree Ganesh Srushti Completion",
-        description: "Successfully completed and delivered Shree Ganesh Srushti project",
+        title: "Shree Ganesh Apartment Completion",
+        description: "Successfully completed and delivered Shree Ganesh Apartment",
         image: "/hero-building.jpg",
         icon: FaBuilding,
         category: "Project Completion",
-        stats: "100 Units Delivered"
+        stats: "Delivered"
       },
       {
         title: "Customer Excellence Award",
@@ -132,12 +140,12 @@ const milestones = [
     year: 2021,
     achievements: [
       {
-        title: "Shree Ganesh Avenue Launch",
-        description: "Launched Shree Ganesh Avenue with premium amenities and modern design",
+        title: "Modakeshwar Apartment Completion",
+        description: "Completed Modakeshwar Apartment with essential amenities",
         image: "/hero-building.jpg",
         icon: FaBuilding,
-        category: "Project Launch",
-        stats: "80 Units"
+        category: "Project Completion",
+        stats: "Delivered"
       },
       {
         title: "Quality Assurance",

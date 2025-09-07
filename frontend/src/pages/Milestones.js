@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, memo } from 'react';
 import { Helmet } from 'react-helmet';
 import { FaBuilding, FaUsers, FaArrowRight, FaTimes, FaChevronLeft, FaChevronRight, FaMapMarkerAlt, FaCalendarAlt } from 'react-icons/fa';
 import { motion, useAnimation, AnimatePresence } from 'framer-motion';
@@ -6,29 +6,10 @@ import { motion, useAnimation, AnimatePresence } from 'framer-motion';
 const completedProjects = [
   {
     id: 1,
-    title: "Shree Ganesh Heights",
-    description: "A premium residential project featuring modern amenities and luxury living spaces. Completed ahead of schedule with 100% occupancy.",
-    location: "Gangapur Road, Nashik",
-    completionDate: "December 2024",
-    units: "150 Units",
-    area: "2.5 Acres",
-    images: [
-      "/assets/shree-ganesh-heights/IMG-20250722-WA0066.jpeg",
-      "/assets/shree-ganesh-heights/IMG-20250722-WA0067.jpeg",
-      "/assets/shree-ganesh-heights/IMG-20250722-WA0068.jpeg",
-      "/assets/shree-ganesh-heights/IMG-20250722-WA0069.jpeg",
-      "/assets/shree-ganesh-heights/IMG-20250722-WA0070.jpeg"
-    ],
-    amenities: ["Swimming Pool", "Gym", "Club House", "24/7 Security", "Power Backup", "Landscaped Garden"],
-    features: ["2BHK & 3BHK Apartments", "Premium Finishes", "Modern Kitchen", "Spacious Balconies", "Parking Space"],
-    status: "Completed"
-  },
-  {
-    id: 2,
     title: "Sai Shraddha Apartment",
     description: "A beautifully designed residential complex offering comfortable living with all modern amenities and excellent connectivity.",
     location: "College Road, Nashik",
-    completionDate: "March 2023",
+    completionDate: "2024",
     units: "80 Units",
     area: "1.8 Acres",
     images: [
@@ -43,37 +24,63 @@ const completedProjects = [
     status: "Completed"
   },
   {
-    id: 3,
-    title: "Shree Ganesh Park Phase I",
-    description: "The first phase of our flagship project featuring luxury apartments with world-class amenities and green building practices.",
-    location: "Trimbak Road, Nashik",
-    completionDate: "June 2022",
-    units: "120 Units",
-    area: "3.2 Acres",
+    id: 2,
+    title: "Vinayak Apartment",
+    description: "Comfortable living spaces with essential amenities and excellent location advantages.",
+    location: "Panchavati, Nashik",
+    completionDate: "2024",
+    units: "60 Units",
+    area: "1.5 Acres",
     images: [
-      "/hero-building.jpg",
-      "/assets/shree-ganesh-heights/IMG-20250722-WA0066.jpeg",
-      "/assets/sai-shraddha-apartment/IMG-20250722-WA0066.jpg"
+      "/hero-building.jpg"
     ],
-    amenities: ["Swimming Pool", "Gym", "Club House", "24/7 Security", "Power Backup", "Landscaped Garden", "Children's Play Area"],
-    features: ["2BHK & 3BHK Apartments", "Premium Finishes", "Modern Kitchen", "Spacious Balconies", "Parking Space", "Green Building"],
+    amenities: ["Security", "Parking", "Power Backup", "Water Supply", "Maintenance"],
+    features: ["1BHK & 2BHK Apartments", "Quality Construction", "Good Ventilation"],
+    status: "Completed"
+  },
+  {
+    id: 3,
+    title: "Shree Ganesh Avenue",
+    description: "A premium residential development delivered with quality construction.",
+    location: "Nashik",
+    completionDate: "2023",
+    units: "--",
+    area: "--",
+    images: [
+      "/hero-building.jpg"
+    ],
+    amenities: ["Parking", "Security"],
+    features: ["Quality Construction"],
     status: "Completed"
   },
   {
     id: 4,
-    title: "Vinayak Apartment",
-    description: "A well-planned residential project offering comfortable living spaces with essential amenities and excellent location advantages.",
-    location: "Panchavati, Nashik",
-    completionDate: "September 2021",
-    units: "60 Units",
-    area: "1.5 Acres",
+    title: "Shree Ganesh Apartment",
+    description: "Residential apartments completed with essential amenities.",
+    location: "Nashik",
+    completionDate: "2022",
+    units: "--",
+    area: "--",
     images: [
-      "/hero-building.jpg",
-      "/assets/shree-ganesh-heights/IMG-20250722-WA0067.jpeg",
-      "/assets/sai-shraddha-apartment/IMG-20250722-WA0067.jpg"
+      "/hero-building.jpg"
     ],
-    amenities: ["Security", "Parking", "Power Backup", "Water Supply", "Maintenance", "Garden"],
-    features: ["1BHK & 2BHK Apartments", "Quality Construction", "Good Ventilation", "Nearby Temples", "Market Access"],
+    amenities: ["Security", "Water Supply"],
+    features: ["Good Ventilation"],
+    status: "Completed"
+  },
+  {
+    id: 5,
+    title: "Modakeshwar Apartment",
+    description: "Completed residential project offering comfortable homes.",
+    location: "Nashik",
+    completionDate: "2021",
+    units: "--",
+    area: "--",
+    images: [
+      "/hero-building.jpg"
+    ],
+    amenities: ["Parking", "Security"],
+    features: ["Quality Construction"],
     status: "Completed"
   }
 ];
@@ -83,7 +90,6 @@ const completedProjects = [
 const Milestones = () => {
   // const [activeYear, setActiveYear] = useState(2025); // Commented out since we're not using year navigation
   const [selectedProject, setSelectedProject] = useState(null);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const controls = useAnimation();
 
   useEffect(() => {
@@ -96,40 +102,19 @@ const Milestones = () => {
 
   const openProjectModal = (project) => {
     setSelectedProject(project);
-    setCurrentImageIndex(0);
   };
 
   const closeProjectModal = useCallback(() => {
     setSelectedProject(null);
-    setCurrentImageIndex(0);
   }, []);
 
-  const nextImage = useCallback(() => {
-    if (selectedProject) {
-      setCurrentImageIndex((prev) => 
-        prev === selectedProject.images.length - 1 ? 0 : prev + 1
-      );
-    }
-  }, [selectedProject]);
+  // Image navigation handled inside memoized carousel component
 
-  const prevImage = useCallback(() => {
-    if (selectedProject) {
-      setCurrentImageIndex((prev) => 
-        prev === 0 ? selectedProject.images.length - 1 : prev - 1
-      );
-    }
-  }, [selectedProject]);
-
-  // Keyboard navigation for carousel
+  // Keyboard navigation: close modal on Escape only (carousel handles arrows)
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (!selectedProject) return;
-      
-      if (event.key === 'ArrowLeft') {
-        prevImage();
-      } else if (event.key === 'ArrowRight') {
-        nextImage();
-      } else if (event.key === 'Escape') {
+      if (event.key === 'Escape') {
         closeProjectModal();
       }
     };
@@ -138,7 +123,91 @@ const Milestones = () => {
       document.addEventListener('keydown', handleKeyDown);
       return () => document.removeEventListener('keydown', handleKeyDown);
     }
-  }, [selectedProject, prevImage, nextImage, closeProjectModal]);
+  }, [selectedProject, closeProjectModal]);
+
+  // Memoized Image Carousel so only image area re-renders
+  const ProjectImageCarousel = memo(function ProjectImageCarousel({ images, title }) {
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const handleNext = useCallback(() => {
+      setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
+    }, [images.length]);
+
+    const handlePrev = useCallback(() => {
+      setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
+    }, [images.length]);
+
+    // Keyboard navigation scoped to carousel when modal focused
+    useEffect(() => {
+      const onKey = (e) => {
+        if (e.key === 'ArrowLeft') handlePrev();
+        if (e.key === 'ArrowRight') handleNext();
+      };
+      document.addEventListener('keydown', onKey);
+      return () => document.removeEventListener('keydown', onKey);
+    }, [handlePrev, handleNext]);
+
+    return (
+      <div className="space-y-4">
+        <div className="relative overflow-hidden rounded-xl">
+          <div 
+            className="flex h-80 w-full carousel-sliding-container"
+            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          >
+            {images.map((image, index) => (
+              <div key={index} className="w-full flex-shrink-0 h-full carousel-slide">
+                <img
+                  src={image}
+                  alt={`${title} - ${index + 1}`}
+                  className="w-full h-full object-cover carousel-image"
+                  onError={(e) => { e.target.src = '/hero-building.jpg'; }}
+                />
+              </div>
+            ))}
+          </div>
+
+          {images.length > 1 && (
+            <>
+              <button
+                onClick={handlePrev}
+                className="carousel-button absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-2 rounded-full shadow-lg z-30 backdrop-blur-sm"
+              >
+                <FaChevronLeft className="w-4 h-4" />
+              </button>
+              <button
+                onClick={handleNext}
+                className="carousel-button absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-2 rounded-full shadow-lg z-30 backdrop-blur-sm"
+              >
+                <FaChevronRight className="w-4 h-4" />
+              </button>
+            </>
+          )}
+
+          {images.length > 1 && (
+            <div className="absolute top-4 right-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded-full text-sm font-medium">
+              {currentIndex + 1} / {images.length}
+            </div>
+          )}
+        </div>
+
+        {images.length > 1 && (
+          <div className="flex space-x-2 justify-center">
+            {images.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`carousel-dot w-2 h-2 rounded-full ${
+                  index === currentIndex
+                    ? 'bg-yellow-500 active'
+                    : 'bg-white/50 hover:bg-white/70 dark:bg-gray-300/50 dark:hover:bg-gray-200/70'
+                }`}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  });
 
   // Project Modal Component
   const ProjectModal = ({ project, isOpen, onClose }) => {
@@ -178,71 +247,7 @@ const Milestones = () => {
               <div className="p-6">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                   {/* Image Carousel */}
-                  <div className="space-y-4">
-                    <div className="relative overflow-hidden rounded-xl">
-                      {/* Image Container with Sliding Animation - Same as Home Screen */}
-                      <div 
-                        className="flex h-80 w-full carousel-sliding-container"
-                        style={{ transform: `translateX(-${currentImageIndex * 100}%)` }}
-                      >
-                        {project.images.map((image, index) => (
-                          <div key={index} className="w-full flex-shrink-0 h-full carousel-slide">
-                            <img
-                              src={image}
-                              alt={`${project.title} - ${index + 1}`}
-                              className="w-full h-full object-cover carousel-image"
-                              onError={(e) => {
-                                // Fallback for broken images
-                                e.target.src = '/hero-building.jpg';
-                              }}
-                            />
-                          </div>
-                        ))}
-                      </div>
-                      
-                      {/* Navigation Arrows - Same style as Home Screen */}
-                      {project.images.length > 1 && (
-                        <>
-                          <button
-                            onClick={prevImage}
-                            className="carousel-button absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-2 rounded-full shadow-lg z-30 backdrop-blur-sm"
-                          >
-                            <FaChevronLeft className="w-4 h-4" />
-                          </button>
-                          <button
-                            onClick={nextImage}
-                            className="carousel-button absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-2 rounded-full shadow-lg z-30 backdrop-blur-sm"
-                          >
-                            <FaChevronRight className="w-4 h-4" />
-                          </button>
-                        </>
-                      )}
-
-                      {/* Image Counter */}
-                      {project.images.length > 1 && (
-                        <div className="absolute top-4 right-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded-full text-sm font-medium">
-                          {currentImageIndex + 1} / {project.images.length}
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Image Indicators - Same style as Home Screen */}
-                    {project.images.length > 1 && (
-                      <div className="flex space-x-2 justify-center">
-                        {project.images.map((_, index) => (
-                          <button
-                            key={index}
-                            onClick={() => setCurrentImageIndex(index)}
-                            className={`carousel-dot w-2 h-2 rounded-full ${
-                              index === currentImageIndex
-                                ? 'bg-yellow-500 active'
-                                : 'bg-white/50 hover:bg-white/70 dark:bg-gray-300/50 dark:hover:bg-gray-200/70'
-                            }`}
-                          />
-                        ))}
-                      </div>
-                    )}
-                  </div>
+                  <ProjectImageCarousel images={project.images} title={project.title} />
 
                   {/* Project Details */}
                   <div className="space-y-6">
