@@ -39,6 +39,19 @@ module.exports = {
           500: '#ffb300',
           600: '#ff9900',
         },
+        // Pure black theme colors
+        dark: {
+          50: '#f8f9fa',
+          100: '#e9ecef',
+          200: '#dee2e6',
+          300: '#ced4da',
+          400: '#adb5bd',
+          500: '#6c757d',
+          600: '#495057',
+          700: '#343a40',
+          800: '#212529',
+          900: '#000000', // pure black
+        },
       },
       boxShadow: {
         cute: '0 4px 24px 0 rgba(255,184,210,0.12)',

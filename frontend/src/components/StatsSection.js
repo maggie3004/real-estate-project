@@ -92,13 +92,13 @@ const StatsSection = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 max-w-6xl mx-auto">
           {stats.map((stat, idx) => (
             <div 
               key={idx} 
-              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 text-center transform hover:scale-105 transition-all duration-300 border border-gray-100 dark:border-gray-700"
+              className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 md:p-6 text-center transform hover:scale-105 transition-all duration-300 border border-gray-100 dark:border-gray-700"
             >
-              <div className="text-3xl md:text-4xl font-bold text-yellow-600 dark:text-yellow-400 mb-2">
+              <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-yellow-600 dark:text-yellow-400 mb-2">
                 {formatValue(animatedValues[idx], stat)}
               </div>
               <div className="text-sm md:text-base text-gray-600 dark:text-gray-300 font-medium">

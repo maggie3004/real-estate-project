@@ -211,7 +211,7 @@ const ContactForm = ({ propertyId = null, propertyTitle = null }) => {
               exit={{ opacity: 0, x: -20 }}
               className="space-y-6"
             >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     <FaUser className="w-4 h-4 inline mr-2 text-amber-500" />
@@ -344,7 +344,7 @@ const ContactForm = ({ propertyId = null, propertyTitle = null }) => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Preferred Contact Time

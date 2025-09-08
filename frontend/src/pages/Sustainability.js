@@ -217,7 +217,7 @@ const Sustainability = () => (
         <h2 className="text-3xl font-bold text-center text-[#E53935] mb-12">
           Our Environmental Impact
         </h2>
-        <div className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 rounded-3xl p-12">
+        <div className="bg-gradient-to-r from-green-50 to-gray-50 dark:from-green-900/20 dark:to-gray-900/20 rounded-3xl p-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {impactMetrics.map((metric, index) => (
               <div key={index} className="text-center">
@@ -252,7 +252,7 @@ const Sustainability = () => (
             </p>
           </div>
           <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg text-center">
-            <div className="w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-16 h-16 bg-gray-600 rounded-full flex items-center justify-center mx-auto mb-4">
               <FaWater className="text-white text-2xl" />
             </div>
             <h3 className="text-xl font-bold text-[#E53935] mb-3">Water Conservation</h3>
@@ -274,7 +274,7 @@ const Sustainability = () => (
 
       {/* Call to Action */}
       <div className="text-center">
-        <div className="bg-gradient-to-r from-green-600 to-blue-600 text-white p-8 rounded-2xl">
+        <div className="bg-gradient-to-r from-green-600 to-gray-600 text-white p-8 rounded-2xl">
           <h3 className="text-2xl font-bold mb-4">Join Our Green Revolution</h3>
           <p className="text-lg mb-6 opacity-90">
             Be part of our sustainable development journey and contribute to a greener future

@@ -63,7 +63,7 @@ const Contact = () => {
   ];
 
   return (
-    <section className="min-h-screen pt-24 pb-12 bg-white dark:bg-[#181818] text-[#181818] dark:text-white transition-colors duration-300">
+    <section className="min-h-screen pb-12 bg-white dark:bg-black text-[#181818] dark:text-white transition-colors duration-300">
       <Helmet>
         <title>Contact Us - Ganesh Yeole Builders | Get in Touch</title>
         <meta name="description" content="Contact Ganesh Yeole Builders and Developers. Visit our offices in Nashik, Mumbai, and Pune or reach us via phone, email, or contact form." />
@@ -72,20 +72,20 @@ const Contact = () => {
       <div className="max-w-7xl mx-auto px-4">
         {/* Hero Section */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#E53935] mb-6">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#E53935] mb-4 sm:mb-6">
             Get in Touch
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
             Ready to find your dream home? Contact us today and let our experts guide you through your real estate journey.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12 mb-16">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 mb-12 sm:mb-16">
           {/* Contact Form */}
           <div className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-3xl p-8">
-            <h2 className="text-3xl font-bold text-[#E53935] mb-6">Send us a Message</h2>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#E53935] mb-4 sm:mb-6">Send us a Message</h2>
             <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                     Full Name *
@@ -117,7 +117,7 @@ const Contact = () => {
                   />
                 </div>
               </div>
-              <div className="grid md:grid-cols-2 gap-6">
+              <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div>
                   <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                     Phone Number
@@ -220,13 +220,13 @@ const Contact = () => {
             <div>
               <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">Follow Us</h3>
                              <div className="flex gap-4">
-                 <button className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors duration-200" aria-label="Facebook">
+                 <button className="w-12 h-12 bg-gray-600 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors duration-200" aria-label="Facebook">
                    <FaFacebook className="text-white text-xl" />
                  </button>
                  <button className="w-12 h-12 bg-pink-600 rounded-full flex items-center justify-center hover:bg-pink-700 transition-colors duration-200" aria-label="Instagram">
                    <FaInstagram className="text-white text-xl" />
                  </button>
-                 <button className="w-12 h-12 bg-blue-700 rounded-full flex items-center justify-center hover:bg-blue-800 transition-colors duration-200" aria-label="LinkedIn">
+                 <button className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors duration-200" aria-label="LinkedIn">
                    <FaLinkedin className="text-white text-xl" />
                  </button>
                  <button className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center hover:bg-green-700 transition-colors duration-200" aria-label="WhatsApp">

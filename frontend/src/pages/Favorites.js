@@ -174,7 +174,7 @@ const Favorites = () => {
             <div className="bg-white rounded-xl shadow-lg p-6 border border-gray-100">
               <div className="flex items-center justify-between mb-2">
                 <h4 className="text-sm font-medium text-gray-600">Apartments</h4>
-                <FiHome className="w-5 h-5 text-blue-500" />
+                <FiHome className="w-5 h-5 text-gray-500" />
               </div>
               <p className="text-2xl font-bold text-gray-900">{getPropertyTypeCount('apartment')}</p>
             </div>
@@ -236,7 +236,7 @@ const Favorites = () => {
                 Export
               </motion.button>
               
-              <label className="px-4 py-3 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transition-colors duration-200 flex items-center gap-2 cursor-pointer">
+              <label className="px-4 py-3 bg-gray-600 text-white rounded-xl font-semibold hover:bg-gray-700 transition-colors duration-200 flex items-center gap-2 cursor-pointer">
                 <FiUpload className="w-4 h-4" />
                 Import
                 <input

@@ -11,24 +11,26 @@ const awards = [
 
 const AwardsSection = () => (
   <section style={{ padding: '3rem 0', background: 'var(--background-color)' }}>
-    <h2 style={{ textAlign: 'center', fontSize: '2rem', fontWeight: 700, color: 'var(--primary-color)', marginBottom: '2rem' }}>
+    <h2 style={{ textAlign: 'center', fontSize: 'clamp(1.5rem, 4vw, 2rem)', fontWeight: 700, color: 'var(--primary-color)', marginBottom: '2rem' }}>
       Awards & Recognition
     </h2>
     <div style={{
       display: 'flex',
       justifyContent: 'center',
-      gap: '2rem',
+      gap: '1rem',
       flexWrap: 'wrap',
       maxWidth: 900,
       margin: '0 auto',
+      padding: '0 1rem',
     }}>
       {awards.map((award, idx) => (
         <div key={idx} style={{
           background: 'var(--card-bg)',
           boxShadow: 'var(--card-shadow)',
           borderRadius: '1rem',
-          padding: '2rem 1.5rem',
-          minWidth: 200,
+          padding: '1.5rem 1rem',
+          minWidth: 160,
+          maxWidth: 200,
           textAlign: 'center',
           display: 'flex',
           flexDirection: 'column',

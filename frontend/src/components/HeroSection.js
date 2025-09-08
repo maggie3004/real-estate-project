@@ -146,12 +146,12 @@ const HeroSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/50 dark:from-black/30 dark:via-black/40 dark:to-black/60"></div>
                
                                                                {/* Slide-specific content */}
-                 <div className="absolute top-28 sm:top-32 left-8 sm:left-12 z-10 max-w-2xl">
+                 <div className="absolute top-24 sm:top-28 md:top-32 left-4 sm:left-8 md:left-12 right-4 sm:right-8 md:right-12 z-10 max-w-2xl">
                    <motion.h2
                      initial={{ opacity: 0, x: -30 }}
                      animate={{ opacity: 1, x: 0 }}
                      transition={{ duration: 0.8, delay: 0.2 }}
-                     className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white dark:text-gray-100 mb-4 leading-tight drop-shadow-lg text-left"
+                     className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-white dark:text-gray-100 mb-2 sm:mb-4 leading-tight drop-shadow-lg text-left"
                    >
                      {slide.title}
                    </motion.h2>
@@ -159,7 +159,7 @@ const HeroSection = () => {
                      initial={{ opacity: 0, x: -30 }}
                      animate={{ opacity: 1, x: 0 }}
                      transition={{ duration: 0.8, delay: 0.4 }}
-                     className="text-base sm:text-lg md:text-xl text-gray-100 dark:text-gray-200 leading-relaxed drop-shadow-md text-left"
+                     className="text-sm sm:text-base md:text-lg text-gray-100 dark:text-gray-200 mb-4 sm:mb-6 leading-relaxed drop-shadow-md text-left"
                    >
                      {slide.subtitle}
                    </motion.p>
@@ -176,20 +176,20 @@ const HeroSection = () => {
              {/* Navigation Arrows */}
                <button
           onClick={prevSlide}
-          className="carousel-button absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-2 sm:p-3 rounded-full shadow-lg z-30 backdrop-blur-sm"
+          className="carousel-button absolute left-1 sm:left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-1.5 sm:p-2 md:p-3 rounded-full shadow-lg z-30 backdrop-blur-sm"
         >
           <FaChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
         <button
           onClick={nextSlide}
-          className="carousel-button absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-2 sm:p-3 rounded-full shadow-lg z-30 backdrop-blur-sm"
+          className="carousel-button absolute right-1 sm:right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-1.5 sm:p-2 md:p-3 rounded-full shadow-lg z-30 backdrop-blur-sm"
         >
           <FaChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
 
 
                {/* Dots Indicator */}
-        <div className="absolute bottom-4 sm:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-30">
+        <div className="absolute bottom-2 sm:bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-1 sm:space-x-2 z-30">
           {carouselData.map((_, index) => (
             <button
               key={index}

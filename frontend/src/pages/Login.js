@@ -62,7 +62,7 @@ export default function Login() {
 
   return (
     <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
-      <div className="min-h-screen bg-white dark:bg-[#181818] text-[#181818] dark:text-white flex items-center justify-center px-4 py-8 transition-colors duration-300">
+      <div className="min-h-screen bg-white dark:bg-black text-[#181818] dark:text-white flex items-center justify-center px-4 py-8 transition-colors duration-300">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

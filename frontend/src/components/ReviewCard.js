@@ -151,7 +151,7 @@ const ReviewCard = ({ review, onHelpful, onDelete, onEdit }) => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => onEdit(review)}
-                className="p-2 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-all duration-200"
+                className="p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-all duration-200"
                 title="Edit Review"
               >
                 <FiEdit3 className="w-4 h-4" />
@@ -205,20 +205,20 @@ const ReviewCard = ({ review, onHelpful, onDelete, onEdit }) => {
 
       {/* Response from Owner (if any) */}
       {review.ownerResponse && (
-        <div className="mt-4 p-4 bg-blue-50 rounded-lg border-l-4 border-blue-500">
+        <div className="mt-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg border-l-4 border-gray-500">
           <div className="flex items-start gap-3">
-            <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white text-sm font-semibold">
+            <div className="w-8 h-8 bg-gray-500 rounded-full flex items-center justify-center text-white text-sm font-semibold">
               O
             </div>
             <div className="flex-1">
               <div className="flex items-center gap-2 mb-1">
-                <span className="font-semibold text-blue-900">Property Owner</span>
-                <span className="text-xs text-blue-600">Response</span>
+                <span className="font-semibold text-gray-900 dark:text-gray-100">Property Owner</span>
+                <span className="text-xs text-gray-600 dark:text-gray-400">Response</span>
               </div>
-              <p className="text-blue-800 text-sm leading-relaxed">
+              <p className="text-gray-800 dark:text-gray-200 text-sm leading-relaxed">
                 {review.ownerResponse}
               </p>
-              <span className="text-xs text-blue-600 mt-2 block">
+              <span className="text-xs text-gray-600 dark:text-gray-400 mt-2 block">
                 {formatDate(review.ownerResponseDate)}
               </span>
             </div>

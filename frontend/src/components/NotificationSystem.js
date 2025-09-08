@@ -158,7 +158,7 @@ export const NotificationProvider = ({ children }) => {
   const getNotificationColor = (type) => {
     switch (type) {
       case 'newProperty':
-        return 'text-blue-600 bg-blue-50';
+        return 'text-gray-600 bg-gray-50 dark:bg-gray-800';
       case 'priceChange':
         return 'text-green-600 bg-green-50';
       case 'favorite':

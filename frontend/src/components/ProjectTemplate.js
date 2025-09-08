@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaChevronLeft, FaChevronRight, FaPause, FaPlay, FaExpand } from 'react-icons/fa';
 import ImageGallery from './ImageGallery';
@@ -21,9 +21,9 @@ const ProjectTemplate = ({
   const [isGalleryOpen, setGalleryOpen] = useState(false);
 
   // Navigation functions
-  const handleNext = () => setCurrentImageIndex((prev) => (prev + 1) % images.length);
-  const handlePrevious = () => setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
-  const togglePlayPause = () => setIsPlaying(!isPlaying);
+  const handleNext = useCallback(() => setCurrentImageIndex((prev) => (prev + 1) % images.length), [images.length]);
+  const handlePrevious = useCallback(() => setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length), [images.length]);
+  const togglePlayPause = useCallback(() => setIsPlaying(!isPlaying), [isPlaying]);
 
   // Autoplay effect
   useEffect(() => {
@@ -35,7 +35,7 @@ const ProjectTemplate = ({
   }, [isPlaying, handleNext]);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#181818] text-[#181818] dark:text-white transition-colors duration-300">
+    <div className="min-h-screen bg-white dark:bg-black text-[#181818] dark:text-white transition-colors duration-300">
       <FloatingActions 
         brochurePath={brochurePath}
         projectName={projectName}
@@ -53,11 +53,11 @@ const ProjectTemplate = ({
       </section>
 
       {/* Stats Section */}
-      <section className="w-full py-8 bg-gray-900/5">
+      <section className="w-full py-8 bg-gray-900/5 dark:bg-black/50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {stats.map((stat, index) => (
-              <div key={index} className="bg-gray-900 rounded-lg p-4 text-center transform hover:scale-105 transition-transform duration-300">
+              <div key={index} className="bg-gray-900 dark:bg-black rounded-lg p-4 text-center transform hover:scale-105 transition-transform duration-300">
                 <div className="text-xl md:text-2xl font-bold text-gold mb-1">{stat.title}</div>
                 <div className="text-lg md:text-xl text-gray-200">{stat.subtitle}</div>
               </div>
@@ -67,7 +67,7 @@ const ProjectTemplate = ({
       </section>
 
       {/* Amenities Section */}
-      <section className="w-full py-8 bg-gray-900/5">
+      <section className="w-full py-8 bg-gray-900/5 dark:bg-black/50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-2xl md:text-3xl font-semibold mb-8 text-gold text-center">Amenities</div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
@@ -182,7 +182,7 @@ const ProjectTemplate = ({
       </section>
 
       {/* Location Section */}
-      <section className="w-full py-8 bg-gray-900/5">
+      <section className="w-full py-8 bg-gray-900/5 dark:bg-black/50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-2xl md:text-3xl font-semibold mb-8 text-gold text-center">Location</div>
           <div className="max-w-4xl mx-auto">

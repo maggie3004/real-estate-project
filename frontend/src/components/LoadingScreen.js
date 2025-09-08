@@ -36,7 +36,7 @@ const LoadingScreen = ({ onLoadingComplete }) => {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="fixed inset-0 z-50 bg-gradient-to-br from-gold-50 via-orange-50 to-red-50 flex items-center justify-center"
+          className="loading-screen-container bg-gradient-to-br from-gold-50 via-orange-50 to-red-50"
         >
           <div className="text-center">
             {/* Vastu Logo */}

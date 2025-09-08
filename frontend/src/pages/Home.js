@@ -1,19 +1,53 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import HeroSection from '../components/HeroSection';
 import LocationSection from '../components/LocationSection';
 import ContactForm from '../components/ContactForm';
-import StatsSection from '../components/StatsSection';
 import ProjectsSection from '../components/ProjectsSection';
 import AboutSection from '../components/AboutSection';
 import AwardsSection from '../components/AwardsSection';
 import JourneySection from '../components/JourneySection';
 import { Helmet } from 'react-helmet';
+import { motion } from 'framer-motion';
 
 // ... import other new sections as you create them
 
 const Home = () => {
+  useEffect(() => {
+    // Smooth scroll behavior for anchor links
+    const handleSmoothScroll = (e) => {
+      const target = e.target.getAttribute('href');
+      if (target && target.startsWith('#')) {
+        e.preventDefault();
+        const element = document.querySelector(target);
+        if (element) {
+          element.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      }
+    };
+
+    // Add smooth scroll to all anchor links
+    const links = document.querySelectorAll('a[href^="#"]');
+    links.forEach(link => {
+      link.addEventListener('click', handleSmoothScroll);
+    });
+
+    return () => {
+      links.forEach(link => {
+        link.removeEventListener('click', handleSmoothScroll);
+      });
+    };
+  }, []);
+
   return (
-    <div className="min-h-screen bg-white dark:bg-[#181818] text-[#181818] dark:text-white transition-colors duration-300 pt-20">
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="min-h-screen bg-white dark:bg-black text-[#181818] dark:text-white transition-colors duration-300"
+    >
       <Helmet>
         <title>Ganesh Yeole Builders and Developers | Premium Properties in Mumbai, Pune & Nashik</title>
         <meta name="description" content="Discover premium properties in Mumbai, Pune, and Nashik. Luxury apartments, villas, and commercial spaces with world-class amenities. Find your dream home with Ganesh Yeole Builders and Developers." />
@@ -65,35 +99,72 @@ const Home = () => {
       {/* 1. Hero Section (Carousel) */}
       <HeroSection />
       
-      {/* 2. Statistics Section (Counting Numbers) */}
-      <StatsSection />
       
       {/* 3. Our Projects Section */}
-      <div id="projects" data-aos="fade-up">
+      <motion.div 
+        id="projects"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+        viewport={{ once: true, margin: "-100px" }}
+      >
         <ProjectsSection />
-      </div>
+      </motion.div>
       
       {/* 4. About Us Section */}
-      <div id="about" data-aos="fade-up">
+      <motion.div 
+        id="about"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+        viewport={{ once: true, margin: "-100px" }}
+      >
         <AboutSection />
-      </div>
+      </motion.div>
       
       {/* 5. Journey/Milestones Section */}
-      <div id="milestones" data-aos="fade-up">
+      <motion.div 
+        id="milestones"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+        viewport={{ once: true, margin: "-100px" }}
+      >
         <JourneySection />
-      </div>
+      </motion.div>
       
       {/* 6. Awards and Recognition Section */}
-      <AwardsSection />
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        <AwardsSection />
+      </motion.div>
       
       {/* 7. Location Section */}
-      <LocationSection />
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        <LocationSection />
+      </motion.div>
       
       {/* 8. Contact Form */}
-      <ContactForm />
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        <ContactForm />
+      </motion.div>
       
       {/* Footer is handled by MainLayout component */}
-    </div>
+    </motion.div>
   );
 };
 

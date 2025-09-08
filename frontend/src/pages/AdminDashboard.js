@@ -7,7 +7,7 @@ const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState('overview');
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-20">
+    <div className="min-h-screen bg-gray-50 dark:bg-black pt-20">
       <Helmet>
         <title>Admin Dashboard | Ganesh Yeole Builders and Developers</title>
         <meta name="description" content="Admin dashboard for managing properties, users, and content for Ganesh Yeole Builders and Developers." />
@@ -19,7 +19,7 @@ const AdminDashboard = () => {
       </Helmet>
 
       <div className="container mx-auto px-4 py-8">
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+        <div className="bg-white dark:bg-black rounded-lg shadow-lg p-6">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">
             Admin Dashboard
           </h1>
@@ -31,7 +31,7 @@ const AdminDashboard = () => {
               className={`px-4 py-2 rounded-lg font-medium transition-colors duration-200 ${
                 activeTab === 'overview'
                   ? 'bg-primary-600 text-white'
-                  : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
               }`}
             >
               Overview
@@ -41,7 +41,7 @@ const AdminDashboard = () => {
               className={`px-4 py-2 rounded-lg font-medium transition-colors duration-200 ${
                 activeTab === 'properties'
                   ? 'bg-primary-600 text-white'
-                  : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
               }`}
             >
               Properties
@@ -51,7 +51,7 @@ const AdminDashboard = () => {
               className={`px-4 py-2 rounded-lg font-medium transition-colors duration-200 ${
                 activeTab === 'users'
                   ? 'bg-primary-600 text-white'
-                  : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
               }`}
             >
               Users
@@ -61,7 +61,7 @@ const AdminDashboard = () => {
               className={`px-4 py-2 rounded-lg font-medium transition-colors duration-200 ${
                 activeTab === 'settings'
                   ? 'bg-primary-600 text-white'
-                  : 'bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
+                  : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
               }`}
             >
               Settings
@@ -77,10 +77,10 @@ const AdminDashboard = () => {
                 transition={{ duration: 0.5 }}
                 className="grid grid-cols-1 md:grid-cols-3 gap-6"
               >
-                <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg p-6 text-white">
+                <div className="bg-gradient-to-r from-gray-600 to-gray-700 rounded-lg p-6 text-white">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-blue-100">Total Properties</p>
+                      <p className="text-gray-200">Total Properties</p>
                       <p className="text-3xl font-bold">24</p>
                     </div>
                     <FaUsers className="text-4xl opacity-80" />

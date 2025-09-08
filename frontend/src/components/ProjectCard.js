@@ -17,7 +17,7 @@ const ProjectCard = ({ project }) => {
         </p>
         <div className="flex justify-between items-center">
           <span className="text-sm text-gray-500">{project?.location || 'Location'}</span>
-          <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
+          <span className="px-2 py-1 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 text-xs rounded-full">
             {project?.status || 'Status'}
           </span>
         </div>

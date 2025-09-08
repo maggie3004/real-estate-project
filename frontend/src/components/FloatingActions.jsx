@@ -14,7 +14,7 @@ const FloatingActions = () => {
     { 
       icon: <FaPhone size={20} />, 
       label: 'Call', 
-      color: 'bg-blue-500 hover:bg-blue-600', 
+      color: 'bg-gray-600 hover:bg-gray-700', 
       href: 'tel:+919876543210'
     },
     { 

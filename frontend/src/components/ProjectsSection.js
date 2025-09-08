@@ -26,14 +26,15 @@ const projects = [
 
 const ProjectsSection = () => (
   <section style={{ padding: '3rem 0', background: '#fff' }}>
-    <h2 style={{ textAlign: 'center', fontSize: '2.5rem', fontWeight: 700, marginBottom: '2rem', color: 'var(--primary-color)' }}>
+    <h2 style={{ textAlign: 'center', fontSize: 'clamp(1.5rem, 4vw, 2.5rem)', fontWeight: 700, marginBottom: '2rem', color: 'var(--primary-color)' }}>
       Our Projects
     </h2>
     <div style={{
       display: 'flex',
       justifyContent: 'center',
-      gap: '2rem',
+      gap: '1rem',
       flexWrap: 'wrap',
+      padding: '0 1rem',
     }}>
       {projects.map((project, idx) => (
         <div key={idx} className="project-card" style={{
@@ -41,7 +42,9 @@ const ProjectsSection = () => (
           boxShadow: 'var(--card-shadow)',
           borderRadius: '1rem',
           overflow: 'hidden',
-          width: 320,
+          width: '100%',
+          maxWidth: 320,
+          minWidth: 280,
           display: 'flex',
           flexDirection: 'column',
           transition: 'transform 0.25s cubic-bezier(.4,2,.3,1), box-shadow 0.25s cubic-bezier(.4,2,.3,1)',

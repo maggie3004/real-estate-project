@@ -4,15 +4,15 @@ import { FaLinkedin, FaFacebook, FaInstagram, FaYoutube, FaPhoneAlt, FaEnvelope,
 
 function Footer() {
   return (
-    <footer className="w-full bg-[#181818] text-gray-100 pt-8 pb-5 px-4 mt-8 border-t border-gray-800">
+    <footer className="w-full bg-black text-gray-100 pt-8 pb-5 px-4 mt-8 border-t border-gray-800">
       <div className="max-w-7xl mx-auto">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-4">
           {/* Company Info */}
           <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <img src={logo} alt="Logo" className="h-10 w-auto" />
-              <span className="font-bold text-lg tracking-wide text-white">Ganesh Yeole Builders</span>
+            <div className="flex items-center gap-2 sm:gap-3">
+              <img src={logo} alt="Logo" className="h-8 sm:h-10 w-auto" />
+              <span className="font-bold text-base sm:text-lg tracking-wide text-white">Ganesh Yeole Builders</span>
             </div>
             <p className="text-gray-300 leading-relaxed text-sm">
               Building dreams and creating landmarks for over 16 years. Your trusted partner in real estate development across Nashik, Mumbai, and Pune.

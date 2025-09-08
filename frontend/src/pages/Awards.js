@@ -152,7 +152,7 @@ const Awards = () => {
                 </div>
                 <div className="p-6">
                   <div className="mb-3">
-                    <span className="inline-block bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm font-semibold">
+                    <span className="inline-block bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-3 py-1 rounded-full text-sm font-semibold">
                       {award.category}
                     </span>
                   </div>

@@ -319,7 +319,7 @@ const Milestones = () => {
                         {project.features.map((feature, index) => (
                           <span
                             key={index}
-                            className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm font-medium"
+                            className="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-3 py-1 rounded-full text-sm font-medium"
                           >
                             {feature}
                           </span>
@@ -444,7 +444,7 @@ const Milestones = () => {
           <div className="relative">
             {/* Background Decorative Elements */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-96 h-96 bg-gradient-to-br from-gold/10 via-blue-500/10 to-green-500/10 rounded-full blur-3xl"></div>
+              <div className="w-96 h-96 bg-gradient-to-br from-gold/10 via-gray-500/10 to-green-500/10 rounded-full blur-3xl"></div>
             </div>
             
             <h1 className="relative text-5xl md:text-6xl font-bold bg-gradient-to-r from-[#E53935] via-gold to-orange-500 bg-clip-text text-transparent mb-8">
@@ -464,29 +464,6 @@ const Milestones = () => {
           </div>
         </motion.div>
 
-        {/* Year Navigation - Commented Out */}
-        {/* <motion.div 
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="flex justify-center mb-16"
-        >
-          <div className="flex space-x-4 bg-white dark:bg-gray-800 p-2 rounded-2xl shadow-lg">
-            {milestones.map((yearData) => (
-              <button
-                key={yearData.year}
-                onClick={() => setActiveYear(yearData.year)}
-                className={`px-6 py-3 rounded-xl font-bold transition-all duration-300 ${
-                  activeYear === yearData.year
-                    ? 'bg-gradient-to-r from-gold to-orange-500 text-white shadow-lg scale-105'
-                    : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
-                }`}
-              >
-                {yearData.year}
-              </button>
-            ))}
-          </div>
-        </motion.div> */}
 
         {/* Completed Projects Section */}
         <motion.div 

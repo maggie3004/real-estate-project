@@ -29,7 +29,7 @@ const PricingFloorPlanSection = () => {
           transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
           className="overflow-x-auto"
         >
-          <table className="min-w-full bg-white dark:bg-[#232323] rounded-2xl shadow-lg border border-gold/30">
+          <table className="min-w-full bg-white dark:bg-black rounded-2xl shadow-lg border border-gold/30">
             <thead>
               <tr className="bg-gradient-to-r from-gold to-primary-500 text-white dark:text-[#181818]">
                 <th className="px-6 py-4 text-left font-montserrat text-lg text-white dark:text-[#181818]">Type</th>
@@ -40,7 +40,7 @@ const PricingFloorPlanSection = () => {
             </thead>
             <tbody>
               {properties.map((p, idx) => (
-                <tr key={p.id} className={idx % 2 === 0 ? 'bg-white dark:bg-[#232323]' : 'bg-gray-50 dark:bg-gray-800'}>
+                <tr key={p.id} className={idx % 2 === 0 ? 'bg-white dark:bg-black' : 'bg-gray-50 dark:bg-gray-900'}>
                   <td className="px-6 py-4 font-semibold text-[#181818] dark:text-white">{p.title}</td>
                   <td className="px-6 py-4 text-[#181818] dark:text-white">{p.area || (p.bedrooms + ' BHK')}</td>
                   <td className="px-6 py-4 text-gold font-bold">{p.price}</td>
