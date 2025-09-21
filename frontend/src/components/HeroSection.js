@@ -1,12 +1,13 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import { useSwipe } from '../hooks/useSwipe';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
 
 const HeroSection = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-
   // Carousel data with 3 high-quality building images
   const carouselData = [
     {
@@ -29,179 +30,97 @@ const HeroSection = () => {
     }
   ];
 
-  const nextSlide = useCallback(() => {
-    setIsAutoPlaying(false); // Pause auto-play when user interacts
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselData.length);
-    // Resume auto-play after 4 seconds for Ganesh Housing style
-    setTimeout(() => setIsAutoPlaying(true), 4000);
-  }, [carouselData.length]);
-
-  const prevSlide = useCallback(() => {
-    setIsAutoPlaying(false); // Pause auto-play when user interacts
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + carouselData.length) % carouselData.length);
-    // Resume auto-play after 4 seconds for Ganesh Housing style
-    setTimeout(() => setIsAutoPlaying(true), 4000);
-  }, [carouselData.length]);
-
-  const goToSlide = useCallback((index) => {
-    setIsAutoPlaying(false); // Pause auto-play when user interacts
-    setCurrentIndex(index);
-    // Resume auto-play after 4 seconds for Ganesh Housing style
-    setTimeout(() => setIsAutoPlaying(true), 4000);
-  }, []);
-
-  // Swipe support
-  const { elementRef } = useSwipe({
-    onSwipeLeft: () => nextSlide(),
-    onSwipeRight: () => prevSlide(),
-    minSwipeDistance: 50
-  });
-
-  useEffect(() => {
-    if (!isAutoPlaying) return;
-
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselData.length);
-    }, 5000); // Change slide every 5 seconds for Ganesh Housing style smoothness
-
-    return () => clearInterval(interval);
-  }, [isAutoPlaying, carouselData.length]);
-
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      switch (e.key) {
-        case 'ArrowLeft':
-          e.preventDefault();
-          prevSlide();
-          break;
-        case 'ArrowRight':
-          e.preventDefault();
-          nextSlide();
-          break;
-        case ' ':
-          e.preventDefault();
-          setIsAutoPlaying(prev => !prev);
-          break;
-        case 'Home':
-          e.preventDefault();
-          goToSlide(0);
-          break;
-        case 'End':
-          e.preventDefault();
-          goToSlide(carouselData.length - 1);
-          break;
-        default:
-          break;
-      }
-    };
-
-    const element = elementRef.current;
-    if (element) {
-      element.addEventListener('keydown', handleKeyDown);
-      element.setAttribute('tabindex', '0');
-      element.setAttribute('role', 'region');
-      element.setAttribute('aria-label', 'Image carousel');
-    }
-
-    return () => {
-      if (element) {
-        element.removeEventListener('keydown', handleKeyDown);
-      }
-    };
-  }, [carouselData.length, elementRef, nextSlide, prevSlide, goToSlide]);
-
   return (
     <motion.section
-      ref={elementRef}
       id="home"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.6 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
-      className="relative h-screen overflow-hidden w-full touch-pan-y"
+      className="relative h-screen overflow-hidden w-full"
     >
-             {/* Carousel Background */}
-       <div className="absolute inset-0 overflow-hidden">
-         <div 
-           className="flex h-full w-full carousel-sliding-container"
-           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-         >
-           {carouselData.map((slide, index) => (
-             <div key={slide.id} className="w-full flex-shrink-0 h-full relative carousel-slide">
-               <img 
-                 src={slide.image}
-                 alt={slide.title}
-                 className={`carousel-image w-full h-full object-center ${
-                   slide.id === 1 ? 'object-cover' : 'sm:object-contain md:object-cover lg:object-cover'
-                 }`}
-                 style={{
-                   minHeight: '100vh',
-                   minWidth: '100vw',
-                   objectPosition: slide.id === 1 ? 'center 30%' : 'center center'
-                 }}
-               />
-               
-                               {/* Overlay for better text readability */}
-                <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/50 dark:from-black/30 dark:via-black/40 dark:to-black/60"></div>
-               
-                                                               {/* Slide-specific content */}
-                 <div className="absolute top-24 sm:top-28 md:top-32 left-4 sm:left-8 md:left-12 right-4 sm:right-8 md:right-12 z-10 max-w-2xl">
-                   <motion.h2
-                     initial={{ opacity: 0, x: -30 }}
-                     animate={{ opacity: 1, x: 0 }}
-                     transition={{ duration: 0.8, delay: 0.2 }}
-                     className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-white dark:text-gray-100 mb-2 sm:mb-4 leading-tight drop-shadow-lg text-left"
-                   >
-                     {slide.title}
-                   </motion.h2>
-                   <motion.p
-                     initial={{ opacity: 0, x: -30 }}
-                     animate={{ opacity: 1, x: 0 }}
-                     transition={{ duration: 0.8, delay: 0.4 }}
-                     className="text-sm sm:text-base md:text-lg text-gray-100 dark:text-gray-200 mb-4 sm:mb-6 leading-relaxed drop-shadow-md text-left"
-                   >
-                     {slide.subtitle}
-                   </motion.p>
-                 </div>
+      <Swiper
+        modules={[Navigation, Pagination, Autoplay, EffectFade]}
+        effect="fade"
+        fadeEffect={{
+          crossFade: true
+        }}
+        speed={1000}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true
+        }}
+        navigation={{
+          nextEl: '.hero-swiper-button-next',
+          prevEl: '.hero-swiper-button-prev',
+        }}
+        pagination={{
+          clickable: true,
+          el: '.hero-swiper-pagination',
+          bulletClass: 'hero-swiper-pagination-bullet',
+          bulletActiveClass: 'hero-swiper-pagination-bullet-active'
+        }}
+        loop={true}
+        className="hero-swiper h-full w-full"
+      >
+        {carouselData.map((slide, index) => (
+          <SwiperSlide key={slide.id} className="relative">
+            <div className="relative h-full w-full">
+              <img 
+                src={slide.image}
+                alt={slide.title}
+                className={`w-full h-full object-center ${
+                  slide.id === 1 ? 'object-cover' : 'sm:object-contain md:object-cover lg:object-cover'
+                }`}
+                style={{
+                  minHeight: '100vh',
+                  minWidth: '100vw',
+                  objectPosition: slide.id === 1 ? 'center 30%' : 'center center'
+                }}
+              />
+              
+              {/* Overlay for better text readability */}
+              <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/50 dark:from-black/30 dark:via-black/40 dark:to-black/60"></div>
+              
+              {/* Slide-specific content */}
+              <div className="absolute top-24 sm:top-28 md:top-32 left-4 sm:left-8 md:left-12 right-4 sm:right-8 md:right-12 z-10 max-w-2xl">
+                <motion.h2
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-white dark:text-gray-100 mb-2 sm:mb-4 leading-tight drop-shadow-lg text-left"
+                >
+                  {slide.title}
+                </motion.h2>
+                <motion.p
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  className="text-sm sm:text-base md:text-lg text-gray-100 dark:text-gray-200 mb-4 sm:mb-6 leading-relaxed drop-shadow-md text-left"
+                >
+                  {slide.subtitle}
+                </motion.p>
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
 
+      {/* Custom Navigation Buttons */}
+      <div className="hero-swiper-button-prev absolute left-1 sm:left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-1.5 sm:p-2 md:p-3 rounded-full shadow-lg z-30 backdrop-blur-sm cursor-pointer transition-all duration-200 hover:scale-110">
+        <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        </svg>
+      </div>
+      <div className="hero-swiper-button-next absolute right-1 sm:right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-1.5 sm:p-2 md:p-3 rounded-full shadow-lg z-30 backdrop-blur-sm cursor-pointer transition-all duration-200 hover:scale-110">
+        <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
+      </div>
 
-             </div>
-           ))}
-         </div>
-       </div>
-
-                                                       
-
-             {/* Navigation Arrows */}
-               <button
-          onClick={prevSlide}
-          className="carousel-button absolute left-1 sm:left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-1.5 sm:p-2 md:p-3 rounded-full shadow-lg z-30 backdrop-blur-sm"
-        >
-          <FaChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
-        </button>
-        <button
-          onClick={nextSlide}
-          className="carousel-button absolute right-1 sm:right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-1.5 sm:p-2 md:p-3 rounded-full shadow-lg z-30 backdrop-blur-sm"
-        >
-          <FaChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
-        </button>
-
-
-               {/* Dots Indicator */}
-        <div className="absolute bottom-2 sm:bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-1 sm:space-x-2 z-30">
-          {carouselData.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToSlide(index)}
-              className={`carousel-dot w-2 h-2 sm:w-3 sm:h-3 rounded-full ${
-                index === currentIndex 
-                  ? 'bg-yellow-500 active' 
-                  : 'bg-white/50 hover:bg-white/70 dark:bg-gray-300/50 dark:hover:bg-gray-200/70'
-              }`}
-            />
-          ))}
-        </div>
+      {/* Custom Pagination */}
+      <div className="hero-swiper-pagination absolute bottom-2 sm:bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-1 sm:space-x-2 z-30"></div>
     </motion.section>
   );
 };

@@ -12,6 +12,10 @@
 @import 'react-toastify/dist/ReactToastify.css';
 @import 'leaflet/dist/leaflet.css';
 @import 'react-datepicker/dist/react-datepicker.css';
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+@import 'swiper/css/effect-fade';
 
 /* Remove duplicate imports */
 /* ...existing styles starting from * { margin: 0; ... */
@@ -1475,4 +1479,46 @@ select:focus {
 .carousel-slide-exit-active {
   opacity: 0;
   transform: translateX(-100%);
+}
+
+/* Hero Swiper Styles */
+.hero-swiper {
+  height: 100vh !important;
+}
+
+.hero-swiper .swiper-slide {
+  height: 100vh;
+}
+
+.hero-swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.hero-swiper-pagination-bullet-active {
+  background: #ffd700;
+  transform: scale(1.2);
+}
+
+.hero-swiper-button-prev:after,
+.hero-swiper-button-next:after {
+  display: none;
+}
+
+.hero-swiper-button-prev.swiper-button-disabled,
+.hero-swiper-button-next.swiper-button-disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Dark mode support for hero swiper */
+.dark .hero-swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.dark .hero-swiper-pagination-bullet-active {
+  background: #ffd700;
 }

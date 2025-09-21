@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react';
 import HeroSection from '../components/HeroSection';
+import StatsSection from '../components/StatsSection';
 import LocationSection from '../components/LocationSection';
 import ContactForm from '../components/ContactForm';
 import ProjectsSection from '../components/ProjectsSection';
 import AboutSection from '../components/AboutSection';
 import AwardsSection from '../components/AwardsSection';
 import JourneySection from '../components/JourneySection';
+import Testimonials from '../components/Testimonials';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 
@@ -99,6 +101,15 @@ const Home = () => {
       {/* 1. Hero Section (Carousel) */}
       <HeroSection />
       
+      {/* 2. Stats Section (Counting Numbers) */}
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        <StatsSection />
+      </motion.div>
       
       {/* 3. Our Projects Section */}
       <motion.div 
@@ -143,7 +154,17 @@ const Home = () => {
         <AwardsSection />
       </motion.div>
       
-      {/* 7. Location Section */}
+      {/* 7. Testimonials Section */}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        <Testimonials />
+      </motion.div>
+      
+      {/* 8. Location Section */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -153,7 +174,7 @@ const Home = () => {
         <LocationSection />
       </motion.div>
       
-      {/* 8. Contact Form */}
+      {/* 9. Contact Form */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}

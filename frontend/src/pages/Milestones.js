@@ -2,6 +2,11 @@ import React, { useState, useEffect, useCallback, memo } from 'react';
 import { Helmet } from 'react-helmet';
 import { FaBuilding, FaUsers, FaArrowRight, FaTimes, FaChevronLeft, FaChevronRight, FaMapMarkerAlt, FaCalendarAlt } from 'react-icons/fa';
 import { motion, useAnimation, AnimatePresence } from 'framer-motion';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 const completedProjects = [
   {
@@ -102,10 +107,16 @@ const Milestones = () => {
 
   const openProjectModal = (project) => {
     setSelectedProject(project);
+    // Prevent body scrolling when modal is open
+    document.body.classList.add('modal-open');
+    document.body.style.overflow = 'hidden';
   };
 
   const closeProjectModal = useCallback(() => {
     setSelectedProject(null);
+    // Restore body scrolling when modal is closed
+    document.body.classList.remove('modal-open');
+    document.body.style.overflow = 'unset';
   }, []);
 
   // Image navigation handled inside memoized carousel component
@@ -124,6 +135,14 @@ const Milestones = () => {
       return () => document.removeEventListener('keydown', handleKeyDown);
     }
   }, [selectedProject, closeProjectModal]);
+
+  // Cleanup: restore body scroll when component unmounts
+  useEffect(() => {
+    return () => {
+      document.body.classList.remove('modal-open');
+      document.body.style.overflow = 'unset';
+    };
+  }, []);
 
   // Memoized Image Carousel so only image area re-renders
   const ProjectImageCarousel = memo(function ProjectImageCarousel({ images, title }) {
@@ -219,14 +238,14 @@ const Milestones = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 p-4"
+          className="project-modal-overlay bg-black bg-opacity-75 p-4"
           onClick={onClose}
         >
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
-            className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-6xl w-full max-h-[90vh] overflow-hidden"
+            className="project-modal-content bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
@@ -242,8 +261,8 @@ const Milestones = () => {
               </button>
             </div>
 
-            {/* Modal Content - Scrollable */}
-            <div className="overflow-y-auto max-h-[calc(90vh-80px)]">
+            {/* Modal Content */}
+            <div className="flex-1 overflow-y-auto">
               <div className="p-6">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                   {/* Image Carousel */}
@@ -347,29 +366,95 @@ const Milestones = () => {
       className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700 cursor-pointer group transition-all duration-200 hover:shadow-xl"
       onClick={() => openProjectModal(project)}
     >
-      {/* Project Image */}
+      {/* Project Image Slider */}
       <div className="relative h-64 overflow-hidden">
-        <img
-          src={project.images[0]}
-          alt={project.title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        {project.images.length > 1 ? (
+          <Swiper
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={0}
+            slidesPerView={1}
+            navigation={{
+              nextEl: `.swiper-button-next-${project.id}`,
+              prevEl: `.swiper-button-prev-${project.id}`,
+            }}
+            pagination={{
+              clickable: true,
+              el: `.swiper-pagination-${project.id}`,
+              bulletClass: 'swiper-pagination-bullet-custom',
+              bulletActiveClass: 'swiper-pagination-bullet-active-custom'
+            }}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false,
+              pauseOnMouseEnter: true
+            }}
+            loop={true}
+            className="milestone-card-swiper h-full"
+          >
+            {project.images.map((image, index) => (
+              <SwiperSlide key={index}>
+                <div className="relative h-full">
+                  <img
+                    src={image}
+                    alt={`${project.title} - ${index + 1}`}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    onError={(e) => { e.target.src = '/hero-building.jpg'; }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        ) : (
+          <div className="relative h-full">
+            <img
+              src={project.images[0]}
+              alt={project.title}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              onError={(e) => { e.target.src = '/hero-building.jpg'; }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </div>
+        )}
         
         {/* Status Badge */}
-        <div className="absolute top-4 left-4">
+        <div className="absolute top-4 left-4 z-10">
           <span className="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
             {project.status}
-                </span>
-              </div>
+          </span>
+        </div>
+
+        {/* Image Counter */}
+        {project.images.length > 1 && (
+          <div className="absolute top-4 right-4 z-10 bg-black bg-opacity-50 text-white px-3 py-1 rounded-full text-sm font-medium">
+            {project.images.length} photos
+          </div>
+        )}
+
+        {/* Navigation Buttons */}
+        {project.images.length > 1 && (
+          <>
+            <div className={`swiper-button-prev-${project.id} absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-1.5 rounded-full shadow-lg z-20 backdrop-blur-sm cursor-pointer transition-all duration-200 hover:scale-110 opacity-0 group-hover:opacity-100`}>
+              <FaChevronLeft className="w-3 h-3" />
+            </div>
+            <div className={`swiper-button-next-${project.id} absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-1.5 rounded-full shadow-lg z-20 backdrop-blur-sm cursor-pointer transition-all duration-200 hover:scale-110 opacity-0 group-hover:opacity-100`}>
+              <FaChevronRight className="w-3 h-3" />
+            </div>
+          </>
+        )}
+
+        {/* Pagination */}
+        {project.images.length > 1 && (
+          <div className={`swiper-pagination-${project.id} absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-1 z-10`}></div>
+        )}
 
         {/* Hover Overlay */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30">
           <div className="bg-white bg-opacity-90 rounded-full p-4">
             <FaArrowRight className="w-6 h-6 text-gold" />
           </div>
-              </div>
-            </div>
+        </div>
+      </div>
             
       {/* Project Content */}
       <div className="p-6">
@@ -503,6 +588,86 @@ const Milestones = () => {
         isOpen={!!selectedProject}
         onClose={closeProjectModal}
       />
+
+      {/* Custom Styles for Milestone Card Swiper and Modal */}
+      <style jsx="true" global="true">{`
+        /* Prevent body scroll when modal is open */
+        body.modal-open {
+          overflow: hidden !important;
+          position: fixed !important;
+          width: 100% !important;
+        }
+        
+        /* Milestone Card Swiper Styles */
+        .milestone-card-swiper {
+          border-radius: 0;
+        }
+        
+        .milestone-card-swiper .swiper-slide {
+          height: 100%;
+        }
+        
+        .swiper-pagination-bullet-custom {
+          width: 6px;
+          height: 6px;
+          background: rgba(255, 255, 255, 0.5);
+          opacity: 1;
+          transition: all 0.3s ease;
+        }
+        
+        .swiper-pagination-bullet-active-custom {
+          background: #ffd700;
+          transform: scale(1.2);
+        }
+        
+        .swiper-button-prev-1:after,
+        .swiper-button-next-1:after,
+        .swiper-button-prev-2:after,
+        .swiper-button-next-2:after,
+        .swiper-button-prev-3:after,
+        .swiper-button-next-3:after,
+        .swiper-button-prev-4:after,
+        .swiper-button-next-4:after,
+        .swiper-button-prev-5:after,
+        .swiper-button-next-5:after {
+          display: none;
+        }
+        
+        .swiper-button-prev-1.swiper-button-disabled,
+        .swiper-button-next-1.swiper-button-disabled,
+        .swiper-button-prev-2.swiper-button-disabled,
+        .swiper-button-next-2.swiper-button-disabled,
+        .swiper-button-prev-3.swiper-button-disabled,
+        .swiper-button-next-3.swiper-button-disabled,
+        .swiper-button-prev-4.swiper-button-disabled,
+        .swiper-button-next-4.swiper-button-disabled,
+        .swiper-button-prev-5.swiper-button-disabled,
+        .swiper-button-next-5.swiper-button-disabled {
+          opacity: 0.3;
+          cursor: not-allowed;
+        }
+        
+        /* Modal centering fixes */
+        .project-modal-overlay {
+          position: fixed !important;
+          top: 0 !important;
+          left: 0 !important;
+          right: 0 !important;
+          bottom: 0 !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          z-index: 9999 !important;
+        }
+        
+        .project-modal-content {
+          max-width: 1200px !important;
+          width: 95vw !important;
+          max-height: 90vh !important;
+          margin: auto !important;
+          position: relative !important;
+        }
+      `}</style>
     </section>
   );
 };
