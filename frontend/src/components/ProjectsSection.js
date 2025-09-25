@@ -10,55 +10,45 @@ import 'swiper/css/pagination';
 
 const projects = [
   {
-    name: 'Shree Ganesh Srushti',
+    name: 'Shreeganesh Srushti',
     location: 'Nashik',
-    status: 'Ongoing',
-    image: '/hero-building.jpg',
-    description: 'Modern homes with thoughtful amenities and excellent connectivity.',
-    price: 'Starting ₹45 Lakhs',
+    status: 'Completed',
+    image: '/assets/shree-ganesh-srushti/gallery/PHOTO-2025-07-07-11-48-19.jpg',
+    description: 'Latest residential development with contemporary design and all modern facilities.',
+    price: 'Contact for Price',
     type: '2 & 3 BHK',
-    route: '/ShreeGaneshSrushti'
+    route: '/property/4'
   },
   {
-    name: 'Shree Ganesh Park Phase I',
+    name: 'Shree Ganesh Park',
     location: 'Nashik',
-    status: 'Ongoing',
-    image: '/hero-building.jpg',
-    description: 'A flagship development with spacious apartments and lifestyle features.',
-    price: 'Starting ₹55 Lakhs',
-    type: '2, 3 & 4 BHK',
-    route: '/ShreeGaneshParkPhaseI'
+    status: 'Completed',
+    image: '/assets/shree-ganesh-park/gallery/a-view.jpg',
+    description: 'A premium residential development with multiple wings offering various apartment configurations.',
+    price: 'Contact for Price',
+    type: '1 & 2 BHK',
+    route: '/property/3'
   },
   {
     name: 'Shree Ganesh Heights',
     location: 'Nashik',
-    status: 'Ongoing',
-    image: '/hero-building.jpg',
-    description: 'Premium apartments with contemporary design and luxury amenities.',
-    price: 'Starting ₹65 Lakhs',
+    status: 'Completed',
+    image: '/assets/shree-ganesh-heights/gallery/PHOTO-2024-07-24-14-16-26.jpg',
+    description: 'Premium residential development with modern amenities and excellent location advantages.',
+    price: 'Contact for Price',
     type: '2 & 3 BHK',
-    route: '/ShreeGaneshHeights'
+    route: '/property/2'
   },
   {
     name: 'Sai Shraddha Apartment',
-    location: 'Nashik',
+    location: 'College Road, Nashik',
     status: 'Completed',
-    image: '/hero-building.jpg',
-    description: 'Quality homes delivered on time with excellent customer satisfaction.',
-    price: 'Starting ₹40 Lakhs',
+    image: '/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-23.jpg',
+    description: 'A beautifully designed residential complex offering comfortable living with all modern amenities.',
+    price: 'Contact for Price',
     type: '1 & 2 BHK',
-    route: '/SaiShraddhaApartment'
-  },
-  {
-    name: 'Vinayak Apartment',
-    location: 'Nashik',
-    status: 'Completed',
-    image: '/hero-building.jpg',
-    description: 'Vastu-compliant homes perfect for families seeking peace and prosperity.',
-    price: 'Starting ₹35 Lakhs',
-    type: '1 & 2 BHK',
-    route: '/VinayakApartment'
-  },
+    route: '/property/1'
+  }
 ];
 
 const ProjectsSection = () => {

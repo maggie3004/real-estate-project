@@ -1,26 +1,40 @@
 const properties = [
   {
     id: 1,
-    title: "2BHK in Mumbai",
-    price: "₹75 Lakhs",
-    location: "Andheri West, Mumbai",
-    image: "https://via.placeholder.com/400x250",
+    title: "Sai Shraddha Apartment",
+    price: "Contact for Price",
+    location: "College Road, Nashik",
+    image: "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-23.jpg",
     images: [
-      "https://via.placeholder.com/400x250?text=Living+Room",
-      "https://via.placeholder.com/400x250?text=Bedroom",
-      "https://via.placeholder.com/400x250?text=Kitchen"
+      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-23.jpg",
+      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-24 2.jpg",
+      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-24.jpg",
+      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-38.jpg",
+      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-39 2.jpg",
+      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-39.jpg",
+      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-40.jpg"
+    ],
+    isometricViews: [
+      {
+        label: "2BHK - Spacious layout with balcony",
+        src: "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-23.jpg"
+      },
+      {
+        label: "1BHK - Compact and efficient design",
+        src: "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-24.jpg"
+      }
     ],
     bedrooms: 2,
     bathrooms: 2,
-    area: "1200 sqft",
-    lat: 19.1344,
-    lng: 72.8296,
-    amenities: ["Parking", "Swimming Pool", "Gym", "24x7 Security", "Power Backup"],
+    area: "1.8 Acres",
+    lat: 20.0110,
+    lng: 73.7903,
+    amenities: ["Parking", "Garden", "Security", "Power Backup", "Water Supply", "Maintenance"],
     type: "Apartment",
-    yearBuilt: 2018,
-    furnishing: "Furnished",
-    floor: 5,
-    totalFloors: 12,
+    yearBuilt: 2024,
+    furnishing: "Semi-furnished",
+    floor: null,
+    totalFloors: null,
     facing: "East",
     landmarks: [
       { type: "School", icon: "🏫", label: "School", distance: "5 mins" },
@@ -31,71 +45,84 @@ const properties = [
   },
   {
     id: 2,
-    title: "3BHK in Bangalore",
-    price: "₹1.2 Cr",
-    location: "Whitefield, Bangalore",
-    image: "https://via.placeholder.com/400x250",
+    title: "Shree Ganesh Heights",
+    price: "Contact for Price",
+    location: "Nashik",
+    image: "/assets/shree-ganesh-heights/gallery/PHOTO-2024-07-24-14-16-26.jpg",
     images: [
-      "https://via.placeholder.com/400x250?text=Front+View",
-      "https://via.placeholder.com/400x250?text=Master+Bedroom",
-      "https://via.placeholder.com/400x250?text=Balcony"
+      "/assets/shree-ganesh-heights/gallery/PHOTO-2024-07-24-14-16-26.jpg",
+      "/assets/shree-ganesh-heights/gallery/PHOTO-2024-08-07-21-22-54.jpg",
+      "/assets/shree-ganesh-heights/gallery/PHOTO-2024-08-18-16-26-07.jpg"
     ],
     bedrooms: 3,
     bathrooms: 3,
-    area: "1800 sqft",
-    lat: 12.9698,
-    lng: 77.7499,
-    amenities: ["Parking", "Children's Play Area", "Club House", "Garden", "CCTV"],
-    type: "Villa",
-    yearBuilt: 2015,
+    area: "2.5 Acres",
+    lat: 20.0110,
+    lng: 73.7903,
+    amenities: ["Security", "Parking", "Power Backup", "Water Supply", "Maintenance", "Garden"],
+    type: "Apartment",
+    yearBuilt: 2024,
     furnishing: "Semi-furnished",
-    floor: 1,
-    totalFloors: 2,
-    facing: "West"
+    floor: null,
+    totalFloors: null,
+    facing: "North"
   },
   {
-    id: 5,
-    title: "Sai Shraddha Apartment",
+    id: 3,
+    title: "Shree Ganesh Park",
     price: "Contact for Price",
-    location: "Sai Shraddha Apartment, [Add Address]",
-    image: "/sai-shraddha-apartment/IMG-20250722-WA0066.jpg",
+    location: "Nashik",
+    image: "/assets/shree-ganesh-park/gallery/a-view.jpg",
     images: [
-      "/sai-shraddha-apartment/IMG-20250722-WA0066.jpg",
-      "/sai-shraddha-apartment/IMG-20250722-WA0067.jpg",
-      "/sai-shraddha-apartment/IMG-20250722-WA0068.jpg",
-      "/sai-shraddha-apartment/IMG-20250722-WA0069.jpg",
-      "/sai-shraddha-apartment/IMG-20250722-WA0070.jpg",
-      "/sai-shraddha-apartment/IMG-20250722-WA0071.jpg",
-      "/sai-shraddha-apartment/IMG-20250722-WA0072.jpg"
-    ],
-    isometricViews: [
-      {
-        label: "2BHK - Spacious layout with balcony",
-        src: "/sai-shraddha-apartment/IMG-20250722-WA0066.jpg"
-      },
-      {
-        label: "1BHK - Compact and efficient design",
-        src: "/sai-shraddha-apartment/IMG-20250722-WA0067.jpg"
-      }
+      "/assets/shree-ganesh-park/gallery/a-view.jpg",
+      "/assets/shree-ganesh-park/gallery/b-view.jpg",
+      "/assets/shree-ganesh-park/gallery/night-view-a.jpg",
+      "/assets/shree-ganesh-park/gallery/ter-view.jpg",
+      "/assets/shree-ganesh-park/gallery/Wing A 1BHK.jpg",
+      "/assets/shree-ganesh-park/gallery/Wing A 2BHK.jpg",
+      "/assets/shree-ganesh-park/gallery/Wing C 1BHK.jpg",
+      "/assets/shree-ganesh-park/gallery/Wing C 2BHK.jpg"
     ],
     bedrooms: 2,
     bathrooms: 2,
-    area: "[Add Area]",
-    lat: null,
-    lng: null,
-    amenities: ["Parking", "Garden", "Security"],
+    area: "3.0 Acres",
+    lat: 20.0110,
+    lng: 73.7903,
+    amenities: ["Garden", "Security", "Parking", "Power Backup", "Water Supply", "Maintenance", "Club House"],
     type: "Apartment",
-    yearBuilt: null,
-    furnishing: "[Add Furnishing]",
+    yearBuilt: 2024,
+    furnishing: "Semi-furnished",
     floor: null,
     totalFloors: null,
-    facing: "[Add Facing]",
-    landmarks: [
-      { type: "School", icon: "🏫", label: "School", distance: "5 mins" },
-      { type: "Hospital", icon: "🏥", label: "Hospital", distance: "8 mins" },
-      { type: "Mall", icon: "🛒", label: "Mall", distance: "10 mins" },
-      { type: "Metro", icon: "🚇", label: "Metro Station", distance: "3 mins" }
-    ]
+    facing: "East"
+  },
+  {
+    id: 4,
+    title: "Shreeganesh Srushti",
+    price: "Contact for Price",
+    location: "Nashik",
+    image: "/assets/shree-ganesh-srushti/gallery/PHOTO-2025-07-07-11-48-19.jpg",
+    images: [
+      "/assets/shree-ganesh-srushti/gallery/PHOTO-2025-07-07-11-48-19.jpg",
+      "/assets/shree-ganesh-srushti/gallery/PHOTO-2025-07-23-11-14-21.jpg",
+      "/assets/shree-ganesh-srushti/gallery/PHOTO-2025-07-30-13-43-35.jpg",
+      "/assets/shree-ganesh-srushti/gallery/WhatsApp Image 2025-07-22 at 13.17.15 (1).jpeg",
+      "/assets/shree-ganesh-srushti/gallery/WhatsApp Image 2025-07-22 at 13.17.15 (2).jpeg",
+      "/assets/shree-ganesh-srushti/gallery/WhatsApp Image 2025-07-22 at 13.17.15.jpeg",
+      "/assets/shree-ganesh-srushti/gallery/WhatsApp Image 2025-07-22 at 13.17.16.jpeg"
+    ],
+    bedrooms: 3,
+    bathrooms: 3,
+    area: "2.0 Acres",
+    lat: 20.0110,
+    lng: 73.7903,
+    amenities: ["Security", "Parking", "Power Backup", "Water Supply", "Maintenance", "Garden", "Gym"],
+    type: "Apartment",
+    yearBuilt: 2025,
+    furnishing: "Semi-furnished",
+    floor: null,
+    totalFloors: null,
+    facing: "South"
   }
 ];
 

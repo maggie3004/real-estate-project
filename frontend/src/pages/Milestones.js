@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, memo } from 'react';
+import React, { useState, useEffect, useCallback, memo, useRef } from 'react';
 import { Helmet } from 'react-helmet';
 import { FaBuilding, FaUsers, FaArrowRight, FaTimes, FaChevronLeft, FaChevronRight, FaMapMarkerAlt, FaCalendarAlt } from 'react-icons/fa';
 import { motion, useAnimation, AnimatePresence } from 'framer-motion';
@@ -18,11 +18,13 @@ const completedProjects = [
     units: "80 Units",
     area: "1.8 Acres",
     images: [
-      "/assets/sai-shraddha-apartment/IMG-20250722-WA0066.jpg",
-      "/assets/sai-shraddha-apartment/IMG-20250722-WA0067.jpg",
-      "/assets/sai-shraddha-apartment/IMG-20250722-WA0068.jpg",
-      "/assets/sai-shraddha-apartment/IMG-20250722-WA0069.jpg",
-      "/assets/sai-shraddha-apartment/IMG-20250722-WA0070.jpg"
+      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-23.jpg",
+      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-24 2.jpg",
+      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-24.jpg",
+      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-38.jpg",
+      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-39 2.jpg",
+      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-39.jpg",
+      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-40.jpg"
     ],
     amenities: ["Garden", "Security", "Parking", "Power Backup", "Water Supply", "Maintenance"],
     features: ["1BHK & 2BHK Apartments", "Quality Construction", "Good Ventilation", "Nearby Schools", "Market Access"],
@@ -30,62 +32,62 @@ const completedProjects = [
   },
   {
     id: 2,
-    title: "Vinayak Apartment",
-    description: "Comfortable living spaces with essential amenities and excellent location advantages.",
-    location: "Panchavati, Nashik",
+    title: "Shree Ganesh Heights",
+    description: "Premium residential development with modern amenities and excellent location advantages.",
+    location: "Nashik",
     completionDate: "2024",
-    units: "60 Units",
-    area: "1.5 Acres",
+    units: "120 Units",
+    area: "2.5 Acres",
     images: [
-      "/hero-building.jpg"
+      "/assets/shree-ganesh-heights/gallery/PHOTO-2024-07-24-14-16-26.jpg",
+      "/assets/shree-ganesh-heights/gallery/PHOTO-2024-08-07-21-22-54.jpg",
+      "/assets/shree-ganesh-heights/gallery/PHOTO-2024-08-18-16-26-07.jpg"
     ],
-    amenities: ["Security", "Parking", "Power Backup", "Water Supply", "Maintenance"],
-    features: ["1BHK & 2BHK Apartments", "Quality Construction", "Good Ventilation"],
+    amenities: ["Security", "Parking", "Power Backup", "Water Supply", "Maintenance", "Garden"],
+    features: ["2BHK & 3BHK Apartments", "Quality Construction", "Good Ventilation", "Modern Design"],
     status: "Completed"
   },
   {
     id: 3,
-    title: "Shree Ganesh Avenue",
-    description: "A premium residential development delivered with quality construction.",
+    title: "Shree Ganesh Park",
+    description: "A premium residential development with multiple wings offering various apartment configurations.",
     location: "Nashik",
-    completionDate: "2023",
-    units: "--",
-    area: "--",
+    completionDate: "2024",
+    units: "150 Units",
+    area: "3.0 Acres",
     images: [
-      "/hero-building.jpg"
+      "/assets/shree-ganesh-park/gallery/a-view.jpg",
+      "/assets/shree-ganesh-park/gallery/b-view.jpg",
+      "/assets/shree-ganesh-park/gallery/night-view-a.jpg",
+      "/assets/shree-ganesh-park/gallery/ter-view.jpg",
+      "/assets/shree-ganesh-park/gallery/Wing A 1BHK.jpg",
+      "/assets/shree-ganesh-park/gallery/Wing A 2BHK.jpg",
+      "/assets/shree-ganesh-park/gallery/Wing C 1BHK.jpg",
+      "/assets/shree-ganesh-park/gallery/Wing C 2BHK.jpg"
     ],
-    amenities: ["Parking", "Security"],
-    features: ["Quality Construction"],
+    amenities: ["Garden", "Security", "Parking", "Power Backup", "Water Supply", "Maintenance", "Club House"],
+    features: ["1BHK & 2BHK Apartments", "Multiple Wings", "Quality Construction", "Modern Amenities", "Green Spaces"],
     status: "Completed"
   },
   {
     id: 4,
-    title: "Shree Ganesh Apartment",
-    description: "Residential apartments completed with essential amenities.",
+    title: "Shreeganesh Srushti",
+    description: "Latest residential development with contemporary design and all modern facilities.",
     location: "Nashik",
-    completionDate: "2022",
-    units: "--",
-    area: "--",
+    completionDate: "2025",
+    units: "100 Units",
+    area: "2.0 Acres",
     images: [
-      "/hero-building.jpg"
+      "/assets/shree-ganesh-srushti/gallery/PHOTO-2025-07-07-11-48-19.jpg",
+      "/assets/shree-ganesh-srushti/gallery/PHOTO-2025-07-23-11-14-21.jpg",
+      "/assets/shree-ganesh-srushti/gallery/PHOTO-2025-07-30-13-43-35.jpg",
+      "/assets/shree-ganesh-srushti/gallery/WhatsApp Image 2025-07-22 at 13.17.15 (1).jpeg",
+      "/assets/shree-ganesh-srushti/gallery/WhatsApp Image 2025-07-22 at 13.17.15 (2).jpeg",
+      "/assets/shree-ganesh-srushti/gallery/WhatsApp Image 2025-07-22 at 13.17.15.jpeg",
+      "/assets/shree-ganesh-srushti/gallery/WhatsApp Image 2025-07-22 at 13.17.16.jpeg"
     ],
-    amenities: ["Security", "Water Supply"],
-    features: ["Good Ventilation"],
-    status: "Completed"
-  },
-  {
-    id: 5,
-    title: "Modakeshwar Apartment",
-    description: "Completed residential project offering comfortable homes.",
-    location: "Nashik",
-    completionDate: "2021",
-    units: "--",
-    area: "--",
-    images: [
-      "/hero-building.jpg"
-    ],
-    amenities: ["Parking", "Security"],
-    features: ["Quality Construction"],
+    amenities: ["Security", "Parking", "Power Backup", "Water Supply", "Maintenance", "Garden", "Gym"],
+    features: ["2BHK & 3BHK Apartments", "Contemporary Design", "Quality Construction", "Modern Amenities"],
     status: "Completed"
   }
 ];
@@ -95,6 +97,9 @@ const completedProjects = [
 const Milestones = () => {
   // const [activeYear, setActiveYear] = useState(2025); // Commented out since we're not using year navigation
   const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [isNavigating, setIsNavigating] = useState(false);
+  const navigationTimeoutRef = useRef(null);
   const controls = useAnimation();
 
   useEffect(() => {
@@ -119,33 +124,160 @@ const Milestones = () => {
     document.body.style.overflow = 'unset';
   }, []);
 
+  const openImagePopup = useCallback((image, title, currentIndex, totalImages, allImages) => {
+    setSelectedImage({
+      src: image,
+      title: title,
+      currentIndex: currentIndex,
+      totalImages: totalImages,
+      allImages: allImages
+    });
+    // Prevent body scrolling when image popup is open
+    document.body.classList.add('image-popup-open');
+    document.body.style.overflow = 'hidden';
+  }, []);
+
+  const closeImagePopup = useCallback(() => {
+    // Clear any pending navigation timeout
+    if (navigationTimeoutRef.current) {
+      clearTimeout(navigationTimeoutRef.current);
+      navigationTimeoutRef.current = null;
+    }
+    
+    setSelectedImage(null);
+    setIsNavigating(false);
+    // Restore body scrolling when image popup is closed
+    document.body.classList.remove('image-popup-open');
+    document.body.style.overflow = 'unset';
+  }, []);
+
+  const navigateImage = useCallback((direction) => {
+    console.log('navigateImage called with direction:', direction);
+    console.log('selectedImage:', selectedImage);
+    
+    if (!selectedImage) {
+      console.log('No selectedImage, returning');
+      return;
+    }
+    
+    // Clear any existing timeout
+    if (navigationTimeoutRef.current) {
+      clearTimeout(navigationTimeoutRef.current);
+    }
+    
+    setIsNavigating(true);
+    
+    // Update image immediately
+    setSelectedImage(prevImage => {
+      if (!prevImage) {
+        console.log('No prevImage, returning');
+        return prevImage;
+      }
+      
+      const { currentIndex, allImages, title, totalImages } = prevImage;
+      let newIndex;
+      
+      if (direction === 'next') {
+        newIndex = currentIndex === allImages.length - 1 ? 0 : currentIndex + 1;
+      } else {
+        newIndex = currentIndex === 0 ? allImages.length - 1 : currentIndex - 1;
+      }
+      
+      console.log('Navigating from', currentIndex, 'to', newIndex);
+      
+      return {
+        src: allImages[newIndex],
+        title: title,
+        currentIndex: newIndex,
+        totalImages: totalImages,
+        allImages: allImages
+      };
+    });
+    
+    // Reset navigation flag after a short delay
+    navigationTimeoutRef.current = setTimeout(() => {
+      setIsNavigating(false);
+      navigationTimeoutRef.current = null;
+    }, 200);
+  }, [selectedImage]);
+
   // Image navigation handled inside memoized carousel component
 
-  // Keyboard navigation: close modal on Escape only (carousel handles arrows)
+  // Keyboard navigation: close modal on Escape, navigate images with arrows
   useEffect(() => {
     const handleKeyDown = (event) => {
-      if (!selectedProject) return;
       if (event.key === 'Escape') {
-        closeProjectModal();
+        if (selectedImage) {
+          closeImagePopup();
+        } else if (selectedProject) {
+          closeProjectModal();
+        }
+      } else if (selectedImage && (event.key === 'ArrowLeft' || event.key === 'ArrowRight')) {
+        event.preventDefault();
+        navigateImage(event.key === 'ArrowRight' ? 'next' : 'prev');
       }
     };
 
-    if (selectedProject) {
+    if (selectedProject || selectedImage) {
       document.addEventListener('keydown', handleKeyDown);
       return () => document.removeEventListener('keydown', handleKeyDown);
     }
-  }, [selectedProject, closeProjectModal]);
+  }, [selectedProject, selectedImage, closeProjectModal, closeImagePopup, navigateImage]);
 
   // Cleanup: restore body scroll when component unmounts
   useEffect(() => {
     return () => {
+      // Clear any pending navigation timeout
+      if (navigationTimeoutRef.current) {
+        clearTimeout(navigationTimeoutRef.current);
+      }
+      
       document.body.classList.remove('modal-open');
+      document.body.classList.remove('image-popup-open');
       document.body.style.overflow = 'unset';
     };
   }, []);
 
+  // Generate descriptive labels for images based on filename patterns
+  const getImageLabel = (imagePath, index) => {
+    const filename = imagePath.split('/').pop().toLowerCase();
+    
+    // Check for specific patterns in filename
+    if (filename.includes('a-view')) return 'Front View';
+    if (filename.includes('b-view')) return 'Side View';
+    if (filename.includes('night-view')) return 'Night View';
+    if (filename.includes('ter-view')) return 'Terrace View';
+    if (filename.includes('wing a 1bhk')) return 'Wing A - 1BHK Layout';
+    if (filename.includes('wing a 2bhk')) return 'Wing A - 2BHK Layout';
+    if (filename.includes('wing c 1bhk')) return 'Wing C - 1BHK Layout';
+    if (filename.includes('wing c 2bhk')) return 'Wing C - 2BHK Layout';
+    if (filename.includes('photo-2023-05-31-18-16-23')) return 'Main Building View';
+    if (filename.includes('photo-2023-05-31-18-16-24')) return 'Exterior View';
+    if (filename.includes('photo-2023-05-31-18-16-38')) return 'Building Facade';
+    if (filename.includes('photo-2023-05-31-18-16-39')) return 'Side View';
+    if (filename.includes('photo-2023-05-31-18-16-40')) return 'Garden View';
+    if (filename.includes('photo-2024-07-24-14-16-26')) return 'Main Building View';
+    if (filename.includes('photo-2024-08-07-21-22-54')) return 'Exterior View';
+    if (filename.includes('photo-2024-08-18-16-26-07')) return 'Building Facade';
+    if (filename.includes('photo-2025-07-07-11-48-19')) return 'Main Building View';
+    if (filename.includes('photo-2025-07-23-11-14-21')) return 'Exterior View';
+    if (filename.includes('photo-2025-07-30-13-43-35')) return 'Building Facade';
+    if (filename.includes('whatsapp image 2025-07-22 at 13.17.15 (1)')) return 'Project Progress - Phase 1';
+    if (filename.includes('whatsapp image 2025-07-22 at 13.17.15 (2)')) return 'Project Progress - Phase 2';
+    if (filename.includes('whatsapp image 2025-07-22 at 13.17.15.jpeg')) return 'Project Progress - Phase 3';
+    if (filename.includes('whatsapp image 2025-07-22 at 13.17.16')) return 'Project Progress - Phase 4';
+    
+    // Default labels based on position for unknown files
+    const defaultLabels = [
+      'Main View', 'Exterior View', 'Building Facade', 'Side View', 
+      'Top View', 'Garden View', 'Parking Area', 'Common Area'
+    ];
+    
+    return defaultLabels[index] || `View ${index + 1}`;
+  };
+
   // Memoized Image Carousel so only image area re-renders
-  const ProjectImageCarousel = memo(function ProjectImageCarousel({ images, title }) {
+  const ProjectImageCarousel = memo(function ProjectImageCarousel({ images, title, onImageClick }) {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const handleNext = useCallback(() => {
@@ -178,8 +310,9 @@ const Milestones = () => {
                 <img
                   src={image}
                   alt={`${title} - ${index + 1}`}
-                  className="w-full h-full object-cover carousel-image"
+                  className="w-full h-full object-cover carousel-image cursor-pointer hover:opacity-90 transition-opacity duration-200"
                   onError={(e) => { e.target.src = '/hero-building.jpg'; }}
+                  onClick={() => onImageClick(image, title, index, images.length, images)}
                 />
               </div>
             ))}
@@ -207,6 +340,16 @@ const Milestones = () => {
               {currentIndex + 1} / {images.length}
             </div>
           )}
+        </div>
+
+        {/* Image Label */}
+        <div className="text-center">
+          <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
+            {getImageLabel(images[currentIndex], currentIndex)}
+          </h4>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            {title} - Image {currentIndex + 1} of {images.length}
+          </p>
         </div>
 
         {images.length > 1 && (
@@ -238,14 +381,14 @@ const Milestones = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="project-modal-overlay bg-black bg-opacity-75 p-4"
+          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50"
           onClick={onClose}
         >
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
-            className="project-modal-content bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden"
+            className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden max-w-6xl w-full max-h-[90vh] relative"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
@@ -262,11 +405,15 @@ const Milestones = () => {
             </div>
 
             {/* Modal Content */}
-            <div className="flex-1 overflow-y-auto">
+            <div className="overflow-y-auto max-h-[calc(90vh-120px)]">
               <div className="p-6">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                   {/* Image Carousel */}
-                  <ProjectImageCarousel images={project.images} title={project.title} />
+                  <ProjectImageCarousel 
+                    images={project.images} 
+                    title={project.title} 
+                    onImageClick={openImagePopup}
+                  />
 
                   {/* Project Details */}
                   <div className="space-y-6">
@@ -348,6 +495,91 @@ const Milestones = () => {
                   </div>
                 </div>
               </div>
+            </div>
+          </motion.div>
+        </motion.div>
+      </AnimatePresence>
+    );
+  };
+
+  // Image Popup Component
+  const ImagePopup = ({ image, isOpen, onClose, onNavigate, isNavigating }) => {
+    if (!isOpen || !image) return null;
+
+    return (
+      <AnimatePresence>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center p-4 z-50"
+          onClick={onClose}
+        >
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            className="relative max-w-7xl max-h-[90vh] w-full h-full flex items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={onClose}
+              className="absolute top-4 right-4 z-10 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-2 rounded-full transition-all duration-200"
+            >
+              <FaTimes className="w-6 h-6" />
+            </button>
+
+            {/* Image Counter */}
+            <div className="absolute top-4 left-4 z-10 bg-black bg-opacity-50 text-white px-3 py-1 rounded-full text-sm font-medium">
+              {image.currentIndex + 1} / {image.totalImages}
+            </div>
+
+            {/* Navigation Buttons */}
+            {image.totalImages > 1 && (
+              <>
+                {/* Previous Button */}
+                <button
+                  onClick={() => {
+                    console.log('Previous button clicked');
+                    onNavigate('prev');
+                  }}
+                  className={`absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-3 rounded-full transition-all duration-200 hover:scale-110 ${
+                    isNavigating ? 'opacity-70' : ''
+                  }`}
+                >
+                  <FaChevronLeft className="w-6 h-6" />
+                </button>
+
+                {/* Next Button */}
+                <button
+                  onClick={() => {
+                    console.log('Next button clicked');
+                    onNavigate('next');
+                  }}
+                  className={`absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-3 rounded-full transition-all duration-200 hover:scale-110 ${
+                    isNavigating ? 'opacity-70' : ''
+                  }`}
+                >
+                  <FaChevronRight className="w-6 h-6" />
+                </button>
+              </>
+            )}
+
+            {/* Main Image */}
+            <img
+              src={image.src}
+              alt={image.title}
+              className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+              onError={(e) => { e.target.src = '/hero-building.jpg'; }}
+            />
+
+            {/* Image Title */}
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-75 text-white px-4 py-2 rounded-lg text-center">
+              <h3 className="text-lg font-semibold">{image.title}</h3>
+              <p className="text-sm opacity-90">
+                {getImageLabel(image.src, image.currentIndex)}
+              </p>
             </div>
           </motion.div>
         </motion.div>
@@ -589,10 +821,20 @@ const Milestones = () => {
         onClose={closeProjectModal}
       />
 
+      {/* Image Popup */}
+      <ImagePopup 
+        image={selectedImage}
+        isOpen={!!selectedImage}
+        onClose={closeImagePopup}
+        onNavigate={navigateImage}
+        isNavigating={isNavigating}
+      />
+
       {/* Custom Styles for Milestone Card Swiper and Modal */}
       <style jsx="true" global="true">{`
         /* Prevent body scroll when modal is open */
-        body.modal-open {
+        body.modal-open,
+        body.image-popup-open {
           overflow: hidden !important;
           position: fixed !important;
           width: 100% !important;
@@ -647,25 +889,19 @@ const Milestones = () => {
           cursor: not-allowed;
         }
         
-        /* Modal centering fixes */
+        /* Modal positioning fixes */
         .project-modal-overlay {
           position: fixed !important;
           top: 0 !important;
           left: 0 !important;
           right: 0 !important;
           bottom: 0 !important;
-          display: flex !important;
-          align-items: center !important;
-          justify-content: center !important;
-          z-index: 9999 !important;
+          z-index: 50 !important;
         }
         
         .project-modal-content {
-          max-width: 1200px !important;
-          width: 95vw !important;
-          max-height: 90vh !important;
-          margin: auto !important;
           position: relative !important;
+          overflow-y: auto !important;
         }
       `}</style>
     </section>
