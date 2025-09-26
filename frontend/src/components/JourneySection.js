@@ -8,28 +8,28 @@ const milestones = [
     year: 2025,
     achievements: [
       {
-        title: "Shree Ganesh Park Phase II",
-        description: "Premium residential development with modern amenities",
-        image: "/assets/shree-ganesh-heights/gallery/IMG-20250722-WA0066.jpg",
+        title: "Shreeganesh Srushti",
+        description: "Latest residential development with contemporary design",
+        image: "/assets/shree-ganesh-srushti/gallery/front.jpg",
         icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "200+ Units"
+        category: "Completed Project",
+        stats: "100 Units"
       },
       {
         title: "Shree Ganesh Heights",
-        description: "Luxury apartments with world-class facilities",
-        image: "/assets/shree-ganesh-heights/gallery/IMG-20250722-WA0067.jpg",
+        description: "Premium residential development with modern amenities",
+        image: "/assets/shree-ganesh-heights/gallery/front.jpeg",
         icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "Premium Living"
+        category: "Completed Project",
+        stats: "120 Units"
       },
       {
-        title: "Shree Ganesh Srushti",
-        description: "Eco-friendly residential complex",
-        image: "/assets/shree-ganesh-srushti/gallery/IMG-20250722-WA0068.jpg",
+        title: "Shree Ganesh Park",
+        description: "Premium residential development with multiple wings",
+        image: "/assets/shree-ganesh-park/gallery/a-view.jpg",
         icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "Green Living"
+        category: "Completed Project",
+        stats: "150 Units"
       }
     ]
   },
@@ -38,40 +38,40 @@ const milestones = [
     achievements: [
       {
         title: "Sai Shraddha Apartment",
-        description: "Completed residential project on College Road",
-        image: "/assets/sai-shraddha-apartment/gallery/IMG-20250722-WA0066.jpg",
+        description: "Beautifully designed residential complex on College Road",
+        image: "/assets/sai-shraddha-apartment/gallery/front.jpg",
         icon: FaBuilding,
         category: "Completed Project",
         stats: "80 Units"
       },
       {
-        title: "Vinayak Apartment",
-        description: "Delivered comfortable homes in Panchavati",
-        image: "/assets/sai-shraddha-apartment/gallery/IMG-20250722-WA0067.jpg",
+        title: "Shree Ganesh Heights",
+        description: "Luxury apartments with world-class facilities",
+        image: "/assets/shree-ganesh-heights/gallery/day-front.jpg",
         icon: FaBuilding,
         category: "Completed Project",
-        stats: "60 Units"
+        stats: "Premium Living"
       },
       {
-        title: "Shree Ganesh Avenue",
-        description: "Premium residential development",
-        image: "/assets/sai-shraddha-apartment/gallery/IMG-20250722-WA0068.jpg",
+        title: "Shree Ganesh Park",
+        description: "Premium residential development with modern amenities",
+        image: "/assets/shree-ganesh-park/gallery/b-view.jpg",
         icon: FaBuilding,
         category: "Completed Project",
         stats: "Quality Homes"
       },
       {
-        title: "Shree Ganesh Apartment",
-        description: "Modern living spaces with amenities",
-        image: "/assets/sai-shraddha-apartment/gallery/IMG-20250722-WA0069.jpg",
+        title: "Shreeganesh Srushti",
+        description: "Eco-friendly residential complex",
+        image: "/assets/shree-ganesh-srushti/gallery/night.jpg",
         icon: FaBuilding,
         category: "Completed Project",
-        stats: "Delivered"
+        stats: "Green Living"
       },
       {
-        title: "Modakeshwar Apartment",
-        description: "Comfortable homes with essential facilities",
-        image: "/assets/sai-shraddha-apartment/gallery/IMG-20250722-WA0070.jpg",
+        title: "Sai Shraddha Apartment",
+        description: "Modern living spaces with amenities",
+        image: "/assets/sai-shraddha-apartment/gallery/top-view.jpg",
         icon: FaBuilding,
         category: "Completed Project",
         stats: "Delivered"
@@ -84,26 +84,26 @@ const milestones = [
       {
         title: "Shree Ganesh Park Phase I",
         description: "First phase of our flagship project",
-        image: "/assets/shree-ganesh-heights/gallery/IMG-20250722-WA0069.jpg",
+        image: "/assets/shree-ganesh-park/gallery/night-view-a.jpg",
         icon: FaBuilding,
         category: "Completed Project",
         stats: "Phase I"
       },
       {
-        title: "Shree Gajanan Niwas",
+        title: "Shree Ganesh Heights",
         description: "Residential complex with modern amenities",
-        image: "/assets/shree-ganesh-heights/gallery/IMG-20250722-WA0070.jpg",
+        image: "/assets/shree-ganesh-heights/gallery/night-front.jpg",
         icon: FaBuilding,
         category: "Completed Project",
         stats: "Delivered"
       },
       {
-        title: "Shree Ganesh Apartment",
-        description: "Quality construction with Vastu compliance",
-        image: "/assets/shree-ganesh-srushti/gallery/IMG-20250722-WA0069.jpg",
+        title: "Shreeganesh Srushti",
+        description: "Quality construction with modern design",
+        image: "/assets/shree-ganesh-srushti/gallery/1bhk.jpg",
         icon: FaBuilding,
         category: "Completed Project",
-        stats: "Vastu Homes"
+        stats: "Modern Design"
       }
     ]
   },
@@ -113,26 +113,26 @@ const milestones = [
       {
         title: "Shree Ganesh Heights",
         description: "Premium residential towers",
-        image: "/assets/shree-ganesh-srushti/gallery/IMG-20250722-WA0070.jpg",
+        image: "/assets/shree-ganesh-heights/gallery/top-view.jpg",
         icon: FaBuilding,
         category: "Completed Project",
         stats: "Towers"
       },
       {
-        title: "Shree Ganesh Srushti",
-        description: "Eco-friendly residential development",
-        image: "/assets/shree-ganesh-heights/gallery/IMG-20250722-WA0066.jpg",
-        icon: FaBuilding,
-        category: "Completed Project",
-        stats: "Eco-Friendly"
-      },
-      {
         title: "Shree Ganesh Park",
         description: "Garden view residential complex",
-        image: "/assets/shree-ganesh-heights/gallery/IMG-20250722-WA0067.jpg",
+        image: "/assets/shree-ganesh-park/gallery/ter-view.jpg",
         icon: FaBuilding,
         category: "Completed Project",
         stats: "Garden View"
+      },
+      {
+        title: "Sai Shraddha Apartment",
+        description: "Quality homes with modern amenities",
+        image: "/assets/sai-shraddha-apartment/gallery/parking.jpg",
+        icon: FaBuilding,
+        category: "Completed Project",
+        stats: "Quality Homes"
       }
     ]
   },
@@ -140,25 +140,25 @@ const milestones = [
     year: 2021,
     achievements: [
       {
-        title: "Shree Ganesh Avenue",
+        title: "Shree Ganesh Park",
         description: "Main road residential project",
-        image: "/assets/shree-ganesh-heights/gallery/IMG-20250722-WA0068.jpg",
+        image: "/assets/shree-ganesh-park/gallery/Wing A 1BHK.jpg",
         icon: FaBuilding,
         category: "Completed Project",
         stats: "Main Road"
       },
       {
-        title: "Shree Ganesh Apartment",
+        title: "Shree Ganesh Heights",
         description: "Quality homes with modern amenities",
-        image: "/assets/shree-ganesh-srushti/gallery/IMG-20250722-WA0066.jpg",
+        image: "/assets/shree-ganesh-heights/gallery/floor-plan.jpeg",
         icon: FaBuilding,
         category: "Completed Project",
         stats: "Modern Homes"
       },
       {
-        title: "Modakeshwar Apartment",
+        title: "Shreeganesh Srushti",
         description: "Comfortable living spaces",
-        image: "/assets/shree-ganesh-srushti/gallery/IMG-20250722-WA0067.jpg",
+        image: "/assets/shree-ganesh-srushti/gallery/1bhk (2).jpg",
         icon: FaBuilding,
         category: "Completed Project",
         stats: "Comfort"
@@ -169,25 +169,25 @@ const milestones = [
     year: 2020,
     achievements: [
       {
-        title: "Shree Ganesh Heights",
+        title: "Shree Ganesh Park",
         description: "Premium residential development",
-        image: "/assets/shree-ganesh-srushti/gallery/IMG-20250722-WA0068.jpg",
+        image: "/assets/shree-ganesh-park/gallery/Wing A 2BHK.jpg",
         icon: FaBuilding,
         category: "Completed Project",
         stats: "Premium"
       },
       {
-        title: "Shree Ganesh Srushti",
+        title: "Shree Ganesh Heights",
         description: "Eco-friendly residential complex",
-        image: "/assets/shree-ganesh-srushti/gallery/IMG-20250722-WA0069.jpg",
+        image: "/assets/shree-ganesh-heights/gallery/day-front.jpg",
         icon: FaBuilding,
         category: "Completed Project",
         stats: "Eco-Friendly"
       },
       {
-        title: "Shree Ganesh Park",
+        title: "Shreeganesh Srushti",
         description: "Garden view apartments",
-        image: "/assets/shree-ganesh-srushti/gallery/IMG-20250722-WA0070.jpg",
+        image: "/assets/shree-ganesh-srushti/gallery/2bhk.jpg",
         icon: FaBuilding,
         category: "Completed Project",
         stats: "Garden View"

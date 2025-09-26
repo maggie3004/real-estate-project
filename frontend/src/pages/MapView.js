@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FaMapMarkerAlt, FaSearch, FaFilter, FaList, FaMap, 
@@ -20,6 +20,28 @@ const MapView = () => {
     amenities: []
   });
   const [searchQuery, setSearchQuery] = useState('');
+
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (selectedProperty) {
+      // Prevent background scrolling
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+    } else {
+      // Restore background scrolling
+      document.body.style.overflow = 'unset';
+      document.body.style.position = 'unset';
+      document.body.style.width = 'unset';
+    }
+
+    // Cleanup on component unmount
+    return () => {
+      document.body.style.overflow = 'unset';
+      document.body.style.position = 'unset';
+      document.body.style.width = 'unset';
+    };
+  }, [selectedProperty]);
 
   const amenityOptions = [
     { value: 'parking', label: 'Parking', icon: FaCar },

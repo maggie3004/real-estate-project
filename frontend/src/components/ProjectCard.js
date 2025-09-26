@@ -4,7 +4,7 @@ const ProjectCard = ({ project }) => {
   return (
     <div className="bg-white rounded-lg shadow-md overflow-hidden">
       <img 
-        src={project?.image || '/hero-building.jpg'} 
+        src={project?.image || '/assets/shree-ganesh-srushti/gallery/front.jpg'} 
         alt={project?.name || 'Project'} 
         className="w-full h-48 object-cover"
       />

@@ -10,14 +10,30 @@ import 'swiper/css/pagination';
 
 const projects = [
   {
-    name: 'Shreeganesh Srushti',
+    name: 'Sai Shraddha Apartment',
+    location: 'College Road, Nashik',
+    status: 'Completed',
+    image: '/assets/sai-shraddha-apartment/gallery/front.jpg',
+    description: 'A beautifully designed residential complex offering comfortable living with all modern amenities and excellent connectivity.',
+    price: 'Contact for Price',
+    type: '1 & 2 BHK',
+    units: '80 Units',
+    area: '1.8 Acres',
+    completionDate: '2024',
+    route: '/property/1'
+  },
+  {
+    name: 'Shree Ganesh Heights',
     location: 'Nashik',
     status: 'Completed',
-    image: '/assets/shree-ganesh-srushti/gallery/PHOTO-2025-07-07-11-48-19.jpg',
-    description: 'Latest residential development with contemporary design and all modern facilities.',
+    image: '/assets/shree-ganesh-heights/gallery/front.jpeg',
+    description: 'Premium residential development with modern amenities and excellent location advantages.',
     price: 'Contact for Price',
     type: '2 & 3 BHK',
-    route: '/property/4'
+    units: '120 Units',
+    area: '2.5 Acres',
+    completionDate: '2024',
+    route: '/property/2'
   },
   {
     name: 'Shree Ganesh Park',
@@ -27,27 +43,23 @@ const projects = [
     description: 'A premium residential development with multiple wings offering various apartment configurations.',
     price: 'Contact for Price',
     type: '1 & 2 BHK',
+    units: '150 Units',
+    area: '3.0 Acres',
+    completionDate: '2024',
     route: '/property/3'
   },
   {
-    name: 'Shree Ganesh Heights',
+    name: 'Shreeganesh Srushti',
     location: 'Nashik',
     status: 'Completed',
-    image: '/assets/shree-ganesh-heights/gallery/PHOTO-2024-07-24-14-16-26.jpg',
-    description: 'Premium residential development with modern amenities and excellent location advantages.',
+    image: '/assets/shree-ganesh-srushti/gallery/front.jpg',
+    description: 'Latest residential development with contemporary design and all modern facilities.',
     price: 'Contact for Price',
     type: '2 & 3 BHK',
-    route: '/property/2'
-  },
-  {
-    name: 'Sai Shraddha Apartment',
-    location: 'College Road, Nashik',
-    status: 'Completed',
-    image: '/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-23.jpg',
-    description: 'A beautifully designed residential complex offering comfortable living with all modern amenities.',
-    price: 'Contact for Price',
-    type: '1 & 2 BHK',
-    route: '/property/1'
+    units: '100 Units',
+    area: '2.0 Acres',
+    completionDate: '2025',
+    route: '/property/4'
   }
 ];
 
@@ -147,6 +159,19 @@ const ProjectsSection = () => {
                       {project.type}
                     </div>
                     <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm">{project.description}</p>
+                    
+                    {/* Project Stats */}
+                    <div className="grid grid-cols-2 gap-2 mb-4 text-sm">
+                      <div className="flex items-center text-gray-600 dark:text-gray-400">
+                        <span className="font-medium mr-1">Units:</span>
+                        <span>{project.units}</span>
+                      </div>
+                      <div className="flex items-center text-gray-600 dark:text-gray-400">
+                        <span className="font-medium mr-1">Area:</span>
+                        <span>{project.area}</span>
+                      </div>
+                    </div>
+                    
                     <div className="text-lg font-bold text-yellow-600 dark:text-yellow-400 mb-4">{project.price}</div>
                     <button 
                       onClick={() => handleViewDetails(project.route)}

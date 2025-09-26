@@ -1,13 +1,14 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { FaStar, FaQuoteLeft, FaQuoteRight } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
+import ContactForm from './ContactForm';
 
 const testimonials = [
   {
     id: 1,
     name: "Rajesh & Priya Sharma",
     role: "Homeowners - Shree Ganesh Heights",
-    image: "/owner-placeholder.png",
+    image: null,
     rating: 5,
     text: "We are extremely happy with our new home at Shree Ganesh Heights. The quality of construction is outstanding, and the amenities are world-class. The team was very professional throughout the entire process. Highly recommended!",
     project: "Shree Ganesh Heights",
@@ -17,7 +18,7 @@ const testimonials = [
     id: 2,
     name: "Amit & Sneha Desai",
     role: "Investors - Sai Shraddha Apartment",
-    image: "/owner-placeholder.png",
+    image: null,
     rating: 5,
     text: "Investing in Sai Shraddha Apartment was the best decision we made. The project was delivered on time, and the rental returns are excellent. The builder's transparency and commitment to quality are commendable.",
     project: "Sai Shraddha Apartment",
@@ -27,7 +28,7 @@ const testimonials = [
     id: 3,
     name: "Dr. Sanjay & Dr. Meera Patel",
     role: "Medical Professionals - Vinayak Apartment",
-    image: "/owner-placeholder.png",
+    image: null,
     rating: 5,
     text: "As medical professionals, we needed a home close to the hospital. Vinayak Apartment's location is perfect, and the quality of construction exceeded our expectations. The Vastu compliance was an added bonus.",
     project: "Vinayak Apartment",
@@ -37,7 +38,7 @@ const testimonials = [
     id: 4,
     name: "Vikram & Anjali Singh",
     role: "IT Professionals - Shree Ganesh Park Phase I",
-    image: "/owner-placeholder.png",
+    image: null,
     rating: 5,
     text: "The modern amenities and smart home features at Shree Ganesh Park Phase I are exactly what we were looking for. The builder's attention to detail and customer service is exceptional.",
     project: "Shree Ganesh Park Phase I",
@@ -47,7 +48,7 @@ const testimonials = [
     id: 5,
     name: "Sunil & Rekha Joshi",
     role: "Retired Couple - Modakeshwar Apartment",
-    image: "/owner-placeholder.png",
+    image: null,
     rating: 5,
     text: "We wanted a peaceful retirement home, and Modakeshwar Apartment is perfect. The location is serene, and the quality of construction is top-notch. The builder's team was very helpful throughout.",
     project: "Modakeshwar Apartment",
@@ -57,7 +58,7 @@ const testimonials = [
     id: 6,
     name: "Arun & Kavita Reddy",
     role: "Business Owners - Shree Ganesh Avenue",
-    image: "/owner-placeholder.png",
+    image: null,
     rating: 5,
     text: "Shree Ganesh Avenue offers the perfect blend of residential comfort and commercial opportunities. The strategic location and quality construction make it an excellent investment. Highly satisfied!",
     project: "Shree Ganesh Avenue",
@@ -69,6 +70,33 @@ const Testimonials = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (showModal) {
+      // Prevent background scrolling
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+    } else {
+      // Restore background scrolling
+      document.body.style.overflow = 'unset';
+      document.body.style.position = 'unset';
+      document.body.style.width = 'unset';
+    }
+
+    // Cleanup on component unmount
+    return () => {
+      document.body.style.overflow = 'unset';
+      document.body.style.position = 'unset';
+      document.body.style.width = 'unset';
+    };
+  }, [showModal]);
+
+  const handleScheduleClick = () => {
+    setShowModal(true);
+  };
 
   const nextTestimonial = useCallback(() => {
     if (isTransitioning) return;
@@ -149,11 +177,19 @@ const Testimonials = () => {
                   transition={{ delay: 0.2, duration: 0.5 }}
                 >
                   <div className="relative">
-                    <img 
-                      src={testimonials[activeIndex].image} 
-                      alt={testimonials[activeIndex].name}
-                      className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-gold shadow-lg transition-transform duration-300 hover:scale-105"
-                    />
+                    {testimonials[activeIndex].image ? (
+                      <img 
+                        src={testimonials[activeIndex].image} 
+                        alt={testimonials[activeIndex].name}
+                        className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-gold shadow-lg transition-transform duration-300 hover:scale-105"
+                      />
+                    ) : (
+                      <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-gold to-gold-600 border-4 border-gold shadow-lg flex items-center justify-center">
+                        <span className="text-white text-2xl md:text-3xl font-bold">
+                          {testimonials[activeIndex].name.split(' ').map(n => n[0]).join('')}
+                        </span>
+                      </div>
+                    )}
                     <div className="absolute -bottom-2 -right-2 bg-gold text-white rounded-full p-2">
                       <FaQuoteLeft className="text-sm" />
                     </div>
@@ -257,11 +293,32 @@ const Testimonials = () => {
             <p className="text-lg mb-6 opacity-90">
               Be part of our success story and find your dream home today
             </p>
-            <button className="bg-white text-[#E53935] px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200">
+            <button 
+              onClick={handleScheduleClick}
+              className="bg-white text-[#E53935] px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
+            >
               Schedule a Site Visit
             </button>
           </div>
         </div>
+
+        {/* Schedule Visit Modal */}
+        {showModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 p-4" onClick={() => setShowModal(false)}>
+            <div 
+              className="bg-white rounded-2xl shadow-2xl p-6 max-w-lg w-full relative max-h-[80vh] overflow-y-auto scrollbar-hide modal-content"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button 
+                className="absolute top-3 right-3 text-gray-500 hover:text-gold text-2xl transition-colors duration-200" 
+                onClick={() => setShowModal(false)}
+              >
+                &times;
+              </button>
+              <ContactForm propertyTitle="Site Visit Request" />
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

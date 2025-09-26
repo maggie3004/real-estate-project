@@ -18,12 +18,10 @@ const completedProjects = [
     units: "80 Units",
     area: "1.8 Acres",
     images: [
-      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-23.jpg",
-      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-24 2.jpg",
-      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-24.jpg",
-      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-38.jpg",
-      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-39 2.jpg",
-      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-39.jpg",
+      "/assets/sai-shraddha-apartment/gallery/front.jpg",
+      "/assets/sai-shraddha-apartment/gallery/top-view.jpg",
+      "/assets/sai-shraddha-apartment/gallery/parking.jpg",
+      "/assets/sai-shraddha-apartment/gallery/floor-plan.jpg",
       "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-40.jpg"
     ],
     amenities: ["Garden", "Security", "Parking", "Power Backup", "Water Supply", "Maintenance"],
@@ -39,9 +37,11 @@ const completedProjects = [
     units: "120 Units",
     area: "2.5 Acres",
     images: [
-      "/assets/shree-ganesh-heights/gallery/PHOTO-2024-07-24-14-16-26.jpg",
-      "/assets/shree-ganesh-heights/gallery/PHOTO-2024-08-07-21-22-54.jpg",
-      "/assets/shree-ganesh-heights/gallery/PHOTO-2024-08-18-16-26-07.jpg"
+      "/assets/shree-ganesh-heights/gallery/front.jpeg",
+      "/assets/shree-ganesh-heights/gallery/day-front.jpg",
+      "/assets/shree-ganesh-heights/gallery/night-front.jpg",
+      "/assets/shree-ganesh-heights/gallery/top-view.jpg",
+      "/assets/shree-ganesh-heights/gallery/floor-plan.jpeg"
     ],
     amenities: ["Security", "Parking", "Power Backup", "Water Supply", "Maintenance", "Garden"],
     features: ["2BHK & 3BHK Apartments", "Quality Construction", "Good Ventilation", "Modern Design"],
@@ -78,13 +78,12 @@ const completedProjects = [
     units: "100 Units",
     area: "2.0 Acres",
     images: [
-      "/assets/shree-ganesh-srushti/gallery/PHOTO-2025-07-07-11-48-19.jpg",
-      "/assets/shree-ganesh-srushti/gallery/PHOTO-2025-07-23-11-14-21.jpg",
-      "/assets/shree-ganesh-srushti/gallery/PHOTO-2025-07-30-13-43-35.jpg",
-      "/assets/shree-ganesh-srushti/gallery/WhatsApp Image 2025-07-22 at 13.17.15 (1).jpeg",
-      "/assets/shree-ganesh-srushti/gallery/WhatsApp Image 2025-07-22 at 13.17.15 (2).jpeg",
-      "/assets/shree-ganesh-srushti/gallery/WhatsApp Image 2025-07-22 at 13.17.15.jpeg",
-      "/assets/shree-ganesh-srushti/gallery/WhatsApp Image 2025-07-22 at 13.17.16.jpeg"
+      "/assets/shree-ganesh-srushti/gallery/front.jpg",
+      "/assets/shree-ganesh-srushti/gallery/night.jpg",
+      "/assets/shree-ganesh-srushti/gallery/1bhk.jpg",
+      "/assets/shree-ganesh-srushti/gallery/1bhk (2).jpg",
+      "/assets/shree-ganesh-srushti/gallery/2bhk.jpg",
+      "/assets/shree-ganesh-srushti/gallery/2bhk (2).jpg"
     ],
     amenities: ["Security", "Parking", "Power Backup", "Water Supply", "Maintenance", "Garden", "Gym"],
     features: ["2BHK & 3BHK Apartments", "Contemporary Design", "Quality Construction", "Modern Amenities"],
@@ -99,6 +98,7 @@ const Milestones = () => {
   const [selectedProject, setSelectedProject] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
   const [isNavigating, setIsNavigating] = useState(false);
+  const [isImageLoading, setIsImageLoading] = useState(false);
   const navigationTimeoutRef = useRef(null);
   const controls = useAnimation();
 
@@ -152,13 +152,7 @@ const Milestones = () => {
   }, []);
 
   const navigateImage = useCallback((direction) => {
-    console.log('navigateImage called with direction:', direction);
-    console.log('selectedImage:', selectedImage);
-    
-    if (!selectedImage) {
-      console.log('No selectedImage, returning');
-      return;
-    }
+    if (!selectedImage || isNavigating || isImageLoading) return;
     
     // Clear any existing timeout
     if (navigationTimeoutRef.current) {
@@ -166,40 +160,39 @@ const Milestones = () => {
     }
     
     setIsNavigating(true);
+    setIsImageLoading(true);
     
-    // Update image immediately
-    setSelectedImage(prevImage => {
-      if (!prevImage) {
-        console.log('No prevImage, returning');
-        return prevImage;
-      }
-      
-      const { currentIndex, allImages, title, totalImages } = prevImage;
-      let newIndex;
-      
-      if (direction === 'next') {
-        newIndex = currentIndex === allImages.length - 1 ? 0 : currentIndex + 1;
-      } else {
-        newIndex = currentIndex === 0 ? allImages.length - 1 : currentIndex - 1;
-      }
-      
-      console.log('Navigating from', currentIndex, 'to', newIndex);
-      
-      return {
-        src: allImages[newIndex],
-        title: title,
-        currentIndex: newIndex,
-        totalImages: totalImages,
-        allImages: allImages
-      };
+    // Use requestAnimationFrame for smoother transition
+    requestAnimationFrame(() => {
+      setSelectedImage(prevImage => {
+        if (!prevImage) return prevImage;
+        
+        const { currentIndex, allImages, title, totalImages } = prevImage;
+        let newIndex;
+        
+        if (direction === 'next') {
+          newIndex = currentIndex === allImages.length - 1 ? 0 : currentIndex + 1;
+        } else {
+          newIndex = currentIndex === 0 ? allImages.length - 1 : currentIndex - 1;
+        }
+        
+        return {
+          src: allImages[newIndex],
+          title: title,
+          currentIndex: newIndex,
+          totalImages: totalImages,
+          allImages: allImages
+        };
+      });
     });
     
-    // Reset navigation flag after a short delay
+    // Reset navigation flag after image loads
     navigationTimeoutRef.current = setTimeout(() => {
       setIsNavigating(false);
+      setIsImageLoading(false);
       navigationTimeoutRef.current = null;
     }, 200);
-  }, [selectedImage]);
+  }, [selectedImage, isNavigating, isImageLoading]);
 
   // Image navigation handled inside memoized carousel component
 
@@ -301,37 +294,55 @@ const Milestones = () => {
     return (
       <div className="space-y-4">
         <div className="relative overflow-hidden rounded-xl">
-          <div 
+          <motion.div 
             className="flex h-80 w-full carousel-sliding-container"
-            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+            animate={{ x: `-${currentIndex * 100}%` }}
+            transition={{ 
+              type: "spring", 
+              stiffness: 300, 
+              damping: 30,
+              duration: 0.6
+            }}
           >
             {images.map((image, index) => (
-              <div key={index} className="w-full flex-shrink-0 h-full carousel-slide">
+              <motion.div 
+                key={index} 
+                className="w-full flex-shrink-0 h-full carousel-slide"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+              >
                 <img
                   src={image}
                   alt={`${title} - ${index + 1}`}
-                  className="w-full h-full object-cover carousel-image cursor-pointer hover:opacity-90 transition-opacity duration-200"
+                  className="w-full h-full object-cover carousel-image cursor-pointer hover:opacity-90 transition-all duration-300 hover:scale-105"
                   onError={(e) => { e.target.src = '/hero-building.jpg'; }}
                   onClick={() => onImageClick(image, title, index, images.length, images)}
                 />
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
           {images.length > 1 && (
             <>
-              <button
+              <motion.button
                 onClick={handlePrev}
                 className="carousel-button absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-2 rounded-full shadow-lg z-30 backdrop-blur-sm"
+                whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.3)' }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.2 }}
               >
                 <FaChevronLeft className="w-4 h-4" />
-              </button>
-              <button
+              </motion.button>
+              <motion.button
                 onClick={handleNext}
                 className="carousel-button absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-2 rounded-full shadow-lg z-30 backdrop-blur-sm"
+                whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.3)' }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.2 }}
               >
                 <FaChevronRight className="w-4 h-4" />
-              </button>
+              </motion.button>
             </>
           )}
 
@@ -502,8 +513,8 @@ const Milestones = () => {
     );
   };
 
-  // Image Popup Component
-  const ImagePopup = ({ image, isOpen, onClose, onNavigate, isNavigating }) => {
+  // Image Popup Component - Memoized to prevent unnecessary re-renders
+  const ImagePopup = React.memo(({ image, isOpen, onClose, onNavigate, isNavigating }) => {
     if (!isOpen || !image) return null;
 
     return (
@@ -540,12 +551,10 @@ const Milestones = () => {
               <>
                 {/* Previous Button */}
                 <button
-                  onClick={() => {
-                    console.log('Previous button clicked');
-                    onNavigate('prev');
-                  }}
-                  className={`absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-3 rounded-full transition-all duration-200 hover:scale-110 ${
-                    isNavigating ? 'opacity-70' : ''
+                  onClick={() => onNavigate('prev')}
+                  disabled={isNavigating || isImageLoading}
+                  className={`absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-3 rounded-full transition-all duration-200 ${
+                    (isNavigating || isImageLoading) ? 'opacity-50 cursor-not-allowed' : 'hover:scale-110'
                   }`}
                 >
                   <FaChevronLeft className="w-6 h-6" />
@@ -553,12 +562,10 @@ const Milestones = () => {
 
                 {/* Next Button */}
                 <button
-                  onClick={() => {
-                    console.log('Next button clicked');
-                    onNavigate('next');
-                  }}
-                  className={`absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-3 rounded-full transition-all duration-200 hover:scale-110 ${
-                    isNavigating ? 'opacity-70' : ''
+                  onClick={() => onNavigate('next')}
+                  disabled={isNavigating || isImageLoading}
+                  className={`absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-3 rounded-full transition-all duration-200 ${
+                    (isNavigating || isImageLoading) ? 'opacity-50 cursor-not-allowed' : 'hover:scale-110'
                   }`}
                 >
                   <FaChevronRight className="w-6 h-6" />
@@ -566,13 +573,34 @@ const Milestones = () => {
               </>
             )}
 
+            {/* Loading Indicator */}
+            {(isNavigating || isImageLoading) && (
+              <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 z-20">
+                <div className="bg-white bg-opacity-90 rounded-full p-4">
+                  <div className="w-8 h-8 border-4 border-gold border-t-transparent rounded-full animate-spin"></div>
+                </div>
+              </div>
+            )}
+
             {/* Main Image */}
-            <img
-              src={image.src}
-              alt={image.title}
-              className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
-              onError={(e) => { e.target.src = '/hero-building.jpg'; }}
-            />
+            <div className="relative w-full h-full flex items-center justify-center image-popup-container">
+              <div className="milestone-image-container">
+                <img
+                  src={image.src}
+                  alt={image.title}
+                  className={`max-w-full max-h-full object-contain rounded-lg shadow-2xl transition-all duration-300 ${
+                    isNavigating || isImageLoading ? 'opacity-50 scale-95' : 'opacity-100 scale-100'
+                  }`}
+                  onLoad={() => {
+                    setIsImageLoading(false);
+                  }}
+                  onError={(e) => { 
+                    e.target.src = '/hero-building.jpg'; 
+                    setIsImageLoading(false);
+                  }}
+                />
+              </div>
+            </div>
 
             {/* Image Title */}
             <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-75 text-white px-4 py-2 rounded-lg text-center">
@@ -585,7 +613,7 @@ const Milestones = () => {
         </motion.div>
       </AnimatePresence>
     );
-  };
+  });
 
   // Project Card Component
   const ProjectCard = ({ project, index }) => (

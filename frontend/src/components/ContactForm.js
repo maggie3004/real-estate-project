@@ -168,7 +168,7 @@ const ContactForm = ({ propertyId = null, propertyTitle = null }) => {
   }
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-8">
+    <div className="bg-white rounded-2xl shadow-lg p-8 scrollbar-hide modal-content">
       {/* Header */}
       <div className="text-center mb-8">
         <h2 className="text-3xl font-bold text-gray-900 mb-2">Get in Touch</h2>

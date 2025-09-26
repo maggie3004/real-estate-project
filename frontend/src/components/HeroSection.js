@@ -8,23 +8,37 @@ import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 
 const HeroSection = () => {
+  // Preload images for better performance
+  React.useEffect(() => {
+    const imageUrls = [
+      '/assets/shree-ganesh-srushti/gallery/front.jpg',
+      '/assets/shree-ganesh-heights/gallery/front.jpeg',
+      '/assets/sai-shraddha-apartment/gallery/front.jpg'
+    ];
+    
+    imageUrls.forEach(url => {
+      const img = new Image();
+      img.src = url;
+    });
+  }, []);
+
   // Carousel data with 3 high-quality building images
   const carouselData = [
     {
       id: 1,
-      image: '/hero-building.jpg',
+      image: '/assets/shree-ganesh-srushti/gallery/front.jpg',
       title: 'Luxury Living Redefined',
       subtitle: 'Premium properties with world-class amenities'
     },
     {
       id: 2,
-      image: '/assets/shree-ganesh-heights/gallery/1.jpeg',
+      image: '/assets/shree-ganesh-heights/gallery/front.jpeg',
       title: 'Shree Ganesh Heights',
       subtitle: 'Excellence in every detail'
     },
     {
       id: 3,
-      image: '/assets/sai-shraddha-apartment/gallery/1.jpg',
+      image: '/assets/sai-shraddha-apartment/gallery/front.jpg',
       title: 'Sai Shraddha Apartment',
       subtitle: 'Creating homes that last generations'
     }
@@ -66,17 +80,15 @@ const HeroSection = () => {
       >
         {carouselData.map((slide, index) => (
           <SwiperSlide key={slide.id} className="relative">
-            <div className="relative h-full w-full">
+            <div className="relative h-full w-full bg-gray-900 flex items-center justify-center">
               <img 
                 src={slide.image}
                 alt={slide.title}
-                className={`w-full h-full object-center ${
-                  slide.id === 1 ? 'object-cover' : 'sm:object-contain md:object-cover lg:object-cover'
-                }`}
-                style={{
-                  minHeight: '100vh',
-                  minWidth: '100vw',
-                  objectPosition: slide.id === 1 ? 'center 30%' : 'center center'
+                className="hero-image"
+                loading="eager"
+                decoding="async"
+                onError={(e) => {
+                  e.target.src = '/hero-building.jpg';
                 }}
               />
               

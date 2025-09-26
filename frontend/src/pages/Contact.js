@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaWhatsapp, FaFacebook, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import ContactForm from '../components/ContactForm';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +13,27 @@ const Contact = () => {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (showModal) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+    } else {
+      document.body.style.overflow = 'unset';
+      document.body.style.position = 'unset';
+      document.body.style.width = 'unset';
+    }
+
+    // Cleanup on component unmount
+    return () => {
+      document.body.style.overflow = 'unset';
+      document.body.style.position = 'unset';
+      document.body.style.width = 'unset';
+    };
+  }, [showModal]);
 
   const handleInputChange = (e) => {
     setFormData({
@@ -45,13 +67,6 @@ const Contact = () => {
       phone: '+91 98765 43210',
       email: 'nashik@ganeshyoelebuilders.com',
       hours: 'Mon - Sat: 9:00 AM - 7:00 PM'
-    },
-    {
-      city: 'Mumbai',
-      address: 'Office No. 45, Building A, Andheri West, Mumbai 400058',
-      phone: '+91 98765 43211',
-      email: 'mumbai@ganeshyoelebuilders.com',
-      hours: 'Mon - Sat: 9:00 AM - 6:00 PM'
     },
     {
       city: 'Pune',
@@ -279,17 +294,38 @@ const Contact = () => {
             <p className="text-lg mb-6 opacity-90">
               Schedule a site visit or consultation with our experts today
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-[#E53935] px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200">
+            <div className="flex justify-center">
+              <button 
+                onClick={() => setShowModal(true)}
+                className="bg-white text-[#E53935] px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
+              >
                 Schedule Site Visit
-              </button>
-              <button className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-[#E53935] transition-colors duration-200">
-                Download Brochure
               </button>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Contact Form Modal */}
+      {showModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50" onClick={() => setShowModal(false)}>
+          <div 
+            className="bg-white dark:bg-gray-800 rounded-2xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto scrollbar-hide modal-content"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-2xl font-bold text-[#E53935]">Schedule Site Visit</h3>
+              <button
+                onClick={() => setShowModal(false)}
+                className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 text-2xl transition-colors duration-200"
+              >
+                ×
+              </button>
+            </div>
+            <ContactForm onClose={() => setShowModal(false)} />
+          </div>
+        </div>
+      )}
     </section>
   );
 };

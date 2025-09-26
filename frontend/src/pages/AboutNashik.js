@@ -1,9 +1,20 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet';
+import { useNavigate } from 'react-router-dom';
 import { FaMapMarkerAlt, FaIndustry, FaGraduationCap, FaPlane, FaTrain, FaBus, FaCar, FaShoppingCart } from 'react-icons/fa';
 
 const AboutNashik = () => {
+  const navigate = useNavigate();
+
+  const handleViewProjects = () => {
+    navigate('/milestones');
+  };
+
+  const handleContactUs = () => {
+    navigate('/contact');
+  };
+
   const nashikImages = [
           {
         id: 1,
@@ -246,10 +257,16 @@ const AboutNashik = () => {
               Discover premium properties in Nashik with Ganesh Yeole Builders and Developers.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="bg-white text-[#E53935] px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200">
+              <button 
+                onClick={handleViewProjects}
+                className="bg-white text-[#E53935] px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
+              >
                 View Our Projects
               </button>
-              <button className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-[#E53935] transition-colors duration-200">
+              <button 
+                onClick={handleContactUs}
+                className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-[#E53935] transition-colors duration-200"
+              >
                 Contact Us
               </button>
             </div>

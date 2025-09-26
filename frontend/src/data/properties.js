@@ -4,24 +4,22 @@ const properties = [
     title: "Sai Shraddha Apartment",
     price: "Contact for Price",
     location: "College Road, Nashik",
-    image: "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-23.jpg",
+    image: "/assets/sai-shraddha-apartment/gallery/front.jpg",
     images: [
-      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-23.jpg",
-      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-24 2.jpg",
-      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-24.jpg",
-      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-38.jpg",
-      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-39 2.jpg",
-      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-39.jpg",
+      "/assets/sai-shraddha-apartment/gallery/front.jpg",
+      "/assets/sai-shraddha-apartment/gallery/top-view.jpg",
+      "/assets/sai-shraddha-apartment/gallery/parking.jpg",
+      "/assets/sai-shraddha-apartment/gallery/floor-plan.jpg",
       "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-40.jpg"
     ],
     isometricViews: [
       {
         label: "2BHK - Spacious layout with balcony",
-        src: "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-23.jpg"
+        src: "/assets/sai-shraddha-apartment/gallery/front.jpg"
       },
       {
         label: "1BHK - Compact and efficient design",
-        src: "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-24.jpg"
+        src: "/assets/sai-shraddha-apartment/gallery/top-view.jpg"
       }
     ],
     bedrooms: 2,
@@ -48,11 +46,13 @@ const properties = [
     title: "Shree Ganesh Heights",
     price: "Contact for Price",
     location: "Nashik",
-    image: "/assets/shree-ganesh-heights/gallery/PHOTO-2024-07-24-14-16-26.jpg",
+    image: "/assets/shree-ganesh-heights/gallery/front.jpeg",
     images: [
-      "/assets/shree-ganesh-heights/gallery/PHOTO-2024-07-24-14-16-26.jpg",
-      "/assets/shree-ganesh-heights/gallery/PHOTO-2024-08-07-21-22-54.jpg",
-      "/assets/shree-ganesh-heights/gallery/PHOTO-2024-08-18-16-26-07.jpg"
+      "/assets/shree-ganesh-heights/gallery/front.jpeg",
+      "/assets/shree-ganesh-heights/gallery/day-front.jpg",
+      "/assets/shree-ganesh-heights/gallery/night-front.jpg",
+      "/assets/shree-ganesh-heights/gallery/top-view.jpg",
+      "/assets/shree-ganesh-heights/gallery/floor-plan.jpeg"
     ],
     bedrooms: 3,
     bathrooms: 3,
@@ -101,15 +101,14 @@ const properties = [
     title: "Shreeganesh Srushti",
     price: "Contact for Price",
     location: "Nashik",
-    image: "/assets/shree-ganesh-srushti/gallery/PHOTO-2025-07-07-11-48-19.jpg",
+    image: "/assets/shree-ganesh-srushti/gallery/front.jpg",
     images: [
-      "/assets/shree-ganesh-srushti/gallery/PHOTO-2025-07-07-11-48-19.jpg",
-      "/assets/shree-ganesh-srushti/gallery/PHOTO-2025-07-23-11-14-21.jpg",
-      "/assets/shree-ganesh-srushti/gallery/PHOTO-2025-07-30-13-43-35.jpg",
-      "/assets/shree-ganesh-srushti/gallery/WhatsApp Image 2025-07-22 at 13.17.15 (1).jpeg",
-      "/assets/shree-ganesh-srushti/gallery/WhatsApp Image 2025-07-22 at 13.17.15 (2).jpeg",
-      "/assets/shree-ganesh-srushti/gallery/WhatsApp Image 2025-07-22 at 13.17.15.jpeg",
-      "/assets/shree-ganesh-srushti/gallery/WhatsApp Image 2025-07-22 at 13.17.16.jpeg"
+      "/assets/shree-ganesh-srushti/gallery/front.jpg",
+      "/assets/shree-ganesh-srushti/gallery/night.jpg",
+      "/assets/shree-ganesh-srushti/gallery/1bhk.jpg",
+      "/assets/shree-ganesh-srushti/gallery/1bhk (2).jpg",
+      "/assets/shree-ganesh-srushti/gallery/2bhk.jpg",
+      "/assets/shree-ganesh-srushti/gallery/2bhk (2).jpg"
     ],
     bedrooms: 3,
     bathrooms: 3,
