@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, memo } from 'react';
 import { Helmet } from 'react-helmet';
-import { FaBuilding, FaUsers, FaArrowRight, FaTimes, FaChevronLeft, FaChevronRight, FaMapMarkerAlt, FaCalendarAlt } from 'react-icons/fa';
+import { FaBuilding, FaUsers, FaArrowRight, FaTimes, FaChevronLeft, FaChevronRight, FaMapMarkerAlt, FaCalendarAlt, FaStar, FaTrophy } from 'react-icons/fa';
 import { motion, useAnimation, AnimatePresence } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
@@ -11,8 +11,9 @@ import 'swiper/css/pagination';
 const completedProjects = [
   {
     id: 1,
+    number: "01",
     title: "Sai Shraddha Apartment",
-    description: "A beautifully designed residential complex offering comfortable living with all modern amenities and excellent connectivity.",
+    description: "A beautifully designed residential complex offering comfortable living with all modern amenities and excellent connectivity. Experience the perfect blend of comfort and convenience in the heart of Nashik.",
     location: "College Road, Nashik",
     completionDate: "2024",
     units: "80 Units",
@@ -26,14 +27,17 @@ const completedProjects = [
     ],
     amenities: ["Garden", "Security", "Parking", "Power Backup", "Water Supply", "Maintenance"],
     features: ["1BHK & 2BHK Apartments", "Quality Construction", "Good Ventilation", "Nearby Schools", "Market Access"],
-    status: "Completed"
+    status: "Completed",
+    category: "Completed Project",
+    overlayText: "ELEGANT LIVING SPACES"
   },
   {
     id: 2,
+    number: "02",
     title: "Shree Ganesh Heights",
-    description: "Premium residential development with modern amenities and excellent location advantages.",
+    description: "Premium residential development with modern amenities and excellent location advantages. Rising majestically with a regal presence, this development offers unparalleled luxury and comfort.",
     location: "Nashik",
-    completionDate: "2024",
+    completionDate: "2025",
     units: "120 Units",
     area: "2.5 Acres",
     images: [
@@ -45,14 +49,17 @@ const completedProjects = [
     ],
     amenities: ["Security", "Parking", "Power Backup", "Water Supply", "Maintenance", "Garden"],
     features: ["2BHK & 3BHK Apartments", "Quality Construction", "Good Ventilation", "Modern Design"],
-    status: "Completed"
+    status: "Ongoing",
+    category: "Ongoing Project",
+    overlayText: "ASCEND TO NEW HEIGHTS"
   },
   {
     id: 3,
+    number: "03",
     title: "Shree Ganesh Park",
-    description: "A premium residential development with multiple wings offering various apartment configurations.",
+    description: "A premium residential development with multiple wings offering various apartment configurations. Immerse yourself in an extraordinary living experience curated with elegance and grace.",
     location: "Nashik",
-    completionDate: "2024",
+    completionDate: "2025",
     units: "150 Units",
     area: "3.0 Acres",
     images: [
@@ -67,12 +74,15 @@ const completedProjects = [
     ],
     amenities: ["Garden", "Security", "Parking", "Power Backup", "Water Supply", "Maintenance", "Club House"],
     features: ["1BHK & 2BHK Apartments", "Multiple Wings", "Quality Construction", "Modern Amenities", "Green Spaces"],
-    status: "Completed"
+    status: "Ongoing",
+    category: "Ongoing Project",
+    overlayText: "NATURE'S EMBRACE"
   },
   {
     id: 4,
+    number: "04",
     title: "Shreeganesh Srushti",
-    description: "Latest residential development with contemporary design and all modern facilities.",
+    description: "Latest residential development with contemporary design and all modern facilities. Discover a sanctuary where peace, serenity, and rejuvenation converge in perfect harmony.",
     location: "Nashik",
     completionDate: "2025",
     units: "100 Units",
@@ -87,7 +97,9 @@ const completedProjects = [
     ],
     amenities: ["Security", "Parking", "Power Backup", "Water Supply", "Maintenance", "Garden", "Gym"],
     features: ["2BHK & 3BHK Apartments", "Contemporary Design", "Quality Construction", "Modern Amenities"],
-    status: "Completed"
+    status: "Ongoing",
+    category: "Ongoing Project",
+    overlayText: "CREATIVE EXCELLENCE"
   }
 ];
 
@@ -295,7 +307,7 @@ const Milestones = () => {
     );
   });
 
-  // Project Modal Component
+  // Project Modal Component - Vaastu Group Style
   const ProjectModal = ({ project, isOpen, onClose }) => {
     if (!isOpen || !project) return null;
 
@@ -312,26 +324,37 @@ const Milestones = () => {
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
-            className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden w-full max-h-full relative modal-content"
+            className="bg-white rounded-2xl shadow-2xl overflow-hidden w-full max-h-full relative modal-content"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Modal Header */}
-            <div className="flex items-center justify-between p-6 border-b border-gray-200 dark:border-gray-700">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+            {/* Modal Header - Vaastu Group Style */}
+            <div className="relative bg-gradient-to-r from-amber-50 to-amber-100 p-8">
+              {/* Decorative Elements */}
+              <div className="absolute top-4 right-4 w-16 h-16 bg-amber-200 rounded-lg transform rotate-12 opacity-30"></div>
+              <div className="absolute bottom-4 left-4 w-12 h-12 bg-amber-300 rounded-lg transform -rotate-12 opacity-20"></div>
+              
+              <div className="relative flex items-center justify-between">
+                <div>
+                  <h3 className="text-2xl font-semibold text-amber-600 mb-2 font-serif">
+                    {project.category}
+                  </h3>
+                  <h2 className="text-4xl font-bold text-gray-900 font-serif">
                 {project.title}
               </h2>
+                </div>
               <button
                 onClick={onClose}
-                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors"
+                  className="p-3 hover:bg-white/50 rounded-full transition-colors"
               >
-                <FaTimes className="w-6 h-6 text-gray-500" />
+                  <FaTimes className="w-6 h-6 text-gray-600" />
               </button>
+              </div>
             </div>
 
             {/* Modal Content */}
-            <div className="overflow-y-auto max-h-[calc(90vh-120px)]">
-              <div className="p-6">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="overflow-y-auto max-h-[calc(90vh-200px)]">
+              <div className="p-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
                   {/* Image Carousel */}
                   <ProjectImageCarousel 
                     images={project.images} 
@@ -339,59 +362,67 @@ const Milestones = () => {
                   />
 
                   {/* Project Details */}
-                  <div className="space-y-6">
+                  <div className="space-y-8">
                     {/* Description */}
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                      <h3 className="text-xl font-semibold text-gray-900 mb-4 font-serif">
                         Project Description
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                      <p className="text-gray-600 leading-relaxed text-lg">
                         {project.description}
                       </p>
                     </div>
 
                     {/* Project Info */}
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="flex items-center space-x-3">
-                        <FaMapMarkerAlt className="w-5 h-5 text-gold" />
+                    <div className="grid grid-cols-2 gap-6">
+                      <div className="flex items-center space-x-4">
+                        <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center">
+                          <FaMapMarkerAlt className="w-6 h-6 text-amber-600" />
+                        </div>
                         <div>
                           <p className="text-sm text-gray-500">Location</p>
-                          <p className="font-medium text-gray-900 dark:text-white">{project.location}</p>
+                          <p className="font-semibold text-gray-900">{project.location}</p>
                         </div>
                       </div>
-                      <div className="flex items-center space-x-3">
-                        <FaCalendarAlt className="w-5 h-5 text-gold" />
+                      <div className="flex items-center space-x-4">
+                        <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center">
+                          <FaCalendarAlt className="w-6 h-6 text-amber-600" />
+                        </div>
                         <div>
-                          <p className="text-sm text-gray-500">Completed</p>
-                          <p className="font-medium text-gray-900 dark:text-white">{project.completionDate}</p>
+                          <p className="text-sm text-gray-500">Completion</p>
+                          <p className="font-semibold text-gray-900">{project.completionDate}</p>
                         </div>
                       </div>
-                      <div className="flex items-center space-x-3">
-                        <FaBuilding className="w-5 h-5 text-gold" />
+                      <div className="flex items-center space-x-4">
+                        <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center">
+                          <FaBuilding className="w-6 h-6 text-amber-600" />
+                        </div>
                         <div>
                           <p className="text-sm text-gray-500">Units</p>
-                          <p className="font-medium text-gray-900 dark:text-white">{project.units}</p>
+                          <p className="font-semibold text-gray-900">{project.units}</p>
                         </div>
                       </div>
-                      <div className="flex items-center space-x-3">
-                        <FaUsers className="w-5 h-5 text-gold" />
+                      <div className="flex items-center space-x-4">
+                        <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center">
+                          <FaUsers className="w-6 h-6 text-amber-600" />
+                        </div>
                         <div>
                           <p className="text-sm text-gray-500">Area</p>
-                          <p className="font-medium text-gray-900 dark:text-white">{project.area}</p>
+                          <p className="font-semibold text-gray-900">{project.area}</p>
                         </div>
                       </div>
                     </div>
 
                     {/* Amenities */}
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                      <h3 className="text-xl font-semibold text-gray-900 mb-4 font-serif">
                         Amenities
                       </h3>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-3">
                         {project.amenities.map((amenity, index) => (
                           <span
                             key={index}
-                            className="bg-gold bg-opacity-10 text-gold px-3 py-1 rounded-full text-sm font-medium"
+                            className="bg-amber-100 text-amber-700 px-4 py-2 rounded-full text-sm font-medium"
                           >
                             {amenity}
                           </span>
@@ -401,14 +432,14 @@ const Milestones = () => {
 
                     {/* Features */}
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+                      <h3 className="text-xl font-semibold text-gray-900 mb-4 font-serif">
                         Key Features
                       </h3>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-3">
                         {project.features.map((feature, index) => (
                           <span
                             key={index}
-                            className="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-3 py-1 rounded-full text-sm font-medium"
+                            className="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium"
                           >
                             {feature}
                           </span>
@@ -426,231 +457,190 @@ const Milestones = () => {
   };
 
 
-  // Project Card Component
-  const ProjectCard = ({ project, index }) => (
-    <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      viewport={{ once: true }}
-      whileHover={{ y: -8 }}
-      className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700 cursor-pointer group transition-all duration-200 hover:shadow-xl"
-      onClick={() => openProjectModal(project)}
-    >
-      {/* Project Image Slider */}
-      <div className="relative h-64 overflow-hidden">
-        {project.images.length > 1 ? (
-          <Swiper
-            modules={[Navigation, Pagination, Autoplay]}
-            spaceBetween={0}
-            slidesPerView={1}
-            navigation={{
-              nextEl: `.swiper-button-next-${project.id}`,
-              prevEl: `.swiper-button-prev-${project.id}`,
-            }}
-            pagination={{
-              clickable: true,
-              el: `.swiper-pagination-${project.id}`,
-              bulletClass: 'swiper-pagination-bullet-custom',
-              bulletActiveClass: 'swiper-pagination-bullet-active-custom'
-            }}
-            autoplay={{
-              delay: 3000,
-              disableOnInteraction: false,
-              pauseOnMouseEnter: true
-            }}
-            loop={true}
-            className="milestone-card-swiper h-full"
-          >
-            {project.images.map((image, index) => (
-              <SwiperSlide key={index}>
-                <div className="relative h-full">
-                  <img
-                    src={image}
-                    alt={`${project.title} - ${index + 1}`}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    onError={(e) => { e.target.src = '/hero-building.jpg'; }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        ) : (
-          <div className="relative h-full">
-            <img
-              src={project.images[0]}
-              alt={project.title}
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-              onError={(e) => { e.target.src = '/hero-building.jpg'; }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          </div>
-        )}
-        
-        {/* Status Badge */}
-        <div className="absolute top-4 left-4 z-10">
-          <span className="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
-            {project.status}
-          </span>
-        </div>
-
-        {/* Image Counter */}
-        {project.images.length > 1 && (
-          <div className="absolute top-4 right-4 z-10 bg-black bg-opacity-50 text-white px-3 py-1 rounded-full text-sm font-medium">
-            {project.images.length} photos
-          </div>
-        )}
-
-        {/* Navigation Buttons */}
-        {project.images.length > 1 && (
-          <>
-            <div className={`swiper-button-prev-${project.id} absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-1.5 rounded-full shadow-lg z-20 backdrop-blur-sm cursor-pointer transition-all duration-200 hover:scale-110 opacity-0 group-hover:opacity-100`}>
-              <FaChevronLeft className="w-3 h-3" />
-            </div>
-            <div className={`swiper-button-next-${project.id} absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-1.5 rounded-full shadow-lg z-20 backdrop-blur-sm cursor-pointer transition-all duration-200 hover:scale-110 opacity-0 group-hover:opacity-100`}>
-              <FaChevronRight className="w-3 h-3" />
-            </div>
-          </>
-        )}
-
-        {/* Pagination */}
-        {project.images.length > 1 && (
-          <div className={`swiper-pagination-${project.id} absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-1 z-10`}></div>
-        )}
-
-        {/* Hover Overlay */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-30">
-          <div className="bg-white bg-opacity-90 rounded-full p-4">
-            <FaArrowRight className="w-6 h-6 text-gold" />
-          </div>
-        </div>
-      </div>
-            
-      {/* Project Content */}
-      <div className="p-6">
-        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-gold transition-colors">
-          {project.title}
-            </h3>
-            
-        <p className="text-gray-600 dark:text-gray-300 text-sm mb-4 line-clamp-2">
-          {project.description}
-        </p>
-
-        {/* Project Details */}
-        <div className="space-y-2 mb-4">
-          <div className="flex items-center text-sm text-gray-500">
-            <FaMapMarkerAlt className="w-4 h-4 mr-2 text-gold" />
-            <span>{project.location}</span>
-          </div>
-          <div className="flex items-center text-sm text-gray-500">
-            <FaCalendarAlt className="w-4 h-4 mr-2 text-gold" />
-            <span>Completed: {project.completionDate}</span>
-          </div>
-          <div className="flex items-center text-sm text-gray-500">
-            <FaBuilding className="w-4 h-4 mr-2 text-gold" />
-            <span>{project.units} • {project.area}</span>
-          </div>
-        </div>
-
-        {/* Amenities Preview */}
-        <div className="flex flex-wrap gap-1 mb-4">
-          {project.amenities.slice(0, 3).map((amenity, idx) => (
-            <span
-              key={idx}
-              className="bg-gold bg-opacity-10 text-gold px-2 py-1 rounded-full text-xs font-medium"
-            >
-              {amenity}
-            </span>
-          ))}
-          {project.amenities.length > 3 && (
-            <span className="text-xs text-gray-500">
-              +{project.amenities.length - 3} more
-            </span>
-          )}
-        </div>
-
-        {/* Click to View More */}
-        <div className="text-center">
-          <span className="text-gold text-sm font-medium group-hover:underline">
-            Click to view details
-          </span>
-        </div>
-      </div>
-    </motion.div>
-  );
-
-  // AchievementCard component removed since timeline is no longer used
 
   return (
-    <section className="min-h-screen pt-24 pb-12 bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 text-[#181818] dark:text-white transition-colors duration-300">
+    <section className="min-h-screen pt-24 pb-12 bg-white text-gray-900">
       <Helmet>
-        <title>Milestones & Achievements - Ganesh Yeole Builders | Our Journey of Excellence</title>
-        <meta name="description" content="Explore our journey of excellence through key milestones and achievements from 2023-2025. Discover how we've grown and succeeded in real estate development." />
+        <title>Our Journey of Excellence - Ganesh Yeole Builders | Milestones & Achievements</title>
+        <meta name="description" content="Explore our journey of excellence through key milestones and achievements. Discover our completed and ongoing projects that have created homes for hundreds of families." />
       </Helmet>
 
       <div className="max-w-7xl mx-auto px-4">
-        {/* Enhanced Hero Section */}
+        {/* Hero Section - Vaastu Group Style */}
         <motion.div 
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-24"
         >
           <div className="relative">
-            {/* Background Decorative Elements */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-96 h-96 bg-gradient-to-br from-gold/10 via-gray-500/10 to-green-500/10 rounded-full blur-3xl"></div>
-            </div>
+            {/* Decorative Beige Block */}
+            <div className="absolute -top-8 -left-8 w-32 h-32 bg-amber-50 rounded-lg transform rotate-12 opacity-60"></div>
+            <div className="absolute -bottom-8 -right-8 w-24 h-24 bg-amber-100 rounded-lg transform -rotate-12 opacity-40"></div>
             
-            <h1 className="relative text-5xl md:text-6xl font-bold bg-gradient-to-r from-[#E53935] via-gold to-orange-500 bg-clip-text text-transparent mb-8">
-              Our Journey of Excellence
+            <h1 className="relative text-5xl md:text-6xl font-bold text-gray-900 mb-8 font-serif">
+              Our Journey of <span className="text-amber-600">Excellence</span>
             </h1>
             
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: "200px" }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="h-1 bg-gradient-to-r from-[#E53935] via-gold to-orange-500 mx-auto mb-8 rounded-full"
+              className="h-1 bg-gradient-to-r from-amber-400 to-amber-600 mx-auto mb-8 rounded-full"
             ></motion.div>
             
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Celebrating milestones, achievements, and the trust of <span className="font-bold text-[#E53935]">500+ families</span> across <span className="font-bold text-gold">16+ years</span> of dedicated service
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              Celebrating milestones, achievements, and the trust of <span className="font-bold text-amber-600">500+ families</span> across <span className="font-bold text-gray-800">16+ years</span> of dedicated service
             </p>
           </div>
         </motion.div>
 
+        {/* Projects Showcase - Vaastu Group Pattern */}
+        <div className="space-y-32">
+          {completedProjects.map((project, index) => (
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
+              viewport={{ once: true }}
+              className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
+                index % 2 === 0 ? 'lg:grid-flow-col' : 'lg:grid-flow-col-dense'
+              }`}
+            >
+              {/* Left Side - Image (or Right Side for alternating) */}
+              <div className={`${index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'} relative`}>
+                {/* Decorative Beige Block */}
+                <div className="absolute -top-6 -left-6 w-24 h-24 bg-amber-50 rounded-lg transform rotate-12 opacity-60"></div>
+                <div className="absolute -bottom-6 -right-6 w-16 h-16 bg-amber-100 rounded-lg transform -rotate-12 opacity-40"></div>
+                
+                <div className="relative overflow-hidden rounded-2xl shadow-2xl group">
+                  <img
+                    src={project.images[0]}
+                    alt={project.title}
+                    className="w-full h-96 object-cover transition-transform duration-700 group-hover:scale-105"
+                    onError={(e) => { e.target.src = '/hero-building.jpg'; }}
+                  />
+                  
+                  {/* Overlay Text */}
+                  <div className="absolute bottom-6 left-6 text-white">
+                    <p className="text-sm font-semibold tracking-wider opacity-90">
+                      {project.overlayText}
+                    </p>
+                  </div>
+                  
+                  {/* Status Badge */}
+                  <div className="absolute top-6 right-6">
+                    <span className={`px-4 py-2 rounded-full text-sm font-semibold ${
+                      project.status === 'Completed' 
+                        ? 'bg-green-500 text-white' 
+                        : 'bg-amber-500 text-white'
+                    }`}>
+                      {project.status}
+                    </span>
+                  </div>
+                </div>
+              </div>
 
-        {/* Completed Projects Section */}
+              {/* Right Side - Content (or Left Side for alternating) */}
+              <div className={`${index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'} space-y-6`}>
+                {/* Decorative Beige Block */}
+                <div className="w-20 h-20 bg-amber-50 rounded-lg mb-6"></div>
+                
+                <div>
+                  <h3 className="text-2xl font-semibold text-amber-600 mb-2 font-serif">
+                    {project.category}
+                  </h3>
+                  <div className="text-6xl font-bold text-gray-300 mb-4">
+                    {project.number}
+                  </div>
+                  <h2 className="text-4xl font-bold text-gray-900 mb-6 font-serif">
+                    {project.title}
+                  </h2>
+                </div>
+                
+                <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                  {project.description}
+                </p>
+                
+                {/* Project Details */}
+                <div className="grid grid-cols-2 gap-4 mb-6">
+                  <div className="flex items-center space-x-3">
+                    <FaMapMarkerAlt className="w-5 h-5 text-amber-600" />
+                    <div>
+                      <p className="text-sm text-gray-500">Location</p>
+                      <p className="font-medium text-gray-900">{project.location}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <FaCalendarAlt className="w-5 h-5 text-amber-600" />
+                    <div>
+                      <p className="text-sm text-gray-500">Completion</p>
+                      <p className="font-medium text-gray-900">{project.completionDate}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <FaBuilding className="w-5 h-5 text-amber-600" />
+                    <div>
+                      <p className="text-sm text-gray-500">Units</p>
+                      <p className="font-medium text-gray-900">{project.units}</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <FaUsers className="w-5 h-5 text-amber-600" />
+                    <div>
+                      <p className="text-sm text-gray-500">Area</p>
+                      <p className="font-medium text-gray-900">{project.area}</p>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Read More Button */}
+                <button
+                  onClick={() => openProjectModal(project)}
+                  className="inline-flex items-center space-x-2 text-gray-900 hover:text-amber-600 transition-colors duration-300 group"
+                >
+                  <span className="font-medium underline">Read more</span>
+                  <FaArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+                </button>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Contact CTA Section - Vaastu Group Style */}
         <motion.div 
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="mb-20"
+          className="mt-32 text-center"
         >
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Our Completed Projects
+          <div className="relative bg-gradient-to-r from-amber-600 to-amber-700 rounded-2xl p-12 text-white overflow-hidden">
+            {/* Decorative Elements */}
+            <div className="absolute top-6 right-6 w-24 h-24 bg-white/10 rounded-lg transform rotate-12 opacity-30"></div>
+            <div className="absolute bottom-6 left-6 w-16 h-16 bg-white/10 rounded-lg transform -rotate-12 opacity-20"></div>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-white/5 rounded-full blur-3xl"></div>
+            
+            <div className="relative">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 font-serif">
+                Ready to Be Part of Our Next Milestone?
             </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Explore our successfully delivered projects that have created homes for hundreds of families
-            </p>
-                </div>
-
-          {/* Projects Grid - 2 columns */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {completedProjects.map((project, index) => (
-              <ProjectCard 
-                key={project.id}
-                project={project}
-                index={index}
-                  />
-                ))}
+              <p className="text-xl mb-8 opacity-90 max-w-3xl mx-auto">
+                Join thousands of satisfied homeowners who trusted us with their dreams. 
+                Let's create something extraordinary together.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button className="bg-white text-amber-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300 text-lg">
+                  Explore Our Projects
+                </button>
+                <button className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-amber-600 transition-colors duration-300 text-lg">
+                  Contact Us
+                </button>
+              </div>
+            </div>
               </div>
         </motion.div>
-
-        {/* Timeline Section Removed */}
       </div>
 
       {/* Project Modal */}
@@ -660,62 +650,13 @@ const Milestones = () => {
         onClose={closeProjectModal}
       />
 
-      {/* Custom Styles for Milestone Card Swiper and Modal */}
+      {/* Custom Styles for Modal */}
       <style jsx="true" global="true">{`
         /* Prevent body scroll when modal is open */
         body.modal-open {
           overflow: hidden !important;
           position: fixed !important;
           width: 100% !important;
-        }
-        
-        /* Milestone Card Swiper Styles */
-        .milestone-card-swiper {
-          border-radius: 0;
-        }
-        
-        .milestone-card-swiper .swiper-slide {
-          height: 100%;
-        }
-        
-        .swiper-pagination-bullet-custom {
-          width: 6px;
-          height: 6px;
-          background: rgba(255, 255, 255, 0.5);
-          opacity: 1;
-          transition: all 0.3s ease;
-        }
-        
-        .swiper-pagination-bullet-active-custom {
-          background: #ffd700;
-          transform: scale(1.2);
-        }
-        
-        .swiper-button-prev-1:after,
-        .swiper-button-next-1:after,
-        .swiper-button-prev-2:after,
-        .swiper-button-next-2:after,
-        .swiper-button-prev-3:after,
-        .swiper-button-next-3:after,
-        .swiper-button-prev-4:after,
-        .swiper-button-next-4:after,
-        .swiper-button-prev-5:after,
-        .swiper-button-next-5:after {
-          display: none;
-        }
-        
-        .swiper-button-prev-1.swiper-button-disabled,
-        .swiper-button-next-1.swiper-button-disabled,
-        .swiper-button-prev-2.swiper-button-disabled,
-        .swiper-button-next-2.swiper-button-disabled,
-        .swiper-button-prev-3.swiper-button-disabled,
-        .swiper-button-next-3.swiper-button-disabled,
-        .swiper-button-prev-4.swiper-button-disabled,
-        .swiper-button-next-4.swiper-button-disabled,
-        .swiper-button-prev-5.swiper-button-disabled,
-        .swiper-button-next-5.swiper-button-disabled {
-          opacity: 0.3;
-          cursor: not-allowed;
         }
         
         /* Modal positioning fixes - Perfect centering with equal margins */

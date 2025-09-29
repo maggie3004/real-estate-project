@@ -19,11 +19,27 @@ const projects = {
   ongoing: [
     {
       id: 'on1',
-      name: 'Shree Ganesh Park Phase I',
-      description: 'Premium 1, 2 & 3 BHK apartments with world-class amenities.',
+      name: 'Shree Ganesh Heights',
+      description: 'Premium residential development with modern amenities and excellent location advantages.',
       status: 'Ongoing',
       location: 'Nashik',
-      image: '/sai-shraddha-apartment/IMG-20250722-WA0067.jpg',
+      image: '/assets/shree-ganesh-heights/gallery/front.jpeg',
+    },
+    {
+      id: 'on2',
+      name: 'Shree Ganesh Park',
+      description: 'A premium residential development with multiple wings offering various apartment configurations.',
+      status: 'Ongoing',
+      location: 'Nashik',
+      image: '/assets/shree-ganesh-park/gallery/a-view.jpg',
+    },
+    {
+      id: 'on3',
+      name: 'Shree Ganesh Srushti',
+      description: 'Latest residential development with contemporary design and all modern facilities.',
+      status: 'Ongoing',
+      location: 'Nashik',
+      image: '/assets/shree-ganesh-srushti/gallery/front.jpg',
     },
     // Add more ongoing projects...
   ],

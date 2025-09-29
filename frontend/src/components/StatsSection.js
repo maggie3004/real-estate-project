@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 const stats = [
   { label: 'Years of Legacy', value: 20, suffix: '+' },
   { label: 'Projects Completed', value: 25, suffix: '+' },
-  { label: 'Homes Delivered', value: 500, suffix: '+' },
+  { label: 'Happy Homes Delivered', value: 500, suffix: '+' },
   { label: 'Customer Satisfaction', value: 100, suffix: '%' },
   { label: 'Sq. Ft. Developed', value: 1000000, suffix: '+' },
   { label: 'Awards Won', value: 5, suffix: '+' },
