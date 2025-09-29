@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaChevronDown, FaChevronRight, FaTimes } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -21,16 +21,51 @@ const Navbar = () => {
   const [mobileDropdownOpen, setMobileDropdownOpen] = useState({});
   const [mobileSubDropdownOpen, setMobileSubDropdownOpen] = useState({});
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
   const { theme } = useTheme();
 
-  // Handle scroll effect for navbar
+  // Handle scroll effect for navbar with simplified logic
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      const currentScrollY = window.scrollY;
+      
+      // Update scrolled state for background
+      setIsScrolled(currentScrollY > 10);
+      
+      // Only apply scroll behavior on homepage
+      if (location.pathname !== '/') {
+        setIsVisible(true);
+        lastScrollY.current = currentScrollY;
+        return;
+      }
+      
+      // Simple scroll direction detection
+      const isScrollingUp = currentScrollY < lastScrollY.current;
+      const isScrollingDown = currentScrollY > lastScrollY.current;
+      const scrollDifference = Math.abs(currentScrollY - lastScrollY.current);
+      
+      // Handle show/hide based on scroll direction
+      if (mobileMenuOpen || currentScrollY <= 10) {
+        // Always show navbar when mobile menu is open or at top of page
+        setIsVisible(true);
+      } else if (isScrollingUp && scrollDifference > 5) {
+        // Scrolling up with 5px threshold - show navbar immediately
+        console.log('Showing navbar: scrolling up', { currentScrollY, lastScrollY: lastScrollY.current, scrollDifference });
+        setIsVisible(true);
+      } else if (isScrollingDown && currentScrollY > 100 && scrollDifference > 5) {
+        // Scrolling down and past 100px with 5px threshold - hide navbar
+        console.log('Hiding navbar: scrolling down', { currentScrollY, lastScrollY: lastScrollY.current, scrollDifference });
+        setIsVisible(false);
+      }
+      
+      // Update last scroll position immediately
+      lastScrollY.current = currentScrollY;
     };
-    window.addEventListener('scroll', handleScroll);
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [mobileMenuOpen, location.pathname]);
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -85,7 +120,9 @@ const Navbar = () => {
   const isActive = (path) => location.pathname === path || location.hash === path;
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 border-b border-gray-200 shadow-lg transition-all duration-300 ${
+    <nav className={`fixed top-0 left-0 right-0 z-50 border-b border-gray-200 shadow-lg navbar-scroll-behavior ${
+      !isVisible ? 'hidden' : ''
+    } ${
       theme === 'dark' 
         ? `bg-black text-white ${isScrolled ? 'backdrop-blur-md bg-black/95' : 'bg-black'}` 
         : `bg-gradient-to-r from-white to-gray-50 text-[#181818] ${isScrolled ? 'backdrop-blur-md bg-white/95' : 'bg-gradient-to-r from-white to-gray-50'}`

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
@@ -8,12 +8,28 @@ import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 
 const HeroSection = () => {
+  // Swiper ref for manual navigation control
+  const swiperRef = useRef(null);
+
+  // Navigation handlers
+  const handlePrevSlide = useCallback(() => {
+    if (swiperRef.current && swiperRef.current.swiper) {
+      swiperRef.current.swiper.slidePrev();
+    }
+  }, []);
+
+  const handleNextSlide = useCallback(() => {
+    if (swiperRef.current && swiperRef.current.swiper) {
+      swiperRef.current.swiper.slideNext();
+    }
+  }, []);
+
   // Preload images for better performance
   React.useEffect(() => {
     const imageUrls = [
-      '/assets/shree-ganesh-srushti/gallery/front.jpg',
-      '/assets/shree-ganesh-heights/gallery/front.jpeg',
-      '/assets/sai-shraddha-apartment/gallery/front.jpg'
+      '/assets/shree-ganesh-heights/gallery/night-front.jpg',
+      '/assets/shree-ganesh-park/gallery/ter-view.jpg',
+      '/frontend/public/hero-building.jpg'
     ];
     
     imageUrls.forEach(url => {
@@ -22,23 +38,39 @@ const HeroSection = () => {
     });
   }, []);
 
+  // Keyboard navigation support
+  React.useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        handlePrevSlide();
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        handleNextSlide();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [handlePrevSlide, handleNextSlide]);
+
   // Carousel data with 3 high-quality building images
   const carouselData = [
     {
       id: 1,
-      image: '/assets/shree-ganesh-srushti/gallery/front.jpg',
+      image: '/assets/shree-ganesh-heights/gallery/night-front.jpg',
       title: 'Luxury Living Redefined',
       subtitle: 'Premium properties with world-class amenities'
     },
     {
       id: 2,
-      image: '/assets/shree-ganesh-heights/gallery/front.jpeg',
+      image: '/frontend/public/hero-building.jpg',
       title: 'Shree Ganesh Heights',
       subtitle: 'Excellence in every detail'
     },
     {
       id: 3,
-      image: '/assets/sai-shraddha-apartment/gallery/front.jpg',
+      image: '/assets/shree-ganesh-park/gallery/ter-view.jpg',
       title: 'Sai Shraddha Apartment',
       subtitle: 'Creating homes that last generations'
     }
@@ -54,20 +86,17 @@ const HeroSection = () => {
       className="relative h-screen overflow-hidden w-full"
     >
       <Swiper
+        ref={swiperRef}
         modules={[Navigation, Pagination, Autoplay, EffectFade]}
         effect="fade"
         fadeEffect={{
           crossFade: true
         }}
-        speed={1000}
+        speed={800}
         autoplay={{
           delay: 5000,
           disableOnInteraction: false,
           pauseOnMouseEnter: true
-        }}
-        navigation={{
-          nextEl: '.hero-swiper-button-next',
-          prevEl: '.hero-swiper-button-prev',
         }}
         pagination={{
           clickable: true,
@@ -120,19 +149,113 @@ const HeroSection = () => {
       </Swiper>
 
       {/* Custom Navigation Buttons */}
-      <div className="hero-swiper-button-prev absolute left-1 sm:left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-1.5 sm:p-2 md:p-3 rounded-full shadow-lg z-30 backdrop-blur-sm cursor-pointer transition-all duration-200 hover:scale-110">
+      <button 
+        onClick={handlePrevSlide}
+        className="absolute left-1 sm:left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-1.5 sm:p-2 md:p-3 rounded-full shadow-lg z-30 backdrop-blur-sm cursor-pointer transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white/50"
+        aria-label="Previous slide"
+      >
         <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
         </svg>
-      </div>
-      <div className="hero-swiper-button-next absolute right-1 sm:right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-1.5 sm:p-2 md:p-3 rounded-full shadow-lg z-30 backdrop-blur-sm cursor-pointer transition-all duration-200 hover:scale-110">
+      </button>
+      <button 
+        onClick={handleNextSlide}
+        className="absolute right-1 sm:right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-1.5 sm:p-2 md:p-3 rounded-full shadow-lg z-30 backdrop-blur-sm cursor-pointer transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white/50"
+        aria-label="Next slide"
+      >
         <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
         </svg>
-      </div>
+      </button>
 
       {/* Custom Pagination */}
       <div className="hero-swiper-pagination absolute bottom-2 sm:bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-1 sm:space-x-2 z-30"></div>
+
+      {/* Hero Carousel Styles */}
+      <style jsx global>{`
+        .hero-swiper {
+          height: 100vh;
+          width: 100%;
+        }
+        
+        .hero-swiper .swiper-slide {
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        .hero-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+        
+        .hero-swiper-pagination-bullet {
+          width: 12px;
+          height: 12px;
+          background: rgba(255, 255, 255, 0.5);
+          opacity: 1;
+          border-radius: 6px;
+          transition: all 0.3s ease;
+          cursor: pointer;
+        }
+        
+        .hero-swiper-pagination-bullet-active {
+          background: rgba(255, 255, 255, 1);
+          transform: scale(1.2);
+          box-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
+        }
+        
+        .hero-swiper-pagination-bullet:hover {
+          background: rgba(255, 255, 255, 0.8);
+          transform: scale(1.1);
+        }
+        
+        /* Smooth transitions for all slides */
+        .hero-swiper .swiper-slide-active {
+          transition: all 0.8s ease-in-out;
+        }
+        
+        /* Enhanced button hover effects */
+        .hero-swiper button:hover {
+          transform: translateY(-50%) scale(1.1);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-swiper button:active {
+          transform: translateY(-50%) scale(0.95);
+        }
+        
+        /* Ensure smooth fade effect */
+        .hero-swiper .swiper-slide {
+          opacity: 0;
+          transition: opacity 0.8s ease-in-out;
+        }
+        
+        .hero-swiper .swiper-slide-active {
+          opacity: 1;
+        }
+        
+        .hero-swiper .swiper-slide-prev,
+        .hero-swiper .swiper-slide-next {
+          opacity: 0;
+        }
+        
+        /* Dark mode adjustments */
+        .dark .hero-swiper-pagination-bullet {
+          background: rgba(156, 163, 175, 0.5);
+        }
+        
+        .dark .hero-swiper-pagination-bullet-active {
+          background: rgba(156, 163, 175, 1);
+        }
+        
+        .dark .hero-swiper-pagination-bullet:hover {
+          background: rgba(156, 163, 175, 0.8);
+        }
+      `}</style>
     </motion.section>
   );
 };

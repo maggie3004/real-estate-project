@@ -10,30 +10,28 @@ import JourneySection from '../components/JourneySection';
 import Testimonials from '../components/Testimonials';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
+import { useSmoothScroll } from '../hooks/useSmoothScroll';
 
 // ... import other new sections as you create them
 
 const Home = () => {
+  // Use the smooth scroll hook
+  const { scrollToSection } = useSmoothScroll();
+
   useEffect(() => {
-    // Smooth scroll behavior for anchor links
+    // Add smooth scroll to all anchor links with enhanced performance
     const handleSmoothScroll = (e) => {
       const target = e.target.getAttribute('href');
       if (target && target.startsWith('#')) {
         e.preventDefault();
-        const element = document.querySelector(target);
-        if (element) {
-          element.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-        }
+        scrollToSection(target);
       }
     };
 
     // Add smooth scroll to all anchor links
     const links = document.querySelectorAll('a[href^="#"]');
     links.forEach(link => {
-      link.addEventListener('click', handleSmoothScroll);
+      link.addEventListener('click', handleSmoothScroll, { passive: false });
     });
 
     return () => {
@@ -41,7 +39,7 @@ const Home = () => {
         link.removeEventListener('click', handleSmoothScroll);
       });
     };
-  }, []);
+  }, [scrollToSection]);
 
   return (
     <motion.div 
@@ -99,7 +97,9 @@ const Home = () => {
       </Helmet>
       
       {/* 1. Hero Section (Carousel) */}
-      <HeroSection />
+      <div id="hero">
+        <HeroSection />
+      </div>
       
       {/* 2. Stats Section (Counting Numbers) */}
       <motion.div 
@@ -146,6 +146,7 @@ const Home = () => {
       
       {/* 6. Awards and Recognition Section */}
       <motion.div
+        id="awards"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -156,6 +157,7 @@ const Home = () => {
       
       {/* 7. Testimonials Section */}
       <motion.div
+        id="testimonials"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -166,6 +168,7 @@ const Home = () => {
       
       {/* 8. Location Section */}
       <motion.div
+        id="location"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
@@ -176,6 +179,7 @@ const Home = () => {
       
       {/* 9. Contact Form */}
       <motion.div
+        id="contact"
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}

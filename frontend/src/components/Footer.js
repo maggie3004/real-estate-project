@@ -53,17 +53,17 @@ function Footer() {
               <div className="flex items-start gap-2">
                 <FaMapMarkerAlt className="text-gold mt-0.5 flex-shrink-0" />
                 <div>
-                  <p>Sai Prasad House, 123 Main Road</p>
-                  <p>Nashik, Maharashtra 422001</p>
+                  <p>P. No. 14, Sneh Prasad, Vighnaharta Colony</p>
+                  <p>Khutwad Nagar, Nashik - 08</p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
                 <FaPhoneAlt className="text-gold flex-shrink-0" />
-                <span>+91 98765 43210</span>
+                <span>+91 70305 02111</span>
               </div>
               <div className="flex items-center gap-2">
                 <FaEnvelope className="text-gold flex-shrink-0" />
-                <span>info@ganeshyoelebuilders.com</span>
+                <span>ganeshyeolebuilders@gmail.com</span>
               </div>
             </div>
           </div>

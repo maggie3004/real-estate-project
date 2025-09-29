@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { FaStar, FaQuoteLeft, FaQuoteRight } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
-import ContactForm from './ContactForm';
 
 const testimonials = [
   {
@@ -70,33 +69,6 @@ const Testimonials = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-
-  // Lock body scroll when modal is open
-  useEffect(() => {
-    if (showModal) {
-      // Prevent background scrolling
-      document.body.style.overflow = 'hidden';
-      document.body.style.position = 'fixed';
-      document.body.style.width = '100%';
-    } else {
-      // Restore background scrolling
-      document.body.style.overflow = 'unset';
-      document.body.style.position = 'unset';
-      document.body.style.width = 'unset';
-    }
-
-    // Cleanup on component unmount
-    return () => {
-      document.body.style.overflow = 'unset';
-      document.body.style.position = 'unset';
-      document.body.style.width = 'unset';
-    };
-  }, [showModal]);
-
-  const handleScheduleClick = () => {
-    setShowModal(true);
-  };
 
   const nextTestimonial = useCallback(() => {
     if (isTransitioning) return;
@@ -283,42 +255,6 @@ const Testimonials = () => {
             />
           ))}
         </div>
-
-
-
-        {/* Call to Action */}
-        <div className="mt-16 text-center">
-          <div className="bg-gradient-to-r from-[#E53935] to-red-600 text-white p-8 rounded-2xl">
-            <h3 className="text-2xl font-bold mb-4">Ready to Join Our Happy Family?</h3>
-            <p className="text-lg mb-6 opacity-90">
-              Be part of our success story and find your dream home today
-            </p>
-            <button 
-              onClick={handleScheduleClick}
-              className="bg-white text-[#E53935] px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
-            >
-              Schedule a Site Visit
-            </button>
-          </div>
-        </div>
-
-        {/* Schedule Visit Modal */}
-        {showModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 p-4" onClick={() => setShowModal(false)}>
-            <div 
-              className="bg-white rounded-2xl shadow-2xl p-6 max-w-lg w-full relative max-h-[80vh] overflow-y-auto scrollbar-hide modal-content"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button 
-                className="absolute top-3 right-3 text-gray-500 hover:text-gold text-2xl transition-colors duration-200" 
-                onClick={() => setShowModal(false)}
-              >
-                &times;
-              </button>
-              <ContactForm propertyTitle="Site Visit Request" />
-            </div>
-          </div>
-        )}
       </div>
     </section>
   );

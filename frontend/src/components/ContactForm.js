@@ -168,17 +168,19 @@ const ContactForm = ({ propertyId = null, propertyTitle = null }) => {
   }
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg p-8 scrollbar-hide modal-content">
-      {/* Header */}
-      <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-gray-900 mb-2">Get in Touch</h2>
-        <p className="text-gray-600">
-          {propertyTitle 
-            ? `Enquire about ${propertyTitle}`
-            : 'We\'d love to hear from you. Send us a message and we\'ll respond as soon as possible.'
-          }
-        </p>
-      </div>
+    <div className="w-full bg-white get-in-touch-section">
+      <div className="w-full max-w-none">
+        <div className="bg-white p-8 sm:p-10 lg:p-12 scrollbar-hide modal-content">
+        {/* Header */}
+        <div className="text-center mb-8">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Get in Touch</h2>
+          <p className="text-sm sm:text-base text-gray-600">
+            {propertyTitle 
+              ? `Enquire about ${propertyTitle}`
+              : 'We\'d love to hear from you. Send us a message and we\'ll respond as soon as possible.'
+            }
+          </p>
+        </div>
 
       {/* Progress Bar */}
       <div className="mb-8">
@@ -211,7 +213,7 @@ const ContactForm = ({ propertyId = null, propertyTitle = null }) => {
               exit={{ opacity: 0, x: -20 }}
               className="space-y-6"
             >
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+              <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 sm:gap-8">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     <FaUser className="w-4 h-4 inline mr-2 text-amber-500" />
@@ -221,7 +223,7 @@ const ContactForm = ({ propertyId = null, propertyTitle = null }) => {
               type="text"
                     value={formData.name}
                     onChange={(e) => handleInputChange('name', e.target.value)}
-                    className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-colors ${
+                    className={`w-full px-3 sm:px-4 py-3 border rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-colors text-sm sm:text-base ${
                       errors.name ? 'border-red-500' : 'border-gray-300'
                     }`}
                     placeholder="Enter your full name"
@@ -344,7 +346,7 @@ const ContactForm = ({ propertyId = null, propertyTitle = null }) => {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+              <div className="grid grid-cols-1 xl:grid-cols-2 gap-6 sm:gap-8">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Preferred Contact Time
@@ -430,7 +432,7 @@ const ContactForm = ({ propertyId = null, propertyTitle = null }) => {
                   value={formData.message}
                   onChange={(e) => handleInputChange('message', e.target.value)}
                   rows={6}
-                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-colors ${
+                  className={`w-full px-3 sm:px-4 py-3 border rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-colors text-sm sm:text-base ${
                     errors.message ? 'border-red-500' : 'border-gray-300'
                   }`}
                   placeholder="Tell us more about your requirements..."
@@ -493,12 +495,12 @@ const ContactForm = ({ propertyId = null, propertyTitle = null }) => {
         </AnimatePresence>
 
         {/* Navigation Buttons */}
-        <div className="flex justify-between mt-8">
+        <div className="flex flex-col sm:flex-row justify-between gap-4 mt-8">
           <motion.button
             type="button"
             onClick={handlePrev}
             disabled={currentStep === 1}
-            className={`flex items-center px-6 py-3 rounded-lg font-semibold transition-colors ${
+            className={`flex items-center justify-center px-4 sm:px-6 py-3 rounded-lg font-semibold transition-colors w-full sm:w-auto ${
               currentStep === 1
                 ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
                 : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
@@ -514,7 +516,7 @@ const ContactForm = ({ propertyId = null, propertyTitle = null }) => {
             <motion.button
               type="button"
               onClick={handleNext}
-              className="flex items-center px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white rounded-lg font-semibold transition-colors"
+              className="flex items-center justify-center px-4 sm:px-6 py-3 bg-amber-500 hover:bg-amber-600 text-white rounded-lg font-semibold transition-colors w-full sm:w-auto"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -525,7 +527,7 @@ const ContactForm = ({ propertyId = null, propertyTitle = null }) => {
             <motion.button
               type="submit"
               disabled={isSubmitting}
-              className={`flex items-center px-8 py-3 rounded-lg font-semibold transition-colors ${
+              className={`flex items-center justify-center px-4 sm:px-8 py-3 rounded-lg font-semibold transition-colors w-full sm:w-auto ${
                 isSubmitting
                   ? 'bg-gray-400 cursor-not-allowed'
                   : 'bg-amber-500 hover:bg-amber-600 text-white'
@@ -547,8 +549,10 @@ const ContactForm = ({ propertyId = null, propertyTitle = null }) => {
             </motion.button>
           )}
         </div>
-          </form>
+      </form>
+        </div>
       </div>
+    </div>
   );
 };
 

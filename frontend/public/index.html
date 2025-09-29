@@ -142,32 +142,6 @@
     <link rel="alternate" hreflang="hi" href="https://shreeganeshrealestate.com/hi/" />
     <link rel="alternate" hreflang="mr" href="https://shreeganeshrealestate.com/mr/" />
     
-    <!-- Google Analytics (replace with your tracking ID) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'GA_MEASUREMENT_ID');
-    </script>
-    
-    <!-- Facebook Pixel (replace with your pixel ID) -->
-    <script>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', 'YOUR_PIXEL_ID');
-      fbq('track', 'PageView');
-    </script>
-    <noscript>
-      <img height="1" width="1" style="display:none" 
-           src="https://www.facebook.com/tr?id=YOUR_PIXEL_ID&ev=PageView&noscript=1"/>
-    </noscript>
   </head>
   <body>
     <noscript>
@@ -195,44 +169,5 @@
       }
     </script>
     
-    <!-- Performance Monitoring -->
-    <script>
-      // Report Core Web Vitals
-      function sendToAnalytics(metric) {
-        const body = JSON.stringify(metric);
-        const url = '/analytics';
-        
-        if (navigator.sendBeacon) {
-          navigator.sendBeacon(url, body);
-        } else {
-          fetch(url, {body, method: 'POST', keepalive: true});
-        }
-      }
-      
-      // Report LCP
-      new PerformanceObserver((entryList) => {
-        for (const entry of entryList.getEntries()) {
-          sendToAnalytics({name: entry.name, value: entry.value});
-        }
-      }).observe({entryTypes: ['largest-contentful-paint']});
-      
-      // Report FID
-      new PerformanceObserver((entryList) => {
-        for (const entry of entryList.getEntries()) {
-          sendToAnalytics({name: entry.name, value: entry.value});
-        }
-      }).observe({entryTypes: ['first-input']});
-      
-      // Report CLS
-      new PerformanceObserver((entryList) => {
-        let clsValue = 0;
-        for (const entry of entryList.getEntries()) {
-          if (!entry.hadRecentInput) {
-            clsValue += entry.value;
-          }
-        }
-        sendToAnalytics({name: 'CLS', value: clsValue});
-      }).observe({entryTypes: ['layout-shift']});
-    </script>
   </body>
 </html>

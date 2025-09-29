@@ -63,16 +63,16 @@ const Contact = () => {
   const officeLocations = [
     {
       city: 'Nashik',
-      address: 'Sai Prasad House, 123 Main Road, Nashik, Maharashtra 422001',
-      phone: '+91 98765 43210',
-      email: 'nashik@ganeshyoelebuilders.com',
+      address: 'P. No. 14, Sneh Prasad, Vighnaharta Colony, Khutwad Nagar, Nashik - 08',
+      phone: '+91 70305 02111',
+      email: 'ganeshyeolebuilders@gmail.com',
       hours: 'Mon - Sat: 9:00 AM - 7:00 PM'
     },
     {
       city: 'Pune',
       address: 'Shop No. 12, Commercial Complex, Hinjewadi, Pune 411057',
-      phone: '+91 98765 43212',
-      email: 'pune@ganeshyoelebuilders.com',
+      phone: '+91 70305 02111',
+      email: 'ganeshyeolebuilders@gmail.com',
       hours: 'Mon - Sat: 9:00 AM - 6:00 PM'
     }
   ];
@@ -84,21 +84,24 @@ const Contact = () => {
         <meta name="description" content="Contact Ganesh Yeole Builders and Developers. Visit our offices in Nashik, Mumbai, and Pune or reach us via phone, email, or contact form." />
       </Helmet>
 
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4 pt-8 sm:pt-12">
         {/* Hero Section */}
-        <div className="text-center mb-16">
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#E53935] mb-4 sm:mb-6">
+        <div className="text-center mb-12 sm:mb-16 lg:mb-20">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#E53935] mb-6 sm:mb-8">
             Get in Touch
           </h1>
-          <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto px-4 leading-relaxed">
             Ready to find your dream home? Contact us today and let our experts guide you through your real estate journey.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 mb-12 sm:mb-16">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 mb-12 sm:mb-16">
           {/* Contact Form */}
-          <div className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-3xl p-8">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#E53935] mb-4 sm:mb-6">Send us a Message</h2>
+          <div className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-3xl p-6 sm:p-8 lg:p-10">
+            <div className="text-center mb-6 sm:mb-8">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#E53935] mb-3">Send us a Message</h2>
+              <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+            </div>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                 <div>
@@ -194,37 +197,36 @@ const Contact = () => {
           </div>
 
           {/* Contact Information */}
-          <div className="space-y-8">
-            <div>
-              <h2 className="text-3xl font-bold text-[#E53935] mb-6">Contact Information</h2>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gold rounded-full flex items-center justify-center flex-shrink-0">
+          <div className="space-y-8 lg:space-y-10">
+            <div className="text-center lg:text-left">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#E53935] mb-4 sm:mb-6">Contact Information</h2>
+              <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base mb-6 lg:mb-8">Get in touch with us through any of these channels</p>
+              <div className="space-y-6 lg:space-y-8">
+                <div className="flex items-center lg:items-start gap-4 lg:gap-6">
+                  <div className="w-14 h-14 bg-gold rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
                     <FaPhone className="text-white text-xl" />
                   </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">Call Us</h3>
-                    <p className="text-gray-600 dark:text-gray-300">+91 98765 43210</p>
-                    <p className="text-gray-600 dark:text-gray-300">+91 98765 43211</p>
+                  <div className="text-center lg:text-left">
+                    <h3 className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-white mb-2">Call Us</h3>
+                    <p className="text-gray-600 dark:text-gray-300 text-base sm:text-lg font-medium">+91 70305 02111</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gold rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="flex items-center lg:items-start gap-4 lg:gap-6">
+                  <div className="w-14 h-14 bg-gold rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
                     <FaEnvelope className="text-white text-xl" />
                   </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">Email Us</h3>
-                    <p className="text-gray-600 dark:text-gray-300">info@ganeshyoelebuilders.com</p>
-                    <p className="text-gray-600 dark:text-gray-300">sales@ganeshyoelebuilders.com</p>
+                  <div className="text-center lg:text-left">
+                    <h3 className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-white mb-2">Email Us</h3>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base break-all">ganeshyeolebuilders@gmail.com</p>
                   </div>
                 </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gold rounded-full flex items-center justify-center flex-shrink-0">
+                <div className="flex items-center lg:items-start gap-4 lg:gap-6">
+                  <div className="w-14 h-14 bg-gold rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
                     <FaWhatsapp className="text-white text-xl" />
                   </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-2">WhatsApp</h3>
-                    <p className="text-gray-600 dark:text-gray-300">+91 98765 43210</p>
+                  <div className="text-center lg:text-left">
+                    <h3 className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-white mb-2">WhatsApp</h3>
+                    <p className="text-gray-600 dark:text-gray-300 text-base sm:text-lg font-medium">+91 70305 02111</p>
                     <p className="text-sm text-gray-500 dark:text-gray-400">Quick responses for urgent inquiries</p>
                   </div>
                 </div>
@@ -232,37 +234,40 @@ const Contact = () => {
             </div>
 
             {/* Social Media */}
-            <div>
-              <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-4">Follow Us</h3>
-                             <div className="flex gap-4">
-                 <button className="w-12 h-12 bg-gray-600 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors duration-200" aria-label="Facebook">
-                   <FaFacebook className="text-white text-xl" />
-                 </button>
-                 <button className="w-12 h-12 bg-pink-600 rounded-full flex items-center justify-center hover:bg-pink-700 transition-colors duration-200" aria-label="Instagram">
-                   <FaInstagram className="text-white text-xl" />
-                 </button>
-                 <button className="w-12 h-12 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors duration-200" aria-label="LinkedIn">
-                   <FaLinkedin className="text-white text-xl" />
-                 </button>
-                 <button className="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center hover:bg-green-700 transition-colors duration-200" aria-label="WhatsApp">
-                   <FaWhatsapp className="text-white text-xl" />
-                 </button>
-               </div>
+            <div className="text-center lg:text-left">
+              <h3 className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-white mb-4 sm:mb-6">Follow Us</h3>
+              <div className="flex justify-center lg:justify-start gap-4 sm:gap-6">
+                <button className="w-12 h-12 sm:w-14 sm:h-14 bg-gray-600 rounded-full flex items-center justify-center hover:bg-gray-700 transition-all duration-200 hover:scale-110 shadow-lg" aria-label="Facebook">
+                  <FaFacebook className="text-white text-lg sm:text-xl" />
+                </button>
+                <button className="w-12 h-12 sm:w-14 sm:h-14 bg-pink-600 rounded-full flex items-center justify-center hover:bg-pink-700 transition-all duration-200 hover:scale-110 shadow-lg" aria-label="Instagram">
+                  <FaInstagram className="text-white text-lg sm:text-xl" />
+                </button>
+                <button className="w-12 h-12 sm:w-14 sm:h-14 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-800 transition-all duration-200 hover:scale-110 shadow-lg" aria-label="LinkedIn">
+                  <FaLinkedin className="text-white text-lg sm:text-xl" />
+                </button>
+                <button className="w-12 h-12 sm:w-14 sm:h-14 bg-green-600 rounded-full flex items-center justify-center hover:bg-green-700 transition-all duration-200 hover:scale-110 shadow-lg" aria-label="WhatsApp">
+                  <FaWhatsapp className="text-white text-lg sm:text-xl" />
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Office Locations */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center text-[#E53935] mb-12">Our Office Locations</h2>
-          <div className="grid md:grid-cols-3 gap-8">
+        <div className="mb-16 sm:mb-20">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#E53935] mb-4 sm:mb-6">Our Office Locations</h2>
+            <p className="text-gray-600 dark:text-gray-300 text-base sm:text-lg max-w-3xl mx-auto">Visit our offices across different cities to discuss your real estate needs</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {officeLocations.map((office, index) => (
-              <div key={index} className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div key={index} className="bg-white dark:bg-gray-800 rounded-2xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
                 <div className="text-center mb-6">
-                  <div className="w-16 h-16 bg-gold rounded-full flex items-center justify-center mx-auto mb-4">
-                    <FaMapMarkerAlt className="text-white text-2xl" />
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gold rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                    <FaMapMarkerAlt className="text-white text-2xl sm:text-3xl" />
                   </div>
-                  <h3 className="text-2xl font-bold text-[#E53935]">{office.city}</h3>
+                  <h3 className="text-xl sm:text-2xl font-bold text-[#E53935]">{office.city}</h3>
                 </div>
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
@@ -289,15 +294,15 @@ const Contact = () => {
 
         {/* Call to Action */}
         <div className="text-center">
-          <div className="bg-gradient-to-r from-[#E53935] to-red-600 text-white p-8 rounded-2xl">
-            <h3 className="text-2xl font-bold mb-4">Ready to Start Your Journey?</h3>
-            <p className="text-lg mb-6 opacity-90">
+          <div className="bg-gradient-to-r from-[#E53935] to-red-600 text-white p-8 sm:p-12 rounded-2xl shadow-xl">
+            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">Ready to Start Your Journey?</h3>
+            <p className="text-lg sm:text-xl mb-6 sm:mb-8 opacity-90 max-w-2xl mx-auto">
               Schedule a site visit or consultation with our experts today
             </p>
             <div className="flex justify-center">
               <button 
                 onClick={() => setShowModal(true)}
-                className="bg-white text-[#E53935] px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
+                className="bg-white text-[#E53935] px-8 py-4 sm:px-12 sm:py-5 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-200 hover:scale-105 shadow-lg text-base sm:text-lg"
               >
                 Schedule Site Visit
               </button>

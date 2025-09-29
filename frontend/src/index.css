@@ -46,6 +46,7 @@ html {
   scroll-padding-top: 80px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-y: auto;
 }
 
 html.dark {
@@ -57,6 +58,7 @@ body {
   min-height: 100vh;
   background: inherit;
   color: inherit;
+  overflow-y: auto;
   transition: background 0.4s, color 0.4s;
   overflow-x: hidden;
   will-change: scroll-position;
@@ -556,14 +558,103 @@ input:focus, textarea:focus, select:focus {
   padding: 0 1rem;
 }
 
+/* Allow wider containers for specific components */
+.container-wide {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Full width form section */
+.get-in-touch-section {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.get-in-touch-section .bg-white {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Safelist Tailwind classes for navbar scroll behavior */
+/* These classes are used dynamically and need to be preserved in production builds */
+.translate-y-0 {
+  transform: translateY(0);
+}
+
+.-translate-y-full {
+  transform: translateY(-100%);
+}
+
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.duration-300 {
+  transition-duration: 300ms;
+}
+
+/* Enhanced navbar scroll behavior with better performance */
+.navbar-scroll-behavior {
+  transform: translateY(0);
+  transition: transform 0.3s ease-in-out;
+  will-change: transform;
+}
+
+.navbar-scroll-behavior.hidden {
+  transform: translateY(-100%);
+}
+
+/* Ensure smooth transitions for navbar visibility */
+.navbar-scroll-behavior,
+.navbar-scroll-behavior.hidden {
+  transition: transform 0.3s ease-in-out;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Force hardware acceleration for smooth animations */
+.navbar-scroll-behavior {
+  transform: translateZ(0) translateY(0);
+}
+
+.navbar-scroll-behavior.hidden {
+  transform: translateZ(0) translateY(-100%);
+}
+
+/* Fallback CSS for navbar transitions */
+nav {
+  transition: transform 0.3s ease-in-out;
+  will-change: transform;
+}
+
+/* Ensure navbar has proper transform origin */
+nav[class*="navbar-scroll-behavior"] {
+  transform-origin: top;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
 @media (min-width: 640px) {
   .container {
+    padding: 0 1.5rem;
+  }
+  
+  .container-wide {
     padding: 0 1.5rem;
   }
 }
 
 @media (min-width: 1024px) {
   .container {
+    padding: 0 2rem;
+  }
+  
+  .container-wide {
     padding: 0 2rem;
   }
 }
@@ -781,13 +872,19 @@ input:focus, textarea:focus, select:focus {
   display: none;
 }
 
-/* Force hide scrollbars on all scrollable elements */
-* {
+/* Hide scrollbars only on specific elements, not globally */
+.modal-content,
+.scrollbar-hide,
+.fixed.inset-0,
+.bg-white.rounded-2xl {
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE and Edge */
 }
 
-*::-webkit-scrollbar {
+.modal-content::-webkit-scrollbar,
+.scrollbar-hide::-webkit-scrollbar,
+.fixed.inset-0::-webkit-scrollbar,
+.bg-white.rounded-2xl::-webkit-scrollbar {
   display: none; /* Chrome, Safari and Opera */
 }
 

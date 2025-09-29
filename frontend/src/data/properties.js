@@ -122,6 +122,32 @@ const properties = [
     floor: null,
     totalFloors: null,
     facing: "South"
+  },
+  {
+    id: 5,
+    title: "Vinayak Apartment",
+    price: "Contact for Price",
+    location: "Pathardi Shivar, Nashik",
+    image: "/assets/vinayak-apartment/gallery/1.jpg",
+    images: [
+      "/assets/vinayak-apartment/gallery/1.jpg",
+      "/assets/vinayak-apartment/gallery/2.jpg",
+      "/assets/vinayak-apartment/gallery/3.jpg",
+      "/assets/vinayak-apartment/gallery/4.jpg",
+      "/assets/vinayak-apartment/gallery/5.jpg"
+    ],
+    bedrooms: 1,
+    bathrooms: 1,
+    area: "0.5 Acres",
+    lat: 20.0110,
+    lng: 73.7903,
+    amenities: ["CCTV", "Solar Power", "Safety Gate", "Multipurpose Hall", "Auto Door Lift", "Battery Backup", "Smart Automation", "Water Supply", "Parking Space"],
+    type: "Apartment",
+    yearBuilt: 2023,
+    furnishing: "Semi-furnished",
+    floor: null,
+    totalFloors: null,
+    facing: "East"
   }
 ];
 

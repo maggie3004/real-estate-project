@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, memo, useRef } from 'react';
+import React, { useState, useEffect, useCallback, memo } from 'react';
 import { Helmet } from 'react-helmet';
 import { FaBuilding, FaUsers, FaArrowRight, FaTimes, FaChevronLeft, FaChevronRight, FaMapMarkerAlt, FaCalendarAlt } from 'react-icons/fa';
 import { motion, useAnimation, AnimatePresence } from 'framer-motion';
@@ -96,10 +96,6 @@ const completedProjects = [
 const Milestones = () => {
   // const [activeYear, setActiveYear] = useState(2025); // Commented out since we're not using year navigation
   const [selectedProject, setSelectedProject] = useState(null);
-  const [selectedImage, setSelectedImage] = useState(null);
-  const [isNavigating, setIsNavigating] = useState(false);
-  const [isImageLoading, setIsImageLoading] = useState(false);
-  const navigationTimeoutRef = useRef(null);
   const controls = useAnimation();
 
   useEffect(() => {
@@ -124,109 +120,27 @@ const Milestones = () => {
     document.body.style.overflow = 'unset';
   }, []);
 
-  const openImagePopup = useCallback((image, title, currentIndex, totalImages, allImages) => {
-    setSelectedImage({
-      src: image,
-      title: title,
-      currentIndex: currentIndex,
-      totalImages: totalImages,
-      allImages: allImages
-    });
-    // Prevent body scrolling when image popup is open
-    document.body.classList.add('image-popup-open');
-    document.body.style.overflow = 'hidden';
-  }, []);
-
-  const closeImagePopup = useCallback(() => {
-    // Clear any pending navigation timeout
-    if (navigationTimeoutRef.current) {
-      clearTimeout(navigationTimeoutRef.current);
-      navigationTimeoutRef.current = null;
-    }
-    
-    setSelectedImage(null);
-    setIsNavigating(false);
-    // Restore body scrolling when image popup is closed
-    document.body.classList.remove('image-popup-open');
-    document.body.style.overflow = 'unset';
-  }, []);
-
-  const navigateImage = useCallback((direction) => {
-    if (!selectedImage || isNavigating || isImageLoading) return;
-    
-    // Clear any existing timeout
-    if (navigationTimeoutRef.current) {
-      clearTimeout(navigationTimeoutRef.current);
-    }
-    
-    setIsNavigating(true);
-    setIsImageLoading(true);
-    
-    // Use requestAnimationFrame for smoother transition
-    requestAnimationFrame(() => {
-      setSelectedImage(prevImage => {
-        if (!prevImage) return prevImage;
-        
-        const { currentIndex, allImages, title, totalImages } = prevImage;
-        let newIndex;
-        
-        if (direction === 'next') {
-          newIndex = currentIndex === allImages.length - 1 ? 0 : currentIndex + 1;
-        } else {
-          newIndex = currentIndex === 0 ? allImages.length - 1 : currentIndex - 1;
-        }
-        
-        return {
-          src: allImages[newIndex],
-          title: title,
-          currentIndex: newIndex,
-          totalImages: totalImages,
-          allImages: allImages
-        };
-      });
-    });
-    
-    // Reset navigation flag after image loads
-    navigationTimeoutRef.current = setTimeout(() => {
-      setIsNavigating(false);
-      setIsImageLoading(false);
-      navigationTimeoutRef.current = null;
-    }, 200);
-  }, [selectedImage, isNavigating, isImageLoading]);
 
   // Image navigation handled inside memoized carousel component
 
-  // Keyboard navigation: close modal on Escape, navigate images with arrows
+  // Keyboard navigation: close modal on Escape
   useEffect(() => {
     const handleKeyDown = (event) => {
-      if (event.key === 'Escape') {
-        if (selectedImage) {
-          closeImagePopup();
-        } else if (selectedProject) {
-          closeProjectModal();
-        }
-      } else if (selectedImage && (event.key === 'ArrowLeft' || event.key === 'ArrowRight')) {
-        event.preventDefault();
-        navigateImage(event.key === 'ArrowRight' ? 'next' : 'prev');
+      if (event.key === 'Escape' && selectedProject) {
+        closeProjectModal();
       }
     };
 
-    if (selectedProject || selectedImage) {
+    if (selectedProject) {
       document.addEventListener('keydown', handleKeyDown);
       return () => document.removeEventListener('keydown', handleKeyDown);
     }
-  }, [selectedProject, selectedImage, closeProjectModal, closeImagePopup, navigateImage]);
+  }, [selectedProject, closeProjectModal]);
 
   // Cleanup: restore body scroll when component unmounts
   useEffect(() => {
     return () => {
-      // Clear any pending navigation timeout
-      if (navigationTimeoutRef.current) {
-        clearTimeout(navigationTimeoutRef.current);
-      }
-      
       document.body.classList.remove('modal-open');
-      document.body.classList.remove('image-popup-open');
       document.body.style.overflow = 'unset';
     };
   }, []);
@@ -270,7 +184,7 @@ const Milestones = () => {
   };
 
   // Memoized Image Carousel so only image area re-renders
-  const ProjectImageCarousel = memo(function ProjectImageCarousel({ images, title, onImageClick }) {
+  const ProjectImageCarousel = memo(function ProjectImageCarousel({ images, title }) {
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const handleNext = useCallback(() => {
@@ -312,13 +226,12 @@ const Milestones = () => {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
               >
-                <img
-                  src={image}
-                  alt={`${title} - ${index + 1}`}
-                  className="w-full h-full object-cover carousel-image cursor-pointer hover:opacity-90 transition-all duration-300 hover:scale-105"
-                  onError={(e) => { e.target.src = '/hero-building.jpg'; }}
-                  onClick={() => onImageClick(image, title, index, images.length, images)}
-                />
+                  <img
+                    src={image}
+                    alt={`${title} - ${index + 1}`}
+                    className="w-full h-full object-cover carousel-image"
+                    onError={(e) => { e.target.src = '/hero-building.jpg'; }}
+                  />
               </motion.div>
             ))}
           </motion.div>
@@ -392,14 +305,14 @@ const Milestones = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50"
+          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50 modal-overlay"
           onClick={onClose}
         >
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
-            className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden max-w-6xl w-full max-h-[90vh] relative"
+            className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden w-full max-h-full relative modal-content"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
@@ -423,7 +336,6 @@ const Milestones = () => {
                   <ProjectImageCarousel 
                     images={project.images} 
                     title={project.title} 
-                    onImageClick={openImagePopup}
                   />
 
                   {/* Project Details */}
@@ -513,107 +425,6 @@ const Milestones = () => {
     );
   };
 
-  // Image Popup Component - Memoized to prevent unnecessary re-renders
-  const ImagePopup = React.memo(({ image, isOpen, onClose, onNavigate, isNavigating }) => {
-    if (!isOpen || !image) return null;
-
-    return (
-      <AnimatePresence>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center p-4 z-50"
-          onClick={onClose}
-        >
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.8, opacity: 0 }}
-            className="relative max-w-7xl max-h-[90vh] w-full h-full flex items-center justify-center"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Close Button */}
-            <button
-              onClick={onClose}
-              className="absolute top-4 right-4 z-10 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-2 rounded-full transition-all duration-200"
-            >
-              <FaTimes className="w-6 h-6" />
-            </button>
-
-            {/* Image Counter */}
-            <div className="absolute top-4 left-4 z-10 bg-black bg-opacity-50 text-white px-3 py-1 rounded-full text-sm font-medium">
-              {image.currentIndex + 1} / {image.totalImages}
-            </div>
-
-            {/* Navigation Buttons */}
-            {image.totalImages > 1 && (
-              <>
-                {/* Previous Button */}
-                <button
-                  onClick={() => onNavigate('prev')}
-                  disabled={isNavigating || isImageLoading}
-                  className={`absolute left-4 top-1/2 transform -translate-y-1/2 z-10 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-3 rounded-full transition-all duration-200 ${
-                    (isNavigating || isImageLoading) ? 'opacity-50 cursor-not-allowed' : 'hover:scale-110'
-                  }`}
-                >
-                  <FaChevronLeft className="w-6 h-6" />
-                </button>
-
-                {/* Next Button */}
-                <button
-                  onClick={() => onNavigate('next')}
-                  disabled={isNavigating || isImageLoading}
-                  className={`absolute right-4 top-1/2 transform -translate-y-1/2 z-10 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-3 rounded-full transition-all duration-200 ${
-                    (isNavigating || isImageLoading) ? 'opacity-50 cursor-not-allowed' : 'hover:scale-110'
-                  }`}
-                >
-                  <FaChevronRight className="w-6 h-6" />
-                </button>
-              </>
-            )}
-
-            {/* Loading Indicator */}
-            {(isNavigating || isImageLoading) && (
-              <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 z-20">
-                <div className="bg-white bg-opacity-90 rounded-full p-4">
-                  <div className="w-8 h-8 border-4 border-gold border-t-transparent rounded-full animate-spin"></div>
-                </div>
-              </div>
-            )}
-
-            {/* Main Image */}
-            <div className="relative w-full h-full flex items-center justify-center image-popup-container">
-              <div className="milestone-image-container">
-                <img
-                  src={image.src}
-                  alt={image.title}
-                  className={`max-w-full max-h-full object-contain rounded-lg shadow-2xl transition-all duration-300 ${
-                    isNavigating || isImageLoading ? 'opacity-50 scale-95' : 'opacity-100 scale-100'
-                  }`}
-                  onLoad={() => {
-                    setIsImageLoading(false);
-                  }}
-                  onError={(e) => { 
-                    e.target.src = '/hero-building.jpg'; 
-                    setIsImageLoading(false);
-                  }}
-                />
-              </div>
-            </div>
-
-            {/* Image Title */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-75 text-white px-4 py-2 rounded-lg text-center">
-              <h3 className="text-lg font-semibold">{image.title}</h3>
-              <p className="text-sm opacity-90">
-                {getImageLabel(image.src, image.currentIndex)}
-              </p>
-            </div>
-          </motion.div>
-        </motion.div>
-      </AnimatePresence>
-    );
-  });
 
   // Project Card Component
   const ProjectCard = ({ project, index }) => (
@@ -849,20 +660,10 @@ const Milestones = () => {
         onClose={closeProjectModal}
       />
 
-      {/* Image Popup */}
-      <ImagePopup 
-        image={selectedImage}
-        isOpen={!!selectedImage}
-        onClose={closeImagePopup}
-        onNavigate={navigateImage}
-        isNavigating={isNavigating}
-      />
-
       {/* Custom Styles for Milestone Card Swiper and Modal */}
       <style jsx="true" global="true">{`
         /* Prevent body scroll when modal is open */
-        body.modal-open,
-        body.image-popup-open {
+        body.modal-open {
           overflow: hidden !important;
           position: fixed !important;
           width: 100% !important;
@@ -917,19 +718,74 @@ const Milestones = () => {
           cursor: not-allowed;
         }
         
-        /* Modal positioning fixes */
-        .project-modal-overlay {
+        /* Modal positioning fixes - Perfect centering with equal margins */
+        .modal-overlay {
           position: fixed !important;
           top: 0 !important;
           left: 0 !important;
           right: 0 !important;
           bottom: 0 !important;
           z-index: 50 !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          padding: 2rem !important;
+          width: 100vw !important;
+          height: 100vh !important;
+          margin: 0 !important;
         }
         
-        .project-modal-content {
+        /* Override any conflicting global modal styles */
+        .modal-overlay * {
+          box-sizing: border-box !important;
+        }
+        
+        .modal-overlay > div {
+          margin: 0 !important;
+          transform: none !important;
           position: relative !important;
-          overflow-y: auto !important;
+          max-width: calc(100vw - 4rem) !important;
+          max-height: calc(100vh - 4rem) !important;
+          width: auto !important;
+          height: auto !important;
+        }
+        
+        /* Modal content specific styling for perfect centering */
+        .modal-content {
+          margin: 0 !important;
+          transform: none !important;
+          position: relative !important;
+          max-width: calc(100vw - 4rem) !important;
+          max-height: calc(100vh - 4rem) !important;
+          width: auto !important;
+          height: auto !important;
+          display: flex !important;
+          flex-direction: column !important;
+        }
+        
+        /* Ensure proper centering on all devices with equal margins */
+        @media (max-width: 768px) {
+          .modal-overlay {
+            padding: 1rem !important;
+          }
+          
+          .modal-overlay > div,
+          .modal-content {
+            max-width: calc(100vw - 2rem) !important;
+            max-height: calc(100vh - 2rem) !important;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .modal-overlay {
+            padding: 0.75rem !important;
+          }
+          
+          .modal-overlay > div,
+          .modal-content {
+            max-width: calc(100vw - 1.5rem) !important;
+            max-height: calc(100vh - 1.5rem) !important;
+          }
         }
       `}</style>
     </section>
