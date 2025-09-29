@@ -307,7 +307,7 @@ const Milestones = () => {
     );
   });
 
-  // Project Modal Component - Vaastu Group Style
+  // Project Modal Component - Original Theme
   const ProjectModal = ({ project, isOpen, onClose }) => {
     if (!isOpen || !project) return null;
 
@@ -324,30 +324,30 @@ const Milestones = () => {
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
-            className="bg-white rounded-2xl shadow-2xl overflow-hidden w-full max-h-full relative modal-content"
+            className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden w-full max-h-full relative modal-content"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Modal Header - Vaastu Group Style */}
-            <div className="relative bg-gradient-to-r from-amber-50 to-amber-100 p-8">
+            {/* Modal Header - Original Theme */}
+            <div className="relative bg-gradient-to-r from-primary-50 to-gold/10 dark:from-primary-900/20 dark:to-gold/10 p-8">
               {/* Decorative Elements */}
-              <div className="absolute top-4 right-4 w-16 h-16 bg-amber-200 rounded-lg transform rotate-12 opacity-30"></div>
-              <div className="absolute bottom-4 left-4 w-12 h-12 bg-amber-300 rounded-lg transform -rotate-12 opacity-20"></div>
+              <div className="absolute top-4 right-4 w-16 h-16 bg-primary-200 dark:bg-primary-800 rounded-lg transform rotate-12 opacity-30"></div>
+              <div className="absolute bottom-4 left-4 w-12 h-12 bg-gold/20 dark:bg-gold/30 rounded-lg transform -rotate-12 opacity-20"></div>
               
               <div className="relative flex items-center justify-between">
                 <div>
-                  <h3 className="text-2xl font-semibold text-amber-600 mb-2 font-serif">
+                  <h3 className="text-2xl font-semibold text-primary-600 dark:text-primary-400 mb-2">
                     {project.category}
                   </h3>
-                  <h2 className="text-4xl font-bold text-gray-900 font-serif">
-                {project.title}
-              </h2>
+                  <h2 className="text-4xl font-bold text-gray-900 dark:text-white">
+                    {project.title}
+                  </h2>
                 </div>
-              <button
-                onClick={onClose}
-                  className="p-3 hover:bg-white/50 rounded-full transition-colors"
-              >
-                  <FaTimes className="w-6 h-6 text-gray-600" />
-              </button>
+                <button
+                  onClick={onClose}
+                  className="p-3 hover:bg-white/50 dark:hover:bg-gray-700/50 rounded-full transition-colors"
+                >
+                  <FaTimes className="w-6 h-6 text-gray-600 dark:text-gray-400" />
+                </button>
               </div>
             </div>
 
@@ -365,10 +365,10 @@ const Milestones = () => {
                   <div className="space-y-8">
                     {/* Description */}
                     <div>
-                      <h3 className="text-xl font-semibold text-gray-900 mb-4 font-serif">
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                         Project Description
                       </h3>
-                      <p className="text-gray-600 leading-relaxed text-lg">
+                      <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg">
                         {project.description}
                       </p>
                     </div>
@@ -376,53 +376,53 @@ const Milestones = () => {
                     {/* Project Info */}
                     <div className="grid grid-cols-2 gap-6">
                       <div className="flex items-center space-x-4">
-                        <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center">
-                          <FaMapMarkerAlt className="w-6 h-6 text-amber-600" />
+                        <div className="w-12 h-12 bg-gold/10 dark:bg-gold/20 rounded-lg flex items-center justify-center">
+                          <FaMapMarkerAlt className="w-6 h-6 text-gold" />
                         </div>
                         <div>
-                          <p className="text-sm text-gray-500">Location</p>
-                          <p className="font-semibold text-gray-900">{project.location}</p>
+                          <p className="text-sm text-gray-500 dark:text-gray-400">Location</p>
+                          <p className="font-semibold text-gray-900 dark:text-white">{project.location}</p>
                         </div>
                       </div>
                       <div className="flex items-center space-x-4">
-                        <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center">
-                          <FaCalendarAlt className="w-6 h-6 text-amber-600" />
+                        <div className="w-12 h-12 bg-gold/10 dark:bg-gold/20 rounded-lg flex items-center justify-center">
+                          <FaCalendarAlt className="w-6 h-6 text-gold" />
                         </div>
                         <div>
-                          <p className="text-sm text-gray-500">Completion</p>
-                          <p className="font-semibold text-gray-900">{project.completionDate}</p>
+                          <p className="text-sm text-gray-500 dark:text-gray-400">Completion</p>
+                          <p className="font-semibold text-gray-900 dark:text-white">{project.completionDate}</p>
                         </div>
                       </div>
                       <div className="flex items-center space-x-4">
-                        <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center">
-                          <FaBuilding className="w-6 h-6 text-amber-600" />
+                        <div className="w-12 h-12 bg-gold/10 dark:bg-gold/20 rounded-lg flex items-center justify-center">
+                          <FaBuilding className="w-6 h-6 text-gold" />
                         </div>
                         <div>
-                          <p className="text-sm text-gray-500">Units</p>
-                          <p className="font-semibold text-gray-900">{project.units}</p>
+                          <p className="text-sm text-gray-500 dark:text-gray-400">Units</p>
+                          <p className="font-semibold text-gray-900 dark:text-white">{project.units}</p>
                         </div>
                       </div>
                       <div className="flex items-center space-x-4">
-                        <div className="w-12 h-12 bg-amber-100 rounded-lg flex items-center justify-center">
-                          <FaUsers className="w-6 h-6 text-amber-600" />
+                        <div className="w-12 h-12 bg-gold/10 dark:bg-gold/20 rounded-lg flex items-center justify-center">
+                          <FaUsers className="w-6 h-6 text-gold" />
                         </div>
                         <div>
-                          <p className="text-sm text-gray-500">Area</p>
-                          <p className="font-semibold text-gray-900">{project.area}</p>
+                          <p className="text-sm text-gray-500 dark:text-gray-400">Area</p>
+                          <p className="font-semibold text-gray-900 dark:text-white">{project.area}</p>
                         </div>
                       </div>
                     </div>
 
                     {/* Amenities */}
                     <div>
-                      <h3 className="text-xl font-semibold text-gray-900 mb-4 font-serif">
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                         Amenities
                       </h3>
                       <div className="flex flex-wrap gap-3">
                         {project.amenities.map((amenity, index) => (
                           <span
                             key={index}
-                            className="bg-amber-100 text-amber-700 px-4 py-2 rounded-full text-sm font-medium"
+                            className="bg-gold/10 dark:bg-gold/20 text-gold px-4 py-2 rounded-full text-sm font-medium"
                           >
                             {amenity}
                           </span>
@@ -432,14 +432,14 @@ const Milestones = () => {
 
                     {/* Features */}
                     <div>
-                      <h3 className="text-xl font-semibold text-gray-900 mb-4 font-serif">
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                         Key Features
                       </h3>
                       <div className="flex flex-wrap gap-3">
                         {project.features.map((feature, index) => (
                           <span
                             key={index}
-                            className="bg-gray-100 text-gray-700 px-4 py-2 rounded-full text-sm font-medium"
+                            className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 px-4 py-2 rounded-full text-sm font-medium"
                           >
                             {feature}
                           </span>
@@ -459,14 +459,14 @@ const Milestones = () => {
 
 
   return (
-    <section className="min-h-screen pt-24 pb-12 bg-white text-gray-900">
+    <section className="min-h-screen pt-24 pb-12 bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 text-[#181818] dark:text-white transition-colors duration-300">
       <Helmet>
         <title>Our Journey of Excellence - Ganesh Yeole Builders | Milestones & Achievements</title>
         <meta name="description" content="Explore our journey of excellence through key milestones and achievements. Discover our completed and ongoing projects that have created homes for hundreds of families." />
       </Helmet>
 
       <div className="max-w-7xl mx-auto px-4">
-        {/* Hero Section - Vaastu Group Style */}
+        {/* Hero Section - Original Theme */}
         <motion.div 
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
@@ -474,28 +474,29 @@ const Milestones = () => {
           className="text-center mb-24"
         >
           <div className="relative">
-            {/* Decorative Beige Block */}
-            <div className="absolute -top-8 -left-8 w-32 h-32 bg-amber-50 rounded-lg transform rotate-12 opacity-60"></div>
-            <div className="absolute -bottom-8 -right-8 w-24 h-24 bg-amber-100 rounded-lg transform -rotate-12 opacity-40"></div>
+            {/* Background Decorative Elements */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-96 h-96 bg-gradient-to-br from-gold/10 via-gray-500/10 to-green-500/10 rounded-full blur-3xl"></div>
+            </div>
             
-            <h1 className="relative text-5xl md:text-6xl font-bold text-gray-900 mb-8 font-serif">
-              Our Journey of <span className="text-amber-600">Excellence</span>
+            <h1 className="relative text-5xl md:text-6xl font-bold bg-gradient-to-r from-[#E53935] via-gold to-orange-500 bg-clip-text text-transparent mb-8">
+              Our Journey of Excellence
             </h1>
             
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: "200px" }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="h-1 bg-gradient-to-r from-amber-400 to-amber-600 mx-auto mb-8 rounded-full"
+              className="h-1 bg-gradient-to-r from-[#E53935] via-gold to-orange-500 mx-auto mb-8 rounded-full"
             ></motion.div>
             
-            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              Celebrating milestones, achievements, and the trust of <span className="font-bold text-amber-600">500+ families</span> across <span className="font-bold text-gray-800">16+ years</span> of dedicated service
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
+              Celebrating milestones, achievements, and the trust of <span className="font-bold text-[#E53935]">500+ families</span> across <span className="font-bold text-gold">16+ years</span> of dedicated service
             </p>
           </div>
         </motion.div>
 
-        {/* Projects Showcase - Vaastu Group Pattern */}
+        {/* Projects Showcase - Original Theme */}
         <div className="space-y-32">
           {completedProjects.map((project, index) => (
             <motion.div
@@ -510,9 +511,9 @@ const Milestones = () => {
             >
               {/* Left Side - Image (or Right Side for alternating) */}
               <div className={`${index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'} relative`}>
-                {/* Decorative Beige Block */}
-                <div className="absolute -top-6 -left-6 w-24 h-24 bg-amber-50 rounded-lg transform rotate-12 opacity-60"></div>
-                <div className="absolute -bottom-6 -right-6 w-16 h-16 bg-amber-100 rounded-lg transform -rotate-12 opacity-40"></div>
+                {/* Decorative Elements */}
+                <div className="absolute -top-6 -left-6 w-24 h-24 bg-gradient-to-br from-primary-500/20 to-gold/20 rounded-lg transform rotate-12 opacity-60"></div>
+                <div className="absolute -bottom-6 -right-6 w-16 h-16 bg-gradient-to-br from-gold/20 to-primary-500/20 rounded-lg transform -rotate-12 opacity-40"></div>
                 
                 <div className="relative overflow-hidden rounded-2xl shadow-2xl group">
                   <img
@@ -534,7 +535,7 @@ const Milestones = () => {
                     <span className={`px-4 py-2 rounded-full text-sm font-semibold ${
                       project.status === 'Completed' 
                         ? 'bg-green-500 text-white' 
-                        : 'bg-amber-500 text-white'
+                        : 'bg-gold text-white'
                     }`}>
                       {project.status}
                     </span>
@@ -544,53 +545,53 @@ const Milestones = () => {
 
               {/* Right Side - Content (or Left Side for alternating) */}
               <div className={`${index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'} space-y-6`}>
-                {/* Decorative Beige Block */}
-                <div className="w-20 h-20 bg-amber-50 rounded-lg mb-6"></div>
+                {/* Decorative Element */}
+                <div className="w-20 h-20 bg-gradient-to-br from-primary-500/10 to-gold/10 rounded-lg mb-6"></div>
                 
                 <div>
-                  <h3 className="text-2xl font-semibold text-amber-600 mb-2 font-serif">
+                  <h3 className="text-2xl font-semibold text-primary-600 dark:text-primary-400 mb-2">
                     {project.category}
                   </h3>
-                  <div className="text-6xl font-bold text-gray-300 mb-4">
+                  <div className="text-6xl font-bold text-gray-300 dark:text-gray-600 mb-4">
                     {project.number}
                   </div>
-                  <h2 className="text-4xl font-bold text-gray-900 mb-6 font-serif">
+                  <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">
                     {project.title}
                   </h2>
                 </div>
                 
-                <p className="text-lg text-gray-600 leading-relaxed mb-6">
+                <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
                   {project.description}
                 </p>
                 
                 {/* Project Details */}
                 <div className="grid grid-cols-2 gap-4 mb-6">
                   <div className="flex items-center space-x-3">
-                    <FaMapMarkerAlt className="w-5 h-5 text-amber-600" />
+                    <FaMapMarkerAlt className="w-5 h-5 text-gold" />
                     <div>
-                      <p className="text-sm text-gray-500">Location</p>
-                      <p className="font-medium text-gray-900">{project.location}</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">Location</p>
+                      <p className="font-medium text-gray-900 dark:text-white">{project.location}</p>
                     </div>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <FaCalendarAlt className="w-5 h-5 text-amber-600" />
+                    <FaCalendarAlt className="w-5 h-5 text-gold" />
                     <div>
-                      <p className="text-sm text-gray-500">Completion</p>
-                      <p className="font-medium text-gray-900">{project.completionDate}</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">Completion</p>
+                      <p className="font-medium text-gray-900 dark:text-white">{project.completionDate}</p>
                     </div>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <FaBuilding className="w-5 h-5 text-amber-600" />
+                    <FaBuilding className="w-5 h-5 text-gold" />
                     <div>
-                      <p className="text-sm text-gray-500">Units</p>
-                      <p className="font-medium text-gray-900">{project.units}</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">Units</p>
+                      <p className="font-medium text-gray-900 dark:text-white">{project.units}</p>
                     </div>
                   </div>
                   <div className="flex items-center space-x-3">
-                    <FaUsers className="w-5 h-5 text-amber-600" />
+                    <FaUsers className="w-5 h-5 text-gold" />
                     <div>
-                      <p className="text-sm text-gray-500">Area</p>
-                      <p className="font-medium text-gray-900">{project.area}</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">Area</p>
+                      <p className="font-medium text-gray-900 dark:text-white">{project.area}</p>
                     </div>
                   </div>
                 </div>
@@ -598,7 +599,7 @@ const Milestones = () => {
                 {/* Read More Button */}
                 <button
                   onClick={() => openProjectModal(project)}
-                  className="inline-flex items-center space-x-2 text-gray-900 hover:text-amber-600 transition-colors duration-300 group"
+                  className="inline-flex items-center space-x-2 text-gray-900 dark:text-white hover:text-gold transition-colors duration-300 group"
                 >
                   <span className="font-medium underline">Read more</span>
                   <FaArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
@@ -608,38 +609,38 @@ const Milestones = () => {
           ))}
         </div>
 
-        {/* Contact CTA Section - Vaastu Group Style */}
-        <motion.div 
+        {/* Contact CTA Section - Original Theme */}
+        <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
           className="mt-32 text-center"
         >
-          <div className="relative bg-gradient-to-r from-amber-600 to-amber-700 rounded-2xl p-12 text-white overflow-hidden">
+          <div className="relative bg-gradient-to-r from-primary-600 to-gold rounded-2xl p-12 text-white overflow-hidden">
             {/* Decorative Elements */}
             <div className="absolute top-6 right-6 w-24 h-24 bg-white/10 rounded-lg transform rotate-12 opacity-30"></div>
             <div className="absolute bottom-6 left-6 w-16 h-16 bg-white/10 rounded-lg transform -rotate-12 opacity-20"></div>
             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-white/5 rounded-full blur-3xl"></div>
             
             <div className="relative">
-              <h2 className="text-4xl md:text-5xl font-bold mb-6 font-serif">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">
                 Ready to Be Part of Our Next Milestone?
-            </h2>
+              </h2>
               <p className="text-xl mb-8 opacity-90 max-w-3xl mx-auto">
                 Join thousands of satisfied homeowners who trusted us with their dreams. 
                 Let's create something extraordinary together.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-white text-amber-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300 text-lg">
+                <button className="bg-white text-primary-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300 text-lg">
                   Explore Our Projects
                 </button>
-                <button className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-amber-600 transition-colors duration-300 text-lg">
+                <button className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-primary-600 transition-colors duration-300 text-lg">
                   Contact Us
                 </button>
               </div>
             </div>
-              </div>
+          </div>
         </motion.div>
       </div>
 
