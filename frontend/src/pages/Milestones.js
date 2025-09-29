@@ -13,7 +13,7 @@ const completedProjects = [
     id: 1,
     number: "01",
     title: "Sai Shraddha Apartment",
-    description: "A beautifully designed residential complex offering comfortable living with all modern amenities and excellent connectivity. Experience the perfect blend of comfort and convenience in the heart of Nashik.",
+    description: "A beautifully designed residential complex offering comfortable living with all modern amenities and excellent connectivity. Experience the perfect blend of comfort and convenience in the heart of Nashik. Located on College Road with 80 units across 1.8 acres.",
     location: "College Road, Nashik",
     completionDate: "2024",
     units: "80 Units",
@@ -34,72 +34,90 @@ const completedProjects = [
   {
     id: 2,
     number: "02",
-    title: "Shree Ganesh Heights",
-    description: "Premium residential development with modern amenities and excellent location advantages. Rising majestically with a regal presence, this development offers unparalleled luxury and comfort.",
-    location: "Nashik",
-    completionDate: "2025",
-    units: "120 Units",
-    area: "2.5 Acres",
+    title: "Shree Ganesh Avenue",
+    description: "Affordable & Spacious Living in Gangapur. Shree Ganesh Avenue offers well-planned 1 & 2 BHK homes with superior construction quality, ample space, and excellent ventilation. Combining affordability with modern comforts, it quickly became a high-demand project in Gangapur Shivar.",
+    location: "Gangapur Shivar, Nashik",
+    completionDate: "2023",
+    units: "Multiple Units",
+    area: "Prime Location",
     images: [
-      "/assets/shree-ganesh-heights/gallery/front.jpeg",
-      "/assets/shree-ganesh-heights/gallery/day-front.jpg",
-      "/assets/shree-ganesh-heights/gallery/night-front.jpg",
-      "/assets/shree-ganesh-heights/gallery/top-view.jpg",
-      "/assets/shree-ganesh-heights/gallery/floor-plan.jpeg"
+      "/assets/sai-shraddha-apartment/gallery/front.jpg",
+      "/assets/sai-shraddha-apartment/gallery/top-view.jpg",
+      "/assets/sai-shraddha-apartment/gallery/parking.jpg",
+      "/assets/sai-shraddha-apartment/gallery/floor-plan.jpg",
+      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-40.jpg"
     ],
     amenities: ["Security", "Parking", "Power Backup", "Water Supply", "Maintenance", "Garden"],
-    features: ["2BHK & 3BHK Apartments", "Quality Construction", "Good Ventilation", "Modern Design"],
-    status: "Ongoing",
-    category: "Ongoing Project",
-    overlayText: "ASCEND TO NEW HEIGHTS"
+    features: ["1BHK & 2BHK Apartments", "Affordable Pricing", "Quality Construction", "Smart Design", "Seamless Connectivity"],
+    status: "Completed",
+    category: "Completed Project",
+    overlayText: "AFFORDABLE EXCELLENCE"
   },
   {
     id: 3,
     number: "03",
-    title: "Shree Ganesh Park",
-    description: "A premium residential development with multiple wings offering various apartment configurations. Immerse yourself in an extraordinary living experience curated with elegance and grace.",
+    title: "Shree Ganesh Apartment",
+    description: "A premium residential development offering modern living with excellent connectivity and amenities. This project combines quality construction with thoughtful design to provide comfortable and convenient living spaces for families. Located in a well-connected area with easy access to schools, markets, and transportation hubs.",
     location: "Nashik",
-    completionDate: "2025",
-    units: "150 Units",
-    area: "3.0 Acres",
+    completionDate: "2022",
+    units: "Multiple Units",
+    area: "Well-Connected Area",
     images: [
-      "/assets/shree-ganesh-park/gallery/a-view.jpg",
-      "/assets/shree-ganesh-park/gallery/b-view.jpg",
-      "/assets/shree-ganesh-park/gallery/night-view-a.jpg",
-      "/assets/shree-ganesh-park/gallery/ter-view.jpg",
-      "/assets/shree-ganesh-park/gallery/Wing A 1BHK.jpg",
-      "/assets/shree-ganesh-park/gallery/Wing A 2BHK.jpg",
-      "/assets/shree-ganesh-park/gallery/Wing C 1BHK.jpg",
-      "/assets/shree-ganesh-park/gallery/Wing C 2BHK.jpg"
+      "/assets/sai-shraddha-apartment/gallery/front.jpg",
+      "/assets/sai-shraddha-apartment/gallery/top-view.jpg",
+      "/assets/sai-shraddha-apartment/gallery/parking.jpg",
+      "/assets/sai-shraddha-apartment/gallery/floor-plan.jpg",
+      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-40.jpg"
     ],
-    amenities: ["Garden", "Security", "Parking", "Power Backup", "Water Supply", "Maintenance", "Club House"],
-    features: ["1BHK & 2BHK Apartments", "Multiple Wings", "Quality Construction", "Modern Amenities", "Green Spaces"],
-    status: "Ongoing",
-    category: "Ongoing Project",
-    overlayText: "NATURE'S EMBRACE"
+    amenities: ["Security", "Parking", "Power Backup", "Water Supply", "Maintenance", "Garden"],
+    features: ["Quality Construction", "Modern Design", "Good Connectivity", "Family-Friendly", "Well-Planned Layout"],
+    status: "Completed",
+    category: "Completed Project",
+    overlayText: "MODERN LIVING"
   },
   {
     id: 4,
     number: "04",
-    title: "Shree Ganesh Srushti",
-    description: "Latest residential development with contemporary design and all modern facilities. Discover a sanctuary where peace, serenity, and rejuvenation converge in perfect harmony.",
-    location: "Nashik",
-    completionDate: "2025",
-    units: "100 Units",
-    area: "2.0 Acres",
+    title: "Modakeshwar Apartment",
+    description: "Exclusive Living at Wasan Nagar. Located in the prime area of Wasan Nagar, Pathardi, Modakeshwar Apartment is an exclusive standalone residential project offering limited yet luxurious apartments. With its modern elevation, premium construction quality, and thoughtfully designed spaces, this project redefines elegant and comfortable living.",
+    location: "Wasan Nagar, Pathardi, Nashik",
+    completionDate: "2021",
+    units: "Limited Units",
+    area: "Prime Location",
     images: [
-      "/assets/shree-ganesh-srushti/gallery/front.jpg",
-      "/assets/shree-ganesh-srushti/gallery/night.jpg",
-      "/assets/shree-ganesh-srushti/gallery/1bhk.jpg",
-      "/assets/shree-ganesh-srushti/gallery/1bhk (2).jpg",
-      "/assets/shree-ganesh-srushti/gallery/2bhk.jpg",
-      "/assets/shree-ganesh-srushti/gallery/2bhk (2).jpg"
+      "/assets/sai-shraddha-apartment/gallery/front.jpg",
+      "/assets/sai-shraddha-apartment/gallery/top-view.jpg",
+      "/assets/sai-shraddha-apartment/gallery/parking.jpg",
+      "/assets/sai-shraddha-apartment/gallery/floor-plan.jpg",
+      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-40.jpg"
     ],
-    amenities: ["Security", "Parking", "Power Backup", "Water Supply", "Maintenance", "Garden", "Gym"],
-    features: ["2BHK & 3BHK Apartments", "Contemporary Design", "Quality Construction", "Modern Amenities"],
-    status: "Ongoing",
-    category: "Ongoing Project",
-    overlayText: "CREATIVE EXCELLENCE"
+    amenities: ["Security", "Parking", "Power Backup", "Water Supply", "Maintenance", "Garden"],
+    features: ["Exclusive Apartments", "Modern Elevation", "Premium Construction", "Privacy", "Sophisticated Design"],
+    status: "Completed",
+    category: "Completed Project",
+    overlayText: "EXCLUSIVE LIVING"
+  },
+  {
+    id: 5,
+    number: "05",
+    title: "Vinayak Apartment",
+    description: "A Prime Project in a Prime Location. Located in the Makhamalabad area, Vinayak Apartment is a distinguished residential-cum-commercial development that blends luxury, space, and thoughtful design. This minimalistic yet elegant project features spacious 2 BHK flats with excellent ventilation, ensuring a bright and airy living experience.",
+    location: "Makhamalabad, Nashik",
+    completionDate: "2024",
+    units: "2 Flats",
+    area: "1 Floor",
+    images: [
+      "/assets/sai-shraddha-apartment/gallery/front.jpg",
+      "/assets/sai-shraddha-apartment/gallery/top-view.jpg",
+      "/assets/sai-shraddha-apartment/gallery/parking.jpg",
+      "/assets/sai-shraddha-apartment/gallery/floor-plan.jpg",
+      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-40.jpg"
+    ],
+    amenities: ["Commercial Space", "Security", "Parking", "Power Backup", "Water Supply", "Maintenance"],
+    features: ["2BHK Apartments", "Premium Construction", "Excellent Ventilation", "Prime Location", "Modern Design"],
+    status: "Completed",
+    category: "Completed Project",
+    overlayText: "PRIME LOCATION LIVING"
   }
 ];
 
@@ -224,8 +242,8 @@ const Milestones = () => {
       const onKey = (e) => {
         if (isLightboxOpen) {
           if (e.key === 'Escape') closeLightbox();
-          if (e.key === 'ArrowLeft') handlePrev();
-          if (e.key === 'ArrowRight') handleNext();
+        if (e.key === 'ArrowLeft') handlePrev();
+        if (e.key === 'ArrowRight') handleNext();
         } else {
           if (e.key === 'ArrowLeft') handlePrev();
           if (e.key === 'ArrowRight') handleNext();
@@ -244,65 +262,65 @@ const Milestones = () => {
 
     return (
       <>
-        <div className="space-y-4">
-          <div className="relative overflow-hidden rounded-xl">
-            <motion.div 
-              className="flex h-80 w-full carousel-sliding-container"
-              animate={{ x: `-${currentIndex * 100}%` }}
-              transition={{ 
-                type: "spring", 
-                stiffness: 300, 
-                damping: 30,
-                duration: 0.6
-              }}
-            >
-              {images.map((image, index) => (
-                <motion.div 
-                  key={index} 
-                  className="w-full flex-shrink-0 h-full carousel-slide"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                >
-                    <img
-                      src={image}
-                      alt={`${title} - ${index + 1}`}
+      <div className="space-y-4">
+        <div className="relative overflow-hidden rounded-xl">
+          <motion.div 
+            className="flex h-80 w-full carousel-sliding-container"
+            animate={{ x: `-${currentIndex * 100}%` }}
+            transition={{ 
+              type: "spring", 
+              stiffness: 300, 
+              damping: 30,
+              duration: 0.6
+            }}
+          >
+            {images.map((image, index) => (
+              <motion.div 
+                key={index} 
+                className="w-full flex-shrink-0 h-full carousel-slide"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+              >
+                  <img
+                    src={image}
+                    alt={`${title} - ${index + 1}`}
                       className="w-full h-full object-cover carousel-image cursor-pointer hover:scale-105 transition-transform duration-300"
-                      onError={(e) => { e.target.src = '/hero-building.jpg'; }}
+                    onError={(e) => { e.target.src = '/hero-building.jpg'; }}
                       onClick={() => openLightbox(index)}
-                    />
-                </motion.div>
-              ))}
-            </motion.div>
+                  />
+              </motion.div>
+            ))}
+          </motion.div>
 
-            {images.length > 1 && (
-              <>
-                <motion.button
-                  onClick={handlePrev}
-                  className="carousel-button absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-2 rounded-full shadow-lg z-30 backdrop-blur-sm"
-                  whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.3)' }}
-                  whileTap={{ scale: 0.95 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <FaChevronLeft className="w-4 h-4" />
-                </motion.button>
-                <motion.button
-                  onClick={handleNext}
-                  className="carousel-button absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-2 rounded-full shadow-lg z-30 backdrop-blur-sm"
-                  whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.3)' }}
-                  whileTap={{ scale: 0.95 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <FaChevronRight className="w-4 h-4" />
-                </motion.button>
-              </>
-            )}
+          {images.length > 1 && (
+            <>
+              <motion.button
+                onClick={handlePrev}
+                className="carousel-button absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-2 rounded-full shadow-lg z-30 backdrop-blur-sm"
+                whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.3)' }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.2 }}
+              >
+                <FaChevronLeft className="w-4 h-4" />
+              </motion.button>
+              <motion.button
+                onClick={handleNext}
+                className="carousel-button absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-2 rounded-full shadow-lg z-30 backdrop-blur-sm"
+                whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.3)' }}
+                whileTap={{ scale: 0.95 }}
+                transition={{ duration: 0.2 }}
+              >
+                <FaChevronRight className="w-4 h-4" />
+              </motion.button>
+            </>
+          )}
 
-            {images.length > 1 && (
-              <div className="absolute top-4 right-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded-full text-sm font-medium">
-                {currentIndex + 1} / {images.length}
-              </div>
-            )}
+          {images.length > 1 && (
+            <div className="absolute top-4 right-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded-full text-sm font-medium">
+              {currentIndex + 1} / {images.length}
+            </div>
+          )}
 
             {/* Click to expand overlay */}
             <div 
@@ -316,37 +334,37 @@ const Milestones = () => {
                 <FaArrowRight className="w-6 h-6 text-primary-600 rotate-45" />
               </motion.div>
             </div>
-          </div>
+        </div>
 
-          {/* Image Label */}
-          <div className="text-center">
-            <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
-              {getImageLabel(images[currentIndex], currentIndex)}
-            </h4>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              {title} - Image {currentIndex + 1} of {images.length}
-            </p>
+        {/* Image Label */}
+        <div className="text-center">
+          <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
+            {getImageLabel(images[currentIndex], currentIndex)}
+          </h4>
+          <p className="text-sm text-gray-600 dark:text-gray-400">
+            {title} - Image {currentIndex + 1} of {images.length}
+          </p>
             <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
               Click image to expand
-            </p>
-          </div>
-
-          {images.length > 1 && (
-            <div className="flex space-x-2 justify-center">
-              {images.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentIndex(index)}
-                  className={`carousel-dot w-2 h-2 rounded-full ${
-                    index === currentIndex
-                      ? 'bg-yellow-500 active'
-                      : 'bg-white/50 hover:bg-white/70 dark:bg-gray-300/50 dark:hover:bg-gray-200/70'
-                  }`}
-                />
-              ))}
-            </div>
-          )}
+          </p>
         </div>
+
+        {images.length > 1 && (
+          <div className="flex space-x-2 justify-center">
+            {images.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`carousel-dot w-2 h-2 rounded-full ${
+                  index === currentIndex
+                    ? 'bg-yellow-500 active'
+                    : 'bg-white/50 hover:bg-white/70 dark:bg-gray-300/50 dark:hover:bg-gray-200/70'
+                }`}
+              />
+            ))}
+          </div>
+        )}
+      </div>
 
         {/* Lightbox Modal */}
         <AnimatePresence>
@@ -491,7 +509,7 @@ const Milestones = () => {
                       <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                         Project Description
                       </h3>
-                      <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg">
+                      <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-lg text-justify">
                         {project.description}
                       </p>
                     </div>
@@ -774,8 +792,8 @@ const Milestones = () => {
                   </motion.p>
                 </motion.div>
               ))}
-            </div>
           </div>
+        </div>
         </motion.div>
 
         {/* Projects Showcase - Original Theme with Creative Elements */}
@@ -968,7 +986,7 @@ const Milestones = () => {
                 </div>
                 
                 <motion.p 
-                  className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6"
+                  className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6 text-justify"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 + 0.4 }}
@@ -1045,7 +1063,7 @@ const Milestones = () => {
         </div>
 
         {/* Creative Achievement Showcase */}
-        <motion.div
+        <motion.div 
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -1059,8 +1077,8 @@ const Milestones = () => {
             <p className="text-lg text-gray-600 dark:text-gray-300">
               Numbers that speak for our commitment to excellence
             </p>
-          </div>
-          
+                </div>
+
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
               { number: "500+", label: "Happy Families", icon: FaUsers, color: "from-primary-500 to-gold" },
@@ -1095,8 +1113,8 @@ const Milestones = () => {
                   {achievement.label}
                 </div>
               </motion.div>
-            ))}
-          </div>
+                ))}
+              </div>
         </motion.div>
 
         {/* Contact CTA Section - Original Theme with Creative Elements */}
