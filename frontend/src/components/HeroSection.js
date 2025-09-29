@@ -27,7 +27,7 @@ const HeroSection = () => {
   // Preload images for better performance
   React.useEffect(() => {
     const imageUrls = [
-      '/assets/shree-ganesh-park/gallery/night-view-a.jpg',
+      '/assets/shree-ganesh-heights/gallery/night-front.jpg',
       '/assets/shree-ganesh-park/gallery/ter-view.jpg',
       '/assets/shree-ganesh-heights/gallery/day-front.jpg',
       '/assets/shree-ganesh-srushti/gallery/front.jpg',
@@ -60,25 +60,25 @@ const HeroSection = () => {
   const carouselData = [
     {
       id: 1,
-        image: '/assets/shree-ganesh-park/gallery/night-view-a.jpg',
+      image: '/assets/shree-ganesh-heights/gallery/night-front.jpg',
       title: 'Luxury Living Redefined',
       subtitle: 'Premium properties with world-class amenities'
     },
     {
       id: 2,
-      image: '/assets/shree-ganesh-heights/gallery/day-front.jpg',
-      title: 'Shree Ganesh Heights',
-      subtitle: 'Excellence in every detail'
-    },
-    {
-      id: 3,
       image: '/assets/shree-ganesh-park/gallery/ter-view.jpg',
       title: 'Shree Ganesh Park',
       subtitle: 'Creating homes that last generations'
     },
     {
+      id: 3,
+      image: '/assets/shree-ganesh-heights/gallery/day-front.jpg',
+      title: 'Shree Ganesh Heights',
+      subtitle: 'Excellence in every detail'
+    },
+    {
       id: 4,
-      image: 'frontend/src/assets/shree-ganesh-srushti/gallery/front.jpg',
+      image: '/assets/shree-ganesh-srushti/gallery/front.jpg',
       title: 'Shree Ganesh Srushti',
       subtitle: 'Creating homes that last generations'
     }
