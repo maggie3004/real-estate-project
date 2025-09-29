@@ -31,13 +31,13 @@ const LocationSection = () => {
         >
           Location
         </motion.h2>
-        <div className="flex flex-col md:flex-row gap-8 items-center justify-center">
+        <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-center justify-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.8 }}
             transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-            className="w-full md:w-2/3 h-80 rounded-2xl overflow-hidden shadow-lg border-2 border-gold/20"
+            className="w-full lg:w-2/3 h-64 sm:h-80 rounded-2xl overflow-hidden shadow-lg border-2 border-gold/20"
           >
             {mapSrc ? (
               <iframe

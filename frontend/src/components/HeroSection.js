@@ -1,36 +1,88 @@
-import React, { useState, useEffect } from 'react';
+import React, { useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import properties from '../data/properties';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
 
 const HeroSection = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  // Swiper ref for manual navigation control
+  const swiperRef = useRef(null);
 
-  // Get top 3 properties
-  const topProperties = properties.slice(0, 3);
+  // Navigation handlers
+  const handlePrevSlide = useCallback(() => {
+    if (swiperRef.current && swiperRef.current.swiper) {
+      swiperRef.current.swiper.slidePrev();
+    }
+  }, []);
 
-  useEffect(() => {
-    if (!isAutoPlaying) return;
+  const handleNextSlide = useCallback(() => {
+    if (swiperRef.current && swiperRef.current.swiper) {
+      swiperRef.current.swiper.slideNext();
+    }
+  }, []);
 
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % topProperties.length);
-    }, 5000); // Change slide every 5 seconds
+  // Preload images for better performance
+  React.useEffect(() => {
+    const imageUrls = [
+      '/assets/shree-ganesh-heights/gallery/night-front.jpg',
+      '/assets/shree-ganesh-park/gallery/ter-view.jpg',
+      '/assets/shree-ganesh-heights/gallery/day-front.jpg',
+      '/assets/shree-ganesh-srushti/gallery/front.jpg',
+      '/hero-building.jpg'
+    ];
+    
+    imageUrls.forEach(url => {
+      const img = new Image();
+      img.src = url;
+    });
+  }, []);
 
-    return () => clearInterval(interval);
-  }, [isAutoPlaying, topProperties.length]);
+  // Keyboard navigation support
+  React.useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        handlePrevSlide();
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        handleNextSlide();
+      }
+    };
 
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % topProperties.length);
-  };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [handlePrevSlide, handleNextSlide]);
 
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + topProperties.length) % topProperties.length);
-  };
-
-  const goToSlide = (index) => {
-    setCurrentIndex(index);
-  };
+  // Carousel data with 3 high-quality building images
+  const carouselData = [
+    {
+      id: 1,
+      image: '/assets/shree-ganesh-heights/gallery/night-front.jpg',
+      title: 'Luxury Living Redefined',
+      subtitle: 'Premium properties with world-class amenities'
+    },
+    {
+      id: 2,
+      image: '/assets/shree-ganesh-park/gallery/ter-view.jpg',
+      title: 'Shree Ganesh Park',
+      subtitle: 'Creating homes that last generations'
+    },
+    {
+      id: 3,
+      image: '/assets/shree-ganesh-heights/gallery/day-front.jpg',
+      title: 'Shree Ganesh Heights',
+      subtitle: 'Excellence in every detail'
+    },
+    {
+      id: 4,
+      image: '/assets/shree-ganesh-srushti/gallery/front.jpg',
+      title: 'Shree Ganesh Srushti',
+      subtitle: 'Creating homes that last generations'
+    }
+  ];
 
   return (
     <motion.section
@@ -39,107 +91,179 @@ const HeroSection = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.6 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
-      className="relative h-screen flex flex-col items-center justify-center overflow-hidden w-full"
+      className="relative h-screen overflow-hidden w-full"
     >
-      {/* Carousel Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div 
-          className="flex transition-transform duration-1000 ease-in-out h-full"
-          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-        >
-          {topProperties.map((property, index) => (
-            <div key={property.id} className="w-full flex-shrink-0 h-full">
-              <div 
-                className="w-full h-full bg-cover bg-center"
-                style={{ backgroundImage: `url(${property.images[0]})` }}
-              >
-                <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+      <Swiper
+        ref={swiperRef}
+        modules={[Navigation, Pagination, Autoplay, EffectFade]}
+        effect="fade"
+        fadeEffect={{
+          crossFade: true
+        }}
+        speed={800}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true
+        }}
+        pagination={{
+          clickable: true,
+          el: '.hero-swiper-pagination',
+          bulletClass: 'hero-swiper-pagination-bullet',
+          bulletActiveClass: 'hero-swiper-pagination-bullet-active'
+        }}
+        loop={true}
+        className="hero-swiper h-full w-full"
+      >
+        {carouselData.map((slide, index) => (
+          <SwiperSlide key={slide.id} className="relative">
+            <div className="relative h-full w-full bg-gray-900 flex items-center justify-center">
+              <img 
+                src={slide.image}
+                alt={slide.title}
+                className="hero-image"
+                loading="eager"
+                decoding="async"
+                onError={(e) => {
+                  e.target.src = '/hero-building.jpg';
+                }}
+              />
+              
+              {/* Overlay for better text readability */}
+              <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/50 dark:from-black/30 dark:via-black/40 dark:to-black/60"></div>
+              
+              {/* Slide-specific content */}
+              <div className="absolute top-24 sm:top-28 md:top-32 left-4 sm:left-8 md:left-12 right-4 sm:right-8 md:right-12 z-10 max-w-2xl">
+                <motion.h2
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-white dark:text-gray-100 mb-2 sm:mb-4 leading-tight drop-shadow-lg text-left"
+                >
+                  {slide.title}
+                </motion.h2>
+                <motion.p
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.4 }}
+                  className="text-sm sm:text-base md:text-lg text-gray-100 dark:text-gray-200 mb-4 sm:mb-6 leading-relaxed drop-shadow-md text-left"
+                >
+                  {slide.subtitle}
+                </motion.p>
               </div>
             </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Content Overlay */}
-      <div className="relative z-10 flex flex-col items-center justify-center w-full px-4">
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.8 }}
-          transition={{ duration: 0.8, delay: 0.1, ease: 'easeOut' }}
-          className="text-5xl md:text-6xl font-playfair font-bold mb-6 text-center"
-        >
-          <span style={{ color: '#E53935' }}>Welcome to</span> <span className="block text-white font-playfair">Ganesh Yeole Builders and Developers</span>
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.8 }}
-          transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
-          className="text-xl md:text-2xl font-quicksand mb-8 max-w-2xl mx-auto text-gray-100 text-center"
-        >
-          Redefining luxury living with trust, quality, and prime locations.<br />Your dream home awaits in our landmark projects.
-        </motion.p>
-        {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.8 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-          <a
-            href="/Shri Ganesh Heights.pdf"
-            download
-            className="btn-primary bg-gold text-white font-bold px-8 py-4 rounded-full shadow-gold hover:bg-white hover:text-gold transition-all duration-200 border-2 border-gold scale-100 hover:scale-105 focus:scale-105"
-          >
-            Download Brochure
-          </a>
-          <a
-            href="#contact"
-            className="btn-primary bg-gold text-white font-bold px-8 py-4 rounded-full shadow-gold hover:bg-white hover:text-gold transition-all duration-200 border-2 border-gold scale-100 hover:scale-105 focus:scale-105"
-          >
-            Enquire Now
-          </a>
-        </motion.div>
-      </div>
-
-      {/* Navigation Arrows */}
-      <button
-        onClick={prevSlide}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110 z-20"
-      >
-        <FaChevronLeft className="w-5 h-5" />
-      </button>
-      <button
-        onClick={nextSlide}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 text-white p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110 z-20"
-      >
-        <FaChevronRight className="w-5 h-5" />
-      </button>
-
-      {/* Auto-play Toggle */}
-      <button
-        onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-        className="absolute top-4 right-4 bg-white/20 hover:bg-white/30 text-white px-3 py-2 rounded-lg shadow-lg transition-all duration-200 text-sm z-20"
-      >
-        {isAutoPlaying ? 'Pause' : 'Play'}
-      </button>
-
-      {/* Dots Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
-        {topProperties.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => goToSlide(index)}
-            className={`w-3 h-3 rounded-full transition-all duration-200 ${
-              index === currentIndex 
-                ? 'bg-gold scale-125' 
-                : 'bg-white/50 hover:bg-white/70'
-            }`}
-          />
+          </SwiperSlide>
         ))}
-      </div>
+      </Swiper>
+
+      {/* Custom Navigation Buttons */}
+      <button 
+        onClick={handlePrevSlide}
+        className="absolute left-1 sm:left-2 md:left-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-1.5 sm:p-2 md:p-3 rounded-full shadow-lg z-30 backdrop-blur-sm cursor-pointer transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white/50"
+        aria-label="Previous slide"
+      >
+        <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      <button 
+        onClick={handleNextSlide}
+        className="absolute right-1 sm:right-2 md:right-4 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-1.5 sm:p-2 md:p-3 rounded-full shadow-lg z-30 backdrop-blur-sm cursor-pointer transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white/50"
+        aria-label="Next slide"
+      >
+        <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+
+      {/* Custom Pagination */}
+      <div className="hero-swiper-pagination absolute bottom-2 sm:bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-1 sm:space-x-2 z-30"></div>
+
+      {/* Hero Carousel Styles */}
+      <style jsx global>{`
+        .hero-swiper {
+          height: 100vh;
+          width: 100%;
+        }
+        
+        .hero-swiper .swiper-slide {
+          height: 100vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        .hero-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+        
+        .hero-swiper-pagination-bullet {
+          width: 12px;
+          height: 12px;
+          background: rgba(255, 255, 255, 0.5);
+          opacity: 1;
+          border-radius: 6px;
+          transition: all 0.3s ease;
+          cursor: pointer;
+        }
+        
+        .hero-swiper-pagination-bullet-active {
+          background: rgba(255, 255, 255, 1);
+          transform: scale(1.2);
+          box-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
+        }
+        
+        .hero-swiper-pagination-bullet:hover {
+          background: rgba(255, 255, 255, 0.8);
+          transform: scale(1.1);
+        }
+        
+        /* Smooth transitions for all slides */
+        .hero-swiper .swiper-slide-active {
+          transition: all 0.8s ease-in-out;
+        }
+        
+        /* Enhanced button hover effects */
+        .hero-swiper button:hover {
+          transform: translateY(-50%) scale(1.1);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-swiper button:active {
+          transform: translateY(-50%) scale(0.95);
+        }
+        
+        /* Ensure smooth fade effect */
+        .hero-swiper .swiper-slide {
+          opacity: 0;
+          transition: opacity 0.8s ease-in-out;
+        }
+        
+        .hero-swiper .swiper-slide-active {
+          opacity: 1;
+        }
+        
+        .hero-swiper .swiper-slide-prev,
+        .hero-swiper .swiper-slide-next {
+          opacity: 0;
+        }
+        
+        /* Dark mode adjustments */
+        .dark .hero-swiper-pagination-bullet {
+          background: rgba(156, 163, 175, 0.5);
+        }
+        
+        .dark .hero-swiper-pagination-bullet-active {
+          background: rgba(156, 163, 175, 1);
+        }
+        
+        .dark .hero-swiper-pagination-bullet:hover {
+          background: rgba(156, 163, 175, 0.8);
+        }
+      `}</style>
     </motion.section>
   );
 };

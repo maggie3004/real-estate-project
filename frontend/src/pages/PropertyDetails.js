@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaWhatsapp, FaPhoneAlt, FaDownload, FaEnvelope } from 'react-icons/fa';
 import ContactForm from '../components/ContactForm';
 import properties from '../data/properties';
 import AmenitiesSection from '../components/AmenitiesSection';
 import LocationSection from '../components/LocationSection';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 const PropertyDetails = () => {
   const { id } = useParams();
@@ -20,14 +20,30 @@ const PropertyDetails = () => {
 
   const [showModal, setShowModal] = useState(false);
 
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (showModal) {
+      // Prevent background scrolling
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+    } else {
+      // Restore background scrolling
+      document.body.style.overflow = 'unset';
+      document.body.style.position = 'unset';
+      document.body.style.width = 'unset';
+    }
+
+    // Cleanup on component unmount
+    return () => {
+      document.body.style.overflow = 'unset';
+      document.body.style.position = 'unset';
+      document.body.style.width = 'unset';
+    };
+  }, [showModal]);
+
   return (
     <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-8 py-12 px-4 mt-20">
-      {/* Back to Listings Button */}
-      <div className="absolute left-4 top-4">
-        <Link to="/listings" className="inline-block px-4 py-2 bg-gray-200 text-gray-800 rounded-lg font-semibold hover:bg-gold hover:text-white transition">
-          ← Back to Listings
-        </Link>
-      </div>
       {/* Left/Main Content */}
       <div className="flex-1 min-w-0">
         {/* Main Photo, Name, Tagline */}
@@ -103,7 +119,6 @@ const PropertyDetails = () => {
                     { icon: '🏫', label: 'School', distance: '5 mins' },
                     { icon: '🏥', label: 'Hospital', distance: '8 mins' },
                     { icon: '🛒', label: 'Mall', distance: '10 mins' },
-                    { icon: '🚇', label: 'Metro Station', distance: '3 mins' },
                   ]
               ).map((lm, idx) => (
                 <div key={lm.label + idx} className="flex items-center gap-3 bg-gray-50 rounded-lg p-3 shadow">
@@ -137,9 +152,17 @@ const PropertyDetails = () => {
       </div>
       {/* Enquire Now Modal */}
       {showModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60">
-          <div className="bg-white rounded-2xl shadow-2xl p-6 max-w-lg w-full relative animate-fadeIn">
-            <button className="absolute top-3 right-3 text-gray-500 hover:text-gold text-2xl" onClick={() => setShowModal(false)}>&times;</button>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 p-4" onClick={() => setShowModal(false)}>
+          <div 
+            className="bg-white rounded-2xl shadow-2xl p-6 max-w-lg w-full relative max-h-[80vh] overflow-y-auto scrollbar-hide modal-content"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button 
+              className="absolute top-3 right-3 text-gray-500 hover:text-gold text-2xl transition-colors duration-200" 
+              onClick={() => setShowModal(false)}
+            >
+              &times;
+            </button>
             <ContactForm propertyTitle={projectName} />
           </div>
         </div>

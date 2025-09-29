@@ -2,43 +2,43 @@ import React from 'react';
 import { FaTrophy, FaMedal, FaAward } from 'react-icons/fa';
 
 const awards = [
-  { icon: <FaTrophy size={32} color="var(--accent-color)" />, name: 'Ultratech Best Building', year: '2023-24' },
-  { icon: <FaMedal size={32} color="var(--accent-color)" />, name: 'BAI Best Building', year: '2018' },
-  { icon: <FaAward size={32} color="var(--accent-color)" />, name: 'Lokmat Best Brand', year: '2022' },
-  { icon: <FaTrophy size={32} color="var(--accent-color)" />, name: 'Dainik Bhaskar Best Building', year: '2021' },
-  { icon: <FaAward size={32} color="var(--accent-color)" />, name: 'IPPL Winner', year: '2022' },
+  { icon: <FaTrophy className="w-8 h-8 text-yellow-500" />, name: 'Ultratech Best Building', year: '2023-24' },
+  { icon: <FaMedal className="w-8 h-8 text-yellow-500" />, name: 'BAI Best Building', year: '2018' },
+  { icon: <FaAward className="w-8 h-8 text-yellow-500" />, name: 'Lokmat Best Brand', year: '2022' },
+  { icon: <FaTrophy className="w-8 h-8 text-yellow-500" />, name: 'Dainik Bhaskar Best Building', year: '2021' },
+  { icon: <FaAward className="w-8 h-8 text-yellow-500" />, name: 'IPPL Winner', year: '2022' },
 ];
 
 const AwardsSection = () => (
-  <section style={{ padding: '3rem 0', background: 'var(--background-color)' }}>
-    <h2 style={{ textAlign: 'center', fontSize: '2rem', fontWeight: 700, color: 'var(--primary-color)', marginBottom: '2rem' }}>
-      Awards & Recognition
-    </h2>
-    <div style={{
-      display: 'flex',
-      justifyContent: 'center',
-      gap: '2rem',
-      flexWrap: 'wrap',
-      maxWidth: 900,
-      margin: '0 auto',
-    }}>
-      {awards.map((award, idx) => (
-        <div key={idx} style={{
-          background: 'var(--card-bg)',
-          boxShadow: 'var(--card-shadow)',
-          borderRadius: '1rem',
-          padding: '2rem 1.5rem',
-          minWidth: 200,
-          textAlign: 'center',
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}>
-          {award.icon}
-          <div style={{ fontWeight: 700, fontSize: '1.1rem', color: 'var(--primary-color)', marginTop: 12 }}>{award.name}</div>
-          <div style={{ color: '#888', fontSize: '1rem', marginTop: 4 }}>{award.year}</div>
-        </div>
-      ))}
+  <section className="py-16 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <div className="container mx-auto px-4">
+      <div className="text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          Awards & Recognition
+        </h2>
+        <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          Celebrating excellence and recognition in the real estate industry
+        </p>
+      </div>
+      
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 md:gap-6 max-w-6xl mx-auto">
+        {awards.map((award, idx) => (
+          <div 
+            key={idx} 
+            className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-3 md:p-6 text-center transform hover:scale-105 transition-all duration-300 border border-gray-100 dark:border-gray-700 flex flex-col items-center justify-center min-h-[160px] md:min-h-[180px]"
+          >
+            <div className="mb-3 md:mb-4 flex justify-center">
+              {award.icon}
+            </div>
+            <div className="font-bold text-xs sm:text-sm md:text-base text-gray-900 dark:text-white mb-2 leading-tight">
+              {award.name}
+            </div>
+            <div className="text-xs text-gray-600 dark:text-gray-400 font-medium">
+              {award.year}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 );

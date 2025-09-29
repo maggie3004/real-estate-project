@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet';
 import { FaAward, FaUsers, FaBuilding, FaHeart, FaLeaf, FaHandshake } from 'react-icons/fa';
 
 const AboutPage = () => (
-  <section className="min-h-screen pt-24 pb-12 bg-white dark:bg-[#181818] text-[#181818] dark:text-white transition-colors duration-300">
+  <section className="min-h-screen pb-12 bg-white dark:bg-black text-[#181818] dark:text-white transition-colors duration-300">
     <Helmet>
       <title>About Us - Ganesh Yeole Builders and Developers | Vision, Mission & Leadership</title>
       <meta name="description" content="Learn about Ganesh Yeole Builders and Developers - our vision, mission, leadership team, and commitment to building quality homes in Nashik, Mumbai, and Pune." />
@@ -12,43 +12,21 @@ const AboutPage = () => (
     <div className="max-w-7xl mx-auto px-4">
       {/* Hero Section */}
       <div className="text-center mb-16">
-        <div className="text-gold font-bold text-lg mb-4 tracking-wider">
-          || ॐ हनुमते नमः || &nbsp; || ॐ भूमी नंदनाय नमः || &nbsp; || श्री गायत्री माता प्रसन्न ||
-        </div>
-        <h1 className="text-4xl md:text-5xl font-bold text-[#E53935] mb-6">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#E53935] mb-4 sm:mb-6">
           About Ganesh Yeole Builders
         </h1>
-        <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+        <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
           Building Dreams, Creating Landmarks - 16+ Years of Excellence in Real Estate Development
         </p>
       </div>
 
-      {/* Stats Section */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-        <div className="text-center p-6 bg-gradient-to-br from-gold-50 to-gold-100 dark:from-gold-900/20 dark:to-gold-800/20 rounded-2xl">
-          <div className="text-3xl md:text-4xl font-bold text-gold mb-2">450+</div>
-          <div className="text-gray-600 dark:text-gray-300 font-medium">Happy Families</div>
-        </div>
-        <div className="text-center p-6 bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-2xl">
-          <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-2">25+</div>
-          <div className="text-gray-600 dark:text-gray-300 font-medium">Delivered Projects</div>
-        </div>
-        <div className="text-center p-6 bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 rounded-2xl">
-          <div className="text-3xl md:text-4xl font-bold text-green-600 mb-2">16+</div>
-          <div className="text-gray-600 dark:text-gray-300 font-medium">Years Legacy</div>
-        </div>
-        <div className="text-center p-6 bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-2xl">
-          <div className="text-3xl md:text-4xl font-bold text-purple-600 mb-2">100%</div>
-          <div className="text-gray-600 dark:text-gray-300 font-medium">Customer Satisfaction</div>
-        </div>
-      </div>
 
-      <div className="grid lg:grid-cols-3 gap-12">
+      <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
         {/* Main Content */}
         <div className="lg:col-span-2">
           {/* Company Story */}
           <div className="mb-12">
-            <h2 className="text-3xl font-bold text-[#E53935] mb-6 flex items-center gap-3">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#E53935] mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
               <FaBuilding className="text-gold" />
               Our Story
             </h2>
@@ -66,11 +44,11 @@ const AboutPage = () => (
           </div>
 
           {/* Mission & Vision */}
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <div className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 p-8 rounded-2xl">
+          <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-8 sm:mb-12">
+            <div className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800/20 dark:to-gray-700/20 p-8 rounded-2xl">
               <div className="flex items-center gap-3 mb-4">
-                <FaHeart className="text-blue-600 text-2xl" />
-                <h3 className="text-2xl font-bold text-blue-600">Our Mission</h3>
+                <FaHeart className="text-gray-600 dark:text-gray-400 text-2xl" />
+                <h3 className="text-2xl font-bold text-gray-600 dark:text-gray-400">Our Mission</h3>
               </div>
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
                 To build more than just houses—we create homes that offer comfort, convenience, and a superior lifestyle. By maintaining a balance between affordability and premium quality, we ensure that every homeowner receives a complete, well-equipped living space that meets their aspirations.
@@ -89,7 +67,7 @@ const AboutPage = () => (
 
           {/* Values */}
           <div className="mb-12">
-            <h2 className="text-3xl font-bold text-[#E53935] mb-6 flex items-center gap-3">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#E53935] mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
               <FaHandshake className="text-gold" />
               Our Core Values
             </h2>
@@ -139,11 +117,9 @@ const AboutPage = () => (
           <div className="sticky top-24">
             <div className="bg-gradient-to-br from-gold-50 to-gold-100 dark:from-gold-900/20 dark:to-gold-800/20 rounded-2xl p-8 text-center border-2 border-gold/20">
               <div className="mb-6">
-                <img 
-                  src="/owner-placeholder.png" 
-                  alt="Mr. Prasad Yeole - Chairperson" 
-                  className="w-32 h-32 rounded-full object-cover mx-auto border-4 border-gold shadow-lg" 
-                />
+                <div className="w-32 h-32 rounded-full bg-gradient-to-br from-gold to-gold-600 mx-auto border-4 border-gold shadow-lg flex items-center justify-center">
+                  <span className="text-white text-4xl font-bold">PY</span>
+                </div>
               </div>
               <h3 className="text-2xl font-bold text-[#E53935] mb-2">Mr. Prasad G. Yeole</h3>
               <p className="text-gold font-semibold mb-4">Chairperson & Managing Director</p>

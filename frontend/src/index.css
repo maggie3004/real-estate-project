@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&family=Nunito:wght@400;700&family=Poppins:wght@400;600&family=Playfair+Display:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;700&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap');
 
 /* Tailwind CSS */
 @import 'tailwindcss/base';
@@ -12,6 +12,10 @@
 @import 'react-toastify/dist/ReactToastify.css';
 @import 'leaflet/dist/leaflet.css';
 @import 'react-datepicker/dist/react-datepicker.css';
+@import 'swiper/css';
+@import 'swiper/css/navigation';
+@import 'swiper/css/pagination';
+@import 'swiper/css/effect-fade';
 
 /* Remove duplicate imports */
 /* ...existing styles starting from * { margin: 0; ... */
@@ -34,15 +38,19 @@
 }
 
 html {
-  font-family: 'Quicksand', 'Nunito', 'Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif';
+  font-family: 'Inter', 'Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif';
   background: linear-gradient(135deg, #fffafc 0%, #ffe4ec 100%);
   color: #222;
   transition: background 0.4s, color 0.4s;
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-y: auto;
 }
 
 html.dark {
-  background: linear-gradient(135deg, #181a20 0%, #23263a 100%);
+  background: #000000;
   color: #ffd700;
 }
 
@@ -50,12 +58,128 @@ body {
   min-height: 100vh;
   background: inherit;
   color: inherit;
+  overflow-y: auto;
   transition: background 0.4s, color 0.4s;
+  overflow-x: hidden;
+  will-change: scroll-position;
+}
+
+/* Performance optimizations */
+* {
+  will-change: auto;
+}
+
+/* Smooth transitions for all interactive elements */
+button, a, input, textarea, select {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced smooth scrolling for better performance */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Enhanced smooth scrolling and performance */
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
+/* Optimize images for better loading */
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Smooth transitions for all elements */
+* {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+}
+
+/* Enhanced hover effects */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+/* Smooth loading animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+/* Optimize for mobile performance */
+@media (max-width: 768px) {
+  * {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+
+/* Loading Screen Specific Styles */
+.loading-screen-container {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 9999 !important;
+}
+
+.loading-screen-container > div {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Playfair Display', 'Quicksand', 'Nunito', 'Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif';
+  font-family: 'Inter', 'Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif';
   color: #ffd700;
+  font-weight: 600;
 }
 
 html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark h5, html.dark h6 {
@@ -63,8 +187,9 @@ html.dark h1, html.dark h2, html.dark h3, html.dark h4, html.dark h5, html.dark 
 }
 
 .subtitle, .subheading {
-  font-family: 'Nunito', 'Quicksand', 'Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif';
-  color: #00bcd4;
+  font-family: 'Inter', 'Poppins', 'ui-sans-serif', 'system-ui', 'sans-serif';
+  color: #6b7280;
+  font-weight: 500;
 }
 
 html.dark .subtitle, html.dark .subheading {
@@ -259,7 +384,7 @@ html {
   font-size: 1rem;
   font-weight: 600;
   border-radius: 2rem;
-  background: linear-gradient(90deg, #ffb8d2 0%, #b2ebf2 100%);
+  background: linear-gradient(90deg, #ffb8d2 0%, #d1d5db 100%);
   color: #fff;
   box-shadow: 0 4px 24px rgba(26,35,126,0.08);
   white-space: nowrap;
@@ -268,7 +393,7 @@ html {
 }
 
 .btn-primary:hover, .btn-primary:focus {
-  background: linear-gradient(90deg, #b2ebf2 0%, #ffb8d2 100%);
+  background: linear-gradient(90deg, #d1d5db 0%, #ffb8d2 100%);
   color: #ff2e84;
   box-shadow: 0 8px 32px rgba(26,35,126,0.16);
   transform: translateY(-2px) scale(1.03);
@@ -363,8 +488,8 @@ input, textarea, select {
 }
 
 input:focus, textarea:focus, select:focus {
-  border-color: #00bcd4;
-  box-shadow: 0 0 0 2px #b2ebf2;
+  border-color: #6b7280;
+  box-shadow: 0 0 0 2px #d1d5db;
 }
 
 /* Animation Classes */
@@ -433,14 +558,103 @@ input:focus, textarea:focus, select:focus {
   padding: 0 1rem;
 }
 
+/* Allow wider containers for specific components */
+.container-wide {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Full width form section */
+.get-in-touch-section {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.get-in-touch-section .bg-white {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Safelist Tailwind classes for navbar scroll behavior */
+/* These classes are used dynamically and need to be preserved in production builds */
+.translate-y-0 {
+  transform: translateY(0);
+}
+
+.-translate-y-full {
+  transform: translateY(-100%);
+}
+
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.duration-300 {
+  transition-duration: 300ms;
+}
+
+/* Enhanced navbar scroll behavior with better performance */
+.navbar-scroll-behavior {
+  transform: translateY(0);
+  transition: transform 0.3s ease-in-out;
+  will-change: transform;
+}
+
+.navbar-scroll-behavior.hidden {
+  transform: translateY(-100%);
+}
+
+/* Ensure smooth transitions for navbar visibility */
+.navbar-scroll-behavior,
+.navbar-scroll-behavior.hidden {
+  transition: transform 0.3s ease-in-out;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Force hardware acceleration for smooth animations */
+.navbar-scroll-behavior {
+  transform: translateZ(0) translateY(0);
+}
+
+.navbar-scroll-behavior.hidden {
+  transform: translateZ(0) translateY(-100%);
+}
+
+/* Fallback CSS for navbar transitions */
+nav {
+  transition: transform 0.3s ease-in-out;
+  will-change: transform;
+}
+
+/* Ensure navbar has proper transform origin */
+nav[class*="navbar-scroll-behavior"] {
+  transform-origin: top;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
 @media (min-width: 640px) {
   .container {
+    padding: 0 1.5rem;
+  }
+  
+  .container-wide {
     padding: 0 1.5rem;
   }
 }
 
 @media (min-width: 1024px) {
   .container {
+    padding: 0 2rem;
+  }
+  
+  .container-wide {
     padding: 0 2rem;
   }
 }
@@ -561,12 +775,12 @@ input:focus, textarea:focus, select:focus {
 }
 
 .btn-primary {
-  background: linear-gradient(90deg, #ffb8d2 0%, #b2ebf2 100%);
+  background: linear-gradient(90deg, #ffb8d2 0%, #d1d5db 100%);
   color: #fff;
 }
 
 .btn-primary:hover, .btn-primary:focus {
-  background: linear-gradient(90deg, #b2ebf2 0%, #ffb8d2 100%);
+  background: linear-gradient(90deg, #d1d5db 0%, #ffb8d2 100%);
   color: #ff2e84;
   transform: scale(1.05);
 }
@@ -591,8 +805,8 @@ input, textarea, select {
 }
 
 input:focus, textarea:focus, select:focus {
-  border-color: #00bcd4;
-  box-shadow: 0 0 0 2px #b2ebf2;
+  border-color: #6b7280;
+  box-shadow: 0 0 0 2px #d1d5db;
 }
 
 .heading-1, .heading-2, .heading-3 {
@@ -622,12 +836,84 @@ input:focus, textarea:focus, select:focus {
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(20px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
+}
+
+/* Hide scrollbars while maintaining scroll functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+
+/* Additional scrollbar hiding for modals */
+.modal-content {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.modal-content::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+
+/* Hide scrollbars on all modal elements */
+[class*="modal"] {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+[class*="modal"]::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbars only on specific elements, not globally */
+.modal-content,
+.scrollbar-hide,
+.fixed.inset-0,
+.bg-white.rounded-2xl {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.modal-content::-webkit-scrollbar,
+.scrollbar-hide::-webkit-scrollbar,
+.fixed.inset-0::-webkit-scrollbar,
+.bg-white.rounded-2xl::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
+/* Specific targeting for modal containers */
+.fixed.inset-0,
+.bg-white.rounded-2xl,
+.overflow-y-auto {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.fixed.inset-0::-webkit-scrollbar,
+.bg-white.rounded-2xl::-webkit-scrollbar,
+.overflow-y-auto::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* Body scroll lock when modal is open */
+body.modal-open {
+  overflow: hidden !important;
+  position: fixed !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Prevent background scrolling on mobile */
+body.modal-open {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: none;
 }
 
 @keyframes slideInLeft {
@@ -718,7 +1004,7 @@ html {
 
 /* Dark mode scrollbar */
 .dark ::-webkit-scrollbar-track {
-  background: #374151;
+  background: #000000;
 }
 
 .dark ::-webkit-scrollbar-thumb {
@@ -751,7 +1037,7 @@ html {
 }
 
 .dark .glass {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -892,4 +1178,672 @@ select:focus {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Vastu Loading Screen Styles */
+.vastu-mandala {
+  background: conic-gradient(from 0deg, #fbbf24, #f59e0b, #d97706, #fbbf24);
+  animation: rotate 8s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Marathi text styling */
+.marathi-text {
+  font-family: 'Noto Sans Devanagari', sans-serif;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Floating animation for decorative elements */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.floating {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Vastu directional colors */
+.vastu-north { background-color: #6b7280; } /* Gray */
+.vastu-south { background-color: #ef4444; } /* Red */
+.vastu-east { background-color: #10b981; } /* Green */
+.vastu-west { background-color: #f59e0b; } /* Yellow */
+
+/* Mobile Responsiveness Improvements */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .text-responsive {
+    font-size: clamp(0.875rem, 4vw, 1rem);
+  }
+  
+  .heading-responsive {
+    font-size: clamp(1.25rem, 6vw, 1.875rem);
+  }
+  
+  .btn-responsive {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+  
+  .card-responsive {
+    margin: 0.5rem;
+    padding: 1rem;
+  }
+  
+  .grid-responsive {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .flex-responsive {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .spacing-responsive {
+    padding: 1rem 0;
+    margin: 1rem 0;
+  }
+  
+  .text-center-mobile {
+    text-align: center;
+  }
+  
+  .hidden-mobile {
+    display: none;
+  }
+  
+  .block-mobile {
+    display: block;
+  }
+  
+  /* Mobile-specific improvements */
+  .mobile-padding {
+    padding: 1rem;
+  }
+  
+  .mobile-text-sm {
+    font-size: 0.875rem;
+  }
+  
+  .mobile-text-base {
+    font-size: 1rem;
+  }
+  
+  .mobile-text-lg {
+    font-size: 1.125rem;
+  }
+  
+  .mobile-text-xl {
+    font-size: 1.25rem;
+  }
+  
+  .mobile-text-2xl {
+    font-size: 1.5rem;
+  }
+  
+  .mobile-gap-2 {
+    gap: 0.5rem;
+  }
+  
+  .mobile-gap-4 {
+    gap: 1rem;
+  }
+  
+  .mobile-p-2 {
+    padding: 0.5rem;
+  }
+  
+  .mobile-p-4 {
+    padding: 1rem;
+  }
+  
+  .mobile-p-6 {
+    padding: 1.5rem;
+  }
+  
+  .mobile-mb-2 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .mobile-mb-4 {
+    margin-bottom: 1rem;
+  }
+  
+  .mobile-mb-6 {
+    margin-bottom: 1.5rem;
+  }
+  
+  .mobile-mb-8 {
+    margin-bottom: 2rem;
+  }
+  
+  /* Mobile form improvements */
+  .mobile-form input,
+  .mobile-form textarea,
+  .mobile-form select {
+    font-size: 16px; /* Prevents zoom on iOS */
+    padding: 0.75rem;
+  }
+  
+  /* Mobile button improvements */
+  .mobile-btn {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+  
+  /* Mobile navigation improvements */
+  .mobile-nav {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+  
+  /* Mobile card improvements */
+  .mobile-card {
+    margin: 0.5rem;
+    padding: 1rem;
+    border-radius: 0.75rem;
+  }
+  
+  /* Mobile grid improvements */
+  .mobile-grid-1 {
+    grid-template-columns: 1fr;
+  }
+  
+  .mobile-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  /* Mobile flex improvements */
+  .mobile-flex-col {
+    flex-direction: column;
+  }
+  
+  .mobile-flex-row {
+    flex-direction: row;
+  }
+  
+  /* Mobile spacing improvements */
+  .mobile-space-y-2 > * + * {
+    margin-top: 0.5rem;
+  }
+  
+  .mobile-space-y-4 > * + * {
+    margin-top: 1rem;
+  }
+  
+  .mobile-space-y-6 > * + * {
+    margin-top: 1.5rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .grid-responsive {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .flex-responsive {
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  .grid-responsive {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  .flex-responsive {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+}
+
+/* Touch-friendly interactive elements */
+@media (hover: none) and (pointer: coarse) {
+  .btn, button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .carousel-button {
+    min-height: 48px;
+    min-width: 48px;
+  }
+  
+  .nav-link {
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* High DPI display optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .carousel-image {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Android-specific optimizations */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .android-optimized {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+}
+
+/* iPhone-specific optimizations */
+@supports (-webkit-touch-callout: none) {
+  .iphone-optimized {
+    -webkit-overflow-scrolling: touch;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  
+  /* Prevent zoom on input focus for iOS */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="password"],
+  textarea,
+  select {
+    font-size: 16px !important;
+  }
+}
+
+/* Mobile Safari specific fixes */
+@supports (-webkit-appearance: none) {
+  .mobile-safari-fix {
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+  }
+}
+
+/* Android Chrome specific fixes */
+@media screen and (max-width: 768px) {
+  .android-chrome-fix {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+}
+
+/* Mobile viewport fixes */
+@media screen and (max-width: 480px) {
+  .mobile-viewport-fix {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+  
+  .mobile-navbar-fix {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+  
+  .mobile-content-fix {
+    padding-top: 4rem;
+  }
+}
+
+/* Landscape mobile optimizations */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  .landscape-mobile {
+    padding: 0.5rem;
+  }
+  
+  .landscape-mobile .mobile-nav {
+    padding: 0.5rem;
+  }
+  
+  .landscape-mobile .mobile-card {
+    padding: 0.75rem;
+  }
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Smooth Carousel Transitions */
+.carousel-smooth {
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.carousel-container {
+  transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+/* Smooth sliding container - Ganesh Housing style */
+.carousel-sliding-container {
+  transition: transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  /* Ensure smooth rendering */
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  /* Force hardware acceleration */
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  backface-visibility: hidden;
+  /* Optimize for smooth sliding */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Ganesh Housing style smoothness */
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.carousel-image {
+  transition: opacity 0.6s ease-in-out, transform 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+  will-change: opacity, transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  /* Ganesh Housing style image smoothness */
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.carousel-button {
+  transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+  will-change: transform, background-color;
+  backface-visibility: hidden;
+  /* Ganesh Housing style button smoothness */
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.carousel-button:hover {
+  transform: translateY(-50%) scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  background-color: rgba(255, 255, 255, 0.35);
+}
+
+.carousel-dot {
+  transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+  will-change: transform, background-color;
+  backface-visibility: hidden;
+  /* Ganesh Housing style dot smoothness */
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.carousel-dot:hover {
+  transform: scale(1.15);
+  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.25);
+}
+
+.carousel-dot.active {
+  transform: scale(1.25);
+  box-shadow: 0 3px 10px rgba(255, 193, 7, 0.4);
+}
+
+/* Enhanced carousel slide effects - Ganesh Housing style */
+.carousel-slide {
+  transition: all 0.8s cubic-bezier(0.25, 0.1, 0.25, 1);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  /* Ganesh Housing style slide smoothness */
+  transition-timing-function: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.carousel-slide-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.carousel-slide-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.carousel-slide-exit {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.carousel-slide-exit-active {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+/* Hero Swiper Styles */
+.hero-swiper {
+  height: 100vh !important;
+}
+
+.hero-swiper .swiper-slide {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.hero-swiper .swiper-slide > div {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-swiper .swiper-slide img,
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  image-rendering: high-quality;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  filter: brightness(1.05) contrast(1.1) saturate(1.1);
+  transition: all 0.3s ease;
+  opacity: 1;
+}
+
+@keyframes fadeInImage {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Ensure images are sharp and clear */
+.hero-swiper .swiper-slide img[src],
+.hero-image[src] {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+/* Force image visibility */
+.hero-swiper .swiper-slide img {
+  opacity: 1 !important;
+  visibility: visible !important;
+  display: block !important;
+}
+
+.hero-swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.hero-swiper-pagination-bullet-active {
+  background: #ffd700;
+  transform: scale(1.2);
+}
+
+.hero-swiper-button-prev:after,
+.hero-swiper-button-next:after {
+  display: none;
+}
+
+.hero-swiper-button-prev.swiper-button-disabled,
+.hero-swiper-button-next.swiper-button-disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Dark mode support for hero swiper */
+.dark .hero-swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.dark .hero-swiper-pagination-bullet-active {
+  background: #ffd700;
+}
+
+/* Milestone Image Transitions */
+.carousel-sliding-container {
+  transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.carousel-slide {
+  transition: all 0.3s ease;
+}
+
+.carousel-image {
+  transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.carousel-button {
+  transition: all 0.2s ease;
+}
+
+.carousel-button:hover {
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Milestone Image Popup - Prevent Blinking */
+.image-popup-container {
+  will-change: auto;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  contain: layout style paint;
+}
+
+.image-popup-container img {
+  will-change: auto;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  contain: layout style paint;
+}
+
+/* Prevent layout shifts during image changes */
+.milestone-image-container {
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  contain: layout style paint;
+  position: relative;
+}
+
+/* Smooth image transitions */
+.milestone-image-container img {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  will-change: opacity, transform;
+}
+
+/* Modal Positioning and Behavior */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  padding: 1rem;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  max-width: 32rem;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Responsive modal adjustments */
+@media (max-width: 640px) {
+  .modal-content {
+    margin: 0.5rem;
+    max-height: 95vh;
+  }
+}
+
+/* Prevent body scroll when modal is open */
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
 }

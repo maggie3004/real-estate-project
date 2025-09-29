@@ -38,16 +38,16 @@ export default function Profile() {
           }
         `}</script>
       </Helmet>
-      <div className="max-w-md mx-auto p-6">
+      <div className="max-w-md mx-auto p-6 pt-24">
         <h1 className="text-3xl font-bold mb-6">Profile</h1>
         <div className="mb-4">
           <div><span className="font-semibold">Email:</span> {user.email}</div>
           <div><span className="font-semibold">Role:</span> {user.role}</div>
         </div>
         {user.role === 'admin' && (
-          <div className="mb-4 p-4 bg-blue-50 rounded">
-            <p className="font-semibold text-blue-700 mb-2">You are an admin.</p>
-            <Link to="/admin" className="text-blue-600 underline">Go to Admin Dashboard</Link>
+          <div className="mb-4 p-4 bg-gray-50 dark:bg-gray-900 rounded">
+            <p className="font-semibold text-gray-700 dark:text-gray-300 mb-2">You are an admin.</p>
+            <Link to="/admin" className="text-gray-600 dark:text-gray-400 underline">Go to Admin Dashboard</Link>
           </div>
         )}
       </div>

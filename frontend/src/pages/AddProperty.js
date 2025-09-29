@@ -120,7 +120,7 @@ export default function AddProperty() {
           }
         `}</script>
       </Helmet>
-      <div className="max-w-2xl mx-auto p-6">
+      <div className="max-w-2xl mx-auto p-6 pt-24">
         <h1 className="text-3xl font-bold mb-6">Add New Property</h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <input name="title" value={form.title} onChange={handleChange} placeholder="Title" className="w-full p-2 border rounded" required />
@@ -141,7 +141,7 @@ export default function AddProperty() {
           <input name="floor" value={form.floor} onChange={handleChange} placeholder="Floor" className="w-full p-2 border rounded" type="number" />
           <input name="totalFloors" value={form.totalFloors} onChange={handleChange} placeholder="Total Floors" className="w-full p-2 border rounded" type="number" />
           <input name="facing" value={form.facing} onChange={handleChange} placeholder="Facing (e.g. East)" className="w-full p-2 border rounded" />
-          <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded font-semibold hover:bg-blue-700 transition" disabled={loading}>{loading ? 'Adding...' : 'Add Property'}</button>
+          <button type="submit" className="bg-gray-600 text-white px-4 py-2 rounded font-semibold hover:bg-gray-700 transition" disabled={loading}>{loading ? 'Adding...' : 'Add Property'}</button>
           {success && <p className="text-green-600">{success}</p>}
           {error && <p className="text-red-600">{error}</p>}
         </form>

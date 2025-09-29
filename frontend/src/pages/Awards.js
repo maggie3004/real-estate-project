@@ -152,7 +152,7 @@ const Awards = () => {
                 </div>
                 <div className="p-6">
                   <div className="mb-3">
-                    <span className="inline-block bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 px-3 py-1 rounded-full text-sm font-semibold">
+                    <span className="inline-block bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-3 py-1 rounded-full text-sm font-semibold">
                       {award.category}
                     </span>
                   </div>
@@ -223,30 +223,6 @@ const Awards = () => {
           </div>
         </div>
 
-        {/* Stats Section */}
-        <div className="bg-gradient-to-r from-gold-50 to-orange-50 dark:from-gold-900/20 dark:to-orange-900/20 rounded-3xl p-12 mb-16">
-          <h2 className="text-3xl font-bold text-center text-[#E53935] mb-8">
-            Recognition in Numbers
-          </h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-gold mb-2">6+</div>
-              <div className="text-gray-600 dark:text-gray-300 font-medium">Awards Won</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-blue-600 mb-2">15+</div>
-              <div className="text-gray-600 dark:text-gray-300 font-medium">Events Organized</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-green-600 mb-2">2000+</div>
-              <div className="text-gray-600 dark:text-gray-300 font-medium">Event Attendees</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl md:text-5xl font-bold text-purple-600 mb-2">5+</div>
-              <div className="text-gray-600 dark:text-gray-300 font-medium">Years of Recognition</div>
-            </div>
-          </div>
-        </div>
 
         {/* Call to Action */}
         <div className="text-center">

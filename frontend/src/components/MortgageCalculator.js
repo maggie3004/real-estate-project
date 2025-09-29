@@ -270,7 +270,7 @@ const MortgageCalculator = () => {
             
             <motion.div
               whileHover={{ scale: 1.02 }}
-              className="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-6 rounded-xl"
+              className="bg-gradient-to-br from-gray-600 to-gray-700 text-white p-6 rounded-xl"
             >
               <h3 className="text-sm font-medium opacity-90">Total Interest</h3>
               <p className="text-2xl font-bold mt-1">{formatCurrency(totalInterest)}</p>
@@ -346,9 +346,9 @@ const MortgageCalculator = () => {
           >
             <h3 className="text-xl font-bold text-gray-900 mb-6">Amortization Schedule (First 5 Years)</h3>
             <div className="overflow-x-auto">
-              <table className="w-full text-sm bg-white dark:bg-[#232323]">
+              <table className="w-full text-sm bg-white dark:bg-black">
                 <thead>
-                  <tr className="bg-gray-50 dark:bg-gray-800">
+                  <tr className="bg-gray-50 dark:bg-gray-900">
                     <th className="px-4 py-3 text-left font-semibold text-gray-700 dark:text-white">Month</th>
                     <th className="px-4 py-3 text-right font-semibold text-gray-700 dark:text-white">Payment</th>
                     <th className="px-4 py-3 text-right font-semibold text-gray-700 dark:text-white">Principal</th>
@@ -358,7 +358,7 @@ const MortgageCalculator = () => {
                 </thead>
                 <tbody>
                   {amortizationSchedule.map((row, index) => (
-                    <tr key={index} className="border-b border-gray-100 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800">
+                    <tr key={index} className="border-b border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-900">
                       <td className="px-4 py-3 text-[#181818] dark:text-white">{row.month}</td>
                       <td className="px-4 py-3 text-right font-medium text-[#181818] dark:text-white">{formatCurrency(row.payment)}</td>
                       <td className="px-4 py-3 text-right text-green-600 dark:text-green-300">{formatCurrency(row.principal)}</td>

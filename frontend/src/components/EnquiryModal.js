@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const buttonStyle = {
   position: 'fixed',
@@ -30,16 +30,23 @@ const modalOverlayStyle = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
+  padding: '16px',
 };
 
 const modalStyle = {
   background: 'white',
-  borderRadius: '8px',
-  padding: '32px',
+  borderRadius: '12px',
+  padding: '24px',
   minWidth: '320px',
-  maxWidth: '90vw',
-  boxShadow: '0 2px 16px rgba(0,0,0,0.2)',
+  maxWidth: '500px',
+  width: '100%',
+  maxHeight: '90vh',
+  boxShadow: '0 10px 25px rgba(0,0,0,0.2)',
   position: 'relative',
+  overflowY: 'auto',
+  scrollbarWidth: 'none', // Firefox
+  msOverflowStyle: 'none', // IE and Edge
+  WebkitScrollbar: 'none', // Webkit browsers
 };
 
 const closeBtnStyle = {
@@ -57,6 +64,28 @@ const EnquiryModal = ({ open: controlledOpen, setOpen: setControlledOpen }) => {
   const open = controlledOpen !== undefined ? controlledOpen : internalOpen;
   const setOpen = setControlledOpen !== undefined ? setControlledOpen : setInternalOpen;
   const [form, setForm] = useState({ name: '', email: '', message: '' });
+
+  // Lock body scroll when modal is open
+  useEffect(() => {
+    if (open) {
+      // Prevent background scrolling
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+    } else {
+      // Restore background scrolling
+      document.body.style.overflow = 'unset';
+      document.body.style.position = 'unset';
+      document.body.style.width = 'unset';
+    }
+
+    // Cleanup on component unmount
+    return () => {
+      document.body.style.overflow = 'unset';
+      document.body.style.position = 'unset';
+      document.body.style.width = 'unset';
+    };
+  }, [open]);
 
   const handleChange = e => setForm({ ...form, [e.target.name]: e.target.value });
   const handleSubmit = e => {

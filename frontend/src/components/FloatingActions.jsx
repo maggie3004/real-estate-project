@@ -9,13 +9,13 @@ const FloatingActions = () => {
       icon: <FaWhatsapp size={20} />, 
       label: 'WhatsApp', 
       color: 'bg-green-500 hover:bg-green-600', 
-      href: 'https://wa.me/+919876543210' 
+      href: 'https://wa.me/+917030502111' 
     },
     { 
       icon: <FaPhone size={20} />, 
       label: 'Call', 
-      color: 'bg-blue-500 hover:bg-blue-600', 
-      href: 'tel:+919876543210'
+      color: 'bg-gray-600 hover:bg-gray-700', 
+      href: 'tel:+917030502111'
     },
     { 
       icon: <FaDownload size={20} />, 
