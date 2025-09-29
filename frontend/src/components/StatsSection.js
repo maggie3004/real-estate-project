@@ -5,7 +5,7 @@ const stats = [
   { label: 'Projects Completed', value: 25, suffix: '+' },
   { label: 'Homes Delivered', value: 500, suffix: '+' },
   { label: 'Customer Satisfaction', value: 100, suffix: '%' },
-  { label: 'Sq. Ft. Developed', value: 1, suffix: 'M+' },
+  { label: 'Sq. Ft. Developed', value: 1000000, suffix: '+' },
   { label: 'Awards Won', value: 5, suffix: '+' },
 ];
 
@@ -56,9 +56,9 @@ const StatsSection = () => {
         const targetValue = stat.value;
         const currentValue = targetValue * easeOutQuart;
         
-        // Handle decimal values for Sq. Ft. Developed
+        // Handle large numbers for Sq. Ft. Developed
         if (stat.label === 'Sq. Ft. Developed') {
-          return parseFloat(currentValue.toFixed(1));
+          return Math.floor(currentValue);
         }
         return Math.floor(currentValue);
       });
@@ -75,7 +75,7 @@ const StatsSection = () => {
 
   const formatValue = (value, stat) => {
     if (stat.label === 'Sq. Ft. Developed') {
-      return `${value}${stat.suffix}`;
+      return `${Math.floor(value).toLocaleString()}${stat.suffix}`;
     }
     return `${value}${stat.suffix}`;
   };

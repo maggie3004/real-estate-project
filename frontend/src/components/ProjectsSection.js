@@ -10,21 +10,9 @@ import 'swiper/css/pagination';
 
 const projects = [
   {
-    name: 'Sai Shraddha Apartment',
-    location: 'College Road, Nashik',
-    status: 'Completed',
-    image: '/assets/sai-shraddha-apartment/gallery/front.jpg',
-    description: 'A beautifully designed residential complex offering comfortable living with all modern amenities and excellent connectivity.',
-    type: '1 & 2 BHK',
-    units: '80 Units',
-    area: '1.8 Acres',
-    completionDate: '2024',
-    route: '/SaiShraddhaApartment'
-  },
-  {
     name: 'Shree Ganesh Heights',
     location: 'Nashik',
-    status: 'Completed',
+    status: 'Ongoing',
     image: '/assets/shree-ganesh-heights/gallery/front.jpeg',
     description: 'Premium residential development with modern amenities and excellent location advantages.',
     type: '2 & 3 BHK',
@@ -36,7 +24,7 @@ const projects = [
   {
     name: 'Shree Ganesh Park',
     location: 'Nashik',
-    status: 'Completed',
+    status: 'Ongoing',
     image: '/assets/shree-ganesh-park/gallery/a-view.jpg',
     description: 'A premium residential development with multiple wings offering various apartment configurations.',
     type: '1 & 2 BHK',
@@ -48,7 +36,7 @@ const projects = [
   {
     name: 'Shreeganesh Srushti',
     location: 'Nashik',
-    status: 'Completed',
+    status: 'Ongoing',
     image: '/assets/shree-ganesh-srushti/gallery/front.jpg',
     description: 'Latest residential development with contemporary design and all modern facilities.',
     type: '2 & 3 BHK',
@@ -56,6 +44,18 @@ const projects = [
     area: '2.0 Acres',
     completionDate: '2025',
     route: '/ShreeGaneshSrushti'
+  },
+  {
+    name: 'Sai Shraddha Apartment',
+    location: 'College Road, Nashik',
+    status: 'Completed',
+    image: '/assets/sai-shraddha-apartment/gallery/front.jpg',
+    description: 'A beautifully designed residential complex offering comfortable living with all modern amenities and excellent connectivity.',
+    type: '1 & 2 BHK',
+    units: '80 Units',
+    area: '1.8 Acres',
+    completionDate: '2024',
+    route: '/SaiShraddhaApartment'
   },
   {
     name: 'Vinayak Apartment',
@@ -91,10 +91,10 @@ const ProjectsSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Our <span className="text-primary-600 dark:text-primary-400 bg-gradient-to-r from-primary-600 to-primary-700 bg-clip-text text-transparent">Premium Projects</span>
+            Our <span className="text-primary-600 dark:text-primary-400 bg-gradient-to-r from-primary-600 to-primary-700 bg-clip-text text-transparent">Exclusive Projects</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Discover our carefully curated collection of premium residential projects, 
+            Discover our carefully curated collection of exclusive residential projects, 
             each designed to offer the perfect blend of luxury, comfort, and modern living.
           </p>
         </motion.div>
