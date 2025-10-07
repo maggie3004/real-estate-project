@@ -1,4 +1,8 @@
 import React, { useEffect } from 'react';
+import sgpAView from '../assets/shree-ganesh-park/gallery/a-view.jpg';
+import sgpBView from '../assets/shree-ganesh-park/gallery/b-view.jpg';
+import sgpNightA from '../assets/shree-ganesh-park/gallery/night-view-a.jpg';
+import sgpBrochure from '../assets/shree-ganesh-park/Shree Ganesh Park E- Brochure.pdf';
 import ProjectTemplate from '../components/ProjectTemplate';
 import { FaCar, FaSun, FaBuilding, FaShieldAlt, FaWater, FaTint } from 'react-icons/fa';
 import { MdMeetingRoom } from 'react-icons/md';
@@ -26,14 +30,13 @@ const ShreeGaneshParkPhaseI = () => {
       { icon: <FaWater />, name: "Water Supply" },
       { icon: <FaCar />, name: "Parking Space" }
     ],
-    images: [
-      "/assets/shree-ganesh-park-phase-i/gallery/1.jpg",
-      "/assets/shree-ganesh-park-phase-i/gallery/2.jpg",
-      "/assets/shree-ganesh-park-phase-i/gallery/3.jpg",
-      "/assets/shree-ganesh-park-phase-i/gallery/4.jpg",
-      "/assets/shree-ganesh-park-phase-i/gallery/5.jpg"
-    ],
-    brochurePath: "/assets/shree-ganesh-park-phase-i/brochures/Shree-Ganesh-Park-Phase-I.pdf",
+    images: [sgpAView, sgpBView, sgpNightA],
+    brochurePath: sgpBrochure,
+    reraNumber: "PXXXXXXX",
+    reraQr: "/owner-placeholder.png",
+    layoutVariant: 'ongoing',
+    configuration: "1BHK, 2BHK",
+    location: "Nashik",
     mapUrl: "https://maps.app.goo.gl/6X9DkrFsd58nzQFT9",
     directionsUrl: "https://maps.app.goo.gl/6X9DkrFsd58nzQFT9"
   };

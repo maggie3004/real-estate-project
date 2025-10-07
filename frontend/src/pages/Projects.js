@@ -1,4 +1,18 @@
 import React from 'react';
+// Assets for ongoing projects (using src/assets paths)
+import sghFront from '../assets/shree-ganesh-heights/gallery/front.jpeg';
+import sghTopView from '../assets/shree-ganesh-heights/gallery/top-view.jpg';
+import sghNightFront from '../assets/shree-ganesh-heights/gallery/night-front.jpg';
+import sghBrochure from '../assets/shree-ganesh-heights/Shri Ganesh Heights.pdf';
+
+import sgpAView from '../assets/shree-ganesh-park/gallery/a-view.jpg';
+import sgpBView from '../assets/shree-ganesh-park/gallery/b-view.jpg';
+import sgpNightA from '../assets/shree-ganesh-park/gallery/night-view-a.jpg';
+import sgpBrochure from '../assets/shree-ganesh-park/Shree Ganesh Park E- Brochure.pdf';
+
+import sgsFront from '../assets/shree-ganesh-srushti/gallery/front.jpg';
+import sgs1bhk from '../assets/shree-ganesh-srushti/gallery/1bhk.jpg';
+import sgs2bhk from '../assets/shree-ganesh-srushti/gallery/2bhk.jpg';
 import ProjectCard from '../components/ProjectCard';
 import ProjectCarousel from '../components/ProjectCarousel';
 import { Helmet } from 'react-helmet';
@@ -23,7 +37,12 @@ const projects = {
       description: 'Premium residential development with modern amenities and excellent location advantages.',
       status: 'Ongoing',
       location: 'Nashik',
-      image: '/assets/shree-ganesh-heights/gallery/front.jpeg',
+      image: sghFront,
+      images: [sghFront, sghTopView, sghNightFront],
+      configuration: '2BHK, 3BHK',
+      brochureUrl: sghBrochure,
+      reraNumber: 'PXXXXXXX',
+      reraQr: '/owner-placeholder.png'
     },
     {
       id: 'on2',
@@ -31,7 +50,12 @@ const projects = {
       description: 'A premium residential development with multiple wings offering various apartment configurations.',
       status: 'Ongoing',
       location: 'Nashik',
-      image: '/assets/shree-ganesh-park/gallery/a-view.jpg',
+      image: sgpAView,
+      images: [sgpAView, sgpBView, sgpNightA],
+      configuration: '1BHK, 2BHK',
+      brochureUrl: sgpBrochure,
+      reraNumber: 'PXXXXXXX',
+      reraQr: '/owner-placeholder.png'
     },
     {
       id: 'on3',
@@ -39,7 +63,12 @@ const projects = {
       description: 'Latest residential development with contemporary design and all modern facilities.',
       status: 'Ongoing',
       location: 'Nashik',
-      image: '/assets/shree-ganesh-srushti/gallery/front.jpg',
+      image: sgsFront,
+      images: [sgsFront, sgs1bhk, sgs2bhk],
+      configuration: '1BHK, 2BHK',
+      brochureUrl: '/Shree-Ganesh-Brochure.pdf',
+      reraNumber: 'PXXXXXXX',
+      reraQr: '/owner-placeholder.png'
     },
     // Add more ongoing projects...
   ],

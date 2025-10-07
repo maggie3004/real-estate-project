@@ -1,6 +1,5 @@
 import React from 'react';
-import { FaWhatsapp } from 'react-icons/fa';
-import { FiPhone, FiDownload } from 'react-icons/fi';
+import { FiDownload } from 'react-icons/fi';
 
 const FloatingActions = ({ brochurePath, projectName }) => {
 
@@ -24,40 +23,7 @@ const FloatingActions = ({ brochurePath, projectName }) => {
     }
   };
 
-  return (
-    <div className="fixed bottom-4 right-4 z-50">
-      <div className="relative">
-        {/* Main buttons */}
-        <div className="flex flex-col gap-2">
-          <a 
-            href="https://wa.me/1234567890" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="bg-green-500 p-2 sm:p-3 rounded-full shadow-lg hover:bg-green-600 transition-colors"
-          >
-            <FaWhatsapp className="text-white" size={20} />
-          </a>
-          
-          <a 
-            href="tel:+911234567890" 
-            className="bg-gray-600 p-2 sm:p-3 rounded-full shadow-lg hover:bg-gray-700 transition-colors"
-          >
-            <FiPhone className="text-white" size={20} />
-          </a>
-
-          <button 
-            onClick={handleDownload}
-            className="bg-purple-500 p-2 sm:p-3 rounded-full shadow-lg hover:bg-purple-600 transition-colors"
-            disabled={!brochurePath}
-          >
-            <FiDownload className="text-white" size={20} />
-          </button>
-
-          {/* Add other buttons as needed */}
-        </div>
-      </div>
-    </div>
-  );
+  return null;
 };
 
 export default FloatingActions;

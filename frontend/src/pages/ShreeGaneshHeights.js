@@ -1,4 +1,8 @@
 import React, { useEffect } from 'react';
+import sghFront from '../assets/shree-ganesh-heights/gallery/front.jpeg';
+import sghTopView from '../assets/shree-ganesh-heights/gallery/top-view.jpg';
+import sghNightFront from '../assets/shree-ganesh-heights/gallery/night-front.jpg';
+import sghBrochure from '../assets/shree-ganesh-heights/Shri Ganesh Heights.pdf';
 import ProjectTemplate from '../components/ProjectTemplate';
 import { FaCar, FaSun, FaBuilding, FaShieldAlt, FaWater, FaTint } from 'react-icons/fa';
 import { MdMeetingRoom } from 'react-icons/md';
@@ -26,13 +30,13 @@ const ShreeGaneshHeights = () => {
       { icon: <FaWater />, name: "Water Supply" },
       { icon: <FaCar />, name: "Parking Space" }
     ],
-    images: [
-      "/assets/shree-ganesh-heights/gallery/1.jpeg",
-      "/assets/shree-ganesh-heights/gallery/2.jpeg",
-      "/assets/shree-ganesh-heights/gallery/3.jpeg",
-      "/assets/shree-ganesh-heights/gallery/4.jpeg"
-    ],
-    brochurePath: "/assets/shree-ganesh-heights/Shri Ganesh Heights.pdf",
+    images: [sghFront, sghTopView, sghNightFront],
+    brochurePath: sghBrochure,
+    reraNumber: "PXXXXXXX",
+    reraQr: "/owner-placeholder.png",
+    layoutVariant: 'ongoing',
+    configuration: "2BHK, 3BHK",
+    location: "Nashik",
     mapUrl: "https://maps.app.goo.gl/6X9DkrFsd58nzQFT9?g_st=com.google.maps.preview.copy",
     directionsUrl: "https://www.google.com/maps/dir//Shree+ganesh+heights+B/@19.9583632,73.7635915,103m"
   };

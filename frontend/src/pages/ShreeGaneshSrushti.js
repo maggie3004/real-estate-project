@@ -1,4 +1,7 @@
 import React, { useEffect } from 'react';
+import sgsFront from '../assets/shree-ganesh-srushti/gallery/front.jpg';
+import sgs1bhk from '../assets/shree-ganesh-srushti/gallery/1bhk.jpg';
+import sgs2bhk from '../assets/shree-ganesh-srushti/gallery/2bhk.jpg';
 import ProjectTemplate from '../components/ProjectTemplate';
 import { FaCar, FaSun, FaBuilding, FaShieldAlt, FaWater, FaTint } from 'react-icons/fa';
 import { MdMeetingRoom } from 'react-icons/md';
@@ -26,14 +29,13 @@ const ShreeGaneshSrushti = () => {
       { icon: <FaWater />, name: "Water Supply" },
       { icon: <FaCar />, name: "Parking Space" }
     ],
-    images: [
-      "/assets/shree-ganesh-srushti/gallery/1.jpg",
-      "/assets/shree-ganesh-srushti/gallery/2.jpg",
-      "/assets/shree-ganesh-srushti/gallery/3.jpg",
-      "/assets/shree-ganesh-srushti/gallery/4.jpg",
-      "/assets/shree-ganesh-srushti/gallery/5.jpg"
-    ],
-    brochurePath: "/assets/shree-ganesh-srushti/brochures/Shree-Ganesh-Srushti.pdf",
+    images: [sgsFront, sgs1bhk, sgs2bhk],
+    brochurePath: "/Shree-Ganesh-Brochure.pdf",
+    reraNumber: "PXXXXXXX",
+    reraQr: "/owner-placeholder.png",
+    layoutVariant: 'ongoing',
+    configuration: "1BHK, 2BHK",
+    location: "Nashik",
     mapUrl: "https://maps.app.goo.gl/6X9DkrFsd58nzQFT9",
     directionsUrl: "https://maps.app.goo.gl/6X9DkrFsd58nzQFT9"
   };
