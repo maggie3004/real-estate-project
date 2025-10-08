@@ -37,6 +37,28 @@ const ShreeGaneshHeights = () => {
     layoutVariant: 'ongoing',
     configuration: "2BHK, 3BHK",
     location: "Nashik",
+    progressStage: 2,
+    locationChips: ["Airport 25 min", "Hospital 8 min", "School 5 min"],
+    floorPlans: [
+      { label: "2BHK", src: sghTopView },
+      { label: "3BHK", src: sghNightFront }
+    ],
+    downloads: [
+      { label: "Project Brochure", href: sghBrochure },
+      { label: "Typical Floor Plan", href: "../assets/shree-ganesh-heights/Typical Floor.pdf" }
+    ],
+    advantages: ["Prime Connectivity", "Secure Campus", "Modern Elevation", "Efficient Layouts", "Solar Ready", "Ample Parking"],
+    testimonials: [
+      { quote: "Great planning and finishes.", author: "Homebuyer" },
+      { quote: "Excellent location and value.", author: "Investor" }
+    ],
+    cost: { base: "On Request", taxes: "As applicable", maintenance: "TBD" },
+    timeline: [
+      { label: "Launch", caption: "Brand reveal", image: sghFront },
+      { label: "Foundation", caption: "Groundwork done", image: sghTopView },
+      { label: "Structure", caption: "Superstructure rising", image: sghNightFront },
+      { label: "Finishing", caption: "Interiors underway", image: sghFront }
+    ],
     mapUrl: "https://maps.app.goo.gl/6X9DkrFsd58nzQFT9?g_st=com.google.maps.preview.copy",
     directionsUrl: "https://www.google.com/maps/dir//Shree+ganesh+heights+B/@19.9583632,73.7635915,103m"
   };

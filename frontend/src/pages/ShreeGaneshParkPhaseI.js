@@ -37,6 +37,26 @@ const ShreeGaneshParkPhaseI = () => {
     layoutVariant: 'ongoing',
     configuration: "1BHK, 2BHK",
     location: "Nashik",
+    progressStage: 1,
+    locationChips: ["Railway 15 min", "Hospital 10 min", "School 6 min"],
+    floorPlans: [
+      { label: "1BHK", src: sgpAView },
+      { label: "2BHK", src: sgpBView }
+    ],
+    downloads: [
+      { label: "Project Brochure", href: sgpBrochure }
+    ],
+    advantages: ["Multiple Wings", "Secure Entry", "Community Hall", "Optimized Layouts", "Solar", "Parking"],
+    testimonials: [
+      { quote: "Comfortable and practical homes.", author: "Resident" }
+    ],
+    cost: { base: "On Request", taxes: "As applicable", maintenance: "TBD" },
+    timeline: [
+      { label: "Launch", caption: "Bookings open", image: sgpAView },
+      { label: "Foundation", caption: "Work started", image: sgpBView },
+      { label: "Structure", caption: "Floors cast", image: sgpNightA },
+      { label: "Finishing", caption: "Paint & interiors", image: sgpAView }
+    ],
     mapUrl: "https://maps.app.goo.gl/6X9DkrFsd58nzQFT9",
     directionsUrl: "https://maps.app.goo.gl/6X9DkrFsd58nzQFT9"
   };
