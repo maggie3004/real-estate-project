@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import { FaMapMarkerAlt, FaClock } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay, FreeMode } from 'swiper/modules';
+import { Navigation, Pagination, FreeMode } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -106,7 +106,7 @@ const ProjectsSection = () => {
         {/* Featured Projects Slider with Proper Margins */}
         <div className="featured-slider-container relative">
           <Swiper
-            modules={[Navigation, Pagination, Autoplay, FreeMode]}
+            modules={[Navigation, Pagination, FreeMode]}
             spaceBetween={20}
             slidesPerView="auto"
             freeMode={true}
@@ -117,10 +117,6 @@ const ProjectsSection = () => {
             pagination={{
               clickable: true,
               el: '.swiper-pagination-custom',
-            }}
-            autoplay={{
-              delay: 5000,
-              disableOnInteraction: false,
             }}
             centeredSlides={false}
             className="featured-slider"

@@ -47,9 +47,7 @@ const ShreeGaneshParkPhaseI = () => {
       { label: "Project Brochure", href: sgpBrochure }
     ],
     advantages: ["Multiple Wings", "Secure Entry", "Community Hall", "Optimized Layouts", "Solar", "Parking"],
-    testimonials: [
-      { quote: "Comfortable and practical homes.", author: "Resident" }
-    ],
+    testimonials: [],
     cost: { base: "On Request", taxes: "As applicable", maintenance: "TBD" },
     timeline: [
       { label: "Launch", caption: "Bookings open", image: sgpAView },

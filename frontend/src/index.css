@@ -64,6 +64,11 @@ body {
   will-change: scroll-position;
 }
 
+/* Ensure the main scroll container doesn't create a new stacking/overflow context that clips fixed portal elements */
+.app-main {
+  overflow: visible !important;
+}
+
 /* Performance optimizations */
 * {
   will-change: auto;
@@ -905,7 +910,6 @@ input:focus, textarea:focus, select:focus {
 /* Body scroll lock when modal is open */
 body.modal-open {
   overflow: hidden !important;
-  position: fixed !important;
   width: 100% !important;
   height: 100% !important;
 }

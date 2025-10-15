@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from '../assets/logo.png';
-import { FaLinkedin, FaFacebook, FaInstagram, FaYoutube, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaWhatsapp } from 'react-icons/fa';
+import { FaLinkedin, FaFacebook, FaInstagram, FaYoutube, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 
 function Footer() {
   return (
@@ -113,12 +113,7 @@ function Footer() {
               <button className="hover:text-gold transition-colors duration-200">Disclaimer</button>
             </div>
             <div className="flex items-center gap-3">
-              <a href="https://wa.me/917030502111" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-xs text-white bg-green-600 hover:bg-green-700 px-3 py-2 rounded-md transition-colors">
-                <FaWhatsapp size={14} /> WhatsApp
-              </a>
-              <a href="tel:+917030502111" className="inline-flex items-center gap-2 text-xs text-white bg-gray-700 hover:bg-gray-800 px-3 py-2 rounded-md transition-colors">
-                <FaPhoneAlt size={14} /> Call
-              </a>
+              {/* Contact buttons removed per request */}
             </div>
           </div>
         </div>

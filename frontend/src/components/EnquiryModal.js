@@ -68,22 +68,16 @@ const EnquiryModal = ({ open: controlledOpen, setOpen: setControlledOpen }) => {
   // Lock body scroll when modal is open
   useEffect(() => {
     if (open) {
-      // Prevent background scrolling
+      // Prevent background scrolling (do NOT set position: fixed on body)
       document.body.style.overflow = 'hidden';
-      document.body.style.position = 'fixed';
-      document.body.style.width = '100%';
     } else {
       // Restore background scrolling
       document.body.style.overflow = 'unset';
-      document.body.style.position = 'unset';
-      document.body.style.width = 'unset';
     }
 
     // Cleanup on component unmount
     return () => {
       document.body.style.overflow = 'unset';
-      document.body.style.position = 'unset';
-      document.body.style.width = 'unset';
     };
   }, [open]);
 

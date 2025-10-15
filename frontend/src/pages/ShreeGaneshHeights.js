@@ -48,10 +48,7 @@ const ShreeGaneshHeights = () => {
       { label: "Typical Floor Plan", href: "../assets/shree-ganesh-heights/Typical Floor.pdf" }
     ],
     advantages: ["Prime Connectivity", "Secure Campus", "Modern Elevation", "Efficient Layouts", "Solar Ready", "Ample Parking"],
-    testimonials: [
-      { quote: "Great planning and finishes.", author: "Homebuyer" },
-      { quote: "Excellent location and value.", author: "Investor" }
-    ],
+    testimonials: [],
     cost: { base: "On Request", taxes: "As applicable", maintenance: "TBD" },
     timeline: [
       { label: "Launch", caption: "Brand reveal", image: sghFront },

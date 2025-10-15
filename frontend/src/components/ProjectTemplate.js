@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaChevronLeft, FaChevronRight, FaPause, FaPlay, FaExpand } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight, FaPause, FaPlay } from 'react-icons/fa';
 import ImageGallery from './ImageGallery';
-import FloatingActions from './FloatingActions';
 
 const ProjectTemplate = ({ 
   projectName,
@@ -26,18 +25,29 @@ const ProjectTemplate = ({
   advantages,
   testimonials,
   cost,
-  timeline
+  
 }) => {
   // Initialize state
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isGalleryOpen, setGalleryOpen] = useState(false);
   const [activeFloorIdx, setActiveFloorIdx] = useState(0);
-  const [selectedTimelineIdx, setSelectedTimelineIdx] = useState(0);
+  const [showFullDesc, setShowFullDesc] = useState(false);
+  
+  // Determine variant and gallery images early so navigation can depend on gallery length
+  const isOngoingVariant = layoutVariant === 'ongoing' || Boolean(reraNumber);
+  // Prepare gallery images: for ongoing projects prefer floorPlans images
+  const galleryImages = (isOngoingVariant && Array.isArray(floorPlans) && floorPlans.length > 0)
+    ? floorPlans.map(fp => fp.src).filter(Boolean)
+    : images;
+  const hasImages = Array.isArray(galleryImages) && galleryImages.length > 0;
+  const filteredDownloads = Array.isArray(downloads)
+    ? downloads.filter(doc => doc && doc.href !== brochurePath && !(doc.label && doc.label.toLowerCase().includes('brochure')))
+    : [];
 
-  // Navigation functions
-  const handleNext = useCallback(() => setCurrentImageIndex((prev) => (prev + 1) % images.length), [images.length]);
-  const handlePrevious = useCallback(() => setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length), [images.length]);
+  // Navigation functions (operate over galleryImages)
+  const handleNext = useCallback(() => setCurrentImageIndex((prev) => (galleryImages.length ? (prev + 1) % galleryImages.length : 0)), [galleryImages.length]);
+  const handlePrevious = useCallback(() => setCurrentImageIndex((prev) => (galleryImages.length ? (prev - 1 + galleryImages.length) % galleryImages.length : 0)), [galleryImages.length]);
   const togglePlayPause = useCallback(() => setIsPlaying(!isPlaying), [isPlaying]);
 
   // Autoplay effect
@@ -49,20 +59,23 @@ const ProjectTemplate = ({
     return () => clearInterval(interval);
   }, [isPlaying, handleNext]);
 
-  const isOngoingVariant = layoutVariant === 'ongoing' || Boolean(reraNumber);
-  const currentProgressStage = typeof progressStage === 'number' ? progressStage : 2; // 0..3
-  const progressSteps = ['Launch', 'Foundation', 'Structure', 'Finishing'];
-  const hasImages = Array.isArray(images) && images.length > 0;
-  const filteredDownloads = Array.isArray(downloads)
-    ? downloads.filter(doc => doc && doc.href !== brochurePath && !(doc.label && doc.label.toLowerCase().includes('brochure')))
-    : [];
+  // Ensure currentImageIndex is valid when galleryImages changes
+  const galleryLength = galleryImages ? galleryImages.length : 0;
+
+  useEffect(() => {
+    if (galleryLength === 0) {
+      setCurrentImageIndex(0);
+      return;
+    }
+    if (currentImageIndex >= galleryLength) {
+      setCurrentImageIndex(0);
+    }
+  }, [galleryLength, currentImageIndex]);
+
+  // FloatingActions removed — no-op
 
   return (
     <div className="min-h-screen bg-white dark:bg-black text-[#181818] dark:text-white transition-colors duration-300">
-      <FloatingActions 
-        brochurePath={brochurePath}
-        projectName={projectName}
-      />
 
       {/* Hero Section */}
       {isOngoingVariant ? (
@@ -98,64 +111,71 @@ const ProjectTemplate = ({
 
       
 
-      {/* Stats Section */}
-      <section className={`w-full py-10 ${isOngoingVariant ? 'bg-white dark:bg-black' : 'bg-gray-900/5 dark:bg-black/50'}`}>
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center justify-center mb-6">
-            <div className="h-px w-10 bg-gradient-to-r from-transparent via-gold/60 to-transparent" />
+      {/* Stats Section - hidden for ongoing project variant to keep the view focused for customers */}
+      {!isOngoingVariant && (
+        <section className={`w-full py-10 ${isOngoingVariant ? 'bg-white dark:bg-black' : 'bg-gray-900/5 dark:bg-black/50'}`}>
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="flex items-center justify-center mb-6">
+              <div className="h-px w-10 bg-gradient-to-r from-transparent via-gold/60 to-transparent" />
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {Array.isArray(stats) && stats.map((stat, index) => (
+                <div key={index} className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-4 text-center">
+                  <div className="text-lg md:text-xl font-semibold text-gold mb-1">{stat.title}</div>
+                  <div className="text-base md:text-lg text-gray-700 dark:text-gray-300">{stat.subtitle}</div>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {stats.map((stat, index) => (
-              <div key={index} className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-lg p-4 text-center">
-                <div className="text-lg md:text-xl font-semibold text-gold mb-1">{stat.title}</div>
-                <div className="text-base md:text-lg text-gray-700 dark:text-gray-300">{stat.subtitle}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       
 
-      {/* About Section (moved before Brochure CTA) */}
+      {/* About Section (shows short summary with read more) */}
       {isOngoingVariant && (
         <section id="section-about" className="w-full py-12">
           <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 gap-10">
             <div>
               <div className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 rounded-xl p-6 md:p-8">
                 <h2 className="text-xl md:text-2xl font-semibold mb-3 text-gray-900 dark:text-white">About</h2>
-                <p className="text-gray-700 dark:text-gray-300 text-base md:text-lg leading-relaxed text-justify">{description}</p>
+                <p className="text-gray-700 dark:text-gray-300 text-base md:text-lg leading-relaxed text-justify">
+                  {description && !showFullDesc ? (
+                    <>
+                      {description.length > 220 ? description.slice(0, 220) + '...' : description}
+                      {description.length > 220 && (
+                        <button onClick={() => setShowFullDesc(true)} className="ml-2 text-primary-600 font-semibold">Read more</button>
+                      )}
+                    </>
+                  ) : (
+                    <>
+                      {description}
+                      {description && description.length > 220 && (
+                        <button onClick={() => setShowFullDesc(false)} className="ml-2 text-primary-600 font-semibold">Show less</button>
+                      )}
+                    </>
+                  )}
+                </p>
               </div>
             </div>
           </div>
         </section>
       )}
 
-      {/* Brochure CTA (before Amenities) */}
-      {brochurePath && (
-        <section id="section-brochure" className="w-full py-6 bg-white dark:bg-black">
-          <div className="max-w-7xl mx-auto px-4 flex justify-center">
-            <a
-              href={brochurePath}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block border border-gold text-gold font-semibold px-5 py-3 rounded-lg hover:bg-gold hover:text-black transition"
-            >
-              Download Brochure
-            </a>
-          </div>
-        </section>
-      )}
+      {/* Note: brochure CTA moved to after Floor Plans for ongoing pages to keep a single CTA */}
 
-      {/* Smart Location Chips */}
+      {/* Nearby (location chips) */}
       {Array.isArray(locationChips) && locationChips.length > 0 && (
-        <section className="w-full py-6 bg-gray-50 dark:bg-gray-900/40">
-          <div className="max-w-7xl mx-auto px-4 flex flex-wrap gap-2 justify-center">
-            {locationChips.map((chip, idx) => (
-              <span key={idx} className="px-3 py-1 rounded-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-xs text-gray-700 dark:text-gray-300">
-                {chip}
-              </span>
-            ))}
+        <section className="w-full py-8 bg-gray-50 dark:bg-gray-900/40">
+          <div className="max-w-7xl mx-auto px-4 text-center">
+            <h3 className="text-2xl md:text-3xl font-semibold mb-4 text-gold">Nearby</h3>
+            <div className="flex flex-wrap gap-2 justify-center">
+              {locationChips.map((chip, idx) => (
+                <span key={idx} className="px-4 py-2 rounded-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 text-sm md:text-base text-gray-700 dark:text-gray-300">
+                  {chip}
+                </span>
+              ))}
+            </div>
           </div>
         </section>
       )}
@@ -209,11 +229,11 @@ const ProjectTemplate = ({
       {/* Key Advantages */}
       {Array.isArray(advantages) && advantages.length > 0 && (
         <section className="w-full py-10 bg-white dark:bg-black">
-          <div className="max-w-7xl mx-auto px-4">
-            <h3 className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white mb-4">Key Advantages</h3>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+          <div className="max-w-7xl mx-auto px-4 text-center">
+            <h3 className="text-2xl md:text-3xl font-semibold text-gray-900 dark:text-white mb-6 text-gold">Key Advantages</h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
               {advantages.map((item, idx) => (
-                <div key={idx} className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-3 text-center text-sm text-gray-800 dark:text-gray-200">
+                <div key={idx} className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4 text-center text-base md:text-lg text-gray-800 dark:text-gray-200">
                   {item}
                 </div>
               ))}
@@ -236,8 +256,8 @@ const ProjectTemplate = ({
         </section>
       )}
 
-      {/* Cost Breakdown */}
-      {cost && (
+      {/* Cost Breakdown - commented out per user request; re-enable by restoring `cost && (` */}
+      {false && (
         <section className="w-full py-10 bg-white dark:bg-black">
           <div className="max-w-7xl mx-auto px-4">
             <h3 className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white mb-4">Cost Breakdown</h3>
@@ -255,41 +275,7 @@ const ProjectTemplate = ({
         </section>
       )}
 
-      {/* Construction Timeline (clickable with preview) */}
-      {Array.isArray(timeline) && timeline.length > 0 && (
-        <section className="w-full py-10 bg-gray-50 dark:bg-gray-900/40">
-          <div className="max-w-7xl mx-auto px-4">
-            <h3 className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white mb-4">Construction Timeline</h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
-              <div className="md:col-span-2">
-                <div className="relative">
-                  <div className="h-1.5 bg-gray-200 dark:bg-gray-800 rounded-full" />
-                  <div className="absolute inset-0 flex justify-between">
-                    {timeline.map((step, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => setSelectedTimelineIdx(idx)}
-                        className="relative w-1/4 flex-1"
-                        title={step.label}
-                      >
-                        <div className={`absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full ${idx <= selectedTimelineIdx ? 'bg-gold' : 'bg-gray-300 dark:bg-gray-700'}`} />
-                        <div className="absolute top-3 left-1/2 -translate-x-1/2 whitespace-nowrap text-[11px] text-gray-600 dark:text-gray-400">{step.label}</div>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <div className="md:col-span-1 rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 overflow-hidden">
-                <img src={timeline[selectedTimelineIdx]?.image} alt={timeline[selectedTimelineIdx]?.label} className="w-full h-36 object-cover" />
-                <div className="p-3">
-                  <div className="text-xs text-gray-500 mb-1">{timeline[selectedTimelineIdx]?.label}</div>
-                  <div className="text-sm text-gray-800 dark:text-gray-200">{timeline[selectedTimelineIdx]?.caption}</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
+          {/* Construction timeline removed to simplify the page for customers. */}
 
       {/* Amenities Section */}
       <section className="w-full py-10 bg-gray-900/5 dark:bg-black/50">
@@ -309,6 +295,8 @@ const ProjectTemplate = ({
         </div>
       </section>
 
+      {/* Brochure CTA location adjusted later (after Floor Plans) */}
+
       
 
       {/* Gallery Section (shared slider + thumbnails) */}
@@ -325,7 +313,7 @@ const ProjectTemplate = ({
               <AnimatePresence mode="wait">
                 <motion.img
                   key={currentImageIndex}
-                  src={images[currentImageIndex]}
+                  src={galleryImages[currentImageIndex]}
                   alt={`${projectName} Slide ${currentImageIndex + 1}`}
                   className="w-full h-full object-cover bg-gray-900"
                   initial={{ opacity: 0, scale: 1.05 }}
@@ -364,7 +352,7 @@ const ProjectTemplate = ({
                     {isPlaying ? <FaPause size={16} /> : <FaPlay size={16} />}
                   </button>
                   <div className="flex gap-2">
-                    {images.map((_, idx) => (
+                    {galleryImages.map((_, idx) => (
                       <button
                         key={idx}
                         onClick={() => setCurrentImageIndex(idx)}
@@ -386,7 +374,7 @@ const ProjectTemplate = ({
           {hasImages && (
             <div className="relative overflow-hidden">
               <div className="flex gap-2 overflow-x-auto hide-scrollbar py-1" onMouseEnter={(e) => { e.currentTarget.scrollLeft += 0; }}>
-                {images.map((img, idx) => (
+                {galleryImages.map((img, idx) => (
                   <button
                     key={idx}
                     onClick={() => setCurrentImageIndex(idx)}
@@ -402,7 +390,7 @@ const ProjectTemplate = ({
 
           {/* Full Screen Gallery Modal */}
           <ImageGallery
-            images={images}
+            images={galleryImages}
             isOpen={isGalleryOpen}
             onClose={() => setGalleryOpen(false)}
           />

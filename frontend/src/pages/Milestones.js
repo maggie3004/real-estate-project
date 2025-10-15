@@ -2,11 +2,7 @@ import React, { useState, useEffect, useCallback, memo } from 'react';
 import { Helmet } from 'react-helmet';
 import { FaBuilding, FaUsers, FaArrowRight, FaTimes, FaChevronLeft, FaChevronRight, FaMapMarkerAlt, FaCalendarAlt, FaStar, FaTrophy } from 'react-icons/fa';
 import { motion, useAnimation, AnimatePresence } from 'framer-motion';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+// Swiper imports removed as they are not being used
 
 const completedProjects = [
   {
@@ -1244,11 +1240,9 @@ const Milestones = () => {
 
       {/* Custom Styles for Modal */}
       <style jsx="true" global="true">{`
-        /* Prevent body scroll when modal is open */
+        /* Prevent body scroll when modal is open - DO NOT set position: fixed on body */
         body.modal-open {
           overflow: hidden !important;
-          position: fixed !important;
-          width: 100% !important;
         }
         
         /* Modal positioning fixes - Perfect centering with equal margins */

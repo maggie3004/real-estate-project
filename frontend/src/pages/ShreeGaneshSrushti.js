@@ -46,9 +46,7 @@ const ShreeGaneshSrushti = () => {
       { label: "Project Brochure", href: "/Shree-Ganesh-Brochure.pdf" }
     ],
     advantages: ["New Development", "Secure Campus", "Modern Elevation", "Efficient Plans", "Green Views", "Parking"],
-    testimonials: [
-      { quote: "Stylish and modern living.", author: "Prospective Buyer" }
-    ],
+    testimonials: [],
     cost: { base: "On Request", taxes: "As applicable", maintenance: "TBD" },
     timeline: [
       { label: "Launch", caption: "Project unveiled", image: sgsFront },
