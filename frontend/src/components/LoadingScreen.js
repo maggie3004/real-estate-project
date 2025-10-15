@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import logo from '../assets/gyb-logo.png';
+import logo from '../assets/logo.png';
 
 const LoadingScreen = ({ onLoadingComplete }) => {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
@@ -53,13 +53,13 @@ const LoadingScreen = ({ onLoadingComplete }) => {
             >
                              <div className="relative">
                                      {/* Logo Container */}
-                   <div className="w-44 h-44 mx-auto relative flex items-center justify-center">
+                   <div className="w-48 h-48 mx-auto relative flex items-center justify-center">
                      <motion.div
                        animate={{ 
                          scale: [1, 1.05, 1],
                          rotate: [0, 2, -2, 0]
                        }}
-                       transition={{
+                       transition={{ 
                          duration: 3, 
                          repeat: Infinity,
                          ease: "easeInOut"
@@ -69,8 +69,11 @@ const LoadingScreen = ({ onLoadingComplete }) => {
                        <img 
                          src={logo} 
                          alt="Ganesh Yeole Builders and Developers" 
-                         className="w-40 h-40 object-cover object-center rounded-full mx-auto bg-white shadow-md"
-                         style={{ aspectRatio: '1/1' }}
+                         className="w-32 h-32 object-contain"
+                         style={{
+                           objectPosition: 'center center',
+                           clipPath: 'circle(50% at 50% 50%)'
+                         }}
                        />
                      </motion.div>
                    </div>
