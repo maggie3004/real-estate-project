@@ -112,8 +112,8 @@ function Footer() {
               <span>|</span>
               <button className="hover:text-gold transition-colors duration-200">Disclaimer</button>
             </div>
-            <div className="text-xs text-gray-500">
-              Powered by <span className="font-semibold text-white">Ganesh Yeole Builders</span>
+            <div className="flex items-center gap-3">
+              {/* Contact buttons removed per request */}
             </div>
           </div>
         </div>

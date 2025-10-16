@@ -1,19 +1,22 @@
 import React from 'react';
-import { FaWhatsapp } from 'react-icons/fa';
-import { FiPhone, FiDownload } from 'react-icons/fi';
+import { FiDownload } from 'react-icons/fi';
 
 const FloatingActions = ({ brochurePath, projectName }) => {
 
   const handleDownload = async () => {
+    if (!brochurePath) {
+      alert('Brochure not available');
+      return;
+    }
     try {
       const response = await fetch(brochurePath);
       if (!response.ok) throw new Error('Brochure not found');
-      
+
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
-      link.download = `${projectName} Brochure.pdf`;
+      link.download = `${projectName || 'Brochure'}.pdf`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -24,38 +27,19 @@ const FloatingActions = ({ brochurePath, projectName }) => {
     }
   };
 
+  // Render a simple floating download button when a brochurePath is provided
+  if (!brochurePath) return null;
+
   return (
-    <div className="fixed bottom-4 right-4 z-50">
-      <div className="relative">
-        {/* Main buttons */}
-        <div className="flex flex-col gap-2">
-          <a 
-            href="https://wa.me/1234567890" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="bg-green-500 p-2 sm:p-3 rounded-full shadow-lg hover:bg-green-600 transition-colors"
-          >
-            <FaWhatsapp className="text-white" size={20} />
-          </a>
-          
-          <a 
-            href="tel:+911234567890" 
-            className="bg-gray-600 p-2 sm:p-3 rounded-full shadow-lg hover:bg-gray-700 transition-colors"
-          >
-            <FiPhone className="text-white" size={20} />
-          </a>
-
-          <button 
-            onClick={handleDownload}
-            className="bg-purple-500 p-2 sm:p-3 rounded-full shadow-lg hover:bg-purple-600 transition-colors"
-            disabled={!brochurePath}
-          >
-            <FiDownload className="text-white" size={20} />
-          </button>
-
-          {/* Add other buttons as needed */}
-        </div>
-      </div>
+    <div className="fixed bottom-6 right-6 z-50">
+      <button
+        onClick={handleDownload}
+        aria-label="Download Brochure"
+        className="flex items-center gap-2 bg-gold text-black px-4 py-3 rounded-full shadow-lg hover:shadow-xl focus:outline-none"
+      >
+        <FiDownload className="w-5 h-5" />
+        <span className="hidden sm:inline-block font-semibold">Brochure</span>
+      </button>
     </div>
   );
 };

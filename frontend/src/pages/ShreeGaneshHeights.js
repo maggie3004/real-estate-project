@@ -1,4 +1,8 @@
 import React, { useEffect } from 'react';
+import sghFront from '../assets/shree-ganesh-heights/gallery/front.jpeg';
+import sghTopView from '../assets/shree-ganesh-heights/gallery/top-view.jpg';
+import sghNightFront from '../assets/shree-ganesh-heights/gallery/night-front.jpg';
+import sghBrochure from '../assets/shree-ganesh-heights/Shri Ganesh Heights.pdf';
 import ProjectTemplate from '../components/ProjectTemplate';
 import { FaCar, FaSun, FaBuilding, FaShieldAlt, FaWater, FaTint } from 'react-icons/fa';
 import { MdMeetingRoom } from 'react-icons/md';
@@ -26,13 +30,32 @@ const ShreeGaneshHeights = () => {
       { icon: <FaWater />, name: "Water Supply" },
       { icon: <FaCar />, name: "Parking Space" }
     ],
-    images: [
-      "/assets/shree-ganesh-heights/gallery/1.jpeg",
-      "/assets/shree-ganesh-heights/gallery/2.jpeg",
-      "/assets/shree-ganesh-heights/gallery/3.jpeg",
-      "/assets/shree-ganesh-heights/gallery/4.jpeg"
+    images: [sghFront, sghTopView, sghNightFront],
+    brochurePath: sghBrochure,
+    reraNumber: "PXXXXXXX",
+    reraQr: "/owner-placeholder.png",
+    layoutVariant: 'ongoing',
+    configuration: "2BHK, 3BHK",
+    location: "Nashik",
+    progressStage: 2,
+    locationChips: ["Airport 25 min", "Hospital 8 min", "School 5 min"],
+    floorPlans: [
+      { label: "2BHK", src: sghTopView },
+      { label: "3BHK", src: sghNightFront }
     ],
-    brochurePath: "/assets/shree-ganesh-heights/Shri Ganesh Heights.pdf",
+    downloads: [
+      { label: "Project Brochure", href: sghBrochure },
+      { label: "Typical Floor Plan", href: "../assets/shree-ganesh-heights/Typical Floor.pdf" }
+    ],
+    advantages: ["Prime Connectivity", "Secure Campus", "Modern Elevation", "Efficient Layouts", "Solar Ready", "Ample Parking"],
+    testimonials: [],
+    cost: { base: "On Request", taxes: "As applicable", maintenance: "TBD" },
+    timeline: [
+      { label: "Launch", caption: "Brand reveal", image: sghFront },
+      { label: "Foundation", caption: "Groundwork done", image: sghTopView },
+      { label: "Structure", caption: "Superstructure rising", image: sghNightFront },
+      { label: "Finishing", caption: "Interiors underway", image: sghFront }
+    ],
     mapUrl: "https://maps.app.goo.gl/6X9DkrFsd58nzQFT9?g_st=com.google.maps.preview.copy",
     directionsUrl: "https://www.google.com/maps/dir//Shree+ganesh+heights+B/@19.9583632,73.7635915,103m"
   };

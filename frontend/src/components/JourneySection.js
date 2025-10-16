@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet';
-import { FaTrophy, FaBuilding, FaCalendarAlt, FaArrowRight, FaStar } from 'react-icons/fa';
-import { motion, useAnimation, useInView } from 'framer-motion';
+import { FaTrophy, FaBuilding, FaCalendarAlt, FaStar } from 'react-icons/fa';
+import { motion, useInView } from 'framer-motion';
 
 const milestones = [
   {

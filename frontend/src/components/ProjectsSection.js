@@ -1,9 +1,13 @@
 import React from 'react';
+// Use src/assets images instead of public paths for ongoing projects
+import sghFront from '../assets/shree-ganesh-heights/gallery/front.jpeg';
+import sgpAView from '../assets/shree-ganesh-park/gallery/a-view.jpg';
+import sgsFront from '../assets/shree-ganesh-srushti/gallery/front.jpg';
 import { useNavigate } from 'react-router-dom';
 import { FaMapMarkerAlt, FaClock } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay, FreeMode } from 'swiper/modules';
+import { Navigation, Pagination, FreeMode } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -13,7 +17,7 @@ const projects = [
     name: 'Shree Ganesh Heights',
     location: 'Nashik',
     status: 'Ongoing',
-    image: '/assets/shree-ganesh-heights/gallery/front.jpeg',
+    image: sghFront,
     description: 'Premium residential development with modern amenities and excellent location advantages.',
     type: '2 & 3 BHK',
     units: '120 Units',
@@ -25,7 +29,7 @@ const projects = [
     name: 'Shree Ganesh Park',
     location: 'Nashik',
     status: 'Ongoing',
-    image: '/assets/shree-ganesh-park/gallery/a-view.jpg',
+    image: sgpAView,
     description: 'A premium residential development with multiple wings offering various apartment configurations.',
     type: '1 & 2 BHK',
     units: '150 Units',
@@ -37,7 +41,7 @@ const projects = [
     name: 'Shreeganesh Srushti',
     location: 'Nashik',
     status: 'Ongoing',
-    image: '/assets/shree-ganesh-srushti/gallery/front.jpg',
+    image: sgsFront,
     description: 'Latest residential development with contemporary design and all modern facilities.',
     type: '2 & 3 BHK',
     units: '100 Units',
@@ -102,7 +106,7 @@ const ProjectsSection = () => {
         {/* Featured Projects Slider with Proper Margins */}
         <div className="featured-slider-container relative">
           <Swiper
-            modules={[Navigation, Pagination, Autoplay, FreeMode]}
+            modules={[Navigation, Pagination, FreeMode]}
             spaceBetween={20}
             slidesPerView="auto"
             freeMode={true}
@@ -113,10 +117,6 @@ const ProjectsSection = () => {
             pagination={{
               clickable: true,
               el: '.swiper-pagination-custom',
-            }}
-            autoplay={{
-              delay: 5000,
-              disableOnInteraction: false,
             }}
             centeredSlides={false}
             className="featured-slider"
