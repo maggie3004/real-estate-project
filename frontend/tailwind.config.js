@@ -5,6 +5,9 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      zIndex: {
+        '9999': '9999'
+      },
       colors: {
         primary: {
           50: '#fff1f7', // pastel pink

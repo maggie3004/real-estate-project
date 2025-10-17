@@ -1,0 +1,63 @@
+.simpleFloatingButtonWrapper {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: auto;
+}
+
+.simpleFloatingButton {
+  background: #e53935;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.simpleFloatingButton:hover {
+  background: #b71c1c;
+  transform: scale(1.08);
+}
+
+.simpleFloatingButtonLabel {
+  background: #fff;
+  color: #e53935;
+  border-radius: 8px;
+  padding: 4px 12px;
+  font-size: 0.95rem;
+  margin-right: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  position: absolute;
+  right: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  display: none;
+}
+
+.simpleFloatingButton:hover .simpleFloatingButtonLabel {
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .simpleFloatingButtonWrapper {
+    bottom: 16px;
+    right: 16px;
+  }
+  .simpleFloatingButton {
+    width: 48px;
+    height: 48px;
+    font-size: 1.5rem;
+  }
+}
