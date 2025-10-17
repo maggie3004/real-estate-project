@@ -1857,3 +1857,25 @@ body.modal-open {
   position: fixed;
   width: 100%;
 }
+
+/* Ensure the floating action container is fixed to viewport and visible at bottom-right */
+.floating-action-container {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  pointer-events: auto;
+  position: fixed !important;  /* keep fixed relative to viewport */
+  bottom: 24px;                /* spacing from bottom edge */
+  right: 24px;                 /* spacing from right edge */
+  z-index: 9999;               /* ensure visibility over all elements */
+}
+
+/* Remove transforms on root elements so fixed positioning is relative to viewport
+   (some global rules applied translate3d to all elements which caused fixed
+   descendants to be positioned relative to the document instead of viewport).
+*/
+html, body {
+  -webkit-transform: none !important;
+  -moz-transform: none !important;
+  transform: none !important;
+}
