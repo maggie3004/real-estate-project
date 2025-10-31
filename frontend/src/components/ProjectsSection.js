@@ -14,16 +14,16 @@ import 'swiper/css/pagination';
 
 const projects = [
   {
-    name: 'Shree Ganesh Heights',
+    name: 'Shreeganesh Srushti',
     location: 'Nashik',
     status: 'Ongoing',
-    image: sghFront,
-    description: 'Premium residential development with modern amenities and excellent location advantages.',
+    image: sgsFront,
+    description: 'Latest residential development with contemporary design and all modern facilities.',
     type: '2 & 3 BHK',
-    units: '120 Units',
-    area: '2.5 Acres',
-    completionDate: '2024',
-    route: '/ShreeGaneshHeights'
+    units: '100 Units',
+    area: '2.0 Acres',
+    completionDate: '2025',
+    route: '/ShreeGaneshSrushti'
   },
   {
     name: 'Shree Ganesh Park',
@@ -38,16 +38,16 @@ const projects = [
     route: '/ShreeGaneshParkPhaseI'
   },
   {
-    name: 'Shreeganesh Srushti',
+    name: 'Shree Ganesh Heights',
     location: 'Nashik',
     status: 'Ongoing',
-    image: sgsFront,
-    description: 'Latest residential development with contemporary design and all modern facilities.',
+    image: sghFront,
+    description: 'Premium residential development with modern amenities and excellent location advantages.',
     type: '2 & 3 BHK',
-    units: '100 Units',
-    area: '2.0 Acres',
-    completionDate: '2025',
-    route: '/ShreeGaneshSrushti'
+    units: '120 Units',
+    area: '2.5 Acres',
+    completionDate: '2024',
+    route: '/ShreeGaneshHeights'
   },
   {
     name: 'Sai Shraddha Apartment',
@@ -95,7 +95,7 @@ const ProjectsSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Our <span className="text-primary-600 dark:text-primary-400 bg-gradient-to-r from-primary-600 to-primary-700 bg-clip-text text-transparent">Exclusive Projects</span>
+            Our <span className="text-gray-900 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-primary-600 dark:to-primary-700">Exclusive Projects</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Discover our carefully curated collection of exclusive residential projects, 
@@ -179,7 +179,7 @@ const ProjectsSection = () => {
                     <div className="mt-auto">
                       <button 
                         onClick={() => handleViewDetails(project.route)}
-                        className="w-full bg-gradient-to-r from-primary-600 to-primary-700 text-white py-3 px-4 rounded-lg font-semibold hover:from-primary-700 hover:to-primary-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                        className="w-full bg-black text-white py-3 px-4 rounded-lg font-semibold hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 dark:bg-gradient-to-r dark:from-primary-600 dark:to-primary-700 dark:hover:from-primary-700 dark:hover:to-primary-800"
                       >
                         View Details
                       </button>

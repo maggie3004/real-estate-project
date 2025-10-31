@@ -9,7 +9,7 @@ import ThemeSwitcher from './ThemeSwitcher';
 
 const ongoingProjects = [
   { name: 'Shree Ganesh Srushti', path: '/ShreeGaneshSrushti' },
-  { name: 'Shree Ganesh Park Phase I', path: '/ShreeGaneshParkPhaseI' },
+  { name: 'Shree Ganesh Park', path: '/ShreeGaneshParkPhaseI' },
   { name: 'Shree Ganesh Heights', path: '/ShreeGaneshHeights' },
 ];
 
@@ -100,7 +100,6 @@ const Navbar = () => {
       name: 'About us',
       dropdown: [
         { name: 'Overview', path: '/about' },
-        { name: 'Vision and mission', path: '/about#mission' },
         { name: 'Sustainability', path: '/sustainability' },
       ],
     },

@@ -1,67 +1,62 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { FaTrophy, FaAward, FaMedal, FaCertificate, FaCalendarAlt, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaTrophy, FaAward, FaMedal, FaCertificate, FaCalendarAlt, FaMapMarkerAlt, FaLeaf } from 'react-icons/fa';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, FreeMode } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 const awards = [
   {
     id: 1,
-    title: "Best Real Estate Developer 2025",
-    organization: "Maharashtra Real Estate Awards",
+    title: "Best Building Award",
+    organization: "Deshdoot",
     year: "2025",
     image: "/hero-building.jpg",
-    description: "Recognized for excellence in residential development and customer satisfaction",
-    category: "Developer Award",
+    description: "Recognized for outstanding building design and construction quality.",
+    category: "Project Award",
     icon: FaTrophy
   },
   {
     id: 2,
-    title: "ISO 9001:2015 Certification",
-    organization: "International Organization for Standardization",
+    title: "Best Affordable Project",
+    organization: "Dainik Bhaskar",
     year: "2024",
     image: "/hero-building.jpg",
-    description: "Quality management system certification for our construction processes",
-    category: "Quality Certification",
-    icon: FaCertificate
-  },
-  {
-    id: 3,
-    title: "Customer Satisfaction Excellence",
-    organization: "Real Estate Association of India",
-    year: "2024",
-    image: "/hero-building.jpg",
-    description: "Awarded for achieving 98% customer satisfaction across all projects",
-    category: "Customer Service",
+    description: "Awarded for excellence in delivering affordable housing without compromising quality.",
+    category: "Project Award",
     icon: FaAward
   },
   {
-    id: 4,
-    title: "Best Emerging Developer",
-    organization: "Nashik Business Awards",
-    year: "2023",
+    id: 3,
+    title: "Best Group Housing",
+    organization: "MY FM",
+    year: "2024",
     image: "/hero-building.jpg",
-    description: "Recognized as the fastest-growing real estate developer in Nashik region",
-    category: "Emerging Company",
+    description: "Recognized for outstanding group housing development and community planning.",
+    category: "Project Award",
     icon: FaMedal
   },
   {
-    id: 5,
-    title: "Green Building Excellence",
-    organization: "Indian Green Building Council",
+    id: 4,
+    title: "Best Quality",
+    organization: "Ultratech",
     year: "2023",
     image: "/hero-building.jpg",
-    description: "Award for implementing sustainable building practices and eco-friendly initiatives",
-    category: "Sustainability",
+    description: "Awarded for superior material selection and construction quality.",
+    category: "Quality Award",
     icon: FaCertificate
   },
   {
-    id: 6,
-    title: "Best Affordable Housing Project",
-    organization: "Maharashtra Housing Awards",
+    id: 5,
+    title: "Sustainable Housing",
+    organization: "Industry Recognition",
     year: "2023",
     image: "/hero-building.jpg",
-    description: "Recognition for Shree Ganesh Heights as the best affordable housing project",
-    category: "Project Award",
-    icon: FaTrophy
+    description: "Recognition for sustainable building practices and eco-friendly initiatives.",
+    category: "Sustainability",
+    icon: FaLeaf
   }
 ];
 
@@ -132,42 +127,76 @@ const Awards = () => {
           <h2 className="text-3xl font-bold text-center text-[#E53935] mb-12">
             Our Achievements & Awards
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {awards.map((award) => (
-              <div key={award.id} className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
-                <div className="relative">
-                                      <img 
-                      src={award.image} 
-                      alt={award.title}
-                      className="w-full h-48 object-cover"
-                    />
-                  <div className="absolute top-4 right-4">
-                    <div className="bg-gold text-white px-3 py-1 rounded-full text-sm font-semibold">
-                      {award.year}
+          <div className="featured-slider-container relative">
+            <Swiper
+              modules={[Navigation, Pagination, FreeMode]}
+              spaceBetween={24}
+              slidesPerView={3}
+              breakpoints={{
+                0: { slidesPerView: 1 },
+                640: { slidesPerView: 1 },
+                768: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 }
+              }}
+              navigation={{
+                nextEl: '.swiper-button-next-awards',
+                prevEl: '.swiper-button-prev-awards'
+              }}
+              pagination={{ clickable: true, el: '.swiper-pagination-awards' }}
+              freeMode={true}
+              className="featured-slider"
+            >
+              {awards.map((award) => (
+                <SwiperSlide key={award.id}>
+                  <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+                    <div className="relative">
+                      <img 
+                        src={award.image} 
+                        alt={award.title}
+                        className="w-full h-48 object-cover"
+                      />
+                      <div className="absolute top-4 right-4">
+                        <div className="bg-gold text-white px-3 py-1 rounded-full text-sm font-semibold">
+                          {award.year}
+                        </div>
+                      </div>
+                      <div className="absolute bottom-4 left-4">
+                        <award.icon className="text-gold text-3xl" />
+                      </div>
+                    </div>
+                    <div className="p-6">
+                      <div className="mb-3">
+                        <span className="inline-block bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-3 py-1 rounded-full text-sm font-semibold">
+                          {award.category}
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-bold text-[#E53935] mb-2">
+                        {award.title}
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-400 font-medium mb-3">
+                        {award.organization}
+                      </p>
+                      <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
+                        {award.description}
+                      </p>
                     </div>
                   </div>
-                  <div className="absolute bottom-4 left-4">
-                    <award.icon className="text-gold text-3xl" />
-                  </div>
-                </div>
-                <div className="p-6">
-                  <div className="mb-3">
-                    <span className="inline-block bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-3 py-1 rounded-full text-sm font-semibold">
-                      {award.category}
-                    </span>
-                  </div>
-                  <h3 className="text-xl font-bold text-[#E53935] mb-2">
-                    {award.title}
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400 font-medium mb-3">
-                    {award.organization}
-                  </p>
-                  <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">
-                    {award.description}
-                  </p>
-                </div>
-              </div>
-            ))}
+                </SwiperSlide>
+              ))}
+            </Swiper>
+
+            <div className="swiper-button-prev-awards absolute left-0 top-1/2 -translate-y-1/2 bg-white/95 dark:bg-gray-800/95 text-gray-700 dark:text-gray-300 p-3 rounded-full shadow-lg hover:bg-white dark:hover:bg-gray-800 transition-colors duration-200 z-10 cursor-pointer">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </div>
+            <div className="swiper-button-next-awards absolute right-0 top-1/2 -translate-y-1/2 bg-white/95 dark:bg-gray-800/95 text-gray-700 dark:text-gray-300 p-3 rounded-full shadow-lg hover:bg-white dark:hover:bg-gray-800 transition-colors duration-200 z-10 cursor-pointer">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+
+            <div className="swiper-pagination-awards flex justify-center mt-6 space-x-2"></div>
           </div>
         </div>
 

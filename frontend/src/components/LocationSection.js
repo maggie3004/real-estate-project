@@ -1,15 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import properties from '../data/properties';
 
-const property = properties[0];
-const { location, lat, lng } = property || {};
+// Use fixed office embed URL and address per client request
+const mapSrc = "https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d331.4249048947742!2d73.7480104789185!3d19.981436320890978!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddeb620c8d651f%3A0xde5e213219bc1ff2!2sXPJX%2BG74%2C%20Janak%20Nagari%2C%20Nashik%2C%20Maharashtra%20422008%2C%20India!5e0!3m2!1sen!2sus!4v1761939234341!5m2!1sen!2sus";
 
-const mapSrc = lat && lng
-  ? `https://www.google.com/maps?q=${lat},${lng}&z=16&output=embed`
-  : '';
-
-const address = location || 'Project Location';
+const address = `P. No. 14, Sneh Prasad, Vighnaharta Colony, Khutwad Nagar, Nashik - 08`;
 
 const LocationSection = () => {
   return (
@@ -29,7 +24,7 @@ const LocationSection = () => {
           transition={{ duration: 0.8, delay: 0.1, ease: 'easeOut' }}
           className="text-4xl font-playfair font-bold text-primary-700 dark:text-gold mb-8 text-center"
         >
-          Location
+          Office Location
         </motion.h2>
         <div className="flex flex-col lg:flex-row gap-6 lg:gap-8 items-center justify-center">
           <motion.div
@@ -54,15 +49,15 @@ const LocationSection = () => {
               <div className="w-full h-full flex items-center justify-center bg-gray-200 dark:bg-gray-800 text-gray-500">Map not available</div>
             )}
           </motion.div>
-          <motion.div
+            <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.8 }}
             transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
             className="w-full md:w-1/3 text-center md:text-left"
           >
-            <h3 className="text-2xl font-montserrat font-bold text-primary-700 dark:text-gold mb-4">Project Address</h3>
-            <p className="text-lg text-gray-700 dark:text-gray-200 font-semibold mb-2">{address}</p>
+            <h3 className="text-2xl font-montserrat font-bold text-primary-700 dark:text-gold mb-4">Office Address:</h3>
+            <p className="text-lg text-gray-700 dark:text-gray-200 font-semibold mb-2 whitespace-pre-line">{address}</p>
             <p className="text-base text-gray-500 dark:text-gray-400">(For directions, click on the map)</p>
           </motion.div>
         </div>
