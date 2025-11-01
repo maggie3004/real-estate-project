@@ -15,7 +15,7 @@ function Footer() {
               <span className="font-bold text-base sm:text-lg tracking-wide text-white">Ganesh Yeole Builders</span>
             </div>
             <p className="text-gray-300 leading-relaxed text-sm">
-              Building dreams and creating landmarks for over 16 years. Your trusted partner in real estate development across Nashik, Mumbai, and Pune.
+              Building dreams and creating landmarks for over 20 years. Your trusted partner in real estate development across Nashik and Pune.
             </p>
             <div className="flex gap-3">
               <button className="hover:text-gold transition-colors duration-200" aria-label="LinkedIn">

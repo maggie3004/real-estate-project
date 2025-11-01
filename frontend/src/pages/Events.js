@@ -176,17 +176,17 @@ const Events = () => {
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-[#E53935] mb-6">
-            Our Events & Celebrations
+            Offers and Sales
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Join us for exciting events, project launches, and community celebrations. Connect with our team and fellow customers.
+            Discover exclusive offers and special promotions on our premium projects. Connect with our team to learn about limited-time deals and investment opportunities.
           </p>
         </div>
 
-        {/* Upcoming Events */}
+        {/* Upcoming Offers */}
         <div className="mb-16">
           <h2 className="text-3xl font-bold text-center text-[#E53935] mb-12">
-            Upcoming Events
+            Upcoming Offers
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {upcomingEvents.map((event) => (

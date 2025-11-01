@@ -7,11 +7,11 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 const awards = [
-  { icon: <FaTrophy className="w-8 h-8 text-yellow-500" />, name: 'Deshdoot - Best Building Award', year: '2025' },
-  { icon: <FaAward className="w-8 h-8 text-yellow-500" />, name: 'Dainik Bhaskar - Best Affordable Project', year: '2024' },
-  { icon: <FaMedal className="w-8 h-8 text-yellow-500" />, name: 'MY FM - Best Group Housing', year: '2024' },
+  { icon: <FaMedal className="w-8 h-8 text-yellow-500" />, name: 'MY FM - Best Group Housing', year: '2025' },
+  { icon: <FaTrophy className="w-8 h-8 text-yellow-500" />, name: 'Deshdoot - Best Building Award', year: '2023' },
+  { icon: <FaAward className="w-8 h-8 text-yellow-500" />, name: 'Dainik Bhaskar - Best Affordable Project', year: '2023' },
   { icon: <FaCertificate className="w-8 h-8 text-yellow-500" />, name: 'Ultratech - Best Quality', year: '2023' },
-  { icon: <FaLeaf className="w-8 h-8 text-yellow-500" />, name: 'Sustainable Housing', year: '2023' }
+  { icon: <FaLeaf className="w-8 h-8 text-yellow-500" />, name: 'Sustainability Award', year: '2021' }
 ];
 
 const AwardsSection = () => (

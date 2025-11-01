@@ -10,33 +10,33 @@ import 'swiper/css/pagination';
 const awards = [
   {
     id: 1,
+    title: "Best Group Housing",
+    organization: "MY FM",
+    year: "2025",
+    image: "/hero-building.jpg",
+    description: "Recognized for outstanding group housing development and community planning.",
+    category: "Project Award",
+    icon: FaMedal
+  },
+  {
+    id: 2,
     title: "Best Building Award",
     organization: "Deshdoot",
-    year: "2025",
+    year: "2023",
     image: "/hero-building.jpg",
     description: "Recognized for outstanding building design and construction quality.",
     category: "Project Award",
     icon: FaTrophy
   },
   {
-    id: 2,
+    id: 3,
     title: "Best Affordable Project",
     organization: "Dainik Bhaskar",
-    year: "2024",
+    year: "2023",
     image: "/hero-building.jpg",
     description: "Awarded for excellence in delivering affordable housing without compromising quality.",
     category: "Project Award",
     icon: FaAward
-  },
-  {
-    id: 3,
-    title: "Best Group Housing",
-    organization: "MY FM",
-    year: "2024",
-    image: "/hero-building.jpg",
-    description: "Recognized for outstanding group housing development and community planning.",
-    category: "Project Award",
-    icon: FaMedal
   },
   {
     id: 4,
@@ -50,9 +50,9 @@ const awards = [
   },
   {
     id: 5,
-    title: "Sustainable Housing",
+    title: "Sustainability Award",
     organization: "Industry Recognition",
-    year: "2023",
+    year: "2021",
     image: "/hero-building.jpg",
     description: "Recognition for sustainable building practices and eco-friendly initiatives.",
     category: "Sustainability",

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { FaLeaf, FaRecycle, FaSolarPanel, FaTree, FaWater, FaLightbulb, FaHandshake, FaHeart } from 'react-icons/fa';
+import { FaLeaf, FaRecycle, FaSolarPanel, FaWater, FaLightbulb } from 'react-icons/fa';
 
 const sustainabilityInitiatives = [
   {
@@ -37,45 +37,6 @@ const sustainabilityInitiatives = [
     icon: FaLeaf,
     impact: "30% Carbon Reduction",
     status: "Implemented",
-    image: "/hero-building.jpg"
-  }
-];
-
-const csrInitiatives = [
-  {
-    id: 1,
-    title: "Tree Plantation Drive",
-    description: "Annual tree plantation drives with community participation across all project sites",
-    icon: FaTree,
-    participants: "500+",
-    treesPlanted: "2000+",
-    image: "/hero-building.jpg"
-  },
-  {
-    id: 2,
-    title: "Education Support",
-    description: "Supporting local schools and providing educational resources to underprivileged children",
-    icon: FaHeart,
-    beneficiaries: "200+",
-    schoolsSupported: "5",
-    image: "/hero-building.jpg"
-  },
-  {
-    id: 3,
-    title: "Community Development",
-    description: "Infrastructure development and skill training programs for local communities",
-    icon: FaHandshake,
-    beneficiaries: "1000+",
-    programs: "10+",
-    image: "/hero-building.jpg"
-  },
-  {
-    id: 4,
-    title: "Healthcare Initiatives",
-    description: "Health camps and medical support for construction workers and local communities",
-    icon: FaHeart,
-    beneficiaries: "300+",
-    camps: "15+",
     image: "/hero-building.jpg"
   }
 ];
@@ -159,59 +120,6 @@ const Sustainability = () => (
         </div>
       </div>
 
-      {/* CSR Initiatives */}
-      <div className="mb-20">
-        <h2 className="text-3xl font-bold text-center text-[#E53935] mb-12">
-          Corporate Social Responsibility
-        </h2>
-        <div className="grid lg:grid-cols-2 gap-8">
-          {csrInitiatives.map((initiative) => (
-            <div key={initiative.id} className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
-              <div className="relative">
-                <img 
-                  src={initiative.image} 
-                  alt={initiative.title}
-                  className="w-full h-48 object-cover"
-                />
-                <div className="absolute top-4 left-4">
-                  <div className="w-12 h-12 bg-gold rounded-full flex items-center justify-center">
-                    <initiative.icon className="text-white text-xl" />
-                  </div>
-                </div>
-              </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold text-[#E53935] mb-3">
-                  {initiative.title}
-                </h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
-                  {initiative.description}
-                </p>
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="text-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                    <div className="text-2xl font-bold text-gold">
-                      {initiative.beneficiaries}
-                    </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">
-                      Beneficiaries
-                    </div>
-                  </div>
-                  <div className="text-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
-                    <div className="text-2xl font-bold text-gold">
-                      {initiative.treesPlanted || initiative.schoolsSupported || initiative.programs || initiative.camps}
-                    </div>
-                    <div className="text-sm text-gray-600 dark:text-gray-400">
-                      {initiative.treesPlanted ? 'Trees Planted' : 
-                       initiative.schoolsSupported ? 'Schools' :
-                       initiative.programs ? 'Programs' : 'Camps'}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
       {/* Impact Metrics */}
       <div className="mb-20">
         <h2 className="text-3xl font-bold text-center text-[#E53935] mb-12">
@@ -272,18 +180,6 @@ const Sustainability = () => (
         </div>
       </div>
 
-      {/* Call to Action */}
-      <div className="text-center">
-        <div className="bg-gradient-to-r from-green-600 to-gray-600 text-white p-8 rounded-2xl">
-          <h3 className="text-2xl font-bold mb-4">Join Our Green Revolution</h3>
-          <p className="text-lg mb-6 opacity-90">
-            Be part of our sustainable development journey and contribute to a greener future
-          </p>
-          <button className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200">
-            Learn More About Our Green Projects
-          </button>
-        </div>
-      </div>
     </div>
   </section>
 );
