@@ -9,14 +9,14 @@ const AboutPage = () => (
       <meta name="description" content="Learn about Ganesh Yeole Builders and Developers - our vision, mission, leadership team, and commitment to building quality homes in Nashik, Mumbai, and Pune." />
     </Helmet>
     
-    <div className="max-w-7xl mx-auto px-4">
+    <div className="max-w-7xl mx-auto px-4 pt-12 sm:pt-16 md:pt-20">
       {/* Hero Section */}
       <div className="text-center mb-16">
         <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#E53935] mb-4 sm:mb-6">
           About Ganesh Yeole Builders
         </h1>
         <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
-          Building Dreams, Creating Landmarks - 16+ Years of Excellence in Real Estate Development
+          Building Dreams, Creating Landmarks - 20+ Years of Excellence in Real Estate Development
         </p>
       </div>
 
@@ -121,12 +121,12 @@ const AboutPage = () => (
                   <span className="text-white text-4xl font-bold">PY</span>
                 </div>
               </div>
-              <h3 className="text-2xl font-bold text-[#E53935] mb-2">Mr. Prasad G. Yeole</h3>
+              <h3 className="text-2xl font-bold text-[#E53935] mb-2">Mr. Ganesh V. Yeole</h3>
               <p className="text-gold font-semibold mb-4">Chairperson & Managing Director</p>
               <div className="text-sm text-gray-600 dark:text-gray-300 mb-6 space-y-2">
                 <p>• Civil Engineer (B.E.)</p>
                 <p>• Vastu Expert (Pursuing)</p>
-                <p>• 16+ Years Experience</p>
+                <p>• 20+ Years Experience</p>
                 <p>• Second Generation Leader</p>
               </div>
               <div className="bg-white dark:bg-gray-800 rounded-xl p-6 text-left">

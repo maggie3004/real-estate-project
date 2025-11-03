@@ -5,63 +5,83 @@ import { motion, AnimatePresence } from 'framer-motion';
 const testimonials = [
   {
     id: 1,
-    name: "Rajesh & Priya Sharma",
-    role: "Homeowners - Shree Ganesh Heights",
+    name: "Gaurav Yeole",
+    role: "Homeowner - Sai Shraddha",
     image: null,
     rating: 5,
-    text: "We are extremely happy with our new home at Shree Ganesh Heights. The quality of construction is outstanding, and the amenities are world-class. The team was very professional throughout the entire process. Highly recommended!",
-    project: "Shree Ganesh Heights",
-    date: "March 2024"
+    text: "We are extremely happy with our new home at Sai Shraddha. The quality of construction is outstanding, and the amenities are world-class. The team was very professional throughout the entire process. Highly recommended!",
+    project: "Sai Shraddha",
+    date: "2023"
   },
   {
     id: 2,
-    name: "Amit & Sneha Desai",
-    role: "Investors - Sai Shraddha Apartment",
+    name: "Pravin Patil",
+    role: "Investor - Sai Shraddha",
     image: null,
     rating: 5,
-    text: "Investing in Sai Shraddha Apartment was the best decision we made. The project was delivered on time, and the rental returns are excellent. The builder's transparency and commitment to quality are commendable.",
-    project: "Sai Shraddha Apartment",
-    date: "January 2024"
+    text: "Investing in Sai Shraddha Apartment was the best decision we made. The project quality and attention to detail are commendable. The builder's transparency and commitment to excellence are truly outstanding.",
+    project: "Sai Shraddha",
+    date: "2023"
   },
   {
     id: 3,
-    name: "Dr. Sanjay & Dr. Meera Patel",
-    role: "Medical Professionals - Vinayak Apartment",
+    name: "Kavishwar Ahire",
+    role: "Homeowner - Sai Shraddha",
     image: null,
     rating: 5,
-    text: "As medical professionals, we needed a home close to the hospital. Vinayak Apartment's location is perfect, and the quality of construction exceeded our expectations. The Vastu compliance was an added bonus.",
-    project: "Vinayak Apartment",
-    date: "December 2023"
+    text: "Sai Shraddha exceeded all our expectations. The luxury finishes, premium amenities, and exceptional construction quality make it a truly premium living experience. A perfect choice!",
+    project: "Sai Shraddha",
+    date: "2023"
   },
   {
     id: 4,
-    name: "Vikram & Anjali Singh",
-    role: "IT Professionals - Shree Ganesh Park Phase I",
+    name: "Vishal Mahajan",
+    role: "Homeowner - Shree Ganesh Avenue",
     image: null,
     rating: 5,
-    text: "The modern amenities and smart home features at Shree Ganesh Park Phase I are exactly what we were looking for. The builder's attention to detail and customer service is exceptional.",
-    project: "Shree Ganesh Park Phase I",
-    date: "November 2023"
+    text: "Shree Ganesh Avenue offers the perfect blend of affordability and quality. The strategic location and construction quality make it an excellent investment. Very satisfied with our purchase!",
+    project: "Shree Ganesh Avenue",
+    date: "2022"
   },
   {
     id: 5,
-    name: "Sunil & Rekha Joshi",
-    role: "Retired Couple - Modakeshwar Apartment",
+    name: "Rahul Suradkar",
+    role: "Family - Shree Ganesh Avenue",
     image: null,
     rating: 5,
-    text: "We wanted a peaceful retirement home, and Modakeshwar Apartment is perfect. The location is serene, and the quality of construction is top-notch. The builder's team was very helpful throughout.",
-    project: "Modakeshwar Apartment",
-    date: "October 2023"
+    text: "We found the perfect budget-friendly home at Shree Ganesh Avenue. The quality of construction and amenities are much better than expected. The builder's customer service is exceptional.",
+    project: "Shree Ganesh Avenue",
+    date: "2022"
   },
   {
     id: 6,
-    name: "Arun & Kavita Reddy",
-    role: "Business Owners - Shree Ganesh Avenue",
+    name: "Prashant Suryawanshi",
+    role: "Homeowner - Shree Ganesh Park",
     image: null,
     rating: 5,
-    text: "Shree Ganesh Avenue offers the perfect blend of residential comfort and commercial opportunities. The strategic location and quality construction make it an excellent investment. Highly satisfied!",
-    project: "Shree Ganesh Avenue",
-    date: "September 2023"
+    text: "Shree Ganesh Park perfectly balances luxury and affordability. The modern amenities, smart features, and excellent construction quality make it an ideal home for our family.",
+    project: "Shree Ganesh Park",
+    date: "2024"
+  },
+  {
+    id: 7,
+    name: "Sachin Pote",
+    role: "Investor - Shree Ganesh Park",
+    image: null,
+    rating: 5,
+    text: "The investment returns at Shree Ganesh Park have been excellent. The builder's commitment to quality and timely delivery is impressive. A truly reliable development partner.",
+    project: "Shree Ganesh Park",
+    date: "2024"
+  },
+  {
+    id: 8,
+    name: "Mohan Alane",
+    role: "Homeowner - Shree Ganesh Park",
+    image: null,
+    rating: 5,
+    text: "Living at Shree Ganesh Park is a dream come true. The perfect combination of luxury amenities and affordable pricing, along with excellent customer support throughout the process.",
+    project: "Shree Ganesh Park",
+    date: "2024"
   }
 ];
 

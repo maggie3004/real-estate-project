@@ -1,4 +1,5 @@
 import React, { useRef, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
@@ -8,6 +9,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 
 const HeroSection = () => {
+  const navigate = useNavigate();
   // Swiper ref for manual navigation control
   const swiperRef = useRef(null);
 
@@ -56,31 +58,35 @@ const HeroSection = () => {
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [handlePrevSlide, handleNextSlide]);
 
-  // Carousel data with 3 high-quality building images
+  // Carousel data with 4 high-quality building images
   const carouselData = [
     {
       id: 1,
       image: '/assets/shree-ganesh-heights/gallery/night-front.jpg',
-      title: 'Luxury Living Redefined',
-      subtitle: 'Premium properties with world-class amenities'
+      title: 'Sai Shraddha',
+      subtitle: 'Luxury 2 BHK homes',
+      route: '/milestones'
     },
     {
       id: 2,
       image: '/assets/shree-ganesh-park/gallery/ter-view.jpg',
       title: 'Shree Ganesh Park',
-      subtitle: 'Creating homes that last generations'
+      subtitle: 'Happy 1 & 2 BHK',
+      route: '/ShreeGaneshParkPhaseI'
     },
     {
       id: 3,
       image: '/assets/shree-ganesh-heights/gallery/day-front.jpg',
       title: 'Shree Ganesh Heights',
-      subtitle: 'Excellence in every detail'
+      subtitle: 'Affordable 1 BHK',
+      route: '/ShreeGaneshHeights'
     },
     {
       id: 4,
       image: '/assets/shree-ganesh-srushti/gallery/front.jpg',
       title: 'Shree Ganesh Srushti',
-      subtitle: 'Creating homes that last generations'
+      subtitle: 'Happy 1, 2 & 3 BHK Homes & Shops',
+      route: '/ShreeGaneshSrushti'
     }
   ];
 
@@ -138,7 +144,8 @@ const HeroSection = () => {
                   initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
-                  className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-white dark:text-gray-100 mb-2 sm:mb-4 leading-tight drop-shadow-lg text-left"
+                  onClick={() => navigate(slide.route)}
+                  className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-white dark:text-gray-100 mb-2 sm:mb-4 leading-tight drop-shadow-lg text-left cursor-pointer hover:text-amber-300 transition-colors duration-300"
                 >
                   {slide.title}
                 </motion.h2>
