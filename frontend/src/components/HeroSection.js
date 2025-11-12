@@ -58,14 +58,14 @@ const HeroSection = () => {
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [handlePrevSlide, handleNextSlide]);
 
-  // Carousel data with 4 high-quality building images
+  // Carousel data with 3 high-quality building images
   const carouselData = [
     {
       id: 1,
       image: '/assets/shree-ganesh-heights/gallery/night-front.jpg',
-      title: 'Sai Shraddha',
-      subtitle: 'Luxury 2 BHK homes',
-      route: '/milestones'
+      title: 'Shree Ganesh Heights',
+      subtitle: 'Affordable 1 BHK homes',
+      route: '/ShreeGaneshHeights'
     },
     {
       id: 2,
@@ -76,13 +76,6 @@ const HeroSection = () => {
     },
     {
       id: 3,
-      image: '/assets/shree-ganesh-heights/gallery/day-front.jpg',
-      title: 'Shree Ganesh Heights',
-      subtitle: 'Affordable 1 BHK',
-      route: '/ShreeGaneshHeights'
-    },
-    {
-      id: 4,
       image: '/assets/shree-ganesh-srushti/gallery/front.jpg',
       title: 'Shree Ganesh Srushti',
       subtitle: 'Happy 1, 2 & 3 BHK Homes & Shops',

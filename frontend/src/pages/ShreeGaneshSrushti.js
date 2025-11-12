@@ -10,10 +10,11 @@ import { BiCctv, BiSolidHomeHeart } from 'react-icons/bi';
 const ShreeGaneshSrushti = () => {
   const projectData = {
     projectName: "Shree Ganesh Srushti",
-    tagline: "Experience Essence of Elevated Living...",
+    tagline: "THE NEW LANGUAGE OF LIVING",
+    heroSubtitle: "1, 2 & 3 BHK happy homes & shops",
     description: `Experience an elevated lifestyle of sophistication at Shree Ganesh Srushti, where every aspect is meticulously designed. 1 BHK 'Happy Homes' crafted to enhance your everyday living. These residences offer the perfect integration of luxury and functionality, delivering a modern living experience that seamlessly blends convenience, comfort, and innovation. Located at Sr no 94/1 plot 16/17 gavlane road, Pathardi Shivar, Nashik - 422010, our project provides unmatched connectivity to essential services and amenities. With schools, shopping centers, healthcare facilities, and recreational options all within close proximity, residents enjoy a seamless, well-rounded living experience.`,
     stats: [
-      { title: "1 BHK", subtitle: "Happy Homes" },
+      { title: "1, 2 & 3 BHK", subtitle: "Happy Homes & Shops" },
       { title: "G+7", subtitle: "Structure" },
       { title: "8+", subtitle: "Facilities" },
       { title: "Premium", subtitle: "Location" }
@@ -29,10 +30,10 @@ const ShreeGaneshSrushti = () => {
       { icon: <FaWater />, name: "Water Supply" },
       { icon: <FaCar />, name: "Parking Space" }
     ],
-    images: [sgsFront, sgs1bhk, sgs2bhk],
-    brochurePath: "/Shree-Ganesh-Brochure.pdf",
-    reraNumber: "PXXXXXXX",
-    reraQr: "/owner-placeholder.png",
+    images: ['/assets/shree-ganesh-srushti/gallery/SGS_Hero.png', sgsFront, sgs1bhk, sgs2bhk],
+    brochurePath: "/assets/shree-ganesh-srushti/gallery/Shree Ganesh Srushti Digital Broucher_compressed.pdf",
+    reraNumber: "PM1220002501249",
+    reraQr: "/assets/shree-ganesh-srushti/gallery/Rera_QR.png",
     layoutVariant: 'ongoing',
     configuration: "1BHK, 2BHK",
     location: "Nashik",
@@ -43,7 +44,7 @@ const ShreeGaneshSrushti = () => {
       { label: "2BHK", src: sgs2bhk }
     ],
     downloads: [
-      { label: "Project Brochure", href: "/Shree-Ganesh-Brochure.pdf" }
+      { label: "Project Brochure", href: "/assets/shree-ganesh-srushti/gallery/Shree Ganesh Srushti Digital Broucher_compressed.pdf" }
     ],
     advantages: ["New Development", "Secure Campus", "Modern Elevation", "Efficient Plans", "Green Views", "Parking"],
     testimonials: [],
@@ -54,8 +55,9 @@ const ShreeGaneshSrushti = () => {
       { label: "Structure", caption: "Structure progress", image: sgs2bhk },
       { label: "Finishing", caption: "Interior finishing", image: sgsFront }
     ],
-    mapUrl: "https://maps.app.goo.gl/6X9DkrFsd58nzQFT9",
-    directionsUrl: "https://maps.app.goo.gl/6X9DkrFsd58nzQFT9"
+    mapUrl: "https://maps.app.goo.gl/8c8b1TXW1DBwsT6w8",
+    directionsUrl: "https://maps.app.goo.gl/8c8b1TXW1DBwsT6w8",
+    embedMapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3764.0123456789!2d73.8234!3d19.9876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdcb0e0e0e0e0e1%3A0x0!2sShree%20Ganesh%20Srushti!5e0!3m2!1sen!2sin!4v1234567890"
   };
 
   useEffect(() => {
