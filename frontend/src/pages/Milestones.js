@@ -1,19 +1,20 @@
-import React, { useState, useEffect, useCallback, memo } from 'react';
+import React, { useState, useEffect, useCallback, memo, useRef } from 'react';
 import { Helmet } from 'react-helmet';
 import { FaBuilding, FaUsers, FaArrowRight, FaTimes, FaChevronLeft, FaChevronRight, FaMapMarkerAlt, FaCalendarAlt, FaStar, FaTrophy } from 'react-icons/fa';
 import { motion, useAnimation, AnimatePresence } from 'framer-motion';
 // Swiper imports removed as they are not being used
 
+// Top 5 Projects for Featured Display
 const completedProjects = [
   {
     id: 1,
     number: "01",
     title: "Sai Shraddha Apartment",
-    description: "A beautifully designed residential complex offering comfortable living with all modern amenities and excellent connectivity. Experience the perfect blend of comfort and convenience in the heart of Nashik. Located on College Road with 80 units across 1.8 acres.",
-    location: "College Road, Nashik",
-    completionDate: "2024",
-    units: "80 Units",
-    area: "1.8 Acres",
+    description: "A beautifully designed residential complex offering comfortable living with all modern amenities and excellent connectivity. Experience the perfect blend of comfort and convenience in the heart of Nashik. Located on College Road with 24 units across prime location.",
+    location: "Khutwad Nagar, Nashik",
+    completionDate: "2023",
+    units: "24 Units",
+    area: "Prime Location",
     images: [
       "/assets/sai-shraddha-apartment/gallery/front.jpg",
       "/assets/sai-shraddha-apartment/gallery/top-view.jpg",
@@ -30,11 +31,33 @@ const completedProjects = [
   {
     id: 2,
     number: "02",
+    title: "Vinayak Apartment",
+    description: "A Prime Project in a Prime Location. Located in the Makhamalabad area, Vinayak Apartment is a distinguished residential development that blends luxury, space, and thoughtful design. This elegant project features spacious apartments with excellent ventilation, ensuring a bright and airy living experience.",
+    location: "Makhamalabad, Nashik",
+    completionDate: "2023",
+    units: "10 Units",
+    area: "Prime Location",
+    images: [
+      "/assets/sai-shraddha-apartment/gallery/front.jpg",
+      "/assets/sai-shraddha-apartment/gallery/top-view.jpg",
+      "/assets/sai-shraddha-apartment/gallery/parking.jpg",
+      "/assets/sai-shraddha-apartment/gallery/floor-plan.jpg",
+      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-40.jpg"
+    ],
+    amenities: ["Commercial Space", "Security", "Parking", "Power Backup", "Water Supply", "Maintenance"],
+    features: ["2BHK Apartments", "Premium Construction", "Excellent Ventilation", "Prime Location", "Modern Design"],
+    status: "Completed",
+    category: "Completed Project",
+    overlayText: "PRIME LOCATION LIVING"
+  },
+  {
+    id: 3,
+    number: "03",
     title: "Shree Ganesh Avenue",
     description: "Affordable & Spacious Living in Gangapur. Shree Ganesh Avenue offers well-planned 1 & 2 BHK homes with superior construction quality, ample space, and excellent ventilation. Combining affordability with modern comforts, it quickly became a high-demand project in Gangapur Shivar.",
     location: "Gangapur Shivar, Nashik",
-    completionDate: "2023",
-    units: "Multiple Units",
+    completionDate: "2022",
+    units: "45 Units",
     area: "Prime Location",
     images: [
       "/assets/sai-shraddha-apartment/gallery/front.jpg",
@@ -50,13 +73,13 @@ const completedProjects = [
     overlayText: "AFFORDABLE EXCELLENCE"
   },
   {
-    id: 3,
-    number: "03",
+    id: 4,
+    number: "04",
     title: "Shree Ganesh Apartment",
     description: "A premium residential development offering modern living with excellent connectivity and amenities. This project combines quality construction with thoughtful design to provide comfortable and convenient living spaces for families. Located in a well-connected area with easy access to schools, markets, and transportation hubs.",
-    location: "Nashik",
-    completionDate: "2022",
-    units: "Multiple Units",
+    location: "Gangapur Shivar, Nashik",
+    completionDate: "2021",
+    units: "25 Units",
     area: "Well-Connected Area",
     images: [
       "/assets/sai-shraddha-apartment/gallery/front.jpg",
@@ -72,13 +95,13 @@ const completedProjects = [
     overlayText: "MODERN LIVING"
   },
   {
-    id: 4,
-    number: "04",
+    id: 5,
+    number: "05",
     title: "Modakeshwar Apartment",
     description: "Exclusive Living at Wasan Nagar. Located in the prime area of Wasan Nagar, Pathardi, Modakeshwar Apartment is an exclusive standalone residential project offering limited yet luxurious apartments. With its modern elevation, premium construction quality, and thoughtfully designed spaces, this project redefines elegant and comfortable living.",
-    location: "Wasan Nagar, Pathardi, Nashik",
-    completionDate: "2021",
-    units: "Limited Units",
+    location: "Pathardi Wasan Nagar, Nashik",
+    completionDate: "2020",
+    units: "16 Units",
     area: "Prime Location",
     images: [
       "/assets/sai-shraddha-apartment/gallery/front.jpg",
@@ -92,29 +115,26 @@ const completedProjects = [
     status: "Completed",
     category: "Completed Project",
     overlayText: "EXCLUSIVE LIVING"
-  },
-  {
-    id: 5,
-    number: "05",
-    title: "Vinayak Apartment",
-    description: "A Prime Project in a Prime Location. Located in the Makhamalabad area, Vinayak Apartment is a distinguished residential-cum-commercial development that blends luxury, space, and thoughtful design. This minimalistic yet elegant project features spacious 2 BHK flats with excellent ventilation, ensuring a bright and airy living experience.",
-    location: "Makhamalabad, Nashik",
-    completionDate: "2024",
-    units: "2 Flats",
-    area: "1 Floor",
-    images: [
-      "/assets/sai-shraddha-apartment/gallery/front.jpg",
-      "/assets/sai-shraddha-apartment/gallery/top-view.jpg",
-      "/assets/sai-shraddha-apartment/gallery/parking.jpg",
-      "/assets/sai-shraddha-apartment/gallery/floor-plan.jpg",
-      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-40.jpg"
-    ],
-    amenities: ["Commercial Space", "Security", "Parking", "Power Backup", "Water Supply", "Maintenance"],
-    features: ["2BHK Apartments", "Premium Construction", "Excellent Ventilation", "Prime Location", "Modern Design"],
-    status: "Completed",
-    category: "Completed Project",
-    overlayText: "PRIME LOCATION LIVING"
   }
+];
+
+// All Projects Timeline Data - Including all 15 projects
+const allProjectsTimeline = [
+  { name: "Sai Shraddha Apartment", units: "24", year: 2023, location: "Khutwad Nagar" },
+  { name: "Vinayak Apartment", units: "10", year: 2023, location: "Makhamalabad" },
+  { name: "Shree Ganesh Avenue", units: "45", year: 2022, location: "Gangapur Shivar" },
+  { name: "Shree Ganesh Apartment", units: "25", year: 2021, location: "Gangapur Shivar" },
+  { name: "Modakeshwar Apartment", units: "16", year: 2020, location: "Pathardi Wasan Nagar" },
+  { name: "Siddhivinayak Rowhouses 2", units: "10", year: 2019, location: "Satpur" },
+  { name: "Siddhivinayak Rowhouses 1", units: "12", year: 2018, location: "Satpur" },
+  { name: "Nilanjan Shree", units: "50", year: 2017, location: "Gangapur Shivar" },
+  { name: "Gajanan Niwas", units: "20", year: 2017, location: "Adgoan" },
+  { name: "B Y Residency", units: "31", year: 2016, location: "Pathardi" },
+  { name: "Datta Nivas", units: "12", year: 2015, location: "Pathardi Sadguru Nagar" },
+  { name: "Swami Niwas", units: "24", year: 2013, location: "Makhamalbad" },
+  { name: "Vasant Vihar", units: "16", year: 2012, location: "Gangapur Shivar" },
+  { name: "Varad Vinayak 2", units: "10", year: 2011, location: "Dhruv Nagar" },
+  { name: "Varad Vinayak 1", units: "36", year: 2010, location: "Kamatwade" }
 ];
 
 // Milestones data removed since timeline is no longer used
@@ -122,6 +142,7 @@ const completedProjects = [
 const Milestones = () => {
   // const [activeYear, setActiveYear] = useState(2025); // Commented out since we're not using year navigation
   const [selectedProject, setSelectedProject] = useState(null);
+  const timelineRef = useRef(null);
   const controls = useAnimation();
 
   useEffect(() => {
@@ -1058,6 +1079,165 @@ const Milestones = () => {
           ))}
         </div>
 
+        {/* Horizontal Scrollable Timeline - All Projects */}
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="mt-32 mb-32 px-4"
+        >
+          <div className="mb-12 text-center">
+            <motion.h2 
+              className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              Our <span className="bg-gradient-to-r from-primary-600 to-gold bg-clip-text text-transparent">Complete Journey</span>
+            </motion.h2>
+            <motion.p 
+              className="text-lg text-gray-600 dark:text-gray-300"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
+              Scroll through our 15-year legacy of excellence
+            </motion.p>
+          </div>
+
+          {/* Timeline Container */}
+          <div className="relative w-full">
+            {/* Timeline Line */}
+            <div className="absolute top-24 left-0 right-0 h-1 bg-gradient-to-r from-primary-500 via-gold to-orange-500 rounded-full pointer-events-none" />
+            
+            {/* Scrollable Timeline - Optimized for horizontal scroll */}
+            <div 
+              ref={timelineRef}
+              className="overflow-x-auto scrollbar-hide pb-8 scroll-smooth"
+              style={{ 
+                scrollBehavior: 'smooth',
+                WebkitOverflowScrolling: 'touch',
+                msOverflowStyle: 'none',
+                scrollbarWidth: 'none'
+              }}
+            >
+              <div className="flex gap-6 px-4 md:px-8 min-w-min">
+                {allProjectsTimeline.map((project, index) => (
+                  <motion.div
+                    key={index}
+                    className="flex-shrink-0 w-80 group"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.05 }}
+                  >
+                    {/* Timeline Point */}
+                    <div className="flex flex-col items-center mb-6 relative">
+                      <motion.div 
+                        className="w-12 h-12 rounded-full bg-gradient-to-br from-primary-500 to-gold flex items-center justify-center cursor-pointer shadow-lg relative z-10 group-hover:scale-125 transition-transform duration-300"
+                        whileHover={{ scale: 1.2, rotate: 360 }}
+                        whileTap={{ scale: 0.95 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <FaBuilding className="w-5 h-5 text-white" />
+                      </motion.div>
+                    </div>
+
+                    {/* Project Card */}
+                    <motion.div 
+                      className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 border border-gray-200 dark:border-gray-700 hover:shadow-2xl transition-all duration-300 group-hover:border-gold/50 relative overflow-hidden"
+                      whileHover={{ y: -8 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {/* Card Background Gradient */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-primary-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      
+                      <div className="relative z-10 space-y-4">
+                        {/* Project Name */}
+                        <div>
+                          <h3 className="text-lg font-bold text-gray-900 dark:text-white line-clamp-2 group-hover:text-gold transition-colors duration-300">
+                            {project.name}
+                          </h3>
+                        </div>
+
+                        {/* Year Badge */}
+                        <motion.div 
+                          className="inline-block px-3 py-1 rounded-full bg-gradient-to-r from-gold/20 to-primary-500/20 text-gold font-semibold text-sm border border-gold/30"
+                          whileHover={{ scale: 1.1 }}
+                          transition={{ duration: 0.2 }}
+                        >
+                          {project.year}
+                        </motion.div>
+
+                        {/* Project Details */}
+                        <div className="space-y-3 pt-2 border-t border-gray-200 dark:border-gray-700">
+                          {/* Units */}
+                          <div className="flex items-center space-x-3 group/item">
+                            <div className="w-8 h-8 rounded-lg bg-gold/10 flex items-center justify-center group-hover/item:bg-gold/20 transition-colors">
+                              <FaBuilding className="w-4 h-4 text-gold" />
+                            </div>
+                            <div>
+                              <p className="text-xs text-gray-500 dark:text-gray-400">Units</p>
+                              <p className="font-semibold text-gray-900 dark:text-white text-sm">{project.units}</p>
+                            </div>
+                          </div>
+
+                          {/* Location */}
+                          <div className="flex items-center space-x-3 group/item">
+                            <div className="w-8 h-8 rounded-lg bg-primary-500/10 flex items-center justify-center group-hover/item:bg-primary-500/20 transition-colors">
+                              <FaMapMarkerAlt className="w-4 h-4 text-primary-600 dark:text-primary-400" />
+                            </div>
+                            <div>
+                              <p className="text-xs text-gray-500 dark:text-gray-400">Location</p>
+                              <p className="font-semibold text-gray-900 dark:text-white text-sm line-clamp-1">{project.location}</p>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Status Badge */}
+                        <motion.div 
+                          className="mt-4 px-4 py-2 rounded-lg bg-gradient-to-r from-green-500/20 to-emerald-500/20 text-green-700 dark:text-green-300 text-sm font-semibold text-center border border-green-500/30"
+                          initial={{ opacity: 0 }}
+                          whileInView={{ opacity: 1 }}
+                          transition={{ duration: 0.6 }}
+                        >
+                          ✓ Completed
+                        </motion.div>
+                      </div>
+                    </motion.div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Scroll Indicators */}
+            <div className="flex justify-center gap-4 mt-8">
+              <motion.button
+                onClick={() => {
+                  timelineRef.current?.scrollBy({ left: -400, behavior: 'smooth' });
+                }}
+                className="p-3 rounded-full bg-gradient-to-br from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white shadow-xl transition-all duration-300 flex items-center justify-center"
+                whileHover={{ scale: 1.15 }}
+                whileTap={{ scale: 0.9 }}
+                title="Scroll left"
+              >
+                <FaChevronLeft className="w-5 h-5" />
+              </motion.button>
+              <motion.button
+                onClick={() => {
+                  timelineRef.current?.scrollBy({ left: 400, behavior: 'smooth' });
+                }}
+                className="p-3 rounded-full bg-gradient-to-br from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white shadow-xl transition-all duration-300 flex items-center justify-center"
+                whileHover={{ scale: 1.15 }}
+                whileTap={{ scale: 0.9 }}
+                title="Scroll right"
+              >
+                <FaChevronRight className="w-5 h-5" />
+              </motion.button>
+            </div>
+          </div>
+        </motion.div>
+
         {/* Creative Achievement Showcase */}
         <motion.div 
           initial={{ opacity: 0, y: 50 }}
@@ -1313,6 +1493,16 @@ const Milestones = () => {
             max-width: calc(100vw - 1.5rem) !important;
             max-height: calc(100vh - 1.5rem) !important;
           }
+        }
+
+        /* Hide scrollbar while maintaining scroll functionality */
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
         }
       `}</style>
     </section>
