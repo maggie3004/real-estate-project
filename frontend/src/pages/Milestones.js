@@ -1102,7 +1102,7 @@ const Milestones = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              Scroll through our 15-year legacy of excellence
+              Scroll through our 20-year legacy of excellence
             </motion.p>
           </div>
 
