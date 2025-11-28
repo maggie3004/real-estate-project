@@ -60,7 +60,7 @@ const Contact = () => {
       <div className="max-w-7xl mx-auto px-4 pt-8 sm:pt-12">
         {/* Hero Section */}
         <div className="text-center mb-12 sm:mb-16 lg:mb-20">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#E53935] mb-6 sm:mb-8">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-amber-700 dark:text-amber-600 mb-6 sm:mb-8">
             Get in Touch
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto px-4 leading-relaxed">
@@ -70,9 +70,9 @@ const Contact = () => {
 
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 mb-12 sm:mb-16">
           {/* Contact Form */}
-          <div className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-700 rounded-3xl p-6 sm:p-8 lg:p-10">
+          <div className="bg-amber-50 dark:bg-amber-950/20 rounded-3xl p-6 sm:p-8 lg:p-10">
             <div className="text-center mb-6 sm:mb-8">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#E53935] mb-3">Send us a Message</h2>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-amber-700 dark:text-amber-600 mb-3">Send us a Message</h2>
               <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
             </div>
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -172,7 +172,7 @@ const Contact = () => {
           {/* Contact Information */}
           <div className="space-y-8 lg:space-y-10">
             <div className="text-center lg:text-left">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#E53935] mb-4 sm:mb-6">Contact Information</h2>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-amber-700 dark:text-amber-600 mb-4 sm:mb-6">Contact Information</h2>
               <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base mb-6 lg:mb-8">Get in touch with us through any of these channels</p>
               <div className="space-y-6 lg:space-y-8">
                 <div className="flex items-center lg:items-start gap-4 lg:gap-6">
@@ -228,9 +228,9 @@ const Contact = () => {
         </div>
 
         {/* Office Locations */}
-        <div className="mb-16 sm:mb-20">
+        <div className="mb-16 sm:mb-20 bg-white dark:bg-black/50 py-12 sm:py-16 -mx-4 px-4 sm:-mx-12 sm:px-12">
           <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#E53935] mb-4 sm:mb-6">Our Office Locations</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-amber-700 dark:text-amber-600 mb-4 sm:mb-6">Our Office Locations</h2>
             <p className="text-gray-600 dark:text-gray-300 text-base sm:text-lg max-w-3xl mx-auto">Visit our office to discuss your real estate needs</p>
           </div>
           <div className="flex justify-center">
@@ -240,7 +240,7 @@ const Contact = () => {
                   <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gold rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
                     <FaMapMarkerAlt className="text-white text-2xl sm:text-3xl" />
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-[#E53935]">{office.city}</h3>
+                  <h3 className="text-xl sm:text-2xl font-bold text-amber-700 dark:text-amber-600">{office.city}</h3>
                 </div>
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
@@ -267,7 +267,7 @@ const Contact = () => {
 
         {/* Call to Action */}
         <div className="text-center">
-          <div className="bg-gradient-to-r from-[#E53935] to-red-600 text-white p-8 sm:p-12 rounded-2xl shadow-xl">
+          <div className="bg-gradient-to-r from-amber-700 to-amber-600 text-white p-8 sm:p-12 rounded-2xl shadow-xl">
             <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">Ready to Start Your Journey?</h3>
             <p className="text-lg sm:text-xl mb-6 sm:mb-8 opacity-90 max-w-2xl mx-auto">
               Schedule a site visit or consultation with our experts today
@@ -283,7 +283,7 @@ const Contact = () => {
                     }
                   }, 100);
                 }}
-                className="bg-white text-[#E53935] px-8 py-4 sm:px-12 sm:py-5 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-200 hover:scale-105 shadow-lg text-base sm:text-lg"
+                className="bg-white text-amber-700 px-8 py-4 sm:px-12 sm:py-5 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-200 hover:scale-105 shadow-lg text-base sm:text-lg"
               >
                 Schedule Site Visit
               </button>

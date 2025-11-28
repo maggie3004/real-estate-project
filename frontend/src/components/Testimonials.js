@@ -127,11 +127,11 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+    <section className="py-20 bg-amber-50 dark:bg-amber-950/20">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-[#E53935] mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
             What Our Customers Say
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -226,7 +226,7 @@ const Testimonials = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5, duration: 0.4 }}
                   >
-                    <h4 className="text-xl font-bold text-[#E53935]">
+                    <h4 className="text-xl font-bold text-amber-700 dark:text-amber-600">
                       {testimonials[activeIndex].name}
                     </h4>
                     <p className="text-gray-600 dark:text-gray-400 font-medium">

@@ -116,7 +116,19 @@ const HeroSection = () => {
       >
         {carouselData.map((slide, index) => (
           <SwiperSlide key={slide.id} className="relative">
-            <div className="relative h-full w-full bg-gray-900 flex items-center justify-center">
+            <div 
+              className="relative h-full w-full bg-gray-900 flex items-center justify-center cursor-pointer group"
+              onClick={() => navigate(slide.route)}
+              role="button"
+              tabIndex={0}
+              aria-label={`Navigate to ${slide.title}`}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  navigate(slide.route);
+                }
+              }}
+            >
               <img 
                 src={slide.image}
                 alt={slide.title}

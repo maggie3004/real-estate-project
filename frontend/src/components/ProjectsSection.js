@@ -83,9 +83,9 @@ const ProjectsSection = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 relative overflow-hidden">
+    <section className="py-20 bg-amber-50 dark:bg-amber-950/20 relative overflow-hidden">
       {/* Background decoration */}
-      <div className="absolute inset-0 bg-gradient-to-r from-primary-50/30 to-transparent dark:from-primary-900/20"></div>
+      <div className="absolute inset-0 bg-gradient-to-r from-amber-50/30 to-transparent dark:from-amber-900/20"></div>
       <div className="container mx-auto px-4 relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}

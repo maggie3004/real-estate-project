@@ -105,7 +105,7 @@ const events = [
 
 const Awards = () => {
   return (
-  <section className="min-h-screen pt-24 pb-12 bg-white dark:bg-[#181818] text-[#181818] dark:text-white transition-colors duration-300">
+  <section className="min-h-screen pt-24 pb-12 bg-white dark:bg-black text-[#181818] dark:text-white transition-colors duration-300">
       <Helmet>
         <title>Awards & Events - Ganesh Yeole Builders | Recognition & Celebrations</title>
         <meta name="description" content="Explore our awards, recognitions, and events. From industry awards to customer appreciation events, discover our journey of excellence." />
@@ -114,7 +114,7 @@ const Awards = () => {
       <div className="max-w-7xl mx-auto px-4">
         {/* Hero Section */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#E53935] mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold text-amber-700 dark:text-amber-600 mb-6">
             Awards & Recognition
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -123,8 +123,8 @@ const Awards = () => {
         </div>
 
         {/* Awards Section */}
-        <div className="mb-20">
-          <h2 className="text-3xl font-bold text-center text-[#E53935] mb-12">
+        <div className="mb-20 bg-amber-50 dark:bg-amber-950/20 py-12 -mx-4 px-4 sm:-mx-12 sm:px-12">
+          <h2 className="text-3xl font-bold text-center text-amber-700 dark:text-amber-600 mb-12">
             Our Achievements & Awards
           </h2>
           <div className="featured-slider-container relative">
@@ -170,7 +170,7 @@ const Awards = () => {
                           {award.category}
                         </span>
                       </div>
-                      <h3 className="text-xl font-bold text-[#E53935] mb-2">
+                      <h3 className="text-xl font-bold text-amber-700 dark:text-amber-600 mb-2">
                         {award.title}
                       </h3>
                       <p className="text-gray-600 dark:text-gray-400 font-medium mb-3">
@@ -201,8 +201,8 @@ const Awards = () => {
         </div>
 
         {/* Events Section */}
-        <div className="mb-20">
-          <h2 className="text-3xl font-bold text-center text-[#E53935] mb-12">
+        <div className="mb-20 bg-white dark:bg-black/50 py-12 -mx-4 px-4 sm:-mx-12 sm:px-12">
+          <h2 className="text-3xl font-bold text-center text-amber-700 dark:text-amber-600 mb-12">
             Upcoming & Past Events
           </h2>
           <div className="grid lg:grid-cols-2 gap-8">
@@ -229,7 +229,7 @@ const Awards = () => {
                         {event.attendees} Attendees
                       </span>
                     </div>
-                    <h3 className="text-xl font-bold text-[#E53935] mb-3">
+                    <h3 className="text-xl font-bold text-amber-700 dark:text-amber-600 mb-3">
                       {event.title}
                     </h3>
                     <div className="space-y-2 mb-4">
@@ -255,12 +255,12 @@ const Awards = () => {
 
         {/* Call to Action */}
         <div className="text-center">
-          <div className="bg-gradient-to-r from-[#E53935] to-red-600 text-white p-8 rounded-2xl">
+          <div className="bg-gradient-to-r from-amber-700 to-amber-600 text-white p-8 rounded-2xl">
             <h3 className="text-2xl font-bold mb-4">Join Our Next Event</h3>
             <p className="text-lg mb-6 opacity-90">
               Be part of our celebrations and stay updated with our latest achievements
             </p>
-            <button className="bg-white text-[#E53935] px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200">
+            <button className="bg-white text-amber-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200">
               Register for Events
             </button>
           </div>

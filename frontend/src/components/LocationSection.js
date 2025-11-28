@@ -14,7 +14,7 @@ const LocationSection = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.6 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
-      className="py-16 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800"
+      className="py-16 bg-white dark:bg-black/50"
     >
       <div className="container mx-auto px-4">
         <motion.h2
@@ -22,7 +22,7 @@ const LocationSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.8 }}
           transition={{ duration: 0.8, delay: 0.1, ease: 'easeOut' }}
-          className="text-4xl font-playfair font-bold text-primary-700 dark:text-gold mb-8 text-center"
+          className="text-4xl font-playfair font-bold text-black dark:text-white mb-8 text-center"
         >
           Office Location
         </motion.h2>
@@ -56,7 +56,7 @@ const LocationSection = () => {
             transition={{ duration: 0.8, delay: 0.3, ease: 'easeOut' }}
             className="w-full md:w-1/3 text-center md:text-left"
           >
-            <h3 className="text-2xl font-montserrat font-bold text-primary-700 dark:text-gold mb-4">Office Address:</h3>
+            <h3 className="text-2xl font-montserrat font-bold text-black dark:text-white mb-4">Office Address:</h3>
             <p className="text-lg text-gray-700 dark:text-gray-200 font-semibold mb-2 whitespace-pre-line">{address}</p>
             <p className="text-base text-gray-500 dark:text-gray-400">(For directions, click on the map)</p>
           </motion.div>

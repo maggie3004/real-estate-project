@@ -311,7 +311,7 @@ const ProjectTemplate = ({
 
       {/* Key Advantages - 3x2 Grid */}
       {isOngoingVariant && Array.isArray(advantages) && advantages.length > 0 && (
-        <section className="w-full py-12 md:py-16 bg-white dark:bg-black">
+        <section className="w-full py-12 md:py-16 bg-white dark:bg-black/50">
           <div className="max-w-7xl mx-auto px-4">
             <h3 className="text-2xl md:text-3xl font-bold text-amber-700 dark:text-amber-100 mb-8 text-center">Key Advantages</h3>
             <div className="flex items-center justify-center mb-8">
@@ -333,7 +333,7 @@ const ProjectTemplate = ({
 
       {/* Interactive Floor Plans */}
       {Array.isArray(floorPlans) && floorPlans.length > 0 && (
-        <section id="section-floorplans" className="w-full py-12 md:py-16 bg-gray-50 dark:bg-gray-900/40">
+        <section id="section-floorplans" className="w-full py-12 md:py-16 bg-amber-50 dark:bg-amber-950/20">
           <div className="max-w-7xl mx-auto px-4">
             <h3 className="text-2xl md:text-3xl font-bold text-amber-700 dark:text-amber-100 mb-8 text-center">Floor Plans</h3>
             <div className="flex items-center justify-center mb-8">
@@ -421,7 +421,7 @@ const ProjectTemplate = ({
           {/* Construction timeline removed to simplify the page for customers. */}
 
       {/* Amenities Section */}
-      <section className="w-full py-12 md:py-16 bg-white dark:bg-black">
+      <section className="w-full py-12 md:py-16 bg-white dark:bg-black/50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-2xl md:text-3xl font-bold mb-8 text-amber-700 dark:text-amber-100 text-center">Amenities</div>
           <div className="flex items-center justify-center mb-8">
@@ -537,7 +537,7 @@ const ProjectTemplate = ({
       
 
       {/* Gallery Section (shared slider + thumbnails) */}
-      <section id="section-gallery" className="w-full py-12 md:py-16 bg-white dark:bg-black">
+      <section id="section-gallery" className="w-full py-12 md:py-16 bg-amber-50 dark:bg-amber-950/20">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-2xl md:text-3xl font-bold mb-8 text-yellow-600 dark:text-yellow-600 text-center">Gallery</div>
           <div className="flex items-center justify-center mb-8">
@@ -635,7 +635,7 @@ const ProjectTemplate = ({
       </section>
 
       {/* Location Section */}
-      <section id="section-location" className="w-full py-12 md:py-16 bg-gray-50 dark:bg-gray-900/40">
+      <section id="section-location" className="w-full py-12 md:py-16 bg-white dark:bg-black/50">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-2xl md:text-3xl font-bold mb-8 text-yellow-600 dark:text-yellow-600 text-center">Location</div>
           <div className="flex items-center justify-center mb-8">
@@ -674,7 +674,7 @@ const ProjectTemplate = ({
 
       {/* Download Brochure Button - For Ongoing Projects */}
       {isOngoingVariant && brochurePath && (
-        <section className="w-full py-12 md:py-16 bg-white dark:bg-black">
+        <section className="w-full py-12 md:py-16 bg-amber-50 dark:bg-amber-950/20">
           <div className="max-w-7xl mx-auto px-4 text-center">
             <h3 className="text-2xl md:text-3xl font-bold mb-6 text-yellow-600 dark:text-yellow-600">Download Brochure</h3>
             <p className="text-[#181818] dark:text-gray-400 mb-8 text-lg">Get detailed information about {projectName}</p>

@@ -248,7 +248,7 @@ const JourneySection = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 relative overflow-hidden">
+    <section className="py-20 bg-amber-50 dark:bg-amber-950/20 relative overflow-hidden">
       <Helmet>
         <title>Our Journey of Excellence | Ganesh Yeole Builders</title>
         <meta name="description" content="Discover our journey of excellence in real estate development. From project completions to industry awards, explore our milestones and achievements." />

@@ -84,13 +84,13 @@ const AboutNashik = () => {
       </Helmet>
 
       {/* Image Gallery - Nashik's Beauty */}
-      <section className="py-12 px-4 bg-gray-50 dark:bg-gray-900">
+      <section className="py-12 px-4 bg-amber-50 dark:bg-amber-950/20">
         <div className="max-w-6xl mx-auto">
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-3xl font-bold text-center mb-8 text-[#E53935]"
+            className="text-3xl font-bold text-center mb-8 text-amber-700 dark:text-amber-600"
           >
             Discover Nashik's Beauty
           </motion.h2>
@@ -121,7 +121,7 @@ const AboutNashik = () => {
       </section>
 
       {/* Introduction Section */}
-      <section className="py-12 px-4">
+      <section className="py-12 px-4 bg-white dark:bg-black/50">
         <div className="max-w-6xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -129,7 +129,7 @@ const AboutNashik = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-8"
           >
-            <h2 className="text-3xl font-bold mb-4 text-[#E53935]">Welcome to Nashik</h2>
+            <h2 className="text-3xl font-bold mb-4 text-amber-700 dark:text-amber-600">Welcome to Nashik</h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
               Nashik, the "Wine Capital of India," is a vibrant city in Maharashtra that seamlessly blends 
               ancient spirituality with modern development. Located on the banks of the sacred Godavari River, 
@@ -145,12 +145,12 @@ const AboutNashik = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
-                className="text-center p-4 bg-gray-50 dark:bg-gray-800 rounded-lg hover:shadow-lg transition-shadow duration-300"
+                className="text-center p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg hover:shadow-lg transition-shadow duration-300"
               >
                 <div className="mb-3 flex justify-center">
                   {highlight.icon}
                 </div>
-                <h3 className="text-lg font-bold mb-2 text-[#E53935]">{highlight.title}</h3>
+                <h3 className="text-lg font-bold mb-2 text-amber-700 dark:text-amber-600">{highlight.title}</h3>
                 <p className="text-sm text-gray-600 dark:text-gray-300">{highlight.description}</p>
               </motion.div>
             ))}
@@ -161,7 +161,7 @@ const AboutNashik = () => {
 
 
       {/* Connectivity Section */}
-      <section className="py-12 px-4">
+      <section className="py-12 px-4 bg-amber-50 dark:bg-amber-950/20">
         <div className="max-w-6xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -169,7 +169,7 @@ const AboutNashik = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-8"
           >
-            <h2 className="text-3xl font-bold mb-4 text-[#E53935]">Excellent Connectivity</h2>
+            <h2 className="text-3xl font-bold mb-4 text-amber-700 dark:text-amber-600">Excellent Connectivity</h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               Nashik is well-connected to major cities through multiple transportation modes.
             </p>
@@ -187,7 +187,7 @@ const AboutNashik = () => {
                 <div className="text-2xl text-gold mb-3 flex justify-center">
                   {item.icon}
                 </div>
-                <h3 className="text-lg font-bold mb-2 text-[#E53935]">{item.title}</h3>
+                <h3 className="text-lg font-bold mb-2 text-amber-700 dark:text-amber-600">{item.title}</h3>
                 <p className="text-sm text-gray-600 dark:text-gray-300">{item.details}</p>
               </motion.div>
             ))}
@@ -196,7 +196,7 @@ const AboutNashik = () => {
       </section>
 
       {/* Real Estate Market */}
-      <section className="py-12 px-4 bg-gray-50 dark:bg-gray-900">
+      <section className="py-12 px-4 bg-white dark:bg-black/50">
         <div className="max-w-6xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -204,10 +204,10 @@ const AboutNashik = () => {
             transition={{ duration: 0.8 }}
             className="text-center"
           >
-            <h2 className="text-3xl font-bold mb-6 text-[#E53935]">Real Estate Market</h2>
+            <h2 className="text-3xl font-bold mb-6 text-amber-700 dark:text-amber-600">Real Estate Market</h2>
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div className="text-left">
-                <h3 className="text-xl font-bold mb-4 text-[#E53935]">Why Invest in Nashik?</h3>
+                <h3 className="text-xl font-bold mb-4 text-amber-700 dark:text-amber-600">Why Invest in Nashik?</h3>
                 <ul className="space-y-2 text-base text-gray-600 dark:text-gray-300">
                   <li className="flex items-center">
                     <span className="text-gold mr-2">✓</span>
@@ -245,7 +245,7 @@ const AboutNashik = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-12 px-4 bg-gradient-to-r from-[#E53935] to-red-600">
+      <section className="py-12 px-4 bg-gradient-to-r from-amber-700 to-amber-600">
         <div className="max-w-4xl mx-auto text-center text-white">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -259,13 +259,13 @@ const AboutNashik = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button 
                 onClick={handleViewProjects}
-                className="bg-white text-[#E53935] px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
+                className="bg-white text-amber-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
               >
                 View Our Projects
               </button>
               <button 
                 onClick={handleContactUs}
-                className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-[#E53935] transition-colors duration-200"
+                className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-amber-700 transition-colors duration-200"
               >
                 Contact Us
               </button>

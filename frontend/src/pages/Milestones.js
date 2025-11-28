@@ -660,7 +660,7 @@ const Milestones = () => {
                   repeat: Infinity,
                   ease: "easeInOut"
                 }}
-                className="w-16 h-16 bg-gradient-to-br from-primary-500 to-gold rounded-full flex items-center justify-center shadow-lg"
+                className="w-16 h-16 bg-gradient-to-br from-amber-700 to-gold rounded-full flex items-center justify-center shadow-lg"
               >
                 <FaTrophy className="w-8 h-8 text-white" />
               </motion.div>
@@ -702,7 +702,7 @@ const Milestones = () => {
               </motion.div>
           </div>
             
-            <h1 className="relative text-5xl md:text-6xl font-bold bg-gradient-to-r from-[#E53935] via-gold to-orange-500 bg-clip-text text-transparent mb-8">
+            <h1 className="relative text-5xl md:text-6xl font-bold bg-gradient-to-r from-amber-700 via-gold to-amber-600 bg-clip-text text-transparent mb-8">
               Our Journey of Excellence
             </h1>
             
@@ -710,11 +710,11 @@ const Milestones = () => {
               initial={{ width: 0 }}
               animate={{ width: "200px" }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="h-1 bg-gradient-to-r from-[#E53935] via-gold to-orange-500 mx-auto mb-8 rounded-full"
+              className="h-1 bg-gradient-to-r from-amber-700 via-gold to-amber-600 mx-auto mb-8 rounded-full"
             ></motion.div>
             
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Celebrating milestones, achievements, and the trust of <span className="font-bold text-[#E53935]">500+ families</span> across <span className="font-bold text-gold">16+ years</span> of dedicated service
+              Celebrating milestones, achievements, and the trust of <span className="font-bold text-amber-700">500+ families</span> across <span className="font-bold text-gold">16+ years</span> of dedicated service
             </p>
             
             {/* Animated Stats Counter */}
@@ -729,7 +729,7 @@ const Milestones = () => {
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ duration: 0.5, delay: 1.5 }}
-                  className="text-3xl font-bold text-[#E53935]"
+                  className="text-3xl font-bold text-amber-700"
                 >
                   500+
                 </motion.div>
@@ -771,7 +771,7 @@ const Milestones = () => {
         >
           <div className="relative max-w-6xl mx-auto px-4">
             {/* Progress Line */}
-            <div className="absolute top-1/2 left-8 right-8 h-1 bg-gradient-to-r from-primary-500 via-gold to-orange-500 rounded-full transform -translate-y-1/2"></div>
+            <div className="absolute top-1/2 left-8 right-8 h-1 bg-gradient-to-r from-amber-700 via-gold to-amber-600 rounded-full transform -translate-y-1/2"></div>
             
             {/* Progress Dots */}
             <div className="flex justify-between items-start relative z-10">
@@ -784,7 +784,7 @@ const Milestones = () => {
                   transition={{ duration: 0.6, delay: index * 0.2 }}
                 >
                   <motion.div
-                    className="w-10 h-10 bg-gradient-to-br from-primary-500 to-gold rounded-full flex items-center justify-center shadow-lg cursor-pointer mb-3"
+                    className="w-10 h-10 bg-gradient-to-br from-amber-700 to-gold rounded-full flex items-center justify-center shadow-lg cursor-pointer mb-3"
                     whileHover={{ scale: 1.2, rotate: 360 }}
                     transition={{ duration: 0.3 }}
                     onClick={() => {
@@ -925,7 +925,7 @@ const Milestones = () => {
                       whileHover={{ scale: 1.1 }}
                       className="bg-white/90 rounded-full p-4 shadow-lg"
                     >
-                      <FaArrowRight className="w-6 h-6 text-primary-600" />
+                      <FaArrowRight className="w-6 h-6 text-amber-700" />
                     </motion.div>
           </div>
 
@@ -1094,7 +1094,7 @@ const Milestones = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              Our <span className="bg-gradient-to-r from-primary-600 to-gold bg-clip-text text-transparent">Complete Journey</span>
+              Our <span className="bg-gradient-to-r from-amber-700 to-gold bg-clip-text text-transparent">Complete Journey</span>
             </motion.h2>
             <motion.p 
               className="text-lg text-gray-600 dark:text-gray-300"
@@ -1109,7 +1109,7 @@ const Milestones = () => {
           {/* Timeline Container */}
           <div className="relative w-full">
             {/* Timeline Line */}
-            <div className="absolute top-24 left-0 right-0 h-1 bg-gradient-to-r from-primary-500 via-gold to-orange-500 rounded-full pointer-events-none" />
+            <div className="absolute top-24 left-0 right-0 h-1 bg-gradient-to-r from-amber-700 via-gold to-amber-600 rounded-full pointer-events-none" />
             
             {/* Scrollable Timeline - Optimized for horizontal scroll */}
             <div 
@@ -1134,7 +1134,7 @@ const Milestones = () => {
                     {/* Timeline Point */}
                     <div className="flex flex-col items-center mb-6 relative">
                       <motion.div 
-                        className="w-12 h-12 rounded-full bg-gradient-to-br from-primary-500 to-gold flex items-center justify-center cursor-pointer shadow-lg relative z-10 group-hover:scale-125 transition-transform duration-300"
+                        className="w-12 h-12 rounded-full bg-gradient-to-br from-amber-700 to-gold flex items-center justify-center cursor-pointer shadow-lg relative z-10 group-hover:scale-125 transition-transform duration-300"
                         whileHover={{ scale: 1.2, rotate: 360 }}
                         whileTap={{ scale: 0.95 }}
                         transition={{ duration: 0.3 }}
@@ -1150,7 +1150,7 @@ const Milestones = () => {
                       transition={{ duration: 0.3 }}
                     >
                       {/* Card Background Gradient */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-primary-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-amber-700/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       
                       <div className="relative z-10 space-y-4">
                         {/* Project Name */}
@@ -1162,7 +1162,7 @@ const Milestones = () => {
 
                         {/* Year Badge */}
                         <motion.div 
-                          className="inline-block px-3 py-1 rounded-full bg-gradient-to-r from-gold/20 to-primary-500/20 text-gold font-semibold text-sm border border-gold/30"
+                          className="inline-block px-3 py-1 rounded-full bg-gradient-to-r from-gold/20 to-amber-700/20 text-gold font-semibold text-sm border border-gold/30"
                           whileHover={{ scale: 1.1 }}
                           transition={{ duration: 0.2 }}
                         >
@@ -1184,8 +1184,8 @@ const Milestones = () => {
 
                           {/* Location */}
                           <div className="flex items-center space-x-3 group/item">
-                            <div className="w-8 h-8 rounded-lg bg-primary-500/10 flex items-center justify-center group-hover/item:bg-primary-500/20 transition-colors">
-                              <FaMapMarkerAlt className="w-4 h-4 text-primary-600 dark:text-primary-400" />
+                            <div className="w-8 h-8 rounded-lg bg-amber-700/10 flex items-center justify-center group-hover/item:bg-amber-700/20 transition-colors">
+                              <FaMapMarkerAlt className="w-4 h-4 text-amber-700 dark:text-amber-400" />
                             </div>
                             <div>
                               <p className="text-xs text-gray-500 dark:text-gray-400">Location</p>
@@ -1216,7 +1216,7 @@ const Milestones = () => {
                 onClick={() => {
                   timelineRef.current?.scrollBy({ left: -400, behavior: 'smooth' });
                 }}
-                className="p-3 rounded-full bg-gradient-to-br from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white shadow-xl transition-all duration-300 flex items-center justify-center"
+                className="p-3 rounded-full bg-gradient-to-br from-amber-700 to-amber-800 hover:from-amber-800 hover:to-amber-900 text-white shadow-xl transition-all duration-300 flex items-center justify-center"
                 whileHover={{ scale: 1.15 }}
                 whileTap={{ scale: 0.9 }}
                 title="Scroll left"
@@ -1227,7 +1227,7 @@ const Milestones = () => {
                 onClick={() => {
                   timelineRef.current?.scrollBy({ left: 400, behavior: 'smooth' });
                 }}
-                className="p-3 rounded-full bg-gradient-to-br from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white shadow-xl transition-all duration-300 flex items-center justify-center"
+                className="p-3 rounded-full bg-gradient-to-br from-amber-700 to-amber-800 hover:from-amber-800 hover:to-amber-900 text-white shadow-xl transition-all duration-300 flex items-center justify-center"
                 whileHover={{ scale: 1.15 }}
                 whileTap={{ scale: 0.9 }}
                 title="Scroll right"
@@ -1257,9 +1257,9 @@ const Milestones = () => {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { number: "500+", label: "Happy Families", icon: FaUsers, color: "from-primary-500 to-gold" },
-              { number: "16+", label: "Years Experience", icon: FaTrophy, color: "from-gold to-orange-500" },
-              { number: "50+", label: "Projects Delivered", icon: FaBuilding, color: "from-orange-500 to-primary-500" },
+              { number: "500+", label: "Happy Families", icon: FaUsers, color: "from-amber-700 to-gold" },
+              { number: "16+", label: "Years Experience", icon: FaTrophy, color: "from-gold to-amber-600" },
+              { number: "50+", label: "Projects Delivered", icon: FaBuilding, color: "from-amber-600 to-amber-700" },
               { number: "100%", label: "Customer Satisfaction", icon: FaStar, color: "from-green-500 to-gold" }
             ].map((achievement, index) => (
               <motion.div
@@ -1301,7 +1301,7 @@ const Milestones = () => {
           viewport={{ once: true }}
           className="mt-32 text-center"
         >
-          <div className="relative bg-gradient-to-r from-primary-600 to-gold rounded-2xl p-12 text-white overflow-hidden">
+          <div className="relative bg-gradient-to-r from-amber-700 to-gold rounded-2xl p-12 text-white overflow-hidden">
             {/* Animated Decorative Elements */}
             <motion.div 
               className="absolute top-6 right-6 w-24 h-24 bg-white/10 rounded-lg transform rotate-12 opacity-30"
@@ -1380,7 +1380,7 @@ const Milestones = () => {
                 transition={{ duration: 0.6, delay: 0.4 }}
               >
                 <motion.button 
-                  className="bg-white text-primary-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300 text-lg relative overflow-hidden group"
+                  className="bg-white text-amber-700 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300 text-lg relative overflow-hidden group"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -1393,7 +1393,7 @@ const Milestones = () => {
                   ></motion.div>
                 </motion.button>
                 <motion.button 
-                  className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-primary-600 transition-colors duration-300 text-lg relative overflow-hidden group"
+                  className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-amber-700 transition-colors duration-300 text-lg relative overflow-hidden group"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >

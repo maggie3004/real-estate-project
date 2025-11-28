@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AboutSection = () => (
-  <section style={{ padding: '3rem 0', background: 'var(--background-color)' }}>
+  <section style={{ padding: '3rem 0', background: '#ffffff' }} className="dark:bg-black/50">
     <div style={{ maxWidth: 900, margin: '0 auto', textAlign: 'center', padding: '0 1rem' }}>
       <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 2.2rem)', fontWeight: 700, color: 'var(--primary-color)', marginBottom: 16 }}>
         About Us

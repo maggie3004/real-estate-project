@@ -166,7 +166,7 @@ const Events = () => {
   const pastEvents = events.filter(event => event.status === 'Completed');
 
   return (
-    <section className="min-h-screen pt-24 pb-12 bg-white dark:bg-[#181818] text-[#181818] dark:text-white transition-colors duration-300">
+    <section className="min-h-screen pt-24 pb-12 bg-white dark:bg-black text-[#181818] dark:text-white transition-colors duration-300">
       <Helmet>
         <title>Events - Ganesh Yeole Builders | Upcoming & Past Events</title>
         <meta name="description" content="Join our upcoming events and explore past celebrations. From project launches to customer appreciation events, discover our community activities." />
@@ -175,7 +175,7 @@ const Events = () => {
       <div className="max-w-7xl mx-auto px-4">
         {/* Hero Section */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#E53935] mb-6">
+          <h1 className="text-4xl md:text-5xl font-bold text-amber-700 dark:text-amber-600 mb-6">
             Offers and Sales
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -184,8 +184,8 @@ const Events = () => {
         </div>
 
         {/* Upcoming Offers */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center text-[#E53935] mb-12">
+        <div className="mb-16 bg-amber-50 dark:bg-amber-950/20 py-12 -mx-4 px-4 sm:-mx-12 sm:px-12">
+          <h2 className="text-3xl font-bold text-center text-amber-700 dark:text-amber-600 mb-12">
             Upcoming Offers
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -209,7 +209,7 @@ const Events = () => {
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-[#E53935] mb-3">
+                  <h3 className="text-xl font-bold text-amber-700 dark:text-amber-600 mb-3">
                     {event.title}
                   </h3>
                   <div className="space-y-2 mb-4">
@@ -235,7 +235,7 @@ const Events = () => {
                   </p>
                   <button
                     onClick={() => handleEventClick(event)}
-                    className="w-full bg-gradient-to-r from-[#E53935] to-red-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-red-600 hover:to-red-700 transition-all duration-200"
+                    className="w-full bg-gradient-to-r from-amber-700 to-amber-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-amber-600 hover:to-amber-500 transition-all duration-200"
                   >
                     {event.registrationRequired ? 'Register Now' : 'Learn More'}
                   </button>
@@ -246,8 +246,8 @@ const Events = () => {
         </div>
 
         {/* Past Events */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-center text-[#E53935] mb-12">
+        <div className="mb-16 bg-white dark:bg-black/50 py-12 -mx-4 px-4 sm:-mx-12 sm:px-12">
+          <h2 className="text-3xl font-bold text-center text-amber-700 dark:text-amber-600 mb-12">
             Past Events
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -271,7 +271,7 @@ const Events = () => {
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-[#E53935] mb-3">
+                  <h3 className="text-xl font-bold text-amber-700 dark:text-amber-600 mb-3">
                     {event.title}
                   </h3>
                   <div className="space-y-2 mb-4">
@@ -308,12 +308,12 @@ const Events = () => {
 
         {/* Call to Action */}
         <div className="text-center">
-          <div className="bg-gradient-to-r from-[#E53935] to-red-600 text-white p-8 rounded-2xl">
+          <div className="bg-gradient-to-r from-amber-700 to-amber-600 text-white p-8 rounded-2xl">
             <h3 className="text-2xl font-bold mb-4">Stay Updated with Our Events</h3>
             <p className="text-lg mb-6 opacity-90">
               Subscribe to our newsletter to get notified about upcoming events and special offers
             </p>
-            <button className="bg-white text-[#E53935] px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200">
+            <button className="bg-white text-amber-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200">
               Subscribe to Newsletter
             </button>
           </div>
@@ -325,7 +325,7 @@ const Events = () => {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
           <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 max-w-md w-full max-h-[90vh] overflow-y-auto">
             <div className="flex justify-between items-center mb-6">
-              <h3 className="text-2xl font-bold text-[#E53935]">Event Registration</h3>
+              <h3 className="text-2xl font-bold text-amber-700 dark:text-amber-600">Event Registration</h3>
               <button
                 onClick={() => setShowRegistration(false)}
                 className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 text-2xl"
@@ -365,7 +365,7 @@ const Events = () => {
               <div className="flex gap-4 pt-4">
                 <button
                   onClick={() => handleRegister(selectedEvent.id)}
-                  className="flex-1 bg-gradient-to-r from-[#E53935] to-red-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-red-600 hover:to-red-700 transition-all duration-200"
+                  className="flex-1 bg-gradient-to-r from-amber-700 to-amber-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-amber-600 hover:to-amber-500 transition-all duration-200"
                 >
                   Confirm Registration
                 </button>

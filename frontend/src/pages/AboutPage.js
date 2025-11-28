@@ -117,17 +117,18 @@ const AboutPage = () => (
           <div className="sticky top-24">
             <div className="bg-gradient-to-br from-gold-50 to-gold-100 dark:from-gold-900/20 dark:to-gold-800/20 rounded-2xl p-8 text-center border-2 border-gold/20">
               <div className="mb-6">
-                <div className="w-32 h-32 rounded-full bg-gradient-to-br from-gold to-gold-600 mx-auto border-4 border-gold shadow-lg flex items-center justify-center">
-                  <span className="text-white text-4xl font-bold">PY</span>
-                </div>
+                <img 
+                  src="/assets/ganesh-yeole.jpg" 
+                  alt="Mr. Ganesh V. Yeole"
+                  className="w-48 h-48 rounded-full object-cover border-4 border-gold shadow-lg mx-auto"
+                />
               </div>
               <h3 className="text-2xl font-bold text-[#E53935] mb-2">Mr. Ganesh V. Yeole</h3>
               <p className="text-gold font-semibold mb-4">Chairperson & Managing Director</p>
               <div className="text-sm text-gray-600 dark:text-gray-300 mb-6 space-y-2">
                 <p>• Civil Engineer (B.E.)</p>
-                <p>• Vastu Expert (Pursuing)</p>
                 <p>• 20+ Years Experience</p>
-                <p>• Second Generation Leader</p>
+                <p>• Generation Leader</p>
               </div>
               <div className="bg-white dark:bg-gray-800 rounded-xl p-6 text-left">
                 <h4 className="text-lg font-bold text-[#E53935] mb-3">Message from the Chairperson</h4>
