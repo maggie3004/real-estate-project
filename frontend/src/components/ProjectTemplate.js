@@ -141,18 +141,18 @@ const ProjectTemplate = ({
             </div>
           </div>
 
-          {/* RERA Info - Bottom Right */}
+          {/* RERA Info - Top Right */}
           {reraQr && reraNumber && (
-            <div className="absolute bottom-6 right-6 md:bottom-10 md:right-10 z-20">
-              <div className="flex items-center gap-3">
+            <div className="absolute top-6 right-6 md:top-8 md:right-8 z-20">
+              <div className="flex items-center gap-2">
                 <img 
                   src={reraQr} 
                   alt="MahaRERA Logo" 
-                  className="w-16 h-16 md:w-20 md:h-20 object-contain"
+                  className="w-12 h-12 md:w-14 md:h-14 object-contain"
                 />
                 <div className="text-left">
-                  <div className="text-xs md:text-sm font-semibold text-white drop-shadow-lg mb-1">RERA Registered</div>
-                  <div className="text-xs md:text-sm text-white drop-shadow-lg font-mono">{reraNumber}</div>
+                  <div className="text-xs font-semibold text-white drop-shadow-lg">RERA</div>
+                  <div className="text-xs text-white drop-shadow-lg font-mono leading-tight">{reraNumber}</div>
                 </div>
               </div>
             </div>
