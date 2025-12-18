@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import logo from '../assets/logo.png';
+
+const logoUrl = '/assets/logo.png';
 
 const LoadingScreen = ({ onLoadingComplete }) => {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
@@ -67,7 +68,7 @@ const LoadingScreen = ({ onLoadingComplete }) => {
                        className="w-40 h-40 rounded-full overflow-hidden bg-white shadow-2xl flex items-center justify-center"
                      >
                        <img 
-                         src={logo} 
+                         src={logoUrl} 
                          alt="Ganesh Yeole Builders and Developers" 
                          className="w-32 h-32 object-contain"
                          style={{

@@ -1,6 +1,7 @@
 import React from 'react';
-import logo from '../assets/logo.png';
 import { FaLinkedin, FaFacebook, FaInstagram, FaYoutube, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+
+const logoUrl = '/assets/logo.png';
 
 function Footer() {
   return (
@@ -10,9 +11,16 @@ function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-4">
           {/* Company Info */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2 sm:gap-3">
-              <img src={logo} alt="Logo" className="h-8 sm:h-10 w-auto" />
-              <span className="font-bold text-base sm:text-lg tracking-wide text-white">Ganesh Yeole Builders</span>
+            <div className="flex items-center gap-3">
+              <img src={logoUrl} alt="Ganesh Yeole Builders Logo" className="h-12 sm:h-14 w-auto object-contain" />
+              <div className="flex flex-col">
+                <span className="font-bold text-base sm:text-lg tracking-tight text-white">
+                  Ganesh Yeole
+                </span>
+                <span className="text-xs sm:text-sm font-medium text-gray-400">
+                  Builders & Developers
+                </span>
+              </div>
             </div>
             <p className="text-gray-300 leading-relaxed text-sm">
               Building dreams and creating landmarks for over 20 years. Your trusted partner in real estate development across Nashik and Pune.

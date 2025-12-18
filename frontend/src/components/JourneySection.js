@@ -307,9 +307,9 @@ const JourneySection = () => {
           className="relative"
         >
           {/* Enhanced Central Timeline Line */}
-          <div className="absolute left-1/2 transform -translate-x-0.5 top-0 bottom-0 w-1 bg-gradient-to-b from-primary-500 via-gold to-primary-500 hidden lg:block">
+          <div className="absolute left-1/2 transform -translate-x-0.5 top-0 bottom-0 w-1 bg-gradient-to-b from-accent-500 via-accent-400 to-accent-500 dark:from-accent-600 dark:via-accent-500 dark:to-accent-600 hidden lg:block">
             {/* Timeline Glow Effect */}
-            <div className="absolute inset-0 w-3 -left-1 bg-gradient-to-b from-primary-500/20 via-gold/20 to-primary-500/20 blur-sm"></div>
+            <div className="absolute inset-0 w-3 -left-1 bg-gradient-to-b from-accent-500/30 via-accent-400/30 to-accent-500/30 dark:from-accent-600/40 dark:via-accent-500/40 dark:to-accent-600/40 blur-sm"></div>
           </div>
 
         {/* Timeline Items */}
@@ -321,18 +321,18 @@ const JourneySection = () => {
                 className="relative"
               >
                 {/* Enhanced Year Badge - Central */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-2 w-16 h-16 bg-gradient-to-r from-primary-600 to-gold rounded-full flex items-center justify-center shadow-lg z-10 hidden lg:flex group">
+                <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-2 w-16 h-16 bg-gradient-to-r from-accent-600 to-accent-500 rounded-full flex items-center justify-center shadow-lg z-10 hidden lg:flex group">
                   {/* Pulsing Ring Effect */}
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary-600 to-gold animate-ping opacity-20"></div>
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary-600 to-gold animate-pulse opacity-30"></div>
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-accent-600 to-accent-500 animate-ping opacity-20"></div>
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-accent-600 to-accent-500 animate-pulse opacity-30"></div>
                   
                   <div className="w-12 h-12 bg-white dark:bg-gray-900 rounded-full flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform duration-300">
-                    <span className="text-primary-600 dark:text-primary-400 font-bold text-sm group-hover:text-gold transition-colors duration-300">{yearData.year}</span>
+                    <span className="text-accent-600 dark:text-accent-400 font-bold text-sm group-hover:text-accent-500 transition-colors duration-300">{yearData.year}</span>
                   </div>
                   
                   {/* Sparkle Effect */}
-                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-gold rounded-full animate-pulse opacity-60"></div>
-                  <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-primary-400 rounded-full animate-pulse opacity-60" style={{animationDelay: '0.5s'}}></div>
+                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-accent-400 rounded-full animate-pulse opacity-60"></div>
+                  <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-accent-300 rounded-full animate-pulse opacity-60" style={{animationDelay: '0.5s'}}></div>
                 </div>
 
                 {/* Mobile Year Badge */}
@@ -379,12 +379,12 @@ const JourneySection = () => {
                       <div className="p-3 relative z-20">
                         <div className="flex items-center justify-between mb-2">
                           <div className="flex items-center gap-2">
-                            <div className="w-2 h-2 bg-gradient-to-r from-primary-600 to-gold rounded-full animate-pulse"></div>
-                            <span className="text-primary-600 dark:text-primary-400 font-semibold text-xs group-hover:text-gold transition-colors duration-300">
+                            <div className="w-2 h-2 bg-gradient-to-r from-accent-600 to-accent-400 rounded-full animate-pulse"></div>
+                            <span className="text-accent-600 dark:text-accent-400 font-semibold text-xs group-hover:text-accent-500 transition-colors duration-300">
                               {yearData.achievements.length} Projects
                             </span>
                           </div>
-                          <h3 className="text-base font-bold text-gray-900 dark:text-white group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
+                          <h3 className="text-base font-bold text-gray-900 dark:text-white group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors duration-300">
                             {yearData.year}
                           </h3>
                         </div>
@@ -392,10 +392,10 @@ const JourneySection = () => {
                         {/* Enhanced Project List - Compact */}
                         <div className="space-y-1.5">
                           {yearData.achievements.slice(0, 2).map((achievement, achievementIndex) => (
-                            <div key={achievementIndex} className="flex items-center gap-2 p-1.5 bg-gray-50 dark:bg-gray-700 rounded-md group/item hover:bg-gradient-to-r hover:from-primary-50 hover:to-gold/10 dark:hover:from-primary-900/20 dark:hover:to-gold/10 transition-all duration-300">
-                              <div className="w-1.5 h-1.5 bg-gold rounded-full group-hover/item:animate-pulse"></div>
+                            <div key={achievementIndex} className="flex items-center gap-2 p-1.5 bg-gray-50 dark:bg-gray-700 rounded-md group/item hover:bg-gradient-to-r hover:from-accent-50 hover:to-accent-100/20 dark:hover:from-accent-900/30 dark:hover:to-accent-900/10 transition-all duration-300">
+                              <div className="w-1.5 h-1.5 bg-accent-500 rounded-full group-hover/item:animate-pulse"></div>
                               <div className="flex-1">
-                                <h4 className="font-medium text-gray-900 dark:text-white text-xs group-hover/item:text-primary-600 dark:group-hover/item:text-primary-400 transition-colors duration-300">
+                                <h4 className="font-medium text-gray-900 dark:text-white text-xs group-hover/item:text-accent-600 dark:group-hover/item:text-accent-400 transition-colors duration-300">
                                   {achievement.title}
                                 </h4>
                                 <p className="text-gray-600 dark:text-gray-300 text-xs">
@@ -403,7 +403,7 @@ const JourneySection = () => {
                                 </p>
                               </div>
                               {/* Subtle Progress Indicator */}
-                              <div className="w-1 h-1 bg-primary-400 rounded-full opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"></div>
+                              <div className="w-1 h-1 bg-accent-400 rounded-full opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"></div>
                             </div>
                           ))}
                         </div>
@@ -417,7 +417,7 @@ const JourneySection = () => {
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="bg-gradient-to-br from-primary-600 to-gold rounded-2xl p-3 text-white relative overflow-hidden group border border-white/10 shadow-2xl">
+                    <div className="bg-gradient-to-br from-accent-600 to-accent-500 rounded-2xl p-3 text-white relative overflow-hidden group border border-white/10 shadow-2xl dark:from-accent-700 dark:to-accent-600">
                       {/* Unique Geometric Pattern */}
                       <div className="absolute inset-0 opacity-15">
                         <div className="absolute top-1 right-1 w-8 h-8 border-2 border-white/30 rounded-full animate-spin" style={{animationDuration: '12s'}}></div>
@@ -428,7 +428,7 @@ const JourneySection = () => {
                       {/* Compact Header with Unique Badge */}
                       <div className="text-center mb-2 relative z-10">
                         <div className="inline-flex items-center gap-1 px-2 py-0.5 bg-white/20 rounded-full mb-1">
-                          <div className="w-1.5 h-1.5 bg-yellow-300 rounded-full animate-pulse"></div>
+                          <div className="w-1.5 h-1.5 bg-cyan-200 rounded-full animate-pulse"></div>
                           <span className="text-xs font-medium">EXCELLENCE</span>
                         </div>
                         <h3 className="text-sm font-bold group-hover:scale-105 transition-transform duration-300">{yearData.year}</h3>
@@ -457,18 +457,18 @@ const JourneySection = () => {
                         <div className="space-y-1">
                           {yearData.achievements.slice(0, 2).map((achievement, achievementIndex) => (
                             <div key={achievementIndex} className="flex items-center gap-2 px-3 py-1.5 bg-white/10 rounded-full group/achievement hover:bg-white/20 transition-all duration-300">
-                              <FaStar className="w-2 h-2 text-yellow-300 group-hover/achievement:animate-spin transition-transform duration-300 flex-shrink-0" />
-                              <span className="text-xs font-medium group-hover/achievement:text-yellow-200 transition-colors duration-300 text-center flex-1">{achievement.title}</span>
+                              <FaStar className="w-2 h-2 text-cyan-200 group-hover/achievement:animate-spin transition-transform duration-300 flex-shrink-0" />
+                              <span className="text-xs font-medium group-hover/achievement:text-cyan-100 transition-colors duration-300 text-center flex-1">{achievement.title}</span>
                             </div>
                           ))}
                         </div>
                       </div>
                       
                       {/* Unique Corner Decorations */}
-                      <div className="absolute top-2 right-2 w-2 h-2 bg-yellow-300 rounded-full animate-ping opacity-70"></div>
+                      <div className="absolute top-2 right-2 w-2 h-2 bg-cyan-200 rounded-full animate-ping opacity-70"></div>
                       <div className="absolute bottom-2 left-2 w-1.5 h-1.5 bg-white rounded-full animate-ping opacity-70" style={{animationDelay: '0.5s'}}></div>
-                      <div className="absolute top-2 left-2 w-1 h-1 bg-primary-200 rounded-full animate-pulse"></div>
-                      <div className="absolute bottom-2 right-2 w-1 h-1 bg-gold rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+                      <div className="absolute top-2 left-2 w-1 h-1 bg-cyan-100 rounded-full animate-pulse"></div>
+                      <div className="absolute bottom-2 right-2 w-1 h-1 bg-cyan-200 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
                     </div>
                   </motion.div>
                 </div>

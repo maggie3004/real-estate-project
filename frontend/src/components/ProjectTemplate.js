@@ -309,31 +309,9 @@ const ProjectTemplate = ({
 
       {/* Note: brochure CTA moved to after Floor Plans for ongoing pages to keep a single CTA */}
 
-      {/* Key Advantages - 3x2 Grid */}
-      {isOngoingVariant && Array.isArray(advantages) && advantages.length > 0 && (
-        <section className="w-full py-12 md:py-16 bg-white dark:bg-black/50">
-          <div className="max-w-7xl mx-auto px-4">
-            <h3 className="text-2xl md:text-3xl font-bold text-amber-700 dark:text-amber-100 mb-8 text-center">Key Advantages</h3>
-            <div className="flex items-center justify-center mb-8">
-              <div className="h-px w-16 bg-gradient-to-r from-transparent via-amber-700/60 to-transparent" />
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-              {advantages.map((item, idx) => (
-                <div 
-                  key={idx} 
-                  className="rounded-xl border-2 border-amber-700/30 dark:border-gray-700 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 p-6 text-center hover:border-amber-700 hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
-                >
-                  <div className="text-base md:text-lg font-semibold text-[#181818] dark:text-gray-200">{item}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
       {/* Interactive Floor Plans */}
       {Array.isArray(floorPlans) && floorPlans.length > 0 && (
-        <section id="section-floorplans" className="w-full py-12 md:py-16 bg-amber-50 dark:bg-amber-950/20">
+        <section id="section-floorplans" className="w-full py-12 md:py-16 bg-white dark:bg-black/50">
           <div className="max-w-7xl mx-auto px-4">
             <h3 className="text-2xl md:text-3xl font-bold text-amber-700 dark:text-amber-100 mb-8 text-center">Floor Plans</h3>
             <div className="flex items-center justify-center mb-8">
@@ -371,7 +349,7 @@ const ProjectTemplate = ({
 
       {/* Downloads Center */}
       {filteredDownloads.length > 0 && (
-        <section id="section-downloads" className="w-full py-10 bg-gray-50 dark:bg-gray-900/40">
+        <section id="section-downloads" className="w-full py-10 bg-amber-50 dark:bg-amber-950/20">
           <div className="max-w-7xl mx-auto px-4">
             <h3 className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white mb-4">Downloads</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
@@ -387,7 +365,7 @@ const ProjectTemplate = ({
 
       {/* Testimonials */}
       {Array.isArray(testimonials) && testimonials.length > 0 && (
-        <section className="w-full py-10 bg-gray-50 dark:bg-gray-900/40">
+        <section className="w-full py-10 bg-white dark:bg-black/50">
           <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-4">
             {testimonials.map((t, idx) => (
               <div key={idx} className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4">
@@ -421,7 +399,7 @@ const ProjectTemplate = ({
           {/* Construction timeline removed to simplify the page for customers. */}
 
       {/* Amenities Section */}
-      <section className="w-full py-12 md:py-16 bg-white dark:bg-black/50">
+      <section className="w-full py-12 md:py-16 bg-amber-50 dark:bg-amber-950/20">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-2xl md:text-3xl font-bold mb-8 text-amber-700 dark:text-amber-100 text-center">Amenities</div>
           <div className="flex items-center justify-center mb-8">
@@ -443,7 +421,7 @@ const ProjectTemplate = ({
 
       {/* Connectivity Section - New Detailed Version */}
       {isOngoingVariant && (
-        <section className="w-full py-16 md:py-20 bg-amber-50 dark:bg-amber-950/20">
+        <section className="w-full py-16 md:py-20 bg-white dark:bg-black/50">
           <div className="max-w-7xl mx-auto px-4">
             {/* Section Title */}
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-amber-900 dark:text-amber-100 mb-4 text-center">

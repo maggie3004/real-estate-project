@@ -2,10 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaChevronDown, FaChevronRight, FaTimes } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
-import logo from '../assets/logo.png';
-import logoDark from '../assets/logo.png';
 import { useTheme } from '../context/ThemeContext';
 import ThemeSwitcher from './ThemeSwitcher';
+
+const logoUrl = '/assets/logo.png';
 
 const ongoingProjects = [
   { name: 'Shree Ganesh Srushti', path: '/ShreeGaneshSrushti' },
@@ -128,20 +128,15 @@ const Navbar = () => {
     }`}>
       <div className="w-full flex items-center justify-between h-16 sm:h-20 px-4 sm:px-6 lg:px-8">
         {/* Logo and Company Name */}
-        <Link to="/" className="flex items-center gap-2 sm:gap-4 min-w-fit" aria-label="Go to homepage">
-          <div className="flex items-center gap-2 sm:gap-3">
-            <img src={theme === 'dark' ? logo : logoDark} alt="Logo" className="h-8 sm:h-10 w-auto transition-all duration-300" />
-            <div className="flex flex-col">
-              <span className={`text-sm sm:text-lg font-bold tracking-tight transition-colors duration-300 ${theme === 'dark' ? 'text-white' : 'text-[#181818]'}`}>
-                Ganesh Yeole
-              </span>
-              <span className={`text-xs sm:text-sm font-medium tracking-wide transition-colors duration-300 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
-                Builders & Developers
-              </span>
-              <span className={`text-xs font-medium tracking-wider transition-colors duration-300 hidden sm:block ${theme === 'dark' ? 'text-yellow-400' : 'text-yellow-600'}`}>
-                Building Dreams Since 2007
-              </span>
-            </div>
+        <Link to="/" className="flex items-center gap-2 sm:gap-3 min-w-fit hover:opacity-80 transition-opacity" aria-label="Go to homepage">
+          <img src={logoUrl} alt="Ganesh Yeole Builders Logo" className="h-10 sm:h-12 w-auto object-contain transition-all duration-300" />
+          <div className="flex flex-col">
+            <span className={`text-sm sm:text-base font-bold tracking-tight transition-colors duration-300 ${theme === 'dark' ? 'text-white' : 'text-[#181818]'}`}>
+              Ganesh Yeole
+            </span>
+            <span className={`text-xs font-medium tracking-wide transition-colors duration-300 ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'}`}>
+              Builders & Developers
+            </span>
           </div>
         </Link>
         {/* Desktop Menu */}
