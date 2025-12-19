@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaChevronLeft, FaChevronRight, FaPause, FaPlay } from 'react-icons/fa';
 import ImageGallery from './ImageGallery';
+import FloatingCallButton from './FloatingCallButton';
 
 const ProjectTemplate = ({ 
   projectName,
@@ -311,7 +312,7 @@ const ProjectTemplate = ({
 
       {/* Interactive Floor Plans */}
       {Array.isArray(floorPlans) && floorPlans.length > 0 && (
-        <section id="section-floorplans" className="w-full py-12 md:py-16 bg-white dark:bg-black/50">
+        <section id="section-floorplans" className="w-full py-12 md:py-16 bg-amber-50 dark:bg-amber-950/20">
           <div className="max-w-7xl mx-auto px-4">
             <h3 className="text-2xl md:text-3xl font-bold text-amber-700 dark:text-amber-100 mb-8 text-center">Floor Plans</h3>
             <div className="flex items-center justify-center mb-8">
@@ -335,8 +336,8 @@ const ProjectTemplate = ({
               ))}
             </div>
 
-            {/* Floor Plan Image */}
-            <div className="relative rounded-xl overflow-hidden border-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 shadow-xl">
+            {/* Floor Plan Image - White Container */}
+            <div className="relative rounded-xl overflow-hidden bg-white dark:bg-gray-900 p-8 md:p-12 shadow-xl">
               <img
                 src={floorPlans[activeFloorIdx]?.src}
                 alt={floorPlans[activeFloorIdx]?.label}
@@ -669,6 +670,9 @@ const ProjectTemplate = ({
           </div>
         </section>
       )}
+
+      {/* Floating Call Button with Download - Only for Ongoing Projects */}
+      {isOngoingVariant && <FloatingCallButton brochurePath={brochurePath} projectName={projectName} isOngoing={isOngoingVariant} />}
 
       {/* No sticky CTA for clean minimal layout */}
     </div>

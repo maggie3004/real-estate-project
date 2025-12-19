@@ -478,22 +478,7 @@ const JourneySection = () => {
         </motion.div>
 
 
-        {/* Bottom CTA - Compact */}
-        <motion.div
-          variants={itemVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="text-center mt-12"
-        >
-          <div className="bg-gradient-to-r from-primary-600 to-gold rounded-xl p-6 text-white">
-            <h3 className="text-xl md:text-2xl font-bold mb-3">Ready to Be Part of Our Next Milestone?</h3>
-            <p className="text-sm mb-4 opacity-90">Join thousands of satisfied homeowners who trusted us with their dreams.</p>
-            <button className="bg-white text-primary-600 px-6 py-2 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300 text-sm">
-              Explore Our Projects
-            </button>
-          </div>
-        </motion.div>
+        {/* Timeline end */}
       </div>
     </section>
   );

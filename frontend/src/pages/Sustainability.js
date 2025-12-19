@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { FaLeaf, FaRecycle, FaSolarPanel, FaWater, FaLightbulb } from 'react-icons/fa';
+import { FaLeaf, FaRecycle, FaSolarPanel, FaWater, FaLightbulb, FaSun } from 'react-icons/fa';
 
 const sustainabilityInitiatives = [
   {
@@ -56,11 +56,6 @@ const impactMetrics = [
     metric: "Trees Planted",
     value: "2000+",
     description: "Across all our project sites"
-  },
-  {
-    metric: "Community Beneficiaries",
-    value: "1500+",
-    description: "Through various CSR initiatives"
   }
 ];
 
@@ -126,7 +121,7 @@ const Sustainability = () => (
           Our Environmental Impact
         </h2>
         <div className="bg-gradient-to-r from-green-50 to-gray-50 dark:from-green-900/20 dark:to-gray-900/20 rounded-3xl p-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {impactMetrics.map((metric, index) => (
               <div key={index} className="text-center">
                 <div className="text-4xl md:text-5xl font-bold text-green-600 mb-2">
@@ -149,14 +144,14 @@ const Sustainability = () => (
         <h2 className="text-3xl font-bold text-center text-[#E53935] mb-12">
           Green Building Features
         </h2>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-4 gap-8">
           <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg text-center">
             <div className="w-16 h-16 bg-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
               <FaLightbulb className="text-white text-2xl" />
             </div>
             <h3 className="text-xl font-bold text-[#E53935] mb-3">Energy Efficient</h3>
             <p className="text-gray-700 dark:text-gray-300">
-              LED lighting, energy-efficient appliances, and smart home automation systems
+              State-of-the-art LED lighting systems, energy-efficient HVAC units, and integrated smart home automation for optimal consumption management across all residential and common areas
             </p>
           </div>
           <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg text-center">
@@ -165,7 +160,7 @@ const Sustainability = () => (
             </div>
             <h3 className="text-xl font-bold text-[#E53935] mb-3">Water Conservation</h3>
             <p className="text-gray-700 dark:text-gray-300">
-              Low-flow fixtures, rainwater harvesting, and water recycling systems
+              Comprehensive water management with low-flow fixtures, advanced rainwater harvesting systems, and greywater recycling to minimize municipal water dependency
             </p>
           </div>
           <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg text-center">
@@ -174,7 +169,16 @@ const Sustainability = () => (
             </div>
             <h3 className="text-xl font-bold text-[#E53935] mb-3">Eco-Friendly Materials</h3>
             <p className="text-gray-700 dark:text-gray-300">
-              Sustainable building materials, recycled content, and non-toxic finishes
+              Premium sustainable building materials with recycled content, non-toxic finishes, and certified green building certifications to ensure environmental responsibility and occupant health
+            </p>
+          </div>
+          <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg text-center">
+            <div className="w-16 h-16 bg-yellow-600 rounded-full flex items-center justify-center mx-auto mb-4">
+              <FaSun className="text-white text-2xl" />
+            </div>
+            <h3 className="text-xl font-bold text-[#E53935] mb-3">Solar Power for Common Areas</h3>
+            <p className="text-gray-700 dark:text-gray-300">
+              Advanced photovoltaic systems powering all communal spaces, reducing grid dependency and operational costs significantly
             </p>
           </div>
         </div>

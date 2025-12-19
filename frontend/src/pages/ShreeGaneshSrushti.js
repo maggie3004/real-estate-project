@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import sgsFront from '../assets/shree-ganesh-srushti/gallery/front.jpg';
 import sgs1bhk from '../assets/shree-ganesh-srushti/gallery/1bhk.jpg';
+import sgs1bhk2 from '../assets/shree-ganesh-srushti/gallery/1bhk (2).jpg';
 import sgs2bhk from '../assets/shree-ganesh-srushti/gallery/2bhk.jpg';
+import sgs2bhk2 from '../assets/shree-ganesh-srushti/gallery/2bhk (2).jpg';
 import ProjectTemplate from '../components/ProjectTemplate';
 import { FaCar, FaSun, FaBuilding, FaShieldAlt, FaWater, FaTint } from 'react-icons/fa';
 import { MdMeetingRoom } from 'react-icons/md';
@@ -40,8 +42,10 @@ const ShreeGaneshSrushti = () => {
     progressStage: 2,
     locationChips: ["Temple 8 min", "Hospital 12 min", "Market 7 min"],
     floorPlans: [
-      { label: "1BHK", src: sgs1bhk },
-      { label: "2BHK", src: sgs2bhk }
+      { label: "1BHK - Type A", src: sgs1bhk },
+      { label: "1BHK - Type B", src: sgs1bhk2 },
+      { label: "2BHK - Type A", src: sgs2bhk },
+      { label: "2BHK - Type B", src: sgs2bhk2 }
     ],
     downloads: [
       { label: "Project Brochure", href: "/assets/shree-ganesh-srushti/gallery/Shree Ganesh Srushti Digital Broucher_compressed.pdf" }

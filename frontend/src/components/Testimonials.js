@@ -1,6 +1,10 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React from 'react';
 import { FaStar, FaQuoteLeft, FaQuoteRight } from 'react-icons/fa';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, FreeMode, Autoplay } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
 const testimonials = [
   {
@@ -86,46 +90,6 @@ const testimonials = [
 ];
 
 const Testimonials = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-
-  const nextTestimonial = useCallback(() => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
-    setActiveIndex((prev) => (prev + 1) % testimonials.length);
-    setTimeout(() => setIsTransitioning(false), 600);
-  }, [isTransitioning]);
-
-  // Auto-play functionality
-  useEffect(() => {
-    if (!isAutoPlaying) return;
-
-    const interval = setInterval(() => {
-      nextTestimonial();
-    }, 5000); // Change testimonial every 5 seconds
-
-    return () => clearInterval(interval);
-  }, [isAutoPlaying, nextTestimonial]);
-
-  const prevTestimonial = () => {
-    if (isTransitioning) return;
-    setIsTransitioning(true);
-    setActiveIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
-    setTimeout(() => setIsTransitioning(false), 600);
-  };
-
-  const goToTestimonial = (index) => {
-    if (isTransitioning || index === activeIndex) return;
-    setIsAutoPlaying(false); // Pause auto-play when user interacts
-    setIsTransitioning(true);
-    setActiveIndex(index);
-    setTimeout(() => {
-      setIsTransitioning(false);
-      setIsAutoPlaying(true); // Resume auto-play after 3 seconds
-    }, 600);
-  };
-
   return (
     <section className="py-20 bg-amber-50 dark:bg-amber-950/20">
       <div className="max-w-7xl mx-auto px-4">
@@ -139,141 +103,100 @@ const Testimonials = () => {
           </p>
         </div>
 
-        {/* Testimonials Carousel */}
-        <div className="relative max-w-4xl mx-auto">
-          {/* Main Testimonial */}
-          <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
-            {/* Quote Icons */}
-            <FaQuoteLeft className="absolute top-6 left-6 text-gold text-2xl opacity-20" />
-            <FaQuoteRight className="absolute bottom-6 right-6 text-gold text-2xl opacity-20" />
-            
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeIndex}
-                initial={{ opacity: 0, x: 50, scale: 0.95 }}
-                animate={{ opacity: 1, x: 0, scale: 1 }}
-                exit={{ opacity: 0, x: -50, scale: 0.95 }}
-                transition={{ 
-                  duration: 0.6, 
-                  ease: [0.25, 0.46, 0.45, 0.94],
-                  opacity: { duration: 0.4 },
-                  scale: { duration: 0.5 }
-                }}
-                className="flex flex-col lg:flex-row items-center gap-8"
-              >
-                {/* Customer Image */}
-                <motion.div 
-                  className="flex-shrink-0"
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ delay: 0.2, duration: 0.5 }}
-                >
-                  <div className="relative">
-                    {testimonials[activeIndex].image ? (
-                      <img 
-                        src={testimonials[activeIndex].image} 
-                        alt={testimonials[activeIndex].name}
-                        className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-gold shadow-lg transition-transform duration-300 hover:scale-105"
-                      />
-                    ) : (
-                      <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-gold to-gold-600 border-4 border-gold shadow-lg flex items-center justify-center">
-                        <span className="text-white text-2xl md:text-3xl font-bold">
-                          {testimonials[activeIndex].name.split(' ').map(n => n[0]).join('')}
-                        </span>
+        {/* Testimonials Swiper */}
+        <div className="testimonials-slider-container relative max-w-4xl mx-auto">
+          <Swiper
+            modules={[Navigation, Pagination, FreeMode, Autoplay]}
+            spaceBetween={20}
+            slidesPerView={1}
+            navigation={{
+              nextEl: '.swiper-button-next-testimonials',
+              prevEl: '.swiper-button-prev-testimonials'
+            }}
+            pagination={{ clickable: true, el: '.swiper-pagination-testimonials' }}
+            freeMode={false}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false
+            }}
+            className="testimonials-slider"
+          >
+            {testimonials.map((testimonial, idx) => (
+              <SwiperSlide key={idx}>
+                <div className="bg-white dark:bg-gray-800 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+                  {/* Quote Icons */}
+                  <FaQuoteLeft className="absolute top-6 left-6 text-gold text-2xl opacity-20" />
+                  <FaQuoteRight className="absolute bottom-6 right-6 text-gold text-2xl opacity-20" />
+                  
+                  <div className="flex flex-col lg:flex-row items-center gap-8">
+                    {/* Customer Image */}
+                    <div className="flex-shrink-0">
+                      <div className="relative">
+                        {testimonial.image ? (
+                          <img 
+                            src={testimonial.image} 
+                            alt={testimonial.name}
+                            className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-gold shadow-lg transition-transform duration-300 hover:scale-105"
+                          />
+                        ) : (
+                          <div className="w-24 h-24 md:w-32 md:h-32 rounded-full bg-gradient-to-br from-gold to-gold-600 border-4 border-gold shadow-lg flex items-center justify-center">
+                            <span className="text-white text-2xl md:text-3xl font-bold">
+                              {testimonial.name.split(' ').map(n => n[0]).join('')}
+                            </span>
+                          </div>
+                        )}
+                        <div className="absolute -bottom-2 -right-2 bg-gold text-white rounded-full p-2">
+                          <FaQuoteLeft className="text-sm" />
+                        </div>
                       </div>
-                    )}
-                    <div className="absolute -bottom-2 -right-2 bg-gold text-white rounded-full p-2">
-                      <FaQuoteLeft className="text-sm" />
+                    </div>
+
+                    {/* Content */}
+                    <div className="flex-1 text-center lg:text-left">
+                      {/* Rating */}
+                      <div className="flex justify-center lg:justify-start gap-1 mb-4">
+                        {[...Array(testimonial.rating)].map((_, i) => (
+                          <FaStar key={i} className="text-gold text-xl" />
+                        ))}
+                      </div>
+
+                      {/* Testimonial Text */}
+                      <p className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-6 italic">
+                        "{testimonial.text}"
+                      </p>
+
+                      {/* Customer Info */}
+                      <div className="space-y-2">
+                        <h4 className="text-xl font-bold text-amber-700 dark:text-amber-600">
+                          {testimonial.name}
+                        </h4>
+                        <div className="flex items-center justify-center lg:justify-start gap-4 text-sm text-gray-500 dark:text-gray-400">
+                          <span className="bg-gold text-white px-3 py-1 rounded-full font-semibold">
+                            {testimonial.project}
+                          </span>
+                          <span>{testimonial.date}</span>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </motion.div>
-
-                {/* Content */}
-                <div className="flex-1 text-center lg:text-left">
-                  {/* Rating */}
-                  <motion.div 
-                    className="flex justify-center lg:justify-start gap-1 mb-4"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3, duration: 0.4 }}
-                  >
-                    {[...Array(testimonials[activeIndex].rating)].map((_, i) => (
-                      <motion.div
-                        key={i}
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ delay: 0.4 + i * 0.1, duration: 0.3 }}
-                      >
-                        <FaStar className="text-gold text-xl" />
-                      </motion.div>
-                    ))}
-                  </motion.div>
-
-                  {/* Testimonial Text */}
-                  <motion.p 
-                    className="text-lg md:text-xl text-gray-700 dark:text-gray-300 leading-relaxed mb-6 italic"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4, duration: 0.5 }}
-                  >
-                    "{testimonials[activeIndex].text}"
-                  </motion.p>
-
-                  {/* Customer Info */}
-                  <motion.div 
-                    className="space-y-2"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5, duration: 0.4 }}
-                  >
-                    <h4 className="text-xl font-bold text-amber-700 dark:text-amber-600">
-                      {testimonials[activeIndex].name}
-                    </h4>
-                    <p className="text-gray-600 dark:text-gray-400 font-medium">
-                      {testimonials[activeIndex].role}
-                    </p>
-                    <div className="flex items-center justify-center lg:justify-start gap-4 text-sm text-gray-500 dark:text-gray-400">
-                      <span className="bg-gold text-white px-3 py-1 rounded-full font-semibold">
-                        {testimonials[activeIndex].project}
-                      </span>
-                      <span>{testimonials[activeIndex].date}</span>
-                    </div>
-                  </motion.div>
                 </div>
-              </motion.div>
-            </AnimatePresence>
-          </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
 
           {/* Navigation Buttons */}
-          <button 
-            onClick={prevTestimonial}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white dark:bg-gray-800 p-3 rounded-full shadow-lg hover:bg-gold hover:text-white transition-colors duration-200"
-          >
+          <div className="swiper-button-prev-testimonials absolute left-0 top-1/2 -translate-y-1/2 bg-white/95 dark:bg-gray-800/95 text-gray-700 dark:text-gray-300 p-3 rounded-full shadow-lg hover:bg-white dark:hover:bg-gray-800 transition-colors duration-200 z-10 cursor-pointer">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
-          </button>
-          <button 
-            onClick={nextTestimonial}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white dark:bg-gray-800 p-3 rounded-full shadow-lg hover:bg-gold hover:text-white transition-colors duration-200"
-          >
+          </div>
+          <div className="swiper-button-next-testimonials absolute right-0 top-1/2 -translate-y-1/2 bg-white/95 dark:bg-gray-800/95 text-gray-700 dark:text-gray-300 p-3 rounded-full shadow-lg hover:bg-white dark:hover:bg-gray-800 transition-colors duration-200 z-10 cursor-pointer">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
-          </button>
-        </div>
+          </div>
 
-        {/* Dots Navigation */}
-        <div className="flex justify-center gap-3 mt-8">
-          {testimonials.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => goToTestimonial(index)}
-              className={`w-3 h-3 rounded-full transition-colors duration-200 ${
-                index === activeIndex ? 'bg-gold' : 'bg-gray-300 dark:bg-gray-600'
-              }`}
-            />
-          ))}
+          <div className="swiper-pagination-testimonials flex justify-center mt-6 space-x-2"></div>
         </div>
       </div>
     </section>

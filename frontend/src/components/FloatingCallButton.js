@@ -1,16 +1,64 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
+import { useLocation } from 'react-router-dom';
 import { FaPhoneAlt, FaWhatsapp, FaTimes } from 'react-icons/fa';
+import { FiDownload as DownloadIcon } from 'react-icons/fi';
 import styles from './FloatingCallButton.module.css';
 
 const phoneNumber = '7030502111';
 const whatsappNumber = '917030502111';
 
-const FloatingCallButton = () => {
+const FloatingCallButton = ({ brochurePath, projectName, isOngoing }) => {
   const [open, setOpen] = useState(false);
+  const wrapperRef = useRef(null);
+  const location = useLocation();
+
+  const handleDownload = async () => {
+    if (!brochurePath) {
+      alert('Brochure not available');
+      return;
+    }
+    try {
+      const response = await fetch(brochurePath);
+      if (!response.ok) throw new Error('Brochure not found');
+
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `${projectName || 'Brochure'}.pdf`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Error downloading brochure:', error);
+      alert('Sorry, the brochure is currently unavailable.');
+    }
+  };
+
+  // Close menu when page changes
+  useEffect(() => {
+    setOpen(false);
+  }, [location.pathname]);
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    };
+
+    if (open) {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => document.removeEventListener('mousedown', handleClickOutside);
+    }
+  }, [open]);
 
   const content = (
     <div
+      ref={wrapperRef}
       className={styles.floatingActionButtonWrapper}
       style={{ pointerEvents: 'auto' }}
       data-testid="floating-call-button-wrapper"
@@ -59,6 +107,20 @@ const FloatingCallButton = () => {
               <FaWhatsapp className={styles.floatingOptionIcon} />
             </a>
           </div>
+
+          {/* Download Brochure - Only on ongoing projects */}
+          {isOngoing && brochurePath && (
+            <div className={styles.floatingOptionItem}>
+              <button
+                onClick={handleDownload}
+                aria-label="Download Brochure"
+                className={`${styles.floatingOptionButton} ${styles.downloadBtn}`}
+                style={{ backgroundColor: '#F59E0B' }}
+              >
+                <DownloadIcon className={styles.floatingOptionIcon} />
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </div>
