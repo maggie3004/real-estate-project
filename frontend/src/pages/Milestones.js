@@ -348,7 +348,7 @@ const Milestones = () => {
                 className="opacity-0 hover:opacity-100 transition-opacity duration-300 bg-white/90 rounded-full p-3"
                 whileHover={{ scale: 1.1 }}
               >
-                <FaArrowRight className="w-6 h-6 text-primary-600 rotate-45" />
+                <FaArrowRight className="w-6 h-6 text-amber-600 rotate-45" />
               </motion.div>
             </div>
         </div>
@@ -486,14 +486,14 @@ const Milestones = () => {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header - Original Theme */}
-            <div className="relative bg-gradient-to-r from-primary-50 to-gold/10 dark:from-primary-900/20 dark:to-gold/10 p-8">
+            <div className="relative bg-gradient-to-r from-amber-50 to-gold/10 dark:from-amber-900/20 dark:to-gold/10 p-8">
               {/* Decorative Elements */}
-              <div className="absolute top-4 right-4 w-16 h-16 bg-primary-200 dark:bg-primary-800 rounded-lg transform rotate-12 opacity-30"></div>
+              <div className="absolute top-4 right-4 w-16 h-16 bg-amber-200 dark:bg-amber-800 rounded-lg transform rotate-12 opacity-30"></div>
               <div className="absolute bottom-4 left-4 w-12 h-12 bg-gold/20 dark:bg-gold/30 rounded-lg transform -rotate-12 opacity-20"></div>
               
               <div className="relative flex items-center justify-between">
                 <div>
-                  <h3 className="text-2xl font-semibold text-primary-600 dark:text-primary-400 mb-2">
+                  <h3 className="text-2xl font-semibold text-amber-700 dark:text-amber-400 mb-2">
                     {project.category}
                   </h3>
                   <h2 className="text-4xl font-bold text-gray-900 dark:text-white">
@@ -714,7 +714,7 @@ const Milestones = () => {
             ></motion.div>
             
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Celebrating milestones, achievements, and the trust of <span className="font-bold text-amber-700">500+ families</span> across <span className="font-bold text-gold">16+ years</span> of dedicated service
+              Celebrating milestones, achievements, and the trust of <span className="font-bold text-amber-700">500+ families</span> across <span className="font-bold text-gold">20+ years</span> of dedicated service
             </p>
             
             {/* Animated Stats Counter */}
@@ -742,7 +742,7 @@ const Milestones = () => {
                   transition={{ duration: 0.5, delay: 1.7 }}
                   className="text-3xl font-bold text-gold"
                 >
-                  16+
+                  20+
                 </motion.div>
                 <div className="text-sm text-gray-600 dark:text-gray-400">Years Experience</div>
             </div>
@@ -771,10 +771,10 @@ const Milestones = () => {
         >
           <div className="relative max-w-6xl mx-auto px-4">
             {/* Progress Line */}
-            <div className="absolute top-1/2 left-8 right-8 h-1 bg-gradient-to-r from-amber-700 via-gold to-amber-600 rounded-full transform -translate-y-1/2"></div>
+            <div className="absolute top-1/2 left-8 right-8 h-1 bg-gradient-to-r from-amber-700 via-gold to-amber-600 rounded-full transform -translate-y-1/2 z-0"></div>
             
             {/* Progress Dots */}
-            <div className="flex justify-between items-start relative z-10">
+            <div className="flex justify-between items-start relative z-20">
               {completedProjects.map((project, index) => (
                 <motion.div
                   key={project.id}
@@ -855,7 +855,7 @@ const Milestones = () => {
               <div className={`${index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'} relative`}>
                 {/* Animated Decorative Elements */}
                 <motion.div 
-                  className="absolute -top-6 -left-6 w-24 h-24 bg-gradient-to-br from-primary-500/20 to-gold/20 rounded-lg transform rotate-12 opacity-60"
+                  className="absolute -top-6 -left-6 w-24 h-24 bg-gradient-to-br from-amber-500/20 to-gold/20 rounded-lg transform rotate-12 opacity-60"
                   animate={{ 
                     rotate: [12, 15, 12],
                     scale: [1, 1.05, 1]
@@ -867,7 +867,7 @@ const Milestones = () => {
                   }}
                 ></motion.div>
                 <motion.div 
-                  className="absolute -bottom-6 -right-6 w-16 h-16 bg-gradient-to-br from-gold/20 to-primary-500/20 rounded-lg transform -rotate-12 opacity-40"
+                  className="absolute -bottom-6 -right-6 w-16 h-16 bg-gradient-to-br from-gold/20 to-amber-500/20 rounded-lg transform -rotate-12 opacity-40"
                   animate={{ 
                     rotate: [-12, -15, -12],
                     scale: [1, 1.1, 1]
@@ -950,12 +950,12 @@ const Milestones = () => {
               <div className={`${index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'} space-y-6`}>
                 {/* Animated Decorative Element */}
                 <motion.div 
-                  className="w-20 h-20 bg-gradient-to-br from-primary-500/10 to-gold/10 rounded-lg mb-6 relative overflow-hidden"
+                  className="w-20 h-20 bg-gradient-to-br from-amber-500/10 to-gold/10 rounded-lg mb-6 relative overflow-hidden"
                   whileHover={{ scale: 1.05, rotate: 5 }}
                   transition={{ duration: 0.3 }}
                 >
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-gold/20"
+                    className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-gold/20"
                     animate={{ 
                       x: [-20, 20, -20],
                       opacity: [0.3, 0.6, 0.3]
@@ -970,7 +970,7 @@ const Milestones = () => {
                 
                 <div>
                   <motion.h3 
-                    className="text-2xl font-semibold text-primary-600 dark:text-primary-400 mb-2"
+                    className="text-2xl font-semibold text-amber-700 dark:text-amber-400 mb-2"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -986,7 +986,7 @@ const Milestones = () => {
                     {project.number}
                     {/* Animated underline */}
                     <motion.div
-                      className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-primary-500 to-gold"
+                      className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-amber-500 to-gold"
                       initial={{ width: 0 }}
                       whileInView={{ width: "100%" }}
                       transition={{ duration: 1, delay: index * 0.1 + 0.5 }}
@@ -1031,7 +1031,7 @@ const Milestones = () => {
                       transition={{ duration: 0.2 }}
                     >
                       <motion.div
-                        className="w-10 h-10 bg-gradient-to-br from-gold/10 to-primary-500/10 rounded-lg flex items-center justify-center group-hover/item:from-gold/20 group-hover/item:to-primary-500/20 transition-colors duration-300"
+                        className="w-10 h-10 bg-gradient-to-br from-gold/10 to-amber-500/10 rounded-lg flex items-center justify-center group-hover/item:from-gold/20 group-hover/item:to-amber-500/20 transition-colors duration-300"
                         whileHover={{ rotate: 360 }}
                         transition={{ duration: 0.5 }}
                       >
@@ -1039,7 +1039,7 @@ const Milestones = () => {
                       </motion.div>
                       <div>
                         <p className="text-sm text-gray-500 dark:text-gray-400">{item.label}</p>
-                        <p className="font-medium text-gray-900 dark:text-white group-hover/item:text-primary-600 dark:group-hover/item:text-primary-400 transition-colors duration-300">{item.value}</p>
+                        <p className="font-medium text-gray-900 dark:text-white group-hover/item:text-amber-600 dark:group-hover/item:text-amber-400 transition-colors duration-300">{item.value}</p>
             </div>
                     </motion.div>
                   ))}
@@ -1068,7 +1068,7 @@ const Milestones = () => {
                   </motion.div>
                   {/* Animated background */}
                   <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-primary-500/10 to-gold/10 rounded-lg"
+                    className="absolute inset-0 bg-gradient-to-r from-amber-500/10 to-gold/10 rounded-lg"
                     initial={{ scale: 0, opacity: 0 }}
                     whileHover={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 0.3 }}
@@ -1094,7 +1094,7 @@ const Milestones = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              Our <span className="bg-gradient-to-r from-amber-700 to-gold bg-clip-text text-transparent">Complete Journey</span>
+              Our <span className="text-amber-700 font-bold">Complete Journey</span>
             </motion.h2>
             <motion.p 
               className="text-lg text-gray-600 dark:text-gray-300"
@@ -1248,7 +1248,7 @@ const Milestones = () => {
         >
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Our <span className="bg-gradient-to-r from-primary-600 to-gold bg-clip-text text-transparent">Achievements</span>
+              Our <span className="text-amber-700 font-bold">Achievements</span>
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-300">
               Numbers that speak for our commitment to excellence
@@ -1355,58 +1355,7 @@ const Milestones = () => {
               ))}
             </div>
             
-            <div className="relative">
-              <motion.h2 
-                className="text-4xl md:text-5xl font-bold mb-6"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-              >
-                Ready to Be Part of Our Next Milestone?
-              </motion.h2>
-              <motion.p 
-                className="text-xl mb-8 opacity-90 max-w-3xl mx-auto"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              >
-                Join thousands of satisfied homeowners who trusted us with their dreams. 
-                Let's create something extraordinary together.
-              </motion.p>
-              <motion.div 
-                className="flex flex-col sm:flex-row gap-4 justify-center"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-              >
-                <motion.button 
-                  className="bg-white text-amber-700 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-300 text-lg relative overflow-hidden group"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <span className="relative z-10">Explore Our Projects</span>
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-primary-500/10 to-gold/10"
-                    initial={{ scale: 0, opacity: 0 }}
-                    whileHover={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                  ></motion.div>
-                </motion.button>
-                <motion.button 
-                  className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-amber-700 transition-colors duration-300 text-lg relative overflow-hidden group"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <span className="relative z-10">Contact Us</span>
-                  <motion.div
-                    className="absolute inset-0 bg-white/10"
-                    initial={{ scale: 0, opacity: 0 }}
-                    whileHover={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.3 }}
-                  ></motion.div>
-                </motion.button>
-              </motion.div>
-            </div>
+
           </div>
         </motion.div>
       </div>

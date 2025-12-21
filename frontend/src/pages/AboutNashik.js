@@ -77,11 +77,43 @@ const AboutNashik = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white dark:bg-[#181818] text-[#181818] dark:text-white transition-colors duration-300 pt-20">
+    <div className="min-h-screen bg-white dark:bg-[#181818] text-[#181818] dark:text-white transition-colors duration-300">
       <Helmet>
         <title>About Nashik - The Wine Capital of India | Ganesh Yeole Builders</title>
         <meta name="description" content="Discover Nashik - the wine capital of India, home to sacred temples, modern infrastructure, and excellent investment opportunities." />
       </Helmet>
+
+      {/* Hero Section - Kumbh Mela */}
+      <section className="relative w-full h-screen overflow-hidden">
+        {/* Background Image */}
+        <img 
+          src="/image data/nashik_godavari_kumbh.jpg"
+          alt="Nashik Kumbh Mela on Godavari Ghats"
+          className="w-full h-full object-cover"
+          onError={(e) => { e.target.src = '/hero-building.jpg'; }}
+        />
+        
+        {/* Minimal Overlay - Light gradient for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-l from-black/30 via-transparent to-transparent"></div>
+        
+        {/* Content Overlay - Positioned at center top */}
+        <motion.div 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="absolute top-2 sm:top-3 md:top-4 inset-x-0 flex flex-col text-center items-center"
+        >
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-black mb-1 text-white drop-shadow-lg">
+            Nashik
+          </h1>
+          <p className="text-sm sm:text-base md:text-lg mb-2 font-bold text-yellow-300 drop-shadow-md">
+            Sacred Land of Kumbh Mela 2026-27
+          </p>
+          <p className="text-xs sm:text-sm md:text-base leading-relaxed px-4 max-w-2xl font-semibold text-white drop-shadow-md">
+            Experience the spiritual essence and rapid development
+          </p>
+        </motion.div>
+      </section>
 
       {/* Image Gallery - Nashik's Beauty */}
       <section className="py-12 px-4 bg-amber-50 dark:bg-amber-950/20">

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { FaTrophy, FaAward, FaMedal, FaCertificate, FaCalendarAlt, FaMapMarkerAlt, FaLeaf } from 'react-icons/fa';
+import { FaTrophy, FaAward, FaMedal, FaCertificate, FaLeaf } from 'react-icons/fa';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, FreeMode } from 'swiper/modules';
 import 'swiper/css';
@@ -60,6 +60,8 @@ const awards = [
   }
 ];
 
+// COMMENTED OUT - Events section hidden
+/*
 const events = [
   {
     id: 1,
@@ -102,6 +104,7 @@ const events = [
     status: "Completed"
   }
 ];
+*/
 
 const Awards = () => {
   return (
@@ -200,7 +203,8 @@ const Awards = () => {
           </div>
         </div>
 
-        {/* Events Section */}
+        {/* Events Section - HIDDEN */}
+        {/* 
         <div className="mb-20 bg-white dark:bg-black/50 py-12 -mx-4 px-4 sm:-mx-12 sm:px-12">
           <h2 className="text-3xl font-bold text-center text-amber-700 dark:text-amber-600 mb-12">
             Upcoming & Past Events
@@ -251,6 +255,7 @@ const Awards = () => {
             ))}
           </div>
         </div>
+        */}
 
 
         {/* Call to Action */}

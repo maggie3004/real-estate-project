@@ -104,13 +104,20 @@ const Navbar = () => {
       ],
     },
     {
-      name: 'Events',
+      name: 'Testimonials',
       dropdown: [
-        { name: 'Events', path: '/events' },
         { name: 'Testimonials', path: '/testimonials' },
         { name: 'Awards', path: '/awards' },
       ],
     },
+    // {
+    //   name: 'Events',
+    //   dropdown: [
+    //     { name: 'Events', path: '/events' },
+    //     { name: 'Testimonials', path: '/testimonials' },
+    //     { name: 'Awards', path: '/awards' },
+    //   ],
+    // },
     { name: 'About Nashik', path: '/about-nashik' },
     { name: 'Contact us', path: '/contact' },
   ];

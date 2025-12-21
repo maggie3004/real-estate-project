@@ -35,7 +35,7 @@ const AboutPage = () => (
                 <strong className="text-[#E53935]">Sai Prasad Builders & Developers</strong> was established in 2008-09 in Nashik by Mr. Ganesh Yeole, a visionary leader known for his strong moral values and dynamic approach. With a humble beginning, he built the company from the ground up, fostering trust, transparency, and long-lasting relationships with clients, partners, and stakeholders.
               </p>
               <p className="text-gray-700 dark:text-gray-300">
-                Over the past 16 years, we have successfully completed <strong>25+ projects</strong> across multiple prime locations in Nashik. From luxury developments to budget-friendly homes, we have consistently set new benchmarks in design, quality, and sustainability. Our projects are a reflection of our commitment to delivering well-planned, Vastu-compliant homes with top-notch construction quality and modern amenities.
+                Over the past 20 years, we have successfully completed <strong>25+ projects</strong> across multiple prime locations in Nashik. From luxury developments to budget-friendly homes, we have consistently set new benchmarks in design, quality, and sustainability. Our projects are a reflection of our commitment to delivering well-planned, Vastu-compliant homes with top-notch construction quality and modern amenities.
               </p>
               <p className="text-gray-700 dark:text-gray-300">
                 With the second generation now actively contributing to the business, we are entering a new phase of growth and transformation. Under the guidance of Mr. Prasad G. Yeole, a qualified Civil Engineer with a deep understanding of modern construction practices, the company is embracing advanced technologies, innovative design concepts, and sustainable building solutions.
@@ -124,12 +124,7 @@ const AboutPage = () => (
                 />
               </div>
               <h3 className="text-2xl font-bold text-[#E53935] mb-2">Mr. Ganesh V. Yeole</h3>
-              <p className="text-gold font-semibold mb-4">Chairperson & Managing Director</p>
-              <div className="text-sm text-gray-600 dark:text-gray-300 mb-6 space-y-2">
-                <p>• Civil Engineer (B.E.)</p>
-                <p>• 20+ Years Experience</p>
-                <p>• Generation Leader</p>
-              </div>
+              <p className="text-gold font-semibold mb-4">Founder & Managing Director</p>
               <div className="bg-white dark:bg-gray-800 rounded-xl p-6 text-left">
                 <h4 className="text-lg font-bold text-[#E53935] mb-3">Message from the Chairperson</h4>
                 <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed italic">

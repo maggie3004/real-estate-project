@@ -176,7 +176,7 @@ const Contact = () => {
               <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base mb-6 lg:mb-8">Get in touch with us through any of these channels</p>
               <div className="space-y-6 lg:space-y-8">
                 <div className="flex items-center lg:items-start gap-4 lg:gap-6">
-                  <div className="w-14 h-14 bg-gold rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+                  <div className="w-14 h-14 bg-amber-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
                     <FaPhone className="text-white text-xl" />
                   </div>
                   <div className="text-center lg:text-left">
@@ -185,7 +185,7 @@ const Contact = () => {
                   </div>
                 </div>
                 <div className="flex items-center lg:items-start gap-4 lg:gap-6">
-                  <div className="w-14 h-14 bg-gold rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+                  <div className="w-14 h-14 bg-amber-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
                     <FaEnvelope className="text-white text-xl" />
                   </div>
                   <div className="text-center lg:text-left">
@@ -194,7 +194,7 @@ const Contact = () => {
                   </div>
                 </div>
                 <div className="flex items-center lg:items-start gap-4 lg:gap-6">
-                  <div className="w-14 h-14 bg-gold rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+                  <div className="w-14 h-14 bg-amber-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
                     <FaWhatsapp className="text-white text-xl" />
                   </div>
                   <div className="text-center lg:text-left">

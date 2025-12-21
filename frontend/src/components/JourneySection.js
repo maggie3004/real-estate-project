@@ -275,7 +275,7 @@ const JourneySection = () => {
           animate={isInView ? "visible" : "hidden"}
           className="text-center mb-20"
         >
-          <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-primary-500/10 to-gold/10 text-primary-600 dark:text-primary-400 font-semibold text-sm mb-6 border border-primary-200 dark:border-primary-800">
+          <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-amber-500/10 to-gold/10 text-amber-700 dark:text-amber-400 font-semibold text-sm mb-6 border border-amber-200 dark:border-amber-800">
             <FaTrophy className="w-4 h-4" />
             Our Journey
             <FaStar className="w-3 h-3 text-gold" />
@@ -285,7 +285,7 @@ const JourneySection = () => {
             variants={itemVariants}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6"
           >
-            Journey of <span className="bg-gradient-to-r from-primary-600 to-gold bg-clip-text text-transparent">Excellence</span>
+            Journey of <span className="text-amber-700 font-bold">Excellence</span>
           </motion.h2>
           
           <motion.p 
@@ -307,9 +307,9 @@ const JourneySection = () => {
           className="relative"
         >
           {/* Enhanced Central Timeline Line */}
-          <div className="absolute left-1/2 transform -translate-x-0.5 top-0 bottom-0 w-1 bg-gradient-to-b from-accent-500 via-accent-400 to-accent-500 dark:from-accent-600 dark:via-accent-500 dark:to-accent-600 hidden lg:block">
+          <div className="absolute left-1/2 transform -translate-x-0.5 top-0 bottom-0 w-1 bg-gradient-to-b from-amber-500 via-amber-400 to-amber-500 dark:from-amber-600 dark:via-amber-500 dark:to-amber-600 hidden lg:block">
             {/* Timeline Glow Effect */}
-            <div className="absolute inset-0 w-3 -left-1 bg-gradient-to-b from-accent-500/30 via-accent-400/30 to-accent-500/30 dark:from-accent-600/40 dark:via-accent-500/40 dark:to-accent-600/40 blur-sm"></div>
+            <div className="absolute inset-0 w-3 -left-1 bg-gradient-to-b from-amber-500/30 via-amber-400/30 to-amber-500/30 dark:from-amber-600/40 dark:via-amber-500/40 dark:to-amber-600/40 blur-sm"></div>
           </div>
 
         {/* Timeline Items */}
@@ -321,18 +321,18 @@ const JourneySection = () => {
                 className="relative"
               >
                 {/* Enhanced Year Badge - Central */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-2 w-16 h-16 bg-gradient-to-r from-accent-600 to-accent-500 rounded-full flex items-center justify-center shadow-lg z-10 hidden lg:flex group">
+                <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-2 w-16 h-16 bg-gradient-to-r from-amber-600 to-amber-500 rounded-full flex items-center justify-center shadow-lg z-10 hidden lg:flex group">
                   {/* Pulsing Ring Effect */}
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-accent-600 to-accent-500 animate-ping opacity-20"></div>
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-accent-600 to-accent-500 animate-pulse opacity-30"></div>
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-amber-600 to-amber-500 animate-ping opacity-20"></div>
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-r from-amber-600 to-amber-500 animate-pulse opacity-30"></div>
                   
                   <div className="w-12 h-12 bg-white dark:bg-gray-900 rounded-full flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform duration-300">
-                    <span className="text-accent-600 dark:text-accent-400 font-bold text-sm group-hover:text-accent-500 transition-colors duration-300">{yearData.year}</span>
+                    <span className="text-amber-600 dark:text-amber-400 font-bold text-sm group-hover:text-amber-500 transition-colors duration-300">{yearData.year}</span>
                   </div>
                   
                   {/* Sparkle Effect */}
-                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-accent-400 rounded-full animate-pulse opacity-60"></div>
-                  <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-accent-300 rounded-full animate-pulse opacity-60" style={{animationDelay: '0.5s'}}></div>
+                  <div className="absolute -top-1 -right-1 w-3 h-3 bg-amber-400 rounded-full animate-pulse opacity-60"></div>
+                  <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-amber-300 rounded-full animate-pulse opacity-60" style={{animationDelay: '0.5s'}}></div>
                 </div>
 
                 {/* Mobile Year Badge */}
@@ -379,12 +379,12 @@ const JourneySection = () => {
                       <div className="p-3 relative z-20">
                         <div className="flex items-center justify-between mb-2">
                           <div className="flex items-center gap-2">
-                            <div className="w-2 h-2 bg-gradient-to-r from-accent-600 to-accent-400 rounded-full animate-pulse"></div>
-                            <span className="text-accent-600 dark:text-accent-400 font-semibold text-xs group-hover:text-accent-500 transition-colors duration-300">
+                            <div className="w-2 h-2 bg-gradient-to-r from-amber-600 to-amber-400 rounded-full animate-pulse"></div>
+                            <span className="text-amber-600 dark:text-amber-400 font-semibold text-xs group-hover:text-amber-500 transition-colors duration-300">
                               {yearData.achievements.length} Projects
                             </span>
                           </div>
-                          <h3 className="text-base font-bold text-gray-900 dark:text-white group-hover:text-accent-600 dark:group-hover:text-accent-400 transition-colors duration-300">
+                          <h3 className="text-base font-bold text-gray-900 dark:text-white group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors duration-300">
                             {yearData.year}
                           </h3>
                         </div>
@@ -392,10 +392,10 @@ const JourneySection = () => {
                         {/* Enhanced Project List - Compact */}
                         <div className="space-y-1.5">
                           {yearData.achievements.slice(0, 2).map((achievement, achievementIndex) => (
-                            <div key={achievementIndex} className="flex items-center gap-2 p-1.5 bg-gray-50 dark:bg-gray-700 rounded-md group/item hover:bg-gradient-to-r hover:from-accent-50 hover:to-accent-100/20 dark:hover:from-accent-900/30 dark:hover:to-accent-900/10 transition-all duration-300">
-                              <div className="w-1.5 h-1.5 bg-accent-500 rounded-full group-hover/item:animate-pulse"></div>
+                            <div key={achievementIndex} className="flex items-center gap-2 p-1.5 bg-gray-50 dark:bg-gray-700 rounded-md group/item hover:bg-gradient-to-r hover:from-amber-50 hover:to-amber-100/20 dark:hover:from-amber-900/30 dark:hover:to-amber-900/10 transition-all duration-300">
+                              <div className="w-1.5 h-1.5 bg-amber-500 rounded-full group-hover/item:animate-pulse"></div>
                               <div className="flex-1">
-                                <h4 className="font-medium text-gray-900 dark:text-white text-xs group-hover/item:text-accent-600 dark:group-hover/item:text-accent-400 transition-colors duration-300">
+                                <h4 className="font-medium text-gray-900 dark:text-white text-xs group-hover/item:text-amber-600 dark:group-hover/item:text-amber-400 transition-colors duration-300\">
                                   {achievement.title}
                                 </h4>
                                 <p className="text-gray-600 dark:text-gray-300 text-xs">
@@ -403,7 +403,7 @@ const JourneySection = () => {
                                 </p>
                               </div>
                               {/* Subtle Progress Indicator */}
-                              <div className="w-1 h-1 bg-accent-400 rounded-full opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"></div>
+                              <div className="w-1 h-1 bg-amber-400 rounded-full opacity-0 group-hover/item:opacity-100 transition-opacity duration-300"></div>
                             </div>
                           ))}
                         </div>
@@ -417,7 +417,7 @@ const JourneySection = () => {
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="bg-gradient-to-br from-accent-600 to-accent-500 rounded-2xl p-3 text-white relative overflow-hidden group border border-white/10 shadow-2xl dark:from-accent-700 dark:to-accent-600">
+                    <div className="bg-gradient-to-br from-amber-600 to-amber-500 rounded-2xl p-3 text-white relative overflow-hidden group border border-white/10 shadow-2xl dark:from-amber-700 dark:to-amber-600">
                       {/* Unique Geometric Pattern */}
                       <div className="absolute inset-0 opacity-15">
                         <div className="absolute top-1 right-1 w-8 h-8 border-2 border-white/30 rounded-full animate-spin" style={{animationDuration: '12s'}}></div>
