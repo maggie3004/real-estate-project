@@ -29,9 +29,8 @@ const HeroSection = () => {
   // Preload images for better performance
   React.useEffect(() => {
     const imageUrls = [
-      '/assets/shree-ganesh-heights/gallery/night-front.jpg',
-      '/assets/shree-ganesh-park/gallery/ter-view.jpg',
       '/assets/shree-ganesh-heights/gallery/day-front.jpg',
+      '/assets/shree-ganesh-park/gallery/a-view.jpg',
       '/assets/shree-ganesh-srushti/gallery/front.jpg',
       '/hero-building.jpg'
     ];
@@ -62,14 +61,14 @@ const HeroSection = () => {
   const carouselData = [
     {
       id: 1,
-      image: '/assets/shree-ganesh-heights/gallery/night-front.jpg',
+      image: '/assets/shree-ganesh-heights/gallery/day-front.jpg',
       title: 'Shree Ganesh Heights',
       subtitle: 'Affordable 1 BHK homes',
       route: '/ShreeGaneshHeights'
     },
     {
       id: 2,
-      image: '/assets/shree-ganesh-park/gallery/ter-view.jpg',
+      image: '/assets/shree-ganesh-park/gallery/a-view.jpg',
       title: 'Shree Ganesh Park',
       subtitle: 'Happy 1 & 2 BHK',
       route: '/ShreeGaneshParkPhaseI'
@@ -210,6 +209,18 @@ const HeroSection = () => {
           height: 100%;
           object-fit: cover;
           object-position: center;
+          min-width: 100%;
+          min-height: 100%;
+          max-width: 100%;
+          max-height: 100%;
+        }
+        
+        /* Ensure images fit perfectly on all devices */
+        @media (max-width: 640px) {
+          .hero-image {
+            width: 100vw;
+            height: 100vh;
+          }
         }
         
         .hero-swiper-pagination-bullet {

@@ -43,7 +43,7 @@ const projects = [
     status: 'Ongoing',
     image: sghFront,
     description: 'Premium residential development with modern amenities and excellent location advantages.',
-    type: '2 & 3 BHK',
+    type: '1 BHK',
     units: '120 Units',
     area: '2.5 Acres',
     completionDate: '2024',

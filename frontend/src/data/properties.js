@@ -54,8 +54,8 @@ const properties = [
       "/assets/shree-ganesh-heights/gallery/top-view.jpg",
       "/assets/shree-ganesh-heights/gallery/floor-plan.jpeg"
     ],
-    bedrooms: 3,
-    bathrooms: 3,
+    bedrooms: 1,
+    bathrooms: 1,
     area: "2.5 Acres",
     lat: 20.0110,
     lng: 73.7903,
