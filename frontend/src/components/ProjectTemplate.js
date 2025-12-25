@@ -1,6 +1,12 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaChevronLeft, FaChevronRight, FaPause, FaPlay } from 'react-icons/fa';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
 import ImageGallery from './ImageGallery';
 import FloatingCallButton from './FloatingCallButton';
 
@@ -12,6 +18,7 @@ const ProjectTemplate = ({
   stats,
   amenities,
   images,
+  galleryImages: customGalleryImages,
   brochurePath,
   mapUrl,
   directionsUrl,
@@ -37,10 +44,12 @@ const ProjectTemplate = ({
   
   // Determine variant and gallery images early so navigation can depend on gallery length
   const isOngoingVariant = layoutVariant === 'ongoing' || Boolean(reraNumber);
-  // Prepare gallery images: for ongoing projects prefer floorPlans images
-  const galleryImages = (isOngoingVariant && Array.isArray(floorPlans) && floorPlans.length > 0)
-    ? floorPlans.map(fp => fp.src).filter(Boolean)
-    : images;
+  // Prepare gallery images: use custom galleryImages if provided (only those, nothing else), otherwise use floorPlans for ongoing or images
+  const galleryImages = customGalleryImages && Array.isArray(customGalleryImages) && customGalleryImages.length > 0
+    ? customGalleryImages
+    : (isOngoingVariant && Array.isArray(floorPlans) && floorPlans.length > 0)
+      ? floorPlans.map(fp => fp.src).filter(Boolean)
+      : images;
   const hasImages = Array.isArray(galleryImages) && galleryImages.length > 0;
   const filteredDownloads = Array.isArray(downloads)
     ? downloads.filter(doc => doc && doc.href !== brochurePath && !(doc.label && doc.label.toLowerCase().includes('brochure')))
@@ -115,13 +124,76 @@ const ProjectTemplate = ({
 
       {/* Hero Section */}
       {isOngoingVariant ? (
-        <section className="relative w-full h-screen md:h-[85vh] lg:h-[90vh] overflow-hidden bg-black flex items-center justify-center">
-          <img 
-            src={images?.[0]}
-            alt={projectName + ' hero'}
-            className="absolute inset-0 w-full h-full object-cover object-center"
-          />
-          <div className="absolute inset-0 bg-black/20" />
+        <section className="relative w-full h-screen overflow-hidden bg-black flex items-center justify-center" style={{ minHeight: '100vh', maxHeight: '100vh' }}>
+          {Array.isArray(images) && images.length > 0 ? (
+            images.length > 1 ? (
+              <>
+                <Swiper
+                  modules={[Navigation, Pagination, Autoplay, EffectFade]}
+                  effect="fade"
+                  fadeEffect={{
+                    crossFade: true
+                  }}
+                  speed={800}
+                  autoplay={{
+                    delay: 5000,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true
+                  }}
+                  pagination={{
+                    clickable: true,
+                    el: '.project-hero-pagination',
+                    bulletClass: 'project-hero-pagination-bullet',
+                    bulletActiveClass: 'project-hero-pagination-bullet-active'
+                  }}
+                  loop={images.length > 1}
+                  className="project-hero-swiper h-full w-full"
+                >
+                  {images.map((image, index) => (
+                    <SwiperSlide key={index} className="relative">
+                      <img 
+                        src={image}
+                        alt={`${projectName} hero ${index + 1}`}
+                        className="project-hero-image absolute inset-0 w-full h-full object-cover object-center"
+                        loading={index === 0 ? "eager" : "lazy"}
+                        decoding="async"
+                        onError={(e) => {
+                          e.target.src = '/hero-building.jpg';
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-black/20" />
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+                
+                {/* Custom Pagination */}
+                <div className="project-hero-pagination absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2 z-30"></div>
+              </>
+            ) : (
+              <>
+                <img 
+                  src={images[0]}
+                  alt={projectName + ' hero'}
+                  className="project-hero-image absolute inset-0 w-full h-full object-cover object-center"
+                  loading="eager"
+                  decoding="async"
+                  onError={(e) => {
+                    e.target.src = '/hero-building.jpg';
+                  }}
+                />
+                <div className="absolute inset-0 bg-black/20" />
+              </>
+            )
+          ) : (
+            <>
+              <img 
+                src={images?.[0]}
+                alt={projectName + ' hero'}
+                className="project-hero-image absolute inset-0 w-full h-full object-cover object-center"
+              />
+              <div className="absolute inset-0 bg-black/20" />
+            </>
+          )}
           
           {/* Project Name - Top Left */}
           <div className="absolute top-6 md:top-8 left-6 md:left-8 z-20">
@@ -338,11 +410,14 @@ const ProjectTemplate = ({
 
             {/* Floor Plan Image - White Container */}
             <div className="relative rounded-xl overflow-hidden bg-white dark:bg-gray-900 p-8 md:p-12 shadow-xl">
-              <img
-                src={floorPlans[activeFloorIdx]?.src}
-                alt={floorPlans[activeFloorIdx]?.label}
-                className="w-full h-auto object-contain transition-transform duration-300 hover:scale-[1.02]"
-              />
+              <div className="w-full flex items-center justify-center" style={{ minHeight: '500px', height: '600px' }}>
+                <img
+                  src={floorPlans[activeFloorIdx]?.src}
+                  alt={floorPlans[activeFloorIdx]?.label}
+                  className="max-w-full max-h-full w-auto h-auto object-contain transition-transform duration-300 hover:scale-[1.02]"
+                  style={{ maxHeight: '600px', maxWidth: '100%' }}
+                />
+              </div>
             </div>
           </div>
         </section>
@@ -675,6 +750,90 @@ const ProjectTemplate = ({
       {isOngoingVariant && <FloatingCallButton brochurePath={brochurePath} projectName={projectName} isOngoing={isOngoingVariant} />}
 
       {/* No sticky CTA for clean minimal layout */}
+      
+      {/* Project Hero Carousel Styles */}
+      <style jsx global>{`
+        .project-hero-swiper {
+          height: 100%;
+          width: 100%;
+        }
+        
+        .project-hero-swiper .swiper-slide {
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        
+        /* Ensure hero image fits perfectly on all devices */
+        .project-hero-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+          min-width: 100%;
+          min-height: 100%;
+          max-width: 100%;
+          max-height: 100%;
+        }
+        
+        /* Ensure section takes full viewport */
+        @media (max-width: 640px) {
+          .project-hero-image {
+            width: 100vw;
+            height: 100vh;
+          }
+        }
+        
+        .project-hero-pagination-bullet {
+          width: 12px;
+          height: 12px;
+          background: rgba(255, 255, 255, 0.5);
+          opacity: 1;
+          border-radius: 6px;
+          transition: all 0.3s ease;
+          cursor: pointer;
+        }
+        
+        .project-hero-pagination-bullet-active {
+          background: rgba(255, 255, 255, 1);
+          transform: scale(1.2);
+          box-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
+        }
+        
+        .project-hero-pagination-bullet:hover {
+          background: rgba(255, 255, 255, 0.8);
+          transform: scale(1.1);
+        }
+        
+        /* Smooth transitions for all slides */
+        .project-hero-swiper .swiper-slide {
+          opacity: 0;
+          transition: opacity 0.8s ease-in-out;
+        }
+        
+        .project-hero-swiper .swiper-slide-active {
+          opacity: 1;
+        }
+        
+        .project-hero-swiper .swiper-slide-prev,
+        .project-hero-swiper .swiper-slide-next {
+          opacity: 0;
+        }
+        
+        /* Dark mode adjustments */
+        .dark .project-hero-pagination-bullet {
+          background: rgba(156, 163, 175, 0.5);
+        }
+        
+        .dark .project-hero-pagination-bullet-active {
+          background: rgba(156, 163, 175, 1);
+        }
+        
+        .dark .project-hero-pagination-bullet:hover {
+          background: rgba(156, 163, 175, 0.8);
+        }
+      `}</style>
     </div>
   );
 };

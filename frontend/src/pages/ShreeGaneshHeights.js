@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import sghFront from '../assets/shree-ganesh-heights/gallery/front.jpeg';
-import sghTopView from '../assets/shree-ganesh-heights/gallery/top-view.jpg';
+import sghDayFront from '../assets/shree-ganesh-heights/gallery/day-front.jpg';
 import sghNightFront from '../assets/shree-ganesh-heights/gallery/night-front.jpg';
+import sghTopView from '../assets/shree-ganesh-heights/gallery/top-view.jpg';
 import sghBrochure from '../assets/shree-ganesh-heights/Shri Ganesh Heights.pdf';
 import ProjectTemplate from '../components/ProjectTemplate';
 import { FaCar, FaSun, FaBuilding, FaShieldAlt, FaWater, FaTint } from 'react-icons/fa';
@@ -30,18 +31,19 @@ const ShreeGaneshHeights = () => {
       { icon: <FaWater />, name: "Water Supply" },
       { icon: <FaCar />, name: "Parking Space" }
     ],
-    images: [sghFront, sghTopView, sghNightFront],
+    images: [sghDayFront], // Only hero image
+    galleryImages: [sghNightFront, sghFront, sghTopView], // Gallery images
     brochurePath: sghBrochure,
-    reraNumber: "PXXXXXXX",
-    reraQr: "/owner-placeholder.png",
+    reraNumber: "P51600077829",
+    reraQr: "/assets/shree-ganesh-heights/gallery/Rera_QR.png",
     layoutVariant: 'ongoing',
-    configuration: "2BHK, 3BHK",
+    configuration: "1BHK",
     location: "Nashik",
     progressStage: 2,
     locationChips: ["Airport 25 min", "Hospital 8 min", "School 5 min"],
     floorPlans: [
-      { label: "2BHK", src: sghTopView },
-      { label: "3BHK", src: sghNightFront }
+      { label: "1BHK", src: sghTopView },
+      { label: "Floor Plan", src: '/assets/shree-ganesh-heights/gallery/floor.png' }
     ],
     downloads: [
       { label: "Project Brochure", href: sghBrochure },

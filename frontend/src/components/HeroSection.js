@@ -32,6 +32,7 @@ const HeroSection = () => {
       '/assets/shree-ganesh-heights/gallery/night-front.jpg',
       '/assets/shree-ganesh-park/gallery/ter-view.jpg',
       '/assets/shree-ganesh-heights/gallery/day-front.jpg',
+      '/assets/shree-ganesh-srushti/gallery/SGS_Hero.png',
       '/assets/shree-ganesh-srushti/gallery/front.jpg',
       '/hero-building.jpg'
     ];
@@ -76,7 +77,7 @@ const HeroSection = () => {
     },
     {
       id: 3,
-      image: '/assets/shree-ganesh-srushti/gallery/front.jpg',
+      image: '/assets/shree-ganesh-srushti/gallery/SGS_Hero.png',
       title: 'Shree Ganesh Srushti',
       subtitle: 'Happy 1, 2 & 3 BHK Homes & Shops',
       route: '/ShreeGaneshSrushti'

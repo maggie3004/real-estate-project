@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import sgsFront from '../assets/shree-ganesh-srushti/gallery/front.jpg';
+import sgsNight from '../assets/shree-ganesh-srushti/gallery/night.jpg';
 import sgs1bhk from '../assets/shree-ganesh-srushti/gallery/1bhk.jpg';
 import sgs1bhk2 from '../assets/shree-ganesh-srushti/gallery/1bhk (2).jpg';
 import sgs2bhk from '../assets/shree-ganesh-srushti/gallery/2bhk.jpg';
@@ -32,7 +33,8 @@ const ShreeGaneshSrushti = () => {
       { icon: <FaWater />, name: "Water Supply" },
       { icon: <FaCar />, name: "Parking Space" }
     ],
-    images: ['/assets/shree-ganesh-srushti/gallery/SGS_Hero.png', sgsFront, sgs1bhk, sgs2bhk],
+    images: ['/assets/shree-ganesh-srushti/gallery/SGS_Hero.png'], // Only hero image
+    galleryImages: [sgsFront, sgsNight, '/assets/shree-ganesh-srushti/gallery/IMG-20251112-WA0038.jpg'], // Only these 3 images in gallery
     brochurePath: "/assets/shree-ganesh-srushti/gallery/Shree Ganesh Srushti Digital Broucher_compressed.pdf",
     reraNumber: "PM1220002501249",
     reraQr: "/assets/shree-ganesh-srushti/gallery/Rera_QR.png",
@@ -44,8 +46,8 @@ const ShreeGaneshSrushti = () => {
     floorPlans: [
       { label: "1BHK - Type A", src: sgs1bhk },
       { label: "1BHK - Type B", src: sgs1bhk2 },
-      { label: "2BHK - Type A", src: sgs2bhk },
-      { label: "2BHK - Type B", src: sgs2bhk2 }
+      { label: "2BHK", src: sgs2bhk },
+      { label: "3BHK", src: sgs2bhk2 }
     ],
     downloads: [
       { label: "Project Brochure", href: "/assets/shree-ganesh-srushti/gallery/Shree Ganesh Srushti Digital Broucher_compressed.pdf" }
