@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import sghFront from '../assets/shree-ganesh-heights/gallery/front.jpeg';
+//import sghFront from '../assets/shree-ganesh-heights/gallery/front.jpeg';
 import sghDayFront from '../assets/shree-ganesh-heights/gallery/day-front.jpg';
 import sghNightFront from '../assets/shree-ganesh-heights/gallery/night-front.jpg';
 import sghTopView from '../assets/shree-ganesh-heights/gallery/top-view.jpg';
@@ -32,7 +32,7 @@ const ShreeGaneshHeights = () => {
       { icon: <FaCar />, name: "Parking Space" }
     ],
     images: [sghDayFront], // Only hero image
-    galleryImages: [sghNightFront, sghFront, sghTopView], // Gallery images
+    galleryImages: [sghNightFront, sghTopView], // Gallery images
     brochurePath: sghBrochure,
     reraNumber: "P51600077829",
     reraQr: "/assets/shree-ganesh-heights/gallery/Rera_QR.png",
@@ -53,10 +53,10 @@ const ShreeGaneshHeights = () => {
     testimonials: [],
     cost: { base: "On Request", taxes: "As applicable", maintenance: "TBD" },
     timeline: [
-      { label: "Launch", caption: "Brand reveal", image: sghFront },
+      { label: "Launch", caption: "Brand reveal", image: sghDayFront },
       { label: "Foundation", caption: "Groundwork done", image: sghTopView },
       { label: "Structure", caption: "Superstructure rising", image: sghNightFront },
-      { label: "Finishing", caption: "Interiors underway", image: sghFront }
+      { label: "Finishing", caption: "Interiors underway", image: sghDayFront }
     ],
     mapUrl: "https://maps.app.goo.gl/6X9DkrFsd58nzQFT9?g_st=com.google.maps.preview.copy",
     directionsUrl: "https://www.google.com/maps/dir//Shree+ganesh+heights+B/@19.9583632,73.7635915,103m"

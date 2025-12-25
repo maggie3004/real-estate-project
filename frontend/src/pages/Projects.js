@@ -39,7 +39,7 @@ const projects = {
       location: 'Nashik',
       image: sghFront,
       images: [sghFront, sghTopView, sghNightFront],
-      configuration: '2BHK, 3BHK',
+      configuration: '1BHK',
       brochureUrl: sghBrochure,
       reraNumber: 'P51600077829',
       reraQr: '/assets/shree-ganesh-heights/gallery/Rera_QR.png'

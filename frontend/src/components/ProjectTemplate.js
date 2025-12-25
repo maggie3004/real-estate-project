@@ -196,18 +196,18 @@ const ProjectTemplate = ({
           )}
           
           {/* Project Name - Top Left */}
-          <div className="absolute top-6 md:top-8 left-6 md:left-8 z-20">
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tight text-white drop-shadow-2xl">
+          <div className="absolute top-4 left-4 sm:top-6 sm:left-6 md:top-8 md:left-8 z-20 max-w-[calc(100%-220px)] sm:max-w-[calc(100%-240px)] md:max-w-[60%]">
+            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tight text-white drop-shadow-2xl break-words">
               {projectName}
             </h1>
             
             {/* Tagline and Subtitle - Below Project Name, Left Aligned */}
             <div className="mt-2 md:mt-4">
-              <h2 className="text-sm md:text-xl lg:text-2xl font-bold text-white drop-shadow-2xl leading-tight">
+              <h2 className="text-xs sm:text-sm md:text-xl lg:text-2xl font-bold text-white drop-shadow-2xl leading-tight break-words">
                 {tagline}
               </h2>
               {heroSubtitle && (
-                <p className="text-xs md:text-base lg:text-lg text-white drop-shadow-lg font-medium mt-1 md:mt-2">
+                <p className="text-[10px] sm:text-xs md:text-base lg:text-lg text-white drop-shadow-lg font-medium mt-1 md:mt-2 break-words">
                   {heroSubtitle}
                 </p>
               )}
@@ -216,16 +216,16 @@ const ProjectTemplate = ({
 
           {/* RERA Info - Top Right */}
           {reraQr && reraNumber && (
-            <div className="absolute top-6 right-6 md:top-8 md:right-8 z-20">
-              <div className="flex items-center gap-2">
+            <div className="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 z-20">
+              <div className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm rounded-lg p-2 sm:p-3 shadow-lg border border-white/20 flex items-center gap-2 sm:gap-3 max-w-[180px] sm:max-w-[200px]">
                 <img 
                   src={reraQr} 
-                  alt="MahaRERA Logo" 
-                  className="w-12 h-12 md:w-14 md:h-14 object-contain"
+                  alt="MahaRERA QR Code" 
+                  className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 object-contain flex-shrink-0"
                 />
-                <div className="text-left">
-                  <div className="text-xs font-semibold text-white drop-shadow-lg">RERA</div>
-                  <div className="text-xs text-white drop-shadow-lg font-mono leading-tight">{reraNumber}</div>
+                <div className="text-left min-w-0 flex-1">
+                  <div className="text-[10px] sm:text-xs font-semibold text-gray-800 dark:text-white">RERA</div>
+                  <div className="text-[10px] sm:text-xs text-gray-700 dark:text-gray-200 font-mono leading-tight break-all">{reraNumber}</div>
                 </div>
               </div>
             </div>
