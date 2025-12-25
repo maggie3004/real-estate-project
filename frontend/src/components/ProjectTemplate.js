@@ -48,8 +48,8 @@ const ProjectTemplate = ({
   const galleryImages = customGalleryImages && Array.isArray(customGalleryImages) && customGalleryImages.length > 0
     ? customGalleryImages
     : (isOngoingVariant && Array.isArray(floorPlans) && floorPlans.length > 0)
-      ? floorPlans.map(fp => fp.src).filter(Boolean)
-      : images;
+    ? floorPlans.map(fp => fp.src).filter(Boolean)
+    : images;
   const hasImages = Array.isArray(galleryImages) && galleryImages.length > 0;
   const filteredDownloads = Array.isArray(downloads)
     ? downloads.filter(doc => doc && doc.href !== brochurePath && !(doc.label && doc.label.toLowerCase().includes('brochure')))
@@ -214,9 +214,9 @@ const ProjectTemplate = ({
             )
           ) : (
             <>
-              <img 
-                src={images?.[0]}
-                alt={projectName + ' hero'}
+          <img 
+            src={images?.[0]}
+            alt={projectName + ' hero'}
                 className="project-hero-image"
                 style={{ 
                   position: 'absolute',
@@ -228,8 +228,8 @@ const ProjectTemplate = ({
                   objectPosition: 'center 75%',
                   display: 'block'
                 }}
-              />
-              <div className="absolute inset-0 bg-black/20" />
+          />
+          <div className="absolute inset-0 bg-black/20" />
             </>
           )}
           
@@ -447,14 +447,13 @@ const ProjectTemplate = ({
             </div>
 
             {/* Floor Plan Image - White Container */}
-            <div className="relative rounded-xl overflow-hidden bg-white dark:bg-gray-900 shadow-xl">
-              <div className="w-full flex items-center justify-center">
+            <div className="relative rounded-xl overflow-hidden bg-white dark:bg-gray-900 shadow-xl flex items-center justify-center aspect-[4/3] w-full max-w-2xl mx-auto">
                 <img
                   src={floorPlans[activeFloorIdx]?.src}
                   alt={floorPlans[activeFloorIdx]?.label}
-                  className="w-full h-auto object-contain transition-transform duration-300 hover:scale-[1.01]"
+                  className="absolute top-0 left-0 w-full h-full object-contain transition-transform duration-300 hover:scale-[1.01]"
+                  style={{ display: 'block' }}
                 />
-              </div>
             </div>
           </div>
         </section>
