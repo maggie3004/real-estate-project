@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-//import sghFront from '../assets/shree-ganesh-heights/gallery/front.jpeg';
 import sghDayFront from '../assets/shree-ganesh-heights/gallery/day-front.jpg';
 import sghNightFront from '../assets/shree-ganesh-heights/gallery/night-front.jpg';
 import sghTopView from '../assets/shree-ganesh-heights/gallery/top-view.jpg';
@@ -31,7 +30,7 @@ const ShreeGaneshHeights = () => {
       { icon: <FaWater />, name: "Water Supply" },
       { icon: <FaCar />, name: "Parking Space" }
     ],
-    images: [sghDayFront], // Only hero image
+    images: ['/assets/shree-ganesh-heights/gallery/hero.png'], // Only hero image
     galleryImages: [sghNightFront, sghTopView], // Gallery images
     brochurePath: sghBrochure,
     reraNumber: "P51600077829",

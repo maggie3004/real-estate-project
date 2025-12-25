@@ -33,7 +33,7 @@ const ShreeGaneshSrushti = () => {
       { icon: <FaWater />, name: "Water Supply" },
       { icon: <FaCar />, name: "Parking Space" }
     ],
-    images: ['/assets/shree-ganesh-srushti/gallery/SGS_Hero.png'], // Only hero image
+    images: ['/assets/shree-ganesh-srushti/gallery/hero.png'], // Only hero image
     galleryImages: [sgsFront, sgsNight, '/assets/shree-ganesh-srushti/gallery/IMG-20251112-WA0038.jpg'], // Only these 3 images in gallery
     brochurePath: "/assets/shree-ganesh-srushti/gallery/Shree Ganesh Srushti Digital Broucher_compressed.pdf",
     reraNumber: "PM1220002501249",

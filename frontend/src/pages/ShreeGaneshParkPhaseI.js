@@ -34,7 +34,7 @@ const ShreeGaneshParkPhaseI = () => {
       { icon: <FaWater />, name: "Water Supply" },
       { icon: <FaCar />, name: "Parking Space" }
     ],
-    images: [sgpAView],
+    images: ['/assets/shree-ganesh-park/gallery/hero.png'], 
     galleryImages: [sgpAView, sgpBView, sgpNightA],
     brochurePath: sgpBrochure,
     reraNumber: "P51600051448",

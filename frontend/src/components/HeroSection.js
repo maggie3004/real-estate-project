@@ -61,21 +61,21 @@ const HeroSection = () => {
   const carouselData = [
     {
       id: 1,
-      image: '/assets/shree-ganesh-heights/gallery/day-front.jpg',
+      image: '/assets/shree-ganesh-heights/gallery/hero.png',
       title: 'Shree Ganesh Heights',
       subtitle: 'Affordable 1 BHK homes',
       route: '/ShreeGaneshHeights'
     },
     {
       id: 2,
-      image: '/assets/shree-ganesh-park/gallery/a-view.jpg',
+      image: '/assets/shree-ganesh-park/gallery/hero.png',
       title: 'Shree Ganesh Park',
       subtitle: 'Happy 1 & 2 BHK',
       route: '/ShreeGaneshParkPhaseI'
     },
     {
       id: 3,
-      image: '/assets/shree-ganesh-srushti/gallery/front.jpg',
+      image: '/assets/shree-ganesh-srushti/gallery/hero.png',
       title: 'Shree Ganesh Srushti',
       subtitle: 'Happy 1, 2 & 3 BHK Homes & Shops',
       route: '/ShreeGaneshSrushti'
