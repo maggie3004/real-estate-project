@@ -89,7 +89,15 @@ const HeroSection = () => {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.6 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
-      className="relative h-screen overflow-hidden w-full"
+      className="hero-section relative overflow-hidden"
+      style={{ 
+        width: '100%',
+        aspectRatio: '3 / 2',
+        minHeight: '70vh',
+        position: 'relative',
+        margin: 0,
+        padding: 0
+      }}
     >
       <Swiper
         ref={swiperRef}
@@ -111,12 +119,14 @@ const HeroSection = () => {
           bulletActiveClass: 'hero-swiper-pagination-bullet-active'
         }}
         loop={true}
-        className="hero-swiper h-full w-full"
+        className="hero-swiper"
+        style={{ width: '100%', aspectRatio: '3 / 2', minHeight: '70vh', margin: 0, padding: 0 }}
       >
         {carouselData.map((slide, index) => (
           <SwiperSlide key={slide.id} className="relative">
             <div 
-              className="relative h-full w-full bg-gray-900 flex items-center justify-center cursor-pointer group"
+              className="relative h-full w-full bg-gray-900 cursor-pointer group overflow-hidden"
+              style={{ width: '100%', height: '100%', position: 'relative' }}
               onClick={() => navigate(slide.route)}
               role="button"
               tabIndex={0}
@@ -132,6 +142,16 @@ const HeroSection = () => {
                 src={slide.image}
                 alt={slide.title}
                 className="hero-image"
+                style={{ 
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  objectPosition: 'center bottom',
+                  display: 'block'
+                }}
                 loading="eager"
                 decoding="async"
                 onError={(e) => {
@@ -192,35 +212,48 @@ const HeroSection = () => {
 
       {/* Hero Carousel Styles */}
       <style jsx global>{`
+        .hero-section {
+          width: 100% !important;
+          aspect-ratio: 3 / 2 !important;
+          min-height: 70vh !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          position: relative !important;
+        }
+
         .hero-swiper {
-          height: 100vh;
-          width: 100%;
+          width: 100% !important;
+          aspect-ratio: 3 / 2 !important;
+          min-height: 70vh !important;
+          margin: 0 !important;
+          padding: 0 !important;
         }
         
         .hero-swiper .swiper-slide {
-          height: 100vh;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          width: 100% !important;
+          aspect-ratio: 3 / 2 !important;
+          min-height: 70vh !important;
+          position: relative !important;
+        }
+        
+        .hero-swiper .swiper-slide > div {
+          width: 100% !important;
+          height: 100% !important;
+          position: relative !important;
+          overflow: hidden !important;
         }
         
         .hero-image {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: center;
-          min-width: 100%;
-          min-height: 100%;
-          max-width: 100%;
-          max-height: 100%;
-        }
-        
-        /* Ensure images fit perfectly on all devices */
-        @media (max-width: 640px) {
-          .hero-image {
-            width: 100vw;
-            height: 100vh;
-          }
+          width: 100% !important;
+          height: 100% !important;
+          object-fit: cover !important;
+          object-position: center bottom !important;
+          position: absolute !important;
+          top: 0 !important;
+          left: 0 !important;
+          right: 0 !important;
+          bottom: 0 !important;
+          display: block !important;
         }
         
         .hero-swiper-pagination-bullet {
@@ -245,21 +278,6 @@ const HeroSection = () => {
         }
         
         /* Smooth transitions for all slides */
-        .hero-swiper .swiper-slide-active {
-          transition: all 0.8s ease-in-out;
-        }
-        
-        /* Enhanced button hover effects */
-        .hero-swiper button:hover {
-          transform: translateY(-50%) scale(1.1);
-          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        }
-        
-        .hero-swiper button:active {
-          transform: translateY(-50%) scale(0.95);
-        }
-        
-        /* Ensure smooth fade effect */
         .hero-swiper .swiper-slide {
           opacity: 0;
           transition: opacity 0.8s ease-in-out;

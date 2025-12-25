@@ -124,7 +124,14 @@ const ProjectTemplate = ({
 
       {/* Hero Section */}
       {isOngoingVariant ? (
-        <section className="relative w-full h-screen overflow-hidden bg-black flex items-center justify-center" style={{ minHeight: '100vh', maxHeight: '100vh' }}>
+        <section className="project-hero-section relative overflow-hidden bg-black" style={{ 
+          width: '100%',
+          aspectRatio: '3 / 2',
+          minHeight: '70vh',
+          position: 'relative',
+          margin: 0,
+          padding: 0
+        }}>
           {Array.isArray(images) && images.length > 0 ? (
             images.length > 1 ? (
               <>
@@ -147,14 +154,25 @@ const ProjectTemplate = ({
                     bulletActiveClass: 'project-hero-pagination-bullet-active'
                   }}
                   loop={images.length > 1}
-                  className="project-hero-swiper h-full w-full"
+                  className="project-hero-swiper"
+                  style={{ width: '100%', aspectRatio: '3 / 2', minHeight: '70vh', margin: 0, padding: 0 }}
                 >
                   {images.map((image, index) => (
                     <SwiperSlide key={index} className="relative">
                       <img 
                         src={image}
                         alt={`${projectName} hero ${index + 1}`}
-                        className="project-hero-image absolute inset-0 w-full h-full object-cover object-center"
+                        className="project-hero-image"
+                        style={{ 
+                          position: 'absolute',
+                          top: 0,
+                          left: 0,
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover',
+                          objectPosition: 'center bottom',
+                          display: 'block'
+                        }}
                         loading={index === 0 ? "eager" : "lazy"}
                         decoding="async"
                         onError={(e) => {
@@ -174,7 +192,17 @@ const ProjectTemplate = ({
                 <img 
                   src={images[0]}
                   alt={projectName + ' hero'}
-                  className="project-hero-image absolute inset-0 w-full h-full object-cover object-center"
+                  className="project-hero-image"
+                  style={{ 
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center bottom',
+                    display: 'block'
+                  }}
                   loading="eager"
                   decoding="async"
                   onError={(e) => {
@@ -189,7 +217,17 @@ const ProjectTemplate = ({
               <img 
                 src={images?.[0]}
                 alt={projectName + ' hero'}
-                className="project-hero-image absolute inset-0 w-full h-full object-cover object-center"
+                className="project-hero-image"
+                style={{ 
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  objectPosition: 'center 75%',
+                  display: 'block'
+                }}
               />
               <div className="absolute inset-0 bg-black/20" />
             </>
@@ -409,13 +447,12 @@ const ProjectTemplate = ({
             </div>
 
             {/* Floor Plan Image - White Container */}
-            <div className="relative rounded-xl overflow-hidden bg-white dark:bg-gray-900 p-8 md:p-12 shadow-xl">
-              <div className="w-full flex items-center justify-center" style={{ minHeight: '500px', height: '600px' }}>
+            <div className="relative rounded-xl overflow-hidden bg-white dark:bg-gray-900 shadow-xl">
+              <div className="w-full flex items-center justify-center">
                 <img
                   src={floorPlans[activeFloorIdx]?.src}
                   alt={floorPlans[activeFloorIdx]?.label}
-                  className="max-w-full max-h-full w-auto h-auto object-contain transition-transform duration-300 hover:scale-[1.02]"
-                  style={{ maxHeight: '600px', maxWidth: '100%' }}
+                  className="w-full h-auto object-contain transition-transform duration-300 hover:scale-[1.01]"
                 />
               </div>
             </div>
@@ -753,36 +790,49 @@ const ProjectTemplate = ({
       
       {/* Project Hero Carousel Styles */}
       <style jsx global>{`
+        .project-hero-section {
+          width: 100% !important;
+          aspect-ratio: 3 / 2 !important;
+          min-height: 70vh !important;
+          position: relative !important;
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+        
         .project-hero-swiper {
-          height: 100%;
-          width: 100%;
+          width: 100% !important;
+          aspect-ratio: 3 / 2 !important;
+          min-height: 70vh !important;
+          margin: 0 !important;
+          padding: 0 !important;
         }
         
         .project-hero-swiper .swiper-slide {
-          height: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+          width: 100% !important;
+          aspect-ratio: 3 / 2 !important;
+          min-height: 70vh !important;
+          position: relative !important;
+        }
+        
+        .project-hero-swiper .swiper-slide > div {
+          width: 100% !important;
+          height: 100% !important;
+          position: relative !important;
+          overflow: hidden !important;
         }
         
         /* Ensure hero image fits perfectly on all devices */
         .project-hero-image {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: center;
-          min-width: 100%;
-          min-height: 100%;
-          max-width: 100%;
-          max-height: 100%;
-        }
-        
-        /* Ensure section takes full viewport */
-        @media (max-width: 640px) {
-          .project-hero-image {
-            width: 100vw;
-            height: 100vh;
-          }
+          width: 100% !important;
+          height: 100% !important;
+          object-fit: cover !important;
+          object-position: center bottom !important;
+          position: absolute !important;
+          top: 0 !important;
+          left: 0 !important;
+          right: 0 !important;
+          bottom: 0 !important;
+          display: block !important;
         }
         
         .project-hero-pagination-bullet {

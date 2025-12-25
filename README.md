@@ -2,6 +2,32 @@
 
 A modern, responsive real estate website built with React, Node.js, and MongoDB. This project showcases premium properties in Nashik, Mumbai, and Pune with advanced features and excellent user experience.
 
+## 🚀 Recent Updates & Improvements
+
+### 🏗️ Project Pages Enhancement
+- **Hero Section Carousel**: Interactive image carousel for each project with smooth fade transitions
+- **RERA Integration**: RERA QR codes and registration numbers prominently displayed
+- **Responsive Hero Images**: Images optimized to fit perfectly on all device sizes (mobile, tablet, desktop)
+- **Gallery Sections**: Dedicated gallery sections with specific project images
+- **Floor Plans**: Interactive floor plan viewer with consistent sizing across all projects
+- **Project-Specific Pages**:
+  - Shree Ganesh Heights (1 BHK)
+  - Shree Ganesh Park (1 & 2 BHK)
+  - Shree Ganesh Srushti (1, 2 & 3 BHK)
+
+### 📱 Home Page Hero Section
+- **Three-Project Carousel**: Rotating hero section featuring all three main projects
+- **Auto-play Functionality**: Automatic image rotation with pause on hover
+- **Responsive Design**: Images adapt seamlessly to all screen sizes
+- **Navigation Controls**: Previous/Next buttons and pagination dots
+- **Keyboard Support**: Arrow key navigation for better accessibility
+
+### 🔧 Technical Improvements
+- **Image Optimization**: Proper image paths and loading strategies
+- **Component Refactoring**: Improved ProjectTemplate component with gallery support
+- **Responsive CSS**: Enhanced image fitting with object-fit and viewport units
+- **Code Organization**: Better separation of hero images and gallery images
+
 ## 🚀 New Features Implemented
 
 ### 📄 Enhanced Pages
@@ -230,6 +256,11 @@ real-estate-project/
 
 ### **Content**
 - Update property data in `src/data/properties.js`
+- Modify project information in individual project pages:
+  - `src/pages/ShreeGaneshHeights.js`
+  - `src/pages/ShreeGaneshParkPhaseI.js`
+  - `src/pages/ShreeGaneshSrushti.js`
+- Update hero section images in `src/components/HeroSection.js`
 - Modify testimonials in `src/components/Testimonials.js`
 - Update company information in About page
 
