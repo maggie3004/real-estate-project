@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaChevronLeft, FaChevronRight, FaPause, FaPlay } from 'react-icons/fa';
 import { Swiper, SwiperSlide } from 'swiper/react';

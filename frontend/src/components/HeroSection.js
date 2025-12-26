@@ -62,22 +62,28 @@ const HeroSection = () => {
     {
       id: 1,
       image: '/assets/shree-ganesh-heights/gallery/hero.png',
-      title: 'Shree Ganesh Heights',
-      subtitle: 'Affordable 1 BHK homes',
+      title: 'EXPERIENCE',
+      title2: 'ESSENCE',
+      title3: 'OF ELEVATED LIVING',
+      subtitle: 'Exclusive 1 BHK Happy Homes',
       route: '/ShreeGaneshHeights'
     },
     {
       id: 2,
       image: '/assets/shree-ganesh-park/gallery/hero.png',
-      title: 'Shree Ganesh Park',
-      subtitle: 'Happy 1 & 2 BHK',
+      title: 'RISE TO',
+      title2: 'NEW WAY OF',
+      title3: 'LIVING',
+      subtitle: '1 & 2 BHK Luxury Homes & Shops',
       route: '/ShreeGaneshParkPhaseI'
     },
     {
       id: 3,
       image: '/assets/shree-ganesh-srushti/gallery/hero.png',
-      title: 'Shree Ganesh Srushti',
-      subtitle: 'Happy 1, 2 & 3 BHK Homes & Shops',
+      title: 'THE',
+      title2: 'NEW LANGUAGE',
+      title3: 'OF LIVING',
+      subtitle: '1, 2 & 3 BHK Happy Homes & Shops',
       route: '/ShreeGaneshSrushti'
     }
   ];
@@ -163,21 +169,45 @@ const HeroSection = () => {
               <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/50 dark:from-black/30 dark:via-black/40 dark:to-black/60"></div>
               
               {/* Slide-specific content */}
-              <div className="absolute top-24 sm:top-28 md:top-32 left-4 sm:left-8 md:left-12 right-4 sm:right-8 md:right-12 z-10 max-w-2xl">
-                <motion.h2
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
+              <div className="absolute top-16 sm:top-20 md:top-24 lg:top-28 left-4 sm:left-8 md:left-12 lg:left-16 right-4 z-10 max-w-3xl">
+                <motion.div
+                  initial={{ opacity: 0, y: -30 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
-                  onClick={() => navigate(slide.route)}
-                  className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-white dark:text-gray-100 mb-2 sm:mb-4 leading-tight drop-shadow-lg text-left cursor-pointer hover:text-amber-300 transition-colors duration-300"
+                  className="space-y-1 sm:space-y-2 mb-3 sm:mb-4 md:mb-6"
                 >
-                  {slide.title}
-                </motion.h2>
+                  <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white uppercase leading-tight tracking-wide drop-shadow-2xl" 
+                      style={{ fontFamily: "'Playfair Display', serif" }}>
+                    {slide.title}
+                  </h1>
+                  <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white uppercase leading-tight tracking-wide drop-shadow-2xl"
+                      style={{ fontFamily: "'Playfair Display', serif" }}>
+                    {slide.title2}
+                  </h2>
+                  <h3 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white uppercase leading-tight tracking-wide drop-shadow-2xl"
+                      style={{ fontFamily: "'Playfair Display', serif" }}>
+                    {slide.title3}
+                  </h3>
+                </motion.div>
+
+                {/* Decorative golden line */}
+                <motion.div 
+                  initial={{ opacity: 0, scaleX: 0 }}
+                  animate={{ opacity: 1, scaleX: 1 }}
+                  transition={{ duration: 0.8, delay: 0.5 }}
+                  className="w-16 sm:w-20 md:w-24 lg:w-32 h-0.5 bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-300 mb-3 sm:mb-4 md:mb-6 shadow-lg"
+                  style={{ 
+                    boxShadow: '0 0 10px rgba(251, 191, 36, 0.5)',
+                    originX: 0
+                  }}
+                />
+
                 <motion.p
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8, delay: 0.4 }}
-                  className="text-sm sm:text-base md:text-lg text-gray-100 dark:text-gray-200 mb-4 sm:mb-6 leading-relaxed drop-shadow-md text-left"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.8, delay: 0.7 }}
+                  className="text-sm sm:text-base md:text-lg lg:text-xl text-white font-light tracking-wide drop-shadow-lg"
+                  style={{ fontFamily: "'Poppins', sans-serif" }}
                 >
                   {slide.subtitle}
                 </motion.p>
