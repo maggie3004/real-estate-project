@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaChevronLeft, FaChevronRight, FaPause, FaPlay } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight, FaPause, FaPlay, FaMapMarkerAlt, FaRoad, FaBuilding, FaCompass, FaSun, FaLeaf } from 'react-icons/fa';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
 import 'swiper/css';
@@ -124,7 +124,7 @@ const ProjectTemplate = ({
 
       {/* Hero Section */}
       {isOngoingVariant ? (
-        <section className="project-hero-section relative overflow-hidden bg-black" style={{ 
+        <section className="project-hero-section relative overflow-hidden" style={{ 
           width: '100%',
           aspectRatio: '3 / 2',
           minHeight: '70vh',
@@ -312,7 +312,9 @@ const ProjectTemplate = ({
               {/* Family Photo - Left Side (Desktop), Bottom (Mobile) */}
               <div className="w-full order-2 md:order-1">
                 <img 
-                  src="/family_photo.jpg" 
+                  src={projectName === 'Shree Ganesh Heights' ? '/assets/shree-ganesh-heights/gallery/sghfamily.jpeg' 
+                    : projectName === 'Shree Ganesh Park' ? '/assets/shree-ganesh-park/gallery/sgpfamily.jpeg' 
+                    : '/family_photo.jpg'} 
                   alt="Happy Family" 
                   className="w-full h-auto rounded-2xl shadow-2xl object-cover"
                 />
@@ -349,9 +351,7 @@ const ProjectTemplate = ({
                   {/* Feature 1 - Location */}
                   <div className="flex flex-col items-center text-center">
                     <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-2">
-                      <svg className="w-7 h-7 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 2C7.58 2 4 5.58 4 10c0 6 8 12 8 12s8-6 8-12c0-4.42-3.58-8-8-8zm0 11c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z" />
-                      </svg>
+                      <FaMapMarkerAlt className="w-7 h-7 md:w-8 md:h-8 text-white" />
                     </div>
                     <p className="text-amber-900 dark:text-amber-100 text-xs md:text-sm font-semibold leading-tight">Most Demanding<br/>Location</p>
                   </div>
@@ -359,10 +359,7 @@ const ProjectTemplate = ({
                   {/* Feature 2 - Road */}
                   <div className="flex flex-col items-center text-center">
                     <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-2">
-                      <svg className="w-7 h-7 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v8m-4-4h8" />
-                      </svg>
+                      <FaRoad className="w-7 h-7 md:w-8 md:h-8 text-white" />
                     </div>
                     <p className="text-amber-900 dark:text-amber-100 text-xs md:text-sm font-semibold leading-tight">100 ft wide road<br/>front</p>
                   </div>
@@ -370,10 +367,7 @@ const ProjectTemplate = ({
                   {/* Feature 3 - Facilities */}
                   <div className="flex flex-col items-center text-center">
                     <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-2">
-                      <svg className="w-7 h-7 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 13h2v8H3zm4-8h2v16H7zm4-2h2v18h-2zm4 4h2v14h-2zm4-4h2v18h-2z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 21h14M3 5l9-3 9 3" />
-                      </svg>
+                      <FaBuilding className="w-7 h-7 md:w-8 md:h-8 text-white" />
                     </div>
                     <p className="text-amber-900 dark:text-amber-100 text-xs md:text-sm font-semibold leading-tight">Facilities</p>
                   </div>
@@ -381,11 +375,7 @@ const ProjectTemplate = ({
                   {/* Feature 4 - Vastu */}
                   <div className="flex flex-col items-center text-center">
                     <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-2">
-                      <svg className="w-7 h-7 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 2L3 8v8c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V8l-9-6z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M7 10l3 3 5-6" />
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M10 6h4m0 4h-4m2 4v2m0-4v-2" />
-                      </svg>
+                      <FaCompass className="w-7 h-7 md:w-8 md:h-8 text-white" />
                     </div>
                     <p className="text-amber-900 dark:text-amber-100 text-xs md:text-sm font-semibold leading-tight">Vastu<br/>Compliant</p>
                   </div>
@@ -393,10 +383,7 @@ const ProjectTemplate = ({
                   {/* Feature 5 - Ventilation */}
                   <div className="flex flex-col items-center text-center">
                     <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-2">
-                      <svg className="w-7 h-7 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v18m-9-9h18M6 12a6 6 0 1112 0 6 6 0 01-12 0z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v8m-4-4h8" />
-                      </svg>
+                      <FaSun className="w-7 h-7 md:w-8 md:h-8 text-white" />
                     </div>
                     <p className="text-amber-900 dark:text-amber-100 text-xs md:text-sm font-semibold leading-tight">Good Ventilation &<br/>Sunlight</p>
                   </div>
@@ -404,10 +391,7 @@ const ProjectTemplate = ({
                   {/* Feature 6 - Sustainability */}
                   <div className="flex flex-col items-center text-center">
                     <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-2">
-                      <svg className="w-7 h-7 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M8 12l2 2 4-4" />
-                      </svg>
+                      <FaLeaf className="w-7 h-7 md:w-8 md:h-8 text-white" />
                     </div>
                     <p className="text-amber-900 dark:text-amber-100 text-xs md:text-sm font-semibold leading-tight">Sustainable steps</p>
                   </div>
@@ -739,7 +723,7 @@ const ProjectTemplate = ({
                 height="100%"
                 style={{ border: 0 }}
                 allowFullScreen=""
-                loading="lazy"
+                loading="eager"
                 referrerPolicy="no-referrer-when-downgrade"
                 title={`${projectName} Location`}
                 className="w-full h-full"

@@ -1,11 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useContext } from 'react';
+import { ScrollDirectionContext } from '../context/ScrollDirectionContext';
 import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 import { FaMapMarkerAlt, FaIndustry, FaGraduationCap, FaPlane, FaTrain, FaBus, FaCar, FaShoppingCart } from 'react-icons/fa';
 
 const AboutNashik = () => {
   const navigate = useNavigate();
+  const scrollDirection = useContext(ScrollDirectionContext);
 
   const handleViewProjects = () => {
     navigate('/milestones');
@@ -120,7 +123,8 @@ const AboutNashik = () => {
         <div className="max-w-6xl mx-auto">
           <motion.h2 
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+            whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
             transition={{ duration: 0.8 }}
             className="text-3xl font-bold text-center mb-8 text-amber-700 dark:text-amber-600"
           >
@@ -131,7 +135,8 @@ const AboutNashik = () => {
               <motion.div
                 key={image.id}
                 initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                animate={scrollDirection === 'down' ? undefined : { opacity: 1, scale: 1 }}
+                whileInView={scrollDirection === 'down' ? { opacity: 1, scale: 1 } : false}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
@@ -157,7 +162,8 @@ const AboutNashik = () => {
         <div className="max-w-6xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+            whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
             transition={{ duration: 0.8 }}
             className="text-center mb-8"
           >
@@ -175,7 +181,8 @@ const AboutNashik = () => {
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+            whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 className="text-center p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg hover:shadow-lg transition-shadow duration-300"
               >
@@ -197,7 +204,8 @@ const AboutNashik = () => {
         <div className="max-w-6xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+            whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
             transition={{ duration: 0.8 }}
             className="text-center mb-8"
           >
@@ -212,7 +220,8 @@ const AboutNashik = () => {
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+            whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 className="text-center p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:shadow-lg transition-shadow duration-300"
               >
@@ -232,7 +241,8 @@ const AboutNashik = () => {
         <div className="max-w-6xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+            whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
             transition={{ duration: 0.8 }}
             className="text-center"
           >
@@ -281,7 +291,8 @@ const AboutNashik = () => {
         <div className="max-w-4xl mx-auto text-center text-white">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+            whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-3xl font-bold mb-4">Ready to Invest in Nashik?</h2>

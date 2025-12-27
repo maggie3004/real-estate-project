@@ -2,6 +2,8 @@ import React, { useState, useEffect, useCallback, memo, useRef } from 'react';
 import { Helmet } from 'react-helmet';
 import { FaBuilding, FaUsers, FaArrowRight, FaTimes, FaChevronLeft, FaChevronRight, FaMapMarkerAlt, FaCalendarAlt, FaStar, FaTrophy } from 'react-icons/fa';
 import { motion, useAnimation, AnimatePresence } from 'framer-motion';
+import { useContext } from 'react';
+import { ScrollDirectionContext } from '../context/ScrollDirectionContext';
 // Swiper imports removed as they are not being used
 
 // Top 5 Projects for Featured Display
@@ -140,6 +142,7 @@ const allProjectsTimeline = [
 // Milestones data removed since timeline is no longer used
 
 const Milestones = () => {
+  const scrollDirection = useContext(ScrollDirectionContext);
   // const [activeYear, setActiveYear] = useState(2025); // Commented out since we're not using year navigation
   const [selectedProject, setSelectedProject] = useState(null);
   const timelineRef = useRef(null);
@@ -764,7 +767,8 @@ const Milestones = () => {
         {/* Creative Timeline Progress Indicator */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          animate={scrollDirection === 'down' ? undefined : { opacity: 1, scale: 1 }}
+          whileInView={scrollDirection === 'down' ? { opacity: 1, scale: 1 } : false}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
           className="mb-16"
@@ -780,7 +784,8 @@ const Milestones = () => {
                   key={project.id}
                   className="flex flex-col items-center flex-1 min-w-0 px-2"
                   initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+          whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
                   transition={{ duration: 0.6, delay: index * 0.2 }}
                 >
                   <motion.div
@@ -797,7 +802,8 @@ const Milestones = () => {
                   <motion.p 
                     className="text-xs text-gray-600 dark:text-gray-400 text-center leading-tight break-words"
                     initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
+                    animate={scrollDirection === 'down' ? undefined : { opacity: 1 }}
+                    whileInView={scrollDirection === 'down' ? { opacity: 1 } : false}
                     transition={{ duration: 0.6, delay: index * 0.2 + 0.3 }}
                     style={{ 
                       wordBreak: 'break-word',
@@ -820,7 +826,8 @@ const Milestones = () => {
               key={project.id}
               id={`project-${project.id}`}
               initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+          whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
               className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative ${
@@ -895,7 +902,8 @@ const Milestones = () => {
                   <motion.div 
                     className="absolute bottom-6 left-6 text-white"
                     initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+          whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
                     transition={{ duration: 0.6, delay: index * 0.2 }}
                   >
                     <p className="text-sm font-semibold tracking-wider opacity-90 group-hover:opacity-100 transition-opacity duration-300">
@@ -972,7 +980,8 @@ const Milestones = () => {
                   <motion.h3 
                     className="text-2xl font-semibold text-amber-700 dark:text-amber-400 mb-2"
                     initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    animate={scrollDirection === 'down' ? undefined : { opacity: 1, x: 0 }}
+                    whileInView={scrollDirection === 'down' ? { opacity: 1, x: 0 } : false}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
                   >
                     {project.category}
@@ -988,14 +997,16 @@ const Milestones = () => {
                     <motion.div
                       className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-amber-500 to-gold"
                       initial={{ width: 0 }}
-                      whileInView={{ width: "100%" }}
+                      animate={scrollDirection === 'down' ? undefined : { width: "100%" }}
+                      whileInView={scrollDirection === 'down' ? { width: "100%" } : false}
                       transition={{ duration: 1, delay: index * 0.1 + 0.5 }}
                     ></motion.div>
     </motion.div>
                   <motion.h2 
                     className="text-4xl font-bold text-gray-900 dark:text-white mb-6"
                     initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+          whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
                     transition={{ duration: 0.6, delay: index * 0.1 + 0.3 }}
                   >
                     {project.title}
@@ -1005,7 +1016,8 @@ const Milestones = () => {
                 <motion.p 
                   className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-6 text-justify"
                   initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+          whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
                   transition={{ duration: 0.6, delay: index * 0.1 + 0.4 }}
                 >
                   {project.description}
@@ -1015,7 +1027,8 @@ const Milestones = () => {
         <motion.div 
                   className="grid grid-cols-2 gap-4 mb-6"
                   initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+          whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
                   transition={{ duration: 0.6, delay: index * 0.1 + 0.5 }}
                 >
                   {[
@@ -1082,7 +1095,8 @@ const Milestones = () => {
         {/* Horizontal Scrollable Timeline - All Projects */}
         <motion.div 
           initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+          whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
           className="mt-32 mb-32 px-4"
@@ -1091,7 +1105,8 @@ const Milestones = () => {
             <motion.h2 
               className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+          whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
               transition={{ duration: 0.6 }}
             >
               Our <span className="text-amber-700 font-bold">Complete Journey</span>
@@ -1099,7 +1114,8 @@ const Milestones = () => {
             <motion.p 
               className="text-lg text-gray-600 dark:text-gray-300"
               initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+          whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               Scroll through our 20-year legacy of excellence
@@ -1128,7 +1144,8 @@ const Milestones = () => {
                     key={index}
                     className="flex-shrink-0 w-80 group"
                     initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
+                    animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+          whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
                     transition={{ duration: 0.6, delay: index * 0.05 }}
                   >
                     {/* Timeline Point */}
@@ -1198,7 +1215,8 @@ const Milestones = () => {
                         <motion.div 
                           className="mt-4 px-4 py-2 rounded-lg bg-gradient-to-r from-green-500/20 to-emerald-500/20 text-green-700 dark:text-green-300 text-sm font-semibold text-center border border-green-500/30"
                           initial={{ opacity: 0 }}
-                          whileInView={{ opacity: 1 }}
+                          animate={scrollDirection === 'down' ? undefined : { opacity: 1 }}
+                    whileInView={scrollDirection === 'down' ? { opacity: 1 } : false}
                           transition={{ duration: 0.6 }}
                         >
                           ✓ Completed
@@ -1241,7 +1259,8 @@ const Milestones = () => {
         {/* Creative Achievement Showcase */}
         <motion.div 
           initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+          whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
           className="mt-32 mb-16"
@@ -1266,7 +1285,8 @@ const Milestones = () => {
                 key={index}
                 className="text-center group"
                 initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                animate={scrollDirection === 'down' ? undefined : { opacity: 1, scale: 1 }}
+          whileInView={scrollDirection === 'down' ? { opacity: 1, scale: 1 } : false}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ scale: 1.05 }}
               >
@@ -1296,7 +1316,8 @@ const Milestones = () => {
         {/* Contact CTA Section - Original Theme with Creative Elements */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+          whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
           className="mt-32 text-center"
