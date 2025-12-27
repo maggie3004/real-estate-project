@@ -1,6 +1,7 @@
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { ScrollDirectionContext } from '../context/ScrollDirectionContext';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
 import 'swiper/css';
@@ -25,37 +26,6 @@ const HeroSection = () => {
       swiperRef.current.swiper.slideNext();
     }
   }, []);
-
-  // Preload images for better performance
-  React.useEffect(() => {
-    const imageUrls = [
-      '/assets/shree-ganesh-heights/gallery/day-front.jpg',
-      '/assets/shree-ganesh-park/gallery/a-view.jpg',
-      '/assets/shree-ganesh-srushti/gallery/front.jpg',
-      '/hero-building.jpg'
-    ];
-    
-    imageUrls.forEach(url => {
-      const img = new Image();
-      img.src = url;
-    });
-  }, []);
-
-  // Keyboard navigation support
-  React.useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.key === 'ArrowLeft') {
-        event.preventDefault();
-        handlePrevSlide();
-      } else if (event.key === 'ArrowRight') {
-        event.preventDefault();
-        handleNextSlide();
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-    return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [handlePrevSlide, handleNextSlide]);
 
   // Carousel data with 3 high-quality building images
   const carouselData = [
@@ -88,11 +58,39 @@ const HeroSection = () => {
     }
   ];
 
+  // Preload only the first image for faster initial load
+  React.useEffect(() => {
+    const firstImageUrl = carouselData[0]?.image;
+    if (firstImageUrl) {
+      const img = new Image();
+      img.src = firstImageUrl;
+    }
+  }, []);
+
+  // Keyboard navigation support
+  React.useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        handlePrevSlide();
+      } else if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        handleNextSlide();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [handlePrevSlide, handleNextSlide]);
+
+  const scrollDirection = useContext(ScrollDirectionContext);
+
   return (
     <motion.section
       id="home"
       initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+      whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
       viewport={{ once: true, amount: 0.6 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
       className="hero-section relative overflow-hidden"
@@ -158,7 +156,7 @@ const HeroSection = () => {
                   objectPosition: 'center bottom',
                   display: 'block'
                 }}
-                loading="eager"
+                loading={index === 0 ? "eager" : "lazy"}
                 decoding="async"
                 onError={(e) => {
                   e.target.src = '/hero-building.jpg';

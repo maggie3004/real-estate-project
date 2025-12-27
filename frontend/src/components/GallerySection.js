@@ -1,5 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useContext } from 'react';
+import { ScrollDirectionContext } from '../context/ScrollDirectionContext';
 import properties from '../data/properties';
 
 const getAllImages = () => {
@@ -18,12 +20,14 @@ const getAllImages = () => {
 
 const GallerySection = () => {
   const images = getAllImages();
+  const scrollDirection = useContext(ScrollDirectionContext);
 
   return (
     <motion.section
       id="gallery"
       initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+      whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
       viewport={{ once: true, amount: 0.6 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
       className="py-16 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800"
@@ -31,7 +35,8 @@ const GallerySection = () => {
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+          whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
           viewport={{ once: true, amount: 0.8 }}
           transition={{ duration: 0.8, delay: 0.1, ease: 'easeOut' }}
           className="text-4xl font-playfair font-bold text-primary-700 dark:text-gold mb-8 text-center"
@@ -40,7 +45,8 @@ const GallerySection = () => {
         </motion.h2>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+          whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
           viewport={{ once: true, amount: 0.8 }}
           transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }}
           className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6"

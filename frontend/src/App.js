@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ThemeProvider } from './context/ThemeContext';
+import { ScrollDirectionProvider } from './context/ScrollDirectionContext';
 import LoadingScreen from './components/LoadingScreen';
 
 import AboutPage from './pages/AboutPage';
@@ -98,69 +99,71 @@ function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider>
-        {isLoading ? (
-          <LoadingScreen onLoadingComplete={handleLoadingComplete} />
-        ) : (
-          <Suspense fallback={<LoadingSpinner />}>
-            <NotificationProvider>
-              <FavoritesProvider>
-                <ComparisonProvider>
-                  <Router>
-                    <Suspense fallback={<LoadingSpinner />}>
-                      <Routes>
-                        <Route element={<MainLayout />}>
-                          <Route path="/" element={<Home />} />
-                          <Route path="/listings" element={<Listings />} />
-                          <Route path="/property/:id" element={<PropertyDetails />} />
-                          <Route path="/add-property" element={<AddProperty />} />
-                          <Route path="/login" element={<Login />} />
-                          <Route path="/register" element={<Register />} />
-                          <Route path="/profile" element={<Profile />} />
-                          <Route path="/admin" element={<AdminDashboard />} />
-                          <Route path="/blog" element={<Blog />} />
-                          <Route path="/favorites" element={<Favorites />} />
-                          <Route path="/map" element={<MapView />} />
-                          <Route path="/mortgage-calculator" element={<MortgageCalculator />} />
-                          <Route path="/about" element={<AboutPage />} />
-                          <Route path="/awards" element={<Awards />} />
-                          <Route path="/sustainability" element={<Sustainability />} />
-                          <Route path="/milestones" element={<Milestones />} />
-                          <Route path="/testimonials" element={<Testimonials />} />
-                          <Route path="/contact" element={<Contact />} />
-                          <Route path="/events" element={<Events />} />
-                          <Route path="/about-nashik" element={<AboutNashik />} />
-                          <Route path="/ShreeGaneshParkPhaseII" element={<ShreeGaneshParkPhaseII />} />
-                          <Route path="/ShreeGaneshParkPhaseI" element={<ShreeGaneshParkPhaseI />} />
-                          <Route path="/ShreeGaneshHeights" element={<ShreeGaneshHeights />} />
-                          <Route path="/ShreeGaneshSrushti" element={<ShreeGaneshSrushti />} />
-                          <Route path="/SaiShraddhaApartment" element={<SaiShraddhaApartment />} />
-                          <Route path="/VinayakApartment" element={<VinayakApartment />} />
-                          <Route path="/ShreeGaneshAvenue" element={<ShreeGaneshAvenue />} />
-                          <Route path="/ModakeshwarApartment" element={<ModakeshwarApartment />} />
-                        </Route>
-                      </Routes>
-                    </Suspense>
-                    <ToastContainer 
-                      position="top-right" 
-                      autoClose={3000} 
-                      hideProgressBar={false} 
-                      newestOnTop 
-                      closeOnClick 
-                      pauseOnFocusLoss 
-                      draggable 
-                      pauseOnHover 
-                      theme="light"
-                    />
-                    {/* Floating Action Buttons are handled by MainLayout */}
-                    <Suspense fallback={<LoadingSpinner />}>
-                      <ComparisonModal />
-                    </Suspense>
-                  </Router>
-                </ComparisonProvider>
-              </FavoritesProvider>
-            </NotificationProvider>
-          </Suspense>
-        )}
+        <ScrollDirectionProvider>
+          {isLoading ? (
+            <LoadingScreen onLoadingComplete={handleLoadingComplete} />
+          ) : (
+            <Suspense fallback={<LoadingSpinner />}>
+              <NotificationProvider>
+                <FavoritesProvider>
+                  <ComparisonProvider>
+                    <Router>
+                      <Suspense fallback={<LoadingSpinner />}>
+                        <Routes>
+                          <Route element={<MainLayout />}>
+                            <Route path="/" element={<Home />} />
+                              <Route path="/listings" element={<Listings />} />
+                            <Route path="/property/:id" element={<PropertyDetails />} />
+                            <Route path="/add-property" element={<AddProperty />} />
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/register" element={<Register />} />
+                            <Route path="/profile" element={<Profile />} />
+                            <Route path="/admin" element={<AdminDashboard />} />
+                            <Route path="/blog" element={<Blog />} />
+                            <Route path="/favorites" element={<Favorites />} />
+                            <Route path="/map" element={<MapView />} />
+                            <Route path="/mortgage-calculator" element={<MortgageCalculator />} />
+                            <Route path="/about" element={<AboutPage />} />
+                            <Route path="/awards" element={<Awards />} />
+                            <Route path="/sustainability" element={<Sustainability />} />
+                            <Route path="/milestones" element={<Milestones />} />
+                            <Route path="/testimonials" element={<Testimonials />} />
+                            <Route path="/contact" element={<Contact />} />
+                            <Route path="/events" element={<Events />} />
+                            <Route path="/about-nashik" element={<AboutNashik />} />
+                            <Route path="/ShreeGaneshParkPhaseII" element={<ShreeGaneshParkPhaseII />} />
+                            <Route path="/ShreeGaneshParkPhaseI" element={<ShreeGaneshParkPhaseI />} />
+                            <Route path="/ShreeGaneshHeights" element={<ShreeGaneshHeights />} />
+                            <Route path="/ShreeGaneshSrushti" element={<ShreeGaneshSrushti />} />
+                            <Route path="/SaiShraddhaApartment" element={<SaiShraddhaApartment />} />
+                            <Route path="/VinayakApartment" element={<VinayakApartment />} />
+                            <Route path="/ShreeGaneshAvenue" element={<ShreeGaneshAvenue />} />
+                            <Route path="/ModakeshwarApartment" element={<ModakeshwarApartment />} />
+                          </Route>
+                        </Routes>
+                      </Suspense>
+                      <ToastContainer 
+                        position="top-right" 
+                        autoClose={3000} 
+                        hideProgressBar={false} 
+                        newestOnTop 
+                        closeOnClick 
+                        pauseOnFocusLoss 
+                        draggable 
+                        pauseOnHover 
+                        theme="light"
+                      />
+                      {/* Floating Action Buttons are handled by MainLayout */}
+                      <Suspense fallback={<LoadingSpinner />}>
+                        <ComparisonModal />
+                      </Suspense>
+                    </Router>
+                  </ComparisonProvider>
+                </FavoritesProvider>
+              </NotificationProvider>
+            </Suspense>
+          )}
+        </ScrollDirectionProvider>
       </ThemeProvider>
     </ErrorBoundary>
   );

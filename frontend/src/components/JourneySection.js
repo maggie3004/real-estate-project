@@ -2,6 +2,8 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { FaTrophy, FaBuilding, FaCalendarAlt, FaStar } from 'react-icons/fa';
 import { motion, useInView } from 'framer-motion';
+import { useContext } from 'react';
+import { ScrollDirectionContext } from '../context/ScrollDirectionContext';
 
 const milestones = [
   {
@@ -247,6 +249,8 @@ const JourneySection = () => {
     }
   };
 
+  const scrollDirection = useContext(ScrollDirectionContext);
+
   return (
     <section className="py-20 bg-amber-50 dark:bg-amber-950/20 relative overflow-hidden">
       <Helmet>
@@ -272,7 +276,7 @@ const JourneySection = () => {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          animate={scrollDirection === 'down' ? (isInView ? "visible" : "hidden") : "visible"}
           className="text-center mb-20"
         >
           <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-amber-500/10 to-gold/10 text-amber-700 dark:text-amber-400 font-semibold text-sm mb-6 border border-amber-200 dark:border-amber-800">
@@ -303,7 +307,7 @@ const JourneySection = () => {
           ref={ref}
           variants={containerVariants}
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          animate={scrollDirection === 'down' ? (isInView ? "visible" : "hidden") : "visible"}
           className="relative"
         >
           {/* Enhanced Central Timeline Line */}

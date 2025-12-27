@@ -6,6 +6,8 @@ import sgsFront from '../assets/shree-ganesh-srushti/gallery/front.jpg';
 import { useNavigate } from 'react-router-dom';
 import { FaMapMarkerAlt, FaClock } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import { useContext } from 'react';
+import { ScrollDirectionContext } from '../context/ScrollDirectionContext';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, FreeMode } from 'swiper/modules';
 import 'swiper/css';
@@ -77,6 +79,7 @@ const projects = [
 
 const ProjectsSection = () => {
   const navigate = useNavigate();
+  const scrollDirection = useContext(ScrollDirectionContext);
 
   const handleViewDetails = (route) => {
     navigate(route);
@@ -89,7 +92,8 @@ const ProjectsSection = () => {
       <div className="container mx-auto px-4 relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+          whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
           transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
           viewport={{ once: true }}
           className="text-center mb-16"
@@ -125,7 +129,8 @@ const ProjectsSection = () => {
               <SwiperSlide key={idx}>
                 <motion.div 
                   initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+                  whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
                   transition={{ duration: 0.6, delay: idx * 0.1 }}
                   viewport={{ once: true }}
                   className="h-full bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 transform hover:scale-105 transition-all duration-300 flex flex-col"
