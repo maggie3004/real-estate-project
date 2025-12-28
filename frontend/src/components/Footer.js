@@ -80,10 +80,10 @@ function Footer() {
         </div>
 
         {/* Brand Logos Section */}
-        <div className="border-t border-gray-700 pt-4 mb-4">
+        {/* Commented out for now - will be used in future */}
+        {/* <div className="border-t border-gray-700 pt-4 mb-4">
           <h3 className="text-base font-semibold text-white text-center mb-4">Our Trusted Partners & Certifications</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 items-center">
-            {/* Sample Brand Logos - Replace with actual logos */}
             <div className="bg-white rounded-lg p-3 flex items-center justify-center h-12 hover:shadow-lg transition-shadow duration-200">
               <div className="text-gray-600 font-bold text-xs">ISO 9001</div>
             </div>
@@ -103,7 +103,7 @@ function Footer() {
               <div className="text-gray-600 font-bold text-xs">GRIHA</div>
             </div>
           </div>
-        </div>
+        </div> */}
 
 
 

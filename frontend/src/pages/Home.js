@@ -153,7 +153,8 @@ const Home = () => {
       </motion.div>
       
       {/* 6. Awards and Recognition Section */}
-      <motion.div
+      {/* Commented out for now - will be used in future */}
+      {/* <motion.div
         id="awards"
         initial={{ opacity: 0, y: 50 }}
         animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
@@ -162,7 +163,7 @@ const Home = () => {
         viewport={{ once: true, margin: "-100px" }}
       >
         <AwardsSection />
-      </motion.div>
+      </motion.div> */}
       
       {/* 7. Testimonials Section */}
       <motion.div

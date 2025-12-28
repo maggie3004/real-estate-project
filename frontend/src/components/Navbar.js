@@ -103,13 +103,13 @@ const Navbar = () => {
         { name: 'Sustainability', path: '/sustainability' },
       ],
     },
-    {
-      name: 'Testimonials',
-      dropdown: [
-        { name: 'Testimonials', path: '/testimonials' },
-        { name: 'Awards', path: '/awards' },
-      ],
-    },
+    // {
+    //   name: 'Testimonials',
+    //   dropdown: [
+    //     { name: 'Testimonials', path: '/testimonials' },
+    //     { name: 'Awards', path: '/awards' },
+    //   ],
+    // },
     // {
     //   name: 'Events',
     //   dropdown: [
