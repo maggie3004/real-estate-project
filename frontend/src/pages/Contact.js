@@ -210,18 +210,18 @@ const Contact = () => {
             <div className="text-center lg:text-left">
               <h3 className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-white mb-4 sm:mb-6">Follow Us</h3>
               <div className="flex justify-center lg:justify-start gap-4 sm:gap-6">
-                <button className="w-12 h-12 sm:w-14 sm:h-14 bg-gray-600 rounded-full flex items-center justify-center hover:bg-gray-700 transition-all duration-200 hover:scale-110 shadow-lg" aria-label="Facebook">
+                <a href="https://www.facebook.com/ganeshyeole_builders" target="_blank" rel="noopener noreferrer" className="w-12 h-12 sm:w-14 sm:h-14 bg-gray-600 rounded-full flex items-center justify-center hover:bg-gray-700 transition-all duration-200 hover:scale-110 shadow-lg" aria-label="Facebook">
                   <FaFacebook className="text-white text-lg sm:text-xl" />
-                </button>
-                <button className="w-12 h-12 sm:w-14 sm:h-14 bg-pink-600 rounded-full flex items-center justify-center hover:bg-pink-700 transition-all duration-200 hover:scale-110 shadow-lg" aria-label="Instagram">
+                </a>
+                <a href="https://www.instagram.com/ganeshyeole_builders" target="_blank" rel="noopener noreferrer" className="w-12 h-12 sm:w-14 sm:h-14 bg-pink-600 rounded-full flex items-center justify-center hover:bg-pink-700 transition-all duration-200 hover:scale-110 shadow-lg" aria-label="Instagram">
                   <FaInstagram className="text-white text-lg sm:text-xl" />
-                </button>
-                <button className="w-12 h-12 sm:w-14 sm:h-14 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-800 transition-all duration-200 hover:scale-110 shadow-lg" aria-label="LinkedIn">
+                </a>
+                <a href="https://www.linkedin.com/company/ganeshyeole_builders" target="_blank" rel="noopener noreferrer" className="w-12 h-12 sm:w-14 sm:h-14 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-800 transition-all duration-200 hover:scale-110 shadow-lg" aria-label="LinkedIn">
                   <FaLinkedin className="text-white text-lg sm:text-xl" />
-                </button>
-                <button className="w-12 h-12 sm:w-14 sm:h-14 bg-green-600 rounded-full flex items-center justify-center hover:bg-green-700 transition-all duration-200 hover:scale-110 shadow-lg" aria-label="WhatsApp">
+                </a>
+                <a href="https://wa.me/917030502111" target="_blank" rel="noopener noreferrer" className="w-12 h-12 sm:w-14 sm:h-14 bg-green-600 rounded-full flex items-center justify-center hover:bg-green-700 transition-all duration-200 hover:scale-110 shadow-lg" aria-label="WhatsApp">
                   <FaWhatsapp className="text-white text-lg sm:text-xl" />
-                </button>
+                </a>
               </div>
             </div>
           </div>

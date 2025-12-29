@@ -26,18 +26,34 @@ function Footer() {
               Building dreams and creating landmarks for over 20 years. Your trusted partner in real estate development across Nashik and Pune.
             </p>
             <div className="flex gap-3">
-              <button className="hover:text-gold transition-colors duration-200" aria-label="LinkedIn">
+              <a
+                href="https://www.linkedin.com/company/ganeshyeole_builders"
+                target="_blank" rel="noopener noreferrer"
+                className="hover:text-gold transition-colors duration-200" aria-label="LinkedIn"
+              >
                 <FaLinkedin size={18} />
-              </button>
-              <button className="hover:text-gold transition-colors duration-200" aria-label="Facebook">
+              </a>
+              <a
+                href="https://www.facebook.com/ganeshyeole_builders"
+                target="_blank" rel="noopener noreferrer"
+                className="hover:text-gold transition-colors duration-200" aria-label="Facebook"
+              >
                 <FaFacebook size={18} />
-              </button>
-              <button className="hover:text-gold transition-colors duration-200" aria-label="Instagram">
+              </a>
+              <a
+                href="https://www.instagram.com/ganeshyeole_builders"
+                target="_blank" rel="noopener noreferrer"
+                className="hover:text-gold transition-colors duration-200" aria-label="Instagram"
+              >
                 <FaInstagram size={18} />
-              </button>
-              <button className="hover:text-gold transition-colors duration-200" aria-label="YouTube">
+              </a>
+              <a
+                href="https://www.youtube.com/@ganeshyeole_builders"
+                target="_blank" rel="noopener noreferrer"
+                className="hover:text-gold transition-colors duration-200" aria-label="YouTube"
+              >
                 <FaYoutube size={18} />
-              </button>
+              </a>
             </div>
           </div>
 

@@ -23,14 +23,14 @@ const AboutPage = () => (
 
       <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
         {/* Main Content */}
-        <div className="lg:col-span-2">
+        <div className="lg:col-span-2 order-2 lg:order-1">
           {/* Company Story */}
           <div className="mb-12">
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#E53935] mb-4 sm:mb-6 flex items-center gap-2 sm:gap-3">
-              <FaBuilding className="text-gold" />
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#E53935] mb-6 flex items-center justify-center gap-2 sm:gap-3 text-center">
+            <FaBuilding className="text-gold" />
               Our Story
             </h2>
-            <div className="space-y-6 text-lg leading-relaxed">
+            <div className="space-y-6 text-lg leading-relaxed text-justify">
               <p className="text-gray-700 dark:text-gray-300">
                 <strong className="text-[#E53935]">Sai Prasad Builders & Developers</strong> was established in 2008-09 in Nashik by Mr. Ganesh Yeole, a visionary leader known for his strong moral values and dynamic approach. With a humble beginning, he built the company from the ground up, fostering trust, transparency, and long-lasting relationships with clients, partners, and stakeholders.
               </p>
@@ -50,7 +50,7 @@ const AboutPage = () => (
                 <FaHeart className="text-gray-600 dark:text-gray-400 text-2xl" />
                 <h3 className="text-2xl font-bold text-gray-600 dark:text-gray-400">Our Mission</h3>
               </div>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-justify">
                 To build more than just houses—we create homes that offer comfort, convenience, and a superior lifestyle. By maintaining a balance between affordability and premium quality, we ensure that every homeowner receives a complete, well-equipped living space that meets their aspirations.
               </p>
             </div>
@@ -59,7 +59,7 @@ const AboutPage = () => (
                 <FaAward className="text-green-600 text-2xl" />
                 <h3 className="text-2xl font-bold text-green-600">Our Vision</h3>
               </div>
-              <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+              <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-justify">
                 To create homes that go beyond four walls, delivering true satisfaction to every homeowner. We strive to build high-quality, well-designed, and affordable spaces that offer comfort, security, and a fulfilling lifestyle while prioritizing innovation and sustainability.
               </p>
             </div>
@@ -113,7 +113,7 @@ const AboutPage = () => (
         </div>
 
         {/* Chairperson Section */}
-        <div className="lg:col-span-1">
+        <div className="lg:col-span-1 order-1 lg:order-2">
           <div className="sticky top-24">
             <div className="bg-gradient-to-br from-gold-50 to-gold-100 dark:from-gold-900/20 dark:to-gold-800/20 rounded-2xl p-8 text-center border-2 border-gold/20">
               <div className="mb-6">
@@ -127,7 +127,7 @@ const AboutPage = () => (
               <p className="text-gold font-semibold mb-4">Founder & Managing Director</p>
               <div className="bg-white dark:bg-gray-800 rounded-xl p-6 text-left">
                 <h4 className="text-lg font-bold text-[#E53935] mb-3">Message from the Chairperson</h4>
-                <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed italic">
+                <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed italic text-justify">
                   "We are committed to building homes that blend innovation, quality, and tradition—creating spaces where families thrive and memories are made. Our journey is driven by the trust of our customers and our unwavering commitment to excellence. Thank you for trusting us with your dreams."
                 </p>
               </div>
