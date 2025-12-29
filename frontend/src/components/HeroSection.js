@@ -9,40 +9,6 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 
-// Carousel data with 3 high-quality building images (moved outside component for optimization)
-const carouselData = [
-  {
-    id: 1,
-    projectName: 'Shree Ganesh Heights',
-    image: '/assets/shree-ganesh-heights/gallery/hero.png',
-    title: 'EXPERIENCE',
-    title2: 'ESSENCE',
-    title3: 'OF ELEVATED LIVING',
-    subtitle: 'Exclusive 1 BHK Happy Homes',
-    route: '/ShreeGaneshHeights'
-  },
-  {
-    id: 2,
-    projectName: 'Shree Ganesh Park',
-    image: '/assets/shree-ganesh-park/gallery/hero.png',
-    title: 'RISE TO',
-    title2: 'NEW WAY OF',
-    title3: 'LIVING',
-    subtitle: '1 & 2 BHK Luxury Homes & Shops',
-    route: '/ShreeGaneshParkPhaseI'
-  },
-  {
-    id: 3,
-    projectName: 'Shree Ganesh Srushti',
-    image: '/assets/shree-ganesh-srushti/gallery/hero.png',
-    title: 'THE',
-    title2: 'NEW LANGUAGE',
-    title3: 'OF LIVING',
-    subtitle: '1, 2 & 3 BHK Happy Homes & Shops',
-    route: '/ShreeGaneshSrushti'
-  }
-];
-
 const HeroSection = () => {
   const navigate = useNavigate();
   // Swiper ref for manual navigation control
@@ -60,6 +26,37 @@ const HeroSection = () => {
       swiperRef.current.swiper.slideNext();
     }
   }, []);
+
+  // Carousel data with 3 high-quality building images
+  const carouselData = [
+    {
+      id: 1,
+      image: '/assets/shree-ganesh-heights/gallery/hero.png',
+      title: 'EXPERIENCE',
+      title2: 'ESSENCE',
+      title3: 'OF ELEVATED LIVING',
+      subtitle: 'Exclusive 1 BHK Happy Homes',
+      route: '/ShreeGaneshHeights'
+    },
+    {
+      id: 2,
+      image: '/assets/shree-ganesh-park/gallery/hero.png',
+      title: 'RISE TO',
+      title2: 'NEW WAY OF',
+      title3: 'LIVING',
+      subtitle: '1 & 2 BHK Luxury Homes & Shops',
+      route: '/ShreeGaneshParkPhaseI'
+    },
+    {
+      id: 3,
+      image: '/assets/shree-ganesh-srushti/gallery/hero.png',
+      title: 'THE',
+      title2: 'NEW LANGUAGE',
+      title3: 'OF LIVING',
+      subtitle: '1, 2 & 3 BHK Happy Homes & Shops',
+      route: '/ShreeGaneshSrushti'
+    }
+  ];
 
   // Preload only the first image for faster initial load
   React.useEffect(() => {
@@ -171,19 +168,6 @@ const HeroSection = () => {
               
               {/* Slide-specific content */}
               <div className="absolute top-16 sm:top-20 md:top-24 lg:top-28 left-4 sm:left-8 md:left-12 lg:left-16 right-4 z-10 max-w-3xl">
-                {/* Project Name */}
-                <motion.div
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.1 }}
-                  className="mb-3 sm:mb-4 md:mb-6"
-                >
-                  <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold text-amber-400 uppercase tracking-wider drop-shadow-lg"
-                      style={{ fontFamily: "'Poppins', sans-serif" }}>
-                    {slide.projectName}
-                  </h2>
-                </motion.div>
-                
                 <motion.div
                   initial={{ opacity: 0, y: -30 }}
                   animate={{ opacity: 1, y: 0 }}

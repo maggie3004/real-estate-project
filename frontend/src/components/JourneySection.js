@@ -10,28 +10,12 @@ const milestones = [
     year: 2025,
     achievements: [
       {
-        title: "Shreeganesh Srushti",
-        description: "Latest residential development with contemporary design",
-        image: "/assets/shree-ganesh-srushti/gallery/front.jpg",
-        icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "100 Units"
-      },
-      {
-        title: "Shree Ganesh Heights",
-        description: "Premium residential development with modern amenities",
-        image: "/assets/shree-ganesh-heights/gallery/front.jpeg",
-        icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "120 Units"
-      },
-      {
-        title: "Shree Ganesh Park",
+        title: "Shree Ganesh Park A & B Wing",
         description: "Premium residential development with multiple wings",
-        image: "/assets/shree-ganesh-park/gallery/a-view.jpg",
+        image: "/assets/shree-ganesh-park/gallery/b-view.png",
         icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "150 Units"
+        category: "Completed Project",
+        stats: "Premium Living"
       }
     ]
   },
@@ -43,40 +27,16 @@ const milestones = [
         description: "Beautifully designed residential complex on College Road",
         image: "/assets/sai-shraddha-apartment/gallery/front.jpg",
         icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "80 Units"
-      },
-      {
-        title: "Shree Ganesh Heights",
-        description: "Luxury apartments with world-class facilities",
-        image: "/assets/shree-ganesh-heights/gallery/day-front.jpg",
-        icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "Premium Living"
-      },
-      {
-        title: "Shree Ganesh Park",
-        description: "Premium residential development with modern amenities",
-        image: "/assets/shree-ganesh-park/gallery/b-view.jpg",
-        icon: FaBuilding,
-        category: "Ongoing Project",
+        category: "Completed Project",
         stats: "Quality Homes"
       },
       {
-        title: "Shreeganesh Srushti",
-        description: "Eco-friendly residential complex",
-        image: "/assets/shree-ganesh-srushti/gallery/night.jpg",
-        icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "Green Living"
-      },
-      {
-        title: "Sai Shraddha Apartment",
+        title: "Vinayak Apartment",
         description: "Modern living spaces with amenities",
-        image: "/assets/sai-shraddha-apartment/gallery/top-view.jpg",
+        image: "/assets/shree-ganesh-heights/gallery/front.jpeg",
         icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "Delivered"
+        category: "Completed Project",
+        stats: "Modern Design"
       }
     ]
   },
@@ -84,27 +44,11 @@ const milestones = [
     year: 2023,
     achievements: [
       {
-        title: "Shree Ganesh Park Phase I",
-        description: "First phase of our flagship project",
-        image: "/assets/shree-ganesh-park/gallery/night-view-a.jpg",
-        icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "Phase I"
-      },
-      {
-        title: "Shree Ganesh Heights",
-        description: "Residential complex with modern amenities",
-        image: "/assets/shree-ganesh-heights/gallery/night-front.jpg",
-        icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "Delivered"
-      },
-      {
-        title: "Shreeganesh Srushti",
+        title: "Shree Ganesh Avenue",
         description: "Quality construction with modern design",
-        image: "/assets/shree-ganesh-srushti/gallery/1bhk.jpg",
+        image: "/assets/shree-ganesh-srushti/gallery/front.jpg",
         icon: FaBuilding,
-        category: "Ongoing Project",
+        category: "Completed Project",
         stats: "Modern Design"
       }
     ]
@@ -113,28 +57,12 @@ const milestones = [
     year: 2022,
     achievements: [
       {
-        title: "Shree Ganesh Heights",
+        title: "Shree Ganesh Apartment",
         description: "Premium residential towers",
         image: "/assets/shree-ganesh-heights/gallery/top-view.jpg",
         icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "Towers"
-      },
-      {
-        title: "Shree Ganesh Park",
-        description: "Garden view residential complex",
-        image: "/assets/shree-ganesh-park/gallery/ter-view.jpg",
-        icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "Garden View"
-      },
-      {
-        title: "Sai Shraddha Apartment",
-        description: "Quality homes with modern amenities",
-        image: "/assets/sai-shraddha-apartment/gallery/parking.jpg",
-        icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "Quality Homes"
+        category: "Completed Project",
+        stats: "Premium Living"
       }
     ]
   },
@@ -142,57 +70,12 @@ const milestones = [
     year: 2021,
     achievements: [
       {
-        title: "Shree Ganesh Park",
-        description: "Main road residential project",
-        image: "/assets/shree-ganesh-park/gallery/Wing A 1BHK.jpg",
-        icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "Main Road"
-      },
-      {
-        title: "Shree Ganesh Heights",
+        title: "Modkeshwar Apartment",
         description: "Quality homes with modern amenities",
-        image: "/assets/shree-ganesh-heights/gallery/floor-plan.jpeg",
+        image: "/assets/shree-ganesh-park/gallery/ter-view.jpg",
         icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "Modern Homes"
-      },
-      {
-        title: "Shreeganesh Srushti",
-        description: "Comfortable living spaces",
-        image: "/assets/shree-ganesh-srushti/gallery/1bhk (2).jpg",
-        icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "Comfort"
-      }
-    ]
-  },
-  {
-    year: 2020,
-    achievements: [
-      {
-        title: "Shree Ganesh Park",
-        description: "Premium residential development",
-        image: "/assets/shree-ganesh-park/gallery/Wing A 2BHK.jpg",
-        icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "Premium"
-      },
-      {
-        title: "Shree Ganesh Heights",
-        description: "Eco-friendly residential complex",
-        image: "/assets/shree-ganesh-heights/gallery/day-front.jpg",
-        icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "Eco-Friendly"
-      },
-      {
-        title: "Shreeganesh Srushti",
-        description: "Garden view apartments",
-        image: "/assets/shree-ganesh-srushti/gallery/2bhk.jpg",
-        icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "Garden View"
+        category: "Completed Project",
+        stats: "Quality Homes"
       }
     ]
   }
@@ -361,8 +244,12 @@ const JourneySection = () => {
                       <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
                       
                       {/* Project Images Grid - Enhanced */}
-                      <div className="grid grid-cols-3 gap-1 p-2 relative z-20">
-                        {yearData.achievements.slice(0, 3).map((achievement, achievementIndex) => (
+                      <div className={`grid gap-1 p-2 relative z-20 ${
+                        yearData.achievements.length === 1 ? 'grid-cols-1' : 
+                        yearData.achievements.length === 2 ? 'grid-cols-2' : 
+                        'grid-cols-3'
+                      }`}>
+                        {yearData.achievements.map((achievement, achievementIndex) => (
                           <div key={achievementIndex} className="relative aspect-[4/3] overflow-hidden rounded-md group/image">
                             <img
                               src={achievement.image}
@@ -395,11 +282,11 @@ const JourneySection = () => {
                         
                         {/* Enhanced Project List - Compact */}
                         <div className="space-y-1.5">
-                          {yearData.achievements.slice(0, 2).map((achievement, achievementIndex) => (
+                          {yearData.achievements.map((achievement, achievementIndex) => (
                             <div key={achievementIndex} className="flex items-center gap-2 p-1.5 bg-gray-50 dark:bg-gray-700 rounded-md group/item hover:bg-gradient-to-r hover:from-amber-50 hover:to-amber-100/20 dark:hover:from-amber-900/30 dark:hover:to-amber-900/10 transition-all duration-300">
                               <div className="w-1.5 h-1.5 bg-amber-500 rounded-full group-hover/item:animate-pulse"></div>
                               <div className="flex-1">
-                                <h4 className="font-medium text-gray-900 dark:text-white text-xs group-hover/item:text-amber-600 dark:group-hover/item:text-amber-400 transition-colors duration-300\">
+                                <h4 className="font-medium text-gray-900 dark:text-white text-xs group-hover/item:text-amber-600 dark:group-hover/item:text-amber-400 transition-colors duration-300">
                                   {achievement.title}
                                 </h4>
                                 <p className="text-gray-600 dark:text-gray-300 text-xs">

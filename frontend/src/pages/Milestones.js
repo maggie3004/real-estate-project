@@ -630,8 +630,10 @@ const Milestones = () => {
         {/* Hero Section - Original Theme with Creative Elements */}
     <motion.div
           initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
+          animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+          whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
           transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
           className="text-center mb-24"
         >
           <div className="relative">
@@ -711,8 +713,10 @@ const Milestones = () => {
             
             <motion.div
               initial={{ width: 0 }}
-              animate={{ width: "200px" }}
+              animate={scrollDirection === 'down' ? undefined : { width: "200px" }}
+              whileInView={scrollDirection === 'down' ? { width: "200px" } : false}
               transition={{ duration: 1, delay: 0.5 }}
+              viewport={{ once: true }}
               className="h-1 bg-gradient-to-r from-amber-700 via-gold to-amber-600 mx-auto mb-8 rounded-full"
             ></motion.div>
             
@@ -723,15 +727,19 @@ const Milestones = () => {
             {/* Animated Stats Counter */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+              whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
               transition={{ duration: 0.8, delay: 1.2 }}
+              viewport={{ once: true }}
               className="mt-12 flex justify-center space-x-12"
             >
               <div className="text-center">
                 <motion.div
                   initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
+                  animate={scrollDirection === 'down' ? undefined : { scale: 1 }}
+                  whileInView={scrollDirection === 'down' ? { scale: 1 } : false}
                   transition={{ duration: 0.5, delay: 1.5 }}
+                  viewport={{ once: true }}
                   className="text-3xl font-bold text-amber-700"
                 >
                   500+
@@ -741,8 +749,10 @@ const Milestones = () => {
               <div className="text-center">
                 <motion.div
                   initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
+                  animate={scrollDirection === 'down' ? undefined : { scale: 1 }}
+                  whileInView={scrollDirection === 'down' ? { scale: 1 } : false}
                   transition={{ duration: 0.5, delay: 1.7 }}
+                  viewport={{ once: true }}
                   className="text-3xl font-bold text-gold"
                 >
                   20+
@@ -752,8 +762,10 @@ const Milestones = () => {
               <div className="text-center">
                 <motion.div
                   initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
+                  animate={scrollDirection === 'down' ? undefined : { scale: 1 }}
+                  whileInView={scrollDirection === 'down' ? { scale: 1 } : false}
                   transition={{ duration: 0.5, delay: 1.9 }}
+                  viewport={{ once: true }}
                   className="text-3xl font-bold text-orange-500"
                 >
                   50+
@@ -764,60 +776,6 @@ const Milestones = () => {
           </div>
         </motion.div>
 
-        {/* Creative Timeline Progress Indicator */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={scrollDirection === 'down' ? undefined : { opacity: 1, scale: 1 }}
-          whileInView={scrollDirection === 'down' ? { opacity: 1, scale: 1 } : false}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mb-16"
-        >
-          <div className="relative max-w-6xl mx-auto px-4">
-            {/* Progress Line */}
-            <div className="absolute top-1/2 left-8 right-8 h-1 bg-gradient-to-r from-amber-700 via-gold to-amber-600 rounded-full transform -translate-y-1/2 z-0"></div>
-            
-            {/* Progress Dots */}
-            <div className="flex justify-between items-start relative z-20">
-              {completedProjects.map((project, index) => (
-                <motion.div
-                  key={project.id}
-                  className="flex flex-col items-center flex-1 min-w-0 px-2"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
-          whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                >
-                  <motion.div
-                    className="w-10 h-10 bg-gradient-to-br from-amber-700 to-gold rounded-full flex items-center justify-center shadow-lg cursor-pointer mb-3"
-                    whileHover={{ scale: 1.2, rotate: 360 }}
-                    transition={{ duration: 0.3 }}
-                    onClick={() => {
-                      const element = document.getElementById(`project-${project.id}`);
-                      element?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    }}
-                  >
-                    <span className="text-white font-bold text-sm">{project.number}</span>
-                  </motion.div>
-                  <motion.p 
-                    className="text-xs text-gray-600 dark:text-gray-400 text-center leading-tight break-words"
-                    initial={{ opacity: 0 }}
-                    animate={scrollDirection === 'down' ? undefined : { opacity: 1 }}
-                    whileInView={scrollDirection === 'down' ? { opacity: 1 } : false}
-                    transition={{ duration: 0.6, delay: index * 0.2 + 0.3 }}
-                    style={{ 
-                      wordBreak: 'break-word',
-                      hyphens: 'auto',
-                      maxWidth: '100%'
-                    }}
-                  >
-                    {project.title}
-                  </motion.p>
-                </motion.div>
-              ))}
-          </div>
-        </div>
-        </motion.div>
 
         {/* Projects Showcase - Original Theme with Creative Elements */}
         <div className="space-y-32">
@@ -989,7 +947,8 @@ const Milestones = () => {
                   <motion.div 
                     className="text-6xl font-bold text-gray-300 dark:text-gray-600 mb-4 relative"
                     initial={{ scale: 0, opacity: 0 }}
-                    whileInView={{ scale: 1, opacity: 1 }}
+                    animate={scrollDirection === 'down' ? undefined : { scale: 1, opacity: 1 }}
+                    whileInView={scrollDirection === 'down' ? { scale: 1, opacity: 1 } : false}
                     transition={{ duration: 0.8, delay: index * 0.1 + 0.2 }}
                   >
                     {project.number}
@@ -1256,62 +1215,6 @@ const Milestones = () => {
           </div>
         </motion.div>
 
-        {/* Creative Achievement Showcase */}
-        <motion.div 
-          initial={{ opacity: 0, y: 50 }}
-          animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
-          whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mt-32 mb-16"
-        >
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Our <span className="text-amber-700 font-bold">Achievements</span>
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300">
-              Numbers that speak for our commitment to excellence
-            </p>
-                </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { number: "500+", label: "Happy Families", icon: FaUsers, color: "from-amber-700 to-gold" },
-              { number: "16+", label: "Years Experience", icon: FaTrophy, color: "from-gold to-amber-600" },
-              { number: "50+", label: "Projects Delivered", icon: FaBuilding, color: "from-amber-600 to-amber-700" },
-              { number: "100%", label: "Customer Satisfaction", icon: FaStar, color: "from-green-500 to-gold" }
-            ].map((achievement, index) => (
-              <motion.div
-                key={index}
-                className="text-center group"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={scrollDirection === 'down' ? undefined : { opacity: 1, scale: 1 }}
-          whileInView={scrollDirection === 'down' ? { opacity: 1, scale: 1 } : false}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-              >
-                <motion.div
-                  className={`w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br ${achievement.color} flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow duration-300`}
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <achievement.icon className="w-8 h-8 text-white" />
-                </motion.div>
-                <motion.div
-                  className="text-3xl font-bold text-gray-900 dark:text-white mb-2"
-                  initial={{ scale: 0 }}
-                  whileInView={{ scale: 1 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 + 0.3 }}
-                >
-                  {achievement.number}
-                </motion.div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">
-                  {achievement.label}
-                </div>
-              </motion.div>
-                ))}
-              </div>
-        </motion.div>
 
         {/* Contact CTA Section - Original Theme with Creative Elements */}
         <motion.div
