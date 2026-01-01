@@ -1,21 +1,18 @@
 import React, { useEffect } from 'react';
 import sgsFront from '../assets/shree-ganesh-srushti/gallery/front.jpg';
 import sgsNight from '../assets/shree-ganesh-srushti/gallery/night.jpg';
-import sgs1bhk from '../assets/shree-ganesh-srushti/gallery/1bhk.jpg';
-import sgs1bhk2 from '../assets/shree-ganesh-srushti/gallery/1bhk (2).jpg';
-import sgs2bhk from '../assets/shree-ganesh-srushti/gallery/2bhk.jpg';
-import sgs2bhk2 from '../assets/shree-ganesh-srushti/gallery/2bhk (2).jpg';
 import ProjectTemplate from '../components/ProjectTemplate';
-import { FaCar, FaSun, FaBuilding, FaShieldAlt, FaWater, FaTint } from 'react-icons/fa';
-import { MdMeetingRoom } from 'react-icons/md';
-import { BiCctv, BiSolidHomeHeart } from 'react-icons/bi';
+import { FaSolarPanel, FaChargingStation, FaBatteryFull, FaBook, FaRobot } from 'react-icons/fa';
+import { MdMeetingRoom, MdSelfImprovement } from 'react-icons/md';
+import { BiCctv } from 'react-icons/bi';
+import { GiWaterDrop } from 'react-icons/gi';
 
 const ShreeGaneshSrushti = () => {
   const projectData = {
     projectName: "Shree Ganesh Srushti",
     tagline: "THE NEW LANGUAGE OF LIVING",
     heroSubtitle: "1, 2 & 3 BHK happy homes & shops",
-    description: `Experience an elevated lifestyle of sophistication at Shree Ganesh Srushti, where every aspect is meticulously designed. 1 BHK 'Happy Homes' crafted to enhance your everyday living. These residences offer the perfect integration of luxury and functionality, delivering a modern living experience that seamlessly blends convenience, comfort, and innovation. Located at Sr no 94/1 plot 16/17 gavlane road, Pathardi Shivar, Nashik - 422010, our project provides unmatched connectivity to essential services and amenities. With schools, shopping centers, healthcare facilities, and recreational options all within close proximity, residents enjoy a seamless, well-rounded living experience.`,
+    description: `Thoughtfully designed towers ensure ample light, ventilation, and scenic views — creating a lifestyle of comfort, convenience, and class. A prestigious address you'll be proud to call home.`,
     stats: [
       { title: "1, 2 & 3 BHK", subtitle: "Happy Homes & Shops" },
       { title: "G+7", subtitle: "Structure" },
@@ -23,31 +20,31 @@ const ShreeGaneshSrushti = () => {
       { title: "Premium", subtitle: "Location" }
     ],
     amenities: [
+      { icon: <FaSolarPanel />, name: "Solar for Common Electricity" },
+      { icon: <FaChargingStation />, name: "EV Charging Station" },
       { icon: <BiCctv />, name: "CCTV" },
-      { icon: <FaSun />, name: "Solar Power" },
-      { icon: <FaShieldAlt />, name: "Safety Gate" },
+      { icon: <FaBatteryFull />, name: "Battery Backup for Lift" },
+      { icon: <MdSelfImprovement />, name: "Yoga Space on Rooftop" },
+      { icon: <FaBook />, name: "Library" },
       { icon: <MdMeetingRoom />, name: "Multipurpose Hall" },
-      { icon: <BiSolidHomeHeart />, name: "Auto Door Lift" },
-      { icon: <FaBuilding />, name: "Battery Backup" },
-      { icon: <FaTint />, name: "Smart Automation" },
-      { icon: <FaWater />, name: "Water Supply" },
-      { icon: <FaCar />, name: "Parking Space" }
+      { icon: <FaRobot />, name: "Automation in Common Area" },
+      { icon: <GiWaterDrop />, name: "Rainwater Harvesting" }
     ],
     images: ['/assets/shree-ganesh-srushti/gallery/hero.png'], // Only hero image
     galleryImages: [sgsFront, sgsNight, '/assets/shree-ganesh-srushti/gallery/IMG-20251112-WA0038.jpg'], // Only these 3 images in gallery
     brochurePath: "/assets/shree-ganesh-srushti/gallery/Shree Ganesh Srushti Digital Broucher_compressed.pdf",
     reraNumber: "PM1220002501249",
     reraQr: "/assets/shree-ganesh-srushti/gallery/Rera_QR.png",
+    reraUrl: "https://maharerait.maharashtra.gov.in/project/view/59690",
     layoutVariant: 'ongoing',
     configuration: "1BHK, 2BHK",
     location: "Nashik",
     progressStage: 2,
     locationChips: ["Temple 8 min", "Hospital 12 min", "Market 7 min"],
     floorPlans: [
-      { label: "1BHK - Type A", src: sgs1bhk },
-      { label: "1BHK - Type B", src: sgs1bhk2 },
-      { label: "2BHK", src: sgs2bhk },
-      { label: "3BHK", src: sgs2bhk2 }
+      { label: "1 BHK Gold", src: "/assets/shree-ganesh-srushti/gallery/1bhk-gold.png" },
+      { label: "1 BHK Platinum", src: "/assets/shree-ganesh-srushti/gallery/1bhk-platinum.png" },
+      { label: "2 BHK Diamond", src: "/assets/shree-ganesh-srushti/gallery/2bhk-diamond.png" }
     ],
     downloads: [
       { label: "Project Brochure", href: "/assets/shree-ganesh-srushti/gallery/Shree Ganesh Srushti Digital Broucher_compressed.pdf" }
@@ -57,9 +54,9 @@ const ShreeGaneshSrushti = () => {
     cost: { base: "On Request", taxes: "As applicable", maintenance: "TBD" },
     timeline: [
       { label: "Launch", caption: "Project unveiled", image: sgsFront },
-      { label: "Foundation", caption: "Excavation done", image: sgs1bhk },
-      { label: "Structure", caption: "Structure progress", image: sgs2bhk },
-      { label: "Finishing", caption: "Interior finishing", image: sgsFront }
+      { label: "Foundation", caption: "Excavation done", image: sgsNight },
+      { label: "Structure", caption: "Structure progress", image: sgsFront },
+      { label: "Finishing", caption: "Interior finishing", image: sgsNight }
     ],
     mapUrl: "https://maps.app.goo.gl/8c8b1TXW1DBwsT6w8",
     directionsUrl: "https://maps.app.goo.gl/8c8b1TXW1DBwsT6w8",

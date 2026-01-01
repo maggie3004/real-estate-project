@@ -23,7 +23,7 @@ const ImageGallery = ({ images, isOpen, onClose }) => {
     if (isOpen) {
       document.addEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'hidden';
-      
+
       return () => {
         document.removeEventListener('keydown', handleKeyDown);
         document.body.style.overflow = 'unset';
@@ -34,13 +34,13 @@ const ImageGallery = ({ images, isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center"
     >
-      <button 
+      <button
         onClick={onClose}
         className="absolute top-4 right-4 text-white hover:text-gray-300 z-50"
         aria-label="Close gallery"
@@ -65,16 +65,42 @@ const ImageGallery = ({ images, isOpen, onClose }) => {
       </button>
 
       <AnimatePresence mode="wait">
-        <motion.img
-          key={currentIndex}
-          src={images[currentIndex]}
-          alt={`Gallery image ${currentIndex + 1}`}
-          className="max-h-[90vh] max-w-[90vw] object-contain"
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 1.1 }}
-          transition={{ duration: 0.3 }}
-        />
+        {(() => {
+          const currentItem = images[currentIndex];
+          const isVideo = typeof currentItem === 'string' && currentItem.toLowerCase().endsWith('.mp4');
+
+          if (isVideo) {
+            return (
+              <motion.video
+                key={currentIndex}
+                src={currentItem}
+                controls
+                autoPlay
+                muted
+                playsInline
+                preload="auto"
+                className="max-h-[90vh] max-w-[90vw] object-contain"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 1.1 }}
+                transition={{ duration: 0.3 }}
+              />
+            );
+          }
+
+          return (
+            <motion.img
+              key={currentIndex}
+              src={currentItem}
+              alt={`Gallery item ${currentIndex + 1}`}
+              className="max-h-[90vh] max-w-[90vw] object-contain"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.1 }}
+              transition={{ duration: 0.3 }}
+            />
+          );
+        })()}
       </AnimatePresence>
 
       <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
@@ -82,11 +108,10 @@ const ImageGallery = ({ images, isOpen, onClose }) => {
           <button
             key={idx}
             onClick={() => setCurrentIndex(idx)}
-            className={`w-2 h-2 rounded-full transition-all ${
-              idx === currentIndex 
-                ? 'bg-white w-4' 
-                : 'bg-white/50 hover:bg-white/80'
-            }`}
+            className={`w-2 h-2 rounded-full transition-all ${idx === currentIndex
+              ? 'bg-white w-4'
+              : 'bg-white/50 hover:bg-white/80'
+              }`}
             aria-label={`Go to image ${idx + 1}`}
           />
         ))}

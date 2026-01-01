@@ -15,7 +15,7 @@ const milestones = [
         image: "/assets/shree-ganesh-park/gallery/b-view.png",
         icon: FaBuilding,
         category: "Completed Project",
-        stats: "Premium Living"
+        stats: "104 Units"
       }
     ]
   },
@@ -28,7 +28,7 @@ const milestones = [
         image: "/assets/sai-shraddha-apartment/gallery/front.jpg",
         icon: FaBuilding,
         category: "Completed Project",
-        stats: "Quality Homes"
+        stats: "24 Units"
       },
       {
         title: "Vinayak Apartment",
@@ -36,7 +36,7 @@ const milestones = [
         image: "/assets/shree-ganesh-heights/gallery/front.jpeg",
         icon: FaBuilding,
         category: "Completed Project",
-        stats: "Modern Design"
+        stats: "10 Units"
       }
     ]
   },
@@ -49,7 +49,7 @@ const milestones = [
         image: "/assets/shree-ganesh-srushti/gallery/front.jpg",
         icon: FaBuilding,
         category: "Completed Project",
-        stats: "Modern Design"
+        stats: "45 Units"
       }
     ]
   },
@@ -62,7 +62,7 @@ const milestones = [
         image: "/assets/shree-ganesh-heights/gallery/top-view.jpg",
         icon: FaBuilding,
         category: "Completed Project",
-        stats: "Premium Living"
+        stats: "25 Units"
       }
     ]
   },
@@ -75,7 +75,7 @@ const milestones = [
         image: "/assets/shree-ganesh-park/gallery/ter-view.jpg",
         icon: FaBuilding,
         category: "Completed Project",
-        stats: "Quality Homes"
+        stats: "16 Units"
       }
     ]
   }
@@ -144,14 +144,14 @@ const JourneySection = () => {
       {/* Enhanced Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-20 left-10 w-32 h-32 bg-primary-500 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-40 h-40 bg-gold rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-primary-300 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
-        
+        <div className="absolute bottom-20 right-10 w-40 h-40 bg-gold rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-primary-300 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+
         {/* Floating Particles */}
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary-400 rounded-full animate-bounce" style={{animationDuration: '3s'}}></div>
-        <div className="absolute top-3/4 right-1/4 w-1.5 h-1.5 bg-gold rounded-full animate-bounce" style={{animationDuration: '4s', animationDelay: '1s'}}></div>
-        <div className="absolute top-1/2 right-1/3 w-1 h-1 bg-primary-500 rounded-full animate-bounce" style={{animationDuration: '5s', animationDelay: '2s'}}></div>
-        <div className="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-gold rounded-full animate-bounce" style={{animationDuration: '3.5s', animationDelay: '0.5s'}}></div>
+        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary-400 rounded-full animate-bounce" style={{ animationDuration: '3s' }}></div>
+        <div className="absolute top-3/4 right-1/4 w-1.5 h-1.5 bg-gold rounded-full animate-bounce" style={{ animationDuration: '4s', animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 right-1/3 w-1 h-1 bg-primary-500 rounded-full animate-bounce" style={{ animationDuration: '5s', animationDelay: '2s' }}></div>
+        <div className="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-gold rounded-full animate-bounce" style={{ animationDuration: '3.5s', animationDelay: '0.5s' }}></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -167,26 +167,26 @@ const JourneySection = () => {
             Our Journey
             <FaStar className="w-3 h-3 text-gold" />
           </motion.div>
-          
-          <motion.h2 
+
+          <motion.h2
             variants={itemVariants}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6"
           >
             Journey of <span className="text-amber-700 font-bold">Excellence</span>
           </motion.h2>
-          
-          <motion.p 
+
+          <motion.p
             variants={itemVariants}
             className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed"
           >
-            Discover our remarkable journey of growth, innovation, and excellence in the real estate industry. 
+            Discover our remarkable journey of growth, innovation, and excellence in the real estate industry.
             Each milestone represents our commitment to delivering exceptional value to our customers.
           </motion.p>
         </motion.div>
 
 
         {/* Zigzag Timeline */}
-        <motion.div 
+        <motion.div
           ref={ref}
           variants={containerVariants}
           initial="hidden"
@@ -199,9 +199,9 @@ const JourneySection = () => {
             <div className="absolute inset-0 w-3 -left-1 bg-gradient-to-b from-amber-500/30 via-amber-400/30 to-amber-500/30 dark:from-amber-600/40 dark:via-amber-500/40 dark:to-amber-600/40 blur-sm"></div>
           </div>
 
-        {/* Timeline Items */}
-        <div className="space-y-16">
-          {milestones.map((yearData, yearIndex) => (
+          {/* Timeline Items */}
+          <div className="space-y-16">
+            {milestones.map((yearData, yearIndex) => (
               <motion.div
                 key={yearData.year}
                 variants={yearIndex % 2 === 0 ? timelineItemVariants : timelineItemRightVariants}
@@ -212,14 +212,14 @@ const JourneySection = () => {
                   {/* Pulsing Ring Effect */}
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-amber-600 to-amber-500 animate-ping opacity-20"></div>
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-amber-600 to-amber-500 animate-pulse opacity-30"></div>
-                  
+
                   <div className="w-12 h-12 bg-white dark:bg-gray-900 rounded-full flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform duration-300">
                     <span className="text-amber-600 dark:text-amber-400 font-bold text-sm group-hover:text-amber-500 transition-colors duration-300">{yearData.year}</span>
                   </div>
-                  
+
                   {/* Sparkle Effect */}
                   <div className="absolute -top-1 -right-1 w-3 h-3 bg-amber-400 rounded-full animate-pulse opacity-60"></div>
-                  <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-amber-300 rounded-full animate-pulse opacity-60" style={{animationDelay: '0.5s'}}></div>
+                  <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-amber-300 rounded-full animate-pulse opacity-60" style={{ animationDelay: '0.5s' }}></div>
                 </div>
 
                 {/* Mobile Year Badge */}
@@ -232,9 +232,9 @@ const JourneySection = () => {
 
                 {/* Content Container */}
                 <div className={`lg:grid lg:grid-cols-2 lg:gap-8 items-center ${yearIndex % 2 === 0 ? 'lg:grid-flow-col' : 'lg:grid-flow-col-dense'}`}>
-                  
+
                   {/* Left Side Content */}
-                  <motion.div 
+                  <motion.div
                     className={`${yearIndex % 2 === 0 ? 'lg:pr-12' : 'lg:pl-12'} ${yearIndex % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.3 }}
@@ -242,13 +242,12 @@ const JourneySection = () => {
                     <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 group relative">
                       {/* Gradient Overlay on Hover */}
                       <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
-                      
+
                       {/* Project Images Grid - Enhanced */}
-                      <div className={`grid gap-1 p-2 relative z-20 ${
-                        yearData.achievements.length === 1 ? 'grid-cols-1' : 
-                        yearData.achievements.length === 2 ? 'grid-cols-2' : 
-                        'grid-cols-3'
-                      }`}>
+                      <div className={`grid gap-1 p-2 relative z-20 ${yearData.achievements.length === 1 ? 'grid-cols-1' :
+                        yearData.achievements.length === 2 ? 'grid-cols-2' :
+                          'grid-cols-3'
+                        }`}>
                         {yearData.achievements.map((achievement, achievementIndex) => (
                           <div key={achievementIndex} className="relative aspect-[4/3] overflow-hidden rounded-md group/image">
                             <img
@@ -279,7 +278,7 @@ const JourneySection = () => {
                             {yearData.year}
                           </h3>
                         </div>
-                        
+
                         {/* Enhanced Project List - Compact */}
                         <div className="space-y-1.5">
                           {yearData.achievements.map((achievement, achievementIndex) => (
@@ -303,7 +302,7 @@ const JourneySection = () => {
                   </motion.div>
 
                   {/* Right Side Stats - Compact */}
-                  <motion.div 
+                  <motion.div
                     className={`${yearIndex % 2 === 0 ? 'lg:pl-8' : 'lg:pr-8'} ${yearIndex % 2 === 0 ? 'lg:order-2' : 'lg:order-1'} mt-6 lg:mt-0`}
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.3 }}
@@ -311,11 +310,11 @@ const JourneySection = () => {
                     <div className="bg-gradient-to-br from-amber-600 to-amber-500 rounded-2xl p-3 text-white relative overflow-hidden group border border-white/10 shadow-2xl dark:from-amber-700 dark:to-amber-600">
                       {/* Unique Geometric Pattern */}
                       <div className="absolute inset-0 opacity-15">
-                        <div className="absolute top-1 right-1 w-8 h-8 border-2 border-white/30 rounded-full animate-spin" style={{animationDuration: '12s'}}></div>
-                        <div className="absolute bottom-1 left-1 w-6 h-6 border-2 border-white/30 rounded-full animate-spin" style={{animationDuration: '8s', animationDirection: 'reverse'}}></div>
+                        <div className="absolute top-1 right-1 w-8 h-8 border-2 border-white/30 rounded-full animate-spin" style={{ animationDuration: '12s' }}></div>
+                        <div className="absolute bottom-1 left-1 w-6 h-6 border-2 border-white/30 rounded-full animate-spin" style={{ animationDuration: '8s', animationDirection: 'reverse' }}></div>
                         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 border border-white/20 rotate-45 animate-pulse"></div>
                       </div>
-                      
+
                       {/* Compact Header with Unique Badge */}
                       <div className="text-center mb-2 relative z-10">
                         <div className="inline-flex items-center gap-1 px-2 py-0.5 bg-white/20 rounded-full mb-1">
@@ -354,12 +353,12 @@ const JourneySection = () => {
                           ))}
                         </div>
                       </div>
-                      
+
                       {/* Unique Corner Decorations */}
                       <div className="absolute top-2 right-2 w-2 h-2 bg-cyan-200 rounded-full animate-ping opacity-70"></div>
-                      <div className="absolute bottom-2 left-2 w-1.5 h-1.5 bg-white rounded-full animate-ping opacity-70" style={{animationDelay: '0.5s'}}></div>
+                      <div className="absolute bottom-2 left-2 w-1.5 h-1.5 bg-white rounded-full animate-ping opacity-70" style={{ animationDelay: '0.5s' }}></div>
                       <div className="absolute top-2 left-2 w-1 h-1 bg-cyan-100 rounded-full animate-pulse"></div>
-                      <div className="absolute bottom-2 right-2 w-1 h-1 bg-cyan-200 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+                      <div className="absolute bottom-2 right-2 w-1 h-1 bg-cyan-200 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
                     </div>
                   </motion.div>
                 </div>

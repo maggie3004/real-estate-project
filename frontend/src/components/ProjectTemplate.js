@@ -24,6 +24,7 @@ const ProjectTemplate = ({
   directionsUrl,
   reraNumber,
   reraQr,
+  reraUrl,
   layoutVariant,
   configuration,
   location,
@@ -34,6 +35,7 @@ const ProjectTemplate = ({
   advantages,
   testimonials,
   cost,
+  connectivityData,
 
 }) => {
   // Initialize state
@@ -98,11 +100,14 @@ const ProjectTemplate = ({
   // Autoplay effect
   useEffect(() => {
     let interval;
-    if (isPlaying) {
+    const currentItem = galleryImages[currentImageIndex];
+    const isVideo = typeof currentItem === 'string' && currentItem.toLowerCase().endsWith('.mp4');
+
+    if (isPlaying && !isVideo) {
       interval = setInterval(handleNext, 3000);
     }
     return () => clearInterval(interval);
-  }, [isPlaying, handleNext]);
+  }, [isPlaying, handleNext, currentImageIndex, galleryImages]);
 
   // Ensure currentImageIndex is valid when galleryImages changes
   const galleryLength = galleryImages ? galleryImages.length : 0;
@@ -259,20 +264,41 @@ const ProjectTemplate = ({
             </div>
           </div>
 
+
           {/* RERA Info - Top Right */}
           {reraQr && reraNumber && (
             <div className="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 z-20">
-              <div className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm rounded-lg p-2 sm:p-3 shadow-lg border border-white/20 flex items-center gap-2 sm:gap-3 max-w-[180px] sm:max-w-[200px]">
-                <img
-                  src={reraQr}
-                  alt="MahaRERA QR Code"
-                  className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 object-contain flex-shrink-0"
-                />
-                <div className="text-left min-w-0 flex-1">
-                  <div className="text-[10px] sm:text-xs font-semibold text-gray-800 dark:text-white">RERA</div>
-                  <div className="text-[10px] sm:text-xs text-gray-700 dark:text-gray-200 font-mono leading-tight break-all">{reraNumber}</div>
+              <a
+                href={reraUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block cursor-pointer hover:scale-105 transition-transform duration-200"
+                title="View MahaRERA Project Details"
+              >
+                <div className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm rounded-lg p-2 sm:p-2.5 shadow-lg border border-white/20 flex flex-col items-center gap-1.5 w-[120px] sm:w-[130px] hover:shadow-xl transition-shadow">
+                  {/* QR Code - Top (Larger for scanning) */}
+                  <img
+                    src={reraQr}
+                    alt="MahaRERA QR Code"
+                    className="w-20 h-20 sm:w-24 sm:h-24 object-contain"
+                  />
+
+                  {/* Logo and RERA Number - Bottom */}
+                  <div className="flex items-center gap-1.5 w-full">
+                    {/* MahaRERA Logo */}
+                    <img
+                      src="/assets/maharera-logo.png"
+                      alt="MahaRERA"
+                      className="w-5 h-5 sm:w-6 sm:h-6 object-contain flex-shrink-0"
+                    />
+
+                    {/* RERA Number */}
+                    <div className="text-[7px] sm:text-[8px] text-gray-700 dark:text-gray-200 font-mono leading-tight break-all flex-1">
+                      {reraNumber}
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </a>
             </div>
           )}
         </section>
@@ -342,14 +368,8 @@ const ProjectTemplate = ({
 
                 {/* Description Text */}
                 <div className="mb-8">
-                  <p className="text-amber-900 dark:text-amber-100 text-sm md:text-base leading-relaxed mb-2">
-                    Shree Ganesh Srushti offers spacious 1,2 & 3 BHK residences
-                  </p>
-                  <p className="text-amber-900 dark:text-amber-100 text-sm md:text-base leading-relaxed mb-2">
-                    Thoughtfully designed towers ensure ample light, ventilation, and scenic views
-                  </p>
-                  <p className="text-amber-900 dark:text-amber-100 text-sm md:text-base leading-relaxed font-semibold mb-2">
-                    — creating a lifestyle of comfort, convenience, and class.
+                  <p className="text-amber-900 dark:text-amber-100 text-sm md:text-base leading-relaxed">
+                    {description}
                   </p>
                 </div>
 
@@ -368,13 +388,20 @@ const ProjectTemplate = ({
                     <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-2">
                       <FaRoad className="w-7 h-7 md:w-8 md:h-8 text-white" />
                     </div>
-                    <p className="text-amber-900 dark:text-amber-100 text-xs md:text-sm font-semibold leading-tight">100 ft wide road<br />front</p>
+                    <p className="text-amber-900 dark:text-amber-100 text-xs md:text-sm font-semibold leading-tight">
+                      {projectName === 'Shree Ganesh Heights' ? '9 mtr road' : '100 ft wide road'}<br />front
+                    </p>
                   </div>
 
                   {/* Feature 3 - Facilities */}
                   <div className="flex flex-col items-center text-center">
-                    <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-2">
-                      <FaBuilding className="w-7 h-7 md:w-8 md:h-8 text-white" />
+                    <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-2 relative">
+                      <span className="text-white text-xl md:text-2xl font-bold">
+                        {projectName === 'Shree Ganesh Heights' ? '8+' : projectName === 'Shree Ganesh Park' ? '10+' : '21'}
+                      </span>
+                      <div className="absolute bottom-0 right-0 w-5 h-5 bg-white rounded-full flex items-center justify-center">
+                        <FaBuilding className="w-2.5 h-2.5 text-amber-700" />
+                      </div>
                     </div>
                     <p className="text-amber-900 dark:text-amber-100 text-xs md:text-sm font-semibold leading-tight">Facilities</p>
                   </div>
@@ -395,12 +422,18 @@ const ProjectTemplate = ({
                     <p className="text-amber-900 dark:text-amber-100 text-xs md:text-sm font-semibold leading-tight">Good Ventilation &<br />Sunlight</p>
                   </div>
 
-                  {/* Feature 6 - Sustainability */}
+                  {/* Feature 6 - G+7 Structure or Sustainable steps */}
                   <div className="flex flex-col items-center text-center">
                     <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-2">
-                      <FaLeaf className="w-7 h-7 md:w-8 md:h-8 text-white" />
+                      {projectName === 'Shree Ganesh Heights' ? (
+                        <FaBuilding className="w-7 h-7 md:w-8 md:h-8 text-white" />
+                      ) : (
+                        <FaLeaf className="w-7 h-7 md:w-8 md:h-8 text-white" />
+                      )}
                     </div>
-                    <p className="text-amber-900 dark:text-amber-100 text-xs md:text-sm font-semibold leading-tight">Sustainable steps</p>
+                    <p className="text-amber-900 dark:text-amber-100 text-xs md:text-sm font-semibold leading-tight">
+                      {projectName === 'Shree Ganesh Heights' ? 'G+7 Structure' : 'Sustainable steps'}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -413,7 +446,7 @@ const ProjectTemplate = ({
 
       {/* Interactive Floor Plans */}
       {Array.isArray(floorPlans) && floorPlans.length > 0 && (
-        <section id="section-floorplans" className="w-full py-12 md:py-16 bg-amber-50 dark:bg-amber-950/20">
+        <section id="section-floorplans" className="w-full py-12 md:py-16 bg-white dark:bg-black/50">
           <div className="max-w-7xl mx-auto px-4">
             <h3 className="text-2xl md:text-3xl font-bold text-amber-700 dark:text-amber-100 mb-8 text-center">Floor Plans</h3>
             <div className="flex items-center justify-center mb-8">
@@ -427,8 +460,8 @@ const ProjectTemplate = ({
                   key={idx}
                   onClick={() => setActiveFloorIdx(idx)}
                   className={`px-6 py-3 rounded-lg text-sm md:text-base font-semibold border-2 transition-all duration-300 ${activeFloorIdx === idx
-                      ? 'bg-amber-700 text-white border-amber-700 shadow-lg'
-                      : 'bg-white dark:bg-gray-900 text-[#181818] dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-amber-700'
+                    ? 'bg-amber-700 text-white border-amber-700 shadow-lg'
+                    : 'bg-white dark:bg-gray-900 text-[#181818] dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-amber-700'
                     }`}
                 >
                   {plan.label}
@@ -441,7 +474,7 @@ const ProjectTemplate = ({
               <img
                 src={floorPlans[activeFloorIdx]?.src}
                 alt={floorPlans[activeFloorIdx]?.label}
-                className="absolute top-0 left-0 w-full h-full object-contain transition-transform duration-300 hover:scale-[1.01]"
+                className="absolute top-0 left-0 w-full h-full object-contain"
                 style={{ display: 'block' }}
               />
             </div>
@@ -533,81 +566,104 @@ const ProjectTemplate = ({
 
             {/* Connectivity Points - List */}
             <div className="max-w-3xl mx-auto mb-12">
-              <p className="text-amber-900 dark:text-amber-100 text-base md:text-lg leading-relaxed mb-4">
-                <span className="font-bold">1. Strategically located near <span className="text-amber-800 dark:text-amber-200">Datta Mandir Chowk</span></span>, offering excellent connectivity.
-              </p>
-              <p className="text-amber-900 dark:text-amber-100 text-base md:text-lg leading-relaxed mb-4">
-                <span className="font-bold">2. Quick access to <span className="text-amber-800 dark:text-amber-200">Trimbakeshwar Road</span></span> ensuring smooth travel to key city areas.
-              </p>
-              <p className="text-amber-900 dark:text-amber-100 text-base md:text-lg leading-relaxed">
-                <span className="font-bold">3. Well-connectivity leading to nearby <span className="text-amber-800 dark:text-amber-200">residential and commercial hubs</span></span>.
-              </p>
+              {connectivityData?.description ? (
+                connectivityData.description.map((desc, idx) => (
+                  <p key={idx} className="text-amber-900 dark:text-amber-100 text-base md:text-lg leading-relaxed mb-4">
+                    {desc}
+                  </p>
+                ))
+              ) : (
+                <>
+                  <p className="text-amber-900 dark:text-amber-100 text-base md:text-lg leading-relaxed mb-4">
+                    <span className="font-bold">1. Strategically located near <span className="text-amber-800 dark:text-amber-200">Datta Mandir Chowk</span></span>, offering excellent connectivity.
+                  </p>
+                  <p className="text-amber-900 dark:text-amber-100 text-base md:text-lg leading-relaxed mb-4">
+                    <span className="font-bold">2. Quick access to <span className="text-amber-800 dark:text-amber-200">Trimbakeshwar Road</span></span> ensuring smooth travel to key city areas.
+                  </p>
+                  <p className="text-amber-900 dark:text-amber-100 text-base md:text-lg leading-relaxed">
+                    <span className="font-bold">3. Well-connectivity leading to nearby <span className="text-amber-800 dark:text-amber-200">residential and commercial hubs</span></span>.
+                  </p>
+                </>
+              )}
             </div>
 
             {/* Connectivity Icons Grid - 6 items */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-4">
-              {/* Bus Stop */}
-              <div className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-3">
-                  <svg className="w-8 h-8 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-                    <path d="M18 18.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM9 18.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
-                    <path d="M20 8h-3V4c0-.55-.45-1-1-1H8c-.55 0-1 .45-1 1v4H4c-.55 0-1 .45-1 1v7c0 .55.45 1 1 1h1v2c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-2h8v2c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-2h1c.55 0 1-.45 1-1v-7c0-.55-.45-1-1-1zm-8-3h4v3h-4V5zm.5 9c-.83 0-1.5-.67-1.5-1.5S10.67 10 11.5 10s1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm6 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" />
-                  </svg>
-                </div>
-                <p className="text-amber-900 dark:text-amber-100 font-semibold text-xs md:text-sm">Bus stop 3 mins<br />& CBS in 13 min</p>
+            {connectivityData?.points ? (
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-4">
+                {connectivityData.points.map((point, idx) => (
+                  <div key={idx} className="flex flex-col items-center text-center">
+                    <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-3">
+                      <span className="text-white text-2xl md:text-3xl font-bold">{idx + 1}</span>
+                    </div>
+                    <p className="text-amber-900 dark:text-amber-100 font-semibold text-xs md:text-sm">{point.label}<br />{point.time}</p>
+                  </div>
+                ))}
               </div>
+            ) : (
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-4">
+                {/* Bus Stop */}
+                <div className="flex flex-col items-center text-center">
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-3">
+                    <svg className="w-8 h-8 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
+                      <path d="M18 18.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM9 18.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+                      <path d="M20 8h-3V4c0-.55-.45-1-1-1H8c-.55 0-1 .45-1 1v4H4c-.55 0-1 .45-1 1v7c0 .55.45 1 1 1h1v2c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-2h8v2c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-2h1c.55 0 1-.45 1-1v-7c0-.55-.45-1-1-1zm-8-3h4v3h-4V5zm.5 9c-.83 0-1.5-.67-1.5-1.5S10.67 10 11.5 10s1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm6 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" />
+                    </svg>
+                  </div>
+                  <p className="text-amber-900 dark:text-amber-100 font-semibold text-xs md:text-sm">Bus stop 3 mins<br />& CBS in 13 min</p>
+                </div>
 
-              {/* Factory/MIDC */}
-              <div className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-3">
-                  <svg className="w-8 h-8 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-                    <path d="M13 13h-2v8h2zm4-8h2V3h-2zm4 4h2V7h-2zM6 13H4v8h2zm6-11h2V2h-2zm6 11h2v8h-2z" />
-                    <path d="M12 6l-5 4v9h10v-9z" />
-                  </svg>
+                {/* Factory/MIDC */}
+                <div className="flex flex-col items-center text-center">
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-3">
+                    <svg className="w-8 h-8 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
+                      <path d="M13 13h-2v8h2zm4-8h2V3h-2zm4 4h2V7h-2zM6 13H4v8h2zm6-11h2V2h-2zm6 11h2v8h-2z" />
+                      <path d="M12 6l-5 4v9h10v-9z" />
+                    </svg>
+                  </div>
+                  <p className="text-amber-900 dark:text-amber-100 font-semibold text-xs md:text-sm">Satpur Ambad<br />MIDC 6 mins</p>
                 </div>
-                <p className="text-amber-900 dark:text-amber-100 font-semibold text-xs md:text-sm">Satpur Ambad<br />MIDC 6 mins</p>
-              </div>
 
-              {/* Market */}
-              <div className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-3">
-                  <svg className="w-8 h-8 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-                    <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z" />
-                  </svg>
+                {/* Market */}
+                <div className="flex flex-col items-center text-center">
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-3">
+                    <svg className="w-8 h-8 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
+                      <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z" />
+                    </svg>
+                  </div>
+                  <p className="text-amber-900 dark:text-amber-100 font-semibold text-xs md:text-sm">Market<br />5 mins</p>
                 </div>
-                <p className="text-amber-900 dark:text-amber-100 font-semibold text-xs md:text-sm">Market<br />5 mins</p>
-              </div>
 
-              {/* Highway */}
-              <div className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-3">
-                  <svg className="w-8 h-8 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-                    <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm11 0c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM5 12l1.5-4.5h11L19 12H5z" />
-                  </svg>
+                {/* Highway */}
+                <div className="flex flex-col items-center text-center">
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-3">
+                    <svg className="w-8 h-8 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
+                      <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm11 0c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM5 12l1.5-4.5h11L19 12H5z" />
+                    </svg>
+                  </div>
+                  <p className="text-amber-900 dark:text-amber-100 font-semibold text-xs md:text-sm">Trimbak & Mumbai<br />highway 7 mins</p>
                 </div>
-                <p className="text-amber-900 dark:text-amber-100 font-semibold text-xs md:text-sm">Trimbak & Mumbai<br />highway 7 mins</p>
-              </div>
 
-              {/* Hospitals & Schools */}
-              <div className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-3">
-                  <svg className="w-8 h-8 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 9.5h3.5V16h-3.5zm0-5H16V11h-2.5zM9 16H5.5v-3.5H9zm0-5H5.5V7.5H9z" />
-                  </svg>
+                {/* Hospitals & Schools */}
+                <div className="flex flex-col items-center text-center">
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-3">
+                    <svg className="w-8 h-8 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
+                      <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 9.5h3.5V16h-3.5zm0-5H16V11h-2.5zM9 16H5.5v-3.5H9zm0-5H5.5V7.5H9z" />
+                    </svg>
+                  </div>
+                  <p className="text-amber-900 dark:text-amber-100 font-semibold text-xs md:text-sm">Hospitals &<br />Schools 6 mins</p>
                 </div>
-                <p className="text-amber-900 dark:text-amber-100 font-semibold text-xs md:text-sm">Hospitals &<br />Schools 6 mins</p>
-              </div>
 
-              {/* City Centre Mall */}
-              <div className="flex flex-col items-center text-center">
-                <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-3">
-                  <svg className="w-8 h-8 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-                    <path d="M15 21H9v-5.25c0-.41.34-.75.75-.75h4.5c.41 0 .75.34.75.75V21zm6-8.5H3l.29-2.04c.15-1.03.79-1.92 1.75-2.38V4h14v4.08c.96.46 1.6 1.35 1.75 2.38l.29 2.04zM20 4h-1V3c0-.55-.45-1-1-1h-2c-.55 0-1 .45-1 1v1H9V3c0-.55-.45-1-1-1H6c-.55 0-1 .45-1 1v1H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z" />
-                  </svg>
+                {/* City Centre Mall */}
+                <div className="flex flex-col items-center text-center">
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-3">
+                    <svg className="w-8 h-8 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
+                      <path d="M15 21H9v-5.25c0-.41.34-.75.75-.75h4.5c.41 0 .75.34.75.75V21zm6-8.5H3l.29-2.04c.15-1.03.79-1.92 1.75-2.38V4h14v4.08c.96.46 1.6 1.35 1.75 2.38l.29 2.04zM20 4h-1V3c0-.55-.45-1-1-1h-2c-.55 0-1 .45-1 1v1H9V3c0-.55-.45-1-1-1H6c-.55 0-1 .45-1 1v1H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z" />
+                    </svg>
+                  </div>
+                  <p className="text-amber-900 dark:text-amber-100 font-semibold text-xs md:text-sm">City centre<br />mall 10 mins</p>
                 </div>
-                <p className="text-amber-900 dark:text-amber-100 font-semibold text-xs md:text-sm">City centre<br />mall 10 mins</p>
               </div>
-            </div>
+            )}
           </div>
         </section>
       )}
@@ -628,16 +684,41 @@ const ProjectTemplate = ({
           {hasImages && (
             <div className="rounded-xl overflow-hidden shadow-2xl mb-4 relative aspect-[16/9] max-h-[600px] w-full group">
               <AnimatePresence mode="wait">
-                <motion.img
-                  key={currentImageIndex}
-                  src={galleryImages[currentImageIndex]}
-                  alt={`${projectName} Slide ${currentImageIndex + 1}`}
-                  className="w-full h-full object-cover bg-gray-900"
-                  initial={{ opacity: 0, scale: 1.05 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.5 }}
-                />
+                {(() => {
+                  const currentItem = galleryImages[currentImageIndex];
+                  const isVideo = typeof currentItem === 'string' && currentItem.toLowerCase().endsWith('.mp4');
+
+                  if (isVideo) {
+                    return (
+                      <motion.video
+                        key={currentImageIndex}
+                        src={currentItem}
+                        controls
+                        autoPlay={isPlaying}
+                        muted
+                        playsInline
+                        preload="auto"
+                        className="w-full h-full object-cover bg-gray-900"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                      />
+                    );
+                  }
+
+                  return (
+                    <motion.img
+                      key={currentImageIndex}
+                      src={currentItem}
+                      alt={`${projectName} Slide ${currentImageIndex + 1}`}
+                      className="w-full h-full object-cover bg-gray-900"
+                      initial={{ opacity: 0, scale: 1.05 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.5 }}
+                    />
+                  );
+                })()}
               </AnimatePresence>
 
               {/* Navigation Arrows */}
@@ -674,8 +755,8 @@ const ProjectTemplate = ({
                         key={idx}
                         onClick={() => setCurrentImageIndex(idx)}
                         className={`w-2 h-2 rounded-full transition-all ${idx === currentImageIndex
-                            ? 'bg-white w-4'
-                            : 'bg-white/50 hover:bg-white/80'
+                          ? 'bg-white w-4'
+                          : 'bg-white/50 hover:bg-white/80'
                           }`}
                         aria-label={`Go to slide ${idx + 1}`}
                       />
@@ -690,16 +771,28 @@ const ProjectTemplate = ({
           {hasImages && (
             <div className="relative overflow-hidden">
               <div className="flex gap-2 overflow-x-auto hide-scrollbar py-1" onMouseEnter={(e) => { e.currentTarget.scrollLeft += 0; }}>
-                {galleryImages.map((img, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setCurrentImageIndex(idx)}
-                    className={`relative h-16 w-28 flex-shrink-0 rounded-md overflow-hidden border-2 transition-all ${idx === currentImageIndex ? 'border-gold shadow-lg' : 'border-gray-300 dark:border-gray-700'}`}
-                    title={`Slide ${idx + 1}`}
-                  >
-                    <img src={img} alt={`Thumb ${idx + 1}`} className="w-full h-full object-cover" />
-                  </button>
-                ))}
+                {galleryImages.map((img, idx) => {
+                  const isVideo = typeof img === 'string' && img.toLowerCase().endsWith('.mp4');
+                  return (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentImageIndex(idx)}
+                      className={`relative h-16 w-28 flex-shrink-0 rounded-md overflow-hidden border-2 transition-all ${idx === currentImageIndex ? 'border-amber-600 shadow-lg' : 'border-gray-300 dark:border-gray-700'}`}
+                      title={`Slide ${idx + 1}`}
+                    >
+                      {isVideo ? (
+                        <div className="w-full h-full bg-gray-800 flex items-center justify-center relative">
+                          <video src={img} className="w-full h-full object-cover opacity-60" />
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <FaPlay className="text-white text-xl drop-shadow-lg" />
+                          </div>
+                        </div>
+                      ) : (
+                        <img src={img} alt={`Thumb ${idx + 1}`} className="w-full h-full object-cover" />
+                      )}
+                    </button>
+                  );
+                })}
               </div>
             </div>
           )}

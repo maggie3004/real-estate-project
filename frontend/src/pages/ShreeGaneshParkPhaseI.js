@@ -8,16 +8,17 @@ import sgpWingC1BHK from '../assets/shree-ganesh-park/gallery/Wing C 1BHK.jpg';
 import sgpWingC2BHK from '../assets/shree-ganesh-park/gallery/Wing C 2BHK.jpg';
 import sgpBrochure from '../assets/shree-ganesh-park/Shree Ganesh Park E- Brochure.pdf';
 import ProjectTemplate from '../components/ProjectTemplate';
-import { FaCar, FaSun, FaBuilding, FaShieldAlt, FaWater, FaTint } from 'react-icons/fa';
-import { MdMeetingRoom } from 'react-icons/md';
-import { BiCctv, BiSolidHomeHeart } from 'react-icons/bi';
+import { FaSolarPanel, FaGlassCheers } from 'react-icons/fa';
+import { MdMeetingRoom, MdSelfImprovement, MdElevator } from 'react-icons/md';
+import { BiCctv } from 'react-icons/bi';
+import { GiWaterDrop } from 'react-icons/gi';
 
 const ShreeGaneshParkPhaseI = () => {
   const projectData = {
     projectName: "Shree Ganesh Park",
     tagline: "RISE TO NEW WAY OF LIVING",
     heroSubtitle: "1 & 2 BHK Luxury Homes & Shops",
-    description: `Experience an elevated lifestyle of sophistication at Shree Ganesh Park Phase I, where every aspect is meticulously designed. 1 BHK 'Happy Homes' crafted to enhance your everyday living. These residences offer the perfect integration of luxury and functionality, delivering a modern living experience that seamlessly blends convenience, comfort, and innovation. Located at Sr no 94/1 plot 16/17 gavlane road, Pathardi Shivar, Nashik - 422010, our project provides unmatched connectivity to essential services and amenities. With schools, shopping centers, healthcare facilities, and recreational options all within close proximity, residents enjoy a seamless, well-rounded living experience.`,
+    description: `Discover modern living at Shree Ganesh Park, featuring thoughtfully planned 1 & 2 BHK residences designed for contemporary families. With premium amenities, strategic location, and exceptional connectivity, these homes offer the perfect blend of comfort and convenience. Experience a vibrant community where every detail is crafted to elevate your lifestyle.`,
     stats: [
       { title: "1 BHK", subtitle: "Happy Homes" },
       { title: "G+7", subtitle: "Structure" },
@@ -25,31 +26,30 @@ const ShreeGaneshParkPhaseI = () => {
       { title: "Premium", subtitle: "Location" }
     ],
     amenities: [
-      { icon: <BiCctv />, name: "CCTV" },
-      { icon: <FaSun />, name: "Solar Power" },
-      { icon: <FaShieldAlt />, name: "Safety Gate" },
       { icon: <MdMeetingRoom />, name: "Multipurpose Hall" },
-      { icon: <BiSolidHomeHeart />, name: "Auto Door Lift" },
-      { icon: <FaBuilding />, name: "Battery Backup" },
-      { icon: <FaTint />, name: "Smart Automation" },
-      { icon: <FaWater />, name: "Water Supply" },
-      { icon: <FaCar />, name: "Parking Space" }
+      { icon: <FaSolarPanel />, name: "Roof Top Solar for Common Areas" },
+      { icon: <MdSelfImprovement />, name: "Open Sky Yoga Space" },
+      { icon: <FaGlassCheers />, name: "Party Area" },
+      { icon: <MdElevator />, name: "Branded Lift & Battery Backup" },
+      { icon: <BiCctv />, name: "CCTV" },
+      { icon: <GiWaterDrop />, name: "Rainwater Harvesting" }
     ],
     images: ['/assets/shree-ganesh-park/gallery/hero.png'],
     galleryImages: [sgpAView, sgpBView, sgpNightA],
     brochurePath: sgpBrochure,
     reraNumber: "P51600051448",
     reraQr: "/assets/shree-ganesh-park/gallery/Rera_QR.png",
+    reraUrl: "https://maharerait.mahaonline.gov.in/ProjectSummaryView/ProjectSummaryQRCodeView?id=Q2VydGlmaWNhdGVObz1QNTE2MDAwNTE0NDgmU2NhbnR5cGU9UmVnaXN0cmF0aW9uQ2VydGlmaWNhdGVRUlNjYW4=",
     layoutVariant: 'ongoing',
     configuration: "1BHK, 2BHK",
     location: "Nashik",
     progressStage: 1,
     locationChips: ["Railway 15 min", "Hospital 10 min", "School 6 min"],
     floorPlans: [
-      { label: "1BHK - Type A", src: sgpWingA1BHK },
-      { label: "1BHK - Type B", src: sgpWingC1BHK },
-      { label: "2BHK - Type A", src: sgpWingA2BHK },
-      { label: "2BHK - Type B", src: sgpWingC2BHK }
+      { label: "Wing A 1 BHK", src: sgpWingA1BHK },
+      { label: "Wing C 1 BHK", src: sgpWingC1BHK },
+      { label: "Wing A 2 BHK", src: sgpWingA2BHK },
+      { label: "Wing C 2 BHK", src: sgpWingC2BHK }
     ],
     downloads: [
       { label: "Project Brochure", href: sgpBrochure }
