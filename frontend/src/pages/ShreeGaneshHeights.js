@@ -11,7 +11,8 @@ import { BiCctv, BiSolidHomeHeart } from 'react-icons/bi';
 const ShreeGaneshHeights = () => {
   const projectData = {
     projectName: "Shree Ganesh Heights",
-    tagline: "Experience Essence of Elevated Living...",
+    tagline: "EXPERIENCE ESSENCE OF ELEVATED LIVING",
+    heroSubtitle: "Exclusive 1 BHK Happy Homes",
     description: "Experience an elevated lifestyle of sophistication at Shree Ganesh Heights, where every aspect is meticulously designed. 1 BHK 'Happy Homes' crafted to enhance your everyday living. These residences offer the perfect integration of luxury and functionality, delivering a modern living experience that seamlessly blends convenience, comfort, and innovation. Strategically located in the highly desirable Pathardi Shivar, Nashik, Shree Ganesh Heights provides unmatched connectivity to essential services and amenities. With schools, shopping centers, healthcare facilities, and recreational options all within close proximity, residents enjoy a seamless, well-rounded living experience.",
     stats: [
       { title: "1 BHK", subtitle: "Happy Homes" },
