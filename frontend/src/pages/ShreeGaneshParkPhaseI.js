@@ -74,11 +74,11 @@ const ShreeGaneshParkPhaseI = () => {
     mapUrl: "https://maps.app.goo.gl/6X9DkrFsd58nzQFT9",
     directionsUrl: "https://maps.app.goo.gl/6X9DkrFsd58nzQFT9",
 
-    
+
     connectivityData: {
       description: [
-        "Strategically located near Datta Mandir Chowk, offering excellent connectivity.",
-        "Quick access to Trimbakeshwar Road ensuring smooth travel to key city areas.",
+        "Strategically located near <strong>Datta Mandir Chowk</strong>, offering excellent connectivity.",
+        "Quick access to <strong>Trimbakeshwar Road</strong> ensuring smooth travel to key city areas.",
         "Well-connected location leading to nearby residential and commercial hubs."
       ],
       points: [

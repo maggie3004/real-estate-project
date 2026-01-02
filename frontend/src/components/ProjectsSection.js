@@ -94,15 +94,15 @@ const ProjectsSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6 flex items-center justify-center gap-3">
-  <span>Our</span>
+            <span>Our</span>
 
-  <span className="px-4 py-1 text-base md:text-lg font-semibold
+            <span className="px-4 py-1 text-base md:text-lg font-semibold
     rounded-full text-white
     bg-gradient-to-r from-amber-500 to-amber-700
     dark:from-amber-600 dark:to-yellow-400 shadow-md">
-    Exclusive Projects
-  </span>
-</h2>
+              Exclusive Projects
+            </span>
+          </h2>
 
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
             Discover our carefully curated collection of exclusive residential projects,
@@ -210,7 +210,7 @@ const ProjectsSection = () => {
         </div>
       </div>
 
-      <style jsx="true" global="true">{`
+      <style>{`
         /* Featured Slider Container with Proper Margins */
         .featured-slider-container {
           padding: 0 40px;

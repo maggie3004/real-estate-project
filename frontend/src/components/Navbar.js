@@ -29,40 +29,31 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      
+
       // Update scrolled state for background
       setIsScrolled(currentScrollY > 10);
-      
-      // Only apply scroll behavior on homepage
-      if (location.pathname !== '/') {
-        setIsVisible(true);
-        lastScrollY.current = currentScrollY;
-        return;
-      }
-      
+
       // Simple scroll direction detection
       const isScrollingUp = currentScrollY < lastScrollY.current;
       const isScrollingDown = currentScrollY > lastScrollY.current;
       const scrollDifference = Math.abs(currentScrollY - lastScrollY.current);
-      
+
       // Handle show/hide based on scroll direction
-      if (mobileMenuOpen || currentScrollY <= 10) {
-        // Always show navbar when mobile menu is open or at top of page
+      if (mobileMenuOpen || currentScrollY <= 80) {
+        // Always show navbar when mobile menu is open or near top of page (threshold 80px)
         setIsVisible(true);
-      } else if (isScrollingUp && scrollDifference > 5) {
-        // Scrolling up with 5px threshold - show navbar immediately
-        console.log('Showing navbar: scrolling up', { currentScrollY, lastScrollY: lastScrollY.current, scrollDifference });
+      } else if (isScrollingUp && scrollDifference > 10) {
+        // Scrolling up with 10px sensitivity - show navbar
         setIsVisible(true);
-      } else if (isScrollingDown && currentScrollY > 100 && scrollDifference > 5) {
-        // Scrolling down and past 100px with 5px threshold - hide navbar
-        console.log('Hiding navbar: scrolling down', { currentScrollY, lastScrollY: lastScrollY.current, scrollDifference });
+      } else if (isScrollingDown && currentScrollY > 150 && scrollDifference > 10) {
+        // Scrolling down past 150px with 10px sensitivity - hide navbar
         setIsVisible(false);
       }
-      
+
       // Update last scroll position immediately
       lastScrollY.current = currentScrollY;
     };
-    
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [mobileMenuOpen, location.pathname]);
@@ -76,7 +67,7 @@ const Navbar = () => {
       document.body.style.overflow = 'unset';
       document.body.classList.remove('mobile-menu-open');
     }
-    
+
     // Cleanup on unmount
     return () => {
       document.body.style.overflow = 'unset';
@@ -126,13 +117,11 @@ const Navbar = () => {
   const isActive = (path) => location.pathname === path || location.hash === path;
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 border-b border-gray-200 shadow-lg navbar-scroll-behavior ${
-      !isVisible ? 'hidden' : ''
-    } ${
-      theme === 'dark' 
-        ? `bg-black text-white ${isScrolled ? 'backdrop-blur-md bg-black/95' : 'bg-black'}` 
+    <nav className={`fixed top-0 left-0 right-0 z-50 border-b border-gray-200 shadow-lg navbar-scroll-behavior ${!isVisible ? 'nav-hidden' : ''
+      } ${theme === 'dark'
+        ? `bg-black text-white ${isScrolled ? 'backdrop-blur-md bg-black/95' : 'bg-black'}`
         : `bg-gradient-to-r from-white to-gray-50 text-[#181818] ${isScrolled ? 'backdrop-blur-md bg-white/95' : 'bg-gradient-to-r from-white to-gray-50'}`
-    }`}>
+      }`}>
       <div className="w-full flex items-center justify-between h-16 sm:h-20 px-4 sm:px-6 lg:px-8">
         {/* Logo and Company Name */}
         <Link to="/" className="flex items-center gap-2 sm:gap-3 min-w-fit hover:opacity-80 transition-opacity" aria-label="Go to homepage">
@@ -228,12 +217,12 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
-        
+
         {/* Desktop Theme Switcher */}
         <div className="hidden lg:flex items-center">
           <ThemeSwitcher />
         </div>
-        
+
         {/* Mobile Menu Button and Theme Switcher */}
         <div className="flex items-center gap-3 lg:hidden">
           <ThemeSwitcher />
@@ -275,7 +264,7 @@ const Navbar = () => {
                 className="lg:hidden fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"
                 onClick={() => setMobileMenuOpen(false)}
               />
-              
+
               {/* Mobile Menu Drawer */}
               <motion.div
                 initial={{ x: '100%' }}
@@ -300,7 +289,7 @@ const Navbar = () => {
                     <FaTimes className="w-5 h-5" />
                   </button>
                 </div>
-                
+
                 {/* Navigation Menu */}
                 <div className="flex-1 overflow-y-auto py-4 mobile-menu-content">
                   <ul className="space-y-2 px-4">
@@ -315,11 +304,10 @@ const Navbar = () => {
                         {item.dropdown ? (
                           <>
                             <button
-                              className={`w-full flex items-center justify-between px-4 py-3 rounded-lg text-left transition-all duration-200 hover:bg-white/10 ${
-                                isActive(item.path) 
-                                  ? 'text-yellow-300 bg-yellow-300/10' 
-                                  : 'text-white'
-                              }`}
+                              className={`w-full flex items-center justify-between px-4 py-3 rounded-lg text-left transition-all duration-200 hover:bg-white/10 ${isActive(item.path)
+                                ? 'text-yellow-300 bg-yellow-300/10'
+                                : 'text-white'
+                                }`}
                               onClick={() => setMobileDropdownOpen((prev) => ({ ...prev, [idx]: !prev[idx] }))}
                             >
                               <span className="font-medium">{item.name}</span>
@@ -330,7 +318,7 @@ const Navbar = () => {
                                 <FaChevronDown className="w-4 h-4" />
                               </motion.div>
                             </button>
-                            
+
                             <AnimatePresence>
                               {mobileDropdownOpen[idx] && (
                                 <motion.ul
@@ -357,7 +345,7 @@ const Navbar = () => {
                                                 <FaChevronRight className="w-3 h-3" />
                                               </motion.div>
                                             </button>
-                                            
+
                                             <AnimatePresence>
                                               {mobileSubDropdownOpen[`${idx}-${dIdx}`] && (
                                                 <motion.ul
@@ -371,11 +359,10 @@ const Navbar = () => {
                                                     <li key={sub.name}>
                                                       <Link
                                                         to={sub.path}
-                                                        className={`block px-3 py-2 rounded-lg text-sm transition-all duration-200 hover:bg-white/10 ${
-                                                          isActive(sub.path)
-                                                            ? 'text-yellow-300 bg-yellow-300/10'
-                                                            : 'text-gray-300'
-                                                        }`}
+                                                        className={`block px-3 py-2 rounded-lg text-sm transition-all duration-200 hover:bg-white/10 ${isActive(sub.path)
+                                                          ? 'text-yellow-300 bg-yellow-300/10'
+                                                          : 'text-gray-300'
+                                                          }`}
                                                         onClick={() => setMobileMenuOpen(false)}
                                                       >
                                                         {sub.name}
@@ -389,11 +376,10 @@ const Navbar = () => {
                                         ) : (
                                           <Link
                                             to={drop.path}
-                                            className={`block px-3 py-2 rounded-lg text-sm transition-all duration-200 hover:bg-white/10 ${
-                                              isActive(drop.path)
-                                                ? 'text-yellow-300 bg-yellow-300/10'
-                                                : 'text-gray-300'
-                                            }`}
+                                            className={`block px-3 py-2 rounded-lg text-sm transition-all duration-200 hover:bg-white/10 ${isActive(drop.path)
+                                              ? 'text-yellow-300 bg-yellow-300/10'
+                                              : 'text-gray-300'
+                                              }`}
                                             onClick={() => setMobileMenuOpen(false)}
                                           >
                                             {drop.name}
@@ -409,11 +395,10 @@ const Navbar = () => {
                         ) : (
                           <Link
                             to={item.path}
-                            className={`block px-4 py-3 rounded-lg transition-all duration-200 hover:bg-white/10 ${
-                              isActive(item.path)
-                                ? 'text-yellow-300 bg-yellow-300/10'
-                                : 'text-white'
-                            }`}
+                            className={`block px-4 py-3 rounded-lg transition-all duration-200 hover:bg-white/10 ${isActive(item.path)
+                              ? 'text-yellow-300 bg-yellow-300/10'
+                              : 'text-white'
+                              }`}
                             onClick={() => setMobileMenuOpen(false)}
                           >
                             <span className="font-medium">{item.name}</span>
@@ -423,7 +408,7 @@ const Navbar = () => {
                     ))}
                   </ul>
                 </div>
-                
+
                 {/* Footer */}
                 <div className="p-6 border-t border-white/20">
                   <div className="text-center">

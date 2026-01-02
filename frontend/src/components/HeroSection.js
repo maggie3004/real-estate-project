@@ -68,7 +68,7 @@ const HeroSection = () => {
       const img = new Image();
       img.src = firstImageUrl;
     }
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Keyboard navigation support
   React.useEffect(() => {
@@ -252,7 +252,7 @@ const HeroSection = () => {
       <div className="hero-swiper-pagination absolute bottom-2 sm:bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-1 sm:space-x-2 z-30"></div>
 
       {/* Hero Carousel Styles */}
-      <style jsx global>{`
+      <style>{`
         .hero-section {
           width: 100% !important;
           aspect-ratio: 3 / 2 !important;

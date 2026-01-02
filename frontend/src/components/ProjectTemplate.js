@@ -275,25 +275,25 @@ const ProjectTemplate = ({
                 className="block cursor-pointer hover:scale-105 transition-transform duration-200"
                 title="View MahaRERA Project Details"
               >
-                <div className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm rounded-lg p-2 sm:p-2.5 shadow-lg border border-white/20 flex flex-col items-center gap-1.5 w-[120px] sm:w-[130px] hover:shadow-xl transition-shadow">
+                <div className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm rounded-md p-1 sm:p-1.5 shadow-lg border border-white/20 flex flex-col items-center gap-0.5 w-[85px] sm:w-[95px] hover:shadow-xl transition-shadow">
                   {/* QR Code - Top (Larger for scanning) */}
                   <img
                     src={reraQr}
                     alt="MahaRERA QR Code"
-                    className="w-20 h-20 sm:w-24 sm:h-24 object-contain"
+                    className="w-14 h-14 sm:w-16 sm:h-16 object-contain"
                   />
 
                   {/* Logo and RERA Number - Bottom */}
-                  <div className="flex items-center gap-1.5 w-full">
+                  <div className="flex items-center gap-0.5 w-full px-0.5">
                     {/* MahaRERA Logo */}
                     <img
                       src="/assets/maharera-logo.png"
                       alt="MahaRERA"
-                      className="w-5 h-5 sm:w-6 sm:h-6 object-contain flex-shrink-0"
+                      className="w-3 h-3 sm:w-4 sm:h-4 object-contain flex-shrink-0"
                     />
 
                     {/* RERA Number */}
-                    <div className="text-[7px] sm:text-[8px] text-gray-700 dark:text-gray-200 font-mono leading-tight break-all flex-1">
+                    <div className="text-[5px] sm:text-[6px] text-gray-700 dark:text-gray-200 font-mono leading-tight break-all flex-1">
                       {reraNumber}
                     </div>
                   </div>
@@ -455,24 +455,24 @@ const ProjectTemplate = ({
 
             {/* Floor Plan Tabs */}
             <div className="flex justify-center gap-2 mb-6 flex-wrap">
-  {floorPlans.map((plan, idx) => (
-    <button
-      key={idx}
-      onClick={() => setActiveFloorIdx(idx)}
-      className={`px-3 py-2 rounded-lg 
+              {floorPlans.map((plan, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveFloorIdx(idx)}
+                  className={`px-3 py-2 rounded-lg 
         text-[11px] md:text-sm 
         font-semibold leading-tight text-center
         border transition-all duration-300
         ${activeFloorIdx === idx
-          ? 'bg-amber-700 text-white border-amber-700 shadow-md'
-          : 'bg-white dark:bg-gray-900 text-[#181818] dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-amber-700'
-        }`}
-        
-    >
-      {plan.label}
-    </button>
-  ))}
-</div>
+                      ? 'bg-amber-700 text-white border-amber-700 shadow-md'
+                      : 'bg-white dark:bg-gray-900 text-[#181818] dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-amber-700'
+                    }`}
+
+                >
+                  {plan.label}
+                </button>
+              ))}
+            </div>
 
 
             {/* Floor Plan Image - White Container */}
@@ -564,54 +564,67 @@ const ProjectTemplate = ({
       {isOngoingVariant && (
         <section className="w-full py-16 md:py-20 bg-white dark:bg-black/50">
           <div className="max-w-7xl mx-auto px-4">
-            {/* Section Title */}
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-amber-900 dark:text-amber-100 mb-4 text-center">
               Connectivity
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-amber-700 to-amber-600 mx-auto mb-12"></div>
 
+            {/* Connectivity Description Lines */}
+            {connectivityData?.description && (
+              <div className="max-w-4xl mx-auto mb-12">
+                <ul className="space-y-3">
+                  {connectivityData.description.map((line, index) => (
+                    <li key={index} className="flex items-center justify-center gap-3">
+                      <span className="text-amber-700 dark:text-amber-400 mt-1 flex-shrink-0">•</span>
+                      <p className="text-amber-900 dark:text-amber-100 text-base md:text-lg leading-relaxed text-center" dangerouslySetInnerHTML={{ __html: line }} />
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
             {/* Connectivity Points - Icon Grid */}
-{connectivityData?.points && (
-  <div className="grid grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-8 max-w-5xl mx-auto text-center">
+            {connectivityData?.points && (
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 md:gap-8 lg:gap-10 max-w-6xl mx-auto place-items-center">
 
 
-    {connectivityData.points.map((point, index) => {
-      const Icon = point.icon;
+                {connectivityData.points.map((point, index) => {
+                  const Icon = point.icon;
 
-      return (
-        <div key={index} className="flex flex-col items-center">
+                  return (
+                    <div key={index} className="flex flex-col items-center justify-start text-center w-full">
 
-          {/* Icon Circle */}
-          <div
-            className="w-12 h-12 rounded-full 
+                      {/* Icon Circle */}
+                      <div
+                        className="w-14 h-14 md:w-16 md:h-16 rounded-full 
                        bg-amber-700 text-white 
                        flex items-center justify-center 
                        mb-3"
-          >
-            {Icon && <Icon className="text-lg" />}
-          </div>
+                      >
+                        {Icon && <Icon className="text-xl md:text-2xl" />}
+                      </div>
 
-          {/* Label */}
-          <div className="text-sm font-semibold text-amber-900 dark:text-amber-100 leading-snug">
-            {point.label}
-          </div>
+                      {/* Label */}
+                      <div className="text-xs md:text-sm font-semibold text-amber-900 dark:text-amber-100 leading-tight mb-1 px-1">
+                        {point.label}
+                      </div>
 
-          {/* Time */}
-          <div className="text-xs text-amber-700 dark:text-amber-300 mt-1">
-            {point.time}
-          </div>
+                      {/* Time */}
+                      <div className="text-[10px] md:text-xs text-amber-700 dark:text-amber-300">
+                        {point.time}
+                      </div>
 
-        </div>
-      );
-    })}
+                    </div>
+                  );
+                })}
 
-  </div>
-)}
+              </div>
+            )}
 
 
-            
 
-            
+
+
           </div>
         </section>
       )}
@@ -818,7 +831,7 @@ const ProjectTemplate = ({
       {/* No sticky CTA for clean minimal layout */}
 
       {/* Project Hero Carousel Styles */}
-      <style jsx global>{`
+      <style>{`
         .project-hero-section {
           width: 100% !important;
           aspect-ratio: 3 / 2 !important;

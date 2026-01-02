@@ -107,12 +107,12 @@ function App() {
               <NotificationProvider>
                 <FavoritesProvider>
                   <ComparisonProvider>
-                    <Router>
+                    <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
                       <Suspense fallback={<LoadingSpinner />}>
                         <Routes>
                           <Route element={<MainLayout />}>
                             <Route path="/" element={<Home />} />
-                              <Route path="/listings" element={<Listings />} />
+                            <Route path="/listings" element={<Listings />} />
                             <Route path="/property/:id" element={<PropertyDetails />} />
                             <Route path="/add-property" element={<AddProperty />} />
                             <Route path="/login" element={<Login />} />
@@ -142,15 +142,15 @@ function App() {
                           </Route>
                         </Routes>
                       </Suspense>
-                      <ToastContainer 
-                        position="top-right" 
-                        autoClose={3000} 
-                        hideProgressBar={false} 
-                        newestOnTop 
-                        closeOnClick 
-                        pauseOnFocusLoss 
-                        draggable 
-                        pauseOnHover 
+                      <ToastContainer
+                        position="top-right"
+                        autoClose={3000}
+                        hideProgressBar={false}
+                        newestOnTop
+                        closeOnClick
+                        pauseOnFocusLoss
+                        draggable
+                        pauseOnHover
                         theme="light"
                       />
                       {/* Floating Action Buttons are handled by MainLayout */}

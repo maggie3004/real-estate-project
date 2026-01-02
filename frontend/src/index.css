@@ -612,13 +612,13 @@ input:focus, textarea:focus, select:focus {
   will-change: transform;
 }
 
-.navbar-scroll-behavior.hidden {
+.navbar-scroll-behavior.nav-hidden {
   transform: translateY(-100%);
 }
 
 /* Ensure smooth transitions for navbar visibility */
 .navbar-scroll-behavior,
-.navbar-scroll-behavior.hidden {
+.navbar-scroll-behavior.nav-hidden {
   transition: transform 0.3s ease-in-out;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
@@ -629,7 +629,7 @@ input:focus, textarea:focus, select:focus {
   transform: translateZ(0) translateY(0);
 }
 
-.navbar-scroll-behavior.hidden {
+.navbar-scroll-behavior.nav-hidden {
   transform: translateZ(0) translateY(-100%);
 }
 

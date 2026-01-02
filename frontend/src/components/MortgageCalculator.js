@@ -17,13 +17,13 @@ const MortgageCalculator = () => {
     const principal = loanAmount - downPayment;
     const monthlyRate = interestRate / 100 / 12;
     const numberOfPayments = loanTerm * 12;
-    
+
     if (monthlyRate === 0) return principal / numberOfPayments;
-    
-    const monthlyPayment = principal * 
-      (monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments)) / 
+
+    const monthlyPayment = principal *
+      (monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments)) /
       (Math.pow(1 + monthlyRate, numberOfPayments) - 1);
-    
+
     return monthlyPayment;
   };
 
@@ -41,13 +41,13 @@ const MortgageCalculator = () => {
     const maxMonthlyPayment = availableIncome * 0.4; // 40% rule
     const monthlyRate = interestRate / 100 / 12;
     const numberOfPayments = loanTerm * 12;
-    
+
     if (monthlyRate === 0) return maxMonthlyPayment * numberOfPayments;
-    
-    const maxLoanAmount = maxMonthlyPayment * 
-      (Math.pow(1 + monthlyRate, numberOfPayments) - 1) / 
+
+    const maxLoanAmount = maxMonthlyPayment *
+      (Math.pow(1 + monthlyRate, numberOfPayments) - 1) /
       (monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments));
-    
+
     return maxLoanAmount;
   };
 
@@ -56,15 +56,15 @@ const MortgageCalculator = () => {
     const monthlyRate = interestRate / 100 / 12;
     const numberOfPayments = loanTerm * 12;
     const monthlyPayment = calculateMonthlyPayment();
-    
+
     let balance = principal;
     const schedule = [];
-    
+
     for (let month = 1; month <= Math.min(numberOfPayments, 60); month++) { // Show first 5 years
       const interestPayment = balance * monthlyRate;
       const principalPayment = monthlyPayment - interestPayment;
       balance -= principalPayment;
-      
+
       schedule.push({
         month,
         payment: monthlyPayment,
@@ -73,7 +73,7 @@ const MortgageCalculator = () => {
         balance: Math.max(0, balance)
       });
     }
-    
+
     return schedule;
   };
 
@@ -225,7 +225,7 @@ const MortgageCalculator = () => {
               <FaInfoCircle className="w-5 h-5 mr-2 text-amber-500" />
               Affordability Calculator
             </h3>
-            
+
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -239,7 +239,7 @@ const MortgageCalculator = () => {
                   placeholder="150000"
                 />
               </div>
-              
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   Monthly Expenses
@@ -267,7 +267,7 @@ const MortgageCalculator = () => {
               <h3 className="text-sm font-medium opacity-90">Monthly Payment</h3>
               <p className="text-2xl font-bold mt-1">{formatCurrency(monthlyPayment)}</p>
             </motion.div>
-            
+
             <motion.div
               whileHover={{ scale: 1.02 }}
               className="bg-gradient-to-br from-gray-600 to-gray-700 text-white p-6 rounded-xl"
@@ -373,7 +373,7 @@ const MortgageCalculator = () => {
         )}
       </AnimatePresence>
 
-      <style jsx>{`
+      <style>{`
         .slider::-webkit-slider-thumb {
           appearance: none;
           height: 20px;

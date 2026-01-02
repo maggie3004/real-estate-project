@@ -9,9 +9,9 @@ import { MdMeetingRoom, MdElevator } from 'react-icons/md';
 import { BiCctv } from 'react-icons/bi';
 import { GiWaterDrop } from 'react-icons/gi';
 import { FaTint } from 'react-icons/fa';
-import { 
-  FaGraduationCap, FaStore,FaHospital, FaHotel, FaRoad,
-  FaShoppingBag
+import {
+  FaGraduationCap, FaStore, FaHotel, FaRoad,
+  FaShoppingBag, FaIndustry
 } from 'react-icons/fa';
 
 const ShreeGaneshHeights = () => {
@@ -67,8 +67,8 @@ const ShreeGaneshHeights = () => {
     directionsUrl: "https://www.google.com/maps/place/Pathardi-Gaulane+Rd,+Pathardi+Gaon,+Pathardi+Phata,+Nashik,+Maharashtra+422010/@19.9359159,73.7657432,17z/data=!3m1!4b1!4m6!3m5!1s0x3bdd94b956e6b583:0x79a966a73cb5dbbd!8m2!3d19.9359159!4d73.7657432!16s%2Fg%2F11c2v5y9_w",
     connectivityData: {
       description: [
-        "Strategically situated on Gaulane Road with amazing connectivity to the Mumbai-Agra National Highway.",
-        "Walking distance from Pathardi's booming commercial hub, featuring all national and international brand outlets."
+        "Strategically situated on <strong>Gaulane Road</strong> with amazing connectivity to the <strong>Mumbai-Agra National Highway</strong>.",
+        "Walking distance from <strong>Pathardi's booming commercial hub</strong>, featuring all national and international brand outlets."
       ],
       points: [
         { label: "International Schools & Colleges", time: "5 mins", icon: FaGraduationCap },
@@ -76,8 +76,9 @@ const ShreeGaneshHeights = () => {
         { label: "Mumbai-Agra National Highway", time: "3 mins", icon: FaRoad },
         { label: "D-Mart", time: "5 mins", icon: FaStore },
         { label: "Business Hotels", time: "4 mins", icon: FaHotel },
+        { label: "Ambad MIDC", time: "10 mins", icon: FaIndustry },
       ]
-      
+
     }
   };
 
