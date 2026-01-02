@@ -572,7 +572,8 @@ const ProjectTemplate = ({
 
             {/* Connectivity Points - Icon Grid */}
 {connectivityData?.points && (
-  <div className="grid grid-cols-2 gap-y-10 gap-x-6 max-w-md mx-auto text-center">
+  <div className="grid grid-cols-2 md:grid-cols-3 gap-y-10 gap-x-8 max-w-5xl mx-auto text-center">
+
 
     {connectivityData.points.map((point, index) => {
       const Icon = point.icon;
