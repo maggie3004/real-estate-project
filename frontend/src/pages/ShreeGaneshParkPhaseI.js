@@ -8,7 +8,15 @@ import sgpWingC1BHK from '../assets/shree-ganesh-park/gallery/Wing C 1BHK.jpg';
 import sgpWingC2BHK from '../assets/shree-ganesh-park/gallery/Wing C 2BHK.jpg';
 import sgpBrochure from '../assets/shree-ganesh-park/Shree Ganesh Park E- Brochure.pdf';
 import ProjectTemplate from '../components/ProjectTemplate';
-import { FaSolarPanel, FaGlassCheers } from 'react-icons/fa';
+
+import {
+  FaSolarPanel,
+  FaGlassCheers,
+  FaRoad,
+  FaBuilding,
+  FaHospital,
+  FaShoppingBag
+} from 'react-icons/fa';
 import { MdMeetingRoom, MdSelfImprovement, MdElevator } from 'react-icons/md';
 import { BiCctv } from 'react-icons/bi';
 import { GiWaterDrop } from 'react-icons/gi';
@@ -46,9 +54,9 @@ const ShreeGaneshParkPhaseI = () => {
     progressStage: 1,
     locationChips: ["Railway 15 min", "Hospital 10 min", "School 6 min"],
     floorPlans: [
-      { label: "Wing A 1 BHK", src: sgpWingA1BHK },
+      { label: "Wing A & B 1 BHK", src: sgpWingA1BHK },
       { label: "Wing C 1 BHK", src: sgpWingC1BHK },
-      { label: "Wing A 2 BHK", src: sgpWingA2BHK },
+      { label: "Wing A & B 2 BHK", src: sgpWingA2BHK },
       { label: "Wing C 2 BHK", src: sgpWingC2BHK }
     ],
     downloads: [
@@ -64,7 +72,24 @@ const ShreeGaneshParkPhaseI = () => {
       { label: "Finishing", caption: "Paint & interiors", image: sgpAView }
     ],
     mapUrl: "https://maps.app.goo.gl/6X9DkrFsd58nzQFT9",
-    directionsUrl: "https://maps.app.goo.gl/6X9DkrFsd58nzQFT9"
+    directionsUrl: "https://maps.app.goo.gl/6X9DkrFsd58nzQFT9",
+
+    
+    connectivityData: {
+      description: [
+        "Strategically located near Datta Mandir Chowk, offering excellent connectivity.",
+        "Quick access to Trimbakeshwar Road ensuring smooth travel to key city areas.",
+        "Well-connected location leading to nearby residential and commercial hubs."
+      ],
+      points: [
+        { label: "Bus Stop & CBS", time: "3 mins / 13 mins", icon: FaRoad },
+        { label: "Satpur Ambad MIDC", time: "6 mins", icon: FaBuilding },
+        { label: "Market", time: "5 mins", icon: FaShoppingBag },
+        { label: "Trimbak & Mumbai Highway", time: "7 mins", icon: FaRoad },
+        { label: "Hospitals & Schools", time: "6 mins", icon: FaHospital },
+        { label: "City Centre Mall", time: "10 mins", icon: FaShoppingBag }
+      ]
+    }
   };
 
   useEffect(() => {

@@ -454,20 +454,26 @@ const ProjectTemplate = ({
             </div>
 
             {/* Floor Plan Tabs */}
-            <div className="flex justify-center gap-3 mb-6">
-              {floorPlans.map((plan, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setActiveFloorIdx(idx)}
-                  className={`px-6 py-3 rounded-lg text-sm md:text-base font-semibold border-2 transition-all duration-300 ${activeFloorIdx === idx
-                    ? 'bg-amber-700 text-white border-amber-700 shadow-lg'
-                    : 'bg-white dark:bg-gray-900 text-[#181818] dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-amber-700'
-                    }`}
-                >
-                  {plan.label}
-                </button>
-              ))}
-            </div>
+            <div className="flex justify-center gap-2 mb-6 flex-wrap">
+  {floorPlans.map((plan, idx) => (
+    <button
+      key={idx}
+      onClick={() => setActiveFloorIdx(idx)}
+      className={`px-3 py-2 rounded-lg 
+        text-[11px] md:text-sm 
+        font-semibold leading-tight text-center
+        border transition-all duration-300
+        ${activeFloorIdx === idx
+          ? 'bg-amber-700 text-white border-amber-700 shadow-md'
+          : 'bg-white dark:bg-gray-900 text-[#181818] dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-amber-700'
+        }`}
+        
+    >
+      {plan.label}
+    </button>
+  ))}
+</div>
+
 
             {/* Floor Plan Image - White Container */}
             <div className="relative rounded-xl overflow-hidden bg-white dark:bg-gray-900 shadow-xl flex items-center justify-center aspect-[4/3] w-full max-w-2xl mx-auto">
