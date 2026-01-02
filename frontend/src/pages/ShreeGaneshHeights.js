@@ -9,6 +9,10 @@ import { MdMeetingRoom, MdElevator } from 'react-icons/md';
 import { BiCctv } from 'react-icons/bi';
 import { GiWaterDrop } from 'react-icons/gi';
 import { FaTint } from 'react-icons/fa';
+import { 
+  FaGraduationCap, FaStore,FaHospital, FaHotel, FaRoad,
+  FaShoppingBag
+} from 'react-icons/fa';
 
 const ShreeGaneshHeights = () => {
   const projectData = {
@@ -67,12 +71,13 @@ const ShreeGaneshHeights = () => {
         "Walking distance from Pathardi's booming commercial hub, featuring all national and international brand outlets."
       ],
       points: [
-        { label: "International Schools & Colleges", time: "5 mins" },
-        { label: "Commercial Market", time: "5 mins" },
-        { label: "Mumbai-Agra National Highway", time: "3 mins" },
-        { label: "D-Mart", time: "5 mins" },
-        { label: "Business Hotels", time: "4 mins" }
+        { label: "International Schools & Colleges", time: "5 mins", icon: FaGraduationCap },
+        { label: "Commercial Market", time: "5 mins", icon: FaShoppingBag },
+        { label: "Mumbai-Agra National Highway", time: "3 mins", icon: FaRoad },
+        { label: "D-Mart", time: "5 mins", icon: FaStore },
+        { label: "Business Hotels", time: "4 mins", icon: FaHotel },
       ]
+      
     }
   };
 
