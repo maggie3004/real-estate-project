@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  FaMapMarkerAlt, FaSearch, FaFilter, FaList, FaMap, 
+import {
+  FaMapMarkerAlt, FaSearch, FaFilter, FaList, FaMap,
   FaHome, FaBuilding, FaCar, FaGraduationCap, FaHospital,
   FaShoppingBag, FaUtensils, FaTree, FaWifi,
   FaTimes, FaLocationArrow
@@ -65,7 +65,7 @@ const MapView = () => {
   const filteredProperties = properties.filter(property => {
     // Search query
     if (searchQuery && !property.title.toLowerCase().includes(searchQuery.toLowerCase()) &&
-        !property.location.toLowerCase().includes(searchQuery.toLowerCase())) {
+      !property.location.toLowerCase().includes(searchQuery.toLowerCase())) {
       return false;
     }
 
@@ -93,7 +93,7 @@ const MapView = () => {
     // Amenities
     if (filters.amenities.length > 0) {
       const propertyAmenities = property.amenities || [];
-      const hasAllAmenities = filters.amenities.every(amenity => 
+      const hasAllAmenities = filters.amenities.every(amenity =>
         propertyAmenities.some(prop => prop.toLowerCase().includes(amenity))
       );
       if (!hasAllAmenities) return false;
@@ -135,9 +135,10 @@ const MapView = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
+          // eslint-disable-next-line no-unused-vars
           const { latitude, longitude } = position.coords;
           // TODO: Center map on current location when map integration is implemented
-          console.log('Current location:', { latitude, longitude });
+          // console.log('Current location:', { latitude, longitude });
         },
         (error) => {
           console.error('Error getting location:', error);
@@ -177,9 +178,8 @@ const MapView = () => {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setShowFilters(!showFilters)}
-                className={`p-3 rounded-lg transition-colors ${
-                  showFilters ? 'bg-amber-500 text-white' : 'bg-gray-100 hover:bg-gray-200 text-gray-600'
-                }`}
+                className={`p-3 rounded-lg transition-colors ${showFilters ? 'bg-amber-500 text-white' : 'bg-gray-100 hover:bg-gray-200 text-gray-600'
+                  }`}
               >
                 <FaFilter className="w-5 h-5" />
               </motion.button>
@@ -188,9 +188,8 @@ const MapView = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setViewMode('map')}
-                  className={`p-2 rounded-md transition-colors ${
-                    viewMode === 'map' ? 'bg-white shadow-sm' : 'text-gray-600'
-                  }`}
+                  className={`p-2 rounded-md transition-colors ${viewMode === 'map' ? 'bg-white shadow-sm' : 'text-gray-600'
+                    }`}
                 >
                   <FaMap className="w-4 h-4" />
                 </motion.button>
@@ -198,9 +197,8 @@ const MapView = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setViewMode('list')}
-                  className={`p-2 rounded-md transition-colors ${
-                    viewMode === 'list' ? 'bg-white shadow-sm' : 'text-gray-600'
-                  }`}
+                  className={`p-2 rounded-md transition-colors ${viewMode === 'list' ? 'bg-white shadow-sm' : 'text-gray-600'
+                    }`}
                 >
                   <FaList className="w-4 h-4" />
                 </motion.button>
@@ -223,7 +221,7 @@ const MapView = () => {
                   className="bg-white rounded-2xl shadow-lg p-6 mb-6"
                 >
                   <h3 className="text-lg font-semibold text-gray-900 mb-4">Filters</h3>
-                  
+
                   {/* Search */}
                   <div className="mb-6">
                     <label className="block text-sm font-medium text-gray-700 mb-2">Search</label>
@@ -384,7 +382,7 @@ const MapView = () => {
                       <p className="text-sm text-gray-500">Google Maps integration with property markers</p>
                     </div>
                   </div>
-                  
+
                   {/* Property Markers (simulated) */}
                   {filteredProperties.slice(0, 5).map((property, index) => (
                     <motion.div
@@ -474,13 +472,13 @@ const MapView = () => {
                     <FaTimes className="w-5 h-5 text-gray-600" />
                   </button>
                 </div>
-                
+
                 <img
                   src={selectedProperty.images[0]}
                   alt={selectedProperty.title}
                   className="w-full h-48 object-cover rounded-lg mb-4"
                 />
-                
+
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   <div className="text-center p-3 bg-gray-50 rounded-lg">
                     <p className="text-sm text-gray-600">Price</p>
@@ -491,9 +489,9 @@ const MapView = () => {
                     <p className="text-lg font-bold text-gray-900">{selectedProperty.area} sq ft</p>
                   </div>
                 </div>
-                
+
                 <p className="text-gray-700 mb-4">{selectedProperty.description}</p>
-                
+
                 <div className="flex space-x-3">
                   <motion.button
                     whileHover={{ scale: 1.02 }}

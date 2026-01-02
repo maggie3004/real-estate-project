@@ -376,8 +376,8 @@ const Milestones = () => {
                   key={index}
                   onClick={() => setCurrentIndex(index)}
                   className={`carousel-dot w-2 h-2 rounded-full ${index === currentIndex
-                      ? 'bg-yellow-500 active'
-                      : 'bg-white/50 hover:bg-white/70 dark:bg-gray-300/50 dark:hover:bg-gray-200/70'
+                    ? 'bg-yellow-500 active'
+                    : 'bg-white/50 hover:bg-white/70 dark:bg-gray-300/50 dark:hover:bg-gray-200/70'
                     }`}
                 />
               ))}
@@ -767,7 +767,7 @@ const Milestones = () => {
                   viewport={{ once: true }}
                   className="text-3xl font-bold text-orange-500"
                 >
-                  50+
+                  25+
                 </motion.div>
                 <div className="text-sm text-gray-600 dark:text-gray-400">Projects Delivered</div>
               </div>
@@ -874,8 +874,8 @@ const Milestones = () => {
                     transition={{ duration: 0.2 }}
                   >
                     <span className={`px-4 py-2 rounded-full text-sm font-semibold shadow-lg ${project.status === 'Completed'
-                        ? 'bg-green-500 text-white'
-                        : 'bg-gold text-white'
+                      ? 'bg-green-500 text-white'
+                      : 'bg-gold text-white'
                       }`}>
                       {project.status}
                     </span>
@@ -1213,72 +1213,7 @@ const Milestones = () => {
         </motion.div>
 
 
-        {/* Contact CTA Section - Original Theme with Creative Elements */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
-          whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mt-32 text-center"
-        >
-          <div className="relative bg-gradient-to-r from-amber-700 to-gold rounded-2xl p-12 text-white overflow-hidden">
-            {/* Animated Decorative Elements */}
-            <motion.div
-              className="absolute top-6 right-6 w-24 h-24 bg-white/10 rounded-lg transform rotate-12 opacity-30"
-              animate={{
-                rotate: [12, 15, 12],
-                scale: [1, 1.1, 1]
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            ></motion.div>
-            <motion.div
-              className="absolute bottom-6 left-6 w-16 h-16 bg-white/10 rounded-lg transform -rotate-12 opacity-20"
-              animate={{
-                rotate: [-12, -15, -12],
-                scale: [1, 1.2, 1]
-              }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: 1
-              }}
-            ></motion.div>
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-white/5 rounded-full blur-3xl"></div>
 
-            {/* Floating Particles */}
-            <div className="absolute inset-0 pointer-events-none">
-              {[...Array(8)].map((_, particleIndex) => (
-                <motion.div
-                  key={particleIndex}
-                  className="absolute w-1 h-1 bg-white/40 rounded-full"
-                  style={{
-                    left: `${Math.random() * 100}%`,
-                    top: `${Math.random() * 100}%`,
-                  }}
-                  animate={{
-                    y: [0, -30, 0],
-                    opacity: [0.2, 0.8, 0.2],
-                    scale: [1, 1.5, 1]
-                  }}
-                  transition={{
-                    duration: 4 + Math.random() * 2,
-                    repeat: Infinity,
-                    delay: particleIndex * 0.3,
-                    ease: "easeInOut"
-                  }}
-                />
-              ))}
-            </div>
-
-
-          </div>
-        </motion.div>
       </div>
 
       {/* Project Modal */}

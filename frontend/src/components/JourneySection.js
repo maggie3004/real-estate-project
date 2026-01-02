@@ -143,14 +143,14 @@ const JourneySection = () => {
 
       {/* Enhanced Background Pattern */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-primary-500 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-20 left-10 w-32 h-32 bg-amber-500 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 right-10 w-40 h-40 bg-gold rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-primary-300 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-amber-300 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
 
         {/* Floating Particles */}
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary-400 rounded-full animate-bounce" style={{ animationDuration: '3s' }}></div>
+        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-amber-400 rounded-full animate-bounce" style={{ animationDuration: '3s' }}></div>
         <div className="absolute top-3/4 right-1/4 w-1.5 h-1.5 bg-gold rounded-full animate-bounce" style={{ animationDuration: '4s', animationDelay: '1s' }}></div>
-        <div className="absolute top-1/2 right-1/3 w-1 h-1 bg-primary-500 rounded-full animate-bounce" style={{ animationDuration: '5s', animationDelay: '2s' }}></div>
+        <div className="absolute top-1/2 right-1/3 w-1 h-1 bg-amber-500 rounded-full animate-bounce" style={{ animationDuration: '5s', animationDelay: '2s' }}></div>
         <div className="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-gold rounded-full animate-bounce" style={{ animationDuration: '3.5s', animationDelay: '0.5s' }}></div>
       </div>
 
@@ -224,7 +224,7 @@ const JourneySection = () => {
 
                 {/* Mobile Year Badge */}
                 <div className="lg:hidden mb-8 text-center">
-                  <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-600 to-gold text-white rounded-full font-bold text-lg shadow-lg">
+                  <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-600 to-gold text-white rounded-full font-bold text-lg shadow-lg">
                     <FaCalendarAlt className="w-5 h-5" />
                     {yearData.year}
                   </div>
@@ -241,7 +241,7 @@ const JourneySection = () => {
                   >
                     <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 group relative">
                       {/* Gradient Overlay on Hover */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
 
                       {/* Project Images Grid - Enhanced */}
                       <div className={`grid gap-1 p-2 relative z-20 ${yearData.achievements.length === 1 ? 'grid-cols-1' :
@@ -255,7 +255,7 @@ const JourneySection = () => {
                               alt={achievement.title}
                               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                               onError={(e) => { e.target.src = '/hero-building.jpg'; }}
-                              loading="lazy"
+                              loading={yearIndex === 0 && achievementIndex === 0 ? "eager" : "lazy"}
                             />
                             {/* Image Overlay Effect */}
                             <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover/image:opacity-100 transition-opacity duration-300"></div>

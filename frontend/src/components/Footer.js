@@ -5,7 +5,7 @@ const logoUrl = '/assets/logo.png';
 
 function Footer() {
   return (
-    <footer className="w-full bg-black text-gray-100 pt-8 pb-5 px-4 mt-8 border-t border-gray-800">
+    <footer className="w-full bg-black text-gray-100 pt-8 pb-5 px-4 border-t border-gray-800">
       <div className="max-w-7xl mx-auto">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-4">

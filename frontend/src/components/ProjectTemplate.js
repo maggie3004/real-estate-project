@@ -350,6 +350,8 @@ const ProjectTemplate = ({
                       : '/family_photo.jpg'}
                   alt="Happy Family"
                   className="w-full h-auto rounded-2xl shadow-2xl object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
 
@@ -673,6 +675,8 @@ const ProjectTemplate = ({
                       src={currentItem}
                       alt={`${projectName} Slide ${currentImageIndex + 1}`}
                       className="w-full h-full object-cover bg-gray-900"
+                      loading="lazy"
+                      decoding="async"
                       initial={{ opacity: 0, scale: 1.05 }}
                       animate={{ opacity: 1, scale: 1 }}
                       exit={{ opacity: 0, scale: 0.95 }}
@@ -715,8 +719,8 @@ const ProjectTemplate = ({
                       <button
                         key={idx}
                         onClick={() => setCurrentImageIndex(idx)}
-                        className={`w-2 h-2 rounded-full transition-all ${idx === currentImageIndex
-                          ? 'bg-white w-4'
+                        className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all ${idx === currentImageIndex
+                          ? 'bg-white w-3 sm:w-4'
                           : 'bg-white/50 hover:bg-white/80'
                           }`}
                         aria-label={`Go to slide ${idx + 1}`}
@@ -749,7 +753,7 @@ const ProjectTemplate = ({
                           </div>
                         </div>
                       ) : (
-                        <img src={img} alt={`Thumb ${idx + 1}`} className="w-full h-full object-cover" />
+                        <img src={img} alt={`Thumb ${idx + 1}`} className="w-full h-full object-cover" loading="lazy" decoding="async" />
                       )}
                     </button>
                   );
@@ -878,13 +882,21 @@ const ProjectTemplate = ({
         }
         
         .project-hero-pagination-bullet {
-          width: 12px;
-          height: 12px;
+          width: 6px;
+          height: 6px;
           background: rgba(255, 255, 255, 0.5);
           opacity: 1;
-          border-radius: 6px;
+          border-radius: 3px;
           transition: all 0.3s ease;
           cursor: pointer;
+        }
+
+        @media (min-width: 640px) {
+          .project-hero-pagination-bullet {
+            width: 10px;
+            height: 10px;
+            border-radius: 5px;
+          }
         }
         
         .project-hero-pagination-bullet-active {

@@ -96,8 +96,8 @@ const ProjectsSection = () => {
           <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6 flex items-center justify-center gap-3">
             <span>Our</span>
 
-            <span className="px-4 py-1 text-base md:text-lg font-semibold
-    rounded-full text-white
+            <span className="px-4 py-1 text-lg md:text-xl lg:text-2xl font-semibold
+    rounded-full text-white whitespace-nowrap
     bg-gradient-to-r from-amber-500 to-amber-700
     dark:from-amber-600 dark:to-yellow-400 shadow-md">
               Exclusive Projects

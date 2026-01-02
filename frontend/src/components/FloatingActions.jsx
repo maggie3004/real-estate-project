@@ -5,40 +5,40 @@ const FloatingActions = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const actions = [
-    { 
-      icon: <FaWhatsapp size={20} />, 
-      label: 'WhatsApp', 
-      color: 'bg-green-500 hover:bg-green-600', 
-      href: 'https://wa.me/+917030502111' 
+    {
+      icon: <FaWhatsapp size={20} />,
+      label: 'WhatsApp',
+      color: 'bg-green-500 hover:bg-green-600',
+      href: 'https://wa.me/+917030502111'
     },
-    { 
-      icon: <FaPhone size={20} />, 
-      label: 'Call', 
-      color: 'bg-gray-600 hover:bg-gray-700', 
+    {
+      icon: <FaPhone size={20} />,
+      label: 'Call',
+      color: 'bg-gray-600 hover:bg-gray-700',
       href: 'tel:+917030502111'
     },
-    { 
-      icon: <FaDownload size={20} />, 
-      label: 'Download', 
-      color: 'bg-purple-500 hover:bg-purple-600', 
+    {
+      icon: <FaDownload size={20} />,
+      label: 'Download',
+      color: 'bg-purple-500 hover:bg-purple-600',
       onClick: () => window.open('/Shree Ganesh Park E- Brochure.pdf', '_blank')
     },
-    { 
-      icon: <FaEnvelope size={20} />, 
-      label: 'Enquiry', 
-      color: 'bg-red-500 hover:bg-red-600', 
+    {
+      icon: <FaEnvelope size={20} />,
+      label: 'Enquiry',
+      color: 'bg-red-500 hover:bg-red-600',
       onClick: () => {
         // You can implement your enquiry form logic here
-        console.log('Enquiry clicked');
+        // console.log('Enquiry clicked');
       }
     },
-    { 
-      icon: <FaComments size={20} />, 
-      label: 'Chatbot', 
-      color: 'bg-yellow-500 hover:bg-yellow-600', 
+    {
+      icon: <FaComments size={20} />,
+      label: 'Chatbot',
+      color: 'bg-yellow-500 hover:bg-yellow-600',
       onClick: () => {
         // You can implement your chatbot toggle logic here
-        console.log('Chatbot clicked');
+        // console.log('Chatbot clicked');
       }
     },
   ];

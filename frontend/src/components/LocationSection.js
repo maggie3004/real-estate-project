@@ -28,7 +28,7 @@ const LocationSection = () => {
           whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
           viewport={{ once: true, amount: 0.8 }}
           transition={{ duration: 0.8, delay: 0.1, ease: 'easeOut' }}
-          className="text-4xl font-playfair font-bold text-black dark:text-white mb-8 text-center"
+          className="text-4xl font-playfair font-bold text-amber-700 dark:text-white mb-8 text-center"
         >
           Office Location
         </motion.h2>
@@ -56,7 +56,7 @@ const LocationSection = () => {
               <div className="w-full h-full flex items-center justify-center bg-gray-200 dark:bg-gray-800 text-gray-500">Map not available</div>
             )}
           </motion.div>
-            <motion.div
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
             whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
