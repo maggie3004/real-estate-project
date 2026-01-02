@@ -564,106 +564,47 @@ const ProjectTemplate = ({
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-amber-700 to-amber-600 mx-auto mb-12"></div>
 
-            {/* Connectivity Points - List */}
-            <div className="max-w-3xl mx-auto mb-12">
-              {connectivityData?.description ? (
-                connectivityData.description.map((desc, idx) => (
-                  <p key={idx} className="text-amber-900 dark:text-amber-100 text-base md:text-lg leading-relaxed mb-4">
-                    {desc}
-                  </p>
-                ))
-              ) : (
-                <>
-                  <p className="text-amber-900 dark:text-amber-100 text-base md:text-lg leading-relaxed mb-4">
-                    <span className="font-bold">1. Strategically located near <span className="text-amber-800 dark:text-amber-200">Datta Mandir Chowk</span></span>, offering excellent connectivity.
-                  </p>
-                  <p className="text-amber-900 dark:text-amber-100 text-base md:text-lg leading-relaxed mb-4">
-                    <span className="font-bold">2. Quick access to <span className="text-amber-800 dark:text-amber-200">Trimbakeshwar Road</span></span> ensuring smooth travel to key city areas.
-                  </p>
-                  <p className="text-amber-900 dark:text-amber-100 text-base md:text-lg leading-relaxed">
-                    <span className="font-bold">3. Well-connectivity leading to nearby <span className="text-amber-800 dark:text-amber-200">residential and commercial hubs</span></span>.
-                  </p>
-                </>
-              )}
-            </div>
+            {/* Connectivity Points - Icon Grid */}
+{connectivityData?.points && (
+  <div className="grid grid-cols-2 gap-y-10 gap-x-6 max-w-md mx-auto text-center">
 
-            {/* Connectivity Icons Grid - 6 items */}
-            {connectivityData?.points ? (
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-4">
-                {connectivityData.points.map((point, idx) => (
-                  <div key={idx} className="flex flex-col items-center text-center">
-                    <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-3">
-                      <span className="text-white text-2xl md:text-3xl font-bold">{idx + 1}</span>
-                    </div>
-                    <p className="text-amber-900 dark:text-amber-100 font-semibold text-xs md:text-sm">{point.label}<br />{point.time}</p>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 md:gap-4">
-                {/* Bus Stop */}
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-3">
-                    <svg className="w-8 h-8 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-                      <path d="M18 18.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM9 18.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
-                      <path d="M20 8h-3V4c0-.55-.45-1-1-1H8c-.55 0-1 .45-1 1v4H4c-.55 0-1 .45-1 1v7c0 .55.45 1 1 1h1v2c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-2h8v2c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-2h1c.55 0 1-.45 1-1v-7c0-.55-.45-1-1-1zm-8-3h4v3h-4V5zm.5 9c-.83 0-1.5-.67-1.5-1.5S10.67 10 11.5 10s1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm6 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" />
-                    </svg>
-                  </div>
-                  <p className="text-amber-900 dark:text-amber-100 font-semibold text-xs md:text-sm">Bus stop 3 mins<br />& CBS in 13 min</p>
-                </div>
+    {connectivityData.points.map((point, index) => {
+      const Icon = point.icon;
 
-                {/* Factory/MIDC */}
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-3">
-                    <svg className="w-8 h-8 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-                      <path d="M13 13h-2v8h2zm4-8h2V3h-2zm4 4h2V7h-2zM6 13H4v8h2zm6-11h2V2h-2zm6 11h2v8h-2z" />
-                      <path d="M12 6l-5 4v9h10v-9z" />
-                    </svg>
-                  </div>
-                  <p className="text-amber-900 dark:text-amber-100 font-semibold text-xs md:text-sm">Satpur Ambad<br />MIDC 6 mins</p>
-                </div>
+      return (
+        <div key={index} className="flex flex-col items-center">
 
-                {/* Market */}
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-3">
-                    <svg className="w-8 h-8 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-                      <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z" />
-                    </svg>
-                  </div>
-                  <p className="text-amber-900 dark:text-amber-100 font-semibold text-xs md:text-sm">Market<br />5 mins</p>
-                </div>
+          {/* Icon Circle */}
+          <div
+            className="w-12 h-12 rounded-full 
+                       bg-amber-700 text-white 
+                       flex items-center justify-center 
+                       mb-3"
+          >
+            {Icon && <Icon className="text-lg" />}
+          </div>
 
-                {/* Highway */}
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-3">
-                    <svg className="w-8 h-8 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-                      <path d="M18.92 6.01C18.72 5.42 18.16 5 17.5 5h-11c-.66 0-1.22.42-1.42 1.01L3 12v8c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h12v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-8l-2.08-5.99zM6.5 16c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm11 0c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zM5 12l1.5-4.5h11L19 12H5z" />
-                    </svg>
-                  </div>
-                  <p className="text-amber-900 dark:text-amber-100 font-semibold text-xs md:text-sm">Trimbak & Mumbai<br />highway 7 mins</p>
-                </div>
+          {/* Label */}
+          <div className="text-sm font-semibold text-amber-900 dark:text-amber-100 leading-snug">
+            {point.label}
+          </div>
 
-                {/* Hospitals & Schools */}
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-3">
-                    <svg className="w-8 h-8 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-                      <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 9.5h3.5V16h-3.5zm0-5H16V11h-2.5zM9 16H5.5v-3.5H9zm0-5H5.5V7.5H9z" />
-                    </svg>
-                  </div>
-                  <p className="text-amber-900 dark:text-amber-100 font-semibold text-xs md:text-sm">Hospitals &<br />Schools 6 mins</p>
-                </div>
+          {/* Time */}
+          <div className="text-xs text-amber-700 dark:text-amber-300 mt-1">
+            {point.time}
+          </div>
 
-                {/* City Centre Mall */}
-                <div className="flex flex-col items-center text-center">
-                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-3">
-                    <svg className="w-8 h-8 md:w-10 md:h-10 text-white" fill="currentColor" viewBox="0 0 24 24" strokeWidth="1.5">
-                      <path d="M15 21H9v-5.25c0-.41.34-.75.75-.75h4.5c.41 0 .75.34.75.75V21zm6-8.5H3l.29-2.04c.15-1.03.79-1.92 1.75-2.38V4h14v4.08c.96.46 1.6 1.35 1.75 2.38l.29 2.04zM20 4h-1V3c0-.55-.45-1-1-1h-2c-.55 0-1 .45-1 1v1H9V3c0-.55-.45-1-1-1H6c-.55 0-1 .45-1 1v1H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2z" />
-                    </svg>
-                  </div>
-                  <p className="text-amber-900 dark:text-amber-100 font-semibold text-xs md:text-sm">City centre<br />mall 10 mins</p>
-                </div>
-              </div>
-            )}
+        </div>
+      );
+    })}
+
+  </div>
+)}
+
+
+            
+
+            
           </div>
         </section>
       )}
