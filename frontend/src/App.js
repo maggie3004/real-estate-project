@@ -38,6 +38,8 @@ const ShreeGaneshHeights = lazy(() => import('./pages/ShreeGaneshHeights'));
 const ShreeGaneshSrushti = lazy(() => import('./pages/ShreeGaneshSrushti'));
 const ShreeGaneshAvenue = lazy(() => import('./pages/ShreeGaneshAvenue'));
 const ModakeshwarApartment = lazy(() => import('./pages/ModakeshwarApartment'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const TermsOfService = lazy(() => import('./pages/TermsOfService'));
 
 // Redirect component for navigating to Milestones with hash
 const RedirectToMilestones = ({ projectId }) => {
@@ -145,6 +147,8 @@ function App() {
                             <Route path="/VinayakApartment" element={<RedirectToMilestones projectId="2" />} />
                             <Route path="/ShreeGaneshAvenue" element={<ShreeGaneshAvenue />} />
                             <Route path="/ModakeshwarApartment" element={<ModakeshwarApartment />} />
+                            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                            <Route path="/terms-of-service" element={<TermsOfService />} />
                           </Route>
                         </Routes>
                       </Suspense>

@@ -130,11 +130,9 @@ function Footer() {
               &copy; {new Date().getFullYear()} Ganesh Yeole Builders and Developers. All rights reserved.
             </div>
             <div className="flex items-center gap-4 text-xs text-gray-400">
-              <button className="hover:text-gold transition-colors duration-200">Privacy Policy</button>
+              <a href="/privacy-policy" className="hover:text-gold transition-colors duration-200">Privacy Policy</a>
               <span>|</span>
-              <button className="hover:text-gold transition-colors duration-200">Terms of Service</button>
-              <span>|</span>
-              <button className="hover:text-gold transition-colors duration-200">Disclaimer</button>
+              <a href="/terms-of-service" className="hover:text-gold transition-colors duration-200">Terms of Service</a>
             </div>
             <div className="flex items-center gap-3">
               {/* Contact buttons removed per request */}

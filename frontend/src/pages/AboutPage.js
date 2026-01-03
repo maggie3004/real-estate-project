@@ -8,7 +8,7 @@ const AboutPage = () => (
       <title>About Us - Ganesh Yeole Builders and Developers | Vision, Mission & Leadership</title>
       <meta name="description" content="Learn about Ganesh Yeole Builders and Developers - our vision, mission, leadership team, and commitment to building quality homes in Nashik, Mumbai, and Pune." />
     </Helmet>
-    
+
     <div className="max-w-7xl mx-auto px-4 pt-12 sm:pt-16 md:pt-20">
       {/* Hero Section */}
       <div className="text-center mb-16">
@@ -27,7 +27,7 @@ const AboutPage = () => (
           {/* Company Story */}
           <div className="mb-12">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#E53935] mb-6 flex items-center justify-center gap-2 sm:gap-3 text-center">
-            <FaBuilding className="text-gold" />
+              <FaBuilding className="text-gold" />
               Our Story
             </h2>
             <div className="space-y-6 text-lg leading-relaxed text-justify">
@@ -45,7 +45,7 @@ const AboutPage = () => (
 
           {/* Mission & Vision */}
           <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-8 sm:mb-12">
-            <div className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800/20 dark:to-gray-700/20 p-8 rounded-2xl">
+            <div className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800/20 dark:to-gray-700/20 p-8 rounded-2xl order-2 md:order-1">
               <div className="flex items-center gap-3 mb-4">
                 <FaHeart className="text-gray-600 dark:text-gray-400 text-2xl" />
                 <h3 className="text-2xl font-bold text-gray-600 dark:text-gray-400">Our Mission</h3>
@@ -54,7 +54,7 @@ const AboutPage = () => (
                 To build more than just houses—we create homes that offer comfort, convenience, and a superior lifestyle. By maintaining a balance between affordability and premium quality, we ensure that every homeowner receives a complete, well-equipped living space that meets their aspirations.
               </p>
             </div>
-            <div className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 p-8 rounded-2xl">
+            <div className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 p-8 rounded-2xl order-1 md:order-2">
               <div className="flex items-center gap-3 mb-4">
                 <FaAward className="text-green-600 text-2xl" />
                 <h3 className="text-2xl font-bold text-green-600">Our Vision</h3>
@@ -117,8 +117,8 @@ const AboutPage = () => (
           <div className="sticky top-24">
             <div className="bg-gradient-to-br from-gold-50 to-gold-100 dark:from-gold-900/20 dark:to-gold-800/20 rounded-2xl p-8 text-center border-2 border-gold/20">
               <div className="mb-6">
-                <img 
-                  src="/assets/ganesh-yeole.jpg" 
+                <img
+                  src="/assets/ganesh-yeole.jpg"
                   alt="Mr. Ganesh V. Yeole"
                   className="w-48 h-48 rounded-full object-cover border-4 border-gold shadow-lg mx-auto"
                 />

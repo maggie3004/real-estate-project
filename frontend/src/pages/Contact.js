@@ -25,7 +25,7 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     setTimeout(() => {
       alert('Thank you for your message! We will get back to you soon.');
@@ -174,12 +174,12 @@ const Contact = () => {
             <div className="text-center lg:text-left">
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-amber-700 dark:text-amber-600 mb-4 sm:mb-6">Contact Information</h2>
               <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base mb-6 lg:mb-8">Get in touch with us through any of these channels</p>
-              <div className="space-y-6 lg:space-y-8">
+              <div className="space-y-6 lg:space-y-8 max-w-sm mx-auto lg:mx-0">
                 <div className="flex items-center lg:items-start gap-4 lg:gap-6">
                   <div className="w-14 h-14 bg-amber-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
                     <FaPhone className="text-white text-xl" />
                   </div>
-                  <div className="text-center lg:text-left">
+                  <div className="text-left">
                     <h3 className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-white mb-2">Call Us</h3>
                     <p className="text-gray-600 dark:text-gray-300 text-base sm:text-lg font-medium">+91 70305 02111</p>
                   </div>
@@ -188,7 +188,7 @@ const Contact = () => {
                   <div className="w-14 h-14 bg-amber-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
                     <FaEnvelope className="text-white text-xl" />
                   </div>
-                  <div className="text-center lg:text-left">
+                  <div className="text-left">
                     <h3 className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-white mb-2">Email Us</h3>
                     <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base break-all">ganeshyeolebuilders@gmail.com</p>
                   </div>
@@ -197,7 +197,7 @@ const Contact = () => {
                   <div className="w-14 h-14 bg-amber-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
                     <FaWhatsapp className="text-white text-xl" />
                   </div>
-                  <div className="text-center lg:text-left">
+                  <div className="text-left">
                     <h3 className="text-lg sm:text-xl font-semibold text-gray-800 dark:text-white mb-2">WhatsApp</h3>
                     <p className="text-gray-600 dark:text-gray-300 text-base sm:text-lg font-medium">+91 70305 02111</p>
                     <p className="text-sm text-gray-500 dark:text-gray-400">Quick responses for urgent inquiries</p>
@@ -273,7 +273,7 @@ const Contact = () => {
               Schedule a site visit or consultation with our experts today
             </p>
             <div className="flex justify-center">
-              <button 
+              <button
                 onClick={() => {
                   navigate('/');
                   setTimeout(() => {
