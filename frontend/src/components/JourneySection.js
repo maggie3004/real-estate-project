@@ -12,7 +12,7 @@ const milestones = [
       {
         title: "Shree Ganesh Park A & B Wing",
         description: "Premium residential development with multiple wings",
-        image: "/assets/shree-ganesh-park/gallery/b-view.png",
+        image: "/assets/shree-ganesh-park/gallery/ter-view.jpg",
         icon: FaBuilding,
         category: "Completed Project",
         stats: "104 Units"
@@ -25,7 +25,7 @@ const milestones = [
       {
         title: "Sai Shraddha Apartment",
         description: "Beautifully designed residential complex on College Road",
-        image: "/assets/sai-shraddha-apartment/gallery/front.jpg",
+        image: "/assets/sai shraddha.jpg",
         icon: FaBuilding,
         category: "Completed Project",
         stats: "24 Units"
@@ -33,7 +33,7 @@ const milestones = [
       {
         title: "Vinayak Apartment",
         description: "Modern living spaces with amenities",
-        image: "/assets/shree-ganesh-heights/gallery/front.jpeg",
+        image: "/assets/vinayak apartment.jpg",
         icon: FaBuilding,
         category: "Completed Project",
         stats: "10 Units"
@@ -46,7 +46,7 @@ const milestones = [
       {
         title: "Shree Ganesh Avenue",
         description: "Quality construction with modern design",
-        image: "/assets/shree-ganesh-srushti/gallery/front.jpg",
+        image: "/assets/shree ganesh avenue.jpg",
         icon: FaBuilding,
         category: "Completed Project",
         stats: "45 Units"
@@ -72,7 +72,7 @@ const milestones = [
       {
         title: "Modkeshwar Apartment",
         description: "Quality homes with modern amenities",
-        image: "/assets/shree-ganesh-park/gallery/ter-view.jpg",
+        image: "/assets/modkeshwar apt.jpg",
         icon: FaBuilding,
         category: "Completed Project",
         stats: "16 Units"

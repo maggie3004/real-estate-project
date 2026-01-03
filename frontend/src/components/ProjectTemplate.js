@@ -645,7 +645,7 @@ const ProjectTemplate = ({
 
           {/* Main Image Slider */}
           {hasImages && (
-            <div className="rounded-xl overflow-hidden shadow-2xl mb-4 relative aspect-[16/9] max-h-[600px] w-full group">
+            <div className="rounded-xl overflow-hidden shadow-2xl mb-4 relative aspect-[16/9] max-h-[600px] w-full group bg-amber-50/50 dark:bg-gray-900/30">
               <AnimatePresence mode="wait">
                 {(() => {
                   const currentItem = galleryImages[currentImageIndex];
@@ -653,19 +653,18 @@ const ProjectTemplate = ({
 
                   if (isVideo) {
                     return (
-                      <motion.video
+                      <video
                         key={currentImageIndex}
                         src={currentItem}
                         controls
-                        autoPlay={isPlaying}
-                        muted
+                        controlsList="nodownload"
                         playsInline
-                        preload="auto"
-                        className="w-full h-full object-cover bg-gray-900"
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                      />
+                        preload="metadata"
+                        className="w-full h-full object-contain"
+                        style={{ backgroundColor: 'transparent' }}
+                      >
+                        Your browser does not support the video tag.
+                      </video>
                     );
                   }
 
@@ -674,7 +673,7 @@ const ProjectTemplate = ({
                       key={currentImageIndex}
                       src={currentItem}
                       alt={`${projectName} Slide ${currentImageIndex + 1}`}
-                      className="w-full h-full object-cover bg-gray-900"
+                      className="w-full h-full object-contain"
                       loading="lazy"
                       decoding="async"
                       initial={{ opacity: 0, scale: 1.05 }}
@@ -714,14 +713,14 @@ const ProjectTemplate = ({
                   >
                     {isPlaying ? <FaPause size={16} /> : <FaPlay size={16} />}
                   </button>
-                  <div className="flex gap-2">
+                  <div className="flex gap-1.5">
                     {galleryImages.map((_, idx) => (
                       <button
                         key={idx}
                         onClick={() => setCurrentImageIndex(idx)}
-                        className={`w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full transition-all ${idx === currentImageIndex
-                          ? 'bg-white w-3 sm:w-4'
-                          : 'bg-white/50 hover:bg-white/80'
+                        className={`w-1.5 h-1.5 rounded-full transition-all ${idx === currentImageIndex
+                          ? 'bg-amber-500 w-4'
+                          : 'bg-white/60 hover:bg-white/90'
                           }`}
                         aria-label={`Go to slide ${idx + 1}`}
                       />

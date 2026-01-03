@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, memo, useRef } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Helmet } from 'react-helmet';
 import { FaBuilding, FaUsers, FaArrowRight, FaTimes, FaChevronLeft, FaChevronRight, FaMapMarkerAlt, FaCalendarAlt, FaStar, FaTrophy } from 'react-icons/fa';
 import { motion, useAnimation, AnimatePresence } from 'framer-motion';
@@ -18,10 +18,10 @@ const completedProjects = [
     units: "24 Units",
     area: "Prime Location",
     images: [
+      "/assets/sai shraddha.jpg",
       "/assets/sai-shraddha-apartment/gallery/front.jpg",
       "/assets/sai-shraddha-apartment/gallery/top-view.jpg",
       "/assets/sai-shraddha-apartment/gallery/parking.jpg",
-      "/assets/sai-shraddha-apartment/gallery/floor-plan.jpg",
       "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-40.jpg"
     ],
     amenities: ["Garden", "Security", "Parking", "Power Backup", "Water Supply", "Maintenance"],
@@ -40,11 +40,8 @@ const completedProjects = [
     units: "10 Units",
     area: "Prime Location",
     images: [
-      "/assets/sai-shraddha-apartment/gallery/front.jpg",
-      "/assets/sai-shraddha-apartment/gallery/top-view.jpg",
-      "/assets/sai-shraddha-apartment/gallery/parking.jpg",
-      "/assets/sai-shraddha-apartment/gallery/floor-plan.jpg",
-      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-40.jpg"
+      "/assets/vinayak apartment.jpg",
+      "/assets/vinayak apartment.jpg"
     ],
     amenities: ["Commercial Space", "Security", "Parking", "Power Backup", "Water Supply", "Maintenance"],
     features: ["2BHK Apartments", "Premium Construction", "Excellent Ventilation", "Prime Location", "Modern Design"],
@@ -62,11 +59,10 @@ const completedProjects = [
     units: "45 Units",
     area: "Prime Location",
     images: [
+      "/assets/shree ganesh avenue.jpg",
       "/assets/sai-shraddha-apartment/gallery/front.jpg",
       "/assets/sai-shraddha-apartment/gallery/top-view.jpg",
-      "/assets/sai-shraddha-apartment/gallery/parking.jpg",
-      "/assets/sai-shraddha-apartment/gallery/floor-plan.jpg",
-      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-40.jpg"
+      "/assets/sai-shraddha-apartment/gallery/parking.jpg"
     ],
     amenities: ["Security", "Parking", "Power Backup", "Water Supply", "Maintenance", "Garden"],
     features: ["1BHK & 2BHK Apartments", "Affordable Pricing", "Quality Construction", "Smart Design", "Seamless Connectivity"],
@@ -84,11 +80,10 @@ const completedProjects = [
     units: "25 Units",
     area: "Well-Connected Area",
     images: [
+      "/assets/sai shraddha.jpg",
       "/assets/sai-shraddha-apartment/gallery/front.jpg",
       "/assets/sai-shraddha-apartment/gallery/top-view.jpg",
-      "/assets/sai-shraddha-apartment/gallery/parking.jpg",
-      "/assets/sai-shraddha-apartment/gallery/floor-plan.jpg",
-      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-40.jpg"
+      "/assets/sai-shraddha-apartment/gallery/parking.jpg"
     ],
     amenities: ["Security", "Parking", "Power Backup", "Water Supply", "Maintenance", "Garden"],
     features: ["Quality Construction", "Modern Design", "Good Connectivity", "Family-Friendly", "Well-Planned Layout"],
@@ -106,11 +101,10 @@ const completedProjects = [
     units: "16 Units",
     area: "Prime Location",
     images: [
+      "/assets/modkeshwar apt.jpg",
       "/assets/sai-shraddha-apartment/gallery/front.jpg",
       "/assets/sai-shraddha-apartment/gallery/top-view.jpg",
-      "/assets/sai-shraddha-apartment/gallery/parking.jpg",
-      "/assets/sai-shraddha-apartment/gallery/floor-plan.jpg",
-      "/assets/sai-shraddha-apartment/gallery/PHOTO-2023-05-31-18-16-40.jpg"
+      "/assets/sai-shraddha-apartment/gallery/parking.jpg"
     ],
     amenities: ["Security", "Parking", "Power Backup", "Water Supply", "Maintenance", "Garden"],
     features: ["Exclusive Apartments", "Modern Elevation", "Premium Construction", "Privacy", "Sophisticated Design"],
@@ -195,277 +189,8 @@ const Milestones = () => {
     };
   }, []);
 
-  // Generate descriptive labels for images based on filename patterns
-  const getImageLabel = (imagePath, index) => {
-    const filename = imagePath.split('/').pop().toLowerCase();
 
-    // Check for specific patterns in filename
-    if (filename.includes('a-view')) return 'Front View';
-    if (filename.includes('b-view')) return 'Side View';
-    if (filename.includes('night-view')) return 'Night View';
-    if (filename.includes('ter-view')) return 'Terrace View';
-    if (filename.includes('wing a 1bhk')) return 'Wing A - 1BHK Layout';
-    if (filename.includes('wing a 2bhk')) return 'Wing A - 2BHK Layout';
-    if (filename.includes('wing c 1bhk')) return 'Wing C - 1BHK Layout';
-    if (filename.includes('wing c 2bhk')) return 'Wing C - 2BHK Layout';
-    if (filename.includes('photo-2023-05-31-18-16-23')) return 'Main Building View';
-    if (filename.includes('photo-2023-05-31-18-16-24')) return 'Exterior View';
-    if (filename.includes('photo-2023-05-31-18-16-38')) return 'Building Facade';
-    if (filename.includes('photo-2023-05-31-18-16-39')) return 'Side View';
-    if (filename.includes('photo-2023-05-31-18-16-40')) return 'Garden View';
-    if (filename.includes('photo-2024-07-24-14-16-26')) return 'Main Building View';
-    if (filename.includes('photo-2024-08-07-21-22-54')) return 'Exterior View';
-    if (filename.includes('photo-2024-08-18-16-26-07')) return 'Building Facade';
-    if (filename.includes('photo-2025-07-07-11-48-19')) return 'Main Building View';
-    if (filename.includes('photo-2025-07-23-11-14-21')) return 'Exterior View';
-    if (filename.includes('photo-2025-07-30-13-43-35')) return 'Building Facade';
-    if (filename.includes('whatsapp image 2025-07-22 at 13.17.15 (1)')) return 'Project Progress - Phase 1';
-    if (filename.includes('whatsapp image 2025-07-22 at 13.17.15 (2)')) return 'Project Progress - Phase 2';
-    if (filename.includes('whatsapp image 2025-07-22 at 13.17.15.jpeg')) return 'Project Progress - Phase 3';
-    if (filename.includes('whatsapp image 2025-07-22 at 13.17.16')) return 'Project Progress - Phase 4';
 
-    // Default labels based on position for unknown files
-    const defaultLabels = [
-      'Main View', 'Exterior View', 'Building Facade', 'Side View',
-      'Top View', 'Garden View', 'Parking Area', 'Common Area'
-    ];
-
-    return defaultLabels[index] || `View ${index + 1}`;
-  };
-
-  // Memoized Image Carousel with Lightbox functionality
-  const ProjectImageCarousel = memo(function ProjectImageCarousel({ images, title }) {
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [isLightboxOpen, setIsLightboxOpen] = useState(false);
-
-    const handleNext = useCallback(() => {
-      setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
-    }, [images.length]);
-
-    const handlePrev = useCallback(() => {
-      setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
-    }, [images.length]);
-
-    const openLightbox = useCallback((index) => {
-      setCurrentIndex(index);
-      setIsLightboxOpen(true);
-      document.body.style.overflow = 'hidden';
-    }, []);
-
-    const closeLightbox = useCallback(() => {
-      setIsLightboxOpen(false);
-      document.body.style.overflow = 'unset';
-    }, []);
-
-    // Keyboard navigation
-    useEffect(() => {
-      const onKey = (e) => {
-        if (isLightboxOpen) {
-          if (e.key === 'Escape') closeLightbox();
-          if (e.key === 'ArrowLeft') handlePrev();
-          if (e.key === 'ArrowRight') handleNext();
-        } else {
-          if (e.key === 'ArrowLeft') handlePrev();
-          if (e.key === 'ArrowRight') handleNext();
-        }
-      };
-      document.addEventListener('keydown', onKey);
-      return () => document.removeEventListener('keydown', onKey);
-    }, [handlePrev, handleNext, isLightboxOpen, closeLightbox]);
-
-    // Cleanup on unmount
-    useEffect(() => {
-      return () => {
-        document.body.style.overflow = 'unset';
-      };
-    }, []);
-
-    return (
-      <>
-        <div className="space-y-4">
-          <div className="relative overflow-hidden rounded-xl">
-            <motion.div
-              className="flex h-80 w-full carousel-sliding-container"
-              animate={{ x: `-${currentIndex * 100}%` }}
-              transition={{
-                type: "spring",
-                stiffness: 300,
-                damping: 30,
-                duration: 0.6
-              }}
-            >
-              {images.map((image, index) => (
-                <motion.div
-                  key={index}
-                  className="w-full flex-shrink-0 h-full carousel-slide"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <img
-                    src={image}
-                    alt={`${title} - ${index + 1}`}
-                    className="w-full h-full object-cover carousel-image cursor-pointer hover:scale-105 transition-transform duration-300"
-                    onError={(e) => { e.target.src = '/hero-building.jpg'; }}
-                    onClick={() => openLightbox(index)}
-                  />
-                </motion.div>
-              ))}
-            </motion.div>
-
-            {images.length > 1 && (
-              <>
-                <motion.button
-                  onClick={handlePrev}
-                  className="carousel-button absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-2 rounded-full shadow-lg z-30 backdrop-blur-sm"
-                  whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.3)' }}
-                  whileTap={{ scale: 0.95 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <FaChevronLeft className="w-4 h-4" />
-                </motion.button>
-                <motion.button
-                  onClick={handleNext}
-                  className="carousel-button absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/20 hover:bg-white/30 dark:bg-gray-800/30 dark:hover:bg-gray-700/50 text-white dark:text-gray-200 p-2 rounded-full shadow-lg z-30 backdrop-blur-sm"
-                  whileHover={{ scale: 1.1, backgroundColor: 'rgba(255,255,255,0.3)' }}
-                  whileTap={{ scale: 0.95 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <FaChevronRight className="w-4 h-4" />
-                </motion.button>
-              </>
-            )}
-
-            {images.length > 1 && (
-              <div className="absolute top-4 right-4 bg-black bg-opacity-50 text-white px-3 py-1 rounded-full text-sm font-medium">
-                {currentIndex + 1} / {images.length}
-              </div>
-            )}
-
-            {/* Click to expand overlay */}
-            <div
-              className="absolute inset-0 bg-black/0 hover:bg-black/10 transition-colors duration-300 cursor-pointer flex items-center justify-center"
-              onClick={() => openLightbox(currentIndex)}
-            >
-              <motion.div
-                className="opacity-0 hover:opacity-100 transition-opacity duration-300 bg-white/90 rounded-full p-3"
-                whileHover={{ scale: 1.1 }}
-              >
-                <FaArrowRight className="w-6 h-6 text-amber-600 rotate-45" />
-              </motion.div>
-            </div>
-          </div>
-
-          {/* Image Label */}
-          <div className="text-center">
-            <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
-              {getImageLabel(images[currentIndex], currentIndex)}
-            </h4>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              {title} - Image {currentIndex + 1} of {images.length}
-            </p>
-            <p className="text-xs text-gray-500 dark:text-gray-500 mt-1">
-              Click image to expand
-            </p>
-          </div>
-
-          {images.length > 1 && (
-            <div className="flex space-x-2 justify-center">
-              {images.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentIndex(index)}
-                  className={`carousel-dot w-2 h-2 rounded-full ${index === currentIndex
-                    ? 'bg-yellow-500 active'
-                    : 'bg-white/50 hover:bg-white/70 dark:bg-gray-300/50 dark:hover:bg-gray-200/70'
-                    }`}
-                />
-              ))}
-            </div>
-          )}
-        </div>
-
-        {/* Lightbox Modal */}
-        <AnimatePresence>
-          {isLightboxOpen && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/95 flex items-center justify-center z-[60] p-4 sm:p-6"
-              onClick={closeLightbox}
-            >
-              {/* Close Button */}
-              <motion.button
-                onClick={closeLightbox}
-                className="absolute top-6 right-6 z-10 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full backdrop-blur-sm"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-              >
-                <FaTimes className="w-6 h-6" />
-              </motion.button>
-
-              {/* Image Container */}
-              <div className="relative max-w-5xl max-h-[80vh] w-full mx-auto" onClick={(e) => e.stopPropagation()}>
-                <motion.img
-                  key={currentIndex}
-                  src={images[currentIndex]}
-                  alt={`${title} - ${currentIndex + 1}`}
-                  className="w-full h-full object-contain rounded-lg shadow-2xl max-w-full max-h-full"
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  exit={{ scale: 0.8, opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                  onError={(e) => { e.target.src = '/hero-building.jpg'; }}
-                  style={{
-                    maxWidth: '100%',
-                    maxHeight: '80vh',
-                    width: 'auto',
-                    height: 'auto'
-                  }}
-                />
-
-                {/* Navigation Buttons */}
-                {images.length > 1 && (
-                  <>
-                    <motion.button
-                      onClick={handlePrev}
-                      className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 sm:p-4 rounded-full backdrop-blur-sm"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                    >
-                      <FaChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
-                    </motion.button>
-                    <motion.button
-                      onClick={handleNext}
-                      className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 sm:p-4 rounded-full backdrop-blur-sm"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                    >
-                      <FaChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
-                    </motion.button>
-                  </>
-                )}
-
-                {/* Image Counter */}
-                {images.length > 1 && (
-                  <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm">
-                    {currentIndex + 1} / {images.length}
-                  </div>
-                )}
-
-                {/* Image Info */}
-                <div className="absolute bottom-2 sm:bottom-4 left-2 sm:left-4 bg-black/50 text-white px-3 sm:px-4 py-2 rounded-lg backdrop-blur-sm max-w-[calc(100%-4rem)] sm:max-w-none">
-                  <h4 className="font-semibold text-sm sm:text-base">{getImageLabel(images[currentIndex], currentIndex)}</h4>
-                  <p className="text-xs sm:text-sm opacity-90 truncate">{title}</p>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </>
-    );
-  });
 
   // Project Modal Component - Original Theme
   const ProjectModal = ({ project, isOpen, onClose }) => {
@@ -477,14 +202,14 @@ const Milestones = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50 modal-overlay"
+          className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-6 md:p-8 z-50 modal-overlay"
           onClick={onClose}
         >
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
-            className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden w-full max-h-full relative modal-content"
+            className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden w-full max-w-6xl max-h-[90vh] relative modal-content"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header - Original Theme */}
@@ -515,11 +240,15 @@ const Milestones = () => {
             <div className="overflow-y-auto max-h-[calc(90vh-200px)]">
               <div className="p-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                  {/* Image Carousel */}
-                  <ProjectImageCarousel
-                    images={project.images}
-                    title={project.title}
-                  />
+                  {/* Single Project Image */}
+                  <div className="relative">
+                    <img
+                      src={project.images[0]}
+                      alt={project.title}
+                      className="w-full h-80 object-contain bg-gray-50 dark:bg-gray-900 rounded-xl"
+                      onError={(e) => { e.target.src = '/hero-building.jpg'; }}
+                    />
+                  </div>
 
                   {/* Project Details */}
                   <div className="space-y-8">
@@ -785,7 +514,7 @@ const Milestones = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
               whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
               viewport={{ once: true }}
               className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative ${index % 2 === 0 ? 'lg:grid-flow-col' : 'lg:grid-flow-col-dense'
                 }`}

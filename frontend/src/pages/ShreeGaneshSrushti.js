@@ -127,6 +127,8 @@ const ShreeGaneshSrushti = () => {
 
   useEffect(() => {
     document.title = `${projectData.projectName} - Sai Prasad Group`;
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
   }, [projectData.projectName]);
 
   return <ProjectTemplate {...projectData} />;

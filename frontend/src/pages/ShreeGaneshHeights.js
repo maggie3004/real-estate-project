@@ -37,7 +37,11 @@ const ShreeGaneshHeights = () => {
       { icon: <GiWaterDrop />, name: "Rainwater Harvesting" }
     ],
     images: ['/assets/shree-ganesh-heights/gallery/hero.png'], // Only hero image
-    galleryImages: [sghNightFront, sghTopView, '/assets/shree-ganesh-heights/gallery/gallery-video.mp4'], // Gallery images with video
+    galleryImages: [
+      '/assets/shree-ganesh-heights/gallery/gallery-1.jpeg',
+      '/assets/shree-ganesh-heights/gallery/gallery-2.jpeg',
+      '/assets/shree-ganesh-heights/gallery/gallery-video.mp4'
+    ], // Gallery images with video
     brochurePath: sghBrochure,
     reraNumber: "P51600077829",
     reraQr: "/assets/shree-ganesh-heights/gallery/Rera_QR.png",
@@ -85,6 +89,8 @@ const ShreeGaneshHeights = () => {
   useEffect(() => {
     // Update document title
     document.title = `${projectData.projectName} - Sai Prasad Group`;
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
   }, [projectData.projectName]);
 
   return <ProjectTemplate {...projectData} />;

@@ -36,10 +36,16 @@ const ShreeGaneshParkPhaseII = lazy(() => import('./pages/ShreeGaneshParkPhaseII
 const ShreeGaneshParkPhaseI = lazy(() => import('./pages/ShreeGaneshParkPhaseI'));
 const ShreeGaneshHeights = lazy(() => import('./pages/ShreeGaneshHeights'));
 const ShreeGaneshSrushti = lazy(() => import('./pages/ShreeGaneshSrushti'));
-const SaiShraddhaApartment = lazy(() => import('./pages/SaiShraddhaApartment'));
-const VinayakApartment = lazy(() => import('./pages/VinayakApartment'));
 const ShreeGaneshAvenue = lazy(() => import('./pages/ShreeGaneshAvenue'));
 const ModakeshwarApartment = lazy(() => import('./pages/ModakeshwarApartment'));
+
+// Redirect component for navigating to Milestones with hash
+const RedirectToMilestones = ({ projectId }) => {
+  React.useEffect(() => {
+    window.location.href = `/milestones#project-${projectId}`;
+  }, [projectId]);
+  return null;
+};
 
 
 // Loading component
@@ -135,8 +141,8 @@ function App() {
                             <Route path="/ShreeGaneshParkPhaseI" element={<ShreeGaneshParkPhaseI />} />
                             <Route path="/ShreeGaneshHeights" element={<ShreeGaneshHeights />} />
                             <Route path="/ShreeGaneshSrushti" element={<ShreeGaneshSrushti />} />
-                            <Route path="/SaiShraddhaApartment" element={<SaiShraddhaApartment />} />
-                            <Route path="/VinayakApartment" element={<VinayakApartment />} />
+                            <Route path="/SaiShraddhaApartment" element={<RedirectToMilestones projectId="1" />} />
+                            <Route path="/VinayakApartment" element={<RedirectToMilestones projectId="2" />} />
                             <Route path="/ShreeGaneshAvenue" element={<ShreeGaneshAvenue />} />
                             <Route path="/ModakeshwarApartment" element={<ModakeshwarApartment />} />
                           </Route>

@@ -1,6 +1,5 @@
 import React from 'react';
 // Use src/assets images instead of public paths for ongoing projects
-import sghFront from '../assets/shree-ganesh-heights/gallery/front.jpeg';
 import sgpAView from '../assets/shree-ganesh-park/gallery/a-view.jpg';
 import sgsFront from '../assets/shree-ganesh-srushti/gallery/front.jpg';
 import { useNavigate } from 'react-router-dom';
@@ -41,7 +40,7 @@ const projects = [
     name: 'Shree Ganesh Heights',
     location: 'Nashik',
     status: 'Ongoing',
-    image: sghFront,
+    image: '/assets/shree ganesh heights gallery 1.jpeg',
     description: 'Premium residential development with modern amenities and excellent location advantages.',
     type: '1 BHK',
     units: '41 Units',
@@ -52,23 +51,23 @@ const projects = [
     name: 'Sai Shraddha Apartment',
     location: 'College Road, Nashik',
     status: 'Completed',
-    image: '/assets/sai-shraddha-apartment/gallery/front.jpg',
+    image: '/assets/sai shraddha.jpg',
     description: 'A beautifully designed residential complex offering comfortable living with all modern amenities and excellent connectivity.',
     type: '1 & 2 BHK',
     units: '24 Units',
     completionDate: '2024',
-    route: '/SaiShraddhaApartment'
+    route: '/milestones#project-1'
   },
   {
     name: 'Vinayak Apartment',
     location: 'Pathardi Shivar, Nashik',
     status: 'Completed',
-    image: '/assets/vinayak-apartment/gallery/1.jpg',
+    image: '/assets/vinayak apartment.jpg',
     description: 'Experience an elevated lifestyle of sophistication with 1 BHK Happy Homes crafted to enhance your everyday living.',
     type: '1 BHK',
     units: '10 Units',
     completionDate: '2023',
-    route: '/VinayakApartment'
+    route: '/milestones#project-2'
   }
 ];
 
@@ -77,7 +76,17 @@ const ProjectsSection = () => {
   const scrollDirection = useContext(ScrollDirectionContext);
 
   const handleViewDetails = (route) => {
-    navigate(route);
+    if (route.includes('milestones#')) {
+      // For milestones routes, use direct window.location to avoid loading screen
+      window.location.href = route;
+    } else {
+      // For regular project pages, navigate and scroll to top
+      navigate(route);
+      // Scroll to top after navigation
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 100);
+    }
   };
 
   return (
@@ -142,7 +151,7 @@ const ProjectsSection = () => {
                     <img
                       src={project.image}
                       alt={project.name}
-                      className="w-full h-56 object-cover"
+                      className="w-full h-56 object-contain bg-gray-50 dark:bg-gray-900"
                     />
                     <div className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-semibold ${project.status === 'Ongoing'
                       ? 'bg-orange-500 text-white'
