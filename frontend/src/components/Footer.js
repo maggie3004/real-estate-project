@@ -12,7 +12,7 @@ function Footer() {
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <img src={logoUrl} alt="Ganesh Yeole Builders Logo" className="h-12 sm:h-14 w-auto object-contain" />
+              <img src={logoUrl} alt="Ganesh Yeole Builders & Developers Logo" loading="eager" width="200" height="80" className="h-12 sm:h-14 w-auto object-contain" />
               <div className="flex flex-col">
                 <span className="font-bold text-base sm:text-lg tracking-tight text-white">
                   Ganesh Yeole

@@ -8,6 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ThemeProvider } from './context/ThemeContext';
 import { ScrollDirectionProvider } from './context/ScrollDirectionContext';
 import LoadingScreen from './components/LoadingScreen';
+import ScrollToTop from './components/ScrollToTop';
 
 import AboutPage from './pages/AboutPage';
 import MainLayout from './components/MainLayout';
@@ -116,6 +117,7 @@ function App() {
                 <FavoritesProvider>
                   <ComparisonProvider>
                     <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+                      <ScrollToTop />
                       <Suspense fallback={<LoadingSpinner />}>
                         <Routes>
                           <Route element={<MainLayout />}>

@@ -9,17 +9,19 @@ const ProjectCard = ({ project }) => {
 
   return (
     <div className="group relative bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg">
-      
+
       {/* Gallery */}
       <div className="w-full h-48 grid grid-cols-3">
         {gallery.map((src, idx) => (
           <img
             key={idx}
             src={src}
-            alt={`${project?.name || "Project"} image ${idx + 1}`}
-            className={`w-full h-48 object-cover ${
-              idx === 0 ? "col-span-2" : ""
-            }`}
+            alt={`${project?.name || "Residential Project"} - ${idx === 0 ? 'Main view' : `Gallery image ${idx + 1}`} in Nashik by Ganesh Yeole Builders`}
+            loading="lazy"
+            width={idx === 0 ? "800" : "400"}
+            height="600"
+            className={`w-full h-48 object-cover ${idx === 0 ? "col-span-2" : ""
+              }`}
           />
         ))}
       </div>
@@ -83,7 +85,10 @@ const ProjectCard = ({ project }) => {
           {project?.reraQr && (
             <img
               src={project.reraQr}
-              alt="MahaRERA QR"
+              alt={`MahaRERA QR Code for ${project?.name || 'Project'}`}
+              loading="lazy"
+              width="32"
+              height="32"
               className="w-8 h-8 object-contain"
             />
           )}

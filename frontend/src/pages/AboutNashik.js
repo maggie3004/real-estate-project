@@ -91,7 +91,10 @@ const AboutNashik = () => {
         {/* Background Image */}
         <img
           src="/assets/kumbh-mela-nashik.jpg"
-          alt="Nashik Kumbh Mela on Godavari Ghats"
+          alt="Nashik Kumbh Mela 2026-27 - Sacred gathering on Godavari Ghats, Maharashtra"
+          loading="eager"
+          width="1920"
+          height="1080"
           className="w-full h-full object-cover"
           onError={(e) => { e.target.src = '/hero-building.jpg'; }}
         />
@@ -142,7 +145,10 @@ const AboutNashik = () => {
               >
                 <img
                   src={image.src}
-                  alt={image.alt}
+                  alt={`${image.alt} - ${image.description} in Nashik, Maharashtra`}
+                  loading="lazy"
+                  width="600"
+                  height="400"
                   className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -276,7 +282,10 @@ const AboutNashik = () => {
               <div className="relative">
                 <img
                   src="/image data/city_img.jpg"
-                  alt="Nashik City - Real Estate Investment"
+                  alt="Nashik City skyline - Modern infrastructure and real estate investment opportunities in Maharashtra"
+                  loading="lazy"
+                  width="800"
+                  height="600"
                   className="w-full h-64 object-cover rounded-lg shadow-lg"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-lg"></div>

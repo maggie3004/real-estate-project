@@ -22,6 +22,7 @@ const ProjectTemplate = ({
   brochurePath,
   mapUrl,
   directionsUrl,
+  mapEmbed,
   reraNumber,
   reraQr,
   reraUrl,
@@ -59,6 +60,14 @@ const ProjectTemplate = ({
 
   // Convert Google Maps sharing URL to embed URL
   const getEmbedUrl = (url) => {
+    // If mapEmbed is provided, extract the src from it
+    if (mapEmbed) {
+      const srcMatch = mapEmbed.match(/src="([^"]+)"/);
+      if (srcMatch) {
+        return srcMatch[1];
+      }
+    }
+
     if (!url) return '';
 
     // If it's already an embed URL, return it

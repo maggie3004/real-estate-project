@@ -25,7 +25,7 @@ const Navbar = () => {
   const lastScrollY = useRef(0);
   const { theme } = useTheme();
 
-  // Handle scroll effect for navbar with simplified logic
+  // Handle scroll effect for navbar - keep it always visible
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -33,30 +33,16 @@ const Navbar = () => {
       // Update scrolled state for background
       setIsScrolled(currentScrollY > 10);
 
-      // Simple scroll direction detection
-      const isScrollingUp = currentScrollY < lastScrollY.current;
-      const isScrollingDown = currentScrollY > lastScrollY.current;
-      const scrollDifference = Math.abs(currentScrollY - lastScrollY.current);
+      // Always keep navbar visible
+      setIsVisible(true);
 
-      // Handle show/hide based on scroll direction
-      if (mobileMenuOpen || currentScrollY <= 80) {
-        // Always show navbar when mobile menu is open or near top of page (threshold 80px)
-        setIsVisible(true);
-      } else if (isScrollingUp && scrollDifference > 10) {
-        // Scrolling up with 10px sensitivity - show navbar
-        setIsVisible(true);
-      } else if (isScrollingDown && currentScrollY > 150 && scrollDifference > 10) {
-        // Scrolling down past 150px with 10px sensitivity - hide navbar
-        setIsVisible(false);
-      }
-
-      // Update last scroll position immediately
+      // Update last scroll position
       lastScrollY.current = currentScrollY;
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [mobileMenuOpen, location.pathname]);
+  }, [location.pathname]);
 
   // Prevent body scroll when mobile menu is open
   useEffect(() => {
@@ -125,7 +111,7 @@ const Navbar = () => {
       <div className="w-full flex items-center justify-between h-16 sm:h-20 px-4 sm:px-6 lg:px-8">
         {/* Logo and Company Name */}
         <Link to="/" className="flex items-center gap-2 sm:gap-3 min-w-fit hover:opacity-80 transition-opacity" aria-label="Go to homepage">
-          <img src={logoUrl} alt="Ganesh Yeole Builders Logo" className="h-10 sm:h-12 w-auto object-contain transition-all duration-300" />
+          <img src={logoUrl} alt="Ganesh Yeole Builders & Developers Logo" loading="eager" width="150" height="60" className="h-10 sm:h-12 w-auto object-contain transition-all duration-300" />
           <div className="flex flex-col">
             <span className={`text-sm sm:text-base font-bold tracking-tight transition-colors duration-300 ${theme === 'dark' ? 'text-white' : 'text-[#181818]'}`}>
               Ganesh Yeole

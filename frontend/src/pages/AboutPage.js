@@ -119,7 +119,10 @@ const AboutPage = () => (
               <div className="mb-6">
                 <img
                   src="/assets/ganesh-yeole.jpg"
-                  alt="Mr. Ganesh V. Yeole"
+                  alt="Mr. Ganesh V. Yeole - Founder & Managing Director of Ganesh Yeole Builders & Developers, Nashik"
+                  loading="lazy"
+                  width="400"
+                  height="400"
                   className="w-48 h-48 rounded-full object-cover border-4 border-gold shadow-lg mx-auto"
                 />
               </div>

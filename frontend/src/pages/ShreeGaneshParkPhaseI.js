@@ -71,8 +71,9 @@ const ShreeGaneshParkPhaseI = () => {
       { label: "Structure", caption: "Floors cast", image: sgpNightA },
       { label: "Finishing", caption: "Paint & interiors", image: sgpAView }
     ],
-    mapUrl: "https://maps.app.goo.gl/6X9DkrFsd58nzQFT9",
-    directionsUrl: "https://maps.app.goo.gl/6X9DkrFsd58nzQFT9",
+    mapUrl: "https://maps.app.goo.gl/u7vbGndPJpUmxCYz5",
+    directionsUrl: "https://maps.app.goo.gl/u7vbGndPJpUmxCYz5",
+    mapEmbed: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d468.7228575913102!2d73.72289067654522!3d19.975632008527292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdded00535a7531%3A0xe619331c7c163c86!2sShreeGaneshPark!5e0!3m2!1sen!2sin!4v1767520787294!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
 
 
     connectivityData: {

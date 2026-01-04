@@ -348,7 +348,7 @@ const Milestones = () => {
 
 
   return (
-    <section className="min-h-screen pt-24 pb-12 bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 text-[#181818] dark:text-white transition-colors duration-300">
+    <section className="min-h-screen pt-24 pb-12 bg-gradient-to-br from-gray-50 via-white to-gray-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 text-[#181818] dark:text-white transition-colors duration-300 overflow-x-hidden">
       <Helmet>
         <title>Our Journey of Excellence - Ganesh Yeole Builders | Milestones & Achievements</title>
         <meta name="description" content="Explore our journey of excellence through key milestones and achievements. Discover our completed and ongoing projects that have created homes for hundreds of families." />
@@ -368,7 +368,7 @@ const Milestones = () => {
             {/* Animated Background Decorative Elements */}
             <div className="absolute inset-0 flex items-center justify-center">
               <motion.div
-                className="w-96 h-96 bg-gradient-to-br from-gold/10 via-gray-500/10 to-green-500/10 rounded-full blur-3xl"
+                className="w-64 h-64 sm:w-80 sm:h-80 md:w-96 md:h-96 bg-gradient-to-br from-gold/10 via-gray-500/10 to-green-500/10 rounded-full blur-3xl"
                 animate={{
                   scale: [1, 1.1, 1],
                   rotate: [0, 180, 360]
@@ -435,7 +435,7 @@ const Milestones = () => {
               </motion.div>
             </div>
 
-            <h1 className="relative text-5xl md:text-6xl font-bold bg-gradient-to-r from-amber-700 via-gold to-amber-600 bg-clip-text text-transparent mb-8">
+            <h1 className="relative text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-amber-700 via-gold to-amber-600 bg-clip-text text-transparent mb-8 px-4">
               Our Journey of Excellence
             </h1>
 
@@ -448,7 +448,7 @@ const Milestones = () => {
               className="h-1 bg-gradient-to-r from-amber-700 via-gold to-amber-600 mx-auto mb-8 rounded-full"
             ></motion.div>
 
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed px-4">
               Celebrating milestones, achievements, and the trust of <span className="font-bold text-amber-700">500+ families</span> across <span className="font-bold text-gold">20+ years</span> of dedicated service
             </p>
 
@@ -459,7 +459,7 @@ const Milestones = () => {
               whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
               transition={{ duration: 0.8, delay: 1.2 }}
               viewport={{ once: true }}
-              className="mt-12 flex justify-center space-x-12"
+              className="mt-12 grid grid-cols-3 gap-4 sm:gap-8 md:gap-12 max-w-4xl mx-auto"
             >
               <div className="text-center">
                 <motion.div
@@ -468,11 +468,11 @@ const Milestones = () => {
                   whileInView={scrollDirection === 'down' ? { scale: 1 } : false}
                   transition={{ duration: 0.5, delay: 1.5 }}
                   viewport={{ once: true }}
-                  className="text-3xl font-bold text-amber-700"
+                  className="text-2xl sm:text-3xl font-bold text-amber-700"
                 >
                   500+
                 </motion.div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Happy Families</div>
+                <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Happy Families</div>
               </div>
               <div className="text-center">
                 <motion.div
@@ -481,11 +481,11 @@ const Milestones = () => {
                   whileInView={scrollDirection === 'down' ? { scale: 1 } : false}
                   transition={{ duration: 0.5, delay: 1.7 }}
                   viewport={{ once: true }}
-                  className="text-3xl font-bold text-gold"
+                  className="text-2xl sm:text-3xl font-bold text-gold"
                 >
                   20+
                 </motion.div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Years Experience</div>
+                <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Years Experience</div>
               </div>
               <div className="text-center">
                 <motion.div
@@ -494,11 +494,11 @@ const Milestones = () => {
                   whileInView={scrollDirection === 'down' ? { scale: 1 } : false}
                   transition={{ duration: 0.5, delay: 1.9 }}
                   viewport={{ once: true }}
-                  className="text-3xl font-bold text-orange-500"
+                  className="text-2xl sm:text-3xl font-bold text-orange-500"
                 >
                   25+
                 </motion.div>
-                <div className="text-sm text-gray-600 dark:text-gray-400">Projects Delivered</div>
+                <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Projects Delivered</div>
               </div>
             </motion.div>
           </div>
