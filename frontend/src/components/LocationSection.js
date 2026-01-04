@@ -28,7 +28,7 @@ const LocationSection = () => {
           whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
           viewport={{ once: true, amount: 0.8 }}
           transition={{ duration: 0.8, delay: 0.1, ease: 'easeOut' }}
-          className="text-4xl font-playfair font-bold text-amber-700 dark:text-white mb-8 text-center"
+          className="text-3xl md:text-4xl font-bold text-amber-700 dark:text-white mb-8 text-center"
         >
           Office Location
         </motion.h2>

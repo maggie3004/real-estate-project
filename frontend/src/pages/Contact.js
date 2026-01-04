@@ -1,19 +1,27 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaWhatsapp, FaFacebook, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import emailjs from '@emailjs/browser';
+
+// EmailJS Configuration
+// TODO: Replace these with your actual EmailJS credentials after setup
+// Get these from: https://dashboard.emailjs.com/
+const EMAILJS_SERVICE_ID = 'service_ckhnow4';      // e.g., 'service_abc123'
+const EMAILJS_TEMPLATE_ID = 'template_32zcntw';    // e.g., 'template_xyz789'
+const EMAILJS_PUBLIC_KEY = 'HSyaXzE9evj9xOfTD';      // e.g., 'abc123XYZ'
 
 const Contact = () => {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
     subject: '',
+    propertyType: '',
     message: ''
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({ type: '', message: '' });
 
   const handleInputChange = (e) => {
     setFormData({
@@ -25,19 +33,66 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus({ type: '', message: '' });
 
-    // Simulate form submission
-    setTimeout(() => {
-      alert('Thank you for your message! We will get back to you soon.');
+    try {
+      // Prepare template parameters for EmailJS
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email || 'Not provided',
+        phone: formData.phone,
+        subject: formData.subject,
+        property_type: formData.propertyType || 'Not specified',
+        message: formData.message,
+        submission_date: new Date().toLocaleString('en-IN', {
+          timeZone: 'Asia/Kolkata',
+          dateStyle: 'medium',
+          timeStyle: 'short'
+        })
+      };
+
+      // Send email via EmailJS
+      const response = await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
+
+      console.log('Email sent successfully:', response);
+
+      // Show success message
+      setSubmitStatus({
+        type: 'success',
+        message: 'Thank you for your message! We will get back to you soon.'
+      });
+
+      // Reset form
       setFormData({
         name: '',
         email: '',
         phone: '',
         subject: '',
+        propertyType: '',
         message: ''
       });
+
+      // Clear success message after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus({ type: '', message: '' });
+      }, 5000);
+
+    } catch (error) {
+      console.error('Email sending failed:', error);
+
+      // Show error message
+      setSubmitStatus({
+        type: 'error',
+        message: 'Oops! Something went wrong. Please try again or contact us directly at +91 70305 02111'
+      });
+    } finally {
       setIsSubmitting(false);
-    }, 2000);
+    }
   };
 
   const officeLocations = [
@@ -93,25 +148,8 @@ const Contact = () => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
-                    placeholder="Enter your email"
-                  />
-                </div>
-              </div>
-              <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-                <div>
                   <label htmlFor="phone" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                    Phone Number
+                    Phone Number *
                   </label>
                   <input
                     type="tel"
@@ -119,8 +157,25 @@ const Contact = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
+                    required
                     className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
                     placeholder="Enter your phone number"
+                  />
+                </div>
+              </div>
+              <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                <div>
+                  <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                    placeholder="Enter your email (optional)"
                   />
                 </div>
                 <div>
@@ -144,6 +199,32 @@ const Contact = () => {
                   </select>
                 </div>
               </div>
+
+              {/* Property Type Field */}
+              <div>
+                <label htmlFor="propertyType" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                  Property Type
+                </label>
+                <select
+                  id="propertyType"
+                  name="propertyType"
+                  value={formData.propertyType}
+                  onChange={handleInputChange}
+                  className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-gold focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                >
+                  <option value="">Select property type (optional)</option>
+                  <option value="1 BHK">1 BHK</option>
+                  <option value="2 BHK">2 BHK</option>
+                  <option value="3 BHK">3 BHK</option>
+                  <option value="4 BHK">4 BHK</option>
+                  <option value="Plots">Plots</option>
+                  <option value="Shops">Shops</option>
+                  <option value="Offices">Offices</option>
+                  <option value="Farmhouse Land">Farmhouse Land</option>
+                </select>
+              </div>
+
+              {/* Message Field */}
               <div>
                 <label htmlFor="message" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
                   Message *
@@ -159,6 +240,17 @@ const Contact = () => {
                   placeholder="Tell us about your requirements..."
                 />
               </div>
+
+              {/* Status Message */}
+              {submitStatus.message && (
+                <div className={`p-4 rounded-lg ${submitStatus.type === 'success'
+                  ? 'bg-green-50 dark:bg-green-900/20 text-green-800 dark:text-green-200 border border-green-200 dark:border-green-800'
+                  : 'bg-red-50 dark:bg-red-900/20 text-red-800 dark:text-red-200 border border-red-200 dark:border-red-800'
+                  }`}>
+                  <p className="text-sm font-medium">{submitStatus.message}</p>
+                </div>
+              )}
+
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -262,32 +354,6 @@ const Contact = () => {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-
-        {/* Call to Action */}
-        <div className="text-center">
-          <div className="bg-gradient-to-r from-amber-700 to-amber-600 text-white p-8 sm:p-12 rounded-2xl shadow-xl">
-            <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">Ready to Start Your Journey?</h3>
-            <p className="text-lg sm:text-xl mb-6 sm:mb-8 opacity-90 max-w-2xl mx-auto">
-              Schedule a site visit or consultation with our experts today
-            </p>
-            <div className="flex justify-center">
-              <button
-                onClick={() => {
-                  navigate('/');
-                  setTimeout(() => {
-                    const contactSection = document.getElementById('contact');
-                    if (contactSection) {
-                      contactSection.scrollIntoView({ behavior: 'smooth' });
-                    }
-                  }, 100);
-                }}
-                className="bg-white text-amber-700 px-8 py-4 sm:px-12 sm:py-5 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-200 hover:scale-105 shadow-lg text-base sm:text-lg"
-              >
-                Schedule Site Visit
-              </button>
-            </div>
           </div>
         </div>
       </div>
