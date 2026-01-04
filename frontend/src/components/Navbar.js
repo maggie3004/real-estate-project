@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { FaChevronDown, FaChevronRight, FaTimes } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
-import ThemeSwitcher from './ThemeSwitcher';
+// import ThemeSwitcher from './ThemeSwitcher';
 
 const logoUrl = '/assets/logo.png';
 
@@ -219,13 +219,13 @@ const Navbar = () => {
         </ul>
 
         {/* Desktop Theme Switcher */}
-        <div className="hidden lg:flex items-center">
+        {/* <div className="hidden lg:flex items-center">
           <ThemeSwitcher />
-        </div>
+        </div> */}
 
         {/* Mobile Menu Button and Theme Switcher */}
         <div className="flex items-center gap-3 lg:hidden">
-          <ThemeSwitcher />
+          {/* <ThemeSwitcher /> */}
           <button
             className="flex flex-col justify-center items-center w-10 h-10 focus:outline-none focus:ring-2 focus:ring-gold/50 rounded-lg transition-all duration-300"
             aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}

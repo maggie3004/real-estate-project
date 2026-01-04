@@ -170,7 +170,7 @@ const HeroSection = () => {
               <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/50 dark:from-black/30 dark:via-black/40 dark:to-black/60"></div>
 
               {/* Slide-specific content */}
-              <div className="absolute top-16 sm:top-20 md:top-24 lg:top-28 left-4 sm:left-8 md:left-12 lg:left-16 right-4 z-10 max-w-3xl">
+              <div className="absolute top-8 sm:top-10 md:top-12 lg:top-16 left-4 sm:left-8 md:left-12 lg:left-16 right-4 z-10 max-w-3xl">
                 {/* Project Name at Top */}
                 <motion.h4
                   initial={{ opacity: 0, y: -20 }}
