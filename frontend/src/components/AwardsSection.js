@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaTrophy, FaMedal, FaAward, FaCertificate, FaLeaf } from 'react-icons/fa';
+import { FaTrophy, FaMedal, FaAward, FaCertificate } from 'react-icons/fa';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, FreeMode } from 'swiper/modules';
 import 'swiper/css';
@@ -10,8 +10,7 @@ const awards = [
   { icon: <FaMedal className="w-8 h-8 text-yellow-500" />, name: 'MY FM - Best Group Housing', year: '2025' },
   { icon: <FaTrophy className="w-8 h-8 text-yellow-500" />, name: 'Deshdoot - Best Building Award', year: '2023' },
   { icon: <FaAward className="w-8 h-8 text-yellow-500" />, name: 'Dainik Bhaskar - Best Affordable Project', year: '2023' },
-  { icon: <FaCertificate className="w-8 h-8 text-yellow-500" />, name: 'Ultratech - Best Quality', year: '2023' },
-  { icon: <FaLeaf className="w-8 h-8 text-yellow-500" />, name: 'Sustainability Award', year: '2021' }
+  { icon: <FaCertificate className="w-8 h-8 text-yellow-500" />, name: 'Ultratech - Best Quality', year: '2023' }
 ];
 
 const AwardsSection = () => (
@@ -29,13 +28,13 @@ const AwardsSection = () => (
       <div className="featured-slider-container relative max-w-6xl mx-auto">
         <Swiper
           modules={[Navigation, Pagination, FreeMode]}
-          spaceBetween={16}
+          spaceBetween={24}
           slidesPerView={3}
           breakpoints={{
-            0: { slidesPerView: 1 },
-            640: { slidesPerView: 1 },
-            768: { slidesPerView: 2 },
-            1024: { slidesPerView: 3 }
+            0: { slidesPerView: 1, spaceBetween: 16 },
+            640: { slidesPerView: 1, spaceBetween: 20 },
+            768: { slidesPerView: 2, spaceBetween: 24 },
+            1024: { slidesPerView: 3, spaceBetween: 24 }
           }}
           navigation={{
             nextEl: '.swiper-button-next-awards-home',
