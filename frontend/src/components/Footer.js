@@ -127,7 +127,7 @@ function Footer() {
         <div className="border-t border-gray-700 pt-4 pb-1">
           <div className="flex flex-col md:flex-row items-center justify-between gap-3">
             <div className="text-xs text-gray-400 text-center md:text-left">
-              &copy; {new Date().getFullYear()} Ganesh Yeole Builders and Developers. All rights reserved.
+              &copy; {new Date().getFullYear()} GANESH VASANT YEOLE. All rights reserved.
             </div>
             <div className="flex items-center justify-center gap-2 text-xs text-gray-400 whitespace-nowrap">
               <a href="/privacy-policy" className="hover:text-gold transition-colors duration-200">
