@@ -2,34 +2,20 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import { FaTrophy, FaBuilding, FaCalendarAlt, FaStar } from 'react-icons/fa';
 import { motion, useInView } from 'framer-motion';
+import { useContext } from 'react';
+import { ScrollDirectionContext } from '../context/ScrollDirectionContext';
 
 const milestones = [
   {
     year: 2025,
     achievements: [
       {
-        title: "Shreeganesh Srushti",
-        description: "Latest residential development with contemporary design",
-        image: "/assets/shree-ganesh-srushti/gallery/front.jpg",
-        icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "100 Units"
-      },
-      {
-        title: "Shree Ganesh Heights",
-        description: "Premium residential development with modern amenities",
-        image: "/assets/shree-ganesh-heights/gallery/front.jpeg",
-        icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "120 Units"
-      },
-      {
-        title: "Shree Ganesh Park",
+        title: "Shree Ganesh Park A & B Wing",
         description: "Premium residential development with multiple wings",
-        image: "/assets/shree-ganesh-park/gallery/a-view.jpg",
+        image: "/assets/shree-ganesh-park/gallery/ter-view.jpg",
         icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "150 Units"
+        category: "Completed Project",
+        stats: "104 Units"
       }
     ]
   },
@@ -39,42 +25,18 @@ const milestones = [
       {
         title: "Sai Shraddha Apartment",
         description: "Beautifully designed residential complex on College Road",
-        image: "/assets/sai-shraddha-apartment/gallery/front.jpg",
+        image: "/assets/sai shraddha.jpg",
         icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "80 Units"
+        category: "Completed Project",
+        stats: "24 Units"
       },
       {
-        title: "Shree Ganesh Heights",
-        description: "Luxury apartments with world-class facilities",
-        image: "/assets/shree-ganesh-heights/gallery/day-front.jpg",
-        icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "Premium Living"
-      },
-      {
-        title: "Shree Ganesh Park",
-        description: "Premium residential development with modern amenities",
-        image: "/assets/shree-ganesh-park/gallery/b-view.jpg",
-        icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "Quality Homes"
-      },
-      {
-        title: "Shreeganesh Srushti",
-        description: "Eco-friendly residential complex",
-        image: "/assets/shree-ganesh-srushti/gallery/night.jpg",
-        icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "Green Living"
-      },
-      {
-        title: "Sai Shraddha Apartment",
+        title: "Vinayak Apartment",
         description: "Modern living spaces with amenities",
-        image: "/assets/sai-shraddha-apartment/gallery/top-view.jpg",
+        image: "/assets/vinayak apartment.jpg",
         icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "Delivered"
+        category: "Completed Project",
+        stats: "10 Units"
       }
     ]
   },
@@ -82,28 +44,12 @@ const milestones = [
     year: 2023,
     achievements: [
       {
-        title: "Shree Ganesh Park Phase I",
-        description: "First phase of our flagship project",
-        image: "/assets/shree-ganesh-park/gallery/night-view-a.jpg",
-        icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "Phase I"
-      },
-      {
-        title: "Shree Ganesh Heights",
-        description: "Residential complex with modern amenities",
-        image: "/assets/shree-ganesh-heights/gallery/night-front.jpg",
-        icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "Delivered"
-      },
-      {
-        title: "Shreeganesh Srushti",
+        title: "Shree Ganesh Avenue",
         description: "Quality construction with modern design",
-        image: "/assets/shree-ganesh-srushti/gallery/1bhk.jpg",
+        image: "/assets/shree ganesh avenue.jpg",
         icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "Modern Design"
+        category: "Completed Project",
+        stats: "45 Units"
       }
     ]
   },
@@ -111,28 +57,12 @@ const milestones = [
     year: 2022,
     achievements: [
       {
-        title: "Shree Ganesh Heights",
+        title: "Shree Ganesh Apartment",
         description: "Premium residential towers",
         image: "/assets/shree-ganesh-heights/gallery/top-view.jpg",
         icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "Towers"
-      },
-      {
-        title: "Shree Ganesh Park",
-        description: "Garden view residential complex",
-        image: "/assets/shree-ganesh-park/gallery/ter-view.jpg",
-        icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "Garden View"
-      },
-      {
-        title: "Sai Shraddha Apartment",
-        description: "Quality homes with modern amenities",
-        image: "/assets/sai-shraddha-apartment/gallery/parking.jpg",
-        icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "Quality Homes"
+        category: "Completed Project",
+        stats: "25 Units"
       }
     ]
   },
@@ -140,57 +70,12 @@ const milestones = [
     year: 2021,
     achievements: [
       {
-        title: "Shree Ganesh Park",
-        description: "Main road residential project",
-        image: "/assets/shree-ganesh-park/gallery/Wing A 1BHK.jpg",
-        icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "Main Road"
-      },
-      {
-        title: "Shree Ganesh Heights",
+        title: "Modkeshwar Apartment",
         description: "Quality homes with modern amenities",
-        image: "/assets/shree-ganesh-heights/gallery/floor-plan.jpeg",
+        image: "/assets/modkeshwar apt.jpg",
         icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "Modern Homes"
-      },
-      {
-        title: "Shreeganesh Srushti",
-        description: "Comfortable living spaces",
-        image: "/assets/shree-ganesh-srushti/gallery/1bhk (2).jpg",
-        icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "Comfort"
-      }
-    ]
-  },
-  {
-    year: 2020,
-    achievements: [
-      {
-        title: "Shree Ganesh Park",
-        description: "Premium residential development",
-        image: "/assets/shree-ganesh-park/gallery/Wing A 2BHK.jpg",
-        icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "Premium"
-      },
-      {
-        title: "Shree Ganesh Heights",
-        description: "Eco-friendly residential complex",
-        image: "/assets/shree-ganesh-heights/gallery/day-front.jpg",
-        icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "Eco-Friendly"
-      },
-      {
-        title: "Shreeganesh Srushti",
-        description: "Garden view apartments",
-        image: "/assets/shree-ganesh-srushti/gallery/2bhk.jpg",
-        icon: FaBuilding,
-        category: "Ongoing Project",
-        stats: "Garden View"
+        category: "Completed Project",
+        stats: "16 Units"
       }
     ]
   }
@@ -247,6 +132,8 @@ const JourneySection = () => {
     }
   };
 
+  const scrollDirection = useContext(ScrollDirectionContext);
+
   return (
     <section className="py-20 bg-amber-50 dark:bg-amber-950/20 relative overflow-hidden">
       <Helmet>
@@ -256,15 +143,15 @@ const JourneySection = () => {
 
       {/* Enhanced Background Pattern */}
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-primary-500 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-40 h-40 bg-gold rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-primary-300 rounded-full blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
-        
+        <div className="absolute top-20 left-10 w-32 h-32 bg-amber-500 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-40 h-40 bg-gold rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-60 bg-amber-300 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+
         {/* Floating Particles */}
-        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary-400 rounded-full animate-bounce" style={{animationDuration: '3s'}}></div>
-        <div className="absolute top-3/4 right-1/4 w-1.5 h-1.5 bg-gold rounded-full animate-bounce" style={{animationDuration: '4s', animationDelay: '1s'}}></div>
-        <div className="absolute top-1/2 right-1/3 w-1 h-1 bg-primary-500 rounded-full animate-bounce" style={{animationDuration: '5s', animationDelay: '2s'}}></div>
-        <div className="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-gold rounded-full animate-bounce" style={{animationDuration: '3.5s', animationDelay: '0.5s'}}></div>
+        <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-amber-400 rounded-full animate-bounce" style={{ animationDuration: '3s' }}></div>
+        <div className="absolute top-3/4 right-1/4 w-1.5 h-1.5 bg-gold rounded-full animate-bounce" style={{ animationDuration: '4s', animationDelay: '1s' }}></div>
+        <div className="absolute top-1/2 right-1/3 w-1 h-1 bg-amber-500 rounded-full animate-bounce" style={{ animationDuration: '5s', animationDelay: '2s' }}></div>
+        <div className="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-gold rounded-full animate-bounce" style={{ animationDuration: '3.5s', animationDelay: '0.5s' }}></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
@@ -272,7 +159,7 @@ const JourneySection = () => {
         <motion.div
           variants={containerVariants}
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          animate={scrollDirection === 'down' ? (isInView ? "visible" : "hidden") : "visible"}
           className="text-center mb-20"
         >
           <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-amber-500/10 to-gold/10 text-amber-700 dark:text-amber-400 font-semibold text-sm mb-6 border border-amber-200 dark:border-amber-800">
@@ -280,30 +167,30 @@ const JourneySection = () => {
             Our Journey
             <FaStar className="w-3 h-3 text-gold" />
           </motion.div>
-          
-          <motion.h2 
+
+          <motion.h2
             variants={itemVariants}
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6"
           >
             Journey of <span className="text-amber-700 font-bold">Excellence</span>
           </motion.h2>
-          
-          <motion.p 
+
+          <motion.p
             variants={itemVariants}
             className="text-xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed"
           >
-            Discover our remarkable journey of growth, innovation, and excellence in the real estate industry. 
+            Discover our remarkable journey of growth, innovation, and excellence in the real estate industry.
             Each milestone represents our commitment to delivering exceptional value to our customers.
           </motion.p>
         </motion.div>
 
 
         {/* Zigzag Timeline */}
-        <motion.div 
+        <motion.div
           ref={ref}
           variants={containerVariants}
           initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
+          animate={scrollDirection === 'down' ? (isInView ? "visible" : "hidden") : "visible"}
           className="relative"
         >
           {/* Enhanced Central Timeline Line */}
@@ -312,9 +199,9 @@ const JourneySection = () => {
             <div className="absolute inset-0 w-3 -left-1 bg-gradient-to-b from-amber-500/30 via-amber-400/30 to-amber-500/30 dark:from-amber-600/40 dark:via-amber-500/40 dark:to-amber-600/40 blur-sm"></div>
           </div>
 
-        {/* Timeline Items */}
-        <div className="space-y-16">
-          {milestones.map((yearData, yearIndex) => (
+          {/* Timeline Items */}
+          <div className="space-y-16">
+            {milestones.map((yearData, yearIndex) => (
               <motion.div
                 key={yearData.year}
                 variants={yearIndex % 2 === 0 ? timelineItemVariants : timelineItemRightVariants}
@@ -325,19 +212,19 @@ const JourneySection = () => {
                   {/* Pulsing Ring Effect */}
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-amber-600 to-amber-500 animate-ping opacity-20"></div>
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-amber-600 to-amber-500 animate-pulse opacity-30"></div>
-                  
+
                   <div className="w-12 h-12 bg-white dark:bg-gray-900 rounded-full flex items-center justify-center relative z-10 group-hover:scale-110 transition-transform duration-300">
                     <span className="text-amber-600 dark:text-amber-400 font-bold text-sm group-hover:text-amber-500 transition-colors duration-300">{yearData.year}</span>
                   </div>
-                  
+
                   {/* Sparkle Effect */}
                   <div className="absolute -top-1 -right-1 w-3 h-3 bg-amber-400 rounded-full animate-pulse opacity-60"></div>
-                  <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-amber-300 rounded-full animate-pulse opacity-60" style={{animationDelay: '0.5s'}}></div>
+                  <div className="absolute -bottom-1 -left-1 w-2 h-2 bg-amber-300 rounded-full animate-pulse opacity-60" style={{ animationDelay: '0.5s' }}></div>
                 </div>
 
                 {/* Mobile Year Badge */}
                 <div className="lg:hidden mb-8 text-center">
-                  <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-600 to-gold text-white rounded-full font-bold text-lg shadow-lg">
+                  <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-600 to-gold text-white rounded-full font-bold text-lg shadow-lg">
                     <FaCalendarAlt className="w-5 h-5" />
                     {yearData.year}
                   </div>
@@ -345,27 +232,30 @@ const JourneySection = () => {
 
                 {/* Content Container */}
                 <div className={`lg:grid lg:grid-cols-2 lg:gap-8 items-center ${yearIndex % 2 === 0 ? 'lg:grid-flow-col' : 'lg:grid-flow-col-dense'}`}>
-                  
+
                   {/* Left Side Content */}
-                  <motion.div 
+                  <motion.div
                     className={`${yearIndex % 2 === 0 ? 'lg:pr-12' : 'lg:pl-12'} ${yearIndex % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}`}
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.3 }}
                   >
                     <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 group relative">
                       {/* Gradient Overlay on Hover */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary-500/5 to-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
-                      
+                      <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10"></div>
+
                       {/* Project Images Grid - Enhanced */}
-                      <div className="grid grid-cols-3 gap-1 p-2 relative z-20">
-                        {yearData.achievements.slice(0, 3).map((achievement, achievementIndex) => (
+                      <div className={`grid gap-1 p-2 relative z-20 ${yearData.achievements.length === 1 ? 'grid-cols-1' :
+                        yearData.achievements.length === 2 ? 'grid-cols-2' :
+                          'grid-cols-3'
+                        }`}>
+                        {yearData.achievements.map((achievement, achievementIndex) => (
                           <div key={achievementIndex} className="relative aspect-[4/3] overflow-hidden rounded-md group/image">
                             <img
                               src={achievement.image}
                               alt={achievement.title}
                               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                               onError={(e) => { e.target.src = '/hero-building.jpg'; }}
-                              loading="lazy"
+                              loading={yearIndex === 0 && achievementIndex === 0 ? "eager" : "lazy"}
                             />
                             {/* Image Overlay Effect */}
                             <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover/image:opacity-100 transition-opacity duration-300"></div>
@@ -388,14 +278,14 @@ const JourneySection = () => {
                             {yearData.year}
                           </h3>
                         </div>
-                        
+
                         {/* Enhanced Project List - Compact */}
                         <div className="space-y-1.5">
-                          {yearData.achievements.slice(0, 2).map((achievement, achievementIndex) => (
+                          {yearData.achievements.map((achievement, achievementIndex) => (
                             <div key={achievementIndex} className="flex items-center gap-2 p-1.5 bg-gray-50 dark:bg-gray-700 rounded-md group/item hover:bg-gradient-to-r hover:from-amber-50 hover:to-amber-100/20 dark:hover:from-amber-900/30 dark:hover:to-amber-900/10 transition-all duration-300">
                               <div className="w-1.5 h-1.5 bg-amber-500 rounded-full group-hover/item:animate-pulse"></div>
                               <div className="flex-1">
-                                <h4 className="font-medium text-gray-900 dark:text-white text-xs group-hover/item:text-amber-600 dark:group-hover/item:text-amber-400 transition-colors duration-300\">
+                                <h4 className="font-medium text-gray-900 dark:text-white text-xs group-hover/item:text-amber-600 dark:group-hover/item:text-amber-400 transition-colors duration-300">
                                   {achievement.title}
                                 </h4>
                                 <p className="text-gray-600 dark:text-gray-300 text-xs">
@@ -412,7 +302,7 @@ const JourneySection = () => {
                   </motion.div>
 
                   {/* Right Side Stats - Compact */}
-                  <motion.div 
+                  <motion.div
                     className={`${yearIndex % 2 === 0 ? 'lg:pl-8' : 'lg:pr-8'} ${yearIndex % 2 === 0 ? 'lg:order-2' : 'lg:order-1'} mt-6 lg:mt-0`}
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.3 }}
@@ -420,11 +310,11 @@ const JourneySection = () => {
                     <div className="bg-gradient-to-br from-amber-600 to-amber-500 rounded-2xl p-3 text-white relative overflow-hidden group border border-white/10 shadow-2xl dark:from-amber-700 dark:to-amber-600">
                       {/* Unique Geometric Pattern */}
                       <div className="absolute inset-0 opacity-15">
-                        <div className="absolute top-1 right-1 w-8 h-8 border-2 border-white/30 rounded-full animate-spin" style={{animationDuration: '12s'}}></div>
-                        <div className="absolute bottom-1 left-1 w-6 h-6 border-2 border-white/30 rounded-full animate-spin" style={{animationDuration: '8s', animationDirection: 'reverse'}}></div>
+                        <div className="absolute top-1 right-1 w-8 h-8 border-2 border-white/30 rounded-full animate-spin" style={{ animationDuration: '12s' }}></div>
+                        <div className="absolute bottom-1 left-1 w-6 h-6 border-2 border-white/30 rounded-full animate-spin" style={{ animationDuration: '8s', animationDirection: 'reverse' }}></div>
                         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-4 h-4 border border-white/20 rotate-45 animate-pulse"></div>
                       </div>
-                      
+
                       {/* Compact Header with Unique Badge */}
                       <div className="text-center mb-2 relative z-10">
                         <div className="inline-flex items-center gap-1 px-2 py-0.5 bg-white/20 rounded-full mb-1">
@@ -463,12 +353,12 @@ const JourneySection = () => {
                           ))}
                         </div>
                       </div>
-                      
+
                       {/* Unique Corner Decorations */}
                       <div className="absolute top-2 right-2 w-2 h-2 bg-cyan-200 rounded-full animate-ping opacity-70"></div>
-                      <div className="absolute bottom-2 left-2 w-1.5 h-1.5 bg-white rounded-full animate-ping opacity-70" style={{animationDelay: '0.5s'}}></div>
+                      <div className="absolute bottom-2 left-2 w-1.5 h-1.5 bg-white rounded-full animate-ping opacity-70" style={{ animationDelay: '0.5s' }}></div>
                       <div className="absolute top-2 left-2 w-1 h-1 bg-cyan-100 rounded-full animate-pulse"></div>
-                      <div className="absolute bottom-2 right-2 w-1 h-1 bg-cyan-200 rounded-full animate-pulse" style={{animationDelay: '1s'}}></div>
+                      <div className="absolute bottom-2 right-2 w-1 h-1 bg-cyan-200 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
                     </div>
                   </motion.div>
                 </div>

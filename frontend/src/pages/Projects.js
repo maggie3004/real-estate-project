@@ -39,10 +39,10 @@ const projects = {
       location: 'Nashik',
       image: sghFront,
       images: [sghFront, sghTopView, sghNightFront],
-      configuration: '2BHK, 3BHK',
+      configuration: '1BHK',
       brochureUrl: sghBrochure,
-      reraNumber: 'PXXXXXXX',
-      reraQr: '/owner-placeholder.png'
+      reraNumber: 'P51600077829',
+      reraQr: '/assets/shree-ganesh-heights/gallery/Rera_QR.png'
     },
     {
       id: 'on2',
@@ -54,8 +54,8 @@ const projects = {
       images: [sgpAView, sgpBView, sgpNightA],
       configuration: '1BHK, 2BHK',
       brochureUrl: sgpBrochure,
-      reraNumber: 'PXXXXXXX',
-      reraQr: '/owner-placeholder.png'
+      reraNumber: 'P51600051448',
+      reraQr: '/assets/shree-ganesh-park/gallery/Rera_QR.png'
     },
     {
       id: 'on3',
@@ -66,9 +66,9 @@ const projects = {
       image: sgsFront,
       images: [sgsFront, sgs1bhk, sgs2bhk],
       configuration: '1BHK, 2BHK',
-      brochureUrl: '/Shree-Ganesh-Brochure.pdf',
-      reraNumber: 'PXXXXXXX',
-      reraQr: '/owner-placeholder.png'
+      brochureUrl: '/assets/shree-ganesh-srushti/gallery/Shree Ganesh Srushti Digital Broucher_compressed.pdf',
+      reraNumber: 'PM1220002501249',
+      reraQr: '/assets/shree-ganesh-srushti/gallery/Rera_QR.png'
     },
     // Add more ongoing projects...
   ],

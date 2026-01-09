@@ -1,11 +1,12 @@
 import React from 'react';
 // Use src/assets images instead of public paths for ongoing projects
-import sghFront from '../assets/shree-ganesh-heights/gallery/front.jpeg';
 import sgpAView from '../assets/shree-ganesh-park/gallery/a-view.jpg';
 import sgsFront from '../assets/shree-ganesh-srushti/gallery/front.jpg';
 import { useNavigate } from 'react-router-dom';
 import { FaMapMarkerAlt, FaClock } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import { useContext } from 'react';
+import { ScrollDirectionContext } from '../context/ScrollDirectionContext';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, FreeMode } from 'swiper/modules';
 import 'swiper/css';
@@ -20,8 +21,7 @@ const projects = [
     image: sgsFront,
     description: 'Latest residential development with contemporary design and all modern facilities.',
     type: '2 & 3 BHK',
-    units: '100 Units',
-    area: '2.0 Acres',
+    units: '210 Units',
     completionDate: '2025',
     route: '/ShreeGaneshSrushti'
   },
@@ -32,8 +32,7 @@ const projects = [
     image: sgpAView,
     description: 'A premium residential development with multiple wings offering various apartment configurations.',
     type: '1 & 2 BHK',
-    units: '150 Units',
-    area: '3.0 Acres',
+    units: '104 Units',
     completionDate: '2024',
     route: '/ShreeGaneshParkPhaseI'
   },
@@ -41,11 +40,10 @@ const projects = [
     name: 'Shree Ganesh Heights',
     location: 'Nashik',
     status: 'Ongoing',
-    image: sghFront,
+    image: '/assets/shree ganesh heights gallery 1.jpeg',
     description: 'Premium residential development with modern amenities and excellent location advantages.',
-    type: '2 & 3 BHK',
-    units: '120 Units',
-    area: '2.5 Acres',
+    type: '1 BHK',
+    units: '41 Units',
     completionDate: '2024',
     route: '/ShreeGaneshHeights'
   },
@@ -53,33 +51,42 @@ const projects = [
     name: 'Sai Shraddha Apartment',
     location: 'College Road, Nashik',
     status: 'Completed',
-    image: '/assets/sai-shraddha-apartment/gallery/front.jpg',
+    image: '/assets/sai shraddha.jpg',
     description: 'A beautifully designed residential complex offering comfortable living with all modern amenities and excellent connectivity.',
     type: '1 & 2 BHK',
-    units: '80 Units',
-    area: '1.8 Acres',
+    units: '24 Units',
     completionDate: '2024',
-    route: '/SaiShraddhaApartment'
+    route: '/milestones#project-1'
   },
   {
     name: 'Vinayak Apartment',
     location: 'Pathardi Shivar, Nashik',
     status: 'Completed',
-    image: '/assets/vinayak-apartment/gallery/1.jpg',
+    image: '/assets/vinayak apartment.jpg',
     description: 'Experience an elevated lifestyle of sophistication with 1 BHK Happy Homes crafted to enhance your everyday living.',
     type: '1 BHK',
-    units: '40 Units',
-    area: '0.5 Acres',
+    units: '10 Units',
     completionDate: '2023',
-    route: '/VinayakApartment'
+    route: '/milestones#project-2'
   }
 ];
 
 const ProjectsSection = () => {
   const navigate = useNavigate();
+  const scrollDirection = useContext(ScrollDirectionContext);
 
   const handleViewDetails = (route) => {
-    navigate(route);
+    if (route.includes('milestones#')) {
+      // For milestones routes, use direct window.location to avoid loading screen
+      window.location.href = route;
+    } else {
+      // For regular project pages, navigate and scroll to top
+      navigate(route);
+      // Scroll to top after navigation
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 100);
+    }
   };
 
   return (
@@ -87,22 +94,31 @@ const ProjectsSection = () => {
       {/* Background decoration */}
       <div className="absolute inset-0 bg-gradient-to-r from-amber-50/30 to-transparent dark:from-amber-900/20"></div>
       <div className="container mx-auto px-4 relative z-10">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+          whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
           transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Our <span className="text-gray-900 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-primary-600 dark:to-primary-700">Exclusive Projects</span>
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-6 flex items-center justify-center gap-3">
+            <span>Our</span>
+
+            <span className="px-4 py-1 text-lg md:text-xl lg:text-2xl font-semibold
+    rounded-full text-white whitespace-nowrap
+    bg-gradient-to-r from-amber-500 to-amber-700
+    dark:from-amber-600 dark:to-yellow-400 shadow-md">
+              Exclusive Projects
+            </span>
           </h2>
+
           <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Discover our carefully curated collection of exclusive residential projects, 
+            Discover our carefully curated collection of exclusive residential projects,
             each designed to offer the perfect blend of luxury, comfort, and modern living.
           </p>
         </motion.div>
-        
+
         {/* Featured Projects Slider with Proper Margins */}
         <div className="featured-slider-container relative">
           <Swiper
@@ -123,63 +139,59 @@ const ProjectsSection = () => {
           >
             {projects.map((project, idx) => (
               <SwiperSlide key={idx}>
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+                  whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
                   transition={{ duration: 0.6, delay: idx * 0.1 }}
                   viewport={{ once: true }}
                   className="h-full bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 transform hover:scale-105 transition-all duration-300 flex flex-col"
                 >
                   <div className="relative">
-                    <img 
-                      src={project.image} 
+                    <img
+                      src={project.image}
                       alt={project.name}
-                      className="w-full h-56 object-cover"
+                      className="w-full h-56 object-contain bg-gray-50 dark:bg-gray-900"
                     />
-                    <div className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-semibold ${
-                      project.status === 'Ongoing' 
-                        ? 'bg-orange-500 text-white' 
-                        : 'bg-green-500 text-white'
-                    }`}>
+                    <div className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-semibold ${project.status === 'Ongoing'
+                      ? 'bg-orange-500 text-white'
+                      : 'bg-green-500 text-white'
+                      }`}>
                       {project.status}
                     </div>
                   </div>
-                  
+
                   {/* Card Content with Flex Layout */}
                   <div className="p-6 flex flex-col flex-grow">
                     <div className="flex-grow">
                       <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 line-clamp-2">{project.name}</h3>
-                      
+
                       <div className="flex items-center text-gray-600 dark:text-gray-400 mb-2">
                         <FaMapMarkerAlt className="w-4 h-4 mr-2 flex-shrink-0" />
                         <span className="text-sm truncate">{project.location}</span>
                       </div>
-                      
+
                       <div className="flex items-center text-gray-600 dark:text-gray-400 mb-3">
                         <FaClock className="w-4 h-4 mr-2 flex-shrink-0" />
                         <span className="text-sm">{project.type}</span>
                       </div>
-                      
+
                       <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm line-clamp-3 leading-relaxed">{project.description}</p>
-                      
+
                       {/* Project Stats */}
-                      <div className="grid grid-cols-2 gap-3 mb-6 text-sm">
+                      <div className="mb-6 text-sm">
                         <div className="flex flex-col">
                           <span className="font-semibold text-gray-700 dark:text-gray-300">Units</span>
                           <span className="text-gray-600 dark:text-gray-400">{project.units}</span>
                         </div>
-                        <div className="flex flex-col">
-                          <span className="font-semibold text-gray-700 dark:text-gray-300">Area</span>
-                          <span className="text-gray-600 dark:text-gray-400">{project.area}</span>
-                        </div>
                       </div>
                     </div>
-                    
+
                     {/* Button positioned at bottom */}
                     <div className="mt-auto">
-                      <button 
+                      <button
                         onClick={() => handleViewDetails(project.route)}
-                        className="w-full bg-black text-white py-3 px-4 rounded-lg font-semibold hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 dark:bg-gradient-to-r dark:from-primary-600 dark:to-primary-700 dark:hover:from-primary-700 dark:hover:to-primary-800"
+                        className="w-full bg-gradient-to-r from-amber-500 to-amber-600 text-white py-3 px-4 rounded-lg font-semibold hover:from-amber-600 hover:to-amber-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
                       >
                         View Details
                       </button>
@@ -207,7 +219,7 @@ const ProjectsSection = () => {
         </div>
       </div>
 
-      <style jsx="true" global="true">{`
+      <style>{`
         /* Featured Slider Container with Proper Margins */
         .featured-slider-container {
           padding: 0 40px;

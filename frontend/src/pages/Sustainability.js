@@ -60,7 +60,7 @@ const impactMetrics = [
 ];
 
 const Sustainability = () => (
-  <section className="min-h-screen pt-24 pb-12 bg-white dark:bg-[#181818] text-[#181818] dark:text-white transition-colors duration-300">
+  <section className="min-h-screen pt-24 pb-12 bg-white dark:bg-[#181818] text-[#181818] dark:text-white transition-colors duration-300 overflow-x-hidden">
     <Helmet>
       <title>Sustainability & CSR - Ganesh Yeole Builders | Green Building & Social Responsibility</title>
       <meta name="description" content="Discover our commitment to sustainability, green building practices, and corporate social responsibility initiatives that make a positive impact on the environment and community." />
@@ -69,17 +69,17 @@ const Sustainability = () => (
     <div className="max-w-7xl mx-auto px-4">
       {/* Hero Section */}
       <div className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold text-[#E53935] mb-6">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#E53935] mb-6 px-4">
           Building a Sustainable Future
         </h1>
-        <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+        <p className="text-base sm:text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto px-4">
           Committed to environmental responsibility and social impact through green building practices and community development
         </p>
       </div>
 
       {/* Sustainability Initiatives */}
       <div className="mb-20">
-        <h2 className="text-3xl font-bold text-center text-[#E53935] mb-12">
+        <h2 className="text-2xl sm:text-3xl font-bold text-center text-[#E53935] mb-12 px-4">
           Our Green Building Initiatives
         </h2>
         <div className="grid md:grid-cols-2 gap-8">
@@ -92,19 +92,19 @@ const Sustainability = () => (
                   </div>
                 </div>
                 <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-3">
-                    <h3 className="text-xl font-bold text-[#E53935]">
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-3">
+                    <h3 className="text-lg sm:text-xl font-bold text-[#E53935]">
                       {initiative.title}
                     </h3>
-                    <span className="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                    <span className="bg-green-600 text-white px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap">
                       {initiative.status}
                     </span>
                   </div>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
+                  <p className="text-sm sm:text-base text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
                     {initiative.description}
                   </p>
-                  <div className="bg-white dark:bg-gray-800 rounded-lg p-3">
-                    <span className="text-green-600 font-bold text-lg">
+                  <div className="bg-white dark:bg-gray-800 rounded-lg p-2 sm:p-3">
+                    <span className="text-green-600 font-bold text-base sm:text-lg">
                       {initiative.impact}
                     </span>
                   </div>
@@ -117,7 +117,7 @@ const Sustainability = () => (
 
       {/* Impact Metrics */}
       <div className="mb-20">
-        <h2 className="text-3xl font-bold text-center text-[#E53935] mb-12">
+        <h2 className="text-2xl sm:text-3xl font-bold text-center text-[#E53935] mb-12 px-4">
           Our Environmental Impact
         </h2>
         <div className="bg-gradient-to-r from-green-50 to-gray-50 dark:from-green-900/20 dark:to-gray-900/20 rounded-3xl p-12">
@@ -141,7 +141,7 @@ const Sustainability = () => (
 
       {/* Green Building Features */}
       <div className="mb-20">
-        <h2 className="text-3xl font-bold text-center text-[#E53935] mb-12">
+        <h2 className="text-2xl sm:text-3xl font-bold text-center text-[#E53935] mb-12 px-4">
           Green Building Features
         </h2>
         <div className="grid md:grid-cols-4 gap-8">

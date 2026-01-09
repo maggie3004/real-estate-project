@@ -2,17 +2,31 @@ import React, { useEffect } from 'react';
 import sgpAView from '../assets/shree-ganesh-park/gallery/a-view.jpg';
 import sgpBView from '../assets/shree-ganesh-park/gallery/b-view.jpg';
 import sgpNightA from '../assets/shree-ganesh-park/gallery/night-view-a.jpg';
+import sgpWingA1BHK from '../assets/shree-ganesh-park/gallery/Wing A 1BHK.jpg';
+import sgpWingA2BHK from '../assets/shree-ganesh-park/gallery/Wing A 2BHK.jpg';
+import sgpWingC1BHK from '../assets/shree-ganesh-park/gallery/Wing C 1BHK.jpg';
+import sgpWingC2BHK from '../assets/shree-ganesh-park/gallery/Wing C 2BHK.jpg';
 import sgpBrochure from '../assets/shree-ganesh-park/Shree Ganesh Park E- Brochure.pdf';
 import ProjectTemplate from '../components/ProjectTemplate';
-import { FaCar, FaSun, FaBuilding, FaShieldAlt, FaWater, FaTint } from 'react-icons/fa';
-import { MdMeetingRoom } from 'react-icons/md';
-import { BiCctv, BiSolidHomeHeart } from 'react-icons/bi';
+
+import {
+  FaSolarPanel,
+  FaGlassCheers,
+  FaRoad,
+  FaBuilding,
+  FaHospital,
+  FaShoppingBag
+} from 'react-icons/fa';
+import { MdMeetingRoom, MdSelfImprovement, MdElevator } from 'react-icons/md';
+import { BiCctv } from 'react-icons/bi';
+import { GiWaterDrop } from 'react-icons/gi';
 
 const ShreeGaneshParkPhaseI = () => {
   const projectData = {
     projectName: "Shree Ganesh Park",
-    tagline: "Experience Essence of Elevated Living...",
-    description: `Experience an elevated lifestyle of sophistication at Shree Ganesh Park Phase I, where every aspect is meticulously designed. 1 BHK 'Happy Homes' crafted to enhance your everyday living. These residences offer the perfect integration of luxury and functionality, delivering a modern living experience that seamlessly blends convenience, comfort, and innovation. Located at Sr no 94/1 plot 16/17 gavlane road, Pathardi Shivar, Nashik - 422010, our project provides unmatched connectivity to essential services and amenities. With schools, shopping centers, healthcare facilities, and recreational options all within close proximity, residents enjoy a seamless, well-rounded living experience.`,
+    tagline: "RISE TO NEW WAY OF LIVING",
+    heroSubtitle: "1 & 2 BHK Luxury Homes & Shops",
+    description: `Discover modern living at Shree Ganesh Park, featuring thoughtfully planned 1 & 2 BHK residences designed for contemporary families. With premium amenities, strategic location, and exceptional connectivity, these homes offer the perfect blend of comfort and convenience. Experience a vibrant community where every detail is crafted to elevate your lifestyle.`,
     stats: [
       { title: "1 BHK", subtitle: "Happy Homes" },
       { title: "G+7", subtitle: "Structure" },
@@ -20,28 +34,30 @@ const ShreeGaneshParkPhaseI = () => {
       { title: "Premium", subtitle: "Location" }
     ],
     amenities: [
-      { icon: <BiCctv />, name: "CCTV" },
-      { icon: <FaSun />, name: "Solar Power" },
-      { icon: <FaShieldAlt />, name: "Safety Gate" },
       { icon: <MdMeetingRoom />, name: "Multipurpose Hall" },
-      { icon: <BiSolidHomeHeart />, name: "Auto Door Lift" },
-      { icon: <FaBuilding />, name: "Battery Backup" },
-      { icon: <FaTint />, name: "Smart Automation" },
-      { icon: <FaWater />, name: "Water Supply" },
-      { icon: <FaCar />, name: "Parking Space" }
+      { icon: <FaSolarPanel />, name: "Roof Top Solar for Common Areas" },
+      { icon: <MdSelfImprovement />, name: "Open Sky Yoga Space" },
+      { icon: <FaGlassCheers />, name: "Party Area" },
+      { icon: <MdElevator />, name: "Branded Lift & Battery Backup" },
+      { icon: <BiCctv />, name: "CCTV" },
+      { icon: <GiWaterDrop />, name: "Rainwater Harvesting" }
     ],
-    images: [sgpAView, sgpBView, sgpNightA],
+    images: ['/assets/shree-ganesh-park/gallery/hero.png'],
+    galleryImages: [sgpAView, sgpBView, sgpNightA],
     brochurePath: sgpBrochure,
-    reraNumber: "PXXXXXXX",
-    reraQr: "/owner-placeholder.png",
+    reraNumber: "P51600051448",
+    reraQr: "/assets/shree-ganesh-park/gallery/Rera_QR.png",
+    reraUrl: "https://maharerait.mahaonline.gov.in/ProjectSummaryView/ProjectSummaryQRCodeView?id=Q2VydGlmaWNhdGVObz1QNTE2MDAwNTE0NDgmU2NhbnR5cGU9UmVnaXN0cmF0aW9uQ2VydGlmaWNhdGVRUlNjYW4=",
     layoutVariant: 'ongoing',
     configuration: "1BHK, 2BHK",
     location: "Nashik",
     progressStage: 1,
     locationChips: ["Railway 15 min", "Hospital 10 min", "School 6 min"],
     floorPlans: [
-      { label: "1BHK", src: sgpAView },
-      { label: "2BHK", src: sgpBView }
+      { label: "Wing A & B 1 BHK", src: sgpWingA1BHK },
+      { label: "Wing C 1 BHK", src: sgpWingC1BHK },
+      { label: "Wing A & B 2 BHK", src: sgpWingA2BHK },
+      { label: "Wing C 2 BHK", src: sgpWingC2BHK }
     ],
     downloads: [
       { label: "Project Brochure", href: sgpBrochure }
@@ -55,12 +71,32 @@ const ShreeGaneshParkPhaseI = () => {
       { label: "Structure", caption: "Floors cast", image: sgpNightA },
       { label: "Finishing", caption: "Paint & interiors", image: sgpAView }
     ],
-    mapUrl: "https://maps.app.goo.gl/6X9DkrFsd58nzQFT9",
-    directionsUrl: "https://maps.app.goo.gl/6X9DkrFsd58nzQFT9"
+    mapUrl: "https://maps.app.goo.gl/u7vbGndPJpUmxCYz5",
+    directionsUrl: "https://maps.app.goo.gl/u7vbGndPJpUmxCYz5",
+    mapEmbed: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d468.7228575913102!2d73.72289067654522!3d19.975632008527292!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdded00535a7531%3A0xe619331c7c163c86!2sShreeGaneshPark!5e0!3m2!1sen!2sin!4v1767520787294!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
+
+
+    connectivityData: {
+      description: [
+        "Strategically located near <strong>Datta Mandir Chowk</strong>, offering excellent connectivity.",
+        "Quick access to <strong>Trimbakeshwar Road</strong> ensuring smooth travel to key city areas.",
+        "Well-connected location leading to nearby residential and commercial hubs."
+      ],
+      points: [
+        { label: "Bus Stop & CBS", time: "3 mins / 13 mins", icon: FaRoad },
+        { label: "Satpur Ambad MIDC", time: "6 mins", icon: FaBuilding },
+        { label: "Market", time: "5 mins", icon: FaShoppingBag },
+        { label: "Trimbak & Mumbai Highway", time: "7 mins", icon: FaRoad },
+        { label: "Hospitals & Schools", time: "6 mins", icon: FaHospital },
+        { label: "City Centre Mall", time: "10 mins", icon: FaShoppingBag }
+      ]
+    }
   };
 
   useEffect(() => {
     document.title = `${projectData.projectName} - Sai Prasad Group`;
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
   }, [projectData.projectName]);
 
   return <ProjectTemplate {...projectData} />;

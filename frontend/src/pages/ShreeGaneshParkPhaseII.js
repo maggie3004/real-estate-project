@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import ProjectTemplate from '../components/ProjectTemplate';
-import { FaCar, FaSun, FaBuilding, FaShieldAlt, FaWater, FaTint } from 'react-icons/fa';
+import { FaCar, FaSun, FaBuilding, FaShieldAlt, FaWater, FaTint, FaRoad, FaHospital, FaShoppingBag } from 'react-icons/fa';
 import { MdMeetingRoom } from 'react-icons/md';
 import { BiCctv, BiSolidHomeHeart } from 'react-icons/bi';
 
@@ -34,6 +34,22 @@ const ShreeGaneshParkPhaseII = () => {
       "/assets/shree-ganesh-park-phase-ii/gallery/5.jpg"
     ],
     brochurePath: "/assets/shree-ganesh-park-phase-ii/brochures/Shree-Ganesh-Park-Phase-II.pdf",
+
+    connectivityData: {
+      description: [
+        "Strategically located near <strong>Datta Mandir Chowk</strong>, offering excellent connectivity.",
+        "Quick access to <strong>Trimbakeshwar Road</strong> ensuring smooth travel to key city areas.",
+        "Well-connected location leading to nearby residential and commercial hubs."
+      ],
+      points: [
+        { label: "Bus Stop & CBS", time: "3 mins / 13 mins", icon: FaRoad },
+        { label: "Satpur Ambad MIDC", time: "6 mins", icon: FaBuilding },
+        { label: "Market", time: "5 mins", icon: FaShoppingBag },
+        { label: "Trimbak & Mumbai Highway", time: "7 mins", icon: FaRoad },
+        { label: "Hospitals & Schools", time: "6 mins", icon: FaHospital }
+      ]
+    },
+
     mapUrl: "https://maps.app.goo.gl/6X9DkrFsd58nzQFT9",
     directionsUrl: "https://maps.app.goo.gl/6X9DkrFsd58nzQFT9"
   };

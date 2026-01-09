@@ -10,6 +10,8 @@ import JourneySection from '../components/JourneySection';
 import Testimonials from '../components/Testimonials';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
+import { useContext } from 'react';
+import { ScrollDirectionContext } from '../context/ScrollDirectionContext';
 import { useSmoothScroll } from '../hooks/useSmoothScroll';
 
 // ... import other new sections as you create them
@@ -40,6 +42,8 @@ const Home = () => {
       });
     };
   }, [scrollToSection]);
+
+  const scrollDirection = useContext(ScrollDirectionContext);
 
   return (
     <motion.div 
@@ -104,7 +108,8 @@ const Home = () => {
       {/* 2. Stats Section (Counting Numbers) */}
       <motion.div 
         initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+        whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
         transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
         viewport={{ once: true, margin: "-100px" }}
       >
@@ -115,7 +120,8 @@ const Home = () => {
       <motion.div 
         id="projects"
         initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+        whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
         transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
         viewport={{ once: true, margin: "-100px" }}
       >
@@ -126,7 +132,8 @@ const Home = () => {
       <motion.div 
         id="about"
         initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+        whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
         transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
         viewport={{ once: true, margin: "-100px" }}
       >
@@ -137,7 +144,8 @@ const Home = () => {
       <motion.div 
         id="milestones"
         initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+        whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
         transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
         viewport={{ once: true, margin: "-100px" }}
       >
@@ -148,7 +156,8 @@ const Home = () => {
       <motion.div
         id="awards"
         initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+        whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
         transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
         viewport={{ once: true, margin: "-100px" }}
       >
@@ -159,7 +168,8 @@ const Home = () => {
       <motion.div
         id="testimonials"
         initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+        whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
         transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
         viewport={{ once: true, margin: "-100px" }}
       >
@@ -170,7 +180,8 @@ const Home = () => {
       <motion.div
         id="location"
         initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+        whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
         transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
         viewport={{ once: true, margin: "-100px" }}
       >
@@ -181,7 +192,8 @@ const Home = () => {
       <motion.div
         id="contact"
         initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+        whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
         transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
         viewport={{ once: true, margin: "-100px" }}
       >

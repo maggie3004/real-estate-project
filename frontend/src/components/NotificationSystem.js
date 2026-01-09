@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
-import { 
-  FiBell, 
+import {
+  FiBell,
   FiAlertCircle,
   FiInfo,
   FiStar,
@@ -51,11 +51,11 @@ export const NotificationProvider = ({ children }) => {
     try {
       const savedNotifications = localStorage.getItem('userNotifications');
       const savedPreferences = localStorage.getItem('notificationPreferences');
-      
+
       if (savedNotifications) {
         setNotifications(JSON.parse(savedNotifications));
       }
-      
+
       if (savedPreferences) {
         setPreferences(JSON.parse(savedPreferences));
       }
@@ -91,9 +91,9 @@ export const NotificationProvider = ({ children }) => {
     setNotifications(prev => [newNotification, ...prev]);
 
     // Show toast notification
-    const toastType = notification.type === 'error' ? 'error' : 
-                     notification.type === 'warning' ? 'warning' : 'info';
-    
+    const toastType = notification.type === 'error' ? 'error' :
+      notification.type === 'warning' ? 'warning' : 'info';
+
     toast[toastType](notification.message, {
       position: "top-right",
       autoClose: 5000,
@@ -107,9 +107,9 @@ export const NotificationProvider = ({ children }) => {
   };
 
   const markAsRead = (notificationId) => {
-    setNotifications(prev => 
-      prev.map(notification => 
-        notification.id === notificationId 
+    setNotifications(prev =>
+      prev.map(notification =>
+        notification.id === notificationId
           ? { ...notification, read: true }
           : notification
       )
@@ -117,13 +117,13 @@ export const NotificationProvider = ({ children }) => {
   };
 
   const markAllAsRead = () => {
-    setNotifications(prev => 
+    setNotifications(prev =>
       prev.map(notification => ({ ...notification, read: true }))
     );
   };
 
   const deleteNotification = (notificationId) => {
-    setNotifications(prev => 
+    setNotifications(prev =>
       prev.filter(notification => notification.id !== notificationId)
     );
   };
@@ -185,7 +185,7 @@ export const NotificationProvider = ({ children }) => {
     if (diffInMinutes < 60) return `${diffInMinutes}m ago`;
     if (diffInHours < 24) return `${diffInHours}h ago`;
     if (diffInDays < 7) return `${diffInDays}d ago`;
-    
+
     return date.toLocaleDateString('en-US', {
       month: 'short',
       day: 'numeric',
@@ -210,15 +210,15 @@ export const NotificationProvider = ({ children }) => {
       try {
         const registration = await navigator.serviceWorker.register('/sw.js');
         const permission = await Notification.requestPermission();
-        
+
         if (permission === 'granted') {
-          const subscription = await registration.pushManager.subscribe({
+          const subscription = await registration.pushManager.subscribe({ // eslint-disable-line no-unused-vars
             userVisibleOnly: true,
             applicationServerKey: 'YOUR_VAPID_PUBLIC_KEY'
           });
-          
+
           // Send subscription to server
-          console.log('Push notification subscription:', subscription);
+          // console.log('Push notification subscription:', subscription);
           toast.success('Push notifications enabled!');
           return true;
         } else {
@@ -241,7 +241,7 @@ export const NotificationProvider = ({ children }) => {
       try {
         const registration = await navigator.serviceWorker.ready;
         const subscription = await registration.pushManager.getSubscription();
-        
+
         if (subscription) {
           await subscription.unsubscribe();
           toast.success('Push notifications disabled');

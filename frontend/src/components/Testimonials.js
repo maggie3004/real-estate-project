@@ -95,7 +95,7 @@ const Testimonials = () => {
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-bold text-amber-700 dark:text-white mb-6">
             What Our Customers Say
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
@@ -127,14 +127,14 @@ const Testimonials = () => {
                   {/* Quote Icons */}
                   <FaQuoteLeft className="absolute top-6 left-6 text-gold text-2xl opacity-20" />
                   <FaQuoteRight className="absolute bottom-6 right-6 text-gold text-2xl opacity-20" />
-                  
+
                   <div className="flex flex-col lg:flex-row items-center gap-8">
                     {/* Customer Image */}
                     <div className="flex-shrink-0">
                       <div className="relative">
                         {testimonial.image ? (
-                          <img 
-                            src={testimonial.image} 
+                          <img
+                            src={testimonial.image}
                             alt={testimonial.name}
                             className="w-24 h-24 md:w-32 md:h-32 rounded-full object-cover border-4 border-gold shadow-lg transition-transform duration-300 hover:scale-105"
                           />

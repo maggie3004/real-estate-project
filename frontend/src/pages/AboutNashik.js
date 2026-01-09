@@ -1,11 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useContext } from 'react';
+import { ScrollDirectionContext } from '../context/ScrollDirectionContext';
 import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 import { FaMapMarkerAlt, FaIndustry, FaGraduationCap, FaPlane, FaTrain, FaBus, FaCar, FaShoppingCart } from 'react-icons/fa';
 
 const AboutNashik = () => {
   const navigate = useNavigate();
+  const scrollDirection = useContext(ScrollDirectionContext);
 
   const handleViewProjects = () => {
     navigate('/milestones');
@@ -16,13 +19,13 @@ const AboutNashik = () => {
   };
 
   const nashikImages = [
-          {
-        id: 1,
-        src: '/image data/trimbak.jpg',
-        alt: 'Trimbakeshwar Temple',
-        title: 'Trimbakeshwar Temple',
-        description: 'One of the 12 Jyotirlingas'
-      },
+    {
+      id: 1,
+      src: '/image data/trimbak.jpg',
+      alt: 'Trimbakeshwar Temple',
+      title: 'Trimbakeshwar Temple',
+      description: 'One of the 12 Jyotirlingas'
+    },
     {
       id: 2,
       src: '/image data/vineyard.jpg',
@@ -86,30 +89,33 @@ const AboutNashik = () => {
       {/* Hero Section - Kumbh Mela */}
       <section className="relative w-full h-screen overflow-hidden">
         {/* Background Image */}
-        <img 
-          src="/image data/nashik_godavari_kumbh.jpg"
-          alt="Nashik Kumbh Mela on Godavari Ghats"
+        <img
+          src="/assets/kumbh-mela-nashik.jpg"
+          alt="Nashik Kumbh Mela 2026-27 - Sacred gathering on Godavari Ghats, Maharashtra"
+          loading="eager"
+          width="1920"
+          height="1080"
           className="w-full h-full object-cover"
           onError={(e) => { e.target.src = '/hero-building.jpg'; }}
         />
-        
+
         {/* Minimal Overlay - Light gradient for text readability */}
         <div className="absolute inset-0 bg-gradient-to-l from-black/30 via-transparent to-transparent"></div>
-        
+
         {/* Content Overlay - Positioned at center top */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="absolute top-2 sm:top-3 md:top-4 inset-x-0 flex flex-col text-center items-center"
         >
-          <h1 className="text-xl sm:text-2xl md:text-3xl font-black mb-1 text-white drop-shadow-lg">
+          <h1 className="text-xl sm:text-2xl md:text-3xl font-black mb-0.5 text-amber-700 drop-shadow-lg">
             Nashik
           </h1>
-          <p className="text-sm sm:text-base md:text-lg mb-2 font-bold text-yellow-300 drop-shadow-md">
+          <p className="text-sm sm:text-base md:text-lg mb-1 font-bold text-amber-700 drop-shadow-md">
             Sacred Land of Kumbh Mela 2026-27
           </p>
-          <p className="text-xs sm:text-sm md:text-base leading-relaxed px-4 max-w-2xl font-semibold text-white drop-shadow-md">
+          <p className="text-xs sm:text-sm md:text-base leading-relaxed px-4 max-w-2xl font-semibold text-amber-700 drop-shadow-md">
             Experience the spiritual essence and rapid development
           </p>
         </motion.div>
@@ -118,9 +124,10 @@ const AboutNashik = () => {
       {/* Image Gallery - Nashik's Beauty */}
       <section className="py-12 px-4 bg-amber-50 dark:bg-amber-950/20">
         <div className="max-w-6xl mx-auto">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             className="text-3xl font-bold text-center mb-8 text-amber-700 dark:text-amber-600"
           >
@@ -132,12 +139,16 @@ const AboutNashik = () => {
                 key={image.id}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 className="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
-                <img 
-                  src={image.src} 
-                  alt={image.alt}
+                <img
+                  src={image.src}
+                  alt={`${image.alt} - ${image.description} in Nashik, Maharashtra`}
+                  loading="lazy"
+                  width="600"
+                  height="400"
                   className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -155,16 +166,17 @@ const AboutNashik = () => {
       {/* Introduction Section */}
       <section className="py-12 px-4 bg-white dark:bg-black/50">
         <div className="max-w-6xl mx-auto">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+            whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
             transition={{ duration: 0.8 }}
             className="text-center mb-8"
           >
             <h2 className="text-3xl font-bold mb-4 text-amber-700 dark:text-amber-600">Welcome to Nashik</h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Nashik, the "Wine Capital of India," is a vibrant city in Maharashtra that seamlessly blends 
-              ancient spirituality with modern development. Located on the banks of the sacred Godavari River, 
+              Nashik, the "Wine Capital of India," is a vibrant city in Maharashtra that seamlessly blends
+              ancient spirituality with modern development. Located on the banks of the sacred Godavari River,
               Nashik is home to the famous Trimbakeshwar Temple, one of the 12 Jyotirlingas.
             </p>
           </motion.div>
@@ -176,6 +188,7 @@ const AboutNashik = () => {
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 className="text-center p-4 bg-amber-50 dark:bg-amber-900/20 rounded-lg hover:shadow-lg transition-shadow duration-300"
               >
@@ -195,9 +208,10 @@ const AboutNashik = () => {
       {/* Connectivity Section */}
       <section className="py-12 px-4 bg-amber-50 dark:bg-amber-950/20">
         <div className="max-w-6xl mx-auto">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
+            whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
             transition={{ duration: 0.8 }}
             className="text-center mb-8"
           >
@@ -213,6 +227,7 @@ const AboutNashik = () => {
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 className="text-center p-4 border border-gray-200 dark:border-gray-700 rounded-lg hover:shadow-lg transition-shadow duration-300"
               >
@@ -230,9 +245,10 @@ const AboutNashik = () => {
       {/* Real Estate Market */}
       <section className="py-12 px-4 bg-white dark:bg-black/50">
         <div className="max-w-6xl mx-auto">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             className="text-center"
           >
@@ -264,9 +280,12 @@ const AboutNashik = () => {
                 </ul>
               </div>
               <div className="relative">
-                <img 
+                <img
                   src="/image data/city_img.jpg"
-                  alt="Nashik City - Real Estate Investment"
+                  alt="Nashik City skyline - Modern infrastructure and real estate investment opportunities in Maharashtra"
+                  loading="lazy"
+                  width="800"
+                  height="600"
                   className="w-full h-64 object-cover rounded-lg shadow-lg"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-lg"></div>
@@ -279,9 +298,10 @@ const AboutNashik = () => {
       {/* Call to Action */}
       <section className="py-12 px-4 bg-gradient-to-r from-amber-700 to-amber-600">
         <div className="max-w-4xl mx-auto text-center text-white">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-3xl font-bold mb-4">Ready to Invest in Nashik?</h2>
@@ -289,13 +309,13 @@ const AboutNashik = () => {
               Discover premium properties in Nashik with Ganesh Yeole Builders and Developers.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
+              <button
                 onClick={handleViewProjects}
                 className="bg-white text-amber-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
               >
                 View Our Projects
               </button>
-              <button 
+              <button
                 onClick={handleContactUs}
                 className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-amber-700 transition-colors duration-200"
               >

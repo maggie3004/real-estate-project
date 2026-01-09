@@ -1,71 +1,135 @@
 import React, { useEffect } from 'react';
 import sgsFront from '../assets/shree-ganesh-srushti/gallery/front.jpg';
-import sgs1bhk from '../assets/shree-ganesh-srushti/gallery/1bhk.jpg';
-import sgs1bhk2 from '../assets/shree-ganesh-srushti/gallery/1bhk (2).jpg';
-import sgs2bhk from '../assets/shree-ganesh-srushti/gallery/2bhk.jpg';
-import sgs2bhk2 from '../assets/shree-ganesh-srushti/gallery/2bhk (2).jpg';
+import sgsNight from '../assets/shree-ganesh-srushti/gallery/night.jpg';
 import ProjectTemplate from '../components/ProjectTemplate';
-import { FaCar, FaSun, FaBuilding, FaShieldAlt, FaWater, FaTint } from 'react-icons/fa';
-import { MdMeetingRoom } from 'react-icons/md';
-import { BiCctv, BiSolidHomeHeart } from 'react-icons/bi';
+
+// Amenities Icons
+import {
+  FaSolarPanel,
+  FaChargingStation,
+  FaBatteryFull,
+  FaBook,
+  FaRobot,
+  FaRoad,
+  FaStore,
+  FaHospital,
+  FaShoppingBag
+} from 'react-icons/fa';
+
+import { MdMeetingRoom, MdSelfImprovement } from 'react-icons/md';
+import { BiCctv } from 'react-icons/bi';
+import { GiWaterDrop } from 'react-icons/gi';
+import { FaBuilding } from 'react-icons/fa';
 
 const ShreeGaneshSrushti = () => {
   const projectData = {
     projectName: "Shree Ganesh Srushti",
     tagline: "THE NEW LANGUAGE OF LIVING",
     heroSubtitle: "1, 2 & 3 BHK happy homes & shops",
-    description: `Experience an elevated lifestyle of sophistication at Shree Ganesh Srushti, where every aspect is meticulously designed. 1 BHK 'Happy Homes' crafted to enhance your everyday living. These residences offer the perfect integration of luxury and functionality, delivering a modern living experience that seamlessly blends convenience, comfort, and innovation. Located at Sr no 94/1 plot 16/17 gavlane road, Pathardi Shivar, Nashik - 422010, our project provides unmatched connectivity to essential services and amenities. With schools, shopping centers, healthcare facilities, and recreational options all within close proximity, residents enjoy a seamless, well-rounded living experience.`,
+
+    description:
+      "Thoughtfully designed towers ensure ample light, ventilation, and scenic views — creating a lifestyle of comfort, convenience, and class. A prestigious address you'll be proud to call home.",
+
     stats: [
       { title: "1, 2 & 3 BHK", subtitle: "Happy Homes & Shops" },
       { title: "G+7", subtitle: "Structure" },
       { title: "8+", subtitle: "Facilities" },
       { title: "Premium", subtitle: "Location" }
     ],
+
     amenities: [
+      { icon: <FaSolarPanel />, name: "Solar for Common Electricity" },
+      { icon: <FaChargingStation />, name: "EV Charging Station" },
       { icon: <BiCctv />, name: "CCTV" },
-      { icon: <FaSun />, name: "Solar Power" },
-      { icon: <FaShieldAlt />, name: "Safety Gate" },
+      { icon: <FaBatteryFull />, name: "Battery Backup for Lift" },
+      { icon: <MdSelfImprovement />, name: "Yoga Space on Rooftop" },
+      { icon: <FaBook />, name: "Library" },
       { icon: <MdMeetingRoom />, name: "Multipurpose Hall" },
-      { icon: <BiSolidHomeHeart />, name: "Auto Door Lift" },
-      { icon: <FaBuilding />, name: "Battery Backup" },
-      { icon: <FaTint />, name: "Smart Automation" },
-      { icon: <FaWater />, name: "Water Supply" },
-      { icon: <FaCar />, name: "Parking Space" }
+      { icon: <FaRobot />, name: "Automation in Common Area" },
+      { icon: <GiWaterDrop />, name: "Rainwater Harvesting" }
     ],
-    images: ['/assets/shree-ganesh-srushti/gallery/SGS_Hero.png', sgsFront, sgs1bhk, sgs2bhk],
-    brochurePath: "/assets/shree-ganesh-srushti/gallery/Shree Ganesh Srushti Digital Broucher_compressed.pdf",
+
+    images: ['/assets/shree-ganesh-srushti/gallery/hero.png'],
+    galleryImages: [
+      sgsFront,
+      sgsNight,
+      '/assets/shree-ganesh-srushti/gallery/IMG-20251112-WA0038.jpg'
+    ],
+
+    brochurePath:
+      "/assets/shree-ganesh-srushti/gallery/Shree Ganesh Srushti Digital Broucher_compressed.pdf",
+
     reraNumber: "PM1220002501249",
     reraQr: "/assets/shree-ganesh-srushti/gallery/Rera_QR.png",
-    layoutVariant: 'ongoing',
+    reraUrl: "https://maharerait.maharashtra.gov.in/project/view/59690",
+
+    layoutVariant: "ongoing",
     configuration: "1BHK, 2BHK",
     location: "Nashik",
-    progressStage: 2,
-    locationChips: ["Temple 8 min", "Hospital 12 min", "Market 7 min"],
+
     floorPlans: [
-      { label: "1BHK - Type A", src: sgs1bhk },
-      { label: "1BHK - Type B", src: sgs1bhk2 },
-      { label: "2BHK - Type A", src: sgs2bhk },
-      { label: "2BHK - Type B", src: sgs2bhk2 }
+      { label: "1 BHK Gold", src: "/assets/shree-ganesh-srushti/gallery/1bhk-gold.png" },
+      { label: "1 BHK Platinum", src: "/assets/shree-ganesh-srushti/gallery/1bhk-platinum.png" },
+      { label: "2 BHK Diamond", src: "/assets/shree-ganesh-srushti/gallery/2bhk-diamond.png" }
     ],
+
     downloads: [
-      { label: "Project Brochure", href: "/assets/shree-ganesh-srushti/gallery/Shree Ganesh Srushti Digital Broucher_compressed.pdf" }
+      {
+        label: "Project Brochure",
+        href: "/assets/shree-ganesh-srushti/gallery/Shree Ganesh Srushti Digital Broucher_compressed.pdf"
+      }
     ],
-    advantages: ["New Development", "Secure Campus", "Modern Elevation", "Efficient Plans", "Green Views", "Parking"],
-    testimonials: [],
-    cost: { base: "On Request", taxes: "As applicable", maintenance: "TBD" },
-    timeline: [
-      { label: "Launch", caption: "Project unveiled", image: sgsFront },
-      { label: "Foundation", caption: "Excavation done", image: sgs1bhk },
-      { label: "Structure", caption: "Structure progress", image: sgs2bhk },
-      { label: "Finishing", caption: "Interior finishing", image: sgsFront }
-    ],
-    mapUrl: "https://maps.app.goo.gl/8c8b1TXW1DBwsT6w8",
-    directionsUrl: "https://maps.app.goo.gl/8c8b1TXW1DBwsT6w8",
-    embedMapUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3764.0123456789!2d73.8234!3d19.9876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bdcb0e0e0e0e0e1%3A0x0!2sShree%20Ganesh%20Srushti!5e0!3m2!1sen!2sin!4v1234567890"
+
+    mapUrl: "https://maps.app.goo.gl/Unszx1rJLL22QM1h7",
+    directionsUrl: "https://maps.app.goo.gl/Unszx1rJLL22QM1h7",
+    mapEmbed: '<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1008.8516266726913!2d73.71860950599066!3d19.97560052363185!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sin!4v1767520999127!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
+
+    // 🔥 CONNECTIVITY (MATCHES BROCHURE IMAGE)
+    connectivityData: {
+      description: [
+        "Strategically located near <strong>Datta Mandir Chowk</strong>, offering excellent connectivity.",
+        "Quick access to <strong>Trimbakeshwar Road</strong> ensuring smooth travel to key city areas.",
+        "Well-connected location leading to nearby residential and commercial hubs."
+      ],
+      points: [
+        {
+          label: "Bus Stop & CBS",
+          time: "3 mins / 13 mins",
+          icon: FaRoad
+        },
+        {
+          label: "Satpur Ambad MIDC",
+          time: "6 mins",
+          icon: FaBuilding
+        },
+        {
+          label: "Market",
+          time: "5 mins",
+          icon: FaStore
+        },
+        {
+          label: "Trimbak & Mumbai Highway",
+          time: "7 mins",
+          icon: FaRoad
+        },
+        {
+          label: "Hospitals & Schools",
+          time: "6 mins",
+          icon: FaHospital
+        },
+        {
+          label: "City Centre Mall",
+          time: "10 mins",
+          icon: FaShoppingBag
+        }
+      ]
+    }
   };
 
   useEffect(() => {
     document.title = `${projectData.projectName} - Sai Prasad Group`;
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
   }, [projectData.projectName]);
 
   return <ProjectTemplate {...projectData} />;

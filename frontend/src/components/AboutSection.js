@@ -1,43 +1,86 @@
 import React from 'react';
+import { FaHeart, FaAward } from 'react-icons/fa';
 
 const AboutSection = () => (
-  <section style={{ padding: '3rem 0', background: '#ffffff' }} className="dark:bg-black/50">
-    <div style={{ maxWidth: 900, margin: '0 auto', textAlign: 'center', padding: '0 1rem' }}>
-      <h2 style={{ fontSize: 'clamp(1.5rem, 4vw, 2.2rem)', fontWeight: 700, color: 'var(--primary-color)', marginBottom: 16 }}>
+  <section className="py-12 md:py-20 bg-white dark:bg-black/50 transition-colors duration-300">
+    <div className="max-w-4xl mx-auto px-4 text-center">
+      <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-amber-700 dark:text-amber-400 mb-6">
         About Us
       </h2>
-      <div style={{ fontSize: 'clamp(0.9rem, 3vw, 1.1rem)', color: '#b8860b', marginBottom: 18, fontStyle: 'italic', fontWeight: 600, lineHeight: 1.6 }}>
-        घर म्हणजे फक्त ४ भिंती नाही तर समृद्धी, समाधान आणि आनंदाचे मंदिर असते.<br/>
-        पंचतत्वांचे अभ्यास करून, भोगद्याम, सुखदर्शनम व रम्या ह्या वास्तुशास्त्रांच्या मूलभूत तत्वांवर आधारित आम्ही गृह सौख्य साकारत आहोत.<br/>
+
+      {/* Marathi Text */}
+      <div className="text-amber-700 dark:text-amber-400 text-base md:text-lg mb-10 italic font-bold leading-relaxed">
+        घर म्हणजे फक्त ४ भिंती नाही तर समृद्धी, समाधान आणि आनंदाचे मंदिर असते.<br />
+        पंचतत्वांचे अभ्यास करून, भोगद्याम, सुखदर्शनम व रम्या ह्या वास्तुशास्त्रांच्या मूलभूत तत्वांवर आधारित आम्ही गृह सौख्य साकारत आहोत.<br />
         प्रत्येक सभासदाला लाभेल असे परिपूर्ण घर साकारत आहोत.
       </div>
-      
-      <div style={{ fontSize: 'clamp(0.9rem, 3vw, 1.1rem)', color: '#444', marginBottom: 18, textAlign: 'justify', lineHeight: 1.6, padding: '0 0.5rem' }}>
-        <b>Our Vision:</b> To become the most trusted and preferred real estate developer in Nashik, creating landmark projects that set new standards in quality, design, and customer satisfaction. We envision building communities where families thrive, dreams flourish, and every home becomes a legacy for generations to come.
+
+      {/* English Text Content */}
+      <div className="space-y-6 mb-10">
+        <h4 className="text-xl md:text-2xl font-bold text-gray-800 dark:text-gray-200">
+          Building Dreams, Creating Landmarks
+        </h4>
+        <p className="text-gray-600 dark:text-gray-400 text-base md:text-lg text-justify leading-relaxed">
+          Established in 2008-09 by visionary leader Mr. Ganesh Yeole, Sai Prasad Builders & Developers has transformed Nashik's real estate landscape with <strong className="text-amber-600 dark:text-amber-400 font-bold">25+ successful projects</strong> and <strong className="text-amber-600 dark:text-amber-400 font-bold">500+ happy families</strong>. Our journey from humble beginnings to becoming a trusted name in real estate reflects our commitment to excellence, transparency, and customer-centric approach.
+        </p>
       </div>
-      
-      <div style={{ fontSize: 'clamp(0.9rem, 3vw, 1.1rem)', color: '#444', marginBottom: 18, textAlign: 'justify', lineHeight: 1.6, padding: '0 0.5rem' }}>
-        <b>Our Mission:</b> To deliver exceptional homes that exceed expectations through innovative design, superior construction quality, and unwavering commitment to customer satisfaction. We strive to make luxury living accessible while maintaining the highest standards of Vastu compliance and modern amenities.
+
+      {/* Mission & Vision Boxes */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+
+        {/* Vision Box */}
+        <div className="bg-gradient-to-br from-green-50 to-green-100 
+    dark:from-green-900/20 dark:to-green-800/20 
+    p-8 rounded-2xl text-left 
+    border border-green-200 dark:border-green-700/30 
+    shadow-sm hover:shadow-md transition-shadow">
+
+          <div className="flex items-center gap-3 mb-4">
+            <FaAward className="text-green-600 text-2xl" />
+            <h3 className="text-2xl font-bold text-green-700 dark:text-green-400">
+              Our Vision
+            </h3>
+          </div>
+
+          <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-justify">
+            To create homes that go beyond four walls, delivering true satisfaction to every homeowner.
+            We strive to build high-quality, well-designed, and affordable spaces that offer comfort,
+            security, and a fulfilling lifestyle while prioritizing innovation and sustainability.
+          </p>
+        </div>
+
+        {/* Mission Box */}
+        <div className="bg-gradient-to-br from-gray-50 to-gray-100 
+    dark:from-gray-800/20 dark:to-gray-700/20 
+    p-8 rounded-2xl text-left 
+    border border-gray-200 dark:border-gray-700/30 
+    shadow-sm hover:shadow-md transition-shadow">
+
+          <div className="flex items-center gap-3 mb-4">
+            <FaHeart className="text-gray-600 dark:text-gray-400 text-2xl" />
+            <h3 className="text-2xl font-bold text-gray-700 dark:text-gray-200">
+              Our Mission
+            </h3>
+          </div>
+
+          <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-justify">
+            To build more than just houses—we create homes that offer comfort, convenience, and a superior lifestyle.
+            By maintaining a balance between affordability and premium quality, we ensure that every homeowner
+            receives a complete, well-equipped living space that meets their aspirations.
+          </p>
+        </div>
+
       </div>
-      
-      <p style={{ fontSize: 'clamp(1rem, 3.5vw, 1.2rem)', color: '#444', marginBottom: 18, textAlign: 'justify', lineHeight: 1.6, padding: '0 0.5rem' }}>
-        <b>Building Dreams, Creating Landmarks</b><br/>
-        Established in 2008-09 by visionary leader Mr. Ganesh Yeole, Sai Prasad Builders & Developers has transformed Nashik's real estate landscape with <b>25+ successful projects</b> and <b>500+ happy families</b>. Our journey from humble beginnings to becoming a trusted name in real estate reflects our commitment to excellence, transparency, and customer-centric approach.
-      </p>
-      
-      <p style={{ fontSize: 'clamp(0.9rem, 3vw, 1.1rem)', color: '#444', marginBottom: 18, textAlign: 'justify', lineHeight: 1.6, padding: '0 0.5rem' }}>
-        Today, under the leadership of Mr. Prasad G. Yeole, a qualified Civil Engineer and Vastu Expert in training, we combine cutting-edge construction technology with traditional Vastu wisdom. This unique blend ensures every home we build is not just structurally superior but also harmoniously designed for prosperity and well-being. Our projects feature world-class amenities, smart home solutions, and premium finishes that elevate the living experience.
-      </p>
-      
-      <p style={{ fontSize: 'clamp(0.9rem, 3vw, 1.1rem)', color: '#444', marginBottom: 18, textAlign: 'justify', lineHeight: 1.6, padding: '0 0.5rem' }}>
-        What sets us apart is our unwavering focus on <b>quality, timely delivery, and customer satisfaction</b>. We have achieved <b>100% customer satisfaction</b> across all our projects, with many families choosing us for their second and third homes. Our commitment to Vastu compliance, combined with modern design aesthetics, creates homes that are both spiritually harmonious and contemporary in appeal.
-      </p>
-      
-      <div style={{ fontStyle: 'italic', color: 'var(--primary-color)', fontSize: 'clamp(0.9rem, 3vw, 1.1rem)', marginBottom: 24, lineHeight: 1.6 }}>
+
+
+
+
+      {/* Quote */}
+      <div className="font-bold text-amber-600 dark:text-amber-500 text-lg italic md:text-xl mt-8 border-t border-amber-100 dark:border-amber-900/30 pt-8">
         "For us, home is not just about four walls, but a world where love resides and memories are created."
       </div>
     </div>
   </section>
 );
 
-export default AboutSection; 
+export default AboutSection;
