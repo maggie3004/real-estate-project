@@ -3,7 +3,7 @@ import React from 'react';
 import sgpAView from '../assets/shree-ganesh-park/gallery/a-view.jpg';
 import sgsFront from '../assets/shree-ganesh-srushti/gallery/front.jpg';
 import { useNavigate } from 'react-router-dom';
-import { FaMapMarkerAlt, FaClock } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaBuilding } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { useContext } from 'react';
 import { ScrollDirectionContext } from '../context/ScrollDirectionContext';
@@ -15,19 +15,19 @@ import 'swiper/css/pagination';
 
 const projects = [
   {
-    name: 'Shreeganesh Srushti',
-    location: 'Nashik',
+    name: 'Shree Ganesh Srushti',
+    location: 'Near Papayaz Nursery, Chunchale, Nashik',
     status: 'Ongoing',
     image: sgsFront,
     description: 'Latest residential development with contemporary design and all modern facilities.',
-    type: '2 & 3 BHK',
+    type: '1 & 2 BHK',
     units: '210 Units',
     completionDate: '2025',
     route: '/ShreeGaneshSrushti'
   },
   {
     name: 'Shree Ganesh Park',
-    location: 'Nashik',
+    location: 'Near Papayaz Nursery, Chunchale, Nashik',
     status: 'Ongoing',
     image: sgpAView,
     description: 'A premium residential development with multiple wings offering various apartment configurations.',
@@ -38,7 +38,7 @@ const projects = [
   },
   {
     name: 'Shree Ganesh Heights',
-    location: 'Nashik',
+    location: 'Pathardi, Nashik',
     status: 'Ongoing',
     image: '/assets/shree ganesh heights gallery 1.jpeg',
     description: 'Premium residential development with modern amenities and excellent location advantages.',
@@ -49,7 +49,7 @@ const projects = [
   },
   {
     name: 'Sai Shraddha Apartment',
-    location: 'College Road, Nashik',
+    location: 'Kamathwade, Nashik',
     status: 'Completed',
     image: '/assets/sai shraddha.jpg',
     description: 'A beautifully designed residential complex offering comfortable living with all modern amenities and excellent connectivity.',
@@ -60,7 +60,7 @@ const projects = [
   },
   {
     name: 'Vinayak Apartment',
-    location: 'Pathardi Shivar, Nashik',
+    location: 'Makhmalabad Road, Nashik',
     status: 'Completed',
     image: '/assets/vinayak apartment.jpg',
     description: 'Experience an elevated lifestyle of sophistication with 1 BHK Happy Homes crafted to enhance your everyday living.',
@@ -172,7 +172,7 @@ const ProjectsSection = () => {
                       </div>
 
                       <div className="flex items-center text-gray-600 dark:text-gray-400 mb-3">
-                        <FaClock className="w-4 h-4 mr-2 flex-shrink-0" />
+                        <FaBuilding className="w-4 h-4 mr-2 flex-shrink-0" />
                         <span className="text-sm">{project.type}</span>
                       </div>
 

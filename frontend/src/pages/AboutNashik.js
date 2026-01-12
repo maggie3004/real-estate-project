@@ -87,35 +87,40 @@ const AboutNashik = () => {
       </Helmet>
 
       {/* Hero Section - Kumbh Mela */}
-      <section className="relative w-full h-screen overflow-hidden">
+      <section className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-screen overflow-hidden">
         {/* Background Image */}
         <img
-          src="/assets/kumbh-mela-nashik.jpg"
+          src="/assets/kumbh-mela-nashik.png"
           alt="Nashik Kumbh Mela 2026-27 - Sacred gathering on Godavari Ghats, Maharashtra"
           loading="eager"
+          decoding="async"
           width="1920"
           height="1080"
-          className="w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover object-center"
+          style={{ willChange: 'transform' }}
           onError={(e) => { e.target.src = '/hero-building.jpg'; }}
         />
 
-        {/* Minimal Overlay - Light gradient for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-l from-black/30 via-transparent to-transparent"></div>
+        {/* Minimal Overlay - Subtle gradient for text contrast */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/20 to-transparent"></div>
 
-        {/* Content Overlay - Positioned at center top */}
+        {/* Content Overlay - Top-left corner with slide-in animation */}
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="absolute top-2 sm:top-3 md:top-4 inset-x-0 flex flex-col text-center items-center"
+          initial={{ opacity: 0, x: 100 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 1, delay: 1.5, ease: "easeOut" }}
+          className="absolute top-4 sm:top-6 md:top-8 left-4 sm:left-6 md:left-8"
         >
-          <h1 className="text-xl sm:text-2xl md:text-3xl font-black mb-0.5 text-amber-700 drop-shadow-lg">
+          <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-1 text-white drop-shadow-2xl"
+            style={{ fontFamily: "'Poppins', sans-serif" }}>
             Nashik
           </h1>
-          <p className="text-sm sm:text-base md:text-lg mb-1 font-bold text-amber-700 drop-shadow-md">
+          <p className="text-xs sm:text-sm md:text-base font-semibold text-amber-400 drop-shadow-lg"
+            style={{ fontFamily: "'Poppins', sans-serif" }}>
             Sacred Land of Kumbh Mela 2026-27
           </p>
-          <p className="text-xs sm:text-sm md:text-base leading-relaxed px-4 max-w-2xl font-semibold text-amber-700 drop-shadow-md">
+          <p className="text-[10px] sm:text-xs md:text-sm leading-relaxed font-light text-gray-100 drop-shadow-lg mt-1 max-w-[250px] sm:max-w-xs"
+            style={{ fontFamily: "'Poppins', sans-serif" }}>
             Experience the spiritual essence and rapid development
           </p>
         </motion.div>

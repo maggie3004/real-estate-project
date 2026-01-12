@@ -80,10 +80,8 @@ const completedProjects = [
     units: "25 Units",
     area: "Well-Connected Area",
     images: [
-      "/assets/sai shraddha.jpg",
-      "/assets/sai-shraddha-apartment/gallery/front.jpg",
-      "/assets/sai-shraddha-apartment/gallery/top-view.jpg",
-      "/assets/sai-shraddha-apartment/gallery/parking.jpg"
+      "/assets/shree ganesh apartment.jpeg",
+      "/assets/shree ganesh apartment.jpeg"
     ],
     amenities: ["Security", "Parking", "Power Backup", "Water Supply", "Maintenance", "Garden"],
     features: ["Quality Construction", "Modern Design", "Good Connectivity", "Family-Friendly", "Well-Planned Layout"],

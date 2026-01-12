@@ -59,7 +59,7 @@ const milestones = [
       {
         title: "Shree Ganesh Apartment",
         description: "Premium residential towers",
-        image: "/assets/shree-ganesh-heights/gallery/top-view.jpg",
+        image: "/assets/shree ganesh apartment.jpeg",
         icon: FaBuilding,
         category: "Completed Project",
         stats: "25 Units"
