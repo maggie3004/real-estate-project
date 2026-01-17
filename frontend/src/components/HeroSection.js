@@ -1,6 +1,6 @@
 import React, { useRef, useCallback, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { ScrollDirectionContext } from '../context/ScrollDirectionContext';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules';
@@ -11,8 +11,25 @@ import 'swiper/css/effect-fade';
 
 const HeroSection = () => {
   const navigate = useNavigate();
-  // Swiper ref for manual navigation control
   const swiperRef = useRef(null);
+  const heroRef = useRef(null);
+
+  // Parallax effect on scroll
+  const { scrollY } = useScroll({
+    target: heroRef,
+    offset: ['start start', 'end start']
+  });
+
+  // Subtle parallax movement
+  const y = useTransform(scrollY, [0, 500], [0, 150]);
+  const opacity = useTransform(scrollY, [0, 300], [1, 0.3]);
+
+  // Add spring for smoother motion
+  const smoothY = useSpring(y, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   // Navigation handlers
   const handlePrevSlide = useCallback(() => {
@@ -90,143 +107,139 @@ const HeroSection = () => {
 
   return (
     <motion.section
+      ref={heroRef}
       id="home"
       initial={{ opacity: 0, y: 40 }}
       animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
       whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
       viewport={{ once: true, amount: 0.6 }}
-      transition={{ duration: 0.8, ease: 'easeOut' }}
+      transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+      style={{ opacity }}
       className="hero-section relative overflow-hidden"
-      style={{
-        width: '100%',
-        aspectRatio: '3 / 2',
-        minHeight: '70vh',
-        position: 'relative',
-        margin: 0,
-        padding: 0
-      }}
     >
-      <Swiper
-        ref={swiperRef}
-        modules={[Navigation, Pagination, Autoplay, EffectFade]}
-        effect="fade"
-        fadeEffect={{
-          crossFade: true
-        }}
-        speed={800}
-        autoplay={{
-          delay: 5000,
-          disableOnInteraction: false,
-          pauseOnMouseEnter: true
-        }}
-        pagination={{
-          clickable: true,
-          el: '.hero-swiper-pagination',
-          bulletClass: 'hero-swiper-pagination-bullet',
-          bulletActiveClass: 'hero-swiper-pagination-bullet-active'
-        }}
-        loop={true}
-        className="hero-swiper"
-        style={{ width: '100%', aspectRatio: '3 / 2', minHeight: '70vh', margin: 0, padding: 0 }}
-      >
-        {carouselData.map((slide, index) => (
-          <SwiperSlide key={slide.id} className="relative">
-            <div
-              className="relative h-full w-full bg-gray-900 cursor-pointer group overflow-hidden"
-              style={{ width: '100%', height: '100%', position: 'relative' }}
-              onClick={() => navigate(slide.route)}
-              role="button"
-              tabIndex={0}
-              aria-label={`Navigate to ${slide.title}`}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  navigate(slide.route);
-                }
-              }}
-            >
-              <img
-                src={slide.image}
-                alt={slide.title}
-                className="hero-image"
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  objectPosition: 'center bottom',
-                  display: 'block'
+      <motion.div style={{ y: smoothY }}>
+        <Swiper
+          ref={swiperRef}
+          modules={[Navigation, Pagination, Autoplay, EffectFade]}
+          effect="fade"
+          fadeEffect={{
+            crossFade: true
+          }}
+          speed={1000}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true
+          }}
+          pagination={{
+            clickable: true,
+            el: '.hero-swiper-pagination',
+            bulletClass: 'hero-swiper-pagination-bullet',
+            bulletActiveClass: 'hero-swiper-pagination-bullet-active'
+          }}
+          loop={true}
+          className="hero-swiper"
+          style={{ width: '100%', aspectRatio: '3 / 2', minHeight: '70vh', margin: 0, padding: 0 }}
+        >
+          {carouselData.map((slide, index) => (
+            <SwiperSlide key={slide.id} className="relative">
+              <div
+                className="relative h-full w-full bg-gray-900 cursor-pointer group overflow-hidden"
+                style={{ width: '100%', height: '100%', position: 'relative' }}
+                onClick={() => navigate(slide.route)}
+                role="button"
+                tabIndex={0}
+                aria-label={`Navigate to ${slide.title}`}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    navigate(slide.route);
+                  }
                 }}
-                loading={index === 0 ? "eager" : "lazy"}
-                decoding="async"
-                onError={(e) => {
-                  e.target.src = '/hero-building.jpg';
-                }}
-              />
-
-              {/* Overlay for better text readability */}
-              <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/50 dark:from-black/30 dark:via-black/40 dark:to-black/60"></div>
-
-              {/* Slide-specific content */}
-              <div className="absolute top-8 sm:top-10 md:top-12 lg:top-16 left-4 sm:left-8 md:left-12 lg:left-16 right-4 z-10 max-w-3xl">
-                {/* Project Name at Top */}
-                <motion.h4
-                  initial={{ opacity: 0, y: -20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.1 }}
-                  className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white mb-2 sm:mb-3 md:mb-4 drop-shadow-2xl"
-                >
-                  {slide.projectName}
-                </motion.h4>
-
-                <motion.div
-                  initial={{ opacity: 0, y: -30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                  className="space-y-1 sm:space-y-2 mb-3 sm:mb-4 md:mb-6"
-                >
-                  <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white uppercase leading-tight tracking-wide drop-shadow-2xl"
-                    style={{ fontFamily: "'Playfair Display', serif" }}>
-                    {slide.title}
-                  </h1>
-                  <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white uppercase leading-tight tracking-wide drop-shadow-2xl"
-                    style={{ fontFamily: "'Playfair Display', serif" }}>
-                    {slide.title2}
-                  </h2>
-                  <h3 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white uppercase leading-tight tracking-wide drop-shadow-2xl"
-                    style={{ fontFamily: "'Playfair Display', serif" }}>
-                    {slide.title3}
-                  </h3>
-                </motion.div>
-
-                {/* Decorative golden line */}
-                <motion.div
-                  initial={{ opacity: 0, scaleX: 0 }}
-                  animate={{ opacity: 1, scaleX: 1 }}
-                  transition={{ duration: 0.8, delay: 0.5 }}
-                  className="w-16 sm:w-20 md:w-24 lg:w-32 h-0.5 bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-300 mb-3 sm:mb-4 md:mb-6 shadow-lg"
+              >
+                <img
+                  src={slide.image}
+                  alt={slide.title}
+                  className="hero-image"
                   style={{
-                    boxShadow: '0 0 10px rgba(251, 191, 36, 0.5)',
-                    originX: 0
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center bottom',
+                    display: 'block'
+                  }}
+                  loading={index === 0 ? "eager" : "lazy"}
+                  decoding="async"
+                  onError={(e) => {
+                    e.target.src = '/hero-building.jpg';
                   }}
                 />
 
-                <motion.p
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.7 }}
-                  className="text-sm sm:text-base md:text-lg lg:text-xl text-white font-light tracking-wide drop-shadow-lg"
-                  style={{ fontFamily: "'Poppins', sans-serif" }}
-                >
-                  {slide.subtitle}
-                </motion.p>
+                {/* Overlay for better text readability */}
+                <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/50 dark:from-black/30 dark:via-black/40 dark:to-black/60"></div>
+
+                {/* Slide-specific content */}
+                <div className="absolute top-8 sm:top-10 md:top-12 lg:top-16 left-4 sm:left-8 md:left-12 lg:left-16 right-4 z-10 max-w-3xl">
+                  {/* Project Name at Top */}
+                  <motion.h4
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.1 }}
+                    className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-white mb-2 sm:mb-3 md:mb-4 drop-shadow-2xl"
+                  >
+                    {slide.projectName}
+                  </motion.h4>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: -30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.2 }}
+                    className="space-y-1 sm:space-y-2 mb-3 sm:mb-4 md:mb-6"
+                  >
+                    <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white uppercase leading-tight tracking-wide drop-shadow-2xl"
+                      style={{ fontFamily: "'Playfair Display', serif" }}>
+                      {slide.title}
+                    </h1>
+                    <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white uppercase leading-tight tracking-wide drop-shadow-2xl"
+                      style={{ fontFamily: "'Playfair Display', serif" }}>
+                      {slide.title2}
+                    </h2>
+                    <h3 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-white uppercase leading-tight tracking-wide drop-shadow-2xl"
+                      style={{ fontFamily: "'Playfair Display', serif" }}>
+                      {slide.title3}
+                    </h3>
+                  </motion.div>
+
+                  {/* Decorative golden line */}
+                  <motion.div
+                    initial={{ opacity: 0, scaleX: 0 }}
+                    animate={{ opacity: 1, scaleX: 1 }}
+                    transition={{ duration: 0.8, delay: 0.5 }}
+                    className="w-16 sm:w-20 md:w-24 lg:w-32 h-0.5 bg-gradient-to-r from-amber-300 via-yellow-400 to-amber-300 mb-3 sm:mb-4 md:mb-6 shadow-lg"
+                    style={{
+                      boxShadow: '0 0 10px rgba(251, 191, 36, 0.5)',
+                      originX: 0
+                    }}
+                  />
+
+                  <motion.p
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.7 }}
+                    className="text-sm sm:text-base md:text-lg lg:text-xl text-white font-light tracking-wide drop-shadow-lg"
+                    style={{ fontFamily: "'Poppins', sans-serif" }}
+                  >
+                    {slide.subtitle}
+                  </motion.p>
+                </div>
               </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </motion.div>
 
       {/* Custom Navigation Buttons */}
       <button

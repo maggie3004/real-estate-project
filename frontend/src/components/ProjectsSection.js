@@ -1,5 +1,4 @@
 import React from 'react';
-// Use src/assets images instead of public paths for ongoing projects
 import sgpAView from '../assets/shree-ganesh-park/gallery/a-view.jpg';
 import sgsFront from '../assets/shree-ganesh-srushti/gallery/front.jpg';
 import { useNavigate } from 'react-router-dom';
@@ -7,6 +6,7 @@ import { FaMapMarkerAlt, FaBuilding } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { useContext } from 'react';
 import { ScrollDirectionContext } from '../context/ScrollDirectionContext';
+import { useStaggerAnimation, cardVariants } from '../hooks/useScrollAnimation';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, FreeMode } from 'swiper/modules';
 import 'swiper/css';
@@ -74,6 +74,7 @@ const projects = [
 const ProjectsSection = () => {
   const navigate = useNavigate();
   const scrollDirection = useContext(ScrollDirectionContext);
+  const staggerAnimation = useStaggerAnimation(0.15);
 
   const handleViewDetails = (route) => {
     if (route.includes('milestones#')) {
@@ -137,69 +138,72 @@ const ProjectsSection = () => {
             centeredSlides={false}
             className="featured-slider"
           >
-            {projects.map((project, idx) => (
-              <SwiperSlide key={idx}>
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={scrollDirection === 'down' ? undefined : { opacity: 1, y: 0 }}
-                  whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
-                  transition={{ duration: 0.6, delay: idx * 0.1 }}
-                  viewport={{ once: true }}
-                  className="h-full bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 transform hover:scale-105 transition-all duration-300 flex flex-col"
-                >
-                  <div className="relative">
-                    <img
-                      src={project.image}
-                      alt={project.name}
-                      className="w-full h-56 object-contain bg-gray-50 dark:bg-gray-900"
-                    />
-                    <div className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-semibold ${project.status === 'Ongoing'
-                      ? 'bg-orange-500 text-white'
-                      : 'bg-green-500 text-white'
-                      }`}>
-                      {project.status}
+            <motion.div {...staggerAnimation} className="flex">
+              {projects.map((project, idx) => (
+                <SwiperSlide key={idx}>
+                  <motion.div
+                    variants={cardVariants}
+                    whileHover={{
+                      y: -12,
+                      scale: 1.03,
+                      transition: { duration: 0.4, ease: [0.68, -0.55, 0.265, 1.55] }
+                    }}
+                    className="h-full bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-gray-100 dark:border-gray-700 flex flex-col"
+                  >
+                    <div className="relative">
+                      <img
+                        src={project.image}
+                        alt={project.name}
+                        className="w-full h-56 object-contain bg-gray-50 dark:bg-gray-900"
+                      />
+                      <div className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-semibold ${project.status === 'Ongoing'
+                        ? 'bg-orange-500 text-white'
+                        : 'bg-green-500 text-white'
+                        }`}>
+                        {project.status}
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Card Content with Flex Layout */}
-                  <div className="p-6 flex flex-col flex-grow">
-                    <div className="flex-grow">
-                      <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 line-clamp-2">{project.name}</h3>
+                    {/* Card Content with Flex Layout */}
+                    <div className="p-6 flex flex-col flex-grow">
+                      <div className="flex-grow">
+                        <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 line-clamp-2">{project.name}</h3>
 
-                      <div className="flex items-center text-gray-600 dark:text-gray-400 mb-2">
-                        <FaMapMarkerAlt className="w-4 h-4 mr-2 flex-shrink-0" />
-                        <span className="text-sm truncate">{project.location}</span>
-                      </div>
+                        <div className="flex items-center text-gray-600 dark:text-gray-400 mb-2">
+                          <FaMapMarkerAlt className="w-4 h-4 mr-2 flex-shrink-0" />
+                          <span className="text-sm truncate">{project.location}</span>
+                        </div>
 
-                      <div className="flex items-center text-gray-600 dark:text-gray-400 mb-3">
-                        <FaBuilding className="w-4 h-4 mr-2 flex-shrink-0" />
-                        <span className="text-sm">{project.type}</span>
-                      </div>
+                        <div className="flex items-center text-gray-600 dark:text-gray-400 mb-3">
+                          <FaBuilding className="w-4 h-4 mr-2 flex-shrink-0" />
+                          <span className="text-sm">{project.type}</span>
+                        </div>
 
-                      <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm line-clamp-3 leading-relaxed">{project.description}</p>
+                        <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm line-clamp-3 leading-relaxed">{project.description}</p>
 
-                      {/* Project Stats */}
-                      <div className="mb-6 text-sm">
-                        <div className="flex flex-col">
-                          <span className="font-semibold text-gray-700 dark:text-gray-300">Units</span>
-                          <span className="text-gray-600 dark:text-gray-400">{project.units}</span>
+                        {/* Project Stats */}
+                        <div className="mb-6 text-sm">
+                          <div className="flex flex-col">
+                            <span className="font-semibold text-gray-700 dark:text-gray-300">Units</span>
+                            <span className="text-gray-600 dark:text-gray-400">{project.units}</span>
+                          </div>
                         </div>
                       </div>
-                    </div>
 
-                    {/* Button positioned at bottom */}
-                    <div className="mt-auto">
-                      <button
-                        onClick={() => handleViewDetails(project.route)}
-                        className="w-full bg-gradient-to-r from-amber-500 to-amber-600 text-white py-3 px-4 rounded-lg font-semibold hover:from-amber-600 hover:to-amber-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-                      >
-                        View Details
-                      </button>
+                      {/* Button positioned at bottom */}
+                      <div className="mt-auto">
+                        <button
+                          onClick={() => handleViewDetails(project.route)}
+                          className="w-full bg-gradient-to-r from-amber-500 to-amber-600 text-white py-3 px-4 rounded-lg font-semibold hover:from-amber-600 hover:to-amber-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                        >
+                          View Details
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
-              </SwiperSlide>
-            ))}
+                  </motion.div>
+                </SwiperSlide>
+              ))}
+            </motion.div>
           </Swiper>
 
           {/* Custom Navigation Buttons - Static positioned in margins */}
