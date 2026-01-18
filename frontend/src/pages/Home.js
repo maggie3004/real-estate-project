@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import HeroSection from '../components/HeroSection';
 import StatsSection from '../components/StatsSection';
 import LocationSection from '../components/LocationSection';
@@ -9,17 +9,19 @@ import AwardsSection from '../components/AwardsSection';
 import JourneySection from '../components/JourneySection';
 import Testimonials from '../components/Testimonials';
 import ScrollProgress from '../components/ScrollProgress';
+import SpinAnnouncementPopup from '../components/SpinAnnouncementPopup';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { useContext } from 'react';
 import { ScrollDirectionContext } from '../context/ScrollDirectionContext';
 import { useSmoothScroll } from '../hooks/useSmoothScroll';
+import { hasUserSpun, isCampaignActive } from '../utils/spinWheelUtils';
 
 // ... import other new sections as you create them
 
 const Home = () => {
-  // Use the smooth scroll hook
   const { scrollToSection } = useSmoothScroll();
+  const [showSpinModal, setShowSpinModal] = useState(false);
 
   useEffect(() => {
     // Add smooth scroll to all anchor links with enhanced performance
@@ -44,11 +46,26 @@ const Home = () => {
     };
   }, [scrollToSection]);
 
+  // Auto-show spin wheel modal on every page load
+  useEffect(() => {
+    const userHasSpun = hasUserSpun();
+    const campaignActive = isCampaignActive();
+
+    if (!userHasSpun && campaignActive) {
+      const timer = setTimeout(() => {
+        setShowSpinModal(true);
+      }, 3000); // Show after 3 seconds
+
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
   const scrollDirection = useContext(ScrollDirectionContext);
 
   return (
     <>
       <ScrollProgress />
+      <SpinAnnouncementPopup isOpen={showSpinModal} onClose={() => setShowSpinModal(false)} />
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

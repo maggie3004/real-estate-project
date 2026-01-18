@@ -1,5 +1,6 @@
 import React from 'react';
 import FloatingCallButton from './FloatingCallButton';
+import FloatingSpinButton from './FloatingSpinButton';
 import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -13,6 +14,7 @@ const MainLayout = () => (
     </main>
     <Footer />
     <FloatingCallButton />
+    <FloatingSpinButton />
   </div>
 );
 

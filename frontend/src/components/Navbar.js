@@ -80,21 +80,7 @@ const Navbar = () => {
         { name: 'Sustainability', path: '/sustainability' },
       ],
     },
-    // {
-    //   name: 'Testimonials',
-    //   dropdown: [
-    //     { name: 'Testimonials', path: '/testimonials' },
-    //     { name: 'Awards', path: '/awards' },
-    //   ],
-    // },
-    // {
-    //   name: 'Events',
-    //   dropdown: [
-    //     { name: 'Events', path: '/events' },
-    //     { name: 'Testimonials', path: '/testimonials' },
-    //     { name: 'Awards', path: '/awards' },
-    //   ],
-    // },
+    { name: 'Events', path: '/events' },
     { name: 'About Nashik', path: '/about-nashik' },
     { name: 'Contact us', path: '/contact' },
   ];

@@ -1,387 +1,200 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { FaCalendarAlt, FaMapMarkerAlt, FaClock, FaUsers } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import { FaGift, FaCalendarAlt, FaCheckCircle, FaClock } from 'react-icons/fa';
+import useScrollAnimation from '../hooks/useScrollAnimation';
+import SpinWheelModal from '../components/SpinWheelModal';
+import { prizes } from '../utils/spinWheelUtils';
 
 const Events = () => {
-  const [selectedEvent, setSelectedEvent] = useState(null);
-  const [showRegistration, setShowRegistration] = useState(false);
-
-  // Lock body scroll when modal is open
-  useEffect(() => {
-    if (showRegistration) {
-      // Prevent background scrolling (do NOT set position: fixed on body)
-      document.body.style.overflow = 'hidden';
-    } else {
-      // Restore background scrolling
-      document.body.style.overflow = 'unset';
-    }
-
-    // Cleanup on component unmount
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [showRegistration]);
-
-  const events = [
-    {
-      id: 1,
-      title: "Shree Ganesh Park Phase II Launch Event",
-      date: "March 15, 2025",
-      time: "6:00 PM - 9:00 PM",
-      location: "Nashik Convention Center",
-      address: "College Road, Nashik, Maharashtra 422005",
-      image: "/hero-building.jpg",
-      description: "Grand launch of our flagship project with special offers, celebrity presence, and exclusive preview of our latest development. Join us for an evening of luxury and innovation.",
-      attendees: "500+",
-      status: "Upcoming",
-      category: "Project Launch",
-      highlights: [
-        "Exclusive project preview",
-        "Special launch offers",
-        "Celebrity guest appearance",
-        "Luxury dinner",
-        "Live entertainment"
-      ],
-      registrationRequired: true
-    },
-    {
-      id: 2,
-      title: "Customer Appreciation Day 2025",
-      date: "February 28, 2025",
-      time: "4:00 PM - 8:00 PM",
-      location: "Shree Ganesh Heights Clubhouse",
-      address: "Pathardi, Nashik, Maharashtra",
-      image: "/hero-building.jpg",
-      description: "Annual celebration with our valued customers featuring cultural programs, dinner, and recognition of our loyal customers. A special evening to thank our extended family.",
-      attendees: "300+",
-      status: "Completed",
-      category: "Customer Event",
-      highlights: [
-        "Cultural performances",
-        "Customer recognition",
-        "Gourmet dinner",
-        "Family activities",
-        "Lucky draws"
-      ],
-      registrationRequired: false
-    },
-    {
-      id: 3,
-      title: "Real Estate Expo 2025",
-      date: "January 20-22, 2025",
-      time: "10:00 AM - 7:00 PM",
-      location: "Mumbai Exhibition Center",
-      address: "Bandra Kurla Complex, Mumbai 400051",
-      image: "/hero-building.jpg",
-      description: "Showcasing our latest projects and innovations in real estate development. Meet our experts, explore our portfolio, and discover investment opportunities.",
-      attendees: "1000+",
-      status: "Completed",
-      category: "Exhibition",
-      highlights: [
-        "Project showcase",
-        "Expert consultations",
-        "Investment seminars",
-        "Networking opportunities",
-        "Special expo offers"
-      ],
-      registrationRequired: true
-    },
-    {
-      id: 4,
-      title: "Tree Plantation Drive",
-      date: "December 5, 2024",
-      time: "9:00 AM - 12:00 PM",
-      location: "All Project Sites",
-      address: "Various locations across Nashik",
-      image: "/hero-building.jpg",
-      description: "Environmental initiative with customers and community participation. Let's make our city greener together by planting trees and promoting sustainability.",
-      attendees: "200+",
-      status: "Completed",
-      category: "CSR Event",
-      highlights: [
-        "Tree plantation",
-        "Environmental awareness",
-        "Community participation",
-        "Refreshments",
-        "Certificates"
-      ],
-      registrationRequired: true
-    },
-    {
-      id: 5,
-      title: "Property Investment Seminar",
-      date: "April 10, 2025",
-      time: "2:00 PM - 5:00 PM",
-      location: "Pune Business Center",
-      address: "Hinjewadi, Pune, Maharashtra 411057",
-      image: "/hero-building.jpg",
-      description: "Learn about real estate investment strategies, market trends, and opportunities in the current market. Expert insights and networking opportunities.",
-      attendees: "150+",
-      status: "Upcoming",
-      category: "Seminar",
-      highlights: [
-        "Expert presentations",
-        "Market analysis",
-        "Investment strategies",
-        "Q&A session",
-        "Networking tea"
-      ],
-      registrationRequired: true
-    },
-    {
-      id: 6,
-      title: "Festival Celebration",
-      date: "October 15, 2024",
-      time: "6:00 PM - 10:00 PM",
-      location: "Sai Shraddha Apartment",
-      address: "DGP Nagar, Kamatwade, Nashik",
-      image: "/hero-building.jpg",
-      description: "Celebrating festivals with our residents and community. Cultural programs, traditional food, and community bonding activities.",
-      attendees: "400+",
-      status: "Completed",
-      category: "Community Event",
-      highlights: [
-        "Cultural programs",
-        "Traditional food",
-        "Community games",
-        "Prize distribution",
-        "Fireworks"
-      ],
-      registrationRequired: false
-    }
-  ];
-
-  const handleEventClick = (event) => {
-    setSelectedEvent(event);
-    setShowRegistration(true);
-  };
-
-  const handleRegister = (eventId) => {
-    alert(`Registration successful for ${selectedEvent.title}! We will send you confirmation details soon.`);
-    setShowRegistration(false);
-    setSelectedEvent(null);
-  };
-
-  const upcomingEvents = events.filter(event => event.status === 'Upcoming');
-  const pastEvents = events.filter(event => event.status === 'Completed');
+  const titleAnimation = useScrollAnimation('fadeInUp', 0, 0.8);
+  const contentAnimation = useScrollAnimation('fadeInUp', 0.2, 0.8);
+  const [showSpinModal, setShowSpinModal] = useState(false);
 
   return (
-    <section className="min-h-screen pt-24 pb-12 bg-white dark:bg-black text-[#181818] dark:text-white transition-colors duration-300">
+    <section className="min-h-screen pt-24 pb-12 bg-gradient-to-b from-amber-50 to-white dark:from-amber-950/20 dark:to-black text-[#181818] dark:text-white transition-colors duration-300">
       <Helmet>
-        <title>Events - Ganesh Yeole Builders | Upcoming & Past Events</title>
-        <meta name="description" content="Join our upcoming events and explore past celebrations. From project launches to customer appreciation events, discover our community activities." />
+        <title>Offers and Events - Ganesh Yeole Builders | Spin & Win Prizes</title>
+        <meta name="description" content="Spin & Win exciting prizes! Book your flat between Jan 23-26, 2026 and win Refrigerator, Smart TV, Washing Machine, Phone, or Kitchen Appliances." />
       </Helmet>
+
+      <SpinWheelModal isOpen={showSpinModal} onClose={() => setShowSpinModal(false)} />
 
       <div className="max-w-7xl mx-auto px-4">
         {/* Hero Section */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-amber-700 dark:text-amber-600 mb-6">
-            Offers and Sales
+        <motion.div {...titleAnimation} className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-amber-700 dark:text-amber-500 mb-6">
+            🎁 Offers and Events 🎁
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Discover exclusive offers and special promotions on our premium projects. Connect with our team to learn about limited-time deals and investment opportunities.
+          <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            Book your dream flat and win exciting prizes!
           </p>
-        </div>
+        </motion.div>
 
-        {/* Upcoming Offers */}
-        <div className="mb-16 bg-amber-50 dark:bg-amber-950/20 py-12 -mx-4 px-4 sm:-mx-12 sm:px-12">
-          <h2 className="text-3xl font-bold text-center text-amber-700 dark:text-amber-600 mb-12">
-            Upcoming Offers
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {upcomingEvents.map((event) => (
-              <div key={event.id} className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                <div className="relative">
-                  <img 
-                    src={event.image} 
-                    alt={event.title}
-                    className="w-full h-48 object-cover"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                      {event.status}
-                    </span>
-                  </div>
-                  <div className="absolute top-4 right-4">
-                    <span className="bg-gold text-white px-3 py-1 rounded-full text-sm font-semibold">
-                      {event.category}
-                    </span>
-                  </div>
+        {/* Active Campaign */}
+        <motion.div {...contentAnimation} className="max-w-5xl mx-auto mb-16">
+          <div className="bg-gradient-to-br from-amber-100 via-amber-50 to-white dark:from-amber-950/50 dark:via-amber-900/30 dark:to-gray-800 rounded-3xl shadow-2xl overflow-hidden border-4 border-amber-500">
+            {/* Campaign Header */}
+            <div className="bg-gradient-to-r from-amber-600 to-amber-700 p-8 text-center relative overflow-hidden">
+              <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
+              <div className="relative z-10">
+                <div className="inline-flex items-center justify-center w-24 h-24 bg-white/20 rounded-full mb-4 backdrop-blur-sm">
+                  <FaGift className="text-5xl text-white animate-bounce" />
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-amber-700 dark:text-amber-600 mb-3">
-                    {event.title}
-                  </h3>
-                  <div className="space-y-2 mb-4">
-                    <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                      <FaCalendarAlt className="text-gold" />
-                      <span>{event.date}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                      <FaClock className="text-gold" />
-                      <span>{event.time}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                      <FaMapMarkerAlt className="text-gold" />
-                      <span className="text-sm">{event.location}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                      <FaUsers className="text-gold" />
-                      <span>{event.attendees} Attendees</span>
-                    </div>
-                  </div>
-                  <p className="text-gray-700 dark:text-gray-300 text-sm mb-4 line-clamp-3">
-                    {event.description}
-                  </p>
-                  <button
-                    onClick={() => handleEventClick(event)}
-                    className="w-full bg-gradient-to-r from-amber-700 to-amber-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-amber-600 hover:to-amber-500 transition-all duration-200"
-                  >
-                    {event.registrationRequired ? 'Register Now' : 'Learn More'}
-                  </button>
+                <h2 className="text-4xl font-bold text-white mb-3">
+                  Spin & Win Campaign
+                </h2>
+                <div className="flex items-center justify-center gap-2 text-amber-100 text-lg mb-2">
+                  <FaCalendarAlt />
+                  <span className="font-semibold">January 23-26, 2026</span>
                 </div>
+                <p className="text-amber-50 text-xl font-medium">
+                  Book Your Flat & Claim Exciting Prizes!
+                </p>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Past Events */}
-        <div className="mb-16 bg-white dark:bg-black/50 py-12 -mx-4 px-4 sm:-mx-12 sm:px-12">
-          <h2 className="text-3xl font-bold text-center text-amber-700 dark:text-amber-600 mb-12">
-            Past Events
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {pastEvents.map((event) => (
-              <div key={event.id} className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
-                <div className="relative">
-                  <img 
-                    src={event.image} 
-                    alt={event.title}
-                    className="w-full h-48 object-cover"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-gray-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
-                      {event.status}
-                    </span>
-                  </div>
-                  <div className="absolute top-4 right-4">
-                    <span className="bg-gold text-white px-3 py-1 rounded-full text-sm font-semibold">
-                      {event.category}
-                    </span>
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-amber-700 dark:text-amber-600 mb-3">
-                    {event.title}
-                  </h3>
-                  <div className="space-y-2 mb-4">
-                    <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                      <FaCalendarAlt className="text-gold" />
-                      <span>{event.date}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                      <FaClock className="text-gold" />
-                      <span>{event.time}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                      <FaMapMarkerAlt className="text-gold" />
-                      <span className="text-sm">{event.location}</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400">
-                      <FaUsers className="text-gold" />
-                      <span>{event.attendees} Attendees</span>
-                    </div>
-                  </div>
-                  <p className="text-gray-700 dark:text-gray-300 text-sm mb-4 line-clamp-3">
-                    {event.description}
-                  </p>
-                  <div className="text-center">
-                    <span className="text-green-600 font-semibold">✓ Event Completed</span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Event Statistics section removed as requested */}
-
-        {/* Call to Action */}
-        <div className="text-center">
-          <div className="bg-gradient-to-r from-amber-700 to-amber-600 text-white p-8 rounded-2xl">
-            <h3 className="text-2xl font-bold mb-4">Stay Updated with Our Events</h3>
-            <p className="text-lg mb-6 opacity-90">
-              Subscribe to our newsletter to get notified about upcoming events and special offers
-            </p>
-            <button className="bg-white text-amber-700 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200">
-              Subscribe to Newsletter
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Event Registration Modal */}
-      {showRegistration && selectedEvent && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 max-w-md w-full max-h-[90vh] overflow-y-auto">
-            <div className="flex justify-between items-center mb-6">
-              <h3 className="text-2xl font-bold text-amber-700 dark:text-amber-600">Event Registration</h3>
-              <button
-                onClick={() => setShowRegistration(false)}
-                className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 text-2xl"
-              >
-                ×
-              </button>
             </div>
-            <div className="space-y-4">
-              <h4 className="text-xl font-semibold text-gray-800 dark:text-white">
-                {selectedEvent.title}
-              </h4>
-              <div className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
-                <div className="flex items-center gap-2">
-                  <FaCalendarAlt className="text-gold" />
-                  <span>{selectedEvent.date} at {selectedEvent.time}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <FaMapMarkerAlt className="text-gold" />
-                  <span>{selectedEvent.location}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <FaUsers className="text-gold" />
-                  <span>{selectedEvent.attendees} Attendees</span>
+
+            {/* Campaign Content */}
+            <div className="p-8 md:p-12">
+              {/* How it Works */}
+              <div className="mb-12">
+                <h3 className="text-2xl font-bold text-amber-700 dark:text-amber-500 mb-6 text-center">
+                  How It Works
+                </h3>
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-amber-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                      1
+                    </div>
+                    <h4 className="font-bold text-lg mb-2 text-gray-800 dark:text-white">Click Spin Button</h4>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm">
+                      Click the floating "Spin & Win" button or the button below
+                    </p>
+                  </div>
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-amber-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                      2
+                    </div>
+                    <h4 className="font-bold text-lg mb-2 text-gray-800 dark:text-white">Spin the Wheel</h4>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm">
+                      Watch the wheel spin and see what prize you win!
+                    </p>
+                  </div>
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-amber-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                      3
+                    </div>
+                    <h4 className="font-bold text-lg mb-2 text-gray-800 dark:text-white">Claim Your Prize</h4>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm">
+                      Fill the form, book a flat, and get your prize!
+                    </p>
+                  </div>
                 </div>
               </div>
-              <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-lg">
-                <h5 className="font-semibold text-gray-800 dark:text-white mb-2">Event Highlights:</h5>
-                <ul className="space-y-1 text-sm text-gray-600 dark:text-gray-400">
-                  {selectedEvent.highlights.map((highlight, index) => (
-                    <li key={index} className="flex items-center gap-2">
-                      <span className="text-gold">•</span>
-                      {highlight}
-                    </li>
+
+              {/* Prizes */}
+              <div className="mb-12">
+                <h3 className="text-2xl font-bold text-amber-700 dark:text-amber-500 mb-6 text-center">
+                  Exciting Prizes to Win!
+                </h3>
+                <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+                  {prizes.map((prize) => (
+                    <div
+                      key={prize.id}
+                      className="bg-white dark:bg-gray-700 p-6 rounded-2xl shadow-lg text-center hover:scale-105 transition-transform duration-300 border-2 border-transparent hover:border-amber-500"
+                      style={{ borderColor: prize.color + '40' }}
+                    >
+                      <div className="text-5xl mb-3">{prize.emoji}</div>
+                      <p className="font-semibold text-sm text-gray-800 dark:text-white">
+                        {prize.name}
+                      </p>
+                    </div>
                   ))}
+                </div>
+              </div>
+
+              {/* CTA Button */}
+              <div className="text-center mb-8">
+                <button
+                  onClick={() => setShowSpinModal(true)}
+                  className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-600 to-amber-700 text-white px-12 py-5 rounded-2xl font-bold text-xl hover:from-amber-700 hover:to-amber-800 transition-all duration-300 shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 animate-pulse"
+                >
+                  <FaGift className="text-2xl" />
+                  Spin Now & Win!
+                </button>
+              </div>
+
+              {/* Terms & Conditions */}
+              <div className="bg-gray-50 dark:bg-gray-800 p-6 rounded-2xl">
+                <h4 className="font-bold text-lg mb-4 text-gray-800 dark:text-white flex items-center gap-2">
+                  <FaCheckCircle className="text-amber-600" />
+                  Terms & Conditions
+                </h4>
+                <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                  <li className="flex items-start gap-2">
+                    <span className="text-amber-600 mt-1">•</span>
+                    <span>Campaign valid from January 23-26, 2026</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-amber-600 mt-1">•</span>
+                    <span>One spin per person/device</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-amber-600 mt-1">•</span>
+                    <span>Prize must be claimed within 30 days from winning date</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-amber-600 mt-1">•</span>
+                    <span><strong>Flat booking is mandatory to claim the prize</strong></span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-amber-600 mt-1">•</span>
+                    <span>Prize subject to availability and verification</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-amber-600 mt-1">•</span>
+                    <span>Verification required at site visit with claim code</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-amber-600 mt-1">•</span>
+                    <span>Company reserves the right to modify or cancel the offer</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-amber-600 mt-1">•</span>
+                    <span>Employees and their immediate family members are not eligible</span>
+                  </li>
                 </ul>
               </div>
-              <div className="flex gap-4 pt-4">
-                <button
-                  onClick={() => handleRegister(selectedEvent.id)}
-                  className="flex-1 bg-gradient-to-r from-amber-700 to-amber-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-amber-600 hover:to-amber-500 transition-all duration-200"
-                >
-                  Confirm Registration
-                </button>
-                <button
-                  onClick={() => setShowRegistration(false)}
-                  className="flex-1 bg-gray-300 dark:bg-gray-600 text-gray-700 dark:text-gray-300 py-3 px-6 rounded-lg font-semibold hover:bg-gray-400 dark:hover:bg-gray-500 transition-all duration-200"
-                >
-                  Cancel
-                </button>
-              </div>
             </div>
           </div>
-        </div>
-      )}
+        </motion.div>
+
+        {/* Contact Info */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="text-center bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg max-w-3xl mx-auto"
+        >
+          <FaClock className="text-4xl text-amber-600 mx-auto mb-4" />
+          <h3 className="text-2xl font-bold text-amber-700 dark:text-amber-500 mb-3">
+            Limited Time Offer!
+          </h3>
+          <p className="text-gray-700 dark:text-gray-300 mb-4">
+            Don't miss this opportunity! Spin the wheel and win amazing prizes when you book your dream flat.
+          </p>
+          <p className="text-gray-600 dark:text-gray-400 text-sm">
+            For more information, please{' '}
+            <a href="/contact" className="text-amber-600 dark:text-amber-500 font-semibold hover:underline">
+              contact our sales team
+            </a>
+            .
+          </p>
+        </motion.div>
+      </div>
     </section>
   );
 };
 
-export default Events; 
+export default Events;
