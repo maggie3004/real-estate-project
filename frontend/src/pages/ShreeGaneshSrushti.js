@@ -123,7 +123,8 @@ const ShreeGaneshSrushti = () => {
           icon: FaShoppingBag
         }
       ]
-    }
+    },
+    legalEntity: "Shree Ganesh Srushti - Project by JYK Nirmiti Infra LLP"
   };
 
   useEffect(() => {

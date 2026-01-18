@@ -90,7 +90,8 @@ const ShreeGaneshParkPhaseI = () => {
         { label: "Hospitals & Schools", time: "6 mins", icon: FaHospital },
         { label: "City Centre Mall", time: "10 mins", icon: FaShoppingBag }
       ]
-    }
+    },
+    legalEntity: "Shree Ganesh Park - Project by BY Builders & Developers"
   };
 
   useEffect(() => {

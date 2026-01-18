@@ -5,7 +5,7 @@ import { FaTimes } from 'react-icons/fa';
 import Confetti from 'react-confetti';
 import SpinWheel from './SpinWheel';
 import PrizeClaimForm from './PrizeClaimForm';
-import { getPrizeFromAngle, hasUserSpun, markUserAsSpun } from '../utils/spinWheelUtils';
+import { getPrizeFromAngle, hasUserSpun, markUserAsSpun, getWinningData, generateClaimCode, saveWinningData } from '../utils/spinWheelUtils';
 
 const SpinWheelModal = ({ isOpen, onClose }) => {
     const [rotation, setRotation] = useState(0);
@@ -16,8 +16,19 @@ const SpinWheelModal = ({ isOpen, onClose }) => {
     const [hasSpunBefore, setHasSpunBefore] = useState(false);
 
     useEffect(() => {
-        setHasSpunBefore(hasUserSpun());
-    }, [isOpen]);
+        const alreadySpun = hasUserSpun();
+        setHasSpunBefore(alreadySpun);
+
+        if (alreadySpun && !wonPrize) {
+            const savedData = getWinningData();
+            if (savedData && savedData.prizeName) {
+                setWonPrize({
+                    name: savedData.prizeName,
+                    emoji: savedData.prizeEmoji
+                });
+            }
+        }
+    }, [isOpen, wonPrize]);
 
     // Prevent body scroll when modal is open
     useEffect(() => {
@@ -48,7 +59,12 @@ const SpinWheelModal = ({ isOpen, onClose }) => {
             const prize = getPrizeFromAngle(finalRotation);
             setWonPrize(prize);
             setShowConfetti(true);
+
+            // Save participation data
+            const claimCode = generateClaimCode();
+            saveWinningData(prize, claimCode);
             markUserAsSpun();
+
             setHasSpunBefore(true);
 
             // Stop confetti after 5 seconds

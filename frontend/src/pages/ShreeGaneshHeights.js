@@ -81,9 +81,9 @@ const ShreeGaneshHeights = () => {
         { label: "D-Mart", time: "5 mins", icon: FaStore },
         { label: "Business Hotels", time: "4 mins", icon: FaHotel },
         { label: "Ambad MIDC", time: "10 mins", icon: FaIndustry },
-      ]
-
-    }
+      ],
+    },
+    legalEntity: "Shree Ganesh Heights - Project by Sai Prasad Builders & Developers"
   };
 
   useEffect(() => {

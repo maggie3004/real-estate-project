@@ -2,27 +2,31 @@ import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { FaGift } from 'react-icons/fa';
 import SpinAnnouncementPopup from './SpinAnnouncementPopup';
-import { hasUserSpun, isCampaignActive } from '../utils/spinWheelUtils';
+import { isCampaignActive } from '../utils/spinWheelUtils';
 
 const FloatingSpinButton = () => {
   const [showModal, setShowModal] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+  const campaignActive = isCampaignActive();
 
   useEffect(() => {
-    const campaignActive = isCampaignActive();
-    const userHasSpun = hasUserSpun();
+    // Auto-show popup after 3 seconds on mount (fresh load or refresh)
+    if (campaignActive) {
+      const timer = setTimeout(() => {
+        setShowModal(true);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [campaignActive]);
 
-    setIsVisible(campaignActive && !userHasSpun);
-  }, []);
-
-  if (!isVisible) return null;
+  if (!campaignActive) return null;
 
   const buttonContent = (
     <div
+      className="floating-spin-btn-wrapper"
       style={{
         position: 'fixed',
-        bottom: '24px',
-        right: '88px', // Position to the left of call button (24px + 48px button + 16px gap)
+        bottom: '84px', // Position above call button (24px bottom + 48px height + 12px gap)
+        right: '24px',  // Match call button's right position
         zIndex: 100000,
         pointerEvents: 'auto'
       }}
@@ -31,6 +35,7 @@ const FloatingSpinButton = () => {
       <button
         onClick={() => setShowModal(true)}
         aria-label="Spin and Win"
+        className="floating-spin-btn"
         style={{
           position: 'relative',
           background: 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)',
@@ -105,8 +110,8 @@ const FloatingSpinButton = () => {
         /* Mobile responsive */
         @media (max-width: 768px) {
           .floating-spin-btn-wrapper {
-            bottom: 16px !important;
-            right: 72px !important;
+            bottom: 70px !important; /* 16px bottom + 44px height + 10px gap */
+            right: 16px !important;
           }
           .floating-spin-btn {
             width: 44px !important;
@@ -116,12 +121,12 @@ const FloatingSpinButton = () => {
 
         @media (max-width: 480px) {
           .floating-spin-btn-wrapper {
-            bottom: 12px !important;
-            right: 66px !important;
+            bottom: 62px !important; /* 12px bottom + 42px height + 8px gap */
+            right: 12px !important;
           }
           .floating-spin-btn {
-            width: 42px !important;
-            height: 42px !important;
+             width: 42px !important;
+             height: 42px !important;
           }
         }
       `}</style>

@@ -49,6 +49,7 @@ const ShreeGaneshParkPhaseII = () => {
         { label: "Hospitals & Schools", time: "6 mins", icon: FaHospital }
       ]
     },
+    legalEntity: "Shree Ganesh Park - Project by BY Builders & Developers",
 
     mapUrl: "https://maps.app.goo.gl/6X9DkrFsd58nzQFT9",
     directionsUrl: "https://maps.app.goo.gl/6X9DkrFsd58nzQFT9"

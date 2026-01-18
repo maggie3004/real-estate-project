@@ -24,15 +24,15 @@ export const prizes = [
     },
     {
         id: 4,
-        name: 'Android Phone',
+        name: 'Android Smartphone',
         emoji: '📱',
         color: '#b91c1c', // Red-700
         angle: 216
     },
     {
         id: 5,
-        name: 'Kitchen Appliances',
-        emoji: '🍳',
+        name: 'Kitchen Appliances & Trolley',
+        emoji: '🛒',
         color: '#7f1d1d', // Red-900
         angle: 288
     }

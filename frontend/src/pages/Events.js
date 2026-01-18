@@ -4,7 +4,8 @@ import { motion } from 'framer-motion';
 import { FaGift, FaCalendarAlt, FaCheckCircle, FaClock } from 'react-icons/fa';
 import useScrollAnimation from '../hooks/useScrollAnimation';
 import SpinWheelModal from '../components/SpinWheelModal';
-import { prizes } from '../utils/spinWheelUtils';
+import SpinWheel from '../components/SpinWheel';
+
 
 const Events = () => {
   const titleAnimation = useScrollAnimation('fadeInUp', 0, 0.8);
@@ -22,33 +23,35 @@ const Events = () => {
 
       <div className="max-w-7xl mx-auto px-4">
         {/* Hero Section */}
-        <motion.div {...titleAnimation} className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-amber-700 dark:text-amber-500 mb-6">
-            🎁 Offers and Events 🎁
+        <motion.div {...titleAnimation} className="text-center mb-10 md:mb-16">
+          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-amber-700 dark:text-amber-500 mb-4 flex items-center justify-center gap-2 px-2">
+            <span className="shrink-0">🎁</span>
+            <span className="whitespace-nowrap">Offers and Events</span>
+            <span className="shrink-0">🎁</span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base md:text-2xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed px-4">
             Book your dream flat and win exciting prizes!
           </p>
         </motion.div>
 
         {/* Active Campaign */}
         <motion.div {...contentAnimation} className="max-w-5xl mx-auto mb-16">
-          <div className="bg-gradient-to-br from-amber-100 via-amber-50 to-white dark:from-amber-950/50 dark:via-amber-900/30 dark:to-gray-800 rounded-3xl shadow-2xl overflow-hidden border-4 border-amber-500">
+          <div className="bg-gradient-to-br from-amber-100 via-amber-50 to-white dark:from-amber-950/50 dark:via-amber-900/30 dark:to-gray-800 rounded-3xl shadow-2xl overflow-hidden border-2 md:border-4 border-amber-500 mx-1">
             {/* Campaign Header */}
-            <div className="bg-gradient-to-r from-amber-600 to-amber-700 p-8 text-center relative overflow-hidden">
+            <div className="bg-gradient-to-r from-amber-600 to-amber-700 p-6 md:p-8 text-center relative overflow-hidden">
               <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
               <div className="relative z-10">
-                <div className="inline-flex items-center justify-center w-24 h-24 bg-white/20 rounded-full mb-4 backdrop-blur-sm">
-                  <FaGift className="text-5xl text-white animate-bounce" />
+                <div className="inline-flex items-center justify-center w-16 h-16 md:w-24 md:h-24 bg-white/20 rounded-full mb-3 md:mb-4 backdrop-blur-sm">
+                  <FaGift className="text-3xl md:text-5xl text-white animate-bounce" />
                 </div>
-                <h2 className="text-4xl font-bold text-white mb-3">
+                <h2 className="text-2xl md:text-4xl font-extrabold text-white mb-2 leading-tight">
                   Spin & Win Campaign
                 </h2>
-                <div className="flex items-center justify-center gap-2 text-amber-100 text-lg mb-2">
-                  <FaCalendarAlt />
-                  <span className="font-semibold">January 23-26, 2026</span>
+                <div className="flex items-center justify-center gap-2 text-amber-100 text-sm md:text-lg mb-2">
+                  <FaCalendarAlt className="shrink-0" />
+                  <span className="font-semibold whitespace-nowrap text-xs md:text-lg">January 23-26, 2026</span>
                 </div>
-                <p className="text-amber-50 text-xl font-medium">
+                <p className="text-amber-50 text-base md:text-xl font-medium px-2">
                   Book Your Flat & Claim Exciting Prizes!
                 </p>
               </div>
@@ -97,19 +100,20 @@ const Events = () => {
                 <h3 className="text-2xl font-bold text-amber-700 dark:text-amber-500 mb-6 text-center">
                   Exciting Prizes to Win!
                 </h3>
-                <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                  {prizes.map((prize) => (
-                    <div
-                      key={prize.id}
-                      className="bg-white dark:bg-gray-700 p-6 rounded-2xl shadow-lg text-center hover:scale-105 transition-transform duration-300 border-2 border-transparent hover:border-amber-500"
-                      style={{ borderColor: prize.color + '40' }}
-                    >
-                      <div className="text-5xl mb-3">{prize.emoji}</div>
-                      <p className="font-semibold text-sm text-gray-800 dark:text-white">
-                        {prize.name}
-                      </p>
+                <div
+                  className="flex justify-center py-8 cursor-pointer relative group"
+                  onClick={() => setShowSpinModal(true)}
+                >
+                  <div className="w-64 h-64 md:w-80 md:h-80 transform group-hover:rotate-12 transition-transform duration-700">
+                    <SpinWheel rotation={0} isSpinning={false} />
+                  </div>
+
+                  {/* Overlay Hint */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="bg-amber-600 text-white px-6 py-2 rounded-full font-bold shadow-2xl scale-0 group-hover:scale-110 transition-transform">
+                      Click to Play!
                     </div>
-                  ))}
+                  </div>
                 </div>
               </div>
 

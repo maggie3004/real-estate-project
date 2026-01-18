@@ -33,8 +33,42 @@ const SpinWheel = ({ rotation, isSpinning }) => {
         ctx.fillStyle = goldGradient;
         ctx.fill();
 
-        // 2. Draw Decorative Rim Lights
+        // 2. Draw Decorative Rim Elements (Lights and Triangles)
         const lightCount = 20;
+        const triangleCount = 12;
+
+        // Draw inward-pointing triangles (Silver/Metallic)
+        for (let i = 0; i < triangleCount; i++) {
+            const angle = (i * 2 * Math.PI) / triangleCount;
+            const innerPointR = wheelRadius + 2;
+            const outerPointR = outerRadius - 2;
+            const width = 15;
+
+            ctx.save();
+            ctx.translate(centerX, centerY);
+            ctx.rotate(angle);
+
+            ctx.beginPath();
+            ctx.moveTo(innerPointR, 0);
+            ctx.lineTo(outerPointR, -width / 2);
+            ctx.lineTo(outerPointR, width / 2);
+            ctx.closePath();
+
+            const triGradient = ctx.createLinearGradient(innerPointR, 0, outerPointR, 0);
+            triGradient.addColorStop(0, '#E5E7EB');
+            triGradient.addColorStop(1, '#9CA3AF');
+            ctx.fillStyle = triGradient;
+            ctx.fill();
+
+            // Add a little shine to the triangle
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 1;
+            ctx.stroke();
+
+            ctx.restore();
+        }
+
+        // Draw Lights
         for (let i = 0; i < lightCount; i++) {
             const angle = (i * 2 * Math.PI) / lightCount;
             const x = centerX + Math.cos(angle) * (outerRadius - 7.5);

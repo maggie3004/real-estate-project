@@ -37,7 +37,7 @@ const ProjectTemplate = ({
   testimonials,
   cost,
   connectivityData,
-
+  legalEntity,
 }) => {
   // Initialize state
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -833,6 +833,19 @@ const ProjectTemplate = ({
               </svg>
               <span>Download Brochure</span>
             </a>
+          </div>
+        </section>
+      )}
+
+      {/* Legal Entity Disclaimer */}
+      {legalEntity && (
+        <section className="w-full py-8 border-t border-gray-100 dark:border-gray-900 bg-white dark:bg-black">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="text-center">
+              <p className="text-[#181818] dark:text-gray-200 text-lg md:text-xl font-bold tracking-tight">
+                {legalEntity}
+              </p>
+            </div>
           </div>
         </section>
       )}
