@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaGift, FaUser, FaPhone, FaEnvelope, FaBuilding, FaClock } from 'react-icons/fa';
+import { FaGift, FaUser, FaPhone, FaEnvelope, FaBuilding, FaWhatsapp } from 'react-icons/fa';
 import { generateClaimCode, saveWinningData } from '../utils/spinWheelUtils';
 
 const PrizeClaimForm = ({ prize, onClose, onSubmit }) => {
@@ -8,8 +8,7 @@ const PrizeClaimForm = ({ prize, onClose, onSubmit }) => {
         name: '',
         phone: '',
         email: '',
-        project: '',
-        preferredTime: ''
+        project: ''
     });
     const [claimCode, setClaimCode] = useState('');
     const [isSubmitted, setIsSubmitted] = useState(false);
@@ -18,15 +17,7 @@ const PrizeClaimForm = ({ prize, onClose, onSubmit }) => {
     const projects = [
         'Shree Ganesh Srushti',
         'Shree Ganesh Park',
-        'Shree Ganesh Heights',
-        'Not decided yet'
-    ];
-
-    const timeSlots = [
-        'Morning (10 AM - 12 PM)',
-        'Afternoon (12 PM - 4 PM)',
-        'Evening (4 PM - 7 PM)',
-        'Anytime'
+        'Shree Ganesh Heights'
     ];
 
     const validateForm = () => {
@@ -38,13 +29,13 @@ const PrizeClaimForm = ({ prize, onClose, onSubmit }) => {
         } else if (!/^\d{10}$/.test(formData.phone.replace(/\s/g, ''))) {
             newErrors.phone = 'Invalid phone number';
         }
-        if (!formData.email.trim()) {
-            newErrors.email = 'Email is required';
-        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+
+        // Email is optional, but if provided, validate it
+        if (formData.email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
             newErrors.email = 'Invalid email address';
         }
+
         if (!formData.project) newErrors.project = 'Please select a project';
-        if (!formData.preferredTime) newErrors.preferredTime = 'Please select preferred time';
 
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
@@ -60,7 +51,7 @@ const PrizeClaimForm = ({ prize, onClose, onSubmit }) => {
         saveWinningData(prize, code);
         setIsSubmitted(true);
 
-        // Call parent submit handler (for EmailJS later)
+        // Call parent submit handler
         if (onSubmit) {
             onSubmit({ ...formData, prize: prize.name, claimCode: code });
         }
@@ -105,9 +96,11 @@ const PrizeClaimForm = ({ prize, onClose, onSubmit }) => {
                 </div>
 
                 <div className="bg-blue-50 dark:bg-blue-950/30 p-4 rounded-xl mb-6">
-                    <p className="text-sm text-gray-700 dark:text-gray-300">
-                        📧 A confirmation email has been sent to <strong>{formData.email}</strong>
-                    </p>
+                    {formData.email && (
+                        <p className="text-sm text-gray-700 dark:text-gray-300">
+                            📧 A confirmation email has been sent to <strong>{formData.email}</strong>
+                        </p>
+                    )}
                     <p className="text-sm text-gray-700 dark:text-gray-300 mt-2">
                         📞 Our team will contact you within 24 hours at <strong>{formData.phone}</strong>
                     </p>
@@ -187,7 +180,7 @@ const PrizeClaimForm = ({ prize, onClose, onSubmit }) => {
             <div>
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                     <FaEnvelope className="inline mr-2" />
-                    Email Address *
+                    Email Address (Optional)
                 </label>
                 <input
                     type="email"
@@ -220,36 +213,37 @@ const PrizeClaimForm = ({ prize, onClose, onSubmit }) => {
                 {errors.project && <p className="text-red-500 text-xs mt-1">{errors.project}</p>}
             </div>
 
-            {/* Preferred Time */}
-            <div>
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    <FaClock className="inline mr-2" />
-                    Preferred Contact Time *
-                </label>
-                <select
-                    name="preferredTime"
-                    value={formData.preferredTime}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:ring-2 focus:ring-amber-500 focus:border-transparent transition-all"
+            {/* Action Bar: Submit + Contact Icons */}
+            <div className="flex items-center gap-2 pt-2">
+                <button
+                    type="submit"
+                    className="flex-1 bg-gradient-to-r from-amber-600 to-amber-700 text-white py-3.5 px-3 rounded-xl font-bold text-sm md:text-base hover:from-amber-700 hover:to-amber-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                 >
-                    <option value="">Select preferred time</option>
-                    {timeSlots.map(slot => (
-                        <option key={slot} value={slot}>{slot}</option>
-                    ))}
-                </select>
-                {errors.preferredTime && <p className="text-red-500 text-xs mt-1">{errors.preferredTime}</p>}
+                    Claim My Prize! 🎁
+                </button>
+
+                <div className="flex items-center gap-2 flex-shrink-0">
+                    <a
+                        href="tel:+917030502111"
+                        className="w-10 h-10 md:w-11 md:h-11 bg-blue-600 text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-md"
+                        title="Call us"
+                    >
+                        <FaPhone className="text-sm md:text-base" />
+                    </a>
+                    <a
+                        href="https://wa.me/917030502111"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 md:w-11 md:h-11 bg-green-500 text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform shadow-md"
+                        title="WhatsApp us"
+                    >
+                        <FaWhatsapp className="text-lg md:text-xl" />
+                    </a>
+                </div>
             </div>
 
-            {/* Submit Button */}
-            <button
-                type="submit"
-                className="w-full bg-gradient-to-r from-amber-600 to-amber-700 text-white py-4 px-6 rounded-xl font-bold text-lg hover:from-amber-700 hover:to-amber-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
-            >
-                Claim My Prize! 🎁
-            </button>
-
-            <p className="text-xs text-center text-gray-500 dark:text-gray-500">
-                * 'Successful' Prize valid only on flat booking. Terms & conditions apply.
+            <p className="text-[10px] text-center text-gray-500 dark:text-gray-500">
+                Prize valid only on Successful Flat Booking. Terms & Conditions Apply.
             </p>
         </motion.form>
     );

@@ -209,14 +209,14 @@ const SpinWheelModal = ({ isOpen, onClose }) => {
                                                 }`}
                                         >
                                             {hasSpunBefore
-                                                ? '✓ Already Spun'
+                                                ? '✓ Already Claimed'
                                                 : isSpinning
                                                     ? 'Spinning...'
                                                     : 'SPIN NOW!'}
                                         </motion.button>
                                         {hasSpunBefore && (
                                             <p className="text-sm text-gray-500 dark:text-gray-400 mt-4 font-medium uppercase tracking-wider">
-                                                You've already participated
+                                                You've already Claimed your prize
                                             </p>
                                         )}
                                     </div>

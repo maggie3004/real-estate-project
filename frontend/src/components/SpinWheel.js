@@ -114,49 +114,60 @@ const SpinWheel = ({ rotation, isSpinning }) => {
             const iconX = centerX + Math.cos(textAngle) * iconRadius;
             const iconY = centerY + Math.sin(textAngle) * iconRadius;
 
-            // Icon Background
+            // Icon Background circle for high contrast
             ctx.beginPath();
-            ctx.arc(iconX, iconY, size * 0.05, 0, 2 * Math.PI);
-            ctx.fillStyle = 'rgba(255, 255, 255, 0.15)';
+            ctx.arc(iconX, iconY, size * 0.055, 0, 2 * Math.PI);
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
             ctx.fill();
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 1.5;
+            ctx.stroke();
 
             // Prize Icon (Emoji)
             ctx.save();
             ctx.translate(iconX, iconY);
             ctx.rotate(textAngle + Math.PI / 2);
-            ctx.font = `${size * 0.08}px Arial`;
+            ctx.font = `${size * 0.09}px Arial`;
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
-            ctx.shadowColor = 'rgba(0, 0, 0, 0.3)';
-            ctx.shadowBlur = 5;
+            // Bright white glow for the icon
+            ctx.shadowColor = '#ffffff';
+            ctx.shadowBlur = 10;
             ctx.fillText(prize.emoji, 0, 0);
             ctx.restore();
 
             // Draw prize name
-            const nameRadius = wheelRadius * 0.8;
+            const nameRadius = wheelRadius * 0.82;
             const nameX = centerX + Math.cos(textAngle) * nameRadius;
             const nameY = centerY + Math.sin(textAngle) * nameRadius;
 
             ctx.save();
             ctx.translate(nameX, nameY);
             ctx.rotate(textAngle + Math.PI / 2);
-            ctx.font = `bold ${size * 0.025}px "Inter", sans-serif`;
+            ctx.font = `bold ${size * 0.028}px "Inter", sans-serif`;
             ctx.fillStyle = '#ffffff';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
-            ctx.shadowColor = 'rgba(0, 0, 0, 0.8)';
-            ctx.shadowBlur = 4;
+            // Dark outline for white text to make it pop
+            ctx.shadowColor = 'rgba(0, 0, 0, 1)';
+            ctx.shadowBlur = 6;
+            ctx.lineWidth = 2.5;
+            ctx.strokeStyle = 'rgba(0, 0, 0, 0.5)';
 
-            // Split and draw text
             const nameWords = prize.name.split(' ');
+            const drawText = (text, y) => {
+                ctx.strokeText(text, 0, y);
+                ctx.fillText(text, 0, y);
+            };
+
             if (nameWords.length > 2) {
-                ctx.fillText(nameWords.slice(0, 2).join(' '), 0, -size * 0.015);
-                ctx.fillText(nameWords.slice(2).join(' '), 0, size * 0.015);
+                drawText(nameWords.slice(0, 2).join(' '), -size * 0.015);
+                drawText(nameWords.slice(2).join(' '), size * 0.015);
             } else if (nameWords.length === 2) {
-                ctx.fillText(nameWords[0], 0, -size * 0.012);
-                ctx.fillText(nameWords[1], 0, size * 0.012);
+                drawText(nameWords[0], 0, -size * 0.013);
+                drawText(nameWords[1], 0, size * 0.013);
             } else {
-                ctx.fillText(prize.name, 0, 0);
+                drawText(prize.name, 0, 0);
             }
             ctx.restore();
         });
