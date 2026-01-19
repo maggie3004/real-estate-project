@@ -9,11 +9,11 @@ import SpinWheel from '../components/SpinWheel';
 
 const Events = () => {
   const titleAnimation = useScrollAnimation('fadeInUp', 0, 0.8);
-  const contentAnimation = useScrollAnimation('fadeInUp', 0.2, 0.8);
+  const contentAnimation = useScrollAnimation('fadeInUp', 0.1, 0.8);
   const [showSpinModal, setShowSpinModal] = useState(false);
 
   return (
-    <section className="min-h-screen pt-24 pb-12 bg-gradient-to-b from-amber-50 to-white dark:from-amber-950/20 dark:to-black text-[#181818] dark:text-white transition-colors duration-300">
+    <section className="min-h-screen pt-16 md:pt-24 pb-12 bg-gradient-to-b from-amber-50 to-white dark:from-amber-950/20 dark:to-black text-[#181818] dark:text-white transition-colors duration-300">
       <Helmet>
         <title>Offers and Events - Ganesh Yeole Builders | Spin & Win Prizes</title>
         <meta name="description" content="Spin & Win exciting prizes! Book your flat between Jan 23-26, 2026 and win Refrigerator, Smart TV, Washing Machine, Phone, or Kitchen Appliances." />
@@ -23,72 +23,72 @@ const Events = () => {
 
       <div className="max-w-7xl mx-auto px-4">
         {/* Hero Section */}
-        <motion.div {...titleAnimation} className="text-center mb-10 md:mb-16">
-          <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-amber-700 dark:text-amber-500 mb-4 flex items-center justify-center gap-2 px-2">
+        <motion.div {...titleAnimation} className="text-center mb-4 md:mb-10">
+          <h1 className="text-xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-amber-700 dark:text-amber-500 mb-2 flex items-center justify-center gap-1.5 px-2">
             <span className="shrink-0">🎁</span>
             <span className="whitespace-nowrap">Offers and Events</span>
             <span className="shrink-0">🎁</span>
           </h1>
-          <p className="text-base md:text-2xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-relaxed px-4">
+          <p className="text-xs md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto leading-tight px-4">
             Book your dream flat and win exciting prizes!
           </p>
         </motion.div>
 
         {/* Active Campaign */}
-        <motion.div {...contentAnimation} className="max-w-5xl mx-auto mb-16">
+        <motion.div {...contentAnimation} className="max-w-5xl mx-auto mb-10">
           <div className="bg-gradient-to-br from-amber-100 via-amber-50 to-white dark:from-amber-950/50 dark:via-amber-900/30 dark:to-gray-800 rounded-3xl shadow-2xl overflow-hidden border-2 md:border-4 border-amber-500 mx-1">
             {/* Campaign Header */}
-            <div className="bg-gradient-to-r from-amber-600 to-amber-700 p-6 md:p-8 text-center relative overflow-hidden">
+            <div className="bg-gradient-to-r from-amber-600 to-amber-700 p-4 md:p-8 text-center relative overflow-hidden">
               <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
               <div className="relative z-10">
-                <div className="inline-flex items-center justify-center w-16 h-16 md:w-24 md:h-24 bg-white/20 rounded-full mb-3 md:mb-4 backdrop-blur-sm">
-                  <FaGift className="text-3xl md:text-5xl text-white animate-bounce" />
+                <div className="inline-flex items-center justify-center w-12 h-12 md:w-24 md:h-24 bg-white/20 rounded-full mb-2 md:mb-4 backdrop-blur-sm">
+                  <FaGift className="text-2xl md:text-5xl text-white animate-bounce" />
                 </div>
-                <h2 className="text-2xl md:text-4xl font-extrabold text-white mb-2 leading-tight">
+                <h2 className="text-xl md:text-4xl font-bold text-white mb-1 leading-tight">
                   Spin & Win Campaign
                 </h2>
-                <div className="flex items-center justify-center gap-2 text-amber-100 text-sm md:text-lg mb-2">
-                  <FaCalendarAlt className="shrink-0" />
-                  <span className="font-semibold whitespace-nowrap text-xs md:text-lg">January 23-26, 2026</span>
+                <div className="flex items-center justify-center gap-1.5 text-amber-100 mb-1">
+                  <FaCalendarAlt className="shrink-0 text-xs md:text-base" />
+                  <span className="whitespace-nowrap text-[10px] md:text-lg">January 23-26, 2026</span>
                 </div>
-                <p className="text-amber-50 text-base md:text-xl font-medium px-2">
-                  Book Your Flat & Claim Exciting Prizes!
+                <p className="text-amber-50 text-xs md:text-xl px-2">
+                  Win Branded Appliances on Every Booking!
                 </p>
               </div>
             </div>
 
             {/* Campaign Content */}
-            <div className="p-8 md:p-12">
+            <div className="p-4 md:p-12">
               {/* How it Works */}
-              <div className="mb-12">
-                <h3 className="text-2xl font-bold text-amber-700 dark:text-amber-500 mb-6 text-center">
+              <div className="mb-8 md:mb-12">
+                <h3 className="text-lg md:text-2xl font-bold text-amber-700 dark:text-amber-500 mb-4 md:mb-6 text-center">
                   How It Works
                 </h3>
-                <div className="grid md:grid-cols-3 gap-6">
+                <div className="grid md:grid-cols-3 gap-4 md:gap-6">
                   <div className="text-center">
-                    <div className="w-16 h-16 bg-amber-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                    <div className="w-12 h-12 md:w-16 md:h-16 bg-amber-600 text-white rounded-full flex items-center justify-center text-xl md:text-2xl font-bold mx-auto mb-2 md:mb-4">
                       1
                     </div>
-                    <h4 className="font-bold text-lg mb-2 text-gray-800 dark:text-white">Click Spin Button</h4>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">
-                      Click the floating "Spin & Win" button or the button below
+                    <h4 className="font-bold text-base md:text-lg mb-1 text-gray-800 dark:text-white">Click Spin Button</h4>
+                    <p className="text-gray-600 dark:text-gray-400 text-xs md:text-sm">
+                      Click the floating "Spin & Win" button or use the wheel below
                     </p>
                   </div>
                   <div className="text-center">
-                    <div className="w-16 h-16 bg-amber-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                    <div className="w-12 h-12 md:w-16 md:h-16 bg-amber-600 text-white rounded-full flex items-center justify-center text-xl md:text-2xl font-bold mx-auto mb-2 md:mb-4">
                       2
                     </div>
-                    <h4 className="font-bold text-lg mb-2 text-gray-800 dark:text-white">Spin the Wheel</h4>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">
+                    <h4 className="font-bold text-base md:text-lg mb-1 text-gray-800 dark:text-white">Spin the Wheel</h4>
+                    <p className="text-gray-600 dark:text-gray-400 text-xs md:text-sm">
                       Watch the wheel spin and see what prize you win!
                     </p>
                   </div>
                   <div className="text-center">
-                    <div className="w-16 h-16 bg-amber-600 text-white rounded-full flex items-center justify-center text-2xl font-bold mx-auto mb-4">
+                    <div className="w-12 h-12 md:w-16 md:h-16 bg-amber-600 text-white rounded-full flex items-center justify-center text-xl md:text-2xl font-bold mx-auto mb-2 md:mb-4">
                       3
                     </div>
-                    <h4 className="font-bold text-lg mb-2 text-gray-800 dark:text-white">Claim Your Prize</h4>
-                    <p className="text-gray-600 dark:text-gray-400 text-sm">
+                    <h4 className="font-bold text-base md:text-lg mb-1 text-gray-800 dark:text-white">Claim Your Prize</h4>
+                    <p className="text-gray-600 dark:text-gray-400 text-xs md:text-sm">
                       Fill the form, book a flat, and get your prize!
                     </p>
                   </div>
@@ -96,8 +96,8 @@ const Events = () => {
               </div>
 
               {/* Prizes */}
-              <div className="mb-12">
-                <h3 className="text-2xl font-bold text-amber-700 dark:text-amber-500 mb-6 text-center">
+              <div className="mb-6 md:mb-12 text-center">
+                <h3 className="text-lg md:text-2xl font-bold text-amber-700 dark:text-amber-500 mb-4 md:mb-6">
                   Exciting Prizes to Win!
                 </h3>
                 <div
@@ -118,12 +118,12 @@ const Events = () => {
               </div>
 
               {/* CTA Button */}
-              <div className="text-center mb-8">
+              <div className="text-center mb-6 md:mb-8">
                 <button
                   onClick={() => setShowSpinModal(true)}
-                  className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-600 to-amber-700 text-white px-12 py-5 rounded-2xl font-bold text-xl hover:from-amber-700 hover:to-amber-800 transition-all duration-300 shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 animate-pulse"
+                  className="inline-flex items-center gap-2 bg-gradient-to-r from-amber-600 to-amber-700 text-white px-8 py-4 md:px-12 md:py-5 rounded-2xl font-bold text-base md:text-xl hover:from-amber-700 hover:to-amber-800 transition-all duration-300 shadow-2xl hover:shadow-3xl transform hover:-translate-y-1 animate-pulse"
                 >
-                  <FaGift className="text-2xl" />
+                  <FaGift className="text-xl md:text-2xl" />
                   Spin Now & Win!
                 </button>
               </div>
