@@ -6,7 +6,17 @@ import { isCampaignActive } from '../utils/spinWheelUtils';
 
 const FloatingSpinButton = () => {
   const [showModal, setShowModal] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const campaignActive = isCampaignActive();
+
+  useEffect(() => {
+    // Listen for call menu state changes
+    const handleMenuToggle = (e) => {
+      setIsMenuOpen(e.detail.isOpen);
+    };
+    window.addEventListener('floatingMenuToggle', handleMenuToggle);
+    return () => window.removeEventListener('floatingMenuToggle', handleMenuToggle);
+  }, []);
 
   useEffect(() => {
     // Auto-show popup after 3 seconds on mount (fresh load or refresh)
@@ -25,77 +35,85 @@ const FloatingSpinButton = () => {
       className="floating-spin-btn-wrapper"
       style={{
         position: 'fixed',
-        bottom: '84px', // Position above call button (24px bottom + 48px height + 12px gap)
-        right: '24px',  // Match call button's right position
+        bottom: isMenuOpen ? '230px' : '88px', // Move up dynamic: 24 (bottom) + 48 (call) + 140 (options) + 18 (gap)
+        right: '24px',  // Match call button's right position exactly
         zIndex: 100000,
-        pointerEvents: 'auto'
+        pointerEvents: 'auto',
+        display: 'inline-block',
+        transition: 'bottom 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55)'
       }}
     >
-      {/* Floating Button */}
-      <button
-        onClick={() => setShowModal(true)}
-        aria-label="Spin and Win"
-        className="floating-spin-btn"
-        style={{
-          position: 'relative',
-          background: 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)',
-          color: '#fff',
-          border: '2px solid #D97706',
-          borderRadius: '50%',
-          width: '48px',
-          height: '48px',
-          cursor: 'pointer',
-          transition: 'all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
-          outline: 'none',
-          boxShadow: '0 4px 16px rgba(217, 119, 6, 0.3)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.transform = 'scale(1.1)';
-          e.currentTarget.style.boxShadow = '0 6px 20px rgba(217, 119, 6, 0.4)';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.transform = 'scale(1)';
-          e.currentTarget.style.boxShadow = '0 4px 16px rgba(217, 119, 6, 0.3)';
-        }}
-      >
-        <FaGift style={{ fontSize: '1.25rem', position: 'relative', zIndex: 2 }} />
-
-        {/* Pulsing rings */}
-        <span
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        position: 'relative'
+      }}>
+        {/* Floating Button */}
+        <button
+          onClick={() => setShowModal(true)}
+          aria-label="Spin and Win"
+          className="floating-spin-btn"
           style={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: '100%',
-            height: '100%',
+            position: 'relative',
+            background: 'linear-gradient(135deg, #F59E0B 0%, #D97706 100%)',
+            color: '#fff',
             border: '2px solid #D97706',
             borderRadius: '50%',
-            opacity: 0,
-            animation: 'pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite'
+            width: '48px',
+            height: '48px',
+            cursor: 'pointer',
+            transition: 'all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55)',
+            outline: 'none',
+            boxShadow: '0 4px 16px rgba(217, 119, 6, 0.3)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
           }}
-        />
-        <span
-          style={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: '100%',
-            height: '100%',
-            border: '2px solid #D97706',
-            borderRadius: '50%',
-            opacity: 0,
-            animation: 'pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite 1s'
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'scale(1.1)';
+            e.currentTarget.style.boxShadow = '0 6px 20px rgba(217, 119, 6, 0.4)';
           }}
-        />
-      </button>
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'scale(1)';
+            e.currentTarget.style.boxShadow = '0 4px 16px rgba(217, 119, 6, 0.3)';
+          }}
+        >
+          <FaGift style={{ fontSize: '1.25rem', position: 'relative', zIndex: 2 }} />
 
-      {/* Keyframes for pulse animation */}
-      <style>{`
+          {/* Pulsing rings */}
+          <span
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: '100%',
+              height: '100%',
+              border: '2px solid #D97706',
+              borderRadius: '50%',
+              opacity: 0,
+              animation: 'pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite'
+            }}
+          />
+          <span
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: '100%',
+              height: '100%',
+              border: '2px solid #D97706',
+              borderRadius: '50%',
+              opacity: 0,
+              animation: 'pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite 1s'
+            }}
+          />
+        </button>
+
+        {/* Keyframes for pulse animation */}
+        <style>{`
         @keyframes pulse-ring {
           0% {
             transform: translate(-50%, -50%) scale(1);
@@ -107,10 +125,9 @@ const FloatingSpinButton = () => {
           }
         }
 
-        /* Mobile responsive */
         @media (max-width: 768px) {
           .floating-spin-btn-wrapper {
-            bottom: 70px !important; /* 16px bottom + 44px height + 10px gap */
+            bottom: ${isMenuOpen ? '200px' : '74px'} !important;
             right: 16px !important;
           }
           .floating-spin-btn {
@@ -121,7 +138,7 @@ const FloatingSpinButton = () => {
 
         @media (max-width: 480px) {
           .floating-spin-btn-wrapper {
-            bottom: 62px !important; /* 12px bottom + 42px height + 8px gap */
+            bottom: ${isMenuOpen ? '180px' : '66px'} !important;
             right: 12px !important;
           }
           .floating-spin-btn {
@@ -130,6 +147,7 @@ const FloatingSpinButton = () => {
           }
         }
       `}</style>
+      </div>
     </div>
   );
 

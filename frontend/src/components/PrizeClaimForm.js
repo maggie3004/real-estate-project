@@ -118,8 +118,8 @@ const PrizeClaimForm = ({ prize, onClose, onSubmit }) => {
                     <ol className="text-sm text-gray-600 dark:text-gray-400 space-y-1 list-decimal list-inside">
                         <li>Our team will call you to schedule a site visit</li>
                         <li>Visit our project and explore your dream home</li>
-                        <li>Book a flat to claim your prize</li>
-                        <li>Prize must be claimed within 30 days</li>
+                        <li>Successful Flat booking is mandatory to claim your prize</li>
+                        <li>Prize must be claimed before 26th Jan, 2026</li>
                     </ol>
                 </div>
 
@@ -249,7 +249,7 @@ const PrizeClaimForm = ({ prize, onClose, onSubmit }) => {
             </button>
 
             <p className="text-xs text-center text-gray-500 dark:text-gray-500">
-                * Prize valid only on flat booking. Terms & conditions apply.
+                * 'Successful' Prize valid only on flat booking. Terms & conditions apply.
             </p>
         </motion.form>
     );

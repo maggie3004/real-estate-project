@@ -42,6 +42,12 @@ const FloatingCallButton = ({ brochurePath, projectName, isOngoing }) => {
     setOpen(false);
   }, [location.pathname]);
 
+  // Dispatch custom event when menu state changes to sync other floating buttons
+  useEffect(() => {
+    const event = new CustomEvent('floatingMenuToggle', { detail: { isOpen: open } });
+    window.dispatchEvent(event);
+  }, [open]);
+
   // Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {

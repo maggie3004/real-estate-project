@@ -143,13 +143,10 @@ const Events = () => {
                     <span className="text-amber-600 mt-1">•</span>
                     <span>One spin per person/device</span>
                   </li>
+
                   <li className="flex items-start gap-2">
                     <span className="text-amber-600 mt-1">•</span>
-                    <span>Prize must be claimed within 30 days from winning date</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-amber-600 mt-1">•</span>
-                    <span><strong>Flat booking is mandatory to claim the prize</strong></span>
+                    <span><strong>Successful Flat booking is mandatory to claim the prize</strong></span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-amber-600 mt-1">•</span>
@@ -158,6 +155,10 @@ const Events = () => {
                   <li className="flex items-start gap-2">
                     <span className="text-amber-600 mt-1">•</span>
                     <span>Verification required at site visit with claim code</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-amber-600 mt-1">•</span>
+                    <span>Prize must be claimed before 26th Jan, 2026</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-amber-600 mt-1">•</span>
