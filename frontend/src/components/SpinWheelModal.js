@@ -227,14 +227,14 @@ const SpinWheelModal = ({ isOpen, onClose }) => {
                                     <motion.div
                                         initial={{ opacity: 0, scale: 0.8 }}
                                         animate={{ opacity: 1, scale: 1 }}
-                                        className="text-center bg-gradient-to-br from-amber-100 to-amber-50 dark:from-amber-900/30 dark:to-amber-950/30 p-8 rounded-3xl border-2 border-amber-200 dark:border-amber-800 shadow-inner"
+                                        className="text-center bg-gradient-to-br from-amber-100 to-amber-50 dark:from-amber-900/30 dark:to-amber-950/30 p-5 md:p-8 rounded-3xl border-2 border-amber-200 dark:border-amber-800 shadow-inner"
                                     >
-                                        <p className="text-6xl mb-4">{wonPrize.emoji}</p>
-                                        <h3 className="text-3xl font-black text-amber-700 dark:text-amber-500 mb-2 uppercase">
+                                        <p className="text-5xl mb-3">{wonPrize.emoji}</p>
+                                        <h3 className="text-xl md:text-2xl font-bold text-amber-700 dark:text-amber-500 mb-2">
                                             Congratulations!
                                         </h3>
-                                        <p className="text-2xl text-gray-800 dark:text-gray-200">
-                                            You won: <span className="font-black text-amber-600">{wonPrize.name}</span>
+                                        <p className="text-lg md:text-xl text-gray-800 dark:text-gray-200">
+                                            You won: <span className="font-bold text-amber-600">{wonPrize.name}</span>
                                         </p>
                                     </motion.div>
                                 )}

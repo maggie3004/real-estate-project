@@ -23,7 +23,12 @@ const Events = () => {
 
       <div className="max-w-7xl mx-auto px-4">
         {/* Hero Section */}
-        <motion.div {...titleAnimation} className="text-center mb-4 md:mb-10">
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={titleAnimation.variants}
+          className="text-center mb-4 md:mb-10"
+        >
           <h1 className="text-xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-amber-700 dark:text-amber-500 mb-2 flex items-center justify-center gap-1.5 px-2">
             <span className="shrink-0">🎁</span>
             <span className="whitespace-nowrap">Offers and Events</span>
@@ -35,7 +40,12 @@ const Events = () => {
         </motion.div>
 
         {/* Active Campaign */}
-        <motion.div {...contentAnimation} className="max-w-5xl mx-auto mb-10">
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={contentAnimation.variants}
+          className="max-w-5xl mx-auto mb-10"
+        >
           <div className="bg-gradient-to-br from-amber-100 via-amber-50 to-white dark:from-amber-950/50 dark:via-amber-900/30 dark:to-gray-800 rounded-3xl shadow-2xl overflow-hidden border-2 md:border-4 border-amber-500 mx-1">
             {/* Campaign Header */}
             <div className="bg-gradient-to-r from-amber-600 to-amber-700 p-4 md:p-8 text-center relative overflow-hidden">

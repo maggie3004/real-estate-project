@@ -71,16 +71,16 @@ const PrizeClaimForm = ({ prize, onClose, onSubmit }) => {
             <motion.div
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="text-center p-8"
+                className="text-center p-4 md:p-8"
             >
-                <div className="mb-6">
-                    <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <FaGift className="text-4xl text-green-600" />
+                <div className="mb-4 md:mb-6">
+                    <div className="w-16 h-16 md:w-20 md:h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
+                        <FaGift className="text-3xl md:text-4xl text-green-600" />
                     </div>
-                    <h3 className="text-3xl font-bold text-amber-700 dark:text-amber-500 mb-2">
+                    <h3 className="text-xl md:text-2xl font-bold text-amber-700 dark:text-amber-500 mb-2">
                         Congratulations! 🎉
                     </h3>
-                    <p className="text-xl text-gray-700 dark:text-gray-300 mb-4">
+                    <p className="text-base md:text-lg text-gray-700 dark:text-gray-300 mb-2">
                         You've won: <span className="font-bold">{prize.emoji} {prize.name}</span>
                     </p>
                 </div>

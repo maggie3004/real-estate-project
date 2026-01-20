@@ -31,7 +31,7 @@ export const prizes = [
     },
     {
         id: 5,
-        name: 'Kitchen Appliances & Trolley',
+        name: 'Kitchen Appliances',
         emoji: '🛒',
         color: '#7f1d1d', // Red-900
         angle: 288
