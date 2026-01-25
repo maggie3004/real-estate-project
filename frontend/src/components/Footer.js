@@ -48,7 +48,7 @@ function Footer() {
                 <FaInstagram size={18} />
               </a>
               <a
-                href="https://www.youtube.com/@ganeshyeole_builders"
+                href="https://www.youtube.com/@ganeshyeole.builders"
                 target="_blank" rel="noopener noreferrer"
                 className="hover:text-gold transition-colors duration-200" aria-label="YouTube"
               >
