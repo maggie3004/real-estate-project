@@ -27,7 +27,7 @@ function Footer() {
             </p>
             <div className="flex gap-3">
               <a
-                href="https://www.linkedin.com/company/ganeshyeole_builders"
+                href="https://www.linkedin.com/in/ganesh-yeole-builders-5126763a8/"
                 target="_blank" rel="noopener noreferrer"
                 className="hover:text-gold transition-colors duration-200" aria-label="LinkedIn"
               >

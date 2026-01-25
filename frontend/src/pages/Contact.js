@@ -308,7 +308,7 @@ const Contact = () => {
                 <a href="https://www.instagram.com/ganeshyeole_builders" target="_blank" rel="noopener noreferrer" className="w-12 h-12 sm:w-14 sm:h-14 bg-pink-600 rounded-full flex items-center justify-center hover:bg-pink-700 transition-all duration-200 hover:scale-110 shadow-lg" aria-label="Instagram">
                   <FaInstagram className="text-white text-lg sm:text-xl" />
                 </a>
-                <a href="https://www.linkedin.com/company/ganeshyeole_builders" target="_blank" rel="noopener noreferrer" className="w-12 h-12 sm:w-14 sm:h-14 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-800 transition-all duration-200 hover:scale-110 shadow-lg" aria-label="LinkedIn">
+                <a href="https://www.linkedin.com/in/ganesh-yeole-builders-5126763a8/" target="_blank" rel="noopener noreferrer" className="w-12 h-12 sm:w-14 sm:h-14 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-800 transition-all duration-200 hover:scale-110 shadow-lg" aria-label="LinkedIn">
                   <FaLinkedin className="text-white text-lg sm:text-xl" />
                 </a>
                 <a href="https://wa.me/917030502111" target="_blank" rel="noopener noreferrer" className="w-12 h-12 sm:w-14 sm:h-14 bg-green-600 rounded-full flex items-center justify-center hover:bg-green-700 transition-all duration-200 hover:scale-110 shadow-lg" aria-label="WhatsApp">

@@ -38,7 +38,7 @@ export const organizationSchema = {
     "sameAs": [
         "https://www.facebook.com/ganeshyeolebuilders",
         "https://www.instagram.com/ganeshyeolebuilders",
-        "https://www.linkedin.com/company/ganeshyeolebuilders"
+        "https://www.linkedin.com/in/ganesh-yeole-builders-5126763a8/"
     ]
 };
 

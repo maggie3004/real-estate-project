@@ -93,7 +93,7 @@ const Home = () => {
             "sameAs": [
               "https://www.facebook.com/ganeshyoelebuilders",
               "https://www.instagram.com/ganeshyoelebuilders",
-              "https://www.linkedin.com/company/ganeshyoelebuilders"
+              "https://www.linkedin.com/in/ganesh-yeole-builders-5126763a8/"
             ]
           }
         `}</script>
