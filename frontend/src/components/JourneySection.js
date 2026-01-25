@@ -1,9 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { FaTrophy, FaBuilding, FaCalendarAlt, FaStar } from 'react-icons/fa';
-import { motion, useInView } from 'framer-motion';
-import { useContext } from 'react';
-import { ScrollDirectionContext } from '../context/ScrollDirectionContext';
+import { motion } from 'framer-motion';
 
 const milestones = [
   {
@@ -82,57 +80,52 @@ const milestones = [
 ];
 
 const JourneySection = () => {
-  const ref = React.useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 1 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1
+        staggerChildren: 0.15,
+        delayChildren: 0
       }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 50 },
+    hidden: { opacity: 1, y: 0 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.8,
+        duration: 0.5,
         ease: [0.25, 0.46, 0.45, 0.94]
       }
     }
   };
 
   const timelineItemVariants = {
-    hidden: { opacity: 0, x: -100 },
+    hidden: { opacity: 1, x: 0 },
     visible: {
       opacity: 1,
       x: 0,
       transition: {
-        duration: 0.8,
+        duration: 0.5,
         ease: [0.25, 0.46, 0.45, 0.94]
       }
     }
   };
 
   const timelineItemRightVariants = {
-    hidden: { opacity: 0, x: 100 },
+    hidden: { opacity: 1, x: 0 },
     visible: {
       opacity: 1,
       x: 0,
       transition: {
-        duration: 0.8,
+        duration: 0.5,
         ease: [0.25, 0.46, 0.45, 0.94]
       }
     }
   };
-
-  const scrollDirection = useContext(ScrollDirectionContext);
 
   return (
     <section className="py-20 bg-amber-50 dark:bg-amber-950/20 relative overflow-hidden">
@@ -158,8 +151,8 @@ const JourneySection = () => {
         {/* Section Header */}
         <motion.div
           variants={containerVariants}
-          initial="hidden"
-          animate={scrollDirection === 'down' ? (isInView ? "visible" : "hidden") : "visible"}
+          initial="visible"
+          animate="visible"
           className="text-center mb-20"
         >
           <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-amber-500/10 to-gold/10 text-amber-700 dark:text-amber-400 font-semibold text-sm mb-6 border border-amber-200 dark:border-amber-800">
@@ -187,10 +180,9 @@ const JourneySection = () => {
 
         {/* Zigzag Timeline */}
         <motion.div
-          ref={ref}
           variants={containerVariants}
-          initial="hidden"
-          animate={scrollDirection === 'down' ? (isInView ? "visible" : "hidden") : "visible"}
+          initial="visible"
+          animate="visible"
           className="relative"
         >
           {/* Enhanced Central Timeline Line */}
@@ -255,7 +247,7 @@ const JourneySection = () => {
                               alt={achievement.title}
                               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                               onError={(e) => { e.target.src = '/hero-building.jpg'; }}
-                              loading={yearIndex === 0 && achievementIndex === 0 ? "eager" : "lazy"}
+                              loading={yearIndex <= 1 ? "eager" : "lazy"}
                             />
                             {/* Image Overlay Effect */}
                             <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover/image:opacity-100 transition-opacity duration-300"></div>

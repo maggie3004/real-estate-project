@@ -52,8 +52,8 @@ const Home = () => {
         className="min-h-screen bg-white dark:bg-black text-[#181818] dark:text-white transition-colors duration-300"
       >
         <Helmet>
-          <title>Ganesh Yeole Builders and Developers | Premium Properties in Mumbai, Pune & Nashik</title>
-          <meta name="description" content="Discover premium properties in Mumbai, Pune, and Nashik. Luxury apartments, villas, and commercial spaces with world-class amenities. Find your dream home with Ganesh Yeole Builders and Developers." />
+          <title>Ganesh Yeole Builders | Premium Real Estate Developer in Nashik, Maharashtra</title>
+          <meta name="description" content="Ganesh Yeole Builders - Trusted real estate developer in Nashik since 2008. Discover premium residential projects including Shree Ganesh Heights, Shree Ganesh Park, and Shree Ganesh Srushti. Quality construction with modern amenities in Nashik, Maharashtra." />
           <link rel="canonical" href={window.location.origin + '/'} />
           {/* Open Graph */}
           <meta property="og:title" content="Ganesh Yeole Builders and Developers | Premium Properties in Mumbai, Pune & Nashik" />
