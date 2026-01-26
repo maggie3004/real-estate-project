@@ -129,18 +129,10 @@ function Footer() {
             <div className="text-xs text-gray-400 text-center md:text-left">
               &copy; {new Date().getFullYear()} GANESH VASANT YEOLE. All rights reserved.
             </div>
-            <div className="flex items-center justify-center gap-2 text-xs text-gray-400 whitespace-nowrap">
-              <a href="/privacy-policy" className="hover:text-gold transition-colors duration-200">
-                Privacy Policy
-              </a>
-
-              <span className="text-gray-500 select-none flex items-center">
-                |
-              </span>
-
-              <a href="/terms-of-service" className="hover:text-gold transition-colors duration-200">
-                Terms of Service
-              </a>
+            <div className="flex items-center justify-center text-[10px] sm:text-xs text-gray-400 whitespace-nowrap leading-none">
+              <a href="/privacy-policy" className="hover:text-gold transition-colors duration-200 flex items-center">Privacy Policy</a>
+              <span className="mx-2 text-gray-700 flex items-center">|</span>
+              <a href="/terms-of-service" className="hover:text-gold transition-colors duration-200 flex items-center">Terms of Service</a>
             </div>
             <div className="flex items-center gap-3">
               {/* Contact buttons removed per request */}
