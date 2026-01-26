@@ -110,12 +110,19 @@ const ProjectTemplate = ({
   useEffect(() => {
     let interval;
     const currentItem = galleryImages[currentImageIndex];
-    const isVideo = typeof currentItem === 'string' && currentItem.toLowerCase().endsWith('.mp4');
+    const isVideo = typeof currentItem === 'string' && currentItem.toLowerCase().split('?')[0].toLowerCase().endsWith('.mp4');
 
     if (isPlaying && !isVideo) {
       interval = setInterval(handleNext, 3000);
+    } else if (isPlaying && isVideo) {
+      // Automatically pause the slideshow when we reach a video
+      // so the user can watch it without being interrupted
+      setIsPlaying(false);
     }
-    return () => clearInterval(interval);
+
+    return () => {
+      if (interval) clearInterval(interval);
+    };
   }, [isPlaying, handleNext, currentImageIndex, galleryImages]);
 
   // Ensure currentImageIndex is valid when galleryImages changes
@@ -662,18 +669,23 @@ const ProjectTemplate = ({
 
                   if (isVideo) {
                     return (
-                      <video
-                        key={currentImageIndex}
-                        src={currentItem}
-                        controls
-                        controlsList="nodownload"
-                        playsInline
-                        preload="metadata"
-                        className="w-full h-full object-contain"
-                        style={{ backgroundColor: 'transparent' }}
-                      >
-                        Your browser does not support the video tag.
-                      </video>
+                      <div key={currentImageIndex} className="w-full h-full relative" style={{ zIndex: 20 }}>
+                        <video
+                          className="w-full h-full object-contain"
+                          controls
+                          playsInline
+                          preload="auto"
+                          controlsList="nodownload"
+                          style={{ backgroundColor: 'black', position: 'relative', zIndex: 20 }}
+                          onError={(e) => {
+                            console.error('Video playback error:', e);
+                            console.log('Video source:', currentItem);
+                          }}
+                        >
+                          <source src={currentItem} type="video/mp4" />
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
                     );
                   }
 
@@ -694,49 +706,60 @@ const ProjectTemplate = ({
                 })()}
               </AnimatePresence>
 
-              {/* Navigation Arrows */}
-              <div className="absolute inset-0 flex items-center justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                <button
-                  onClick={handlePrevious}
-                  className="p-4 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors z-10"
-                  aria-label="Previous slide"
-                >
-                  <FaChevronLeft size={32} />
-                </button>
-                <button
-                  onClick={handleNext}
-                  className="p-4 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors z-10"
-                  aria-label="Next slide"
-                >
-                  <FaChevronRight size={32} />
-                </button>
-              </div>
-
-              {/* Controls and Progress */}
-              <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
-                <div className="flex items-center justify-between">
-                  <button
-                    onClick={togglePlayPause}
-                    className="p-2 rounded-full bg-white/20 text-white hover:bg-white/30 transition-colors"
-                    aria-label={isPlaying ? "Pause slideshow" : "Play slideshow"}
-                  >
-                    {isPlaying ? <FaPause size={16} /> : <FaPlay size={16} />}
-                  </button>
-                  <div className="flex gap-1.5">
-                    {galleryImages.map((_, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => setCurrentImageIndex(idx)}
-                        className={`w-1.5 h-1.5 rounded-full transition-all ${idx === currentImageIndex
-                          ? 'bg-amber-500 w-4'
-                          : 'bg-white/60 hover:bg-white/90'
-                          }`}
-                        aria-label={`Go to slide ${idx + 1}`}
-                      />
-                    ))}
+              {/* Navigation Arrows - Hidden when video is displayed */}
+              {!(() => {
+                const currentItem = galleryImages[currentImageIndex];
+                return typeof currentItem === 'string' && currentItem.toLowerCase().endsWith('.mp4');
+              })() && (
+                  <div className="absolute inset-0 flex items-center justify-between p-4 opacity-0 group-hover:opacity-100 transition-opacity" style={{ zIndex: 10 }}>
+                    <button
+                      onClick={handlePrevious}
+                      className="p-4 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors"
+                      aria-label="Previous slide"
+                    >
+                      <FaChevronLeft size={32} />
+                    </button>
+                    <button
+                      onClick={handleNext}
+                      className="p-4 rounded-full bg-black/50 text-white hover:bg-black/70 transition-colors"
+                      aria-label="Next slide"
+                    >
+                      <FaChevronRight size={32} />
+                    </button>
                   </div>
-                </div>
-              </div>
+                )}
+
+              {/* Controls and Progress - Hidden when video is displayed */}
+              {!(() => {
+                const currentItem = galleryImages[currentImageIndex];
+                return typeof currentItem === 'string' && currentItem.toLowerCase().endsWith('.mp4');
+              })() && (
+                  <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-black/70 to-transparent" style={{ zIndex: 10 }}>
+                    <div className="flex items-center justify-between">
+                      <button
+                        onClick={togglePlayPause}
+                        className="p-2 rounded-full bg-white/20 text-white hover:bg-white/30 transition-colors"
+                        aria-label={isPlaying ? "Pause slideshow" : "Play slideshow"}
+                      >
+                        {isPlaying ? <FaPause size={16} /> : <FaPlay size={16} />}
+                      </button>
+                      <div className="flex gap-1.5">
+                        {galleryImages.map((_, idx) => (
+                          <button
+                            key={idx}
+                            onClick={() => setCurrentImageIndex(idx)}
+                            className={`w-1.5 h-1.5 rounded-full transition-all ${idx === currentImageIndex
+                              ? 'bg-amber-500 w-4'
+                              : 'bg-white/60 hover:bg-white/90'
+                              }`}
+                            style={{ minWidth: 0, minHeight: 0 }}
+                            aria-label={`Go to slide ${idx + 1}`}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
             </div>
           )}
 
@@ -905,6 +928,8 @@ const ProjectTemplate = ({
         .project-hero-pagination-bullet {
           width: 6px;
           height: 6px;
+          min-width: 0 !important;
+          min-height: 0 !important;
           background: rgba(255, 255, 255, 0.5);
           opacity: 1;
           border-radius: 3px;

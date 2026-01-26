@@ -73,10 +73,8 @@ const ImageGallery = ({ images, isOpen, onClose }) => {
             return (
               <motion.video
                 key={currentIndex}
-                src={currentItem}
                 controls
                 autoPlay
-                muted
                 playsInline
                 preload="auto"
                 className="max-h-[90vh] max-w-[90vw] object-contain"
@@ -84,7 +82,13 @@ const ImageGallery = ({ images, isOpen, onClose }) => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 1.1 }}
                 transition={{ duration: 0.3 }}
-              />
+                onError={(e) => {
+                  console.error('Video playback error in gallery:', e);
+                }}
+              >
+                <source src={currentItem} type="video/mp4" />
+                Your browser does not support the video tag.
+              </motion.video>
             );
           }
 
@@ -112,6 +116,7 @@ const ImageGallery = ({ images, isOpen, onClose }) => {
               ? 'bg-white w-4'
               : 'bg-white/50 hover:bg-white/80'
               }`}
+            style={{ minWidth: 0, minHeight: 0 }}
             aria-label={`Go to image ${idx + 1}`}
           />
         ))}

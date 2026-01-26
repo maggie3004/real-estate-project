@@ -305,6 +305,8 @@ const ProjectsSection = () => {
         .swiper-pagination-custom .swiper-pagination-bullet {
           width: 12px;
           height: 12px;
+          min-width: 0 !important;
+          min-height: 0 !important;
           background: #d1d5db;
           opacity: 1;
           transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);

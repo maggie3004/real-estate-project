@@ -1852,6 +1852,8 @@ select:focus {
 .hero-swiper-pagination-bullet {
   width: 8px;
   height: 8px;
+  min-width: 0 !important;
+  min-height: 0 !important;
   background: rgba(255, 255, 255, 0.5);
   opacity: 1;
   transition: all 0.3s ease;
