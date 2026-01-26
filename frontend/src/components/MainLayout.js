@@ -1,6 +1,6 @@
 import React from 'react';
 import FloatingCallButton from './FloatingCallButton';
-import FloatingSpinButton from './FloatingSpinButton';
+// import FloatingSpinButton from './FloatingSpinButton'; // Event ended Jan 26, 2026
 import { Outlet } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -14,7 +14,7 @@ const MainLayout = () => (
     </main>
     <Footer />
     <FloatingCallButton />
-    <FloatingSpinButton />
+    {/* <FloatingSpinButton /> */} {/* Event ended Jan 26, 2026 */}
   </div>
 );
 

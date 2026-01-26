@@ -77,7 +77,7 @@ const properties = [
       "/assets/shree-ganesh-park/gallery/a-view.jpg",
       "/assets/shree-ganesh-park/gallery/b-view.jpg",
       "/assets/shree-ganesh-park/gallery/night-view-a.jpg",
-      "/assets/shree-ganesh-park/gallery/ter-view.jpg",
+      "/assets/shree-ganesh-park/gallery/ter-view.webp",
       "/assets/shree-ganesh-park/gallery/Wing A 1BHK.jpg",
       "/assets/shree-ganesh-park/gallery/Wing A 2BHK.jpg",
       "/assets/shree-ganesh-park/gallery/Wing C 1BHK.jpg",

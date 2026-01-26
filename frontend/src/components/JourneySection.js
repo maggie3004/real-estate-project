@@ -10,7 +10,7 @@ const milestones = [
       {
         title: "Shree Ganesh Park A & B Wing",
         description: "Premium residential development with multiple wings",
-        image: "/assets/shree-ganesh-park/gallery/ter-view.jpg",
+        image: "/assets/shree-ganesh-park/gallery/ter-view.webp",
         icon: FaBuilding,
         category: "Completed Project",
         stats: "104 Units"
