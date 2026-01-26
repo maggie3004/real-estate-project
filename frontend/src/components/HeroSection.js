@@ -114,7 +114,6 @@ const HeroSection = () => {
       whileInView={scrollDirection === 'down' ? { opacity: 1, y: 0 } : false}
       viewport={{ once: true, amount: 0.6 }}
       transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-      style={{ opacity }}
       className="hero-section relative overflow-hidden"
     >
       <motion.div style={{ y: smoothY }}>
