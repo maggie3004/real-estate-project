@@ -68,7 +68,7 @@ const HeroSection = () => {
     },
     {
       id: 3,
-      image: '/assets/shree-ganesh-srushti/gallery/hero.png',
+      image: '/assets/shree-ganesh-srushti/gallery/hero1.jpg',
       projectName: 'Shree Ganesh Srushti',
       title: 'THE',
       title2: 'NEW LANGUAGE',
