@@ -48,7 +48,7 @@ const HeroSection = () => {
   const carouselData = [
     {
       id: 1,
-      image: '/assets/shree-ganesh-heights/gallery/hero.png',
+      image: '/assets/shree-ganesh-heights/gallery/herowp.webp',
       projectName: 'Shree Ganesh Heights',
       title: 'EXPERIENCE',
       title2: 'ESSENCE',
@@ -58,7 +58,7 @@ const HeroSection = () => {
     },
     {
       id: 2,
-      image: '/assets/shree-ganesh-park/gallery/hero.png',
+      image: '/assets/shree-ganesh-park/gallery/herowp.webp',
       projectName: 'Shree Ganesh Park',
       title: 'RISE TO',
       title2: 'NEW WAY OF',
