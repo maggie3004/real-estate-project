@@ -22,7 +22,6 @@ const HeroSection = () => {
 
   // Subtle parallax movement
   const y = useTransform(scrollY, [0, 500], [0, 150]);
-  const opacity = useTransform(scrollY, [0, 300], [1, 0.3]);
 
   // Add spring for smoother motion
   const smoothY = useSpring(y, {

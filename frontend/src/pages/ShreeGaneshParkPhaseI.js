@@ -42,7 +42,7 @@ const ShreeGaneshParkPhaseI = () => {
       { icon: <BiCctv />, name: "CCTV" },
       { icon: <GiWaterDrop />, name: "Rainwater Harvesting" }
     ],
-    images: ['/assets/shree-ganesh-park/gallery/hero.png'],
+    images: ['/assets/shree-ganesh-park/gallery/herowp.webp'],
     galleryImages: [sgpAView, sgpBView, sgpNightA],
     brochurePath: sgpBrochure,
     reraNumber: "P51600051448",

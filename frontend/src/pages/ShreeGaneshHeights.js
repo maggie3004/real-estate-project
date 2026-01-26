@@ -36,7 +36,7 @@ const ShreeGaneshHeights = () => {
       { icon: <FaBatteryFull />, name: "Battery Backup" },
       { icon: <GiWaterDrop />, name: "Rainwater Harvesting" }
     ],
-    images: ['/assets/shree-ganesh-heights/gallery/hero.png'], // Only hero image
+    images: ['/assets/shree-ganesh-heights/gallery/herowp.webp'], // Only hero image
     galleryImages: [
       '/assets/shree-ganesh-heights/gallery/gallery-1.jpeg',
       '/assets/shree-ganesh-heights/gallery/gallery-2.jpeg',

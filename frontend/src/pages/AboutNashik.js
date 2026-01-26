@@ -90,7 +90,7 @@ const AboutNashik = () => {
       <section className="relative w-full h-[50vh] sm:h-[60vh] md:h-[70vh] lg:h-screen overflow-hidden">
         {/* Background Image */}
         <img
-          src="/assets/kumbh-mela-nashik.png"
+          src="/assets/kumbh-mela-nashik.webp"
           alt="Nashik Kumbh Mela 2026-27 - Sacred gathering on Godavari Ghats, Maharashtra"
           loading="eager"
           decoding="async"

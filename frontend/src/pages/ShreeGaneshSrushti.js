@@ -49,7 +49,7 @@ const ShreeGaneshSrushti = () => {
       { icon: <GiWaterDrop />, name: "Rainwater Harvesting" }
     ],
 
-    images: ['/assets/shree-ganesh-srushti/gallery/hero.png'],
+    images: ['/assets/shree-ganesh-srushti/gallery/heroweb.webp'],
     galleryImages: [
       sgsFront,
       sgsNight,
