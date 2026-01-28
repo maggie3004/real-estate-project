@@ -1,25 +1,44 @@
 {
   "short_name": "GY Builders",
-  "name": "Ganesh Yeole Builders",
+  "name": "Ganesh Yeole Builders and Developers",
+  "description": "Trusted real estate developer in Nashik since 2008. Premium residential projects with quality construction and modern amenities.",
   "icons": [
     {
       "src": "favicon.ico",
       "sizes": "48x48",
-      "type": "image/x-icon"
+      "type": "image/x-icon",
+      "purpose": "any"
+    },
+    {
+      "src": "favicon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any"
     },
     {
       "src": "android-chrome-192x192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any"
     },
     {
       "src": "android-chrome-512x512.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "180x180",
+      "purpose": "any"
     }
   ],
   "start_url": ".",
+  "scope": "/",
   "display": "standalone",
-  "theme_color": "#6b7280",
-  "background_color": "#ffffff"
+  "orientation": "portrait-primary",
+  "theme_color": "#ff2e84",
+  "background_color": "#ffffff",
+  "categories": ["real estate", "business"]
 }

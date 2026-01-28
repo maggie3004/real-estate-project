@@ -66,37 +66,6 @@ const Home = () => {
           <meta name="twitter:title" content="Ganesh Yeole Builders and Developers | Premium Properties in Mumbai, Pune & Nashik" />
           <meta name="twitter:description" content="Discover premium properties in Mumbai, Pune, and Nashik. Luxury apartments, villas, and commercial spaces with world-class amenities." />
           <meta name="twitter:image" content={window.location.origin + '/twitter-image.jpg'} />
-          {/* JSON-LD Organization Schema */}
-          <script type="application/ld+json">{`
-          {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Ganesh Yeole Builders and Developers",
-            "url": "${window.location.origin}/",
-            "logo": "${window.location.origin}/logo192.png",
-            "description": "Premium real estate services in Mumbai, Pune, and Nashik",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "123 Main Street",
-              "addressLocality": "Mumbai",
-              "addressRegion": "Maharashtra",
-              "postalCode": "400001",
-              "addressCountry": "IN"
-            },
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "telephone": "+91-XXXXXXXXXX",
-              "contactType": "customer service",
-              "areaServed": ["Mumbai", "Pune", "Nashik"],
-              "availableLanguage": ["English", "Hindi", "Marathi"]
-            },
-            "sameAs": [
-              "https://www.facebook.com/ganeshyoelebuilders",
-              "https://www.instagram.com/ganeshyoelebuilders",
-              "https://www.linkedin.com/in/ganesh-yeole-builders-5126763a8/"
-            ]
-          }
-        `}</script>
         </Helmet>
 
         {/* 1. Hero Section (Carousel) */}
