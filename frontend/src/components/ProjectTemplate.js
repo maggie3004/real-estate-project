@@ -32,6 +32,7 @@ const ProjectTemplate = ({
   progressStage,
   locationChips,
   floorPlans,
+  virtualTours,
   downloads,
   advantages,
   testimonials,
@@ -44,6 +45,10 @@ const ProjectTemplate = ({
   const [isPlaying, setIsPlaying] = useState(false);
   const [isGalleryOpen, setGalleryOpen] = useState(false);
   const [activeFloorIdx, setActiveFloorIdx] = useState(0);
+  const [isVirtualTourOpen, setIsVirtualTourOpen] = useState(false);
+  const [activeVirtualTourIdx, setActiveVirtualTourIdx] = useState(0);
+  const [scrollPosition, setScrollPosition] = useState(0);
+
 
   // Determine variant and gallery images early so navigation can depend on gallery length
   const isOngoingVariant = layoutVariant === 'ongoing' || Boolean(reraNumber);
@@ -137,6 +142,29 @@ const ProjectTemplate = ({
       setCurrentImageIndex(0);
     }
   }, [galleryLength, currentImageIndex]);
+
+  // Prevent body scroll when virtual tour modal is open
+  useEffect(() => {
+    if (isVirtualTourOpen) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.position = 'fixed';
+      document.body.style.width = '100%';
+      document.body.style.top = `-${scrollPosition}px`;
+    } else {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.top = '';
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+      document.body.style.position = '';
+      document.body.style.width = '';
+      document.body.style.top = '';
+    };
+  }, [isVirtualTourOpen, scrollPosition]);
+
 
   // FloatingActions removed — no-op
 
@@ -506,6 +534,168 @@ const ProjectTemplate = ({
         </section>
       )}
 
+      {/* Virtual Tour Section */}
+      {Array.isArray(virtualTours) && virtualTours.length > 0 && (
+        <section id="section-virtualtour" className="w-full py-12 md:py-16 bg-amber-50 dark:bg-amber-950/20">
+          <div className="max-w-7xl mx-auto px-4">
+            <h3 className="text-2xl md:text-3xl font-bold text-amber-700 dark:text-amber-100 mb-8 text-center">Virtual Tour</h3>
+            <div className="flex items-center justify-center mb-8">
+              <div className="h-px w-16 bg-gradient-to-r from-transparent via-amber-700/60 to-transparent" />
+            </div>
+
+            {/* Virtual Tour Card - Centered, Responsive */}
+            <div className="max-w-2xl mx-auto">
+              {virtualTours.map((tour, idx) => (
+                <div
+                  key={idx}
+                  className="group relative bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer border-2 border-amber-700/20 hover:border-amber-700"
+                  onClick={() => {
+                    // Check if mobile device (screen width < 768px)
+                    const isMobile = window.innerWidth < 768;
+
+                    if (isMobile) {
+                      // On mobile, open in new tab for better experience
+                      window.open(tour.url, '_blank', 'noopener,noreferrer');
+                    } else {
+                      // On desktop, use modal
+                      setScrollPosition(window.scrollY);
+                      setActiveVirtualTourIdx(idx);
+                      setIsVirtualTourOpen(true);
+                    }
+                  }}
+                >
+                  {/* Thumbnail - Responsive aspect ratio */}
+                  <div className="relative aspect-[16/10] sm:aspect-[4/3] overflow-hidden bg-gray-100 dark:bg-gray-800">
+                    <img
+                      src={tour.thumbnail || tour.src || '/assets/virtual-tour-placeholder.jpg'}
+                      alt={tour.label}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                    {/* Simple Pause Icon Overlay */}
+                    <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
+                      <div className="transform group-hover:scale-110 transition-all duration-300">
+                        {/* Pause Icon */}
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 text-white drop-shadow-2xl"
+                          viewBox="0 0 24 24"
+                          fill="currentColor"
+                        >
+                          <circle cx="12" cy="12" r="10" fill="rgba(180, 83, 9, 0.9)" />
+                          <rect x="9" y="8" width="2" height="8" fill="white" rx="1" />
+                          <rect x="13" y="8" width="2" height="8" fill="white" rx="1" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Label */}
+                  <div className="p-4 sm:p-6 bg-white dark:bg-gray-900 text-center">
+                    <h4 className="text-base sm:text-lg md:text-xl font-semibold text-amber-900 dark:text-amber-100 mb-1 sm:mb-2">
+                      {tour.label}
+                    </h4>
+                    <p className="text-xs sm:text-sm text-amber-700 dark:text-amber-300">
+                      <span className="hidden sm:inline">Click to explore 360° view</span>
+                      <span className="sm:hidden">Tap to open 360° tour</span>
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Virtual Tour Modal */}
+      <AnimatePresence>
+        {isVirtualTourOpen && virtualTours && virtualTours[activeVirtualTourIdx] && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-[9999] bg-black"
+            style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
+          >
+            {/* Close Button - Enhanced Visibility */}
+            <button
+              onClick={() => {
+                setIsVirtualTourOpen(false);
+                setTimeout(() => {
+                  window.scrollTo(0, scrollPosition);
+                }, 100);
+              }}
+              className="absolute top-2 right-2 sm:top-4 sm:right-4 z-[10000] p-2 sm:p-3 rounded-full bg-red-600 hover:bg-red-700 text-white shadow-2xl transition-all duration-200 group border-2 border-white/30"
+              aria-label="Close virtual tour"
+              style={{ touchAction: 'manipulation' }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-7 w-7 sm:h-8 sm:w-8 md:h-9 md:w-9"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={3}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+
+            {/* Tour Label */}
+            <div className="absolute top-4 left-4 z-[10000] bg-black/50 backdrop-blur-sm px-4 py-2 rounded-lg">
+              <p className="text-white font-semibold text-sm md:text-base">
+                {virtualTours[activeVirtualTourIdx].label}
+              </p>
+            </div>
+
+            {/* Navigation Arrows (if multiple tours) */}
+            {virtualTours.length > 1 && (
+              <>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveVirtualTourIdx((prev) => (prev - 1 + virtualTours.length) % virtualTours.length);
+                  }}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 z-[10000] p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm transition-all duration-200"
+                  aria-label="Previous tour"
+                >
+                  <FaChevronLeft className="h-6 w-6" />
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setActiveVirtualTourIdx((prev) => (prev + 1) % virtualTours.length);
+                  }}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 z-[10000] p-3 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-sm transition-all duration-200"
+                  aria-label="Next tour"
+                >
+                  <FaChevronRight className="h-6 w-6" />
+                </button>
+              </>
+            )}
+
+            {/* iFrame Container - Desktop Only */}
+            <div className="w-full h-full">
+              <iframe
+                src={virtualTours[activeVirtualTourIdx].url}
+                className="w-full h-full border-0"
+                allowFullScreen
+                allow="accelerometer; gyroscope; vr; xr; xr-spatial-tracking"
+                sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals"
+                referrerPolicy="no-referrer-when-downgrade"
+                title={`Virtual Tour - ${virtualTours[activeVirtualTourIdx].label}`}
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  border: 'none'
+                }}
+              />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Downloads Center */}
       {filteredDownloads.length > 0 && (
         <section id="section-downloads" className="w-full py-10 bg-amber-50 dark:bg-amber-950/20">
@@ -580,7 +770,7 @@ const ProjectTemplate = ({
 
       {/* Connectivity Section - New Detailed Version */}
       {isOngoingVariant && (
-        <section className="w-full py-16 md:py-20 bg-white dark:bg-black/50">
+        <section id="section-connectivity" className="w-full py-16 md:py-20 bg-white dark:bg-black/50">
           <div className="max-w-7xl mx-auto px-4">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-amber-900 dark:text-amber-100 mb-4 text-center">
               Connectivity

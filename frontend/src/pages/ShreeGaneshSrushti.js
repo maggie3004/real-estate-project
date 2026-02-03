@@ -73,6 +73,15 @@ const ShreeGaneshSrushti = () => {
       { label: "2 BHK Diamond", src: "/assets/shree-ganesh-srushti/gallery/2bhk-diamond.png" }
     ],
 
+    virtualTours: [
+      {
+        label: "2 BHK Diamond",
+        url: "https://therealtylens.com/tours/diamond_2bhk/",
+        thumbnail: "https://therealtylens.com/tours/diamond_2bhk/media/panorama_E3BA5A38_C186_E10F_41B7_9C80CF997938_0/f/1/0_0.webp"
+      }
+    ],
+
+
     downloads: [
       {
         label: "Project Brochure",
@@ -133,7 +142,52 @@ const ShreeGaneshSrushti = () => {
     window.scrollTo(0, 0);
   }, [projectData.projectName]);
 
-  return <ProjectTemplate {...projectData} />;
+  return (
+    <>
+      <style>{`
+        /* Custom background overrides for Shree Ganesh Srushti only */
+        #section-virtualtour {
+          background-color: rgb(255 251 235) !important; /* amber-50 */
+        }
+        .dark #section-virtualtour {
+          background-color: rgba(69, 26, 3, 0.2) !important; /* amber-950/20 */
+        }
+        
+        /* Amenities - White */
+        #section-virtualtour + section {
+          background-color: white !important;
+        }
+        .dark #section-virtualtour + section {
+          background-color: rgba(0, 0, 0, 0.5) !important;
+        }
+        
+        /* Gallery - White */
+        #section-gallery {
+          background-color: white !important;
+        }
+        .dark #section-gallery {
+          background-color: rgba(0, 0, 0, 0.5) !important;
+        }
+        
+        /* Connectivity - Amber */
+        #section-connectivity {
+          background-color: rgb(255 251 235) !important; /* amber-50 */
+        }
+        .dark #section-connectivity {
+          background-color: rgba(69, 26, 3, 0.2) !important; /* amber-950/20 */
+        }
+        
+        /* Location - Amber */
+        #section-location {
+          background-color: rgb(255 251 235) !important; /* amber-50 */
+        }
+        .dark #section-location {
+          background-color: rgba(69, 26, 3, 0.2) !important; /* amber-950/20 */
+        }
+      `}</style>
+      <ProjectTemplate {...projectData} />
+    </>
+  );
 };
 
 export default ShreeGaneshSrushti;
