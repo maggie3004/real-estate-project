@@ -41,6 +41,7 @@ const ShreeGaneshAvenue = lazy(() => import('./pages/ShreeGaneshAvenue'));
 const ModakeshwarApartment = lazy(() => import('./pages/ModakeshwarApartment'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 const TermsOfService = lazy(() => import('./pages/TermsOfService'));
+const SgsLandingPage = lazy(() => import('./pages/SgsLandingPage'));
 
 // Redirect component for navigating to Milestones with hash
 const RedirectToMilestones = ({ projectId }) => {
@@ -120,6 +121,9 @@ function App() {
                       <ScrollToTop />
                       <Suspense fallback={<LoadingSpinner />}>
                         <Routes>
+                          {/* Standalone QR landing page — has its own navbar, outside MainLayout */}
+                          <Route path="/shree-ganesh-srushti" element={<SgsLandingPage />} />
+
                           <Route element={<MainLayout />}>
                             <Route path="/" element={<Home />} />
                             <Route path="/listings" element={<Listings />} />
