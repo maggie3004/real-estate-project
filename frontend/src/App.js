@@ -100,7 +100,9 @@ class ErrorBoundary extends React.Component {
 }
 
 function App() {
-  const [isLoading, setIsLoading] = useState(true);
+  // Skip loading screen for the SGS QR landing page so scanners reach content instantly
+  const isSgsRoute = window.location.pathname.startsWith('/shree-ganesh-srushti');
+  const [isLoading, setIsLoading] = useState(!isSgsRoute);
 
   const handleLoadingComplete = () => {
     setIsLoading(false);
@@ -110,7 +112,8 @@ function App() {
     <ErrorBoundary>
       <ThemeProvider>
         <ScrollDirectionProvider>
-          {isLoading ? (
+          {/* Never show LoadingScreen on the SGS QR page — dual check for reliability */}
+          {isLoading && !isSgsRoute ? (
             <LoadingScreen onLoadingComplete={handleLoadingComplete} />
           ) : (
             <Suspense fallback={<LoadingSpinner />}>
@@ -121,7 +124,7 @@ function App() {
                       <ScrollToTop />
                       <Suspense fallback={<LoadingSpinner />}>
                         <Routes>
-                          {/* Standalone QR landing page — has its own navbar, outside MainLayout */}
+                          {/* Standalone QR landing page — bypasses loading screen */}
                           <Route path="/shree-ganesh-srushti" element={<SgsLandingPage />} />
 
                           <Route element={<MainLayout />}>

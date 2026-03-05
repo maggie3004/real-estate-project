@@ -7,7 +7,7 @@ import {
     FaSolarPanel, FaChargingStation, FaBatteryFull, FaBook,
     FaRoad, FaStore, FaHospital, FaShoppingBag,
     FaMapMarkerAlt, FaParking,
-    FaLeaf, FaUsers, FaChild, FaWalking,
+    FaWalking, FaUsers,
     FaDownload, FaCheckCircle, FaBuilding,
     FaBars,
 } from 'react-icons/fa';
@@ -109,7 +109,7 @@ const SgsNavbar = () => {
                     {/* Logo */}
                     <button onClick={() => handleNav('sgs-hero')} className="flex items-center gap-2 focus:outline-none">
                         <img src={LOGO_URL} alt="Ganesh Yeole Builders" className="h-9 w-auto object-contain" loading="eager" />
-                        <div className="text-left hidden sm:block">
+                        <div className="text-left flex flex-col gap-0.5">
                             <p className="text-white text-sm font-bold leading-none">Ganesh Yeole</p>
                             <p className="text-amber-400 text-xs leading-none">Builders &amp; Developers</p>
                         </div>
@@ -308,11 +308,13 @@ const HeroSection = () => {
             {/* Text — top-left, below navbar */}
             <div className="relative z-10 flex flex-col items-start justify-start min-h-[100dvh] px-5 sm:px-10 lg:px-16 pt-20">
                 <motion.div
-                    custom={0} variants={textVariants} initial="hidden" animate="visible"
-                    className="inline-flex items-center gap-2 bg-amber-600/20 border border-amber-400/40 px-3 py-1 rounded-full text-amber-300 text-xs font-semibold uppercase tracking-widest mb-3 mt-4"
+                    initial={{ opacity: 0, x: -40 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+                    className="inline-flex items-center gap-2 bg-amber-700/80 border border-amber-500/60 px-4 py-1.5 rounded-full text-white text-xs font-bold uppercase tracking-widest mb-3 mt-4 shadow-lg backdrop-blur-sm"
                 >
-                    <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
-                    Now Booking · Nashik
+                    <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                    Book at Launch Offer
                 </motion.div>
 
                 <motion.h1
@@ -392,7 +394,7 @@ const WelcomeSection = () => (
                 <h2 className="text-3xl sm:text-4xl font-black text-gray-900 dark:text-white leading-tight mb-4">
                     Welcome to <span className="text-amber-600">Shree Ganesh Srushti</span>
                 </h2>
-                <div className="w-12 h-0.5 bg-amber-500 rounded mb-5" />
+                <div className="w-48 h-0.5 bg-amber-500 rounded mb-5" />
                 <p className="text-gray-600 dark:text-gray-300 text-base leading-relaxed mb-4">
                     Thoughtfully designed towers that ensure ample light, ventilation, and scenic views — creating a lifestyle of comfort, convenience, and class. A prestigious address you'll be proud to call home.
                 </p>
@@ -429,18 +431,22 @@ const WelcomeSection = () => (
 
 // ─── SECTION: Amenities ───────────────────────────────────────────────────
 const amenities = [
-    { icon: <FaLeaf />, name: 'Landscaped Garden', desc: 'Lush greenery & open spaces' },
-    { icon: <FaChild />, name: "Children's Play Area", desc: 'Safe dedicated play zone' },
-    { icon: <FaParking />, name: 'Covered Parking', desc: 'Dedicated car parking' },
-    { icon: <BiCctv />, name: '24/7 CCTV Security', desc: 'Round-the-clock surveillance' },
-    { icon: <FaWalking />, name: 'Walking Track', desc: 'Serene jogging path' },
-    { icon: <FaUsers />, name: 'Community Hall', desc: 'Multipurpose gathering space' },
-    { icon: <FaSolarPanel />, name: 'Solar Energy', desc: 'Solar for common electricity' },
-    { icon: <FaChargingStation />, name: 'EV Charging', desc: 'Electric vehicle station' },
-    { icon: <FaBatteryFull />, name: 'Battery Backup', desc: 'Lift backup power' },
-    { icon: <MdSelfImprovement />, name: 'Rooftop Yoga', desc: 'Wellness space up top' },
-    { icon: <FaBook />, name: 'Library', desc: 'Quiet reading corner' },
-    { icon: <GiWaterDrop />, name: 'Rainwater Harvesting', desc: 'Eco-friendly water system' },
+    { icon: <FaSolarPanel />, name: 'Solar for common electricity', desc: '' },
+    { icon: <MdSelfImprovement />, name: 'Yoga Space on rooftop', desc: '' },
+    { icon: <FaUsers />, name: 'Multipurpose Hall on rooftop', desc: '' },
+    { icon: <FaBuilding />, name: 'Attractive Entrance', desc: '' },
+    { icon: <FaWalking />, name: 'Seating area on roof', desc: '' },
+    { icon: <FaBook />, name: 'Library', desc: '' },
+    { icon: <FaChargingStation />, name: 'EV Charging Station', desc: '' },
+    { icon: <FaStore />, name: 'Society Office', desc: '' },
+    { icon: <BiCctv />, name: 'CCTV', desc: '' },
+    { icon: <FaRoad />, name: 'Branded Lift', desc: '' },
+    { icon: <FaBatteryFull />, name: 'Battery Backup for Lift', desc: '' },
+    { icon: <GiWaterDrop />, name: 'NMC & Bore Well Water Supply', desc: '' },
+    { icon: <FaHospital />, name: 'Fire Safety', desc: '' },
+    { icon: <FaParking />, name: 'Common Parking Area', desc: '' },
+    { icon: <FaShoppingBag />, name: 'Automation in Common Area', desc: '' },
+    { icon: <GiWaterDrop />, name: 'Rain Water Harvesting', desc: '' },
 ];
 
 const AmenitiesSection = () => (
@@ -479,23 +485,31 @@ const AmenitiesSection = () => (
 // ─── SECTION: Configurations ──────────────────────────────────────────────
 const configs = [
     {
-        type: '1 BHK', tag: 'Gold & Platinum',
-        price: '₹17.99 Lakh', priceNote: 'Starting Price',
-        size: '500 sq ft', sizeNote: 'Onwards',
-        color: 'from-amber-700 via-amber-800 to-amber-950',
+        type: '1 BHK', tag: 'Silver',
+        price: '₹16.99 Lakh', priceNote: 'Starting Price',
+        size: '480 sq ft', sizeNote: '',
+        // Silver: cool slate-gray blending into warm amber
+        color: 'from-slate-500 via-gray-600 to-amber-700',
+    },
+    {
+        type: '1 BHK', tag: 'Platinum',
+        price: '₹19.49 Lakh', priceNote: 'Starting Price',
+        size: '500 sq ft', sizeNote: '',
+        // Platinum: bright warm gold fading into rich amber
+        color: 'from-yellow-600 via-amber-600 to-amber-800',
     },
     {
         type: '2 BHK', tag: 'Diamond',
         price: '₹26.49 Lakh', priceNote: 'Starting Price',
-        size: '730 sq ft', sizeNote: 'Onwards',
-        color: 'from-amber-700 via-amber-800 to-amber-950',
-        popular: true,
+        size: '730 sq ft', sizeNote: '',
+        // Diamond: deep navy-indigo into premium amber-gold
+        color: 'from-indigo-900 via-amber-800 to-amber-950',
     },
 ];
 
 const ConfigsSection = () => (
     <section id="sgs-configs" className="py-16 sm:py-20 bg-white dark:bg-gray-950">
-        <div className="max-w-2xl mx-auto px-5 sm:px-10">
+        <div className="max-w-3xl mx-auto px-5 sm:px-10">
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }} viewport={{ once: true }} className="text-center mb-10">
                 <span className="text-xs text-amber-600 font-bold uppercase tracking-widest border border-amber-300 px-3 py-1 rounded-full">Configurations</span>
@@ -504,20 +518,35 @@ const ConfigsSection = () => (
                 </h2>
             </motion.div>
 
-            <div className="grid grid-cols-2 gap-4 sm:gap-6">
+            {/* ⏰ Launch Offer Strip */}
+            <motion.div
+                initial={{ opacity: 0, y: -10 }} whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }} viewport={{ once: true }}
+                className="mb-6 rounded-2xl overflow-hidden"
+            >
+                <div className="bg-gradient-to-r from-red-600 via-orange-500 to-amber-500 px-5 py-3 flex flex-col sm:flex-row items-center justify-center gap-2 text-center sm:text-left">
+                    <span className="text-xl">🔥</span>
+                    <div>
+                        <p className="text-white font-black text-sm uppercase tracking-wide leading-none">
+                            Launch Offer · 4 Days Only
+                        </p>
+                        <p className="text-orange-100 text-xs font-semibold mt-0.5">
+                            Valid 19th March – 22nd March only. Book now before prices change!
+                        </p>
+                    </div>
+                    <span className="hidden sm:block text-xl ml-2">⏳</span>
+                </div>
+            </motion.div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-5 px-6 sm:px-0">
                 {configs.map((c, i) => (
                     <motion.div
                         key={i}
                         initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: i * 0.12 }} viewport={{ once: true }}
                         whileHover={{ y: -6, scale: 1.02 }}
-                        className={`relative rounded-2xl overflow-hidden shadow-xl ${c.popular ? 'ring-2 ring-amber-400 ring-offset-2' : ''}`}
+                        className={`relative rounded-2xl overflow-hidden shadow-xl`}
                     >
-                        {c.popular && (
-                            <div className="absolute top-3 right-3 z-10 bg-white text-amber-600 text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full shadow">
-                                Popular
-                            </div>
-                        )}
                         <div className={`bg-gradient-to-b ${c.color} p-6 sm:p-8 text-white flex flex-col gap-5 min-h-[320px]`}>
                             {/* Type & Tag */}
                             <div>
@@ -529,22 +558,17 @@ const ConfigsSection = () => (
                             <div className="w-full h-px bg-white/20" />
 
                             {/* Price — vertical stack */}
-                            <div className="flex flex-col gap-4 flex-1">
+                            <div className="flex flex-col gap-2 flex-1">
                                 <div>
                                     <p className="text-[10px] text-amber-200 uppercase tracking-widest mb-0.5">{c.priceNote}</p>
                                     <p className="text-2xl sm:text-3xl font-black leading-tight">{c.price}</p>
-                                </div>
-                                <div className="w-8 h-px bg-white/20" />
-                                <div>
-                                    <p className="text-[10px] text-amber-200 uppercase tracking-widest mb-0.5">{c.sizeNote}</p>
-                                    <p className="text-xl sm:text-2xl font-black leading-tight">{c.size}</p>
                                 </div>
                             </div>
 
                             {/* CTA */}
                             <button
                                 onClick={() => scrollTo('sgs-fullform')}
-                                className="w-full py-3 rounded-xl bg-white/15 hover:bg-white/25 border border-white/30 text-white text-sm font-bold tracking-wide transition-all duration-200"
+                                className="w-full py-2.5 rounded-xl bg-white/15 hover:bg-white/25 border border-white/30 text-white text-xs font-bold tracking-wide transition-all duration-200"
                             >
                                 Enquire About {c.type}
                             </button>
@@ -595,6 +619,7 @@ const GallerySection = () => {
                         >
                             <img src={img.src} alt={img.alt}
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                style={i === 0 ? { objectPosition: 'center 70%' } : undefined}
                                 loading="lazy" onError={e => { e.target.style.display = 'none'; }}
                             />
                             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-300" />

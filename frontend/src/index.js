@@ -38,14 +38,21 @@ AOS.init({
 
 const rootElement = document.getElementById('root');
 
-// Use hydrate for pre-rendered content, render for development
-if (rootElement.hasChildNodes()) {
-  ReactDOM.hydrate(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>,
-    rootElement
-  );
+// For the SGS QR landing page — render it directly, completely bypassing
+// the App component (and its 6-second LoadingScreen) so QR scanners see
+// content instantly. All other routes use the normal App.
+const isSgsRoute = window.location.pathname.toLowerCase().startsWith('/shree-ganesh-srushti');
+
+if (isSgsRoute) {
+  // Lazy-import to keep the main bundle lean
+  import('./pages/SgsLandingPage').then(({ default: SgsLandingPage }) => {
+    const root = ReactDOM.createRoot(rootElement);
+    root.render(
+      <React.StrictMode>
+        <SgsLandingPage />
+      </React.StrictMode>
+    );
+  });
 } else {
   const root = ReactDOM.createRoot(rootElement);
   root.render(
@@ -54,5 +61,3 @@ if (rootElement.hasChildNodes()) {
     </React.StrictMode>
   );
 }
-
-
