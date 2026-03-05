@@ -68,16 +68,16 @@ const ShreeGaneshSrushti = () => {
     location: "Nashik",
 
     floorPlans: [
-      { label: "1 BHK Gold", src: "/assets/shree-ganesh-srushti/gallery/1bhk-gold.png" },
-      { label: "1 BHK Platinum", src: "/assets/shree-ganesh-srushti/gallery/1bhk-platinum.png" },
-      { label: "2 BHK Diamond", src: "/assets/shree-ganesh-srushti/gallery/2bhk-diamond.png" }
+      { label: "1 BHK Gold", src: "/assets/shree-ganesh-srushti/gallery/1bhk-gold-web.webp" },
+      { label: "1 BHK Platinum", src: "/assets/shree-ganesh-srushti/gallery/1bhk-platinum-web.webp" },
+      { label: "2 BHK Diamond", src: "/assets/shree-ganesh-srushti/gallery/2bhk-diamond-web.webp" }
     ],
 
     virtualTours: [
       {
         label: "2 BHK Diamond",
         url: "https://therealtylens.com/tours/diamond_2bhk/",
-        thumbnail: "https://therealtylens.com/tours/diamond_2bhk/media/panorama_E3BA5A38_C186_E10F_41B7_9C80CF997938_0/f/1/0_0.webp"
+        thumbnail: "/assets/virtual_tour.jpeg"
       }
     ],
 

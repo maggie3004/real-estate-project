@@ -39,6 +39,7 @@ const ProjectTemplate = ({
   cost,
   connectivityData,
   legalEntity,
+  status,
 }) => {
   // Initialize state
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -266,7 +267,7 @@ const ProjectTemplate = ({
               <img
                 src={images?.[0]}
                 alt={projectName + ' hero'}
-                className="project-hero-image"
+                className={`project-hero-image transition-all duration-700 ${status === 'Sold Out' ? 'grayscale-[0.3]' : ''}`}
                 style={{
                   position: 'absolute',
                   top: 0,
@@ -284,9 +285,16 @@ const ProjectTemplate = ({
 
           {/* Project Name - Top Left */}
           <div className="absolute top-4 left-4 sm:top-6 sm:left-6 md:top-8 md:left-8 z-20 max-w-[calc(100%-220px)] sm:max-w-[calc(100%-240px)] md:max-w-[60%]">
-            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tight text-white drop-shadow-2xl break-words">
-              {projectName}
-            </h1>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-2">
+              <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tight text-white drop-shadow-2xl break-words">
+                {projectName}
+              </h1>
+              {status === 'Sold Out' && (
+                <div className="inline-flex items-center px-3 py-1 bg-red-600 text-white text-[10px] sm:text-xs font-bold uppercase tracking-widest rounded-full shadow-lg animate-pulse border border-red-400/30">
+                  Sold Out
+                </div>
+              )}
+            </div>
 
             {/* Tagline and Subtitle - Below Project Name, Left Aligned */}
             <div className="mt-2 md:mt-4">
@@ -356,256 +364,265 @@ const ProjectTemplate = ({
             </div>
           </div>
         </section>
-      )}
+      )
+      }
 
 
 
       {/* Stats Section - hidden for ongoing project variant to keep the view focused for customers */}
-      {!isOngoingVariant && (
-        <section className={`w-full py-10 ${isOngoingVariant ? 'bg-white dark:bg-black' : 'bg-gray-900/5 dark:bg-black/50'}`}>
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="flex items-center justify-center mb-6">
-              <div className="h-px w-10 bg-gradient-to-r from-transparent via-gold/60 to-transparent" />
+      {
+        !isOngoingVariant && (
+          <section className={`w-full py-10 ${isOngoingVariant ? 'bg-white dark:bg-black' : 'bg-gray-900/5 dark:bg-black/50'}`}>
+            <div className="max-w-7xl mx-auto px-4">
+              <div className="flex items-center justify-center mb-6">
+                <div className="h-px w-10 bg-gradient-to-r from-transparent via-gold/60 to-transparent" />
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {Array.isArray(stats) && stats.map((stat, index) => (
+                  <div key={index} className="bg-white dark:bg-gray-900 border border-amber-700/30 dark:border-gray-700 rounded-lg p-4 text-center hover:shadow-xl transition-shadow duration-300">
+                    <div className="text-lg md:text-xl font-semibold text-amber-700 mb-1">{stat.title}</div>
+                    <div className="text-base md:text-lg text-[#181818] dark:text-gray-300">{stat.subtitle}</div>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {Array.isArray(stats) && stats.map((stat, index) => (
-                <div key={index} className="bg-white dark:bg-gray-900 border border-amber-700/30 dark:border-gray-700 rounded-lg p-4 text-center hover:shadow-xl transition-shadow duration-300">
-                  <div className="text-lg md:text-xl font-semibold text-amber-700 mb-1">{stat.title}</div>
-                  <div className="text-base md:text-lg text-[#181818] dark:text-gray-300">{stat.subtitle}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+          </section>
+        )
+      }
 
 
 
       {/* About Section (shows short summary with read more) */}
-      {isOngoingVariant && (
-        <section id="section-about" className="w-full py-16 md:py-20 bg-amber-50 dark:bg-amber-950/20">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-              {/* Family Photo - Left Side (Desktop), Bottom (Mobile) */}
-              <div className="w-full order-2 md:order-1">
-                <img
-                  src={projectName === 'Shree Ganesh Heights' ? '/assets/shree-ganesh-heights/gallery/sghfamily.jpeg'
-                    : projectName === 'Shree Ganesh Park' ? '/assets/shree-ganesh-park/gallery/sgpfamily.jpeg'
-                      : '/family_photo.jpg'}
-                  alt="Happy Family"
-                  className="w-full h-auto rounded-2xl shadow-2xl object-cover"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-
-              {/* Content - Right Side (Desktop), Top (Mobile) */}
-              <div className="w-full order-1 md:order-2">
-                {/* Section Title */}
-                <div className="mb-8">
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-amber-900 dark:text-amber-100 mb-1">
-                    THE BENCHMARK FOR A
-                  </h2>
-                  <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-amber-900 dark:text-amber-100 mb-4">
-                    NEW ERA OF LIVING
-                  </h2>
-                  <div className="w-16 h-1 bg-gradient-to-r from-amber-700 to-amber-600"></div>
+      {
+        isOngoingVariant && (
+          <section id="section-about" className="w-full py-16 md:py-20 bg-amber-50 dark:bg-amber-950/20">
+            <div className="max-w-7xl mx-auto px-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+                {/* Family Photo - Left Side (Desktop), Bottom (Mobile) */}
+                <div className="w-full order-2 md:order-1">
+                  <img
+                    src={projectName === 'Shree Ganesh Heights' ? '/assets/shree-ganesh-heights/gallery/sghfamily.jpeg'
+                      : projectName === 'Shree Ganesh Park' ? '/assets/shree-ganesh-park/gallery/sgpfamily.jpeg'
+                        : '/family_photo.jpg'}
+                    alt="Happy Family"
+                    className="w-full h-auto rounded-2xl shadow-2xl object-cover"
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </div>
 
-                {/* Description Text */}
-                <div className="mb-8">
-                  <p className="text-amber-900 dark:text-amber-100 text-sm md:text-base leading-relaxed">
-                    {description}
-                  </p>
-                </div>
-
-                {/* Features Grid - 3x2 */}
-                <div className="grid grid-cols-3 gap-4">
-                  {/* Feature 1 - Location */}
-                  <div className="flex flex-col items-center text-center">
-                    <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-2">
-                      <FaMapMarkerAlt className="w-7 h-7 md:w-8 md:h-8 text-white" />
-                    </div>
-                    <p className="text-amber-900 dark:text-amber-100 text-xs md:text-sm font-semibold leading-tight">Most Demanding<br />Location</p>
+                {/* Content - Right Side (Desktop), Top (Mobile) */}
+                <div className="w-full order-1 md:order-2">
+                  {/* Section Title */}
+                  <div className="mb-8">
+                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-amber-900 dark:text-amber-100 mb-1">
+                      THE BENCHMARK FOR A
+                    </h2>
+                    <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-amber-900 dark:text-amber-100 mb-4">
+                      NEW ERA OF LIVING
+                    </h2>
+                    <div className="w-16 h-1 bg-gradient-to-r from-amber-700 to-amber-600"></div>
                   </div>
 
-                  {/* Feature 2 - Road */}
-                  <div className="flex flex-col items-center text-center">
-                    <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-2">
-                      <FaRoad className="w-7 h-7 md:w-8 md:h-8 text-white" />
-                    </div>
-                    <p className="text-amber-900 dark:text-amber-100 text-xs md:text-sm font-semibold leading-tight">
-                      {projectName === 'Shree Ganesh Heights' ? '9 mtr road' : '100 ft wide road'}<br />front
+                  {/* Description Text */}
+                  <div className="mb-8">
+                    <p className="text-amber-900 dark:text-amber-100 text-sm md:text-base leading-relaxed">
+                      {description}
                     </p>
                   </div>
 
-                  {/* Feature 3 - Facilities */}
-                  <div className="flex flex-col items-center text-center">
-                    <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-2 relative">
-                      <span className="text-white text-xl md:text-2xl font-bold">
-                        {projectName === 'Shree Ganesh Heights' ? '8+' : projectName === 'Shree Ganesh Park' ? '10+' : '21'}
-                      </span>
-                      <div className="absolute bottom-0 right-0 w-5 h-5 bg-white rounded-full flex items-center justify-center">
-                        <FaBuilding className="w-2.5 h-2.5 text-amber-700" />
+                  {/* Features Grid - 3x2 */}
+                  <div className="grid grid-cols-3 gap-4">
+                    {/* Feature 1 - Location */}
+                    <div className="flex flex-col items-center text-center">
+                      <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-2">
+                        <FaMapMarkerAlt className="w-7 h-7 md:w-8 md:h-8 text-white" />
                       </div>
+                      <p className="text-amber-900 dark:text-amber-100 text-xs md:text-sm font-semibold leading-tight">Most Demanding<br />Location</p>
                     </div>
-                    <p className="text-amber-900 dark:text-amber-100 text-xs md:text-sm font-semibold leading-tight">Facilities</p>
-                  </div>
 
-                  {/* Feature 4 - Vastu */}
-                  <div className="flex flex-col items-center text-center">
-                    <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-2">
-                      <FaCompass className="w-7 h-7 md:w-8 md:h-8 text-white" />
+                    {/* Feature 2 - Road */}
+                    <div className="flex flex-col items-center text-center">
+                      <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-2">
+                        <FaRoad className="w-7 h-7 md:w-8 md:h-8 text-white" />
+                      </div>
+                      <p className="text-amber-900 dark:text-amber-100 text-xs md:text-sm font-semibold leading-tight">
+                        {projectName === 'Shree Ganesh Heights' ? '9 mtr road' : '100 ft wide road'}<br />front
+                      </p>
                     </div>
-                    <p className="text-amber-900 dark:text-amber-100 text-xs md:text-sm font-semibold leading-tight">Vastu<br />Compliant</p>
-                  </div>
 
-                  {/* Feature 5 - Ventilation */}
-                  <div className="flex flex-col items-center text-center">
-                    <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-2">
-                      <FaSun className="w-7 h-7 md:w-8 md:h-8 text-white" />
+                    {/* Feature 3 - Facilities */}
+                    <div className="flex flex-col items-center text-center">
+                      <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-2 relative">
+                        <span className="text-white text-xl md:text-2xl font-bold">
+                          {projectName === 'Shree Ganesh Heights' ? '8+' : projectName === 'Shree Ganesh Park' ? '10+' : '21'}
+                        </span>
+                        <div className="absolute bottom-0 right-0 w-5 h-5 bg-white rounded-full flex items-center justify-center">
+                          <FaBuilding className="w-2.5 h-2.5 text-amber-700" />
+                        </div>
+                      </div>
+                      <p className="text-amber-900 dark:text-amber-100 text-xs md:text-sm font-semibold leading-tight">Facilities</p>
                     </div>
-                    <p className="text-amber-900 dark:text-amber-100 text-xs md:text-sm font-semibold leading-tight">Good Ventilation &<br />Sunlight</p>
-                  </div>
 
-                  {/* Feature 6 - G+7 Structure or Sustainable steps */}
-                  <div className="flex flex-col items-center text-center">
-                    <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-2">
-                      {projectName === 'Shree Ganesh Heights' ? (
-                        <FaBuilding className="w-7 h-7 md:w-8 md:h-8 text-white" />
-                      ) : (
-                        <FaLeaf className="w-7 h-7 md:w-8 md:h-8 text-white" />
-                      )}
+                    {/* Feature 4 - Vastu */}
+                    <div className="flex flex-col items-center text-center">
+                      <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-2">
+                        <FaCompass className="w-7 h-7 md:w-8 md:h-8 text-white" />
+                      </div>
+                      <p className="text-amber-900 dark:text-amber-100 text-xs md:text-sm font-semibold leading-tight">Vastu<br />Compliant</p>
                     </div>
-                    <p className="text-amber-900 dark:text-amber-100 text-xs md:text-sm font-semibold leading-tight">
-                      {projectName === 'Shree Ganesh Heights' ? 'G+7 Structure' : 'Sustainable steps'}
-                    </p>
+
+                    {/* Feature 5 - Ventilation */}
+                    <div className="flex flex-col items-center text-center">
+                      <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-2">
+                        <FaSun className="w-7 h-7 md:w-8 md:h-8 text-white" />
+                      </div>
+                      <p className="text-amber-900 dark:text-amber-100 text-xs md:text-sm font-semibold leading-tight">Good Ventilation &<br />Sunlight</p>
+                    </div>
+
+                    {/* Feature 6 - G+7 Structure or Sustainable steps */}
+                    <div className="flex flex-col items-center text-center">
+                      <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-amber-700 dark:bg-amber-600 flex items-center justify-center mb-2">
+                        {projectName === 'Shree Ganesh Heights' ? (
+                          <FaBuilding className="w-7 h-7 md:w-8 md:h-8 text-white" />
+                        ) : (
+                          <FaLeaf className="w-7 h-7 md:w-8 md:h-8 text-white" />
+                        )}
+                      </div>
+                      <p className="text-amber-900 dark:text-amber-100 text-xs md:text-sm font-semibold leading-tight">
+                        {projectName === 'Shree Ganesh Heights' ? 'G+7 Structure' : 'Sustainable steps'}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-      )}
+          </section>
+        )
+      }
 
       {/* Note: brochure CTA moved to after Floor Plans for ongoing pages to keep a single CTA */}
 
       {/* Interactive Floor Plans */}
-      {Array.isArray(floorPlans) && floorPlans.length > 0 && (
-        <section id="section-floorplans" className="w-full py-12 md:py-16 bg-white dark:bg-black/50">
-          <div className="max-w-7xl mx-auto px-4">
-            <h3 className="text-2xl md:text-3xl font-bold text-amber-700 dark:text-amber-100 mb-8 text-center">Floor Plans</h3>
-            <div className="flex items-center justify-center mb-8">
-              <div className="h-px w-16 bg-gradient-to-r from-transparent via-amber-700/60 to-transparent" />
-            </div>
+      {
+        Array.isArray(floorPlans) && floorPlans.length > 0 && (
+          <section id="section-floorplans" className="w-full py-12 md:py-16 bg-white dark:bg-black/50">
+            <div className="max-w-7xl mx-auto px-4">
+              <h3 className="text-2xl md:text-3xl font-bold text-amber-700 dark:text-amber-100 mb-8 text-center">Floor Plans</h3>
+              <div className="flex items-center justify-center mb-8">
+                <div className="h-px w-16 bg-gradient-to-r from-transparent via-amber-700/60 to-transparent" />
+              </div>
 
-            {/* Floor Plan Tabs */}
-            <div className="flex justify-center gap-2 mb-6 flex-wrap">
-              {floorPlans.map((plan, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setActiveFloorIdx(idx)}
-                  className={`px-3 py-2 rounded-lg 
+              {/* Floor Plan Tabs */}
+              <div className="flex justify-center gap-2 mb-6 flex-wrap">
+                {floorPlans.map((plan, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setActiveFloorIdx(idx)}
+                    className={`px-3 py-2 rounded-lg 
         text-[11px] md:text-sm 
         font-semibold leading-tight text-center
         border transition-all duration-300
         ${activeFloorIdx === idx
-                      ? 'bg-amber-700 text-white border-amber-700 shadow-md'
-                      : 'bg-white dark:bg-gray-900 text-[#181818] dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-amber-700'
-                    }`}
+                        ? 'bg-amber-700 text-white border-amber-700 shadow-md'
+                        : 'bg-white dark:bg-gray-900 text-[#181818] dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-amber-700'
+                      }`}
 
-                >
-                  {plan.label}
-                </button>
-              ))}
+                  >
+                    {plan.label}
+                  </button>
+                ))}
+              </div>
+
+
+              {/* Floor Plan Image - White Container */}
+              <div className="relative rounded-xl overflow-hidden bg-white dark:bg-gray-900 shadow-xl flex items-center justify-center aspect-[4/3] w-full max-w-2xl mx-auto">
+                <img
+                  src={floorPlans[activeFloorIdx]?.src}
+                  alt={floorPlans[activeFloorIdx]?.label}
+                  className="absolute top-0 left-0 w-full h-full object-contain"
+                  style={{ display: 'block' }}
+                />
+              </div>
             </div>
-
-
-            {/* Floor Plan Image - White Container */}
-            <div className="relative rounded-xl overflow-hidden bg-white dark:bg-gray-900 shadow-xl flex items-center justify-center aspect-[4/3] w-full max-w-2xl mx-auto">
-              <img
-                src={floorPlans[activeFloorIdx]?.src}
-                alt={floorPlans[activeFloorIdx]?.label}
-                className="absolute top-0 left-0 w-full h-full object-contain"
-                style={{ display: 'block' }}
-              />
-            </div>
-          </div>
-        </section>
-      )}
+          </section>
+        )
+      }
 
       {/* Virtual Tour Section */}
-      {Array.isArray(virtualTours) && virtualTours.length > 0 && (
-        <section id="section-virtualtour" className="w-full py-12 md:py-16 bg-amber-50 dark:bg-amber-950/20">
-          <div className="max-w-7xl mx-auto px-4">
-            <h3 className="text-2xl md:text-3xl font-bold text-amber-700 dark:text-amber-100 mb-8 text-center">Virtual Tour</h3>
-            <div className="flex items-center justify-center mb-8">
-              <div className="h-px w-16 bg-gradient-to-r from-transparent via-amber-700/60 to-transparent" />
-            </div>
+      {
+        Array.isArray(virtualTours) && virtualTours.length > 0 && (
+          <section id="section-virtualtour" className="w-full py-12 md:py-16 bg-amber-50 dark:bg-amber-950/20">
+            <div className="max-w-7xl mx-auto px-4">
+              <h3 className="text-2xl md:text-3xl font-bold text-amber-700 dark:text-amber-100 mb-8 text-center">Virtual Tour</h3>
+              <div className="flex items-center justify-center mb-8">
+                <div className="h-px w-16 bg-gradient-to-r from-transparent via-amber-700/60 to-transparent" />
+              </div>
 
-            {/* Virtual Tour Card - Centered, Responsive */}
-            <div className="max-w-2xl mx-auto">
-              {virtualTours.map((tour, idx) => (
-                <div
-                  key={idx}
-                  className="group relative bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer border-2 border-amber-700/20 hover:border-amber-700"
-                  onClick={() => {
-                    // Check if mobile device (screen width < 768px)
-                    const isMobile = window.innerWidth < 768;
+              {/* Virtual Tour Card - Centered, Responsive */}
+              <div className="max-w-2xl mx-auto">
+                {virtualTours.map((tour, idx) => (
+                  <div
+                    key={idx}
+                    className="group relative bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer border-2 border-amber-700/20 hover:border-amber-700"
+                    onClick={() => {
+                      // Check if mobile device (screen width < 768px)
+                      const isMobile = window.innerWidth < 768;
 
-                    if (isMobile) {
-                      // On mobile, open in new tab for better experience
-                      window.open(tour.url, '_blank', 'noopener,noreferrer');
-                    } else {
-                      // On desktop, use modal
-                      setScrollPosition(window.scrollY);
-                      setActiveVirtualTourIdx(idx);
-                      setIsVirtualTourOpen(true);
-                    }
-                  }}
-                >
-                  {/* Thumbnail - Responsive aspect ratio */}
-                  <div className="relative aspect-[16/10] sm:aspect-[4/3] overflow-hidden bg-gray-100 dark:bg-gray-800">
-                    <img
-                      src={tour.thumbnail || tour.src || '/assets/virtual-tour-placeholder.jpg'}
-                      alt={tour.label}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                    {/* Simple Pause Icon Overlay */}
-                    <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
-                      <div className="transform group-hover:scale-110 transition-all duration-300">
-                        {/* Pause Icon */}
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 text-white drop-shadow-2xl"
-                          viewBox="0 0 24 24"
-                          fill="currentColor"
-                        >
-                          <circle cx="12" cy="12" r="10" fill="rgba(180, 83, 9, 0.9)" />
-                          <rect x="9" y="8" width="2" height="8" fill="white" rx="1" />
-                          <rect x="13" y="8" width="2" height="8" fill="white" rx="1" />
-                        </svg>
+                      if (isMobile) {
+                        // On mobile, open in new tab for better experience
+                        window.open(tour.url, '_blank', 'noopener,noreferrer');
+                      } else {
+                        // On desktop, use modal
+                        setScrollPosition(window.scrollY);
+                        setActiveVirtualTourIdx(idx);
+                        setIsVirtualTourOpen(true);
+                      }
+                    }}
+                  >
+                    {/* Thumbnail - Responsive aspect ratio */}
+                    <div className="relative aspect-[16/10] sm:aspect-[4/3] overflow-hidden bg-gray-100 dark:bg-gray-800">
+                      <img
+                        src={tour.thumbnail || tour.src || '/assets/virtual-tour-placeholder.jpg'}
+                        alt={tour.label}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                      {/* Simple Pause Icon Overlay */}
+                      <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
+                        <div className="transform group-hover:scale-110 transition-all duration-300">
+                          {/* Pause Icon */}
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-12 w-12 sm:h-16 sm:w-16 md:h-20 md:w-20 text-white drop-shadow-2xl"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                          >
+                            <circle cx="12" cy="12" r="10" fill="rgba(180, 83, 9, 0.9)" />
+                            <rect x="9" y="8" width="2" height="8" fill="white" rx="1" />
+                            <rect x="13" y="8" width="2" height="8" fill="white" rx="1" />
+                          </svg>
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                  {/* Label */}
-                  <div className="p-4 sm:p-6 bg-white dark:bg-gray-900 text-center">
-                    <h4 className="text-base sm:text-lg md:text-xl font-semibold text-amber-900 dark:text-amber-100 mb-1 sm:mb-2">
-                      {tour.label}
-                    </h4>
-                    <p className="text-xs sm:text-sm text-amber-700 dark:text-amber-300">
-                      <span className="hidden sm:inline">Click to explore 360° view</span>
-                      <span className="sm:hidden">Tap to open 360° tour</span>
-                    </p>
+                    {/* Label */}
+                    <div className="p-4 sm:p-6 bg-white dark:bg-gray-900 text-center">
+                      <h4 className="text-base sm:text-lg md:text-xl font-semibold text-amber-900 dark:text-amber-100 mb-1 sm:mb-2">
+                        {tour.label}
+                      </h4>
+                      <p className="text-xs sm:text-sm text-amber-700 dark:text-amber-300">
+                        <span className="hidden sm:inline">Click to explore 360° view</span>
+                        <span className="sm:hidden">Tap to open 360° tour</span>
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
-      )}
+          </section>
+        )
+      }
 
       {/* Virtual Tour Modal */}
       <AnimatePresence>
@@ -697,53 +714,59 @@ const ProjectTemplate = ({
       </AnimatePresence>
 
       {/* Downloads Center */}
-      {filteredDownloads.length > 0 && (
-        <section id="section-downloads" className="w-full py-10 bg-amber-50 dark:bg-amber-950/20">
-          <div className="max-w-7xl mx-auto px-4">
-            <h3 className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white mb-4">Downloads</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-              {filteredDownloads.map((doc, idx) => (
-                <a key={idx} href={doc.href} target="_blank" rel="noopener noreferrer" className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-3 text-sm text-gray-800 dark:text-gray-200 hover:border-gold transition">
-                  {doc.label}
-                </a>
-              ))}
+      {
+        filteredDownloads.length > 0 && (
+          <section id="section-downloads" className="w-full py-10 bg-amber-50 dark:bg-amber-950/20">
+            <div className="max-w-7xl mx-auto px-4">
+              <h3 className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white mb-4">Downloads</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                {filteredDownloads.map((doc, idx) => (
+                  <a key={idx} href={doc.href} target="_blank" rel="noopener noreferrer" className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-3 text-sm text-gray-800 dark:text-gray-200 hover:border-gold transition">
+                    {doc.label}
+                  </a>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
-      )}
+          </section>
+        )
+      }
 
       {/* Testimonials */}
-      {Array.isArray(testimonials) && testimonials.length > 0 && (
-        <section className="w-full py-10 bg-white dark:bg-black/50">
-          <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-4">
-            {testimonials.map((t, idx) => (
-              <div key={idx} className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4">
-                <div className="text-sm text-gray-800 dark:text-gray-200 mb-2">“{t.quote}”</div>
-                <div className="text-xs text-gray-500">— {t.author}</div>
-              </div>
-            ))}
-          </div>
-        </section>
-      )}
+      {
+        Array.isArray(testimonials) && testimonials.length > 0 && (
+          <section className="w-full py-10 bg-white dark:bg-black/50">
+            <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+              {testimonials.map((t, idx) => (
+                <div key={idx} className="rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900 p-4">
+                  <div className="text-sm text-gray-800 dark:text-gray-200 mb-2">“{t.quote}”</div>
+                  <div className="text-xs text-gray-500">— {t.author}</div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )
+      }
 
       {/* Cost Breakdown - commented out per user request; re-enable by restoring `cost && (` */}
-      {false && (
-        <section className="w-full py-10 bg-white dark:bg-black">
-          <div className="max-w-7xl mx-auto px-4">
-            <h3 className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white mb-4">Cost Breakdown</h3>
-            <div className="rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
-              <div className="grid grid-cols-2 text-sm">
-                <div className="p-3 bg-gray-50 dark:bg-gray-900/50 text-gray-600 dark:text-gray-300">Base Price</div>
-                <div className="p-3 text-gray-900 dark:text-white">{cost.base || 'On Request'}</div>
-                <div className="p-3 bg-gray-50 dark:bg-gray-900/50 text-gray-600 dark:text-gray-300">Govt Taxes</div>
-                <div className="p-3 text-gray-900 dark:text-white">{cost.taxes || 'As applicable'}</div>
-                <div className="p-3 bg-gray-50 dark:bg-gray-900/50 text-gray-600 dark:text-gray-300">Maintenance</div>
-                <div className="p-3 text-gray-900 dark:text-white">{cost.maintenance || 'TBD'}</div>
+      {
+        false && (
+          <section className="w-full py-10 bg-white dark:bg-black">
+            <div className="max-w-7xl mx-auto px-4">
+              <h3 className="text-lg md:text-xl font-semibold text-gray-900 dark:text-white mb-4">Cost Breakdown</h3>
+              <div className="rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+                <div className="grid grid-cols-2 text-sm">
+                  <div className="p-3 bg-gray-50 dark:bg-gray-900/50 text-gray-600 dark:text-gray-300">Base Price</div>
+                  <div className="p-3 text-gray-900 dark:text-white">{cost.base || 'On Request'}</div>
+                  <div className="p-3 bg-gray-50 dark:bg-gray-900/50 text-gray-600 dark:text-gray-300">Govt Taxes</div>
+                  <div className="p-3 text-gray-900 dark:text-white">{cost.taxes || 'As applicable'}</div>
+                  <div className="p-3 bg-gray-50 dark:bg-gray-900/50 text-gray-600 dark:text-gray-300">Maintenance</div>
+                  <div className="p-3 text-gray-900 dark:text-white">{cost.maintenance || 'TBD'}</div>
+                </div>
               </div>
             </div>
-          </div>
-        </section>
-      )}
+          </section>
+        )
+      }
 
       {/* Construction timeline removed to simplify the page for customers. */}
 
@@ -769,73 +792,75 @@ const ProjectTemplate = ({
       </section>
 
       {/* Connectivity Section - New Detailed Version */}
-      {isOngoingVariant && (
-        <section id="section-connectivity" className="w-full py-16 md:py-20 bg-white dark:bg-black/50">
-          <div className="max-w-7xl mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-amber-900 dark:text-amber-100 mb-4 text-center">
-              Connectivity
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-amber-700 to-amber-600 mx-auto mb-12"></div>
+      {
+        isOngoingVariant && (
+          <section id="section-connectivity" className="w-full py-16 md:py-20 bg-white dark:bg-black/50">
+            <div className="max-w-7xl mx-auto px-4">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-amber-900 dark:text-amber-100 mb-4 text-center">
+                Connectivity
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-amber-700 to-amber-600 mx-auto mb-12"></div>
 
-            {/* Connectivity Description Lines */}
-            {connectivityData?.description && (
-              <div className="max-w-4xl mx-auto mb-12">
-                <ul className="space-y-3">
-                  {connectivityData.description.map((line, index) => (
-                    <li key={index} className="flex items-center justify-center gap-3">
-                      <span className="text-amber-700 dark:text-amber-400 mt-1 flex-shrink-0">•</span>
-                      <p className="text-amber-900 dark:text-amber-100 text-base md:text-lg leading-relaxed text-center" dangerouslySetInnerHTML={{ __html: line }} />
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
+              {/* Connectivity Description Lines */}
+              {connectivityData?.description && (
+                <div className="max-w-4xl mx-auto mb-12">
+                  <ul className="space-y-3">
+                    {connectivityData.description.map((line, index) => (
+                      <li key={index} className="flex items-center justify-center gap-3">
+                        <span className="text-amber-700 dark:text-amber-400 mt-1 flex-shrink-0">•</span>
+                        <p className="text-amber-900 dark:text-amber-100 text-base md:text-lg leading-relaxed text-center" dangerouslySetInnerHTML={{ __html: line }} />
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
-            {/* Connectivity Points - Icon Grid */}
-            {connectivityData?.points && (
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 md:gap-8 lg:gap-10 max-w-6xl mx-auto place-items-center">
+              {/* Connectivity Points - Icon Grid */}
+              {connectivityData?.points && (
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 md:gap-8 lg:gap-10 max-w-6xl mx-auto place-items-center">
 
 
-                {connectivityData.points.map((point, index) => {
-                  const Icon = point.icon;
+                  {connectivityData.points.map((point, index) => {
+                    const Icon = point.icon;
 
-                  return (
-                    <div key={index} className="flex flex-col items-center justify-start text-center w-full">
+                    return (
+                      <div key={index} className="flex flex-col items-center justify-start text-center w-full">
 
-                      {/* Icon Circle */}
-                      <div
-                        className="w-14 h-14 md:w-16 md:h-16 rounded-full 
+                        {/* Icon Circle */}
+                        <div
+                          className="w-14 h-14 md:w-16 md:h-16 rounded-full 
                        bg-amber-700 text-white 
                        flex items-center justify-center 
                        mb-3"
-                      >
-                        {Icon && <Icon className="text-xl md:text-2xl" />}
+                        >
+                          {Icon && <Icon className="text-xl md:text-2xl" />}
+                        </div>
+
+                        {/* Label */}
+                        <div className="text-xs md:text-sm font-semibold text-amber-900 dark:text-amber-100 leading-tight mb-1 px-1">
+                          {point.label}
+                        </div>
+
+                        {/* Time */}
+                        <div className="text-[10px] md:text-xs text-amber-700 dark:text-amber-300">
+                          {point.time}
+                        </div>
+
                       </div>
+                    );
+                  })}
 
-                      {/* Label */}
-                      <div className="text-xs md:text-sm font-semibold text-amber-900 dark:text-amber-100 leading-tight mb-1 px-1">
-                        {point.label}
-                      </div>
-
-                      {/* Time */}
-                      <div className="text-[10px] md:text-xs text-amber-700 dark:text-amber-300">
-                        {point.time}
-                      </div>
-
-                    </div>
-                  );
-                })}
-
-              </div>
-            )}
+                </div>
+              )}
 
 
 
 
 
-          </div>
-        </section>
-      )}
+            </div>
+          </section>
+        )
+      }
 
       {/* Brochure CTA location adjusted later (after Floor Plans) */}
 
@@ -1031,37 +1056,41 @@ const ProjectTemplate = ({
       </section>
 
       {/* Download Brochure Button - For Ongoing Projects */}
-      {isOngoingVariant && brochurePath && (
-        <section className="w-full py-12 md:py-16 bg-amber-50 dark:bg-amber-950/20">
-          <div className="max-w-7xl mx-auto px-4 text-center">
-            <h3 className="text-2xl md:text-3xl font-bold mb-6 text-yellow-600 dark:text-yellow-600">Download Brochure</h3>
-            <p className="text-[#181818] dark:text-gray-400 mb-8 text-lg">Get detailed information about {projectName}</p>
-            <a
-              href={brochurePath}
-              download
-              className="inline-flex items-center gap-3 bg-yellow-600 hover:bg-yellow-600/90 text-white px-10 py-5 rounded-lg transition-all duration-300 font-bold text-xl shadow-2xl hover:shadow-xl transform hover:-translate-y-1"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
-              <span>Download Brochure</span>
-            </a>
-          </div>
-        </section>
-      )}
+      {
+        isOngoingVariant && brochurePath && (
+          <section className="w-full py-12 md:py-16 bg-amber-50 dark:bg-amber-950/20">
+            <div className="max-w-7xl mx-auto px-4 text-center">
+              <h3 className="text-2xl md:text-3xl font-bold mb-6 text-yellow-600 dark:text-yellow-600">Download Brochure</h3>
+              <p className="text-[#181818] dark:text-gray-400 mb-8 text-lg">Get detailed information about {projectName}</p>
+              <a
+                href={brochurePath}
+                download
+                className="inline-flex items-center gap-3 bg-yellow-600 hover:bg-yellow-600/90 text-white px-10 py-5 rounded-lg transition-all duration-300 font-bold text-xl shadow-2xl hover:shadow-xl transform hover:-translate-y-1"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                <span>Download Brochure</span>
+              </a>
+            </div>
+          </section>
+        )
+      }
 
       {/* Legal Entity Disclaimer */}
-      {legalEntity && (
-        <section className="w-full py-8 border-t border-gray-100 dark:border-gray-900 bg-white dark:bg-black">
-          <div className="max-w-7xl mx-auto px-4">
-            <div className="text-center">
-              <p className="text-[#181818] dark:text-gray-200 text-lg md:text-xl font-bold tracking-tight">
-                {legalEntity}
-              </p>
+      {
+        legalEntity && (
+          <section className="w-full py-8 border-t border-gray-100 dark:border-gray-900 bg-white dark:bg-black">
+            <div className="max-w-7xl mx-auto px-4">
+              <div className="text-center">
+                <p className="text-[#181818] dark:text-gray-200 text-lg md:text-xl font-bold tracking-tight">
+                  {legalEntity}
+                </p>
+              </div>
             </div>
-          </div>
-        </section>
-      )}
+          </section>
+        )
+      }
 
       {/* Floating Call Button with Download - Only for Ongoing Projects */}
       {isOngoingVariant && <FloatingCallButton brochurePath={brochurePath} projectName={projectName} isOngoing={isOngoingVariant} />}
@@ -1174,7 +1203,7 @@ const ProjectTemplate = ({
           background: rgba(156, 163, 175, 0.8);
         }
       `}</style>
-    </div>
+    </div >
   );
 };
 

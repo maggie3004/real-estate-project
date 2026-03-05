@@ -53,7 +53,8 @@ const HeroSection = () => {
       title2: 'ESSENCE',
       title3: 'OF ELEVATED LIVING',
       subtitle: 'Exclusive 1 BHK Happy Homes',
-      route: '/ShreeGaneshHeights'
+      route: '/ShreeGaneshHeights',
+      isSoldOut: true
     },
     {
       id: 2,
@@ -178,6 +179,20 @@ const HeroSection = () => {
 
                 {/* Overlay for better text readability */}
                 <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/50 dark:from-black/30 dark:via-black/40 dark:to-black/60"></div>
+
+                {/* Sold Out Badge at Top Right */}
+                {slide.isSoldOut && (
+                  <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                    className="absolute top-8 sm:top-10 md:top-12 lg:top-16 right-4 sm:right-8 md:right-12 lg:right-16 z-20"
+                  >
+                    <div className="bg-red-600/90 text-white px-4 py-1.5 rounded-lg font-black text-sm md:text-base uppercase tracking-widest shadow-2xl border border-red-500/50 backdrop-blur-md animate-pulse">
+                      Sold Out*
+                    </div>
+                  </motion.div>
+                )}
 
                 {/* Slide-specific content */}
                 <div className="absolute top-8 sm:top-10 md:top-12 lg:top-16 left-4 sm:left-8 md:left-12 lg:left-16 right-4 z-10 max-w-3xl">

@@ -39,7 +39,7 @@ const projects = [
   {
     name: 'Shree Ganesh Heights',
     location: 'Pathardi, Nashik',
-    status: 'Ongoing',
+    status: 'Sold Out',
     image: '/assets/shree ganesh heights gallery 1.jpeg',
     description: 'Premium residential development with modern amenities and excellent location advantages.',
     type: '1 BHK',
@@ -154,11 +154,13 @@ const ProjectsSection = () => {
                       <img
                         src={project.image}
                         alt={project.name}
-                        className="w-full h-56 object-contain bg-gray-50 dark:bg-gray-900"
+                        className={`w-full h-56 object-contain bg-gray-50 dark:bg-gray-900 transition-all duration-500 ${project.status === 'Sold Out' ? 'grayscale-[0.4] opacity-80' : ''}`}
                       />
-                      <div className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-semibold ${project.status === 'Ongoing'
+                      <div className={`absolute top-4 right-4 px-3 py-1 rounded-full text-xs font-semibold shadow-lg ${project.status === 'Ongoing'
                         ? 'bg-orange-500 text-white'
-                        : 'bg-green-500 text-white'
+                        : project.status === 'Sold Out'
+                          ? 'bg-red-600 text-white animate-pulse'
+                          : 'bg-green-500 text-white'
                         }`}>
                         {project.status}
                       </div>

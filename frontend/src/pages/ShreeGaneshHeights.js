@@ -20,6 +20,7 @@ const ShreeGaneshHeights = () => {
     tagline: "EXPERIENCE ESSENCE OF ELEVATED LIVING",
     heroSubtitle: "Exclusive 1 BHK Happy Homes",
     description: "Experience an elevated lifestyle of sophistication and comfort at Shree Ganesh Heights, where every aspect of our meticulously designed 1 BHK 'Happy Homes' is crafted to enhance your everyday living. These residences offer the perfect integration of luxury and functionality, delivering a modern living experience that seamlessly blends convenience, comfort, and affordability.",
+    status: "Sold Out",
     stats: [
       { title: "1 BHK", subtitle: "Happy Homes" },
       { title: "G+7", subtitle: "Structure" },

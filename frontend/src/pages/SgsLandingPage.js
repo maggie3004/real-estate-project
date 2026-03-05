@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { motion, AnimatePresence, useScroll, useTransform, useSpring } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Helmet } from 'react-helmet';
 import {
     FaPhoneAlt, FaWhatsapp, FaTimes, FaChevronDown,
@@ -277,30 +277,24 @@ const QuickEnquiryForm = () => {
     );
 };
 
-// ─── SECTION: Hero ────────────────────────────────────────────────────────
 const HeroSection = () => {
-    const ref = useRef(null);
-    const { scrollY } = useScroll({ target: ref, offset: ['start start', 'end start'] });
-    const rawY = useTransform(scrollY, [0, 600], [0, 120]);
-    const smoothY = useSpring(rawY, { stiffness: 80, damping: 25 });
-
     const textVariants = {
         hidden: { opacity: 0, y: 35 },
         visible: (i) => ({ opacity: 1, y: 0, transition: { duration: 0.8, delay: i * 0.18, ease: [0.25, 0.46, 0.45, 0.94] } }),
     };
 
     return (
-        <section ref={ref} id="sgs-hero" className="relative w-full overflow-hidden" style={{ minHeight: '100dvh' }}>
-            {/* Parallax BG */}
-            <motion.div className="absolute inset-0 w-full h-full" style={{ y: smoothY }}>
+        <section id="sgs-hero" className="relative w-full overflow-hidden" style={{ minHeight: '100dvh' }}>
+            {/* Static BG (Parallax Removed) */}
+            <div className="absolute inset-0 w-full h-full">
                 <img
                     src={HERO_IMG} alt="Shree Ganesh Srushti"
                     className="w-full h-full object-cover"
-                    style={{ minHeight: '110dvh', objectPosition: 'center 70%' }}
+                    style={{ minHeight: '100dvh', objectPosition: 'center 70%' }}
                     loading="eager" fetchpriority="high"
                     onError={e => { e.target.src = '/hero-building.jpg'; }}
                 />
-            </motion.div>
+            </div>
 
             {/* Minimal overlay */}
             <div className="absolute inset-0 bg-black/20" />
@@ -488,21 +482,18 @@ const configs = [
         type: '1 BHK', tag: 'Silver',
         price: '₹16.99 Lakh', priceNote: 'Starting Price',
         size: '480 sq ft', sizeNote: '',
-        // Silver: cool slate-gray blending into warm amber
         color: 'from-slate-500 via-gray-600 to-amber-700',
     },
     {
         type: '1 BHK', tag: 'Platinum',
         price: '₹19.49 Lakh', priceNote: 'Starting Price',
         size: '500 sq ft', sizeNote: '',
-        // Platinum: bright warm gold fading into rich amber
         color: 'from-yellow-600 via-amber-600 to-amber-800',
     },
     {
         type: '2 BHK', tag: 'Diamond',
         price: '₹26.49 Lakh', priceNote: 'Starting Price',
         size: '730 sq ft', sizeNote: '',
-        // Diamond: deep navy-indigo into premium amber-gold
         color: 'from-indigo-900 via-amber-800 to-amber-950',
     },
 ];
@@ -804,7 +795,6 @@ const FullEnquiryForm = () => {
                                         <option value="">Select configuration</option>
                                         <option value="1 BHK">1 BHK</option>
                                         <option value="2 BHK">2 BHK</option>
-                                        <option value="3 BHK">3 BHK</option>
                                         <option value="Shop">Shop</option>
                                     </select>
                                 </div>

@@ -65,7 +65,8 @@ const properties = [
     furnishing: "Semi-furnished",
     floor: null,
     totalFloors: null,
-    facing: "North"
+    facing: "North",
+    status: "Sold Out"
   },
   {
     id: 3,
