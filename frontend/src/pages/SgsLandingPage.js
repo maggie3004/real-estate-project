@@ -14,6 +14,7 @@ import {
 import { MdSelfImprovement } from 'react-icons/md';
 import { BiCctv } from 'react-icons/bi';
 import { GiWaterDrop } from 'react-icons/gi';
+import { useNavigate } from 'react-router-dom';
 import Footer from '../components/Footer';
 
 // ─── Constants ───────────────────────────────────────────────────────────────
@@ -216,6 +217,7 @@ const SgsNavbar = () => {
 const EMPTY_QUICK = { name: '', phone: '', email: '', config: '' };
 
 const QuickEnquiryForm = () => {
+    const navigate = useNavigate();
     const [form, setForm] = useState(EMPTY_QUICK);
     const [status, setStatus] = useState('idle'); // idle | submitting | success | error
 
@@ -228,6 +230,7 @@ const QuickEnquiryForm = () => {
             await submitLead({ ...form, form_type: 'quick_enquiry' });
             setStatus('success');
             setForm(EMPTY_QUICK);
+            setTimeout(() => navigate('/thank-you'), 1000);
             setTimeout(() => setStatus('idle'), 6000);
         } catch {
             setStatus('error');
@@ -728,6 +731,7 @@ const LocationSection = () => (
 const EMPTY_FULL = { name: '', phone: '', email: '', config: '', message: '' };
 
 const FullEnquiryForm = () => {
+    const navigate = useNavigate();
     const [form, setForm] = useState(EMPTY_FULL);
     const [status, setStatus] = useState('idle');
 
@@ -740,6 +744,7 @@ const FullEnquiryForm = () => {
             await submitLead({ ...form, form_type: 'full_enquiry' });
             setStatus('success');
             setForm(EMPTY_FULL);
+            setTimeout(() => navigate('/thank-you'), 1000);
             setTimeout(() => setStatus('idle'), 8000);
         } catch {
             setStatus('error');

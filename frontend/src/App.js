@@ -42,6 +42,7 @@ const ModakeshwarApartment = lazy(() => import('./pages/ModakeshwarApartment'));
 const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
 const TermsOfService = lazy(() => import('./pages/TermsOfService'));
 const SgsLandingPage = lazy(() => import('./pages/SgsLandingPage'));
+const ThankYou = lazy(() => import('./pages/ThankYou'));
 
 // Redirect component for navigating to Milestones with hash
 const RedirectToMilestones = ({ projectId }) => {
@@ -158,6 +159,7 @@ function App() {
                             <Route path="/ModakeshwarApartment" element={<ModakeshwarApartment />} />
                             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                             <Route path="/terms-of-service" element={<TermsOfService />} />
+                            <Route path="/thank-you" element={<ThankYou />} />
                           </Route>
                         </Routes>
                       </Suspense>
