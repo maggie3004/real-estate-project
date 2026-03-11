@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { BrowserRouter } from 'react-router-dom';
 
 // Suppress UNSAFE_componentWillMount warning from third-party libraries (react-helmet)
 const originalWarn = console.warn;
@@ -49,7 +50,9 @@ if (isSgsRoute) {
     const root = ReactDOM.createRoot(rootElement);
     root.render(
       <React.StrictMode>
-        <SgsLandingPage />
+        <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+          <SgsLandingPage />
+        </BrowserRouter>
       </React.StrictMode>
     );
   });
