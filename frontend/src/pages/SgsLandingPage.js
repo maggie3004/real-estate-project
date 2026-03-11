@@ -26,7 +26,7 @@ const NIGHT_IMG = '/assets/shree-ganesh-srushti/gallery/night.jpg';
 const RERA_QR = '/assets/shree-ganesh-srushti/gallery/Rera_QR.png';
 const BROCHURE = '/assets/shree-ganesh-srushti/gallery/Shree Ganesh Srushti Digital Broucher_compressed.pdf';
 
-const API_ENDPOINT = process.env.REACT_APP_SGS_LEAD_API || '';
+const API_ENDPOINT = '/api/leads/sgs';
 
 
 
@@ -49,15 +49,25 @@ function captureLeadMeta() {
 async function submitLead(formData) {
     const meta = captureLeadMeta();
     const payload = { ...formData, ...meta };
-    if (!API_ENDPOINT) {
-        console.log('[SGS Lead]', payload);
+    
+    console.log('[SGS Lead Submission]', payload);
+    
+    try {
+        const response = await fetch(API_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+        });
+        
+        if (!response.ok) {
+            throw new Error('API request failed');
+        }
+        
         return { ok: true };
+    } catch (error) {
+        console.error('Lead submission error:', error);
+        throw error;
     }
-    return fetch(API_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-    });
 }
 
 // ─── Ripple Button ────────────────────────────────────────────────────────
