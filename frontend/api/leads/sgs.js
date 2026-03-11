@@ -10,22 +10,25 @@ export default async function handler(req, res) {
   }
 
   // Use environment variables from Vercel dashboard
+  // Defaulting to /v1/sync which is the standard endpoint for Sync API
   const token = process.env.TELECRM_API_TOKEN || '8f18fb2f-2bee-4e5f-9b41-33ace180ef181773242420270:e11ea304-5650-4d87-b323-dcd3cd87c075';
-  const apiUrl = process.env.TELECRM_API_URL || 'https://api.telecrm.in/v1/leads';
+  const apiUrl = process.env.TELECRM_API_URL || 'https://api.telecrm.in/v1/sync';
 
-  // Standard TeleCRM payload usually has fields at the root
+  // TeleCRM Sync API expects a "fields" object
   const leadData = {
-    name: name,
-    phone: phone,
-    email: email || '',
-    note: `Config: ${config || 'N/A'}. Msg: ${message || 'N/A'}. Form: ${form_type || 'SGS'}`,
-    source: "Ganesh Srushti QR Campaign",
-    project_name: "Shree Ganesh Srushti",
-    city: "Nashik"
+    fields: {
+      name: name,
+      phone: phone,
+      email: email || '',
+      note: `Config: ${config || 'N/A'}. Msg: ${message || 'N/A'}. Form: ${form_type || 'SGS'}`,
+      source: "Ganesh Srushti QR Campaign",
+      project_name: "Shree Ganesh Srushti",
+      city: "Nashik"
+    }
   };
 
   try {
-    console.log('Forwarding to TeleCRM:', leadData);
+    console.log('Forwarding to TeleCRM:', JSON.stringify(leadData, null, 2));
 
     const response = await fetch(apiUrl, {
       method: 'POST',
