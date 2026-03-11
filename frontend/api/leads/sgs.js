@@ -1,17 +1,18 @@
+/**
+ * TeleCRM Lead Proxy (Serverless Function)
+ * Path: /api/leads/sgs
+ */
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { name, phone, email, config, message, form_type } = req.body;
+  const formData = req.body;
+  const { name, phone, email, config, form_type, lead_source, project_name, page_url, device, referrer, utm_source, utm_medium, utm_campaign } = formData;
 
   if (!name || !phone) {
     return res.status(400).json({ error: 'Name and phone are required.' });
   }
-
-  // Use environment variables from Vercel dashboard
-  const token = process.env.TELECRM_API_TOKEN || '8f18fb2f-2bee-4e5f-9b41-33ace180ef181773242420270:e11ea304-5650-4d87-b323-dcd3cd87c075';
-  const apiUrl = process.env.TELECRM_API_URL || 'https://next.telecrm.in/autoupdate/v2/enterprise/69a15241a734245ce0c34522/lead';
 
   // 1. Format Phone Number (+91XXXXXXXXXX)
   let formattedPhone = phone.replace(/\D/g, ''); // Remove non-digits
@@ -20,31 +21,38 @@ export default async function handler(req, res) {
   } else if (formattedPhone.length === 12 && formattedPhone.startsWith('91')) {
     formattedPhone = `+${formattedPhone}`;
   } else if (!formattedPhone.startsWith('+')) {
-     // If it's already got more digits, just prepend + if missing
-     formattedPhone = `+${formattedPhone}`;
+    formattedPhone = `+${formattedPhone}`;
   }
 
-  // 2. Combine config and message into note
+  // 2. Combine fields into the 'note' field for TeleCRM
   const noteParts = [
-    `Project: Shree Ganesh Srushti`,
-    `Config: ${config || 'Not specified'}`,
-    `Form: ${form_type || 'General'}`,
-    message ? `Msg: ${message}` : ''
+    `Project: ${project_name || 'Shree Ganesh Srushti'}`,
+    config ? `Config: ${config}` : '',
+    form_type ? `Form: ${form_type}` : '',
+    device ? `Device: ${device}` : '',
+    page_url ? `Page: ${page_url.split('/').pop() || 'shree-ganesh-srushti'}` : '',
+    referrer ? `Referrer: ${referrer}` : '',
+    utm_source ? `Source: ${utm_source}` : '',
+    utm_medium ? `Medium: ${utm_medium}` : '',
+    utm_campaign ? `Campaign: ${utm_campaign}` : ''
   ].filter(Boolean).join(' | ');
 
-  // 3. Construct Payload
-  const leadData = {
+  // 3. TeleCRM Payload Format (v2)
+  const teleCrmPayload = {
     fields: {
       name: name,
       phone: formattedPhone,
       email: email || '',
       note: noteParts,
-      source: "Ganesh Srushti QR Campaign"
+      source: lead_source || "QR Landing Page"
     }
   };
 
+  const token = process.env.TELECRM_API_TOKEN;
+  const apiUrl = 'https://next.telecrm.in/autoupdate/v2/enterprise/69a15241a734245ce0c34522/lead';
+
   try {
-    console.log('Forwarding to TeleCRM v2:', JSON.stringify(leadData, null, 2));
+    console.log('[TeleCRM v2 Proxy] Forwarding:', JSON.stringify(teleCrmPayload, null, 2));
 
     const response = await fetch(apiUrl, {
       method: 'POST',
@@ -52,30 +60,23 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
       },
-      body: JSON.stringify(leadData)
+      body: JSON.stringify(teleCrmPayload)
     });
 
-    const contentType = response.headers.get('content-type');
-    let data;
-
-    if (contentType && contentType.includes('application/json')) {
-      data = await response.json();
-    } else {
-      data = await response.text();
-    }
+    const data = await response.json().catch(() => null);
 
     if (!response.ok) {
-        console.error('TeleCRM Error Response:', data);
-        return res.status(response.status).json({ 
-          error: 'TeleCRM API error', 
-          details: typeof data === 'object' ? data : { message: data } 
-        });
+      console.error('[TeleCRM Proxy] Error Response:', data || response.statusText);
+      return res.status(response.status).json({ 
+        error: 'TeleCRM API error', 
+        details: data || { message: response.statusText } 
+      });
     }
 
-    console.log('TeleCRM Success:', data);
-    return res.status(200).json({ success: true, message: 'Lead captured successfully.' });
+    console.log('[TeleCRM Proxy] Success:', data);
+    return res.status(200).json({ success: true, data });
   } catch (error) {
-    console.error('Serverless Function Exception:', error.message);
+    console.error('[TeleCRM Proxy] Exception:', error.message);
     return res.status(500).json({ error: 'Internal Server Error', message: error.message });
   }
 }
