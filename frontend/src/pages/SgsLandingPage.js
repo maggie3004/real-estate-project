@@ -49,20 +49,20 @@ function captureLeadMeta() {
 async function submitLead(formData) {
     const meta = captureLeadMeta();
     const payload = { ...formData, ...meta };
-    
+
     console.log('[SGS Lead Submission]', payload);
-    
+
     try {
         const response = await fetch(API_ENDPOINT, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(payload),
         });
-        
+
         if (!response.ok) {
             throw new Error('API request failed');
         }
-        
+
         return { ok: true };
     } catch (error) {
         console.error('Lead submission error:', error);

@@ -48,8 +48,9 @@ export default async function handler(req, res) {
     }
   };
 
-  const token = process.env.TELECRM_API_TOKEN;
-  const apiUrl = 'https://next.telecrm.in/autoupdate/v2/enterprise/69a15241a734245ce0c34522/lead';
+  // RESTORING HARDCODED FALLBACKS AS REQUESTED
+  const token = process.env.TELECRM_API_TOKEN || '8f18fb2f-2bee-4e5f-9b41-33ace180ef181773242420270:e11ea304-5650-4d87-b323-dcd3cd87c075';
+  const apiUrl = process.env.TELECRM_API_URL || 'https://next.telecrm.in/autoupdate/v2/enterprise/69a15241a734245ce0c34522/lead';
 
   try {
     console.log('[TeleCRM v2 Proxy] Forwarding:', JSON.stringify(teleCrmPayload, null, 2));
