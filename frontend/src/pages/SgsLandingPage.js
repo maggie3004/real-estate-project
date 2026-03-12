@@ -230,7 +230,8 @@ const QuickEnquiryForm = () => {
             await submitLead({ ...form, form_type: 'quick_enquiry' });
             setStatus('success');
             setForm(EMPTY_QUICK);
-            window.location.href = '/thank-you';
+            navigate('/thank-you');
+            setTimeout(() => setStatus('idle'), 6000);
         } catch {
             setStatus('error');
             setTimeout(() => setStatus('idle'), 5000);
@@ -739,7 +740,8 @@ const FullEnquiryForm = () => {
             await submitLead({ ...form, form_type: 'full_enquiry' });
             setStatus('success');
             setForm(EMPTY_FULL);
-            window.location.href = '/thank-you';
+            navigate('/thank-you');
+            setTimeout(() => setStatus('idle'), 8000);
         } catch {
             setStatus('error');
             setTimeout(() => setStatus('idle'), 5000);

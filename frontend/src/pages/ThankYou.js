@@ -58,7 +58,7 @@ const ThankYou = () => {
           transition={{ delay: 0.6 }}
         >
           <button
-            onClick={() => navigate('/')}
+            onClick={() => navigate('/shree-ganesh-srushti')}
             className="group flex items-center justify-center gap-3 w-full sm:w-auto mx-auto px-8 py-4 bg-transparent border-2 border-amber-500 text-amber-500 font-bold rounded-2xl transition-all duration-300 hover:bg-amber-500 hover:text-black hover:shadow-[0_0_20px_rgba(245,158,11,0.3)] uppercase tracking-widest text-sm"
           >
             <FaArrowLeft className="transition-transform group-hover:-translate-x-1" />

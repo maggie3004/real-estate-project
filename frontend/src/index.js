@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // Suppress UNSAFE_componentWillMount warning from third-party libraries (react-helmet)
 const originalWarn = console.warn;
@@ -39,19 +39,27 @@ AOS.init({
 
 const rootElement = document.getElementById('root');
 
-// For the SGS QR landing page — render it directly, completely bypassing
-// the App component (and its 6-second LoadingScreen) so QR scanners see
-// content instantly. All other routes use the normal App.
-const isSgsRoute = window.location.pathname.toLowerCase().startsWith('/shree-ganesh-srushti');
+// Define routes that should bypass the main App loading screen (Fast Load)
+const path = window.location.pathname.toLowerCase();
+const isSgsRoute = path.startsWith('/shree-ganesh-srushti');
+const isThankYouRoute = path.startsWith('/thank-you');
 
-if (isSgsRoute) {
-  // Lazy-import to keep the main bundle lean
-  import('./pages/SgsLandingPage').then(({ default: SgsLandingPage }) => {
+if (isSgsRoute || isThankYouRoute) {
+  // Render standalone router with just the essential routes for speed
+  Promise.all([
+    import('./pages/SgsLandingPage'),
+    import('./pages/ThankYou')
+  ]).then(([{ default: SgsLandingPage }, { default: ThankYou }]) => {
     const root = ReactDOM.createRoot(rootElement);
     root.render(
       <React.StrictMode>
         <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-          <SgsLandingPage />
+          <Routes>
+            <Route path="/shree-ganesh-srushti" element={<SgsLandingPage />} />
+            <Route path="/thank-you" element={<ThankYou />} />
+            {/* Fallback to SgsLandingPage if path is slightly off but in QR route */}
+            {isSgsRoute && <Route path="*" element={<SgsLandingPage />} />}
+          </Routes>
         </BrowserRouter>
       </React.StrictMode>
     );

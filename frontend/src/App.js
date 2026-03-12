@@ -102,8 +102,7 @@ class ErrorBoundary extends React.Component {
 
 function App() {
   // Skip loading screen for the SGS QR landing page so scanners reach content instantly
-  const isSgsRoute = window.location.pathname.startsWith('/shree-ganesh-srushti') ||
-                      window.location.pathname.startsWith('/thank-you');
+  const isSgsRoute = window.location.pathname.startsWith('/shree-ganesh-srushti');
   const [isLoading, setIsLoading] = useState(!isSgsRoute);
 
   const handleLoadingComplete = () => {
@@ -126,9 +125,8 @@ function App() {
                       <ScrollToTop />
                       <Suspense fallback={<LoadingSpinner />}>
                         <Routes>
-                          {/* Standalone pages — bypass loading screen */}
+                          {/* Standalone QR landing page — bypasses loading screen */}
                           <Route path="/shree-ganesh-srushti" element={<SgsLandingPage />} />
-                          <Route path="/thank-you" element={<ThankYou />} />
 
                           <Route element={<MainLayout />}>
                             <Route path="/" element={<Home />} />
@@ -161,6 +159,7 @@ function App() {
                             <Route path="/ModakeshwarApartment" element={<ModakeshwarApartment />} />
                             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                             <Route path="/terms-of-service" element={<TermsOfService />} />
+                            <Route path="/thank-you" element={<ThankYou />} />
                           </Route>
                         </Routes>
                       </Suspense>
