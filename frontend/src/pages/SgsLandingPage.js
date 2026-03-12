@@ -273,7 +273,6 @@ const QuickEnquiryForm = () => {
                             <option value="" className="bg-gray-900">Select BHK</option>
                             <option value="1 BHK" className="bg-gray-900">1 BHK</option>
                             <option value="2 BHK" className="bg-gray-900">2 BHK</option>
-                            <option value="3 BHK" className="bg-gray-900">3 BHK</option>
                         </select>
                     </div>
                     {status === 'error' && <p className="text-red-400 text-xs">Something went wrong. Please call us directly.</p>}
@@ -930,12 +929,12 @@ const SgsLandingPage = () => {
     return (
         <>
             <Helmet>
-                <title>Shree Ganesh Srushti – 1, 2 & 3 BHK Homes in Nashik | Ganesh Yeole Builders</title>
-                <meta name="description" content="Shree Ganesh Srushti by Ganesh Yeole Builders — premium 1, 2 & 3 BHK homes in Nashik. G+7 structure near Datta Mandir Chowk. Starting ₹17.99 Lakh. RERA registered. Book now!" />
+                <title>Shree Ganesh Srushti – 1 & 2 BHK Homes in Nashik | Ganesh Yeole Builders</title>
+                <meta name="description" content="Shree Ganesh Srushti by Ganesh Yeole Builders — premium 1 & 2 BHK homes in Nashik. G+7 structure near Datta Mandir Chowk. Starting ₹17.99 Lakh. RERA registered. Book now!" />
                 <meta name="robots" content="index, follow" />
                 <link rel="canonical" href={window.location.origin + '/shree-ganesh-srushti'} />
                 <meta property="og:title" content="Shree Ganesh Srushti – Nashik's New Language of Living" />
-                <meta property="og:description" content="Premium 1, 2 & 3 BHK homes by Ganesh Yeole Builders. Starting ₹17.99 Lakh. Scan QR · Enquire Now." />
+                <meta property="og:description" content="Premium 1 & 2 BHK homes by Ganesh Yeole Builders. Starting ₹17.99 Lakh. Scan QR · Enquire Now." />
                 <meta property="og:image" content={window.location.origin + '/assets/shree-ganesh-srushti/gallery/heroweb.webp'} />
                 <meta property="og:type" content="website" />
                 <meta name="twitter:card" content="summary_large_image" />
