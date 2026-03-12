@@ -214,7 +214,7 @@ const SgsNavbar = () => {
 };
 
 // ─── SECTION: Quick Enquiry Form ──────────────────────────────────────────
-const EMPTY_QUICK = { name: '', phone: '', email: '', config: '' };
+const EMPTY_QUICK = { name: '', phone: '', config: '' };
 
 const QuickEnquiryForm = () => {
     const navigate = useNavigate();
@@ -266,10 +266,6 @@ const QuickEnquiryForm = () => {
                     <div>
                         <label className={labelCls}>Phone *</label>
                         <input name="phone" type="tel" value={form.phone} onChange={onChange} required placeholder="+91 XXXXX XXXXX" className={inputCls} />
-                    </div>
-                    <div>
-                        <label className={labelCls}>Email <span className="text-gray-500 normal-case tracking-normal font-normal">(optional)</span></label>
-                        <input name="email" type="email" value={form.email} onChange={onChange} placeholder="you@example.com" className={inputCls} />
                     </div>
                     <div>
                         <label className={labelCls}>Configuration *</label>
