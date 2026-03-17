@@ -21,7 +21,7 @@ import Footer from '../components/Footer';
 const PHONE = '7030502111';
 const WHATSAPP = '917030502111';
 const LOGO_URL = '/assets/logo.png';
-const HERO_IMG = '/assets/photo_6181292361355301470_y.jpg';
+const HERO_IMG = '/assets/photo_6181292361355301469_y.jpg';
 const FRONT_IMG = '/assets/shree-ganesh-srushti/gallery/front.jpg';
 const NIGHT_IMG = '/assets/shree-ganesh-srushti/gallery/night.jpg';
 const RERA_QR = '/assets/shree-ganesh-srushti/gallery/Rera_QR.png';
@@ -287,7 +287,7 @@ const QuickEnquiryForm = () => {
 
 const HeroSection = () => {
     return (
-        <section id="sgs-hero" className="relative w-full overflow-hidden bg-gray-900" style={{ minHeight: '100dvh' }}>
+        <section id="sgs-hero" className="relative w-full overflow-hidden bg-gray-900 pt-16" style={{ minHeight: '100dvh' }}>
             {/* Desktop Background (Blurred) */}
             <div className="hidden lg:block absolute inset-0 w-full h-full">
                 <img
@@ -298,11 +298,11 @@ const HeroSection = () => {
             </div>
 
             {/* Main Image Container */}
-            <div className="absolute inset-0 w-full h-full flex items-center justify-center">
+            <div className="absolute inset-0 top-16 w-full h-[calc(100%-64px)] flex items-center justify-center">
                 <img
                     src={HERO_IMG} alt="Shree Ganesh Srushti"
-                    className="w-full h-full lg:w-auto lg:h-[90vh] lg:rounded-3xl lg:shadow-[0_0_100px_rgba(0,0,0,0.8)] object-cover lg:object-contain"
-                    style={{ minHeight: '100dvh', lg: { minHeight: 'auto' } }}
+                    className="w-full h-full lg:w-auto lg:h-[85vh] lg:rounded-3xl lg:shadow-[0_0_100px_rgba(0,0,0,0.8)] object-contain lg:object-contain"
+                    style={{ minHeight: 'calc(100dvh - 64px)', lg: { minHeight: 'auto' } }}
                     loading="eager" fetchpriority="high"
                     onError={e => { e.target.src = '/hero-building.jpg'; }}
                 />
@@ -312,7 +312,7 @@ const HeroSection = () => {
             <div className="absolute inset-0 bg-black/10 lg:hidden" />
 
             {/* Text Content */}
-            <div className="relative z-10 flex flex-col items-start justify-start min-h-[100dvh] px-5 sm:px-10 lg:px-16 pt-20">
+            <div className="relative z-10 flex flex-col items-start justify-start min-h-[calc(100dvh-64px)] px-5 sm:px-10 lg:px-16 pt-4">
                 {/* Book at Launch Offer - Removed as requested */}
                 
                 {/* Heading - Removed as requested */}
