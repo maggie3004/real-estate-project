@@ -286,11 +286,6 @@ const QuickEnquiryForm = () => {
 };
 
 const HeroSection = () => {
-    const textVariants = {
-        hidden: { opacity: 0, y: 35 },
-        visible: (i) => ({ opacity: 1, y: 0, transition: { duration: 0.8, delay: i * 0.18, ease: [0.25, 0.46, 0.45, 0.94] } }),
-    };
-
     return (
         <section id="sgs-hero" className="relative w-full overflow-hidden bg-gray-900" style={{ minHeight: '100dvh' }}>
             {/* Desktop Background (Blurred) */}
