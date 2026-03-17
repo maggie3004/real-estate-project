@@ -21,7 +21,7 @@ import Footer from '../components/Footer';
 const PHONE = '7030502111';
 const WHATSAPP = '917030502111';
 const LOGO_URL = '/assets/logo.png';
-const HERO_IMG = '/assets/shree-ganesh-srushti/gallery/sgs-hero.webp';
+const HERO_IMG = '/assets/photo_6181292361355301470_y.jpg';
 const FRONT_IMG = '/assets/shree-ganesh-srushti/gallery/front.jpg';
 const NIGHT_IMG = '/assets/shree-ganesh-srushti/gallery/night.jpg';
 const RERA_QR = '/assets/shree-ganesh-srushti/gallery/Rera_QR.png';
@@ -292,67 +292,37 @@ const HeroSection = () => {
     };
 
     return (
-        <section id="sgs-hero" className="relative w-full overflow-hidden" style={{ minHeight: '100dvh' }}>
-            {/* Static BG (Parallax Removed) */}
-            <div className="absolute inset-0 w-full h-full">
+        <section id="sgs-hero" className="relative w-full overflow-hidden bg-gray-900" style={{ minHeight: '100dvh' }}>
+            {/* Desktop Background (Blurred) */}
+            <div className="hidden lg:block absolute inset-0 w-full h-full">
+                <img
+                    src={HERO_IMG} alt=""
+                    className="w-full h-full object-cover blur-2xl opacity-40 scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80" />
+            </div>
+
+            {/* Main Image Container */}
+            <div className="absolute inset-0 w-full h-full flex items-center justify-center">
                 <img
                     src={HERO_IMG} alt="Shree Ganesh Srushti"
-                    className="w-full h-full object-cover"
-                    style={{ minHeight: '100dvh', objectPosition: 'center 70%' }}
+                    className="w-full h-full lg:w-auto lg:h-[90vh] lg:rounded-3xl lg:shadow-[0_0_100px_rgba(0,0,0,0.8)] object-cover lg:object-contain"
+                    style={{ minHeight: '100dvh', lg: { minHeight: 'auto' } }}
                     loading="eager" fetchpriority="high"
                     onError={e => { e.target.src = '/hero-building.jpg'; }}
                 />
             </div>
 
-            {/* Minimal overlay */}
-            <div className="absolute inset-0 bg-black/20" />
+            {/* Minimal overlay for better contrast on mobile */}
+            <div className="absolute inset-0 bg-black/10 lg:hidden" />
 
-            {/* Text — top-left, below navbar */}
+            {/* Text Content */}
             <div className="relative z-10 flex flex-col items-start justify-start min-h-[100dvh] px-5 sm:px-10 lg:px-16 pt-20">
-                <motion.div
-                    initial={{ opacity: 0, x: -40 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
-                    className="inline-flex items-center gap-2 bg-amber-700/80 border border-amber-500/60 px-4 py-1.5 rounded-full text-white text-xs font-bold uppercase tracking-widest mb-3 mt-4 shadow-lg backdrop-blur-sm"
-                >
-                    <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                    Book at Launch Offer
-                </motion.div>
+                {/* Book at Launch Offer - Removed as requested */}
+                
+                {/* Heading - Removed as requested */}
 
-                <motion.h1
-                    custom={1} variants={textVariants} initial="hidden" animate="visible"
-                    className="text-3xl sm:text-4xl md:text-5xl font-black text-white uppercase leading-tight"
-                    style={{ fontFamily: "'Playfair Display', serif" }}
-                >
-                    Shree Ganesh<br />
-                    <span className="text-amber-400">Srushti</span>
-                </motion.h1>
-
-                <motion.div custom={2} variants={textVariants} initial="hidden" animate="visible"
-                    className="w-52 h-0.5 bg-gradient-to-r from-amber-400 to-amber-200 my-3 rounded-full"
-                />
-
-                <motion.p custom={3} variants={textVariants} initial="hidden" animate="visible"
-                    className="text-sm text-gray-200 font-light tracking-wide mb-1"
-                >
-                    THE NEW LANGUAGE OF LIVING
-                </motion.p>
-                <motion.p custom={4} variants={textVariants} initial="hidden" animate="visible"
-                    className="text-xs text-amber-300 font-semibold mb-4"
-                >
-                    1 BHK &amp; 2 BHK Happy Homes &amp; Shops
-                </motion.p>
-
-                <motion.div custom={5} variants={textVariants} initial="hidden" animate="visible" className="flex flex-wrap gap-2">
-                    <AmberBtn onClick={() => scrollTo('sgs-quickform')} className="px-4 py-2 text-xs">
-                        Enquire Now ↓
-                    </AmberBtn>
-                    <a href={`https://wa.me/${WHATSAPP}?text=Hi! I'm interested in Shree Ganesh Srushti.`}
-                        target="_blank" rel="noopener noreferrer"
-                        className="flex items-center gap-1.5 px-4 py-2 text-xs font-bold rounded-xl bg-green-600 hover:bg-green-500 text-white transition-colors shadow-lg">
-                        <FaWhatsapp /> WhatsApp
-                    </a>
-                </motion.div>
+                {/* All overlays and CTAs removed as requested - Clean poster-only look */}
             </div>
 
             {/* Scroll indicator */}
