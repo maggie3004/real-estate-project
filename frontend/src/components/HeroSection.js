@@ -47,14 +47,13 @@ const HeroSection = () => {
   const carouselData = [
     {
       id: 1,
-      image: '/assets/shree-ganesh-heights/gallery/herowp.webp',
-      projectName: 'Shree Ganesh Heights',
-      title: 'EXPERIENCE',
-      title2: 'ESSENCE',
-      title3: 'OF ELEVATED LIVING',
-      subtitle: 'Exclusive 1 BHK Happy Homes',
-      route: '/ShreeGaneshHeights',
-      isSoldOut: true
+      image: '/assets/shree-ganesh-srushti/gallery/heroweb.webp',
+      projectName: 'Shree Ganesh Srushti',
+      title: 'THE',
+      title2: 'NEW LANGUAGE',
+      title3: 'OF LIVING',
+      subtitle: '1, 2 & 3 BHK Happy Homes & Shops',
+      route: '/ShreeGaneshSrushti'
     },
     {
       id: 2,
@@ -68,13 +67,14 @@ const HeroSection = () => {
     },
     {
       id: 3,
-      image: '/assets/shree-ganesh-srushti/gallery/heroweb.webp',
-      projectName: 'Shree Ganesh Srushti',
-      title: 'THE',
-      title2: 'NEW LANGUAGE',
-      title3: 'OF LIVING',
-      subtitle: '1, 2 & 3 BHK Happy Homes & Shops',
-      route: '/ShreeGaneshSrushti'
+      image: '/assets/shree-ganesh-heights/gallery/herowp.webp',
+      projectName: 'Shree Ganesh Heights',
+      title: 'EXPERIENCE',
+      title2: 'ESSENCE',
+      title3: 'OF ELEVATED LIVING',
+      subtitle: 'Exclusive 1 BHK Happy Homes',
+      route: '/ShreeGaneshHeights',
+      isSoldOut: true
     }
   ];
 
